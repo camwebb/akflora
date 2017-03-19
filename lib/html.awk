@@ -16,7 +16,10 @@ function defaultpage()
 {
   htmlHeader("Flora of Alaska");
   
-  print "<div style=\"padding:50px;\"><img src=\"img/whitemntns_sm.jpg\"><h1 style=\"font-family:sans-serif;\">Dynamic Flora of Alaska</h1><p style=\"max-width:800px;\">A <i>live</i> biodiversity informatics mashup of <a href=\"http://arctos.database.museum/uam_herb_all\">specimens</a>, <a href=\"http://www.inaturalist.org/projects/plants-and-fungi-of-alaska\">observations</a>, images, <a href=\"http://www.theplantlist.org/\">names</a>, taxon concepts, <a href=\"http://www.biodiversitylibrary.org/\">literature</a>, and characters.</p><p>A project of <a href=\"https://www.uaf.edu/museum/collections/herb/\">ALA</a> (Herbarium of the University of Alaska's Museum of the North in Fairbanks). <a href=\"mailto:info@alaskaflora.org\">Contact us</a>.</p><p><i>Watch this space</i></p><!-- <p>(Made with <a href=\"https://www.gnu.org/software/gawk/manual/gawk.html\"><tt>gawk</tt></a> and <a href=\"https://www.dreamhost.com/r.cgi?108617\">Dreamhost</a>)</p> --></div>";
+  print "<div style=\"padding:50px;\"><img src=\"img/whitemntns_sm.jpg\"><h1 style=\"font-family:sans-serif;\">Dynamic Flora of Alaska</h1><p style=\"max-width:800px;\">A <i>live</i> biodiversity informatics mashup of <a href=\"http://arctos.database.museum/uam_herb_all\">specimens</a>, <a href=\"http://www.inaturalist.org/projects/plants-and-fungi-of-alaska\">observations</a>, images, <a href=\"http://www.theplantlist.org/\">names</a>, taxon concepts, <a href=\"http://www.biodiversitylibrary.org/\">literature</a>, and characters.</p><p>A project of <a href=\"https://www.uaf.edu/museum/collections/herb/\">ALA</a> (Herbarium of the University of Alaska's Museum of the North in Fairbanks). <a href=\"mailto:info@alaskaflora.org\">Contact us</a>.</p><!-- <p>(Made with <a href=\"https://www.gnu.org/software/gawk/manual/gawk.html\"><tt>gawk</tt></a> and <a href=\"https://www.dreamhost.com/r.cgi?108617\">Dreamhost</a>)</p> -->";
+
+  print "<b>Query our Alaska Names database</b> for correct spelling and accepted names. Enter your genus of interest here:</p><form method=\"get\" action=\"./do\"><input type=\"text\" name=\"g\" size =\"20\"/><input type=\"hidden\" name=\"method\" value=\"gquery\"/><input type=\"submit\" value=\"go\"/></form>";
+  
   htmlFooter()
 }
 

@@ -4,6 +4,7 @@
 @include "../lib/db.awk" ;
 @include "../lib/html.awk" ;
 @include "../lib/utils.awk" ;
+@include "../lib/query.awk" ;
 
 BEGIN{
 
@@ -18,12 +19,11 @@ BEGIN{
 
   # DETERMINE AND EXECUTE METHOD
 
-  # if           (f["method"] == "query")  {};
+  if           (f["method"] == "gquery")  gquery();
   # else if      (f["method"] == "myquery") {} ;
 
   # other/no arguments
-  # else
-  defaultpage() ;
+  else defaultpage() ;
   
   exit ;
 
