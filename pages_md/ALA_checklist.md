@@ -1,3 +1,5 @@
+% Checklist of Accepted Names for Alaskan Vascular Plants
+
 # Checklist of Accepted Names for Alaskan Vascular Plants
 
 <p><b>Query the checklist</b>. Enter your genus of interest here:</p><form method="get" action="../do"><input type="text" name="g" size ="20"/><input type="hidden" name="method" value="gquery"/><input type="submit" value="go"/></form>
