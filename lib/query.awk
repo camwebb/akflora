@@ -39,7 +39,7 @@ function gquery(               q) {
   printTableLinks("TPL code~<a href=\"http://www.theplantlist.org/tpl1.1/record/!\" target=\"_blank\">!</a>|Acc. TPL~<a href=\"http://www.theplantlist.org/tpl1.1/record/!\" target=\"_blank\">!</a>");
   clearDBQ();
 
-  print "<br/><br/><span style=\"font-size:80%;\"><p>This table gives all records in our ALA checklist for occurences of the requested genus name. Where the taxon has been determined to be a synonym of another taxon, the accepted ('Acc.') name and source code is also given.</p></span>";
+  print "<br/><br/><span style=\"font-size:80%;\"><p>This table gives all records in our ALA checklist for occurences of the requested genus name. Where the taxon has been determined to be a synonym of another taxon, the accepted ('Acc.') name and source code is also given. 'TPL' = name code from the <a href=\"http://www.theplantlist.org/\">The Plant List (v. 1.1)</a>.</p></span>";
   print "<p>[ <a href=\"pages/ALA_checklist.html\">BACK</a> ]</p>";
   
   htmlFooter() ;
