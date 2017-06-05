@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for i in *.md
+do
+    echo "  "${i/md/html}
+    pandoc -s --template=template.html -o ../alaskaflora.org/pages/${i/md/html} $i
+done
+

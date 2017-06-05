@@ -13,6 +13,7 @@ body {
 	padding-left: 4em;
 	padding-bottom: 60px;
 	padding-right: 4em;
+	max-width: 800px;
 	min-width: 800px;
     min-height: 500px;
     position: absolute;
@@ -82,6 +83,11 @@ div.figure img {
 
 div.figure a:hover {
 	border-bottom-style:none;
+}
+
+h2.author {
+    font-style: italic;
+    font-weight: normal;
 }
 
 /* div.credit {
