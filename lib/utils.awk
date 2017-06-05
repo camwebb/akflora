@@ -7,6 +7,7 @@ function error(msg) {
   exit;
 }
 
+## Note - errors if two columns have same name since field is used as key
 function queryDB( query            , row, i, cmd ) {
   gsub(/`/,"\\`",query);  # if writing directly, need: \\\`
   gsub(/\n/," ",query);
@@ -29,6 +30,7 @@ function queryDB( query            , row, i, cmd ) {
 	  for (i = 1; i <= NF; i++)
 		{
 		  DBQ[row, DBQf[i]] = $i;
+          # print row, i,  $i;
 		}
 	}
   close(cmd);
@@ -55,7 +57,7 @@ function printTable(width,    widthstr,   i, j)
 	  print "<tr>";
 	  for (j = 1; j <= DBQc; j++)
 		{
-          if (DBQ[i,DBQf[j]] == "NULL") DBQ[i,DBQf[j]] = "&#160;"
+          if (DBQ[i,DBQf[j]] == "NULL") DBQ[i,DBQf[j]] = "&#160;" ;
 		  print "<td>" DBQ[i,DBQf[j]] "</td>";
 		}
 	   print "</tr>";

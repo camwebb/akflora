@@ -2,13 +2,15 @@
 
 # Checklist of Accepted Names for Alaskan Vascular Plants
 
-<p><b>Query the checklist</b>. Enter your genus of interest here:</p><form method="get" action="../do"><input type="text" name="g" size ="20"/><input type="hidden" name="method" value="gquery"/><input type="submit" value="go"/></form>
+<p><b>Query the checklist</b>. Enter your genus of interest here:</p><form method="get" action="../do"><input type="text" name="g" size ="20"/><input type="hidden" name="method" value="gquery"/>&#160;<input type="submit" value="go"/></form>
 
 <br/>
 <br/>
 <hr/>
 
-## Checklist Details, by D.F. Murray
+## Checklist Details
+
+_(by D.F. Murray)_
 
 ### The list
 
