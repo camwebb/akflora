@@ -3,7 +3,7 @@ function gquery(               q) {
   htmlHeader("Genus Query");
 
   q = "\
-    SELECT\
+    SELECT DISTINCT\
       taxon.g AS 'Genus',\
       REPLACE(taxon.xs,'1','×') AS 'x',\
       taxon.s AS 'Species',\
@@ -21,17 +21,14 @@ function gquery(               q) {
       tpl2.listCode AS 'Acc. TPL'\
     FROM `taxon`\
     LEFT JOIN `tlink` AS t1 ON t1.taxonID = taxon.id\
-    LEFT JOIN `tlink` AS tpl ON tpl.taxonID = taxon.id\
+    LEFT JOIN `tlink` AS tpl ON tpl.taxonID = taxon.id AND tpl.listsrc = 'ThePlantListV2'\
     LEFT JOIN taxon as t2 ON t2.id = t1.tsynofID\
-    LEFT JOIN tlink AS t3 ON t2.id = t3.taxonID\
-    LEFT JOIN tlink AS tpl2 ON tpl2.taxonID = t2.id\
+    LEFT JOIN tlink AS tpl2 ON tpl2.taxonID = t2.id AND tpl2.listsrc = 'ThePlantListV2'\
     WHERE taxon.g LIKE '" f["g"] "'\
     AND (t1.listsrc = 'Murray')\
-    AND ((tpl.listsrc = 'ThePlantListV2') OR (tpl.listsrc IS NULL))\
-    AND ((t3.listsrc = 'Murray') OR (t3.listsrc IS NULL))\
-    AND ((tpl2.listsrc = 'ThePlantListV2') OR (tpl2.listsrc IS NULL))\
     ORDER BY taxon.g, taxon.s, taxon.t, taxon.sub;\
   ";
+
   queryDB( q );
   print "<h1>Name query for genus <i>" toupper(substr(f["g"],1,1)) tolower(substr(f["g"], 2)) "</i></h1>";
   #printTable();
