@@ -27,7 +27,7 @@ function gquery(               q) {
     LEFT JOIN tlink AS tpl2 ON tpl2.taxonID = t2.id\
     WHERE taxon.g LIKE '" f["g"] "'\
     AND (t1.listsrc = 'Murray')\
-    AND (tpl.listsrc = 'ThePlantListV2')\
+    AND ((tpl.listsrc = 'ThePlantListV2') OR (tpl.listsrc IS NULL))\
     AND ((t3.listsrc = 'Murray') OR (t3.listsrc IS NULL))\
     AND ((tpl2.listsrc = 'ThePlantListV2') OR (tpl2.listsrc IS NULL))\
     ORDER BY taxon.g, taxon.s, taxon.t, taxon.sub;\
