@@ -65,7 +65,7 @@ Alaska Anchorage.  That this checklist of accepted names exists is due
 also to the persistent, gentle urgings and infinite patience of John
 DeLapp, U.S. Fish and Wildlife Service, Anchorage, who saw the need
 for this checklist and urged that it be compiled. He has been
-steadfast in his encouragement. He supplied some financial support to
+steadfast in his encouragement. He supplied some financial support too.
 
 ### Sources
 
