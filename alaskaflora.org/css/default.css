@@ -1,0 +1,138 @@
+body {
+	font-family: 'Montserrat', Verdana, Arial, Helvetica, sans-serif;
+	/* font-size: 90%;
+	font-family: times, serif;
+	font-size: 1.1em; */
+	background-color: white;
+	color: black;
+	padding-top: 2em;
+	/* border-left: 1em solid #2f004f;
+	border-top: 1em solid #2f004f;
+	border-right: 1em solid #2f004f;
+	border-bottom: 1em solid #2f004f; */
+	padding-left: 4em;
+	padding-bottom: 60px;
+	padding-right: 4em;
+	max-width: 800px;
+	min-width: 800px;
+    min-height: 500px;
+    position: absolute;
+}
+
+p, li {    line-height: 16pt;
+}
+
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	background-color: white;
+	color: black;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', verdana, arial, helvetica, sans-serif;
+}
+
+h1 { font-size: 2em }
+h2 { font-size: 1.5em }
+h3 { font-size: 1.0em }
+
+a {
+	color:#15358d;
+	text-decoration:none;
+	border-bottom-style:none;
+}
+
+a:visited {
+	color:#9f1dbc;
+}
+
+
+a:hover {
+	color:#15358d;
+	border-bottom-style:solid;
+	border-bottom-width:thin;
+}
+
+pre {
+	color:#518413;
+}
+
+div.figure {
+   float: right;
+   max-width: 35%;
+   text-align: center;
+   border: thin silver solid;
+   margin: 0.5em;
+   padding: 0.5em;
+}
+
+div.figure p {
+   text-align: center;
+   font-style: italic;
+   font-size: 0.8em;
+   text-indent: 0;
+line-height: 12pt;
+}
+
+div.figure img {
+	width: 90%;
+    border: none;
+}
+
+div.figure a:hover {
+	border-bottom-style:none;
+}
+
+h2.author {
+    font-style: italic;
+    font-weight: normal;
+}
+
+/* div.credit {
+  position: relative;
+  left: 250px;
+} */
+
+/* div.credit table {
+	text-align: right;
+	font-style: italic;
+	font-size: 0.8em;
+} */
+
+/*div.menu {
+  position: relative;
+  left: 80%;
+  font-size: 0.8em;
+}*/
+
+table {
+    border-collapse: collapse;
+    /* width: 100%;
+    max-width: 300px; not working */
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th { font-size: 80%; }
+
+th, td {
+    padding: 3px;
+}
+
+/* Thanks to http://www.websitecodetutorials.com/code/photo-galleries/css-popup-image.php */
+
+.thumb img.cloak { 
+	position:fixed;
+	visibility:hidden;
+}
+.thumb:hover img.cloak {
+    text-decoration: none; /* not working */
+	visibility:visible;
+	top:200px; left:600px; 
+	z-index:1;
+}
+
