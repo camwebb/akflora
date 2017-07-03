@@ -167,3 +167,4 @@ constructed from the ground up in a highly structured digital
 environment for which the early contributions can be see on-line
 (<http://arcticplants.myspecies.info/>).
 
+Please send comments, additions or corrections to: <img src="../img/upd.png"/>
