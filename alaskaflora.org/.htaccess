@@ -4,8 +4,6 @@ Options +ExecCGI -Indexes
   SetHandler cgi-script
 </Files>
 
-RewriteEngine On
-RewriteBase /
-
-RewriteRule ^$ do
-
+#RewriteEngine On
+#RewriteBase /
+#RewriteRule ^$ do

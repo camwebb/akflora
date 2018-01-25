@@ -1,5 +1,8 @@
 #!/bin/sh
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/../pages_md
+
 for i in *.md
 do
     echo "  "${i/md/html}
