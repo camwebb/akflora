@@ -4,6 +4,11 @@ Options +ExecCGI -Indexes
   SetHandler cgi-script
 </Files>
 
+<Files gawk>
+  Order Deny,Allow      
+  Deny from all         
+</Files>
+
 #RewriteEngine On
 #RewriteBase /
 #RewriteRule ^$ do
