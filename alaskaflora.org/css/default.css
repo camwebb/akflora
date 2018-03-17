@@ -22,6 +22,10 @@ body {
 p, li {    line-height: 16pt;
 }
 
+li {
+    text-indent: -1em;
+    padding-left: 1em;
+}
 
 td {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
