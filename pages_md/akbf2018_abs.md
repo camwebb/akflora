@@ -67,6 +67,11 @@ Loring P. Schaible, Carl Roland, Fleur Nicklen, David Swanson, and Sarah Stehn<b
 _NPS Central Alaska Network_ <br/>Abstract: 
 I will be discussing my research on the climate variables that influence the spring and autumnal phenological transitions of <i>P. tremuloides</i> (quaking aspen) and the implications of climate change on the species phenological calendar in Alaska.
 
+<a name="Tcitsci"></a>**Alaskan berry citizen science from buds to berry loss - An overview of the Winterberry and Late Bloomers citizen science projects** <br/>
+Katie Spellman (1), and Christa Mulder (2)<br/>
+_1. International Arctic Research Center, University of Alaska Fairbanks, Fairbanks, AK 99775; 2. Institute of Arctic Biology and Department of Biology and Wildlife, University of Alaska Fairbanks, Fairbanks, AK 99775_ <br/>Abstract: 
+The timing and abundance of many berry species is becoming less predictable than in the past, which has consequences for both animals and people. Longer growing seasons has potential to alter berry production at nearly every phase of the reproductive cycle, from the pre-formation of flower buds to the condition of berries that remain on the plant through winter. This presentation will introduce two new UAF-initiated citizen science projects that engage diverse audiences in helping investigate these changes: 1. Late Bloomers- a project investigating how changes in growing season length influences the development of pre-formed buds, and 2.  Winterberry - a project investigating how changes in growing season length influences the timing and condition of berries that remain available to animals in late fall and winter.
+
 <a name="Tminer"></a>**Effects of the aspen leaf miner (<i>Phyllocnistis populiella</i>) outbreak on tree growth and physiology** <br/>
 Diane Wagner (1), Stephen J. Burr (2), and Patricia Doak (1)<br/>
 _1. Institute of Arctic Biology and Department of Biology and Wildlife, University of Alaska Fairbanks, Fairbanks, AK 99775; 2. Forest Service Region 10, State and Private Forestry, Forest Health Protection, Fairbanks, AK 99709_ <br/>Abstract: 
