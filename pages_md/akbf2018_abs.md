@@ -67,11 +67,6 @@ Loring P. Schaible, Carl Roland, Fleur Nicklen, David Swanson, and Sarah Stehn<b
 _NPS Central Alaska Network_ <br/>Abstract: 
 I will be discussing my research on the climate variables that influence the spring and autumnal phenological transitions of <i>P. tremuloides</i> (quaking aspen) and the implications of climate change on the species phenological calendar in Alaska.
 
-<a name="Tcitsci"></a>**(TBA - Citizen science)** <br/>
-Katie Spellman<br/>
-__ <br/>Abstract: 
-
-
 <a name="Tminer"></a>**Effects of the aspen leaf miner (<i>Phyllocnistis populiella</i>) outbreak on tree growth and physiology** <br/>
 Diane Wagner (1), Stephen J. Burr (2), and Patricia Doak (1)<br/>
 _1. Institute of Arctic Biology and Department of Biology and Wildlife, University of Alaska Fairbanks, Fairbanks, AK 99775; 2. Forest Service Region 10, State and Private Forestry, Forest Health Protection, Fairbanks, AK 99709_ <br/>Abstract: 
