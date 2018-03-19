@@ -58,7 +58,7 @@ _Unversity of Alaska, Institute of Arctic Biology_ <br/>Abstract:
 The Circumpolar Arctic Vegetation Map (CAVM) is a vector (polygon) map that mapped the vegetation of the whole Arctic using a consistent legend. Although the CAVM has proved to be a very useful tool, there has been interest in a raster version of the map. This project created a 1-km resolution raster CAVM using the same legend categories as the original CAVM. The raster map provides greater resolution (1-km pixels vs. 14-km minimum polygon diameter), while maintaining the same consistent vegetation legend.  The new map is based on unsupervised classifications of seventeen geographic/floristic sub-sections of the map using AVHRR and MODIS data (band and NDVI) and elevation data. The units resulting from the classification were modeled to the CAVM types using a wide variety of ancillary data: the original CAVM map, climate data, substrate data, existing regional vegetation maps and ground studies.   The map was reviewed by experts familiar with their particular region, including many of the original authors of the CAVM from the U.S., Canada, Greenland (Denmark), Iceland, Norway (including Svalbard), and Russia. The final product will be available on the Alaska Arctic GeoEcological Atlas hosted by GINA at the University of Alaska Fairbanks http://arcticatlas.geobotany.org/.
 
 <a name="Tdenali"></a>**Unique and high diversity plant communities in interior Alaska are threatened by woody plant expansion** <br/>
-Carl Roland (1), and Jay M. Ver Hoef (2)<br/>
+Carl Roland (1), and Jay Ver Hoef (2)<br/>
 _1. National Park Service, Fairbanks, AK 99709; 2. Alaska Fisheries Science Center, National Oceanic and Atmospheric Administration_ <br/>Abstract: 
 
 
