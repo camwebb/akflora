@@ -42,7 +42,7 @@ This way we know who you are and can be sure that the right person is
 asked. We will ask the presenter to repeat the question so that it is
 clearly heard by the microphone. 
 
-Please be aware that there can be up a significant time **delay**
+Please be aware that there can be a significant time **delay**
 between what is happening in the meeting room and what you will
 see. We therefore encourage you to ask your questions as you think of
 them, and before the very end of their talk.
