@@ -150,3 +150,56 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
   return decoded
 }
 
+function iNatProject(cmd, json, i) {
+
+  gsub(/,/,"%2C",f["users"]);
+
+  htmlHeader("Plants and Fungi of Alaska, by users");
+  # print "<pre>";
+  print "<h1>Plants and Fungi of Alaska, by users</h1>";
+  cmd = "curl -s -X GET --header 'Accept: application/json' 'https://api.inaturalist.org/v1/observations?project_id=plants-and-fungi-of-alaska&page=1&user_id=" f["users"] "'";
+  RS="\x04";
+  cmd | getline json ;
+  close(cmd);
+  parse_json(json);
+  # PROCINFO["sorted_in"] = "@ind_num_asc";
+  # walk_array(JSONPATH, "JSONPATH");
+  nresults = JSONPATH["\"total_results\""] ;
+  print "<p><b>Total obs: " nresults "</b></p>";
+  print "<table>";
+
+  x = 0;
+
+  for (i = 0 ; (i < nresults) && (i < 30) ; i++ ) {
+    # print ++x, i, JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""], JSONPATH["\"results\"",i,"\"id\""];
+    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>Id: <a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
+  }
+
+  pages = int(nresults / 30) + int(((nresults % 30) + 29) / 30);
+  for (p = 2 ; p <= pages ; p++) {
+    delete JSONPATH;
+    cmd = "curl -s -X GET --header 'Accept: application/json' 'https://api.inaturalist.org/v1/observations?project_id=plants-and-fungi-of-alaska&page=" p "&user_id=" f["users"] "'";
+    cmd | getline json ;
+    close(cmd);
+    parse_json(json);
+
+    for (i = 0 ; i < (nresults - ((p-1)*30)) && i < 30 ; i++ ) {
+     # print ++x, i, JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""], JSONPATH["\"results\"",i,"\"id\""];
+      print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>Id: <a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
+    }
+  }
+  print "</table>";
+  # print "</pre>";
+  htmlFooter();
+}
+
+function walk_array(arr, name,      i)
+{
+  PROCINFO["sorted_in"] = "@ind_str_asc";
+    for (i in arr) {
+        if (isarray(arr[i]))
+            walk_array(arr[i], (name "[" i "]"))
+        else
+            printf("%s[%s] = %s\n", name, i, arr[i])
+    }
+}
