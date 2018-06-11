@@ -156,7 +156,8 @@ function iNatProject(cmd, json, i) {
 
   htmlHeader("Plants and Fungi of Alaska, by users");
   # print "<pre>";
-  print "<h1>Plants and Fungi of Alaska, by users</h1>";
+  print "<h1>User contributions to iNat Plants and Fungi of Alaska project</h1>";
+  
   cmd = "curl -s -X GET --header 'Accept: application/json' 'https://api.inaturalist.org/v1/observations?project_id=plants-and-fungi-of-alaska&page=1&user_id=" f["users"] "'";
   RS="\x04";
   cmd | getline json ;
@@ -167,11 +168,11 @@ function iNatProject(cmd, json, i) {
   nresults = JSONPATH["\"total_results\""] ;
   print "<p><b>Total obs: " nresults "</b></p>";
   print "<table>";
+  print "<tr><th>No.</th><th>User</th><th>Obs. date</th><th>Taxon</th><th>Obs. ID</th></tr>";
 
   x = 0;
 
   for (i = 0 ; (i < nresults) && (i < 30) ; i++ ) {
-    # print ++x, i, JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""], JSONPATH["\"results\"",i,"\"id\""];
     print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"taxon\"","\"name\""]) "</td><td><a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
   }
 
@@ -184,13 +185,15 @@ function iNatProject(cmd, json, i) {
     parse_json(json);
 
     for (i = 0 ; i < (nresults - ((p-1)*30)) && i < 30 ; i++ ) {
-     # print ++x, i, JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""], JSONPATH["\"results\"",i,"\"id\""];
     print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"taxon\"","\"name\""]) "</td><td><a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
 
     }
   }
   print "</table>";
   # print "</pre>";
+
+  print "<p style=\"font-size:80%;\"><i>Search via: 'https://alaskaflora.org/do?method=inatproj&users=XXX' where XXX is a comma-separated list of iNat usernames.</i></p>";
+
   htmlFooter();
 }
 
