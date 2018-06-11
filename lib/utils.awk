@@ -168,12 +168,12 @@ function iNatProject(cmd, json, i) {
   nresults = JSONPATH["\"total_results\""] ;
   print "<p><b>Total obs: " nresults "</b></p>";
   print "<table>";
-  print "<tr><th>No.</th><th>User</th><th>Obs. date</th><th>Taxon</th><th>Obs. ID</th></tr>";
+  print "<tr><th>No.</th><th>User</th><th>Obs. date</th><th>Taxon</th><th>Obs. ID</th><th>Photo</th></tr>";
 
   x = 0;
 
   for (i = 0 ; (i < nresults) && (i < 30) ; i++ ) {
-    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"taxon\"","\"name\""]) "</td><td><a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
+    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"taxon\"","\"name\""]) "</td><td><a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td><td><img src=\"" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"photos\"",0,"\"url\""]) "\"/></td></tr>" ;
   }
 
   pages = int(nresults / 30) + int(((nresults % 30) + 29) / 30);
@@ -185,7 +185,7 @@ function iNatProject(cmd, json, i) {
     parse_json(json);
 
     for (i = 0 ; i < (nresults - ((p-1)*30)) && i < 30 ; i++ ) {
-    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"taxon\"","\"name\""]) "</td><td><a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
+    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"taxon\"","\"name\""]) "</td><td><a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td><td><img src=\"" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"photos\"",0,"\"url\""]) "\"/></td></tr>" ;
 
     }
   }
