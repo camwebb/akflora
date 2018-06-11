@@ -172,7 +172,7 @@ function iNatProject(cmd, json, i) {
 
   for (i = 0 ; (i < nresults) && (i < 30) ; i++ ) {
     # print ++x, i, JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""], JSONPATH["\"results\"",i,"\"id\""];
-    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>Id: <a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
+    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>Id: <a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
   }
 
   pages = int(nresults / 30) + int(((nresults % 30) + 29) / 30);
@@ -185,7 +185,7 @@ function iNatProject(cmd, json, i) {
 
     for (i = 0 ; i < (nresults - ((p-1)*30)) && i < 30 ; i++ ) {
      # print ++x, i, JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""], JSONPATH["\"results\"",i,"\"id\""];
-      print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>Id: <a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
+    print "<tr><td>" ++x "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"user\"","\"login_exact\""]) "</td><td>" gensub(/"/,"","G", JSONPATH["\"results\"",i,"\"observed_on_details\"","\"date\""]) "</td><td>Id: <a href=\"https://www.inaturalist.org/observations/" JSONPATH["\"results\"",i,"\"id\""] "\">" JSONPATH["\"results\"",i,"\"id\""] "</a></td></tr>" ;
     }
   }
   print "</table>";
