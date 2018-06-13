@@ -150,7 +150,7 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
   return decoded
 }
 
-function iNatProject(cmd, json, i) {
+function iNatProject(cmd, json, i, j, data, nresults, user, date, taxon, id, thumb, ancs, anc, nanc, fam, pages, p, srt, thumbn) {
 
   RS="\x04";
   gsub(/,/,"%2C",f["users"]);
@@ -175,6 +175,8 @@ function iNatProject(cmd, json, i) {
     taxon[x] =  data["results"][i]["taxon"]["name"];
     id[x] =     data["results"][i]["id"];
     thumb[x] =  data["results"][i]["photos"][1]["url"];
+
+    for (j in data["results"][i]["photos"]) thumbn[x]++;
 
     ancs = data["results"][i]["taxon"]["ancestry"];
     nanc = split(ancs, anc, "/");
@@ -205,7 +207,9 @@ function iNatProject(cmd, json, i) {
       taxon[x] =  data["results"][i]["taxon"]["name"];
       id[x] =     data["results"][i]["id"];
       thumb[x] =  data["results"][i]["photos"][1]["url"];
-      
+
+      for (j in data["results"][i]["photos"]) thumbn[x]++;
+
       ancs = data["results"][i]["taxon"]["ancestry"];
       nanc = split(ancs, anc, "/");
       for (j = 0; j < nanc; j++) {
@@ -226,7 +230,7 @@ function iNatProject(cmd, json, i) {
   print "<h1>User contributions to iNat Plants and Fungi of Alaska project</h1>";
   print "<p><b>Total obs: " nresults "</b></p>";
   print "<table cellpadding=\"10\">";
-  print "<tr><th>User</th><th>N./user</th><th>Obs. date</th><th>Taxon</th><th>Family</th><th>Obs. ID</th><th>Photo</th></tr>";
+  print "<tr><th>User</th><th>N./user</th><th>Obs. date</th><th>Taxon</th><th>Family</th><th>Obs. ID</th><th>Photo</th><th>N photos</th></tr>";
 
   for (i in srt) {
     print "<tr></td><td align=\"center\">" user[i]              \
@@ -237,7 +241,7 @@ function iNatProject(cmd, json, i) {
       "</td><td><a href=\"https://www.inaturalist.org/observations/" id[i] \
       "\">" id[i]                                                       \
       "</a></td><td><img src=\"" thumb[i]                               \
-      "\"/></td></tr>" ;
+      "\"/></td><td>" thumbn[i] "</td></tr>" ;
   }
   print "</table>";
   print "<p style=\"font-size:80%;\"><i>Search via: 'https://alaskaflora.org/do?method=inatproj&users=XXX' where XXX is a comma-separated list of iNat usernames.</i></p>";
@@ -285,6 +289,7 @@ function inat_fams() {
   famcode[332916] = "Cystopteridaceae";
   famcode[53930] = "Diapensiaceae";
   famcode[47753] = "Dryopteridaceae";
+  famcode[51937] = "Droseraceae";
   famcode[64695] = "Elaeagnaceae";
   famcode[47747] = "Equisetaceae";
   famcode[133387] = "Ericaceae";
