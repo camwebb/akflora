@@ -1,0 +1,26 @@
+#!./gawk -f
+
+## Gets the iNat family ID code for the Alaskan families
+
+@load "./json.so"
+
+BEGIN{
+    RS="\x04";
+    
+    fams = "Acoraceae|Adoxaceae|Alismataceae|Amaranthaceae|Amaryllidaceae|Apiaceae|Apocynaceae|Araceae|Araliaceae|Asparagaceae|Aspleniaceae|Athyriaceae|Balsaminaceae|Betulaceae|Boraginaceae|Brassicaceae|Campanulaceae|Caprifoliaceae|Caryophyllaceae|Celastraceae|Asteraceae|Cornaceae|Cupressaceae|Cyperaceae|Cystopteridaceae|Diapensiaceae|Dryopteridaceae|Elaeagnaceae|Equisetaceae|Ericaceae|Gentianaceae|Geraniaceae|Haloragaceae|Hymenophyllaceae|Iridaceae|Isoëtaceae|Juncaceae|Juncaginaceae|Lamiaceae|Fabaceae|Lentibulariaceae|Liliaceae|Linaceae|Lycopodiaceae|Melanthiaceae|Menyanthaceae|Montiaceae|Nymphaeaceae|Onagraceae|Onocleaceae|Ophioglossaceae|Orchidaceae|Orobanchaceae|Papaveraceae|Phrymaceae|Pinaceae|Plantaginaceae|Poaceae|Polemoniaceae|Polygonaceae|Polypodiaceae|Potamogetonaceae|Primulaceae|Pteridaceae|Ranunculaceae|Rosaceae|Rubiaceae|Ruppiaceae|Salicaceae|Sapindaceae|Saxifragaceae|Scheuchzeriaceae|Scrophulariaceae|Selaginellaceae|Solanaceae|Taxaceae|Thelypteridaceae|Tofieldiaceae|Typhaceae|Urticaceae|Violaceae|Woodsiaceae|Zosteraceae" ;
+    
+  nf = split(fams,fam,"|");
+  for (i = 1; i <= nf; i++) {
+    json = "";
+    cmd = "curl -s -X GET --header 'Accept: application/json' 'https://api.inaturalist.org/v1/taxa?q=" fam[i] "'"; 
+    cmd | getline json ;
+    close(cmd);
+
+    if (! json_fromJSON(json, data)) {
+      print "JSON import failed!" > "/dev/stderr"
+      exit 1
+    }
+
+    print data["results"][1]["name"], data["results"][1]["id"];
+  }
+}

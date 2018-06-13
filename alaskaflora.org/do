@@ -1,18 +1,16 @@
 #!../bin/gawk -f
 
-
+@load "../bin/json.so" 
 
 # Include function libraries
 @include "../lib/db.awk" ;
 @include "../lib/html.awk" ;
 @include "../lib/utils.awk" ;
 @include "../lib/query.awk" ;
-@include "../lib/JSON_include.awk" # swap out with gawk-json
 
 BEGIN{
 
   setDB();
-  init_json(); # swap out with gawk-json
  
   # READ QUERY STRING
   split(ENVIRON["QUERY_STRING"], query, "&");
