@@ -178,7 +178,7 @@ function iNatProject(cmd, json, i) {
 
     ancs = data["results"][i]["taxon"]["ancestry"];
     nanc = split(ancs, anc, "/");
-    for (j = 1; j <= nanc; j++) {
+    for (j = 0; j < nanc; j++) {
       if (famcode[anc[nanc-j]]) {
         fam[x] = famcode[anc[nanc-j]];
         break;
@@ -208,7 +208,7 @@ function iNatProject(cmd, json, i) {
       
       ancs = data["results"][i]["taxon"]["ancestry"];
       nanc = split(ancs, anc, "/");
-      for (j = 1; j <= nanc; j++) {
+      for (j = 0; j < nanc; j++) {
         if (famcode[anc[nanc-j]]) {
           fam[x] = famcode[anc[nanc-j]];
           break;
