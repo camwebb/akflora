@@ -1,19 +1,19 @@
-% Checklist of Accepted Names for Alaskan Vascular Plants
+% ALA Checklist
 
-# Checklist of Accepted Names for Alaskan Vascular Plants
+# ALA Checklist of Accepted Names for Alaskan Vascular Plants
 
 <p><b>Query the checklist</b>. Enter your genus of interest here:</p><form method="get" action="../do"><input type="text" name="g" size ="20"/><input type="hidden" name="method" value="gquery"/>&#160;<input type="submit" value="go"/></form>
 </p>
 
 <hr/>
 
-## Checklist Details
+## ALA Checklist Details
 
 _(by D.F. Murray)_
 
-### The list
+### The ALA list
 
-The checklist of accepted names and synonyms for the vascular plants
+This checklist of accepted names and synonyms for the vascular plants
 of Alaska was developed over a period of years for in-house purposes
 at the Herbarium of the University of Alaska Museum of the North
 (ALA). It was intended to satisfy the pragmatic desire that each taxon
