@@ -3,9 +3,18 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/../pages_md
 
-for i in *.md
-do
-    echo "  "${i/md/html}
-    pandoc -s --template=template.html -o ../alaskaflora.org/pages/${i/md/html} $i
-done
+if [ $# -eq 1 ]
+then
+    echo "  "${1/md/html}
+    pandoc -s --template=template.html \
+           -o ../alaskaflora.org/pages/${1/md/html} $1
+else
+    ../bin/makesitemap
+    ../bin/makerss
+    for i in *.md
+    do
+        echo "  "${i/md/html}
+        pandoc -s --template=template.html -o ../alaskaflora.org/pages/${i/md/html} $i
+    done
+fi
 

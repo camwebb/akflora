@@ -1,4 +1,4 @@
-% Alaska Botany Forum 2018 : Remote viewing
+% Alaska Botany Forum 2018 - Remote viewing
 
 # Alaska Botany Forum 2018 : Remote viewing
 

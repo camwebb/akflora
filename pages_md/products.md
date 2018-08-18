@@ -4,7 +4,7 @@
 
 ## Project outcomes
 
- * A [Taxon Concept discussion](https://www.idigbio.org/wiki/index.php/Taxon_concept_discussion) at the [Second Annual Digital Data in Biodiversity Research Conference](https://www.idigbio.org/content/second-annual-digital-data-biodiversity-research-conference-emerging-innovations) (2018)
+ * Cam led a public [discussion on the Taxon Concepts problem](https://www.idigbio.org/wiki/index.php/Taxon_concept_discussion) at the [2nd Annual Digital Data in Biodiversity Research Conference](https://www.idigbio.org/content/second-annual-digital-data-biodiversity-research-conference-emerging-innovations) (2018)
  * The [development blog](blog.html)
 
 ## Other resources

@@ -1,0 +1,28 @@
+body { font-size: 1.7em; }
+
+ol, ul {
+    list-style-position: outside;
+    padding-left: 3rem;
+}
+
+/* ol ol {
+    list-style-type: lower-alpha;
+} */
+
+
+h1 { font-size: 4.0rem; font-weight: bold; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.2rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 2.8rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h1 { font-size: 4.0rem; }
+  h2 { font-size: 3.2rem; }
+  h3 { font-size: 2.8rem; }
+  h4 { font-size: 2.4rem; }
+  h5 { font-size: 1.8rem; }
+  h6 { font-size: 1.5rem; }
+}

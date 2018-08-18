@@ -2,7 +2,7 @@
 
 # Project information
 
-**“We are building the digital infrastructure and taxonomic basis for the ongoing, community-created, new Flora of Alaska.”**
+**“We are building the digital infrastructure and taxonomic basis for the new, community-created Flora of Alaska.”**
 
 The **plants of Alaska** are a dynamic mixture of arctic, boreal and
 temperate rain forest species, assembled during millenia of migration
