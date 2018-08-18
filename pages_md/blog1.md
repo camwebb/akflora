@@ -7,7 +7,7 @@ _Posted by [Cam](people.html#cam) on 2018-08-17_
 Hi! Welcome to this development blog, this website, and this
 project. Steffi and I were so pleased to get this NSF funding — many,
 many thanks to the ABI panelists, the four reviewers, and to NSF and
-US taxpayers. We hope you will be pleased with the work we do over the next three years.
+US taxpayers. 
 
 In this blog, I’ll lay out the main steps in the development of the
 informatics infrastructure. (For a general overview of the project, see
@@ -53,7 +53,7 @@ The software and data elements to be constructed and integrated are:
   at ALA over the past decades.
 
 3. **Data integration**. The bulk of the work for this project will be
-   in merging different data resources. Since few of these is in a
+   in merging different data resources. Since few of these are in a
    standard format (i.e., with
    [Darwin Core](https://www.tdwg.org/standards/dwc/) fields), and
    because names (and authorities) seldom match across resources, the
@@ -74,15 +74,13 @@ The software and data elements to be constructed and integrated are:
    occurrence data resources into the core DB. The most important data
    are the specimens in our own herbarium. ALA was one of the first
    plant collections to be fully digitized, and the data are stored in
-   the **ARCTOS **
-   [collections management system](https://arctosdb.org/). Once names
-   have been reconciles, we can use the ARCTOS API to extract
-   locations and metadata to display on a map for each
+   the [ARCTOS](https://arctosdb.org/) collections management
+   system. Once names have been reconciled, we can use the **ARCTOS**
+   API to extract locations and metadata to display on a map for each
    taxon. Specimens beyond ALA will be similarly linked using the
-   **GBIF** API. We will also map and link to
-   non-specimen occurrences in
-   in **iNaturalist** and vegetation samples
-   such as the USFS [FIA](https://www.fia.fs.fed.us/).
+   **GBIF** API. We will also map and link to non-specimen occurrences
+   in in **iNaturalist** and vegetation samples such as the USFS
+   [FIA](https://www.fia.fs.fed.us/).
    
    c. **Phenotypes**. Most phenotypic information for Alaskan plants
    exists as text descriptions in floras and monographs. For each
@@ -111,7 +109,7 @@ The software and data elements to be constructed and integrated are:
   is our intention that all data in the database will be fully
   accessible to the public, and we will pay close attention to
   attaching **licenses** to the data products so as to make them as
-  easy as possible to integrate into furthering resources.
+  easy as possible to integrate into further resources.
 
 Some of you by now may be asking “All this data stuff is OK, but what
 about a new paper Flora of Alaska?”. Well... first a reminder that
