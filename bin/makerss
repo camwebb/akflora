@@ -14,7 +14,7 @@ do
     TIME=`ls -l --time-style +"%a, %e %b %Y %H:%M:%S %z" $i.md | gawk '{print $6, $7, $8, $9, $10, $11 }'`
     echo -e '      <pubDate>'$TIME'</pubDate>' >> $RSS
     grep -E "^%" $i.md | sed -e 's/%\ *//g' -e 's/^\(.*\)$/      <title>\1<\/title>/g' >> $RSS
-    echo -e '      <guid>alaska-flora-'$i'</guid>\n    </item>' >> $RSS
+    echo -e '      <guid>alaska-flora-'$i'</guid>\n      <description></description>\n    </item>' >> $RSS
 done
     
 echo -e '  </channel>\n</rss>' >> $RSS
