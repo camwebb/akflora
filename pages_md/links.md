@@ -4,8 +4,6 @@
 
  * [Alaska Wildflowers](http://www.alaskawildflowers.us/index.html):
    300 species from near Central, Alaska
-
-## Data sources
-
  * [Consortium of Pacific Northwest Herbaria](http://www.pnwherbaria.org/)
  * [Flora of the Canadian Arctic Archipelago](http://nature.ca/aaflora/data/index.htm) (based on DELTA character data)
+ * [Flora of the Pacific Northwest, 2nd Edition](http://www.pnwherbaria.org/florapnw.php)

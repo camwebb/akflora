@@ -1,0 +1,44 @@
+/* dot -T png test.dot > test.png */
+
+digraph structure {
+    rankdir="LR";
+    node [fontname="Helvetica",shape=box];
+    edge [fontname="Courier", len=1.5, arrowhead=none];
+
+    subgraph ori {
+        rank=same;
+        name1 [label="Canonical name 1\n(A1)",style=bold];
+        src1 [label="Original\npublication\nof name\n(A3)"];
+        guid1 [label="GUID 1\n(A2)"];
+    }
+    src1 -> name1;
+    name1 -> guid1 ;
+    name1 -> rel ;    
+    name1 ->status;
+    name1 -> distrib [style=dashed];
+     
+    subgraph relate {
+        rank=same;
+        rel [label="Relationship\n(e.g., 'is synonym of')\n(C1)",shape=ellipse];
+        src2 [label="Original\nsource of\nrelationship\n(C2)"];
+        status [label="Status\n(e.g., 'accepted name')\n(B1)"]
+        src3 [label="Original\nsource of\nstatus\n(B2)"];
+    }
+    rel -> src2 ;
+    src3 -> status;
+    status -> rel [style=invis];
+    rel -> name2 [arrowhead=normal];
+    /* src3 -> distrib [style=invis]; */
+    
+    subgraph end {
+        rank=same;
+        name2 [label="Canonical name 2\n(C3)"];
+        guid2 [label="GUID 2\n(C4)"];
+        distrib [label="Distribution\n(D1)"];
+        src4 [label="Evidence\n(D2)"];
+    }
+    name2 -> guid2;
+    /* name2 -> distrib [style=invis]; */
+    distrib -> src4;
+
+}

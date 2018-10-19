@@ -1,0 +1,109 @@
+/* dot -T png test.dot > test.png */
+
+/* Notes: 1. Bold box = ...new data from taxonomic literature is presented
+   for the first time. 2. The edges must be outside the subgraph - if not
+   they will force the start and end of the edge to be on the same rank. 
+   3. I could not get this to work with subgraphs, since subgraphs 1 and 2,
+   with rank=same, collapse into a single rank. Using the new ranking method. */
+
+digraph structure {
+    rankdir="LR";
+    newrank=true; 
+    node [fontname="Helvetica",shape=box];
+    edge [fontname="Courier", len=1.5, arrowhead=normal];
+
+    { rank=same; WCSP; taxmon; GenBANK; Specs }
+    { rank=same; IPNI; Tropicos; GRIN;  BONAP ;
+     VASCAN}
+    { rank=same; PL; plants; NCBI }
+    { rank=same; ITIS; WP }
+    { rank=same; COL; WFO }
+    { rank=same; GBIF; EOL }
+        
+    // raw
+
+    WCSP [label="World Checklist\nof Selected\nPlant Families",shape=box,style=bold,color=invis];
+
+    taxmon [label="Taxonomic\npublications",shape=box,color=invis];
+
+    GenBANK [label="Taxa sequenced\nfor GenBANK",color=invis];
+
+    Specs [label="Label data on\nspecimens",color=invis];
+
+    // primary
+    
+    taxmon -> IPNI;
+    IPNI [shape=box,style=bold];
+
+    // PAF [style=bold];
+    // taxmon -> PAF;
+    
+    Tropicos [shape=box,style=bold];
+    taxmon -> Tropicos;
+    Specs -> Tropicos;
+
+    GRIN [style=bold];
+    taxmon -> GRIN;
+
+    BONAP [style=bold];
+    taxmon -> BONAP;
+    Specs -> BONAP;
+
+    taxmon -> VASCAN;
+    
+    VASCAN [style=bold];
+
+    // secondary
+    
+    PL [label="The Plant List"];        
+    WCSP -> PL;
+    taxmon -> PL;
+    Tropicos -> PL;
+    IPNI -> PL;
+
+    plants [label="PLANTS"];
+    GRIN -> plants;
+    BONAP -> plants;
+
+    GBIF [label="GBIF Backbone"];
+    COL -> GBIF;
+    // Specs -> GBIF;
+     
+    ITIS;
+    BONAP -> ITIS;
+    plants -> ITIS;
+
+    IPNI -> WP;
+    WP [label="World Plants",color=invis];
+
+    PL -> WFO;
+    WFO [label="World Flora Online"];
+    
+    COL [label="Catalogue of Life"];
+    ITIS -> COL;
+    taxmon -> COL;
+    WP -> COL;
+ 
+    GenBANK -> NCBI;
+    NCBI [label="NCBI Taxonomy"];
+
+    // tertiary
+    EOL;
+    ITIS -> EOL;
+    COL -> EOL ;
+    NCBI -> EOL;
+
+    // GNA
+    
+    GNA;
+    IPNI -> GNA [style=dashed];
+    VASCAN -> GNA [style=dashed];
+    plants -> GNA [style=dashed];
+    ITIS -> GNA [style=dashed];
+    COL -> GNA [style=dashed];
+    EOL -> GNA [style=dashed];
+    GBIF -> GNA [style=dashed];
+    Tropicos -> GNA [style=dashed];
+    NCBI -> GNA [style=dashed];    
+}
+

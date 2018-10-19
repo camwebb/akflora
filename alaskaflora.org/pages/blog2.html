@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Names, names, names!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <h1 id="names-names-names">Names, names, names!</h1>
+          <h2 id="about-names">About names</h2>
+          <p>Taxonomic names are, among other things, the identifier strings that traditionally link together data in different resources. From, e.g, the publication that contains the original description of a species, to, e.g., an ecological record of the species that occur at a site. Names have been called “<a href="https://doi.org/10.1016/j.tree.2010.09.004">key to the big new biology</a>” and a wide array of online resources offer information on taxonomic names, both as primary representations of taxonomic research and literature, and as aggregators and integrators of others’ lists. For example, using the <a href="http://resolver.globalnames.org/">Global Names Resolver</a> on “<em>Antennaria alpina</em> var. <em>media</em> (Greene) Jeps.”, 17 matching resources are found including GBIF Backbone taxonomy, VASCAN, IPNI, uBio name bank, Catalog of Life, ITIS, EOL and Tropicos.</p>
+          <p>The eventual usefulness of our flora project will partially depend on how well we link to and integrate the data already in these taxonomic resources. As we set out, it is thus important to step back and ask how can we best use these resources? Which should we focus on (there are too many to attempt to integrate every one)? And how should we link to them?</p>
+          <h2 id="what-name-resources-are-out-there">What name resources are out there?</h2>
+          <p>To answer the above questions requires some research as to what is actually available. These seem to be the major resources for plant names, and relevant to our project:</p>
+          <ul>
+          <li><strong>Biota of North America Program’s Taxonomic Data Center</strong> (BONAP’s TDC) The work of John T. Kartesz and assistants <a href="http://www.bonap.org/">→</a></li>
+          <li><strong>Catalog of Life</strong> (CoL) A product of ITIS and the <a href="http://www.sp2000.org/">Species 2000</a> federation <a href="http://www.catalogueoflife.org/col/">→</a></li>
+          <li><strong>GBIF Backbone Taxonomy</strong> (AKA(?): GBIF’s Electronic Catalogue of Names of Known Organisms, ECAT) <a href="https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c">→</a> and <a href="https://github.com/gbif/checklistbank">→</a></li>
+          <li><strong>GRIN-Global Taxonomy</strong> From the U.S. National Plant Germplasm System <a href="https://npgsweb.ars-grin.gov/gringlobal/search.aspx">→</a></li>
+          <li><strong>International Plant Names Index</strong> (IPNI) Derived from the <em>Index Kewensis</em> project, the oldest name indexing project <a href="http://www.ipni.org/">→</a></li>
+          <li><strong>Integrated Taxonomic Information System</strong> (ITIS) <a href="https://www.itis.gov/">→</a></li>
+          <li><strong>NCBI Taxonomy</strong> <a href="https://www.ncbi.nlm.nih.gov/taxonomy">→</a></li>
+          <li><strong>The Plant List</strong> Major attempt to gather all plant names, out of Kew <a href="http://www.theplantlist.org/">→</a>.</li>
+          <li><strong>PLANTS</strong> database, out of USDA <a href="https://plants.sc.egov.usda.gov/java/">→</a></li>
+          <li><strong>Tropicos</strong> from the Missouri Botanical Garden <a href="http://www.tropicos.org/">→</a></li>
+          <li><strong>Universal Biological Indexer and Organizer</strong> (uBio) Aggregating names since 2002, from <a href="http://www.mbl.edu/">MBL</a>. Not sure if it is currently maintained; GNA seems to be its successor. There was also an associated resource from MBL called CU*STAR <a href="http://ubio.org">→</a></li>
+          <li><strong>Database of Vascular Plants of Canada</strong> (VASCAN) Comprehensive list of all vascular plants reported in Canada &amp; Greenland. <a href="http://data.canadensys.net/vascan/search">→</a></li>
+          <li><strong>World Flora Online</strong> (WFO) The successor to The Plant List. Data just coming online right now (Oct 2018)</li>
+          </ul>
+          <h2 id="whats-in-a-names-resource">What’s in a “names resource”?</h2>
+          <p>Before I compare the above resources, I’ll step back a bit and consider what a comprehensive, generic names resource would consist of. A minimal list would be something like:</p>
+          <ul>
+          <li>Canonical spelling of name and author string</li>
+          <li>Citation for the original use of a name</li>
+          <li>GUIDs for names</li>
+          <li>Statements about accepted names and synonymy, with references to the underlying opinions</li>
+          </ul>
+          <p>A graphical template for how these elements fit together might then look like this:</p>
+          <p><img src="../img/nameparts.png" alt="Elements of names databases" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
+          <p>I’ve also added basic distribution data to the above graph. Our project is not yet attempting to integrating occurences, but since we are working on a regional flora, we need to restrict the list of taxa to just those occuring in Alaska, and a number of online name resources also offer presence or absence by greographical region (BONAP, USDA-PLANTS).</p>
+          <h2 id="how-do-the-names-resources-compare">How do the names resources compare?</h2>
+          <p>Here’s a breakdown of different online names resources relevant to our Alaska flora project. I’ve divided them into two classes: 1) those primarily containing <em>original</em> online representations of names databases and/or primary taxonomic literature, and 2) aggregators that primarily integrate and <em>re-serve</em> data from the first class. This classification is imperfect, since many resources in class (2) also incorporate primary data (e.g., The Plant List, the Catalog of Life, uBIO, ?WFO), as well as involve manual checking of names, which is a form of primary data generation. This classification is only with reference to serving taxonomic names; “aggregators” for names may be primary sources for other data (e.g., distribution data in USDA PLANTS).</p>
+          <table>
+          <tr>
+          <th>
+          Resource
+          </th>
+          <th>
+          GUIDs (A2, C4)
+          </th>
+          <th>
+          Orig. publ. (A3)
+          </th>
+          <th>
+          Status (B1, C1, C3)
+          </th>
+          <th>
+          Status ref. (B2, C2)
+          </th>
+          <th>
+          Distrib.(D1)/(D2)
+          </th>
+          <th>
+          API
+          </th>
+          <th>
+          Source desc.
+          </th>
+          </tr>
+          <tr>
+          <td colspan="8">
+          <i>1. Primary data sources</i>
+          </td>
+          </tr>
+          <!-- IPNI -->
+          <tr>
+          <td>
+          <b>IPNI</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n / n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          <a href="http://www.ipni.org/understand_the_data.html">Y</a>
+          </td>
+          </tr>
+          <!-- TROPICOS -->
+          <tr>
+          <td>
+          <b>Tropicos</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y / Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n [6]
+          </td>
+          </tr>
+          <!-- GRIN -->
+          <tr>
+          <td>
+          <b>GRIN</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          ~ [1]
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          ~ [1]
+          </td>
+          <td>
+          Y / ~ [1]
+          </td>
+          <td>
+          N
+          </td>
+          <td>
+          <a href="https://npgsweb.ars-grin.gov/gringlobal/taxon/abouttaxonomy.aspx">Y</a>
+          </td>
+          </tr>
+          <!-- BONAP -->
+          <tr>
+          <td>
+          <b>BONAP</b>
+          </td>
+          <td>
+          N
+          </td>
+          <td>
+          [1]
+          </td>
+          <td>
+          [3]
+          </td>
+          <td>
+          [1]
+          </td>
+          <td>
+          Y / [1]
+          </td>
+          <td>
+          [3]
+          </td>
+          <td>
+          <a href="http://www.bonap.org/Documentation.html">Y</a>
+          </td>
+          </tr>
+          <!-- VASCAN -->
+          <tr>
+          <td>
+          <b>VASCAN</b>
+          </td>
+          <td>
+          ~ [2]
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y / n
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          <a href="http://data.canadensys.net/vascan/about">Y</a>
+          </td>
+          </tr>
+          <!-- PAF -->
+          <tr>
+          <td>
+          <b>PAF</b> [5]
+          </td>
+          <td>
+          ~ [2]
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          ~
+          </td>
+          <td>
+          Y / ~
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          <a href="http://nhm2.uio.no/paf/introduction#section-1.2">Y</a>
+          </td>
+          </tr>
+          <!-- Class 2 -->
+          <tr>
+          <td colspan="8">
+          <i>2. Aggregators</i>
+          </td>
+          </tr>
+          <!-- PLANTS -->
+          <tr>
+          <td>
+          <b>PLANTS</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          [1]
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          [1]
+          </td>
+          <td>
+          Y / [1]
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          N
+          </td>
+          </tr>
+          <!-- uBio -->
+          <tr>
+          <td>
+          <b>uBio</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n / n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          <a href="http://ubio.org/index.php?pagename=name_sources">Y</a>
+          </td>
+          </tr>
+          <!-- The Plant List -->
+          <tr>
+          <td>
+          <b>The Plant List</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n / n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          <a href="http://www.theplantlist.org/1.1/about/">Y</a>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <b>ITIS</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n / n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          <a href="https://www.itis.gov/itis_primer.html">Y</a>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <b>GBIF</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          [4]
+          </td>
+          <td>
+          [4]
+          </td>
+          <td>
+          [4]
+          </td>
+          <td>
+          Y / Y
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          Y: <a href="https://github.com/gbif/checklistbank/blob/master/checklistbank-nub/nub-sources.tsv">1</a><a href="https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c">2</a>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <b>NCBI</b>
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n
+          </td>
+          <td>
+          n / n
+          </td>
+          <td>
+          Y
+          </td>
+          <td>
+          <a href="https://www.ncbi.nlm.nih.gov/books/NBK21100/">Y</a>
+          </td>
+          </tr>
+          <!-- WFO -->
+          <tr>
+          <td>
+          <b>WFO</b>
+          </td>
+          <td>
+          ?
+          </td>
+          <td>
+          ?
+          </td>
+          <td>
+          ?
+          </td>
+          <td>
+          ?
+          </td>
+          <td>
+          ? / ?
+          </td>
+          <td>
+          ?
+          </td>
+          <td>
+          <a href="https://www.ncbi.nlm.nih.gov/books/NBK21100/">?</a>
+          </td>
+          </tr>
+          </table>
+          <p><i>Notes on this table</i>:</p>
+          <ul>
+          <li>Columns:
+          <ul>
+          <li>Codes in the header (e.g., “C1”) refer to graph above</li>
+          <li>‘API’ - the existence of an API or structured data dump</li>
+          <li>‘Source desc.’ - how clearly (and/or easily) it is to find out exactly how the data were compiled.</li>
+          </ul></li>
+          <li>Cell values: ‘Y’- yes, ‘n’ - no; ‘~’ - partial.</li>
+          <li>Footnotes:
+          <ol type="1">
+          <li>General lists of documentation provided without indication of what the publications are evidence for</li>
+          <li>Internal accession numbers evident, but probably not intended as permanent GUIDs</li>
+          <li>Synonymy lists on this <a href="http://bonap.net/TDC/Nomenclator">page</a> can be accessed using (e.g.) <code>curl -d searchText=Castilleja &quot;http://bonap.net/TDC/Nomenclator/NomenclatorLists</code></li>
+          <li>Via Catalogue of Life.</li>
+          <li>Because Dave Murray contributed to both the ALA checklist and PAF, PAF is less a general name resource than a local list to be integrated (see below). However it is useful to list it here for comparison.</li>
+          <li>But see: “The History of Tropicos”, by Rebecca Rea (unpub. report), and “Tropicos: the Missouri Botanical Garden Plant Database” by Marshall Crosby and George Van Brunt in <em>Nature Notes</em>, 2011, 83(6): 11-13 (<a href="http://www.wgnss.org/uploads/2/5/0/0/25004974/2012_06_naturenotes.pdf">file</a>). Thanks to Heather Stimmel @ MOBOT for sharing these.</li>
+          </ol></li>
+          </ul>
+          <h2 id="data-flow">Data flow</h2>
+          <p>In deciding which data to incorporate and how to use available GUIDs, it’s necessary to understand the flow of primary data through the aggregators. Here’s a sketch of my understanding of how these data flow. As with the rest of this blog post, I may have missed resources or misinterpreted what I read on the websites, and I invite you to correct me with a comment below.</p>
+          <p><img src="../img/namesflow.png" alt="Flow of data through aggregators" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
+          <h2 id="using-these-data">Using these data <a href="#data">*</a></h2>
+          <p>Our need to is reconcile the names we already have (in ALA, ACCS lsit, and PAF) to existing resources.</p>
+          <p>The first step of our data integration project is reconcile existing data sets about the taxonomy of Alaska plants with external names resources that will permit linkage to the larger world of plant information. In the “local” class, I include:</p>
+          <ul>
+          <li>The existing <a href="ALA_checklist.html">ALA Alaskan Plant Checklist</a> (~4,000 names), developed by Dave Murray and colleagues at ALA over the past ~30 years</li>
+          <li>The <a href="https://floraofalaska.org/comprehensive-checklist/">checklist</a> developed by botanists at the <a href="http://accs.uaa.alaska.edu/">Alsakan Alaska Center for Conservation Science</a>, managed by <a href="http://accs.uaa.alaska.edu/staff/timm-nawrocki/">Timm Nawrocki</a> (~11,700 names, combining the ALA checklist with other data)</li>
+          <li>The <a href="http://nhm2.uio.no/paf/">Pan-arctic flora</a>, which will be a core resource for the new Alaska flora and was also edited by Dave Murray, and,</li>
+          <li>The scanned, OCR version of Hultén’s flora</li>
+          </ul>
+          <p>Each of these may have binomial and author spelling variations that have not been fuzzy matched and “pinned” to a canonical string in a shared, online resource (such as the International Plant Names Index).</p>
+          <p>Prior to the Name Resolver to the Global Names Architecture, the name reconciliation strategy might have been:</p>
+          <ol type="1">
+          <li>To assemble a local ‘canonical’ list of external names, sources and GUIDs to which we could reconcile our local lists. We could try to reconcile every relevant online list with every other online list, but this <code>(n*n-1)/2</code> comparison would be hugely time-consuming, and, given also that different online lists vary in their “value” (see below), our strategy would instead be to grow a single list of external names by ranking potential resources (e.g., <code>IPNI &gt; The Plant List &gt; ...</code>) and reconciling subsequent additions to that growing list. E.g. <code>A; A compare B gives Ab; C  compare Ab gives Abc; D...</code>).</li>
+          <li>Reconcile our local list of Alaska names to the canonical list.</li>
+          </ol>
+          <p>Now, with the existence of GNR, we can send each local name to the GNR API, and recive back matches for online names servers and their GUIDs for our names. We can store local i) our local name, ii) the canonical name for each match and its GUID according to each online resource, iii) metadata about the match (e.g., “according to GNR on <date>”). Taxa that don’t match, or match with low values, will need to be examined by hand, and if found to be valid (in a variety of senses), accepted to the local canonical list.</p>
+          <p>A huge amount of thought and effort has gone into creating online names resources, but no single online list exists to which we can reconcile our names, and from there link out to all other online plant data (taxonomic, occurence, etc).</p>
+          <p>!!! No! GNA <em>will</em> give guids for all units!</p>
+          <p>This blog post (probably the first of several on names) is about our strategy for assembling this ‘canonical’ list of external names, sources and GUIDs.</p>
+          <hr />
+          <p>Criteria:</p>
+          <p>Original source vs. aggregator Easy of data access (dump/API)</p>
+          <p>Rank: IPNI, PAF, PL, USDA PLANTS</p>
+          <p>But these character strings (e.g., <em>Antennaria alpina</em> var. <em>media</em> (Greene) Jeps.) have a number of problems when used as identifiers for linking information about biological organisms. They can refer to different concepts of a taxon by different taxonomists - more on this later. They are also highly prone to copying errors: misspellings of the Latin binomial, and variation in abbreviating the author string. This was less of a problem when all data processing was mediated by a human researcher, but a large problem for computers. Hence the value of using an external GUID (Globally Unique Identifier) to stand in for the name, when linking data. The big question for us as we start this project is which system of GUIDs will be most effective. There are now many</p>
+          <p>Make a graph:</p>
+          <p>Base taxonomic research on L (IPNI, PAF…) - also symbols for API/website Aggregators in middle and on right (PL, …)</p>
+          <p>State: we want to use Base Tax resources that have web access as priorities…</p>
+          <p>Original sources</p>
+          <ul>
+          <li><p>IPNI</p></li>
+          <li>GRIN Taxonomy for Plants</li>
+          <li>INGL Index Nominum Genericorum</li>
+          <li><p>NCBI</p></li>
+          <li><p>Mabberly</p></li>
+          <li><p>IRMNG</p></li>
+          <li>TNRS</li>
+          <li><p>ALA</p></li>
+          <li>CiteBank</li>
+          <li><p>BHL</p></li>
+          <li><p>TAXAMATCH (Tony Rees)</p></li>
+          <li>Index Fungorum</li>
+          <li>PAF</li>
+          <li>BioCASE</li>
+          <li>EoL</li>
+          <li><p>FNA/eFloras</p></li>
+          <li><p>PESI ( http://www.eu-nomen.eu/ )</p></li>
+          <li>Catalog of Life yes API</li>
+          <li>Species 2000</li>
+          <li><p>ITIS yes API - https://www.itis.gov/ITISWebService/services/ITISService/getFullRecordFromTSN?tsn=527195 (but no original source info)</p></li>
+          <li>The Plant List</li>
+          <li>USDA PLANTS - cannot access literature data.</li>
+          <li><p>Topicos</p></li>
+          </ul>
+          <p>Agregators</p>
+          <ul>
+          <li>ION: Index of Organismal Names</li>
+          <li>uBio</li>
+          <li>GNA (GNR, GNUB - not working, BioGUID - not working…)</li>
+          <li><p>ECAT (from GBIF)</p></li>
+          <li><p>BONAP</p></li>
+          <li><p>VASCAN</p></li>
+          </ul>
+          <p>Synonymic Checklists of the Vascular Plants of the World Short name: World Plants Version: Apr 2018 Release date: 2018-04-13 Authors/editors: Hassler M.</p>
+          <p>Cannot use CoL because the webservice does says Infraspecific but does not give var., f. or ssp.!!!!</p>
+          <hr />
+          <p>(<a name="data">*</a>) The word “data” - singular or plural?! This <a href="https://en.wikipedia.org/wiki/Data_(word)">review in Wikipedia</a> is helpful. I’ll probably mix the singular/plural usage here, inconsistently, as I do in daily speech!</p>
+          <hr />
+          <p>Frustrated how hard it is to find how each list was put together!</p>
+          <!-- literature and plazi.org -->
+          <p>Consider:</p>
+          <ul>
+          <li>https://plants.sc.egov.usda.gov/java/reference?symbol=CACAA</li>
+          <li>https://npgsweb.ars-grin.gov/gringlobal/taxon/abouttaxonomy.aspx?language=en&amp;chapter=hist</li>
+          <li>https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c</li>
+          <li>http://plazi.org/about/members/</li>
+          <li>http://globalnames.org/bibliography/</li>
+          </ul>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
