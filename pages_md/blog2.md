@@ -63,7 +63,7 @@ names, and relevant to our project:
      list of all vascular plants reported in Canada & Greenland. 
      [→](http://data.canadensys.net/vascan/search)
  * **World Flora Online** (WFO) The successor to The Plant List. Data just
-     coming online right now (Oct 2018)
+     coming online right now (Oct 2018) [→](http://worldfloraonline.org/)
      
 ## What’s in a “names resource”?
 
@@ -121,7 +121,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- IPNI -->
   <tr>
-    <td><b>IPNI</b></td>
+    <td><b>IPNI</b><a href="http://www.ipni.org/">→</a></td>
     <td>Y</td>
     <td>Y</td>
     <td>n</td>
@@ -133,7 +133,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- TROPICOS -->
   <tr>
-    <td><b>Tropicos</b></td>
+    <td><b>Tropicos</b><a href="http://www.tropicos.org/">→</a></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -146,7 +146,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- GRIN -->
   <tr>
-    <td><b>GRIN</b></td>
+    <td><b>GRIN</b><a href="https://npgsweb.ars-grin.gov/gringlobal/search.aspx">→</a></td>
     <td>Y</td>
     <td>~ [1]</td>
     <td>Y</td>
@@ -158,7 +158,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- BONAP -->
   <tr>
-    <td><b>BONAP</b></td>
+    <td><b>BONAP</b><a href="http://www.bonap.org/">→</a></td>
     <td>N</td>
     <td>[1]</td>
     <td>[3]</td>
@@ -170,7 +170,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- VASCAN -->
   <tr>
-    <td><b>VASCAN</b></td>
+    <td><b>VASCAN</b><a href="http://data.canadensys.net/vascan/">→</a></td>
     <td>~ [2]</td>
     <td>n</td>
     <td>Y</td>
@@ -182,7 +182,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- PAF -->
   <tr>
-    <td><b>PAF</b> [5] </td>
+    <td><b>PAF</b><a href="http://nhm2.uio.no/paf/">→</a> [5] </td>
     <td>~ [2]</td>
     <td>Y</td>
     <td>Y</td>
@@ -198,7 +198,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
   </tr>
   <!-- COL -->
   <tr>
-    <td><b>COL</b></td>
+    <td><b>COL</b><a href="http://www.catalogueoflife.org/col/">→</a></td>
     <td>?</td>
     <td>?</td>
     <td>?</td>
@@ -209,7 +209,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
   </tr>
   <!-- PLANTS -->
   <tr>
-    <td><b>PLANTS</b></td>
+    <td><b>PLANTS</b><a href="https://plants.sc.egov.usda.gov/java/">→</a></td>
     <td>Y</td>
     <td>[1]</td>
     <td>Y</td>
@@ -220,7 +220,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
   </tr>
   <!-- uBio -->
   <tr>
-    <td><b>uBio</b></td>
+    <td><b>uBio</b><a href="http://ubio.org/">→</a></td>
     <td>Y</td>
     <td>n</td>
     <td>Y</td>
@@ -231,7 +231,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
   </tr>
   <!-- The Plant List -->
   <tr>
-    <td><b>The Plant List</b></td>
+    <td><b>The Plant List</b><a href="http://www.theplantlist.org/">→</a></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -241,7 +241,7 @@ sources for other data (e.g., distribution data in USDA PLANTS).
     <td><a href="http://www.theplantlist.org/1.1/about/">Y</a></td>
   </tr>
   <tr>
-    <td><b>ITIS</b></td>
+    <td><b>ITIS</b><a href="https://www.itis.gov/">→</a></td>
     <td>Y</td>
     <td>n</td>
     <td>Y</td>
@@ -251,17 +251,17 @@ sources for other data (e.g., distribution data in USDA PLANTS).
     <td><a href="https://www.itis.gov/itis_primer.html">Y</a></td>
   </tr>
   <tr>
-    <td><b>GBIF</b></td>
+    <td><b>GBIF</b><a href="http://gbif.org/">→</a></td>
     <td>Y</td>
     <td>[4]</td>
     <td>[4]</td>
     <td>[4]</td>
     <td>Y / Y</td>
     <td>Y</td>
-    <td>Y: <a href="https://github.com/gbif/checklistbank/blob/master/checklistbank-nub/nub-sources.tsv">1</a><a href="https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c">2</a></td>
+    <td>Y: <a href="https://github.com/gbif/checklistbank/blob/master/checklistbank-nub/nub-sources.tsv">1</a> <a href="https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c">2</a></td>
   </tr>
   <tr>
-    <td><b>NCBI</b></td>
+    <td><b>NCBI</b><a href="https://www.ncbi.nlm.nih.gov/taxonomy">→</a></td>
     <td>Y</td>
     <td>n</td>
     <td>n</td>
@@ -273,14 +273,14 @@ sources for other data (e.g., distribution data in USDA PLANTS).
 
   <!-- WFO -->
   <tr>
-    <td><b>WFO</b></td>
+    <td><b>WFO</b><a href="http://worldfloraonline.org/">→</a></td>
     <td>?</td>
     <td>?</td>
     <td>?</td>
     <td>?</td>
     <td>? / ?</td>
     <td>?</td>
-    <td><a href="https://www.ncbi.nlm.nih.gov/books/NBK21100/">?</a></td>
+    <td><a href="">?</a></td>
   </tr>
   
 

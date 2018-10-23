@@ -14,3 +14,5 @@ This site also hosts information related to the [project goals](project.html):
  * The [ALA Accepted Names Checklist](ALA_checklist.html), developed
    by Dave Murray and other ALA staff
  * The [2018 Alaska Botany Forum](akbf2018.html)
+ * The [Panarctic Flora](http://panarcticflora.org/) website and
+   database are now managed here at ALA.
