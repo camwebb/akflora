@@ -14,8 +14,9 @@ digraph structure {
 
     { rank=same; WCSP; taxmon; GenBANK; Specs }
     { rank=same; IPNI; Tropicos; GRIN;  BONAP ;
-     VASCAN}
-    { rank=same; PL; plants; NCBI }
+        VASCAN; plants }
+        //; FNA}
+    { rank=same; PL; NCBI }
     { rank=same; ITIS; WP }
     { rank=same; COL; WFO }
     { rank=same; GBIF; EOL }
@@ -49,9 +50,18 @@ digraph structure {
     taxmon -> BONAP;
     Specs -> BONAP;
 
+    VASCAN [style=bold];
     taxmon -> VASCAN;
     
-    VASCAN [style=bold];
+    plants [label="PLANTS",style=bold];
+    // GRIN -> plants;
+    // BONAP -> plants;
+    taxmon -> plants;
+    Specs -> plants;
+
+//    FNA [label="Flora N.A.",style=bold];
+//    taxmon -> FNA;
+//    Specs -> FNA;
 
     // secondary
     
@@ -61,9 +71,6 @@ digraph structure {
     Tropicos -> PL;
     IPNI -> PL;
 
-    plants [label="PLANTS"];
-    GRIN -> plants;
-    BONAP -> plants;
 
     GBIF [label="GBIF Backbone"];
     COL -> GBIF;
@@ -74,7 +81,7 @@ digraph structure {
     plants -> ITIS;
 
     IPNI -> WP;
-    WP [label="World Plants",color=invis];
+    WP [label="World Plants\n(Hassler 2018)",color=invis];
 
     PL -> WFO;
     WFO [label="World Flora Online"];
@@ -86,6 +93,8 @@ digraph structure {
  
     GenBANK -> NCBI;
     NCBI [label="NCBI Taxonomy"];
+    GRIN -> NCBI;
+    Tropicos -> NCBI;
 
     // tertiary
     EOL;
@@ -104,6 +113,7 @@ digraph structure {
     EOL -> GNA [style=dashed];
     GBIF -> GNA [style=dashed];
     Tropicos -> GNA [style=dashed];
-    NCBI -> GNA [style=dashed];    
+    NCBI -> GNA [style=dashed];
+    GRIN -> GNA [style=dashed];
 }
 
