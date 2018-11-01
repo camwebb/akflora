@@ -1,9 +1,13 @@
 % Names, names, names!
 
+# Names, names, names!
+
+_(In which I discuss issues with matching taxonomic names in different databases, and compare the universe of online name resources.)_
+
 Taxonomic names are, among other things, the identifiers, or labels,
 that traditionally link together data in different information resources; for
 example, from the publication that contains the original description
-of a species... to an ecological record of the species that occur at a
+of a species... to an ecological record of that species occurring at a
 site. Being vital informatics links, names have been called
 “[key to the big new biology](https://doi.org/10.1016/j.tree.2010.09.004)”
 and a wide array of online resources offer information structured
@@ -20,8 +24,8 @@ The eventual usefulness of our flora project will partially depend on
 how well we link to and integrate the data already in these online
 resources, especially the taxonomic ones. As we set out, it is thus
 important to step back and ask how we can best use these resources.
-Which should we focus on (there are too many to attempt to integrate
-every one)? And how should we link to them?
+Which should we focus on? (There are too many to attempt to integrate
+every one.) And how should we link to them?
 This blog post outlines the issues and how we intend to move forward
 with names.
 
@@ -34,7 +38,7 @@ resources (which will also be integrated via names).
 ### What name resources are out there?
 
 These seem to be the major resources for plant names themselves, and
-relevant to our project (e.g., leaving out the super
+relevant to our project (i.e., leaving out
 [APNI](https://www.anbg.gov.au/apni/)):
 
  * **Biota of North America Program’s Taxonomic Data Center** (BONAP’s TDC) The work of John T. Kartesz and assistants [→](http://www.bonap.org/) 
@@ -99,7 +103,7 @@ I’ve also added basic distribution data to the above graph. Our
 project is not yet attempting to integrating occurrences, but since we
 are working on a regional flora, it will be convenient to restrict the
 list of taxa to just those occurring in Alaska and nearby lands, and a
-number of online name resources also offer presence or absence by
+number of online name resources offer presence or absence by
 geographical region (BONAP, USDA-PLANTS).
 
 ### How do these various name resources compare?
@@ -108,7 +112,7 @@ I’ve divided the above name resources into two classes: 1) those
 primarily containing _original_ online representations of names
 databases and/or primary taxonomic literature, and 2) aggregators that
 primarily integrate and _re-serve_ data from the first class. This
-classification is imperfect, since many resources in class (2) also
+classification is imperfect, since many resources in class 2 also
 incorporate primary data (e.g., The Plant List, the Catalog of Life,
 uBIO, ?WFO), as well as involve manual checking of names, which is a
 form of primary data generation. This classification is only with
@@ -322,7 +326,7 @@ function showhide() {
 }
 </script>
 
-<div style="text-align: right;"><button onclick="showhide()">Show notes for this table</button></div>
+<div style="text-align: right;"><button onclick="showhide()">Show/hide notes for this table</button></div>
 
 <div id="notes" style="display:none;">
 
@@ -377,103 +381,123 @@ resources we are already committed to drawing upon are:
    [Flora of North America](http://www.efloras.org/flora_page.aspx?flora_id=1)
    project (FNA): an almost complete revision of all plant taxa in the USA (more info [here](http://floranorthamerica.org/)).
  * The [ARCTOS](https://arctos.database.museum/) museum management
-   database: conatinaing metadata for all the ALA herbarium sheets.
+   database: containing metadata for all the ALA herbarium sheets.
  * [iNaturalist](https://www.inaturalist.org/home), an outstanding
    repository of biological observations backed by images.
 
 ## Orthography and fuzzy matching
 
+Linking among databases would not be a difficult problem if the
+characters of a name (e.g., `Antennaria alpina var. media (Greene)
+Jeps.`) never varied. But these strings are prone to copying (typing)
+errors and other orthographic variation, e.g., in abbreviating and
+punctuating the author string. An author like “Jo Bloggs”, might
+appear as `Bloggs`, `Blog.`, `J. Bloggs` or `J.Bloggs`, despite
+[official recommendations](https://en.wikipedia.org/wiki/Author_citation_(botany)#Abbreviation). I
+just learned that IPNI has a policy of removing spaces after periods,
+which differs from policies elsewhere, and from the natural inclination of
+many people. (FYI:
+[this](https://en.wikipedia.org/wiki/Author_citation_(botany))
+Wikipedia article on author citations in botanical names is super, and
+one I frequently revisit.)
 
+Short of comparing every pair of names by hand, some sort of
+computational tool is need to determine if a name in database A is the
+same as in database B.  Much thought has gone into this problem (e.g.,
+[Boyle et al. 2013](http://dx.doi.org/10.1186/1471-2105-14-16), [Rees 2014](https://dx.doi.org/10.1371%2Fjournal.pone.0107510),
+[Horn 2016](https://dx.doi.org/10.3897%2FBDJ.4.e7971),
+[Patterson et al. 2016](https://dx.doi.org/10.3897%2FBDJ.4.e8080)). Solutions
+can involve both ‘fuzzy matching’ (finding a match when not all
+members of a string are identical, similar to
+[BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)ing nucleotides), and
+the applications of rules (such as checking against a list of author abbreviations).
 
-But these character strings (e.g., _Antennaria alpina_
-var. _media_ (Greene) Jeps.) have a number of problems when used for
-linking information. They can refer to different mental concepts of a
-taxon used by different taxonomists - much more on this “taxon
-concept” problem later. But they are also troublesome in a simple
-informatics context: they are highly prone to copying errors and other
-orthographic variation, e.g., misspellings of the Latin binomial, and
-variation in abbreviating the author string.  This was a small problem
-when all data processing was mediated by the intelligence of a human
-researcher, but is a much larger problem for a computer looking for an
-exact string to match to.
+For locally matching a name to a list I’ve been using a home-cooked
+approach (I’ll post the code in in a subsequent blog):
 
-The problem becomes 
+ 1. Check first for an exact match,
+ 2. Check for a punctuation mismatch, by matching a simplified version
+   of each name, made by:
+    * converting ` and ` to `&`
+    * deleting spaces
+    * deleting periods
+    * collapsing non-ASCII characters to the corresponding ASCII
+      character (e.g., `Å` to `A`)
+    * converting to lowercase,
+ 3. Checking for missing/different characters using `agrep` (approximate 
+    `grep`) from the [TRE](https://laurikari.net/tre/) library. 
+    
+However, for matching to existing external lists (i.e., online databases)
+more capable solutions exist:
 
-One solution to this issue is to use an independent identifier, like a
-serial number, in place (or alongside) the name. If two users refer to
-the same identifier then they can be sure they are communicating about
-the same shared taxonomic name, even if locally they may spell the
-name differently (intentionally or not). 
-
-We will have such an
-identifier in our local taxonomic database. If 
-
-
-  Hence the value of using an external GUID
-(Globally Unique Identifier) to stand in for the name, when linking
-data.  The big question for us as we start this project is which
-system of GUIDs will be most effective. There are now many
-
- * Agrep
- * TNRS
- * GNR
+ * The Taxonomic Name Resolution Service
+   ([TNRS](http://tnrs.iplantcollaborative.org/index.html)), which
+   matches a given name to Tropicos, PLANTS, NCBI and the Plantlist.
+ * The Global Names Resolver
+   ([GNR](http://resolver.globalnames.org/)), which (as of 2018-10-31)
+   matches to
+   [182 sources](http://resolver.globalnames.org/data_sources),
+   including all in the table above (except the Plantlist and FNA),
+   plus iNaturalist. The [API](http://resolver.globalnames.org/api)
+   returns the original GUID in each source dataset, with information
+   about the nature of the match (exact, fuzzy, fuzzy on species part,
+   etc.). As its creators intended, GNR is an invaluable resource for
+   knitting together datasets by taxonomic name, and we will use it
+   extensively! Prior to a centralized service like GNR, to get the
+   same comprehensiveness one would have needed to do a `(n*n-1)/2`
+   local comparison of every downloaded name list with every other
+   one.
 
 ## Work plan for using these data
 
-The first step of our data integration project is reconcile existing
-“local” data sets about the taxonomy of Alaska plants with external
-name resources that will permit linkage to the larger world of plant
-information. In the “local” class, I include:
+Now to work! As I see it now, there are three intertwined elements of
+our reconciliation processes:
 
- * The existing [ALA Alaskan Plant Checklist](ALA_checklist.html)
-   (~4,000 names), developed by Dave Murray and colleagues at ALA over
-   the past ~30 years
- * The [checklist](https://floraofalaska.org/comprehensive-checklist/)
-   developed by botanists at the
-   [Alaska Center for Conservation Science](http://accs.uaa.alaska.edu/), managed by
-   [Timm Nawrocki](http://accs.uaa.alaska.edu/staff/timm-nawrocki/)
-   (~11,700 names, combining the ALA checklist with other data)
-  * The [Pan-arctic flora](http://panarcticflora.org), which will be a
-    core resource for the new Alaska flora and was also edited by Dave
-    Murray, and,
-  * The scanned, OCR version of Hultén’s Flora of Alaska.
+ 1. Assembling a rough list from our various “local” sources. This
+ combined list will be that from which accepted names will eventually
+ be chosen by the Flora of Alaska taxonomists. I’ll use use the
+ “home-cooked” method above to reconcile these lists against each
+ other. The local sources are:
+    * The existing [ALA Alaskan Plant Checklist](ALA_checklist.html)
+      (~4,000 names), developed by Dave Murray and colleagues at ALA over
+      the past ~30 years,
+    * The
+      [checklist](https://floraofalaska.org/comprehensive-checklist/)
+      developed by botanists at the
+      [Alaska Center for Conservation Science](http://accs.uaa.alaska.edu/),
+      managed by
+      [Timm Nawrocki](http://accs.uaa.alaska.edu/staff/timm-nawrocki/)
+      (~11,700 names, combining the ALA checklist with other data),
+    * The scanned, OCR version of Hultén’s Flora of Alaska.
+ 2. Fixing “bad” names in our local list, by reconciling with a
+ limited, “canonical” set of external sources. We could just go with
+ IPNI, but unfortunately before 1971 infraspecific names were
+ [not included](http://www.ipni.org/about_the_index.html) in _Index
+ Kewensis_. So other name resources will be needed. Some ranking of
+ external resources is also necessary in order to decide which
+ variation in name should be accepted in the case of differing
+ opinions. In theory, all primary resources should have gone back to
+ the original publication and copied the name string from there, but
+ no doubt there will be differences. Our current ranking is: IPNI >
+ Tropicos > VASCAN > PLANTS > maybe BONAP (if needed). GNR can be used
+ for these reconciliations (except for BONAP).
+ 3. Linking out to resources from those corrected names (the Plantlist will be important for this).
 
-Each of these may have binomial and author spelling variations that
-must be fuzzy matched and “pinned” to a canonical (local) string.
-Prior to the Name Resolver to the Global Names Architecture (GNR), the
-name reconciliation strategy might have been:
+Clear as mud? Let’s see how it goes...
 
- 1. To assemble a local ‘canonical’ list of external names, sources
-    and GUIDs to which we could reconcile our local lists. We could try
-    to reconcile every relevant online list with every other online
-    list, but this `(n*n-1)/2` comparison would be hugely
-    time-consuming, and, given also that different online lists vary
-    in their “value” (see below), our strategy would instead be to grow
-    a single list of external names by ranking potential resources
-    (e.g., `IPNI > The Plant List > ...`) and reconciling subsequent
-    additions to that growing list. E.g. `A; A compare B gives Ab; C
-    compare Ab gives Abc; D...`).
-  2. Reconcile our local list of Alaska names to the canonical list.
+_(Phew! This blog is definitely TLDR. I’ll try to keep it shorter next time.)_
 
-Now, with the existence of GNR, we can send each local name to the GNR
-API, and receive back matches for online names servers and their GUIDs
-for our names. We can store local i) our local name, ii) the canonical
-name for each match and its GUID according to each online resource,
-iii) metadata about the match (e.g., “according to GNR on
-<date>”). Taxa that don’t match, or match with low values, will need
-to be examined by hand, and if found to be valid (in a variety of
-senses), accepted to the local canonical list.
+----
 
-A huge amount of thought and effort has gone into creating online
-name resources, but no single online list exists to which we can
-reconcile our names, and from there link out to all other online plant
-data (taxonomic, occurrence, etc). 
-
-Similar service by TNRS
-
-
-
-
+<div id="disqus_thread"></div><script>
+var disqus_config = function () {
+this.page.url = 'https://alaskaflora.org/pages/blog2.html';  // Edit
+this.page.identifier = 'alaskaflora_blog2';                  // Edit
+};(function() {  var d = document, s = d.createElement('script');
+s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})(); </script>
 
 <!-- 
 Notes:
@@ -486,8 +510,3 @@ Notes:
     (http://www.eu-nomen.eu/)
 -->
 
-Using the
-[Global Names Resolver](http://resolver.globalnames.org/) on
-“_Antennaria alpina_ var. _media_ (Greene) Jeps.”, 17 matching
-resources are found including GBIF Backbone taxonomy, VASCAN, IPNI,
-uBio name bank, Catalog of Life, ITIS, EOL and Tropicos.
