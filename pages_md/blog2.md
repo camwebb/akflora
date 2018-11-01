@@ -427,7 +427,7 @@ approach (I’ll post the code in in a subsequent blog):
     * collapsing non-ASCII characters to the corresponding ASCII
       character (e.g., `Å` to `A`)
     * converting to lowercase,
- 3. Checking for missing/different characters in string (3) using
+ 3. Checking for missing/different characters in string 2 using
     `agrep` (approximate `grep`) from the
     [TRE](https://laurikari.net/tre/) library.
  4. Manual selection/checking of poor matches and non-matches.
