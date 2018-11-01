@@ -99,10 +99,10 @@ fit together might then look like this:
 
 <img src="../img/nameparts.png" alt="Elements of names databases" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/>
 
-I’ve also added basic distribution data to the above graph. Our
-project is not yet attempting to integrating occurrences, but since we
-are working on a regional flora, it will be convenient to restrict the
-list of taxa to just those occurring in Alaska and nearby lands, and a
+I’ve also added basic distribution data to the above graph (D1, D2). In this first phase our
+project is not yet integrating occurrences, but since we
+are working on a regional flora it will be convenient to restrict the
+list of taxa to just those occurring in Alaska and nearby lands. A
 number of online name resources offer presence or absence by
 geographical region (BONAP, USDA-PLANTS).
 
@@ -402,13 +402,13 @@ Wikipedia article on author citations in botanical names is super, and
 one I frequently revisit.)
 
 Short of comparing every pair of names by hand, some sort of
-computational tool is need to determine if a name in database A is the
+computational tool is needed to determine if a name in database A is the
 same as in database B.  Much thought has gone into this problem (e.g.,
 [Boyle et al. 2013](http://dx.doi.org/10.1186/1471-2105-14-16), [Rees 2014](https://dx.doi.org/10.1371%2Fjournal.pone.0107510),
 [Horn 2016](https://dx.doi.org/10.3897%2FBDJ.4.e7971),
 [Patterson et al. 2016](https://dx.doi.org/10.3897%2FBDJ.4.e8080)). Solutions
 can involve both ‘fuzzy matching’ (finding a match when not all
-members of a string are identical, similar to
+characters of a string are identical, similar to
 [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)ing nucleotides), and
 the applications of rules (such as checking against a list of author abbreviations).
 
@@ -437,7 +437,7 @@ more capable solutions exist:
    ([GNR](http://resolver.globalnames.org/)), which (as of 2018-10-31)
    matches to
    [182 sources](http://resolver.globalnames.org/data_sources),
-   including all in the table above (except the Plantlist and FNA),
+   including all in the table above (except the Plantlist, and FNA),
    plus iNaturalist. The [API](http://resolver.globalnames.org/api)
    returns the original GUID in each source dataset, with information
    about the nature of the match (exact, fuzzy, fuzzy on species part,
@@ -451,7 +451,7 @@ more capable solutions exist:
 ## Work plan for using these data
 
 Now to work! As I see it now, there are three intertwined elements of
-our reconciliation processes:
+our reconciliation process:
 
  1. Assembling a rough list from our various “local” sources. This
  combined list will be that from which accepted names will eventually
