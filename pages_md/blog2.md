@@ -2,7 +2,10 @@
 
 # Names, names, names!
 
-_(In which I discuss issues with matching taxonomic names in different databases, and compare the universe of online name resources.)_
+_Posted by [Cam](people.html#cam) on 2018-10-31_
+
+_(In which I discuss issues with matching taxonomic names in different databases
+, and compare the universe of online name resources.)_
 
 Taxonomic names are, among other things, the identifiers, or labels,
 that traditionally link together data in different information resources; for
@@ -424,8 +427,10 @@ approach (I’ll post the code in in a subsequent blog):
     * collapsing non-ASCII characters to the corresponding ASCII
       character (e.g., `Å` to `A`)
     * converting to lowercase,
- 3. Checking for missing/different characters using `agrep` (approximate 
-    `grep`) from the [TRE](https://laurikari.net/tre/) library. 
+ 3. Checking for missing/different characters in string (3) using
+    `agrep` (approximate `grep`) from the
+    [TRE](https://laurikari.net/tre/) library.
+ 4. Manual selection/checking of poor matches and non-matches.
     
 However, for matching to existing external lists (i.e., online databases)
 more capable solutions exist:
