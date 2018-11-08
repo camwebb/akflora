@@ -1,6 +1,6 @@
 % Names, names, names!
 
-# Names, names, names!
+# Blog 2: Names, names, names!
 
 _Posted by [Cam](people.html#cam) on 2018-10-31_
 

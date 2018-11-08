@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="css/override.css"/>
     <link rel="icon" type="image/png" href="img/favicon.png"/>
     <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="pages/blogrss.xml" />
+    <script type="application/javascript"> 
+      function showhide() {
+        var x = document.getElementById("morenews");
+        var y = document.getElementById("button"); 
+        if (x.style.display == "none") {
+          x.style.display = "block";
+          y.innerHTML = "Less...";
+        } else {
+          x.style.display = "none";
+        }
+      }
+</script>
+
   </head>
   <body>
     <div class="container">
@@ -33,13 +46,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="nine columns" style="margin-top: 2%">
+        <div class="nine columns" style="margin-top: 1%">
           <h2 style="font-size: 2.4rem;">Latest:</h2>
           <ul>
+            <li>Steffi Ickert-Bond’s <i>Intro to Alaska’s Flora</i> (UAF BIOL F195) <a href="https://iteachu.uaf.edu/distance-students-tt/">featured</a></li>
             <li>Blog post: <a href="pages/blog2.html">Names, names, names!</a> (2018-10-31)</li>
+          </ul>
+          <div id="morenews" style="display:none;margin-top:-1.2rem;">
+            <ul>
             <li>Panarctic Flora now hosted on a <a href="http://panarcticflora.org/">new site</a> (2018-10-26)</li>
             <li>New TDWG  <a href="https://github.com/tdwg/tnc">Taxon Concept Schema group</a> active (since 2018-08)</li>
-          </ul>
+            </ul>
+          </div>
+          <button id="button" onclick="showhide()">More...</button>
         </div>
       </div>
     </div>
