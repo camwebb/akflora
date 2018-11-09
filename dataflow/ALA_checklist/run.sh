@@ -3,6 +3,7 @@
 
 # Prep
 
+gunzip -k DFMAccepNameswLit20180609B.TXT.gz
 rm -f ala.* tmp ala-names* ala-rel*
 
 # Base file: DFMAccepNameswLit20180609B.TXT
@@ -248,9 +249,9 @@ sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-rel-tmp.csv | sort 
 
 # found with gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i]) print i}' ala-rel.csv 
 
-ala-2299|synonym|F|AK taxon list|\N|ala-
-ala-3454|synonym|T|AK taxon list|\N|ala-
- Ugg
+# ala-2299|synonym|F|AK taxon list|\N|ala-
+# ala-3454|synonym|T|AK taxon list|\N|ala-
+# Ugg
 
 # Also removed:
 
