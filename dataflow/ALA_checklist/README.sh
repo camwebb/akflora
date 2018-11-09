@@ -3,9 +3,9 @@
 
 # Prep
 
-rm -f ala.* tmp* ala-names* ala-rel* DFMAccepNameswLit20180609B.TXT ala-gnr names4gnr* gnr_not_found
+rm -f ala.* tmp* ala-names* ala-rel* data_in/DFMAccepNameswLit20180609B.TXT ala-gnr names4gnr* gnr_not_found
 
-gunzip -k DFMAccepNameswLit20180609B.TXT.gz
+gunzip -k data_in/DFMAccepNameswLit20180609B.TXT.gz
 
 # Base file: DFMAccepNameswLit20180609B.TXT
 #
@@ -22,7 +22,7 @@ gunzip -k DFMAccepNameswLit20180609B.TXT.gz
 #   https://en.wikipedia.org/wiki/%C3%89#Character_mappings
 # So it's probably https://en.wikipedia.org/wiki/Mac_OS_Roman
 
-iconv -f MACINTOSH -t UTF-8 DFMAccepNameswLit20180609B.TXT | tr "\r" "\n" | tr "\t" "|" | tail -n +2 > ala.1
+iconv -f MACINTOSH -t UTF-8 data_in/DFMAccepNameswLit20180609B.TXT | tr "\r" "\n" | tr "\t" "|" | tail -n +2 > ala.1
 
 # Find non-ASCII in emacs with M-C-s [^^@-^?]
 #   (enter as “C-M-s [ ^ C-q 0 0 0 RET - C-q 1 7 7 RET ]”)
@@ -94,7 +94,7 @@ cat ala.1 | \
 # accepted names, but with the change, both are to Gastrolychnis
 # macrosperma, so one is now deleted.
 
-patch -o ala.3 ala.2 p1.patch
+patch -o ala.3 ala.2 patch/p1.patch
 if [ $? -ne 0 ] ; then exit ; fi
 
 # Note: patch will attempt to fine the correct location to patch even
@@ -118,7 +118,7 @@ if [ $? -ne 0 ] ; then exit ; fi
 #
 # Made patch file (deleting the one with less info)
 
-patch -o ala.4 ala.3 p2.patch
+patch -o ala.4 ala.3 patch/p2.patch
 if [ $? -ne 0 ] ; then exit ; fi
 
 # Delete genus names only, e.g.
@@ -247,7 +247,7 @@ gawk -f lib/split_name_string.awk ala.6 > ala.7
 # and  2 cases of forma by hand
 # 1515||Agropyron||desertorum|||(Fisch. ex Link) Schult. forma pilosiusculum Melderis||Agropyron||desertorum|||(Fisch. ex Link) Schult. forma pilosiusculum Melderis
 
-patch -o ala.8 ala.7 p3.patch
+patch -o ala.8 ala.7 patch/p3.patch
 if [ $? -ne 0 ] ; then exit ; fi
 
 # Check again with gawk 'BEGIN{FS="|"}{x[$1]++}END{for(i in x) print i}' ala.7
@@ -291,7 +291,5 @@ do
     gawk -v INFILE=$infile -f lib/gnr.awk >> ala-gnr
 done
 
-rm -f ala.* tmp ala-names-tmp ala-rel-tmp DFMAccepNameswLit20180609B.TXT names4gnr*
-
-
+rm -f ala.* tmp ala-names-tmp ala-rel-tmp data_in/DFMAccepNameswLit20180609B.TXT names4gnr*
         
