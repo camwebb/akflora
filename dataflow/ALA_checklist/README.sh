@@ -3,8 +3,9 @@
 
 # Prep
 
+rm -f ala.* tmp* ala-names* ala-rel* DFMAccepNameswLit20180609B.TXT ala-gnr names4gnr* gnr_not_found
+
 gunzip -k DFMAccepNameswLit20180609B.TXT.gz
-rm -f ala.* tmp ala-names* ala-rel*
 
 # Base file: DFMAccepNameswLit20180609B.TXT
 #
@@ -94,6 +95,12 @@ cat ala.1 | \
 # macrosperma, so one is now deleted.
 
 patch -o ala.3 ala.2 p1.patch
+if [ $? -ne 0 ] ; then exit ; fi
+
+# Note: patch will attempt to fine the correct location to patch even
+# if the line numbers have changed. So edits can be made in the file
+# before the patch and it may still work. The exit status test is
+# needed though.
 
 # So **THE ALA BASE LIST IS DFMAccepNameswLit20180609B.TXT** This is
 # geographically wider than the file I got back in 2016
@@ -112,6 +119,7 @@ patch -o ala.3 ala.2 p1.patch
 # Made patch file (deleting the one with less info)
 
 patch -o ala.4 ala.3 p2.patch
+if [ $? -ne 0 ] ; then exit ; fi
 
 # Delete genus names only, e.g.
 #  Papaveraceae|Papaver|Papaver|F||
@@ -159,7 +167,14 @@ gawk 'BEGIN{FS="|"; OFS="|"} $2 ~ /\ / {print $2, $3, $4, $5, $6}' ala.4 > ala.5
 
 # Fix this: 
 
-gawk 'BEGIN{FS="|";OFS="|"}{acc[$1] = $2;ak[$1]=$3;com[$1]=$4;lit[$1]=$5} END{for (i in acc) if ((acc[acc[i]]) && (acc[i] != i) && (acc[acc[i]] != acc[i])) { print i, acc[acc[i]], ak[acc[i]], (com[i] "; syn-of-syn: " i " -> " acc[i] "; "com[acc[i]]), (lit[i] "^" lit[acc[i]])} else {print i, acc[i], ak[i], com[i], lit[i]}}' ala.5 > ala.6
+gawk 'BEGIN{FS="|";OFS="|"} \
+      {acc[$1] = $2;ak[$1]=$3;com[$1]=$4;lit[$1]=$5} \
+      END{for (i in acc) \
+            if ((acc[acc[i]]) && (acc[i] != i) && (acc[acc[i]] != acc[i])) \
+              { print i, acc[acc[i]], ak[acc[i]], (com[i] "; syn-of-syn: " \
+                      i " -> " acc[i] "; "com[acc[i]]), \
+                      (lit[i] "^" lit[acc[i]])} \
+            else {print i, acc[i], ak[i], com[i], lit[i]}}' ala.5 > ala.6
 
 # > wc ala.6
 # 3744  48774 418609 ala.6
@@ -167,11 +182,18 @@ gawk 'BEGIN{FS="|";OFS="|"}{acc[$1] = $2;ak[$1]=$3;com[$1]=$4;lit[$1]=$5} END{fo
 # Now, parsing the names into parts, and discarding the species author
 # if there is a infraspecific taxon and author.
 
-gawk -f split_name_string.awk ala.6 > ala.7
+gawk -f lib/split_name_string.awk ala.6 > ala.7
 
 # New cols are n, gen_x, gen, sp_x, sp, infratype, infra, author,
 #  syn_gen_x, syn_gen, syn_sp_x, syn_sp, syn_infratype, syn_infra, syn_author,
 #  synonym, inalaska, comments, citations
+
+# Some General tests Authors end with ) or & ...
+# gawk 'BEGIN{FS="|"} \
+#       $7 ~ /[&)]$/ || $13 ~ /[&)]$/ { print $0 ; fail = 1 } \
+#       END{ if (fail) exit 1 }' ala.7
+# if [ $? -ne 0 ] ; then exit ; fi
+# but I checked back to earlier files and that is how the data are
 
 # Check with gawk 'BEGIN{FS="|"}{x[$1]++}END{for(i in x) print i}' ala.7 | sort
 # from $1 to $16
@@ -226,39 +248,50 @@ gawk -f split_name_string.awk ala.6 > ala.7
 # 1515||Agropyron||desertorum|||(Fisch. ex Link) Schult. forma pilosiusculum Melderis||Agropyron||desertorum|||(Fisch. ex Link) Schult. forma pilosiusculum Melderis
 
 patch -o ala.8 ala.7 p3.patch
+if [ $? -ne 0 ] ; then exit ; fi
 
 # Check again with gawk 'BEGIN{FS="|"}{x[$1]++}END{for(i in x) print i}' ala.7
 #  | sort from $1 to $16 ... looks good
 
 # A species to be added (get the number from ala.7)
 
-echo "3745||Pedicularis||pacifica|||(Hultén) Kozhevn||Pedicularis||pacifica|||(Hultén) Kozhevn|accepted|T|This was missing in Als list (Cam, 2018-08-21)|" >> ala.8
+echo "|Pedicularis||pacifica|||(Hultén) Kozhevn.||Pedicularis||pacifica|||(Hultén) Kozhevn.|accepted|T|This was missing in Als list (Cam, 2018-08-21)|" >> ala.8
+
+# found a taxa to remove:
+# 2299||Bupleurum||triradiatum|||auct. non Adams ex Hoffm.||Bupleurum||||...
+
+sed -i '/Bupleurum||triradiatum|||auct/ d' ala.8
+sed -i '/|Taraxacum||sect.|/ d' ala.8
 
 # Split into two tables with to_names_only.awk
 
-gawk -f to_names_only.awk ala.8
+gawk -f lib/to_names_only.awk ala.8
 
 # Add Nulls and sort:
 
-sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-names-tmp.csv | sort > ala-names.csv
+sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-names-tmp | sort > ala-names
 
-sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-rel-tmp.csv | sort > ala-rel.csv
-
-# A species to add:
+sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-rel-tmp | sort > ala-rel
 
 
-# found with gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i]) print i}' ala-rel.csv 
+# Test with gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i]) print i}' ala-rel 
+# OK
 
-# ala-2299|synonym|F|AK taxon list|\N|ala-
-# ala-3454|synonym|T|AK taxon list|\N|ala-
-# Ugg
+# Test with
+# gawk 'BEGIN{FS="|"; while ((getline < "/home/cam/akflora/FLOW/2018-08-20_ALAchecklist/1_ALA_list/ala-names") > 0) a[$2 $3 $4 $5 $6 $7 $8]++} { if (!a[$2 $3 $4 $5 $6 $7 $8]) print $0}' ala-names
+#
+# ala-2120|\N|Eriophorum|\N|scheuchzeri|subsp.|arcticum|\N <- missing in /home/cam/akflora/FLOW/2018-08-20_ALAchecklist/1_ALA_list/ala-names - not sure why
 
-# Also removed:
+# See https://github.com/GlobalNamesArchitecture/gnresolver/issues/111
+gawk 'BEGIN{FS="|"}{s = $2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8 ; gsub(/\\N/,"",s); gsub(/×/,"",s); gsub(/\ \ +/," ",s); gsub(/^\ /,"",s); gsub(/\ $/,"",s); print $1 "|" s > "names4gnr-"  int(++i/995)+1 }' ala-names
 
-# > ala-3536|\N|Taraxacum|\N|sect.|\N|\N|Arctica Dahlst.
-# > ala-3537|\N|Taraxacum|\N|sect.|\N|\N|Borealia Hand.-Mazz.
-# > ala-3538|\N|Taraxacum|\N|sect.|\N|\N|Ceratophora Dahlst.
-# > ala-3539|\N|Taraxacum|\N|sect.|\N|\N|Ruderal
+for infile in names4gnr*
+do
+    echo "Running GNA on " $infile
+    gawk -v INFILE=$infile -f lib/gnr.awk >> ala-gnr
+done
 
-# Fixed.
+rm -f ala.* tmp ala-names-tmp ala-rel-tmp DFMAccepNameswLit20180609B.TXT names4gnr*
 
+
+        

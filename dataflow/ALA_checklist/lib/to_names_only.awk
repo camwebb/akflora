@@ -4,8 +4,8 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc";
 }
 {
-  key =  $2 $3  $4  $5  $6  $7  $8 ;
-  key2 = $9 $10 $11 $12 $13 $14 $15 ;
+  key =  $1 $2 $3  $4  $5  $6  $7 ;
+  key2 = $8 $9 $10 $11 $12 $13 $14 ;
   namelist[key]++;
 
   # checks
@@ -24,18 +24,18 @@ BEGIN{
   s2a[key] = key2;
 
   # data
-  xgen[key] = $2;
-  gen[key] = $3;
-  xsp[key] = $4;
-  sp[key] = $5;
-  typ[key] = $6;
-  ssp[key] = $7;
-  auth[key] = $8;
+  xgen[key] = $1;
+  gen[key] = $2;
+  xsp[key] = $3;
+  sp[key] = $4;
+  typ[key] = $5;
+  ssp[key] = $6;
+  auth[key] = $7;
 
-  status[key] = $16;
-  inak[key] = $17;
-  comm[key] = $18;
-  ref[key] = $19;
+  status[key] = $15;
+  inak[key] = $16;
+  comm[key] = $17;
+  ref[key] = $18;
 
 }
 
@@ -56,11 +56,11 @@ END{
       ns2a[i] = n[s2a[i]];
 
   # output names:
-  for (i in namelist) print "ala-" n[i],  xgen[i], gen[i], xsp[i], sp[i], typ[i], ssp[i], auth[i] >> "ala-names-tmp.csv" ;
+  for (i in namelist) print "ala-" n[i],  xgen[i], gen[i], xsp[i], sp[i], typ[i], ssp[i], auth[i] >> "ala-names-tmp" ;
 
   for (i in namelist) {
-    if (acc[i]) print "ala-" n[i], status[i], inak[i], comm[i], ref[i], "" >> "ala-rel-tmp.csv" ;
-    else print "ala-" n[i], status[i], inak[i], comm[i], ref[i], "ala-" ns2a[i] >> "ala-rel-tmp.csv" ;
+    if (acc[i]) print "ala-" n[i], status[i], inak[i], comm[i], ref[i], "" >> "ala-rel-tmp" ;
+    else print "ala-" n[i], status[i], inak[i], comm[i], ref[i], "ala-" ns2a[i] >> "ala-rel-tmp" ;
   }
 }
   

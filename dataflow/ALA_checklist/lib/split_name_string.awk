@@ -5,8 +5,9 @@ BEGIN{
 {
   # print "  -> "$0;
   syn = "accepted";
-  if ($2 != $1) syn = "synonym"; 
-  print ++i , "",  parsename($1) , "", parsename($2) , syn , $3 , $4, $5 ;
+  if ($2 != $1) syn = "synonym";
+  ++i;
+  print "",  parsename($1) , "", parsename($2) , syn , $3 , $4, $5 ;
   
 }
 
