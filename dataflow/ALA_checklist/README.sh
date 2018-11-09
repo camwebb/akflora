@@ -3,7 +3,7 @@
 
 # Prep
 
-rm -f ala.* tmp* ala-names* ala-rel* data_in/DFMAccepNameswLit20180609B.TXT ala-gnr names4gnr* gnr_not_found
+rm -f ala.* tmp* ala-names* ala-rel* data_in/DFMAccepNameswLit20180609B.TXT ala-gnr names4gnr* ala-gnr_not_found
 
 gunzip -k data_in/DFMAccepNameswLit20180609B.TXT.gz
 
@@ -293,3 +293,6 @@ done
 
 rm -f ala.* tmp ala-names-tmp ala-rel-tmp data_in/DFMAccepNameswLit20180609B.TXT names4gnr*
         
+## SQL
+
+# mysql -u $DBUSER -p$DBPASSWD -show-warnings < load_ala.sql

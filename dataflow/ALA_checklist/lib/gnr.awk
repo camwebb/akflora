@@ -45,8 +45,8 @@ BEGIN {
     if ((failIPNI) && (failTROP)) {
       print data["data"][i]["supplied_id"],            \
         data["data"][i]["supplied_name_string"]        \
-        >> "gnr_not_found" ;
-      close("gnr_not_found");
+        >> "ala-gnr_not_found" ;
+      close("ala-gnr_not_found");
     }
     delete found; failIPNI = failTROP = "";
   }
