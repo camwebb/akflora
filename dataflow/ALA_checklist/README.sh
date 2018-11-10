@@ -267,12 +267,9 @@ sed -i '/|Taraxacum||sect.|/ d' ala.8
 
 gawk -f lib/to_names_only.awk ala.8
 
-# Add Nulls and sort:
-
-sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-names-tmp | sort > ala-names
-
-sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-rel-tmp | sort > ala-rel
-
+# Add Nulls and sort (NOT USED)
+# sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-names-tmp | sort > ala-names
+# sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-rel-tmp | sort > ala-rel
 
 # Test with gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i]) print i}' ala-rel 
 # OK
@@ -296,3 +293,9 @@ rm -f ala.* tmp ala-names-tmp ala-rel-tmp data_in/DFMAccepNameswLit20180609B.TXT
 ## SQL
 
 # mysql -u $DBUSER -p$DBPASSWD -show-warnings < load_ala.sql
+# mkdir tmp_ala
+# java -jar ~/usr/schemaspy/target/schemaspy-6.0.1-SNAPSHOT.jar -t mariadb -u cam -p testtest -host localhost -o tmp_ala/ -db tmp_ala -s tmp_ala -dp /usr/share/java/mariadb-jdbc/mariadb-java-client.jar
+
+# gawk 'BEGIN{FS="|";OFS="|"} $5 == "GNR1" {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3}' ala-gnr > ala-gnr-tmp-sameas
+
+gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3, parse_tax_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
