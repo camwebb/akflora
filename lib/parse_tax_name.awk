@@ -55,7 +55,8 @@ function parse_tax_name(name, test,    parsed, p, remade) {
   }
 
   # convert hybrid sign
-  gsub(/\|[xX]\|/,"|×|",parsed);
+  gsub(/\|[xX]\|/,"|×|", parsed);
+  gsub(/^[xX]\|/,"×|", parsed);
 
   return parsed;
 }
