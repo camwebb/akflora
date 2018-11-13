@@ -3,7 +3,9 @@
 SELECT 'Making DB';
 
 DROP DATABASE IF EXISTS `tmp_ala`;
-CREATE DATABASE `tmp_ala` CHARSET 'utf8' COLLATE 'utf8_general_ci';
+CREATE DATABASE `tmp_ala` CHARSET 'utf8' COLLATE 'utf8_bin';
+-- NB!! https://stackoverflow.com/questions/4558707/case-sensitive-collation-in-mysql#4558736
+
 USE `tmp_ala`;
 
 -- Names first
@@ -130,7 +132,7 @@ ALTER TABLE `rel`
 
 ALTER TABLE `names` DROP COLUMN `code`;
 
-----
+----  ADD NEW NAMES AND uids
 
 SELECT 'Making table gnr_tmp';
 
@@ -160,7 +162,14 @@ UPDATE `gnr_tmp` SET `md5sum` = MD5(concat_ws(' ',  `genhyb`, `genus`, `sphyb` ,
 ALTER TABLE `gnr_tmp` ADD INDEX `md5sum` (`md5sum`);
 ALTER TABLE `names` ADD INDEX `md5sum` (`md5sum`);
 
+-- select max(id) from names; -->  3740 
+
 SELECT 'Inserting new names into names';
+
+
+-- weird, it doesn't add trop-144959531
+-- SELECT DISTINCT `gnr_tmp`.`genhyb`, `gnr_tmp`.`genus`, `gnr_tmp`.`sphyb` , `gnr_tmp`.`species` , `gnr_tmp`.`ssptype` , `gnr_tmp`.`ssp` , `gnr_tmp`.`author`     FROM `gnr_tmp` LEFT JOIN `names` AS `A` ON  `gnr_tmp`.`md5sum` = `A`.`md5sum` WHERE `A`.`md5sum` IS NULL AND gnr_tmp.genus = 'Viola' AND gnr_tmp.species = 'langsdorffii';
+-- this was due to using utf8_general_ci <- case insensitive!!
 
 INSERT INTO `names` (`genhyb`, `genus`, `sphyb` , `species` , `ssptype` , `ssp` , `author`)
     SELECT DISTINCT `gnr_tmp`.`genhyb`, `gnr_tmp`.`genus`, `gnr_tmp`.`sphyb` , `gnr_tmp`.`species` , `gnr_tmp`.`ssptype` , `gnr_tmp`.`ssp` , `gnr_tmp`.`author`
@@ -177,19 +186,34 @@ INSERT INTO `uids` (`code`, `authority`, `nameID`)
     FROM `gnr_tmp`,`names`
     WHERE gnr_tmp.md5sum = `names`.`md5sum`  AND `gnr_tmp`.auth != 'ARCT';
 
--- check
+-- -- ortho ... this strategy needs more work. Halt for now
+
+-- CREATE TABLE `ortho` (
+--   `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+--   `fromID` int(11) NOT NULL,
+--   `toID` int(11) NOT NULL,
+--   `source` varchar(10) NOT NULL,
+--   `type` varchar(10) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ALTER TABLE `gnr_tmp` ADD COLUMN `alaID` int(11) DEFAULT NULL;
+-- ALTER TABLE `gnr_tmp` ADD COLUMN `otherID` int(11) DEFAULT NULL;
+
+-- UPDATE gnr_tmp, uids SET gnr_tmp.alaID = uids.nameID WHERE gnr_tmp.ala_code = uids.code;
+-- -- test:
+-- select * from gnr_tmp where alaID IS NULL;
+-- UPDATE gnr_tmp, uids SET gnr_tmp.otherID = uids.nameID WHERE gnr_tmp.other_code = uids.code;
+-- -- test:
+-- select * from gnr_tmp where otherID IS NULL AND auth != 'ARCT';
+-- -- Hmm: ala-2531
+
+-- INSERT INTO `ortho` ( `fromID`, `toID`, `source` , `type` )
+-- SELECT `alaID`, `otherID`, `auth`, `matchtype` from gnr_tmp WHERE `matchtype` != 'GNR1' AND `auth` != 'ARCT';
 
 
+-- -- select CONCAT_WS(' ',names.genhyb,names.genus,names.sphyb,names.species,names.ssptype,names.ssp,names.author), A.source, A.type, CONCAT_WS(' ',B.genhyb,B.genus,B.sphyb,B.species,B.ssptype,B.ssp,B.author) FROM `names` LEFT JOIN `ortho` AS `A` ON `names`.`id` = `A`.`fromID` LEFT JOIN `names` AS B ON A.toID = B.id WHERE A.id IS NOT NULL;
 
 
-
-
----
-
---INSERT INTO `uids` (`code`, `authority`, `nameID`) 
---    SELECT DISTINCT gnr_tmp.`other_code`, gnr_tmp.`auth`, `uids`.`id`
---    FROM `gnr_tmp`,`uids`
---    WHERE gnr_tmp.ala_code = uids.`code`;
 
 
 

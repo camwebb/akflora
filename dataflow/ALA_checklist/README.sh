@@ -300,7 +300,9 @@ rm -f ala.* tmp ala-names-tmp ala-rel-tmp data_in/DFMAccepNameswLit20180609B.TXT
 
 gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3, parse_tax_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
 
-bin/sqlnulls ala-gnr-tmp
+## jump to 2018-11-12 
+
+# bin/sqlnulls ala-gnr-tmp
 
 # gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), gensub(/\x27/,"","G",$3), parse_tax_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
 
@@ -313,7 +315,13 @@ bin/sqlnulls ala-gnr-tmp
 #ala-3231|Elymus alaskanus subsp. latiglumis (Scribn. & Sm.) A.Love|arct-'1771237'|Elymus alaskanus (Scribn.) A.Love subsp. latiglumis (Sm.) A.Love|GNR2|GNR: Exact match by canonical form
 #ala-949|Elymus trachycaulus (Link) Gould ex Shinners|arct-'1771237'|Elymus trachycaulus (Link) Shinners|GNR2|GNR: Exact match by canonical form
 
+# 2018-11-12 need to delveop strategy for matching names after GNR output.
 
+
+
+
+
+# -----------------------------------------------------------------------
 # TODO
 #
 # GNR ranks: gawk 'BEGIN{FS="|"}{s[$8]++}END{for (i in s) print i}' ala-gnr-tmp
