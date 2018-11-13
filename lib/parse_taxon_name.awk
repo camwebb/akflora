@@ -19,6 +19,8 @@
 # Note: gawk's [:alpha:] shortens this Author string:
 #   [A-za-z\- ().&;,ÁÅäáâăÉéèěíîíıÖØöóöòøôÜüČçćčğłñńřŞšșțýž']
 
+@include "depunct.awk"
+
 function parse_taxon_name(name, test,    parsed, p, remade) {
 
  # Clean bad chars:
@@ -45,9 +47,9 @@ function parse_taxon_name(name, test,    parsed, p, remade) {
         (p[4] !~ /^[a-z\-ﬂ][a-z\-ﬂ]+$/) ||               \
         (p[5] !~ /^([a-z]+\.|\[infrasp\.unranked\])?$/) ||  \
         (p[6] !~ /^([a-z\-ﬂ][a-z\-ﬂ]+$)?/) ||               \
-        (de_punct(remade) != de_punct(name))) {
-      print "'" de_punct(remade) "'" > "/dev/stderr";
-      print "'" de_punct(name)  "'" > "/dev/stderr";
+        (depunct(remade) != depunct(name))) {
+      print "'" depunct(remade) "'" > "/dev/stderr";
+      print "'" depunct(name)  "'" > "/dev/stderr";
       print "** Fail: '" name "' does not match:\n         '" remade \
         "'\n            " parsed "  <- parsed"> "/dev/stderr";
       exit 1;

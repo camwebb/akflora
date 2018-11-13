@@ -288,8 +288,29 @@ do
     gawk -v INFILE=$infile -f lib/gnr.awk >> ala-gnr
 done
 
+gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3, parse_taxon_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
+
+# unique codes for each string
+gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$2]=$1} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listA
+
+# unique codes for each string
+gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort | grep "ipni-" > listBipni
+gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort | grep "trop-" > listBtrop
+
+# sed 's/\\N//g' > listA
+
+gawk 'BEGIN{FS=OFS="|"} {print $3, $4, $5, $6, $7, $8, $9, $10}' ala-gnr-tmp | sed 's/\\N//g' | sort | uniq > listB
+
+# ugh - ipni has duplicate IDs for the same name: ipni-1018959-1 ipni-1078427-2
+
+# HERE*****
+
+match_names -a listA -b listB -n test
+
 rm -f ala.* tmp ala-names-tmp ala-rel-tmp data_in/DFMAccepNameswLit20180609B.TXT names4gnr*
-        
+
+
+
 ## SQL
 
 # mysql -u $DBUSER -p$DBPASSWD -show-warnings < load_ala.sql

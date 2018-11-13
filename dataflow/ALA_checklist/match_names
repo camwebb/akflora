@@ -1,0 +1,332 @@
+#!/bin/gawk -f
+
+# Looks for names from list A ("Query set") in list B ("Master set")
+# Matching them at different "quality levels"
+
+# (c) Cam Webb, 2018
+# Licence: Public Domain (Via: https://unlicense.org/)
+
+# Set $AWKPATH to find function libraries
+
+@include "depunct.awk"
+
+BEGIN{
+  ## Config
+  FS = "|";
+  OFS= "|";
+  PROCINFO["sorted_in"] =  "@ind_str_asc"
+
+  # Column order; change if needed
+  A_code = 1 ; A_xg = 2  ; A_g = 3  ; A_xs = 4 ; A_s = 5;
+  A_st = 6   ; A_ssp = 7 ; A_a = 8  ; 
+  B_code = 1 ; B_xg = 2  ; B_g = 3  ; B_xs = 4 ; B_s = 5;
+  B_st = 6   ; B_ssp = 7 ; B_a = 8  ; 
+
+  ## Read arguments
+  for (arg = 1; arg < ARGC; arg++) {
+    if      (ARGV[arg] == "-a") A_infile = ARGV[arg+1];
+    else if (ARGV[arg] == "-b") B_infile = ARGV[arg+1];
+    else if (ARGV[arg] == "-n") BASENAME = ARGV[arg+1];
+    else if (ARGV[arg] == "--fuzzy") FUZZY = 1;
+  }
+  if (!A_infile || !B_infile || !BASENAME || ARGC == 1) {
+    print "usage:    match_names -a names_query_file -b " \
+      "match_in_file -n outfile_basename" ;
+    exit 1;
+  }
+
+  ## Delete existing files
+  system("rm -f " BASENAME "_match")
+  
+  ## Read data and basic checking for uniqueness
+  read_data()
+
+  ## Main loop
+
+  # Run in order of input, so that an abort in the fuzzy matching phase allows
+  #   the file to be picked up again next time
+  for (i = 1; i <= Alines ; i++) {
+
+    # 1. Exact match
+    if (BgsaStrCode[AgsaStr[AorderedCode[i]]]) {
+      Amatched[AorderedCode[i]] = 1;
+      print AorderedCode[i] , BgsaStrCode[AgsaStr[AorderedCode[i]]], \
+        "gsa_exact" , AgsaStr[AorderedCode[i]], \
+        BgsaStr[BgsaStrCode[AgsaStr[AorderedCode[i]]]] \
+      >> BASENAME "_match"
+      close(BASENAME "_match")
+    }
+    
+    # 2. Variant punctuation match (case, ascii, space, period... depunct())
+    #    ... may not be unique in B ... make warning when making Bgsakey?
+    else if (BgsakeyCode[Agsakey[AorderedCode[i]]]) {
+      Amatched[AorderedCode[i]] = 1; 
+      print AorderedCode[i] , BgsakeyCode[Agsakey[AorderedCode[i]]], \
+        "gsa_depunct" , AgsaStr[AorderedCode[i]], \
+        BgsaStr[BgsakeyCode[Agsakey[AorderedCode[i]]]]  \
+        >> BASENAME "_match"
+      close(BASENAME "_match")
+    }
+    
+    # 3. Variant punctuation match and missing basionym
+    else if (BgsaBkeyCode[Agsakey[AorderedCode[i]]]) {
+      Amatched[AorderedCode[i]] = 1; 
+      print AorderedCode[i] , BgsaBkeyCode[Agsakey[AorderedCode[i]]], \
+        "gsa_basio" , AgsaStr[AorderedCode[i]], \
+        BgsaStr[BgsaBkeyCode[Agsakey[AorderedCode[i]]]] \
+        >> BASENAME "_match"
+      close(BASENAME "_match")
+    }
+
+    # 4. Fuzzy match and get user input
+    else if (FUZZY) {
+      cmd = "agrep -k -2 '" Agsakey[AorderedCode[i]] "' "   \
+        TEMPDIR "/" Ag[AorderedCode[i]]
+      agreps = ""
+      RS = "\x04" 
+      cmd | getline agreps
+      close(cmd)
+      RS = "\n"
+      gsub(/\n$/,"", agreps) # to remove 'default' newline
+      
+      if (length(agreps)) {
+        na = split(agreps, a, "\n");
+        print "---------------------------------------" \
+          "-----------------------------------------"
+        printf "    %s\n", AgsaStr[AorderedCode[i]],\
+          AorderedCode[i]
+        for (j = 1; j <= na; j++) {
+          split(a[j],b," ");
+          printf "%2d: %s\n", j, BgsaStr[BgsakeyCode[b[2]]], b[1]
+          code_of_j[j] = b[1]
+        }
+        while(1) {
+          r = ""
+          printf "  > "
+          getline r < "-"
+          if (r == "q") {
+            print "Halting. " i-1 " lines of " A_infile " processed" 
+            exit 0
+          }
+          else if (r == "n") {
+            no_match(i)
+            break
+          }
+          else if (r == "c") {
+            printf "  Codes: %-20s vs. %-20s\n", AorderedCode[i] , code_of_j[1]
+            for (j = 2; j <= na; j++)
+              printf "         %-20s vs. %-20s\n", "", code_of_j[j]
+          }
+          else if (code_of_j[r]) {
+            print AorderedCode[i] , code_of_j[r],   \
+              "manual" , AgsaStr[AorderedCode[i]],                      \
+              BgsaStr[code_of_j[r]]                                     \
+              >> BASENAME "_match"
+            close(BASENAME "_match")
+            break
+          }
+          else printf "(try again)"
+        }
+        delete a ; delete b ; delete code_of_j
+      }
+      else no_match(i)
+    }
+    else no_match(i)
+    
+    # # 3. Exact, but no author ... possible choices in B are
+    # #    many... how to pick the right one - needs to go into the
+    # #    manual phase - make a function?
+    # else if (Anoauth[AorderedCode[i]]) {
+    #   if (BgsStrCode[ AgsStr[ AorderedCode[ i ] ] ]) {
+    #     Amatched[AorderedCode[i]] = 1
+    #     print AorderedCode[i] , BgsStrCode[AgsStr[AorderedCode[i]]],    \
+    #       "gs_exact!"         >> BASENAME "_match"
+    #     close(BASENAME "_match")
+    #   }
+    #   # 4. CASP, no author (should not occur, but I guess it could)
+    #   else if (Bcodegs[Agskey[AorderedCode[i]]]) {
+    #     print AorderedCode[i] , Bcodegs[Agskey[AorderedCode[i]]] , \
+    #       "gs_depunct!"  >> BASENAME "_match"
+    #     close(BASENAME "_match")
+    #   }
+    # }
+    # else {
+    #   # prepare the genus sublists for agrep matching
+    #   makegenus[Ag[AorderedCode[i]]] = 1;
+    # }
+  }
+  exit;
+  
+  print "  Done.\n" > "/dev/stderr";
+
+  exit
+
+  # STEP 4. try agrep matching on species name
+  print "Agrep-ing...\n" > "/dev/stderr";
+  for (i in codeN) {
+    if ((!Amatched[i])) {
+      print "  (" Agsakey[i] ")\n" > "/dev/stderr";
+      cmd = "agrep -k -2 '" Agsakey[i] "' tmp_genera/" Ag[i] ".csv";
+      agreps = "";
+      RS = "\x04";
+      cmd | getline agreps;
+      close(cmd);
+      RS = "\n";
+      if (length(agreps) > 1) {
+        na = split(agreps, a, "\n");
+        # big decision - if there is only one agrep result, accept it
+        if (na == 2) {
+          split(a[1],b," ");
+          autoagrep[i] = b[1];
+        }
+        else {
+          for (j = 1; j < na; j++) {
+            split(a[j],b," ");
+            print i, AgsaStr[i], BgsaStr[b[1]], b[1] , "" >> "names.manual.csv";
+          }
+          print "" >> "names.manual.csv";
+        }
+      }
+      # else fail[i] = 1;
+    }
+  }
+  close("names.manual.csv");
+
+  # write single agreps:
+  for (i in codeN)
+    if (autoagrep[i])
+      print i, autoagrep[i], "auto", Bdata[autoagrep[i]] \
+        >> "names.automatch.csv";
+  close("names.automatch.csv");
+  
+  # STEP 5. Manually edit "names.manual.csv" saving result to 
+  #         names.manual.EDITED.csv
+  exit;
+}
+
+function read_data() {
+  # I played with collapsing 'Aabc[' to 'abc[1][' but while it would
+  # have allowed some saving of code (e.g., in this reading in phase)
+  # it was harder to work with
+
+  ## B list
+  
+  print "Reading B Names List..." > "/dev/stderr";
+  while ((getline < B_infile) > 0) {
+    # clean data
+    for (i = 1; i <= NF; i++) {
+      gsub(/^(NULL|\\N)$/,"",$i)
+      $i = cleanspaces($i)
+    }
+    if (++BcodeN[$B_code] > 1) {
+      print "B code '" $B_code "' is a duplicate..." > "/dev/stderr";
+      exit 1;
+    }
+
+    # data for output
+    Bdata[$B_code] = $B_xg OFS $B_g   OFS $B_xs OFS $B_s OFS \
+                       $B_st OFS $B_ssp OFS $B_a # var needed?
+    # string for manual string matching
+    BgsaStr[$B_code] = cleanspaces($B_xg " " $B_g " " $B_xs " "     \
+                           $B_s " " $B_st " " $B_ssp " " $B_a) ;
+    BgsaStrCode[BgsaStr[$B_code]] = $B_code;
+    if (++BgsaStrN[BgsaStr[$B_code]] > 1) {
+      print "B name '" BgsaStr[$B_code] "' is a duplicate..." > "/dev/stderr";
+      exit 1;
+    }
+      
+    BgsStr[$B_code] = cleanspaces($B_xg " " $B_g " " $B_xs " "  \
+                           $B_s " " $B_st " " $B_ssp ) ;
+    BgsStrCode[BgsStr[$B_code]] = $B_code;  # poss not unique. Why needed?
+    BgsStrN[BgsStr[$B_code]]++;
+    
+    # genus list
+    Bg[$B_code] = $B_g ;
+
+    # de_punct keys
+    Bgsakey[$B_code] = depunct($B_xg $B_g $B_xs $B_s    \
+                      $B_st $B_ssp $B_a)
+    if (++BgsakeyN[Bgsakey[$B_code]] > 1)
+      print "Warning: " $B_code " has duplicate depunct form: \n           "\
+        Bgsakey[$B_code] > "/dev/stderr"
+    BgsakeyCode[Bgsakey[$B_code]] = $B_code;  # not unique, care
+    BgsaBkey[$B_code] = depunct($B_xg $B_g $B_xs $B_s               \
+                                $B_st $B_ssp gensub(/\([^)]+\)/,"","G",$B_a))
+    BgsaBkeyCode[BgsaBkey[$B_code]] = $B_code;  # not unique, care
+    # DEL Bgskey = depunct($B_xg $B_g $B_xs $B_s  \
+    #                 $B_st $B_ssp)
+    # DEL BgskeyN[gskey]++;
+    # DEL Bcodegs[gskey] = $B_code; # not unique, care 
+  }
+  print "  Done."> "/dev/stderr";
+
+  # make sublists, for agrep
+  if (FUZZY) {
+    cmd = "mktemp -d";
+    cmd | getline TEMPDIR;
+    for (i in Bdata) {
+      print i " " Bgsakey[i]  >> TEMPDIR "/" Bg[i] ;
+      close(TEMPDIR "/" Bg[i]);
+    }
+  }
+
+  ## A list
+  
+  print "Reading A names list..." > "/dev/stderr";  
+  while ((getline < A_infile) > 0) {
+    # clean data
+    for (i = 1; i <= NF; i++) {
+      gsub(/^(NULL|\\N)$/,"",$i)
+      $i = cleanspaces($i);
+    }
+    if (++AcodeN[$A_code] > 1) {
+      print "A code '" $A_code "' is a duplicate..." > "/dev/stderr";
+      exit 1;
+    }
+    AorderedCode[++Alines] = $A_code;
+    
+    # data for output
+    Adata[$A_code]   = $A_xg OFS $A_g OFS $A_xs OFS $A_s OFS \
+                           $A_st OFS $A_ssp OFS $A_a ;
+    # string for manual string matching
+    AgsaStr[$A_code] = cleanspaces($A_xg " " $A_g " " $A_xs " " $A_s " " \
+                                   $A_st " " $A_ssp " " $A_a) ;
+    if (++AgsaStrN[AgsaStr[$A_code]] > 1) {
+      print "A code '" $A_code "' name '" AgsaStr[$A_code] "' is a duplicate..." > "/dev/stderr";
+      exit 1;
+    }
+
+    # just genus + species
+    AgsStr[$A_code] = cleanspaces($A_xg " " $A_g " " $A_xs " "    \
+                           $A_s " " $A_st " " $A_ssp ) ;
+    AgsStrN[AgsStr[$A_code]]++;
+
+    Ag[$A_code] = $A_g ;
+    Axg[$A_code] = $A_xg ;
+
+    Agsakey[$A_code] = depunct($A_xg $A_g $A_xs $A_s \
+                                  $A_st $A_ssp $A_a);
+    if (++AgsakeyN[Agsakey[$A_code]] > 1)
+      print "Warning: " $A_code " has duplicate depunct form:\n           "\
+        Agsakey[$A_code] > "/dev/stderr"
+    Agskey[$A_code] = depunct($A_xg $A_g $A_xs $A_s  \
+                                 $A_st $A_ssp);
+    if (!$A_a) Anoauth[$A_code]=1;
+  }
+  print "  Done." > "/dev/stderr";
+  
+}
+
+function cleanspaces(x) {
+  # x is an external variable
+  gsub(/\ \ */," ", x);
+  gsub(/\ *$/, "" , x);
+  gsub(/^\ */, "" , x);
+  return x;
+}
+
+function no_match(x) {
+  print AorderedCode[x] "||no_match|" AgsaStr[AorderedCode[x]] "|" \
+        >> BASENAME "_match"
+  close(BASENAME "_match")
+}

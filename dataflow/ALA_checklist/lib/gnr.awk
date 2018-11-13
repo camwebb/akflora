@@ -8,7 +8,8 @@ BEGIN {
   OFS="|";
   system("rm -f to_check.csv");
 
-  cmd = "curl -s -X POST --data-urlencode 'data_source_ids=165|167|170' --data-urlencode data@" INFILE " 'http://resolver.globalnames.org/name_resolvers.json'";
+  # ARCTOS is 170. ~Broken 2018-11
+  cmd = "curl -s -X POST --data-urlencode 'data_source_ids=165|167' --data-urlencode data@" INFILE " 'http://resolver.globalnames.org/name_resolvers.json'";
 
   # print cmd > "/dev/stderr"
   cmd | getline json;
@@ -22,7 +23,7 @@ BEGIN {
 
   for (i in data["data"]) {
     for (j in data["data"][i]["results"]) {
-      if (data["data"][i]["results"][j]["data_source_id"] ~ /165|167|170/) {
+      if (data["data"][i]["results"][j]["data_source_id"] ~ /165|167/) {
         found[data["data"][i]["results"][j]["match_type"],          \
               data["data"][i]["results"][j]["data_source_id"]] = j;
       }
@@ -39,8 +40,8 @@ BEGIN {
     else if (found[3,165]) print_out(i,found[3,165]);
     else failTROP = 1;
 
-    if (found[1,170]) print_out(i, found[1,170]);
-    else if (found[2,170]) print_out(i, found[2,170]);
+    # if (found[1,170]) print_out(i, found[1,170]);
+    # else if (found[2,170]) print_out(i, found[2,170]);
 
     if ((failIPNI) && (failTROP)) {
       print data["data"][i]["supplied_id"],            \
@@ -55,33 +56,31 @@ BEGIN {
 }
 
 function print_out(i,j,     prefix) {
-#  print "in: " i ": " data["data"][i]["supplied_id"];
-#  print "in: " i ": " data["data"][i]["supplied_name_string"];
-#  print "in: " i ": " data["data"][i]["results"][j]["taxon_id"];
-#  print "in: " i ": " data["data"][i]["results"][j]["match_value"];
-#  print "in: " i ": " data["data"][i]["results"][j]["data_source_title"];
-#  print "in: " i ": " data["data"][i]["results"][j]["name_string"] "\n";
-  if (data["data"][i]["results"][j]["data_source_id"] == 167) prefix = "ipni";
-  else if (data["data"][i]["results"][j]["data_source_id"] == 165) prefix = "trop";
-  else if (data["data"][i]["results"][j]["data_source_id"] == 170) prefix = "arct";
+
+  if (data["data"][i]["results"][j]["data_source_id"] == 167)
+    uid = "ipni-" data["data"][i]["results"][j]["taxon_id"];
+  else if (data["data"][i]["results"][j]["data_source_id"] == 165)
+    uid = "trop-" gensub(/http\:\/\/www\.tropicos\.org\/Name\//,"","G", \
+                         data["data"][i]["results"][j]["url"])
+  # else if (data["data"][i]["results"][j]["data_source_id"] == 170) prefix = "arct";
   
-  print data["data"][i]["supplied_id"] , \
+  print data["data"][i]["supplied_id"] ,     \
     data["data"][i]["supplied_name_string"], \
-    prefix "-" data["data"][i]["results"][j]["taxon_id"], \
+    uid, 
     data["data"][i]["results"][j]["name_string"], \
     "GNR" data["data"][i]["results"][j]["match_type"],      \
     "GNR: " data["data"][i]["results"][j]["match_value"] ;
 
-  if (data["data"][i]["results"][j]["match_type"] == 2) {
-    if (collapse(data["data"][i]["supplied_name_string"]) ==    \
-        collapse(data["data"][i]["results"][j]["name_string"])) {   \
-      print data["data"][i]["supplied_id"] ,                        \
-        data["data"][i]["supplied_name_string"],                    \
-        prefix "-" data["data"][i]["results"][j]["taxon_id"],       \
-        data["data"][i]["results"][j]["name_string"],               \
-        "COLLEQ", "Collapsed equality" ;
-    }
-    else {
+  # if (data["data"][i]["results"][j]["match_type"] == 2) {
+  #   if (collapse(data["data"][i]["supplied_name_string"]) ==    \
+  #       collapse(data["data"][i]["results"][j]["name_string"])) {   \
+  #     print data["data"][i]["supplied_id"] ,                        \
+  #       data["data"][i]["supplied_name_string"],                    \
+  #       uid, \
+  #       data["data"][i]["results"][j]["name_string"],               \
+  #       "COLLEQ", "Collapsed equality" ;
+  #  }
+  #  else {
       # Better to do this from the DB, with rules for author strings
       
       # print data["data"][i]["supplied_id"] ,                \
@@ -90,8 +89,8 @@ function print_out(i,j,     prefix) {
       #  prefix "-" data["data"][i]["results"][j]["taxon_id"], ""    \
       #  >> "to_check.csv" ;
       # close("to_check.csv") ;
-    }
-  }
+  #  }
+  # }
 }
 
 
