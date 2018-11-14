@@ -50,8 +50,8 @@ BEGIN{
     # 1. Exact match
     if (BgsaStrCode[AgsaStr[AorderedCode[i]]]) {
       print AorderedCode[i] , BgsaStrCode[AgsaStr[AorderedCode[i]]],    \
-        "gsa_exact" , AgsaStr[AorderedCode[i]],                         \
-        BgsaStr[BgsaStrCode[AgsaStr[AorderedCode[i]]]]                  \
+        "gsa_exact" , Adata[AorderedCode[i]],                         \
+        Bdata[BgsaStrCode[AgsaStr[AorderedCode[i]]]]                  \
         >> BASENAME "_match"
       close(BASENAME "_match")
     }
@@ -60,8 +60,8 @@ BEGIN{
     #    ... may not be unique in B; warning given when reading data
     else if (BgsakeyCode[Agsakey[AorderedCode[i]]]) {
       print AorderedCode[i] , BgsakeyCode[Agsakey[AorderedCode[i]]],    \
-        "gsa_depunct" , AgsaStr[AorderedCode[i]],                       \
-        BgsaStr[BgsakeyCode[Agsakey[AorderedCode[i]]]]                  \
+        "gsa_depunct" , Adata[AorderedCode[i]],                       \
+        Bdata[BgsakeyCode[Agsakey[AorderedCode[i]]]]                  \
         >> BASENAME "_match"
       close(BASENAME "_match")
     }
@@ -69,8 +69,8 @@ BEGIN{
     # 3. Variant punctuation match and missing basionym
     else if (BgsaBkeyCode[Agsakey[AorderedCode[i]]]) {
       print AorderedCode[i] , BgsaBkeyCode[Agsakey[AorderedCode[i]]],   \
-        "gsa_basio" , AgsaStr[AorderedCode[i]],                         \
-        BgsaStr[BgsaBkeyCode[Agsakey[AorderedCode[i]]]]                 \
+        "gsa_basio" , Adata[AorderedCode[i]],                         \
+        Bdata[BgsaBkeyCode[Agsakey[AorderedCode[i]]]]                 \
         >> BASENAME "_match"
       close(BASENAME "_match")
     }
@@ -78,27 +78,27 @@ BEGIN{
     # 4. Variant punctuation match and missing 'ex'
     else if (BgsaEkeyCode[Agsakey[AorderedCode[i]]]) {
       print AorderedCode[i] , BgsaEkeyCode[Agsakey[AorderedCode[i]]],   \
-        "gsa_ex" , AgsaStr[AorderedCode[i]],                            \
-        BgsaStr[BgsaEkeyCode[Agsakey[AorderedCode[i]]]]                 \
+        "gsa_ex" , Adata[AorderedCode[i]],                            \
+        Bdata[BgsaEkeyCode[Agsakey[AorderedCode[i]]]]                 \
         >> BASENAME "_match"
       close(BASENAME "_match")
     }
     # 5. Variant punctuation match and missing basionym and missing 'ex'
     else if (BgsaBEkeyCode[Agsakey[AorderedCode[i]]]) {
       print AorderedCode[i] , BgsaBEkeyCode[Agsakey[AorderedCode[i]]],   \
-        "gsa_bas_ex" , AgsaStr[AorderedCode[i]],                         \
-        BgsaStr[BgsaBEkeyCode[Agsakey[AorderedCode[i]]]]                 \
+        "gsa_bas_ex" , Adata[AorderedCode[i]],                         \
+        Bdata[BgsaBEkeyCode[Agsakey[AorderedCode[i]]]]                 \
         >> BASENAME "_match"
       close(BASENAME "_match")
     }
 
     # 6. Fuzzy match with user input
-    else if (FUZZY) {
+    else if (FUZZY && BgN[Ag[AorderedCode[i]]]) {
       # send depunct A name to agrep
       # Note, a genus spelling mismatch will not be found due to
       #   wrong temporary grenus name list
-      cmd = "agrep -k -2 '" Agsakey[AorderedCode[i]] "' "   \
-        TEMPDIR "/" Ag[AorderedCode[i]]
+      cmd = "agrep -k -2 \"" Agsakey[AorderedCode[i]] \
+        "\" " TEMPDIR "/" Ag[AorderedCode[i]]
       agreps = ""
       RS = "\x04" 
       cmd | getline agreps
@@ -260,6 +260,7 @@ function read_data(    i, BcodeN, BgsaStrN, BgsakeyN, AcodeN, AgsaStrN, \
     for (i in Bdata) {
       print i " " Bgsakey[i]  >> TEMPDIR "/" Bg[i]
       close(TEMPDIR "/" Bg[i])
+      BgN[Bg[i]]++;
     }
   }
 }
@@ -273,7 +274,7 @@ function cleanspaces(x) {
 }
 
 function no_match(x) {
-  print AorderedCode[x] "||no_match|" AgsaStr[AorderedCode[x]] "|" \
+  print AorderedCode[x] "||no_match|" AgsaStr[AorderedCode[x]] "|||||||||||||" \
         >> BASENAME "_match"
   close(BASENAME "_match")
 }
@@ -282,3 +283,5 @@ function clean_exit(status) {
   system("rm -rf TEMPDIR")
   exit status
 }
+
+

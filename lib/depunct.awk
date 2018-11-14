@@ -29,7 +29,9 @@ function depunct(x) {
   gsub(/[Ý]/,"Y", x);
   # delete spaces and periods:
   gsub(/[ .]/,"", x)
-
+  # delete double quote
+  gsub(/"/,"", x)
+  
   # allow missing "×"
   gsub(/×/,"", x)
   return tolower(x);
