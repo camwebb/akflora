@@ -19,6 +19,7 @@ BEGIN{
   FS = "|"
   OFS= "|"
   PROCINFO["sorted_in"] =  "@ind_str_asc"
+  FUZZERR = 5
 
   # Column order; change if needed
   A_code = 1 ; A_xg = 2  ; A_g = 3  ; A_xs = 4 ; A_s = 5
@@ -32,10 +33,11 @@ BEGIN{
     else if (ARGV[arg] == "-b") B_infile = ARGV[arg+1]
     else if (ARGV[arg] == "-n") BASENAME = ARGV[arg+1]
     else if (ARGV[arg] == "--fuzzy") FUZZY = 1
+    else if (ARGV[arg] == "-f") FUZZERR = ARGV[arg+1]
   }
   if (!A_infile || !B_infile || !BASENAME || ARGC == 1) {
     print "usage:    match_names -a names_query_file -b " \
-      "match_in_file -n outfile_basename"
+      "match_in_file -n outfile_basename [--fuzzy [-f fuzz_error]]"
     exit 1
   }
 
@@ -97,8 +99,8 @@ BEGIN{
       # send depunct A name to agrep
       # Note, a genus spelling mismatch will not be found due to
       #   wrong temporary grenus name list
-      cmd = "agrep -k -2 \"" Agsakey[AorderedCode[i]] \
-        "\" " TEMPDIR "/" Ag[AorderedCode[i]]
+      cmd = "agrep -k -" FUZZERR " \"" Agsakey[AorderedCode[i]] \
+        "\" " TEMPDIR "/" Ag[AorderedCode[i]] " | sort -k 2"
       agreps = ""
       RS = "\x04" 
       cmd | getline agreps
