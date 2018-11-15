@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Modeling names</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <p>Fork in the road - how much complexity to keep. All of it, at first.</p>
+          <p>[ I’m a Cartographer! Map name reality to a data model. (nature is first mapped to name realirt!) ]</p>
+          <p>Engine? GraphDB (gremlin… ugh, new complex). Go with RDF - I know it. Allegrograph? Yes.. ttl, … or PROLOG+RDF = (?) ?</p>
+          <p>But may also be able to do it in SQL, with recursion?</p>
+          <h1 id="model-query-reasoning">Model, query, reasoning…</h1>
+          <p>resaoing via custom logical queries? or a reasoner, or PROLOG!?</p>
+          <h1 id="recursion">Recursion…</h1>
+          <p>Not poss in sparql See refs (Bookmarked)</p>
+          <p>could do property paths in SPARQL1.1, but would need to model ortho properties as :Rel1 { :Name1 :ortho :Name2 } Rel1 :prop “something” Need named graphs and GRAPH in SPARQL. All Fine in Allegrograph</p>
+          <p>Recursion is poss in MariaDB</p>
+          <p>But prolog? Obviously… but… need to learn properly</p>
+          <p>Again back to mariaDB</p>
+          <h1 id="matching">Matching</h1>
+          <p>More detail and rules than GNR.</p>
+          <p>All mappings are recorded (name in, name mapped to, when, how, by who) so all choices can be examined and possibly rejected later.</p>
+          <p>A majority of matches can be made automatically:</p>
+          <ul>
+          <li><code>if</code> “Exact string match” <code>then</code> “auto” status <code>exact</code></li>
+          <li><code>else if</code> “De-punctuation match” (remove spaces, periods; collapse accents, etc. to ASCII; lowercase) <code>then</code> “auto” status <code>depunct</code></li>
+          <li><code>else if</code> The name is missing the basionym (e.g., <em>Cardaminopsis umbrosa</em> Czerep. vs. <em>Cardaminopsis umbrosa</em> (Turcz.) Czerep.) <code>then</code> “auto” status <code>depunct_basio</code></li>
+          <li><code>else if</code> The name is missing the <code>ex ...</code> element (e.g., <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel vs. <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel ex D.F.Murray) <code>then</code> “auto” status <code>depunct_ex</code></li>
+          <li><code>else if</code> The name is missing both the basionym and the <code>ex ...</code> element <code>then</code> “auto” status <code>depunct_basio_ex</code></li>
+          <li><code>else if</code> “fuzzy match <em>plus</em> manual choice” status <code>manual</code></li>
+          <li><code>else</code> status <code>no_match</code></li>
+          </ul>
+          <p>The penultimate step requires involves i) matching the de-punctuted query string against a list of depunctuated strings from the reference names. e.g.:</p>
+          <ul>
+          <li><code>carexmediavarstevenii(holm)fernald</code></li>
+          <li><code>carexcapillarissubspfuscidula(vikrecz)alove&amp;dlove</code></li>
+          <li><code>carexpyrenaicasubspmicropoda(camey)hulten</code></li>
+          <li><code>carexfestivavarhaydeniana(olney)wboott</code></li>
+          <li><code>carexrigidasubspbigelowii(torrexschwein)steffen</code></li>
+          <li><code>carexatratavarchalciolepis(holm)kuk</code></li>
+          <li><code>carexcapitatavararctogena(harrysm)hulten</code></li>
+          <li><code>carexcircinatakurtz</code></li>
+          <li><code>carexacutinalhbailey</code></li>
+          </ul>
+          <p>Using <code>agrep</code> (from the <a href="https://laurikari.net/tre/">TRE</a> library). The settings used are <code>agrep -k -3 &quot;querystring&quot; referencelistfile</code>. This means a match is returned when the query string is a substring of the reference string with at most 3 errors (character mis-matches, character insertions or character deletions).</p>
+          <p>require “manual” processing (by hand, or by eye!). The input name is matched against</p>
+          <p>With large lists this can be a time consuming phase, and is prone to errors due to concentration lapses. Some of these decisions might be achieved with clever code, but I haven’t done that yet.</p>
+          <p>The rules we are adopting in accepting a match (as opposed to recording a complete failure of matching) are:</p>
+          <ul>
+          <li>If the author is missing, accept</li>
+          </ul>
+          <p>auct.</p>
+          <p>if Missing basionym then auto_match_basio else if Missing basionym then auto_match_basio else if Missing basionym then auto_match_basio else if Missing basionym then auto_match_basio This is | v</p>
+          </pre>
+          <hr />
+          <div id="disqus_thread">
+          
+          </div>
+          <script>
+          var disqus_config = function () {
+          this.page.url = 'https://alaskaflora.org/pages/blog2.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog2';                  // Edit
+          };(function() {  var d = document, s = d.createElement('script');
+          s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })(); </script>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
