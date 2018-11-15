@@ -16,7 +16,6 @@
       <div class="row">
         <div class="nine columns" style="margin-top: 5%">
           <p>Fork in the road - how much complexity to keep. All of it, at first.</p>
-          <p>[ I’m a Cartographer! Map name reality to a data model. (nature is first mapped to name realirt!) ]</p>
           <p>Engine? GraphDB (gremlin… ugh, new complex). Go with RDF - I know it. Allegrograph? Yes.. ttl, … or PROLOG+RDF = (?) ?</p>
           <p>But may also be able to do it in SQL, with recursion?</p>
           <h1 id="model-query-reasoning">Model, query, reasoning…</h1>
@@ -52,16 +51,25 @@
           <li><code>carexcircinatakurtz</code></li>
           <li><code>carexacutinalhbailey</code></li>
           </ul>
-          <p>Using <code>agrep</code> (from the <a href="https://laurikari.net/tre/">TRE</a> library). The settings used are <code>agrep -k -3 &quot;querystring&quot; referencelistfile</code>. This means a match is returned when the query string is a substring of the reference string with at most 3 errors (character mis-matches, character insertions or character deletions).</p>
-          <p>require “manual” processing (by hand, or by eye!). The input name is matched against</p>
+          <p>Using <code>agrep</code> (from the <a href="https://laurikari.net/tre/">TRE</a> library). The settings used are <code>agrep -k -5 &quot;querystring&quot; referencelistfile</code>. This means a match is returned when the query string is a substring of the reference string with at most 5 errors (character mis-matches, character insertions or character deletions). With an error setting of 5, the query string can be up to 5 characters <em>longer</em> than the reference string; a setting of more than 5 tends to return too many false positives and increases the number of comparisons the operator must examine. We could use the <code>-w</code> option of <code>agrep</code> and not treat the query string as a substring, but this would mean that we would fail to match a query string lacking authors against a reference name with the author (if the author string was more the 5 characters).</p>
+          <p>The matching name, or names, are then presented to the operator for a decision on whether to accept or reject the match. Here the operator must judge the <em>intention</em> or meaning implied by the creator of the query name. Was there an error (spelling, incomplete author citation, “incorrect” author abbreviation)? What would have been the full name if only a partial name was given? Etc. These are our (i.e., Steffi and Cam) working set of rules:</p>
+          <p>Accept a match:</p>
+          <ol type="1">
+          <li>Spelling variations in the query name or author string.</li>
+          <li>If the query name is missing one or more authors seperated by an “&amp;” in the reference string.</li>
+          <li>If the author is missing in the query name, accept the reference name if there is only one. The fuzzy match should present all reference names with authors when queried for a name without an author, so it is likely that every potential name appears in the choice.</li>
+          <li>If the query and reference name differ in “var.” vs. “subsp.” <em>and</em> the author strings are the same.</li>
+          </ol>
+          <p>Reject a match:</p>
+          <ol type="1">
+          <li>When the two author strings are clearly representing non-overlapping (abbreviated) lists of authors.</li>
+          <li>If the query name contains only the basionym author, and the reference name has the basionym author plus the revising author, or vice versa.</li>
+          <li>When the query name is of species rank and the reference name of infraspecific rank, or vice versa.</li>
+          <li>If the query name is followed by “auct.”</li>
+          </ol>
+          <p>Note again: when a manual match is accepted, the matching name is not being accepted as the <em>same</em> as the query name, only that it is judged worth recording as a possible, adjudicated match with a good possibility that it represents the intention of the creator of the query name.</p>
           <p>With large lists this can be a time consuming phase, and is prone to errors due to concentration lapses. Some of these decisions might be achieved with clever code, but I haven’t done that yet.</p>
-          <p>The rules we are adopting in accepting a match (as opposed to recording a complete failure of matching) are:</p>
-          <ul>
-          <li>If the author is missing, accept</li>
-          </ul>
-          <p>auct.</p>
-          <p>if Missing basionym then auto_match_basio else if Missing basionym then auto_match_basio else if Missing basionym then auto_match_basio else if Missing basionym then auto_match_basio This is | v</p>
-          </pre>
+          <p>IPNI &gt; FNA &gt; TROP &gt; WCSP</p>
           <hr />
           <div id="disqus_thread">
           
