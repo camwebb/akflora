@@ -293,6 +293,12 @@ gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupp
 # unique codes for each string
 gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$2]=$1} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listA
 
+# problem with auct.
+#.../ALA_checklist> grep ala-1105 ala-names 
+#ala-1105|\N|Gymnocarpium|\N|robertianum|\N|\N|auct.|T
+# grep ala-1105 listA
+#ala-1105||Gymnocarpium||robertianum|auct.||
+
 # unique codes for each string
 gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort | grep "ipni-" > listBipni
 gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort | grep "trop-" > listBtrop

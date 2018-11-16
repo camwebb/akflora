@@ -39,68 +39,9 @@ BEGIN{
     else if (test_pm("basio",   ac)) continue
     else if (test_pm("exin",    ac)) continue
     else if (test_pm("basexin", ac)) continue
-
-    # # Fuzzy match with user input
-    # else if (FUZZY && GL[g[ac]]) {
-    #   # send depunct A name to agrep
-    #   # Note, a genus spelling mismatch will not be found due to
-    #   #   wrong temporary grenus name list
-    #   cmd = "agrep -w -k -" FUZZERR " \"" Agsakey[Acode[i]] \
-    #     "\" " TEMPDIR "/" Ag[Acode[i]] " | sort -k 2"
-    #   agreps = ""
-    #   RS = "\x04" 
-    #   cmd | getline agreps
-    #   close(cmd)
-    #   RS = "\n" # needed for interactive input
-    #   gsub(/\n$/,"", agreps) # to remove 'default' newline
-
-    #   # If there was an agrep match, list match(s)
-    #   if (length(agreps)) {
-    #     na = split(agreps, a, "\n")
-    #     print "---------------------------------------" \
-    #       "-----------------------------------------"
-    #     printf "    %s\n", Aname[Acode[i]],    \
-    #       Acode[i]
-    #     for (j = 1; j <= na; j++) {
-    #       split(a[j],b," ")
-    #       printf "%2d: %s\n", j, Bname[Bkey0Code[b[2]]], b[1]
-    #       code_of_j[j] = b[1]
-    #     }
-    #     # Begin user input
-    #     while(1) {
-    #       r = ""
-    #       printf "  > "
-    #       getline r < "-"
-          
-    #       if (r == "q") {
-    #         print "Halting... " i-1 " lines of " Afile " processed" 
-    #         clean_exit(0)
-    #       }
-    #       else if (r == "n") {
-    #         no_match(i)
-    #         break
-    #       }
-    #       # See the codes being compared
-    #       else if (r == "c") {
-    #         printf "    %20s vs. %-20s\n", Acode[i] , code_of_j[1]
-    #         for (j = 2; j <= na; j++)
-    #           printf "    %20s vs. %-20s\n", "", code_of_j[j]
-    #       }
-    #       # on getting a number for the correct match
-    #       else if (code_of_j[r]) {
-    #         print Acode[i] , code_of_j[r],   \
-    #           "manual" , Aname[Acode[i]],                      \
-    #           Bname[code_of_j[r]]                                     \
-    #           >> OUTFILE
-    #         close(OUTFILE)
-    #         break
-    #       }
-    #       else printf "(try again... q = abort, n = no match, 1-9+ = pick)\n"
-    #     }
-    #     delete a ; delete b ; delete code_of_j
-    #   }
-    #   else no_match(i)
-    # }
+    else if (test_pm("basexin", ac)) continue
+    else if (Auct[ac]) no_match(ac)
+    else if (FUZZY && GL[G[ac]]) fuzzy(ac, line)
     else no_match(ac)
   }
 
@@ -185,6 +126,8 @@ function read_data(filename,     i, nameN, namex) {
     # depunct with basio and 'ex' or 'in' removed
     apply_regex(filename, $I_code, namex, $I_a, "basexin", \
                 "(^\\([^)]+\\)|\\ (ex|in)\\ .*$)")
+    # auct?
+    if ($I_a ~ /^auct\.?$/) Auct[$I_code] = 1
     # genus list
     G[$I_code] = $I_g
   }
@@ -244,11 +187,15 @@ function apply_regex(AB, code, name, auth, method, regex) {
   gsub(regex, "", auth)
   X[AB, method, code] = depunct(name auth)
   XC[AB, method, X[AB, method, code]] = code
-  if (++XN[AB, method, X[AB, method, code]] > 1)
+  # check for possible duplicate keys. The used match will be the first one
+  if (++XN[AB, method, X[AB, method, code]] > 1) {
     print "Warning: " code  \
         " has duplicate " method " form:\n           "  X[AB, method, code]
+    for (i in CodeN)
+      if ((X[AB, method, i] == X[AB, method, code]) && (i != code))
+        print "   with: " i 
+  }
 }
-
 
 function cleanspaces(x) {
   # X is an external variable
@@ -269,4 +216,63 @@ function clean_exit(status) {
   exit status
 }
 
+function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
+  
+  # send depunct A name to agrep
+  # Note, a genus spelling mismatch will not be found due to
+  #   wrong temporary genus name list
+  cmd = "agrep -w -k -" FUZZERR " \"" X[Afile, "punct", code] "\" " \
+    TEMPDIR "/" G[code] " | sort -k 2"
+  agreps = ""
+  RS = "\x04" 
+  cmd | getline agreps
+  close(cmd)
+  RS = "\n" # needed for interactive input
+  gsub(/\n$/,"", agreps) # to remove 'default' newline
 
+  # If there was an agrep match, list match(s)
+  if (length(agreps)) {
+    na = split(agreps, a, "\n")
+    printf "---------------------------------------"     \
+      "-----------------------------(%4d/%4d)\n", lineno, Lines[Afile]
+    printf "    %s\n", X[Afile, "exact", code]
+    for (j = 1; j <= na; j++) {
+      split(a[j],b," ")
+      printf "%2d: %s\n", j, X[Bfile, "exact", XC[Bfile,"punct", b[2]]]
+      code_of_j[j] = b[1]
+    }
+    # Begin user input
+    while(1) {
+      r = ""
+      printf "  > "
+      getline r < "-"
+      
+      if (r == "q") {
+        print "Halting... " lineno -1 " lines of '" Afile "' processed" 
+        clean_exit(0)
+      }
+      else if (r == "e") {
+        no_match(code)
+        break
+      }
+      # See the codes being compared
+      else if (r == "c") {
+        printf "    %20s vs. %-20s\n", code , code_of_j[1]
+        for (j = 2; j <= na; j++)
+          printf "    %20s vs. %-20s\n", "", code_of_j[j]
+      }
+      # on getting a number for the correct match
+      else if (code_of_j[r]) {
+        print code , code_of_j[r], "manual" , Data[ code ], \
+          Data[code_of_j[r]]                                \
+          >> OUTFILE
+        close(OUTFILE)
+        break
+      }
+      else printf "(try again... q = abort, e = no match, c = codes; " \
+             "1-9+ = pick)\n"
+    }
+    delete a ; delete b ; delete code_of_j
+  }
+  else no_match(code)
+}
