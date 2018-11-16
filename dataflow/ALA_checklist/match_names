@@ -31,76 +31,109 @@ BEGIN{
   for (arg = 1; arg < ARGC; arg++) {
     if      (ARGV[arg] == "-a") A_infile = ARGV[arg+1]
     else if (ARGV[arg] == "-b") B_infile = ARGV[arg+1]
-    else if (ARGV[arg] == "-n") BASENAME = ARGV[arg+1]
-    else if (ARGV[arg] == "--fuzzy") FUZZY = 1
-    else if (ARGV[arg] == "-f") FUZZERR = ARGV[arg+1]
+    else if (ARGV[arg] == "-o") OUTFILE  = ARGV[arg+1]
+    else if (ARGV[arg] == "-f") FUZZY    = 1
+    else if (ARGV[arg] == "-e") FUZZERR  = ARGV[arg+1]
   }
-  if (!A_infile || !B_infile || !BASENAME || ARGC == 1) {
-    print "usage:    match_names -a names_query_file -b " \
-      "match_in_file -n outfile_basename [--fuzzy [-f fuzz_error]]"
+  if (!A_infile || !B_infile || !OUTFILE || ARGC == 1) {
+    print "usage:    match_names -a query_names_file -b " \
+      "ref_names_file -n outfile [-f [-e fuzz_error]]"
     exit 1
   }
 
   ## Delete existing files
-  system("rm -f " BASENAME "_match")
+  system("rm -f " OUTFILE)
   
   ## Read data and basic checking for uniqueness
   read_data()
 
   ## Main loop though the lines of input file A
+
+  #  Algorithm choice: either i) pre-prepare the various keys, or ii) compare
+  #   with every possible modified (key-form) B for each line of A.
+  #   (i) is way faster, (ii) cleaner, more flexible, but too slow to be usable
+
   for (i = 1; i <= Alines ; i++) {
+
     # 1. Exact match
-    if (BgsaStrCode[AgsaStr[AorderedCode[i]]]) {
-      print AorderedCode[i] , BgsaStrCode[AgsaStr[AorderedCode[i]]],    \
-        "gsa_exact" , Adata[AorderedCode[i]],                         \
-        Bdata[BgsaStrCode[AgsaStr[AorderedCode[i]]]]                  \
-        >> BASENAME "_match"
-      close(BASENAME "_match")
+    if (BnameCode[Aname[Acode[i]]]) {
+      print Acode[i] , BnameCode[Aname[Acode[i]]], "exact" , \
+        Adata[Acode[i]], Bdata[BnameCode[Aname[Acode[i]]]] >> OUTFILE
+      close(OUTFILE)
     }
     
     # 2. Variant punctuation match (case, ascii, space, period... depunct())
     #    ... may not be unique in B; warning given when reading data
-    else if (BgsakeyCode[Agsakey[AorderedCode[i]]]) {
-      print AorderedCode[i] , BgsakeyCode[Agsakey[AorderedCode[i]]],    \
-        "gsa_depunct" , Adata[AorderedCode[i]],                       \
-        Bdata[BgsakeyCode[Agsakey[AorderedCode[i]]]]                  \
-        >> BASENAME "_match"
-      close(BASENAME "_match")
+    else if (Bkey0Code[Agsakey[Acode[i]]]) {
+      print Acode[i] , Bkey0Code[Agsakey[Acode[i]]],    \
+        "gsa_depunct" , Adata[Acode[i]],                       \
+        Bdata[Bkey0Code[Agsakey[Acode[i]]]]                  \
+        >> OUTFILE
+      close(OUTFILE)
     }
     
-    # 3. Variant punctuation match and missing basionym
-    else if (BgsaBkeyCode[Agsakey[AorderedCode[i]]]) {
-      print AorderedCode[i] , BgsaBkeyCode[Agsakey[AorderedCode[i]]],   \
-        "gsa_basio" , Adata[AorderedCode[i]],                         \
-        Bdata[BgsaBkeyCode[Agsakey[AorderedCode[i]]]]                 \
-        >> BASENAME "_match"
-      close(BASENAME "_match")
+    # 3a. Variant punctuation match and missing basionym  
+    else if (Bkey1Code[Agsakey[Acode[i]]]) {
+      print Acode[i] , Bkey1Code[Agsakey[Acode[i]]],   \
+        "gsa_basio-" , Adata[Acode[i]],                         \
+        Bdata[Bkey1Code[Agsakey[Acode[i]]]]                 \
+        >> OUTFILE
+      close(OUTFILE)
+    }
+    
+    # 3b. Variant punctuation match and missing basionym  
+    else if (Bkey0Code[AgsaBkey[Acode[i]]]) { 
+      print Acode[i] , Bkey0Code[AgsaBkey[Acode[i]]],   \
+        "gsa_basio+" , Adata[Acode[i]],                         \
+        Bdata[Bkey0Code[AgsaBkey[Acode[i]]]]                 \
+        >> OUTFILE
+      close(OUTFILE)
     }
 
-    # 4. Variant punctuation match and missing 'ex'
-    else if (BgsaEkeyCode[Agsakey[AorderedCode[i]]]) {
-      print AorderedCode[i] , BgsaEkeyCode[Agsakey[AorderedCode[i]]],   \
-        "gsa_ex" , Adata[AorderedCode[i]],                            \
-        Bdata[BgsaEkeyCode[Agsakey[AorderedCode[i]]]]                 \
-        >> BASENAME "_match"
-      close(BASENAME "_match")
+    # 4a. Variant punctuation match and missing 'ex/in'
+    else if (Bkey2Code[Agsakey[Acode[i]]]) {
+      print Acode[i] , Bkey2Code[Agsakey[Acode[i]]],   \
+        "gsa_ex-" , Adata[Acode[i]],                            \
+        Bdata[Bkey2Code[Agsakey[Acode[i]]]]                 \
+        >> OUTFILE
+      close(OUTFILE)
     }
-    # 5. Variant punctuation match and missing basionym and missing 'ex'
-    else if (BgsaBEkeyCode[Agsakey[AorderedCode[i]]]) {
-      print AorderedCode[i] , BgsaBEkeyCode[Agsakey[AorderedCode[i]]],   \
-        "gsa_bas_ex" , Adata[AorderedCode[i]],                         \
-        Bdata[BgsaBEkeyCode[Agsakey[AorderedCode[i]]]]                 \
-        >> BASENAME "_match"
-      close(BASENAME "_match")
+    # 4b. Variant punctuation match and missing 'ex/in'
+    else if (Bkey0Code[AgsaEkey[Acode[i]]]) {
+      print Acode[i] , Bkey0Code[AgsaEkey[Acode[i]]], \
+        "gsa_ex+" , Adata[Acode[i]],                            \
+        Bdata[Bkey0Code[AgsaEkey[Acode[i]]]]                 \
+        >> OUTFILE
+      close(OUTFILE)
     }
 
+    # 5a. Variant punctuation match and missing basionym and missing 'ex/in'
+    else if (Bkey3Code[Agsakey[Acode[i]]]) {
+      print Acode[i] , Bkey3Code[Agsakey[Acode[i]]],   \
+        "gsa_bas_ex-" , Adata[Acode[i]],                         \
+        Bdata[Bkey3Code[Agsakey[Acode[i]]]]                 \
+        >> OUTFILE
+      close(OUTFILE)
+    }
+    # 5. Variant punctuation match and missing basionym and missing 'ex/in'
+    else if (Bkey0Code[AgsaBEkey[Acode[i]]]) {
+      print Acode[i] , Bkey0Code[AgsaBEkey[Acode[i]]],   \
+        "gsa_bas_ex+" , Adata[Acode[i]],                         \
+        Bdata[Bkey0Code[AgsaBEkey[Acode[i]]]]                 \
+        >> OUTFILE
+      close(OUTFILE)
+    }
+    # TODO: combine 3,4,5 and add a `in XXX` as well. No need to seperate them out
+
+
+    
     # 6. Fuzzy match with user input
-    else if (FUZZY && BgN[Ag[AorderedCode[i]]]) {
+    else if (FUZZY && BgN[Ag[Acode[i]]]) {
       # send depunct A name to agrep
       # Note, a genus spelling mismatch will not be found due to
       #   wrong temporary grenus name list
-      cmd = "agrep -k -" FUZZERR " \"" Agsakey[AorderedCode[i]] \
-        "\" " TEMPDIR "/" Ag[AorderedCode[i]] " | sort -k 2"
+      cmd = "agrep -w -k -" FUZZERR " \"" Agsakey[Acode[i]] \
+        "\" " TEMPDIR "/" Ag[Acode[i]] " | sort -k 2"
       agreps = ""
       RS = "\x04" 
       cmd | getline agreps
@@ -113,11 +146,11 @@ BEGIN{
         na = split(agreps, a, "\n")
         print "---------------------------------------" \
           "-----------------------------------------"
-        printf "    %s\n", AgsaStr[AorderedCode[i]],    \
-          AorderedCode[i]
+        printf "    %s\n", Aname[Acode[i]],    \
+          Acode[i]
         for (j = 1; j <= na; j++) {
           split(a[j],b," ")
-          printf "%2d: %s\n", j, BgsaStr[BgsakeyCode[b[2]]], b[1]
+          printf "%2d: %s\n", j, Bname[Bkey0Code[b[2]]], b[1]
           code_of_j[j] = b[1]
         }
         # Begin user input
@@ -136,17 +169,17 @@ BEGIN{
           }
           # See the codes being compared
           else if (r == "c") {
-            printf "    %20s vs. %-20s\n", AorderedCode[i] , code_of_j[1]
+            printf "    %20s vs. %-20s\n", Acode[i] , code_of_j[1]
             for (j = 2; j <= na; j++)
               printf "    %20s vs. %-20s\n", "", code_of_j[j]
           }
           # on getting a number for the correct match
           else if (code_of_j[r]) {
-            print AorderedCode[i] , code_of_j[r],   \
-              "manual" , AgsaStr[AorderedCode[i]],                      \
-              BgsaStr[code_of_j[r]]                                     \
-              >> BASENAME "_match"
-            close(BASENAME "_match")
+            print Acode[i] , code_of_j[r],   \
+              "manual" , Aname[Acode[i]],                      \
+              Bname[code_of_j[r]]                                     \
+              >> OUTFILE
+            close(OUTFILE)
             break
           }
           else printf "(try again... q = abort, n = no match, 1-9+ = pick)\n"
@@ -157,16 +190,13 @@ BEGIN{
     }
     else no_match(i)
   }
-  
+    
   clean_exit(1)
 }
 
-function read_data(    i, BcodeN, BgsaStrN, BgsakeyN, AcodeN, AgsaStrN, \
-                       AgsakeyN, cmd) {
-  # I played with collapsing 'Aabc[' to 'abc[1][' but while it would
-  # have allowed some saving of code (e.g., in this reading in phase)
-  # it was much harder to work with
-
+function read_data(    i, BcodeN, BnameN, Bkey0N, Bkey1N, Bkey2N, Bkey3N, AcodeN, AgsaStrN, \
+                       AgsakeyN, cmd, namex) {
+  
   RS = "\n"
   ## B list first
   
@@ -184,38 +214,52 @@ function read_data(    i, BcodeN, BgsaStrN, BgsakeyN, AcodeN, AgsaStrN, \
 
     # For output and loading into DB
     Bdata[$B_code] = $B_xg OFS $B_g   OFS $B_xs OFS $B_s OFS    \
-                       $B_st OFS $B_ssp OFS $B_a # var needed?
+                     $B_st OFS $B_ssp OFS $B_a
 
     # string for manual string matching
-    BgsaStr[$B_code] = cleanspaces($B_xg " " $B_g " " $B_xs " "     \
-                           $B_s " " $B_st " " $B_ssp " " $B_a)
-    # Reverse: name -> code
-    BgsaStrCode[BgsaStr[$B_code]] = $B_code
+    Bname[$B_code] = cleanspaces($B_xg " " $B_g " " $B_xs " "     \
+                     $B_s " " $B_st " " $B_ssp " " $B_a)
+    BnameCode[Bname[$B_code]] = $B_code
     # Check for duplicate name
-    if (++BgsaStrN[BgsaStr[$B_code]] > 1) {
-      print "B name '" BgsaStr[$B_code] "' is a duplicate..."
+    if (++BnameN[Bname[$B_code]] > 1) {
+      print "B name '" Bname[$B_code] "' is a duplicate..."
       exit 1
     }
-    # de_punct keys:
-    Bgsakey[$B_code] = depunct($B_xg $B_g $B_xs $B_s    \
-                      $B_st $B_ssp $B_a)
-    if (++BgsakeyN[Bgsakey[$B_code]] > 1)
+    
+    ## Keys:
+    namex = B_xg $B_g $B_xs $B_s $B_st $B_ssp
+
+    # Key 0 : plain depunct
+    Bkey0[$B_code] = depunct(namex $B_a)
+    Bkey0Code[Bkey0[$B_code]] = $B_code;  # may not be not unique, care!
+    if (++Bkey0N[Bkey0[$B_code]] > 1)
       print "Warning: " $B_code " has duplicate depunct form: \n           " \
-        Bgsakey[$B_code]
-    BgsakeyCode[Bgsakey[$B_code]] = $B_code;  # may not be not unique, care!
-    # same again, with Basionym removed
-    BgsaBkey[$B_code] = depunct($B_xg $B_g $B_xs $B_s                   \
-                                $B_st $B_ssp gensub(/\([^)]+\)/,"","G",$B_a))
-    BgsaBkeyCode[BgsaBkey[$B_code]] = $B_code;  # may not be not unique, care
-    # same again, with 'ex' removed
-    BgsaEkey[$B_code] = depunct($B_xg $B_g $B_xs $B_s                   \
-                                $B_st $B_ssp gensub(/\ ex\ .*$/,"","G",$B_a))
-    BgsaEkeyCode[BgsaEkey[$B_code]] = $B_code;  # may not be not unique, care
-    # same again, with basionym and 'ex' removed
-    BgsaBEkey[$B_code] = \
-      depunct($B_xg $B_g $B_xs $B_s $B_st $B_ssp \
-              gensub(/\ ex\ .*$/,"","G", gensub(/\([^)]+\)/,"","G",$B_a)))
-    BgsaBEkeyCode[BgsaBEkey[$B_code]] = $B_code;  # may not be not unique, care
+        Bkey0[$B_code]
+
+    # Key 1: depunct, with basionym removed
+    Bkey1[$B_code] = depunct(namex gensub(/^\([^)]+\)/,"","G",$B_a))
+    Bkey1Code[Bkey1[$B_code]] = $B_code
+    if (++Bkey1N[Bkey1[$B_code]] > 1)
+      print "Warning: " $B_code                                         \
+        " has duplicate depunct basio form:\n           "  Bkey1[$B_code]
+
+    # Key 2: same again, with 'ex' or 'in' removed
+    Bkey2[$B_code] = depunct(namex gensub(/\ (ex|in)\ .*$/,"","G", $B_a))
+    Bkey2Code[Bkey2[$B_code]] = $B_code
+    if (++Bkey2N[Bkey2[$B_code]] > 1)
+      print "Warning: " $B_code \
+        " has duplicate depunct ex form:\n           "  Bkey2[$B_code]
+
+    # same again, with basionym and 'ex/in' removed
+    Bkey3[$B_code] = depunct(namex \
+      gensub(/(^\([^)]+\)|\ (ex|in)\ .*$)/,"","G", $B_a))
+    #  echo "(Monte. and FR.) J.J.Jones & Spare ex Hult. in Stone" |
+    #    gawk '{gsub(/(^\([^)]+\)|\ (ex|in)\ .*$)/,"", $0); print $0}'
+    Bkey3Code[Bkey3[$B_code]] = $B_code;  # may not be not unique, care
+    if (++Bkey3N[Bkey3[$B_code]] > 1)
+      print "Warning: " $B_code                                         \
+        " has duplicate depunct basio ex form:\n           "  Bkey3[$B_code]
+
     # genus list
     Bg[$B_code] = $B_g
   }
@@ -232,25 +276,46 @@ function read_data(    i, BcodeN, BgsaStrN, BgsakeyN, AcodeN, AgsaStrN, \
       exit 1
     }
     # main linenumber -> code array
-    AorderedCode[++Alines] = $A_code
+    Acode[++Alines] = $A_code
     # data for output
     Adata[$A_code]   = $A_xg OFS $A_g OFS $A_xs OFS $A_s OFS    \
                            $A_st OFS $A_ssp OFS $A_a
     # string for manual string matching
-    AgsaStr[$A_code] = cleanspaces($A_xg " " $A_g " " $A_xs " " $A_s " " \
+    Aname[$A_code] = cleanspaces($A_xg " " $A_g " " $A_xs " " $A_s " " \
                                    $A_st " " $A_ssp " " $A_a)
     # test for duplicate code
-    if (++AgsaStrN[AgsaStr[$A_code]] > 1) {
-      print "A code '" $A_code "' name '" AgsaStr[$A_code] \
+    if (++AgsaStrN[Aname[$A_code]] > 1) {
+      print "A code '" $A_code "' name '" Aname[$A_code] \
         "' is a duplicate..."
       exit 1
     }
-    # Depuncted key
+    # Depuncted keys
     Agsakey[$A_code] = depunct($A_xg $A_g $A_xs $A_s    \
                                   $A_st $A_ssp $A_a)
     if (++AgsakeyN[Agsakey[$A_code]] > 1)
       print "Warning: " $A_code " has duplicate depunct form:\n           "\
         Agsakey[$A_code]
+
+    AgsaBkey[$A_code] = depunct($A_xg $A_g $A_xs $A_s                   \
+                                $A_st $A_ssp gensub(/^\([^)]+\)/,"","G",$A_a))
+    if (++AgsaBkeyN[AgsaBkey[$A_code]] > 1)
+      print "Warning: " $A_code \
+        " has duplicate depunct basio form:\n           "  AgsaBkey[$A_code]
+
+    AgsaEkey[$A_code] = depunct($A_xg $A_g $A_xs $A_s                   \
+                                $A_st $A_ssp gensub(/\ (ex|in)\ .*$/,"","G",$A_a))
+    if (++AgsaEkeyN[AgsaEkey[$A_code]] > 1)
+      print "Warning: " $A_code \
+        " has duplicate depunct ex form:\n           "  AgsaEkey[$A_code]
+
+    AgsaBEkey[$A_code] =                         \
+      depunct($A_xg $A_g $A_xs $A_s $A_st $A_ssp \
+              gensub(/\ (ex|in)\ .*$/,"","G", gensub(/^\([^)]+\)/,"","G",$A_a)))
+    AgsaBEkeyCode[AgsaBEkey[$A_code]] = $A_code;  # may not be not unique, care
+    if (++AgsaBEkeyN[AgsaBEkey[$A_code]] > 1)
+      print "Warning: " $A_code \
+        " has duplicate depunct basio ex form:\n           "  AgsaBEkey[$A_code]
+
     # genus list
     Ag[$A_code] = $A_g
   }
@@ -260,7 +325,7 @@ function read_data(    i, BcodeN, BgsaStrN, BgsakeyN, AcodeN, AgsaStrN, \
     cmd = "mktemp -d"
     cmd | getline TEMPDIR
     for (i in Bdata) {
-      print i " " Bgsakey[i]  >> TEMPDIR "/" Bg[i]
+      print i " " Bkey0[i]  >> TEMPDIR "/" Bg[i]
       close(TEMPDIR "/" Bg[i])
       BgN[Bg[i]]++;
     }
@@ -276,14 +341,14 @@ function cleanspaces(x) {
 }
 
 function no_match(x) {
-  print AorderedCode[x] "||no_match|" AgsaStr[AorderedCode[x]] "|||||||||||||" \
-        >> BASENAME "_match"
-  close(BASENAME "_match")
+  print Acode[x] "||no_match|" Aname[Acode[x]] "|||||||||||||" \
+        >> OUTFILE
+  close(OUTFILE)
 }
 
 function clean_exit(status) {
-  system("rm -rf TEMPDIR")
+  system("rm -rf "TEMPDIR)
   exit status
 }
 
-
+function remove_basionym

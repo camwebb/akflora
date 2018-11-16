@@ -1,6 +1,5 @@
 
 function depunct(x) {
-  gsub (/\ and\ /," \\& ", x);
   # See here for data: 
   # https://code.activestate.com/recipes/251871-latin1-to-ascii-the-
   #   unicode-hammer/
@@ -27,13 +26,20 @@ function depunct(x) {
   gsub(/[èéêë]/,"e", x);
   gsub(/[Æ]/,"Ae", x);
   gsub(/[Ý]/,"Y", x);
-  # delete spaces and periods:
-  gsub(/[ .]/,"", x)
-  # delete double quote
-  gsub(/"/,"", x)
+
+  # for using "agrep -w" there can only be alphanumerics and underscore
+  # the only key non-punct characters to maintain are "()"
+  gsub (/[()]/,"_",x)
+  # and "&"
+  # [ was: gsub (/\ and\ /," \\& ", x); ]
+  gsub (/(\ and\ |&)/,"_",x)
+  # Now delete spaces and periods, and all other punctuation:
+  gsub(/[^A-Za-z0-9_]/,"", x)
+  # [ was gsub(/[ .]/,"", x) ; gsub(/"/,"", x) ]
+
+  # test
+  if (x ~ /[^A-Za-z0-9_]/) print "Warning: non al-num in x: " x
   
-  # allow missing "×"
-  gsub(/×/,"", x)
   return tolower(x);
 }
 

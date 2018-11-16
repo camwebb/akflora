@@ -79,7 +79,7 @@ decision on whether to accept or reject the match. Here the operator
 must judge the _intention_ or meaning implied by the creator of the
 query name. Was there an error (spelling, incomplete author citation,
 “incorrect” author abbreviation)? What would have been the full name
-if only a partial name was given? Etc. These are our (i.e., Steffi and
+if only a partial name was given? Etc... These are our (i.e., Steffi and
 Cam) working set of rules:
 
 Accept a match:
@@ -88,10 +88,11 @@ Accept a match:
  2. If the query name is missing one or more authors seperated by an
  “&” in the reference string.
  3. If the author is missing in the query name, accept the reference
- name if there is only one. The fuzzy match should present all
- reference names with authors when queried for a name without an
- author, so it is likely that every potential name appears in the
- choice.
+ name if there is only one. (When matching to IPNI or TROPICOS
+ only.) The fuzzy match should present all reference names with
+ authors when queried for a name without an author, so it is likely
+ that every potential name appears in the choice. <!-- could be
+ automated -->
  4. If the query and reference name differ in “var.” vs. “subsp.”
  _and_ the author strings are the same.
 
