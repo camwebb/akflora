@@ -1,46 +1,54 @@
 #!/bin/gawk -f
 
-# Looks for names from list A ("Query set") in list B ("Master set")
-# Matching them at different "quality levels", and optionally doing fuzzy
-# matching using agrep
+# Looks for taxonomic names from list A ("Query set") in list B
+# ("Reference set") matching them at different "quality levels", and
+# optionally doing fuzzy matching using agrep
 
 # (c) Cam Webb, 2018
 # Licence: Public Domain (Via: https://unlicense.org/)
 
 ## Dependencies:
 # 1. GNU gawk v.4+
-# 2. Set $AWKPATH to find function libraries (depunct.awk)
-# 3. agrep (https://laurikari.net/tre/)
+# 2. agrep (https://laurikari.net/tre/) to use fuzzy matching (-f option)
 
 ## Conventions:
-# Variables shared among functions and main begin with Capital letters
-
-@include "depunct.awk"
+# Variables shared among functions and main BEGIN{} start with Capital letters
 
 BEGIN{
   config()
   read_args()
   
-  ## Read reference names
-  read_data(Bfile)
+  # Read reference names
+  read_data(Bfn)
 
   # make sublists, for agrep
-  if (FUZZY) make_agrep_lists(Bfile)
+  if (FUZZY) make_agrep_lists(Bfn)
 
-  ## Read query names
-  read_data(Afile)
+  # Read query names
+  read_data(Afn)
 
-  ## Main loop though the lines of input file A
-  for (line = 1; line <= Lines[Afile]; line++) {
-    ac = C[Afile, line]
-    
+  # Main loop though the lines of input file A
+  for (line = 1; line <= Lines[Afn]; line++) {
+    # ac is the given code associated with a name 
+    ac = C[Afn, line]
+
+    # test for exact string match:
     if      (test_eq("exact",   ac)) continue
+    # test for exact non-punctuation character match:
     else if (test_eq("punct",   ac)) continue
+    # if no author in A and only one author in B, make this default match:
     else if (NA[ac] && NOAUTH && (test_na(ac))) continue
+    # start on author variations, first a missing basionym:
     else if (test_pm("basio",   ac)) continue
+    # diff basionyms, ok:
+    else if (test_eq("basio",   ac)) continue
+    # a missing 'ex ...' or 'in ...':
     else if (test_pm("exin",    ac)) continue
+    # both missing basionym or ex/in:
     else if (test_pm("basexin", ac)) continue
+    # reject a match when A is 'auct.':
     else if (Auct[ac]) no_match(ac)
+    # fuzzy matching and manual checking:
     else if (FUZZY && GL[G[ac]]) fuzzy(ac, line)
     else no_match(ac)
   }
@@ -49,7 +57,6 @@ BEGIN{
 }
 
 function config() {
-  ## Config
   FS = "|"
   OFS= "|"
   PROCINFO["sorted_in"] =  "@ind_str_asc"
@@ -61,36 +68,36 @@ function config() {
 }
 
 function read_args(    arg) {
-  ## Read arguments and fail-to usage 
+  # Read arguments, check, give usage
+  # Note: add -d or -L as first option to do gawk dump or lint
   for (arg = 1; arg < ARGC; arg++) {
-    if      (ARGV[arg] == "-a") Afile = ARGV[arg+1]
-    else if (ARGV[arg] == "-b") Bfile = ARGV[arg+1]
+    if      (ARGV[arg] == "-a") Afn = ARGV[arg+1]
+    else if (ARGV[arg] == "-b") Bfn = ARGV[arg+1]
     else if (ARGV[arg] == "-o") OUTFILE  = ARGV[arg+1]
     else if (ARGV[arg] == "-f") FUZZY    = 1
     else if (ARGV[arg] == "-e") FUZZERR  = ARGV[arg+1]
     else if (ARGV[arg] == "-1") NOAUTH  = 1
   }
-  if (!Afile || !Bfile || !OUTFILE || ARGC == 1) {
+  if (!Afn || !Bfn || !OUTFILE || ARGC == 1) {
     print "usage:    match_names -a query_names_file -b " \
-      "ref_names_file -n outfile [-f [-e fuzz_error]]"
+      "ref_names_file -n outfile\n            [ -f [ -e fuzz_error ]] [ -1 ]"
     exit 1
   }
 
-  ## Delete existing OUTFILE
+  # Delete existing OUTFILE
   system("rm -f " OUTFILE)
 }
-
 
 function read_data(filename,     i, nameN, namex) {
   
   while ((getline < filename) > 0) {
-    # clean Data of spaces and NULL symbols
+    # clean fields of spaces and NULL symbols
     for (i = 1; i <= NF; i++) {
       gsub(/^(NULL|\\N)$/,"",$i)
       $i = cleanspaces($i)
     }
 
-    # lines
+    # line# to code:
     C[filename, ++Lines[filename]] = $I_code
     
     # check for duplicate code
@@ -99,7 +106,7 @@ function read_data(filename,     i, nameN, namex) {
       exit 1
     }
 
-    # For output and loading into DB
+    # For strucutred output
     Data[$I_code] = $I_xg OFS $I_g OFS $I_xs OFS $I_s OFS \
       $I_st OFS $I_ssp OFS $I_a
     
@@ -114,12 +121,11 @@ function read_data(filename,     i, nameN, namex) {
       exit 1
     }
     
-    ## Keys:
     namex = $I_xg $I_g $I_xs $I_s $I_st $I_ssp
 
     # NB: using computed regex here, less efficient, but tidier code
     # plain depunct
-    apply_regex(filename, $I_code, namex, $I_a, "punct", "") ;
+    apply_regex(filename, $I_code, namex, $I_a, "punct", "")
 
     # plain depunct no author
     if (!$I_a) NA[$I_code] = 1
@@ -127,9 +133,9 @@ function read_data(filename,     i, nameN, namex) {
     XNA[filename, X[filename, "noauth", $I_code]]++
 
     # depunct, with basionym removed
-    apply_regex(filename, $I_code, namex, $I_a, "basio", "^\\([^)]+\\)") ;
+    apply_regex(filename, $I_code, namex, $I_a, "basio", "^\\([^)]+\\)")
     # depunct with 'ex' or 'in' removed
-    apply_regex(filename, $I_code, namex, $I_a, "exin", "\\ (ex|in)\\ .*$") ;
+    apply_regex(filename, $I_code, namex, $I_a, "exin", "\\ (ex|in)\\ .*$")
     # depunct with basio and 'ex' or 'in' removed
     apply_regex(filename, $I_code, namex, $I_a, "basexin", \
                 "(^\\([^)]+\\)|\\ (ex|in)\\ .*$)")
@@ -138,17 +144,18 @@ function read_data(filename,     i, nameN, namex) {
     # genus list
     G[$I_code] = $I_g
   }
+  close(filename)
 }
 
 function make_agrep_lists(filename,    cmd, i) {
   cmd = "mktemp -d"
   cmd | getline TEMPDIR
-  # only B names, so far:
+  # only B names, so far as called, so CodeN only contains B names
   for (i in CodeN) {
     print i " " X[filename, "punct", i]  >> TEMPDIR "/" G[i]
     close(TEMPDIR "/" G[i])
     # variable to track which genera are in the TEMPDIR:
-    GL[G[i]]++;
+    GL[G[i]]++
   }
 }
 
@@ -156,10 +163,10 @@ function test_eq(method, code,      outmethod) {
   
   outmethod = method == "punct" ? "auto_punct" : method
   # if there is a B code for the A key, using the same method
-  if (XC[Bfile, method, X[Afile, method, code]]) {
-    print code, XC[Bfile, method, X[Afile, method, code]],    \
+  if (XC[Bfn, method, X[Afn, method, code]]) {
+    print code, XC[Bfn, method, X[Afn, method, code]],    \
       outmethod , Data[code] ,                            \
-      Data[XC[Bfile, method, X[Afile, method, code]]] >> OUTFILE
+      Data[XC[Bfn, method, X[Afn, method, code]]] >> OUTFILE
     close(OUTFILE)
     return 1
   }
@@ -168,12 +175,12 @@ function test_eq(method, code,      outmethod) {
 
 function test_na(code) {
 
-  # if there is a B code for the A key, using the same method
-  if ((XC[Bfile, "noauth", X[Afile, "noauth", code]]) && \
-      XNA[Bfile, X[Afile, "noauth", code]] == 1) {
-    print code, XC[Bfile, "noauth", X[Afile, "noauth", code]],  \
-      "noauth" , Data[code] ,                            \
-      Data[XC[Bfile, "noauth", X[Afile, "noauth", code]]] >> OUTFILE
+  # if there is a single B code for the A key
+  if ((XC[Bfn, "noauth", X[Afn, "noauth", code]]) &&        \
+      XNA[Bfn, X[Afn, "noauth", code]] == 1) {
+    print code, XC[Bfn, "noauth", X[Afn, "noauth", code]],  \
+      "noauth" , Data[code] ,                               \
+      Data[XC[Bfn, "noauth", X[Afn, "noauth", code]]] >> OUTFILE
     close(OUTFILE)
     return 1
   }
@@ -182,28 +189,27 @@ function test_na(code) {
 
 function test_pm(method, code) {
 
-  #^ print X[Afile, "punct", code], XC[Bfile, method, X[Afile, "punct", code]]
   # if there is a B code for the collapsed A key
-  if (XC[Bfile, method, X[Afile, "punct", code]]) {
-    print code, XC[Bfile, method, X[Afile, "punct", code]],  \
-      "auto_" method "-" , Data[code] ,                                 \
-      Data[XC[Bfile, method, X[Afile, "punct", code]]] >> OUTFILE
+  if (XC[Bfn, method, X[Afn, "punct", code]]) {
+    print code, XC[Bfn, method, X[Afn, "punct", code]],                \
+      "auto_" method "-" , Data[code] ,                                \
+      Data[XC[Bfn, method, X[Afn, "punct", code]]] >> OUTFILE
     close(OUTFILE)
     return 1
   }
   
-  # if there is a collapse B code for the A key
-  else if (XC[Bfile, "punct", X[Afile, method, code]]) {
-    print code, XC[Bfile, "punct", X[Afile, method, code]],  \
+  # if there is a collapsed B code for the A key
+  else if (XC[Bfn, "punct", X[Afn, method, code]]) {
+    print code, XC[Bfn, "punct", X[Afn, method, code]],            \
       "auto_" method "+" , Data[code] ,                            \
-      Data[XC[Bfile, "punct", X[Afile, method, code]]] >> OUTFILE
+      Data[XC[Bfn, "punct", X[Afn, method, code]]] >> OUTFILE
     close(OUTFILE)
     return 1
   }
   else return 0
 }
 
-function apply_regex(AB, code, name, auth, method, regex) {
+function apply_regex(AB, code, name, auth, method, regex,   i) {
 
   gsub(regex, "", auth)
   X[AB, method, code] = depunct(name auth)
@@ -213,6 +219,7 @@ function apply_regex(AB, code, name, auth, method, regex) {
       (method != "noauth")) {
     print "Warning: " code  \
         " has duplicate " method " form:\n           "  X[AB, method, code]
+    # inefficient, but seldom called
     for (i in CodeN)
       if ((X[AB, method, i] == X[AB, method, code]) && (i != code))
         print "   with: " i 
@@ -243,7 +250,7 @@ function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
   # send depunct A name to agrep
   # Note, a genus spelling mismatch will not be found due to
   #   wrong temporary genus name list
-  cmd = "agrep -w -k -" FUZZERR " \"" X[Afile, "punct", code] "\" " \
+  cmd = "agrep -w -k -" FUZZERR " \"" X[Afn, "punct", code] "\" " \
     TEMPDIR "/" G[code] " | sort -k 2"
   agreps = ""
   RS = "\x04" 
@@ -256,11 +263,11 @@ function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
   if (length(agreps)) {
     na = split(agreps, a, "\n")
     printf "---------------------------------------"     \
-      "-----------------------------(%4d/%4d)\n", lineno, Lines[Afile]
-    printf "    %s\n", X[Afile, "exact", code]
+      "-----------------------------(%4d/%4d)\n", lineno, Lines[Afn]
+    printf "    %s\n", X[Afn, "exact", code]
     for (j = 1; j <= na; j++) {
       split(a[j],b," ")
-      printf "%2d: %s\n", j, X[Bfile, "exact", XC[Bfile,"punct", b[2]]]
+      printf "%2d: %s\n", j, X[Bfn, "exact", XC[Bfn,"punct", b[2]]]
       code_of_j[j] = b[1]
     }
     # Begin user input
@@ -270,7 +277,7 @@ function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
       getline r < "-"
       
       if (r == "q") {
-        print "Halting... " lineno -1 " lines of '" Afile "' processed" 
+        print "Halting... " lineno - 1 " lines of '" Afn "' processed" 
         clean_exit(0)
       }
       else if (r == "e") {
@@ -297,4 +304,50 @@ function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
     delete a ; delete b ; delete code_of_j
   }
   else no_match(code)
+}
+
+function depunct(x) {
+  # the master copy of this library is now here in match_names
+  
+  # See here for data:
+  # https://code.activestate.com/recipes/251871-latin1-to-ascii-the-
+  #   unicode-hammer/
+  # https://stackoverflow.com/questions/1382998/latin-1-to-ascii#1383721
+  gsub(/[ùúûü]/,"u", x)
+  gsub(/[Ñ]/,"N", x)
+  gsub(/[ÀÁÂÃÄÅ]/,"A", x)
+  gsub(/[ìíîï]/,"i", x)
+  gsub(/[ÒÓÔÕÖØ]/,"O", x)
+  gsub(/[Ç]/,"C", x)
+  gsub(/[æ]/,"ae", x)
+  gsub(/[Ð]/,"D", x)
+  gsub(/[ýÿ]/,"y", x)
+  gsub(/[ÈÉÊË]/,"E", x)
+  gsub(/[ñ]/,"n", x)
+  gsub(/[àáâãäå]/,"a", x)
+  gsub(/[òóôõöø]/,"o", x)
+  gsub(/[ß]/,"b", x)
+  gsub(/[ÙÚÛÜ]/,"U", x)
+  gsub(/[Þþ]/,"p", x)
+  gsub(/[çč]/,"c", x)
+  gsub(/[ÌÍÎÏ]/,"I", x)
+  gsub(/[ð]/,"d", x)
+  gsub(/[èéêë]/,"e", x)
+  gsub(/[Æ]/,"Ae", x)
+  gsub(/[Ý]/,"Y", x)
+
+  # for using "agrep -w" there can only be alphanumerics and underscore
+  # the only key non-punct characters to maintain are "()"
+  gsub (/[()]/,"_",x)
+  # and "&"
+  # [ was: gsub (/\ and\ /," \\& ", x); ]
+  gsub (/(\ and\ |&)/,"_",x)
+  # Now delete spaces and periods, and all other punctuation:
+  gsub(/[^A-Za-z0-9_]/,"", x)
+  # [ was gsub(/[ .]/,"", x) ; gsub(/"/,"", x) ]
+
+  # test
+  if (x ~ /[^A-Za-z0-9_]/) print "Warning: non al-num in x: " x
+  
+  return tolower(x)
 }
