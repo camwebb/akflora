@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+then
+    echo "  Usage: redo_match orig_src_list results_so_far redo_list codes"
+    exit 1
+fi
+
+rm -f $3
+
+WC1=`wc $2 | gawk '{print $1}'`
+
+# NB: regexp chars "+*..." need to be escaped, but not "-"
+for code in $4
+do
+    echo Removing results: "'"$code"'"
+    sed -i -E -e "/^$code\|/ d" $2
+    grep -E "^$code\|" $1 >> $3
+done
+
+WC2=`wc $2 | gawk '{print $1}'`
+WC3=`expr $WC1 - $WC2`
+echo "Results file '$2' shrank by $WC3 lines"
+
+WC4=`wc $3 | gawk '{print $1}'`
+echo "Redo file '$3' is $WC4 lines"
+
