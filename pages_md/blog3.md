@@ -1,5 +1,17 @@
 % Modeling names
 
+
+One of the key steps in data modelling - how much detail to keep. With names,
+single table?: GoodName Syn SpellinvariationNotes... But... one of our key goals is to keep all provenance information. So need to keep each name and statments about that name. 
+
+Expands to Network!
+
+(Aside, graph DBs? CioPatra)
+
+But can be done with recursive SQL. 
+
+
+
 Fork in the road - how much complexity to keep. All of it, at first.
 
 Engine?  GraphDB (gremlin... ugh, new complex). Go with RDF - I know

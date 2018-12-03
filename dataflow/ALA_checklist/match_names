@@ -14,6 +14,12 @@
 ## Conventions:
 # Variables shared among functions and main BEGIN{} start with Capital letters
 
+## TODO
+# How to reject (before fuzzy match) when all except the intraspecific
+#   rank is the same? Making a key w/o the rank produces too many duplicates
+
+@load "aregex"
+
 BEGIN{
   config()
   read_args()
@@ -22,7 +28,7 @@ BEGIN{
   read_data(Bfn)
 
   # make sublists, for agrep
-  if (FUZZY) make_agrep_lists(Bfn)
+  # if (FUZZY) make_agrep_lists(Bfn)
 
   # Read query names
   read_data(Afn)
@@ -49,7 +55,7 @@ BEGIN{
     # reject a match when A is 'auct.':
     else if (Auct[ac]) no_match(ac)
     # fuzzy matching and manual checking:
-    else if (FUZZY && GL[G[ac]]) fuzzy(ac, line)
+    else if (FUZZY && GL[Bfn][G[ac]]) fuzzy(ac, line)
     else no_match(ac)
   }
 
@@ -143,8 +149,11 @@ function read_data(filename,     i, nameN, namex) {
                 "(^\\([^)]+\\)|\\ ([eE]x|[iI]n)\\ .*$)")
     # auct?
     if ($I_a ~ /^auct\.?$/) Auct[$I_code] = 1
-    # genus list
+    # # genus list
     G[$I_code] = $I_g
+    # Genus hash tables
+    Gh[filename][$I_g][$I_code] = 1
+    GL[filename][$I_g] = 1
   }
   close(filename)
 }
@@ -247,31 +256,68 @@ function clean_exit(status) {
   exit status
 }
 
-function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
-  
-  # send depunct A name to agrep
-  # Note, a genus spelling mismatch will not be found due to
-  #   wrong temporary genus name list
-  cmd = "agrep -w -k -" FUZZERR " \"" X[Afn, "punct", code] "\" " \
-    TEMPDIR "/" G[code] " | sort -k 2"
-  agreps = ""
-  RS = "\x04" 
-  cmd | getline agreps
-  close(cmd)
-  RS = "\n" # needed for interactive input
-  gsub(/\n$/,"", agreps) # to remove 'default' newline
+function fuzzy(code, lineno,    j, r, found, nfound) {
+  # function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r, found, nfound) {
 
+  # # Agrep method:
+  # # send depunct A name to agrep
+  # # Note, a genus spelling mismatch will not be found due to
+  # #   wrong temporary genus name list
+  # cmd = "agrep -w -k -" FUZZERR " \"" X[Afn, "punct", code] "\" " \
+  #   TEMPDIR "/" G[code] " | sort -k 2"
+  # agreps = ""
+  # RS = "\x04" 
+  # cmd | getline agreps
+  # close(cmd)
+  # RS = "\n" # needed for interactive input
+  # gsub(/\n$/,"", agreps) # to remove 'default' newline
+
+  # amatch() Method:
+  nfound = 0
+  for (i in Gh[Bfn][G[code]]) {
+    if (amatch(X[Bfn, "punct", i], ("^" X[Afn, "punct", code] "$"), FUZZERR))
+      found[++nfound] = i
+  }
+  
   # If there was an agrep match, list match(s)
-  if (length(agreps)) {
-    na = split(agreps, a, "\n")
+  
+  # if (length(agreps)) {
+  #   na = split(agreps, a, "\n")
+  if (nfound) {
+  
+    # catch and remove cases of only one agrep match,
+    #   when only the var and subsp differ (~20% of fuzzy match cases)
+
+    # if (na == 1) {
+    #   split(a[1],b," ")
+    #   if (gensub(/(var|subsp)/, "", "G", b[2]) ==                   \
+    #       gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) {
+    #     no_match(code)
+    #     return 0
+    #   }
+    # }
+
+    if (nfound == 1) {
+      if (gensub(/(var|subsp)/, "", "G", X[Bfn, "punct", found[1]]) ==  \
+          gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) {
+        no_match(code)
+        return 0
+      }
+    }
+    
     printf "------------------------------------"     \
       "------------------- %-10s--(%4d/%4d)\n", code, lineno, Lines[Afn]
     printf "    %s\n", X[Afn, "exact", code]
-    for (j = 1; j <= na; j++) {
-      split(a[j],b," ")
-      printf "%2d: %s\n", j, X[Bfn, "exact", XC[Bfn,"punct", b[2]]]
-      code_of_j[j] = b[1]
-    }
+    
+    # for (j = 1; j <= na; j++) {
+    #   split(a[j],b," ")
+    #   printf "%2d: %s\n", j, X[Bfn, "exact", XC[Bfn,"punct", b[2]]]
+    #   code_of_j[j] = b[1]
+    # }
+
+    for (j = 1; j <= nfound; j++)
+      printf "%2d: %s\n", j, X[Bfn, "exact", found[j]]
+      
     # Begin user input
     while(1) {
       r = ""
@@ -288,24 +334,34 @@ function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r) {
       }
       # See the codes being compared
       else if (r == "c") {
-        printf "    %20s vs. %-20s\n", code , code_of_j[1]
-        for (j = 2; j <= na; j++)
-          printf "    %20s vs. %-20s\n", "", code_of_j[j]
+        printf "    %20s vs. %-20s\n", code , found[1] # code_of_j[1]
+        for (j = 2; j <= nfound; j++)
+          printf "    %20s vs. %-20s\n", "", found[j] # code_of_j[j]
       }
       # on getting a number for the correct match
-      else if (code_of_j[r]) {
-        print code , code_of_j[r], "manual" , Data[ code ], \
-          Data[code_of_j[r]]                                \
-          >> OUTFILE
+      # else if (code_of_j[r]) {
+      #   print code , code_of_j[r], "manual" , Data[ code ], \
+      #     Data[code_of_j[r]]                                \
+      #     >> OUTFILE
+      #   close(OUTFILE)
+      #   break
+      # }
+
+      else if (found[r]) {
+        print code , found[r], "manual" , Data[ code ], \
+          Data[found[r]] >> OUTFILE
         close(OUTFILE)
         break
       }
+
       else printf "(try again... q = abort, e = no match, c = codes; " \
              "1-9+ = pick)\n"
     }
-    delete a ; delete b ; delete code_of_j
+    # delete a ; delete b ; delete code_of_j
+    delete found
   }
   else no_match(code)
+    
 }
 
 function depunct(x) {
