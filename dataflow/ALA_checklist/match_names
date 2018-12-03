@@ -2,21 +2,17 @@
 
 # Looks for taxonomic names from list A ("Query set") in list B
 # ("Reference set") matching them at different "quality levels", and
-# optionally doing fuzzy matching using agrep
+# optionally doing fuzzy matching using the aregex Gawk extension
 
 # (c) Cam Webb, 2018
 # Licence: Public Domain (Via: https://unlicense.org/)
 
 ## Dependencies:
 # 1. GNU gawk v.4+
-# 2. agrep (https://laurikari.net/tre/) to use fuzzy matching (-f option)
+# 2. aregex Gawkextlib extension
 
 ## Conventions:
 # Variables shared among functions and main BEGIN{} start with Capital letters
-
-## TODO
-# How to reject (before fuzzy match) when all except the intraspecific
-#   rank is the same? Making a key w/o the rank produces too many duplicates
 
 @load "aregex"
 
@@ -26,9 +22,6 @@ BEGIN{
   
   # Read reference names
   read_data(Bfn)
-
-  # make sublists, for agrep
-  # if (FUZZY) make_agrep_lists(Bfn)
 
   # Read query names
   read_data(Afn)
@@ -59,7 +52,7 @@ BEGIN{
     else no_match(ac)
   }
 
-  clean_exit(1)
+  exit 0
 }
 
 function config() {
@@ -105,7 +98,7 @@ function read_data(filename,     i, nameN, namex) {
       $i = cleanspaces($i)
     }
 
-    # line# to code:
+    # line number to code:
     C[filename, ++Lines[filename]] = $I_code
     
     # check for duplicate code
@@ -114,7 +107,7 @@ function read_data(filename,     i, nameN, namex) {
       exit 1
     }
 
-    # For strucutred output
+    # For structured output
     Data[$I_code] = $I_xg OFS $I_g OFS $I_xs OFS $I_s OFS \
       $I_st OFS $I_ssp OFS $I_a
     
@@ -143,31 +136,21 @@ function read_data(filename,     i, nameN, namex) {
     # depunct, with basionym removed
     apply_regex(filename, $I_code, namex, $I_a, "basio", "^\\([^)]+\\)")
     # depunct with 'ex' or 'in' removed
-    apply_regex(filename, $I_code, namex, $I_a, "exin", "\\ ([eE]x|[iI]n)\\ .*$")
+    apply_regex(filename, $I_code, namex, $I_a, "exin", \
+                "\\ ([eE]x|[iI]n)\\ .*$")
     # depunct with basio and 'ex' or 'in' removed
     apply_regex(filename, $I_code, namex, $I_a, "basexin", \
                 "(^\\([^)]+\\)|\\ ([eE]x|[iI]n)\\ .*$)")
     # auct?
     if ($I_a ~ /^auct\.?$/) Auct[$I_code] = 1
-    # # genus list
+    # genus lookup
     G[$I_code] = $I_g
-    # Genus hash tables
-    Gh[filename][$I_g][$I_code] = 1
+    # genus in Filename test
     GL[filename][$I_g] = 1
+    # Genus hash table
+    Gh[filename][$I_g][$I_code] = 1
   }
   close(filename)
-}
-
-function make_agrep_lists(filename,    cmd, i) {
-  cmd = "mktemp -d"
-  cmd | getline TEMPDIR
-  # only B names, so far as called, so CodeN only contains B names
-  for (i in CodeN) {
-    print i " " X[filename, "punct", i]  >> TEMPDIR "/" G[i]
-    close(TEMPDIR "/" G[i])
-    # variable to track which genera are in the TEMPDIR:
-    GL[G[i]]++
-  }
 }
 
 function test_eq(method, code,      outmethod) {
@@ -251,52 +234,22 @@ function no_match(code) {
   close(OUTFILE)
 }
 
-function clean_exit(status) {
-  system("rm -rf "TEMPDIR)
-  exit status
-}
-
 function fuzzy(code, lineno,    j, r, found, nfound) {
-  # function fuzzy(code, lineno,    cmd, agreps, na, a, b, j, code_of_j, r, found, nfound) {
 
-  # # Agrep method:
-  # # send depunct A name to agrep
-  # # Note, a genus spelling mismatch will not be found due to
-  # #   wrong temporary genus name list
-  # cmd = "agrep -w -k -" FUZZERR " \"" X[Afn, "punct", code] "\" " \
-  #   TEMPDIR "/" G[code] " | sort -k 2"
-  # agreps = ""
-  # RS = "\x04" 
-  # cmd | getline agreps
-  # close(cmd)
-  # RS = "\n" # needed for interactive input
-  # gsub(/\n$/,"", agreps) # to remove 'default' newline
+  # Old Agrep method : see commit 18e82ad26f436e1be988102b17680f27906781a5
 
-  # amatch() Method:
+  # New amatch() method:
   nfound = 0
+  # for each B file code present in the same genus as (A) code
   for (i in Gh[Bfn][G[code]]) {
     if (amatch(X[Bfn, "punct", i], ("^" X[Afn, "punct", code] "$"), FUZZERR))
       found[++nfound] = i
   }
   
-  # If there was an agrep match, list match(s)
-  
-  # if (length(agreps)) {
-  #   na = split(agreps, a, "\n")
+  # If there was an match, list match(s)  
   if (nfound) {
   
     # catch and remove cases of only one agrep match,
-    #   when only the var and subsp differ (~20% of fuzzy match cases)
-
-    # if (na == 1) {
-    #   split(a[1],b," ")
-    #   if (gensub(/(var|subsp)/, "", "G", b[2]) ==                   \
-    #       gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) {
-    #     no_match(code)
-    #     return 0
-    #   }
-    # }
-
     if (nfound == 1) {
       if (gensub(/(var|subsp)/, "", "G", X[Bfn, "punct", found[1]]) ==  \
           gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) {
@@ -326,7 +279,7 @@ function fuzzy(code, lineno,    j, r, found, nfound) {
       
       if (r == "q") {
         print "Halting... " lineno - 1 " lines of '" Afn "' processed" 
-        clean_exit(0)
+        exit 0
       }
       else if (r == "e") {
         no_match(code)
@@ -394,18 +347,20 @@ function depunct(x) {
   gsub(/[Æ]/,"Ae", x)
   gsub(/[Ý]/,"Y", x)
 
-  # for using "agrep -w" there can only be alphanumerics and underscore
-  # the only key non-punct characters to maintain are "()"
-  gsub (/[()]/,"_",x)
-  # and "&"
-  # [ was: gsub (/\ and\ /," \\& ", x); ]
-  gsub (/(\ and\ |&)/,"_",x)
+  # # for using "agrep -w" there can only be alphanumerics and underscore.
+  # # the only key non-punct characters to maintain are "()" and "&"
+  # gsub (/[()]/,"_",x)
+  # gsub (/(\ and\ |&)/,"_",x)
+  # test: if (x ~ /[^A-Za-z0-9_]/) print "Warning: non al-num in x: " x
+
+  gsub (/\ and\ /," \\& ", x)
+
   # Now delete spaces and periods, and all other punctuation:
   gsub(/[^A-Za-z0-9_]/,"", x)
   # [ was gsub(/[ .]/,"", x) ; gsub(/"/,"", x) ]
 
   # test
-  if (x ~ /[^A-Za-z0-9_]/) print "Warning: non al-num in x: " x
+  if (x ~ /[^A-Za-z0-9_()&]/) print "Warning: non al-num in x: " x
   
   return tolower(x)
 }
