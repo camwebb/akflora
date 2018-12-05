@@ -32,24 +32,40 @@ BEGIN{
     ac = C[Afn, line]
 
     # test for exact string match:
-    if      (test_eq("exact",   ac)) continue
+    if (test_eq("exact",   ac)) continue
     # test for exact non-punctuation character match:
-    else if (test_eq("punct",   ac)) continue
+    if (test_eq("punct",   ac)) continue
     # if no author in A and only one author in B, make this default match:
-    else if (NA[ac] && NOAUTH && (test_na(ac))) continue
+    if (NA[ac] && NOAUTHONE && (test_na(ac))) continue
     # start on author variations, first a missing basionym:
-    else if (test_pm("basio",   ac)) continue
+    if (test_pm("basio",   ac)) continue
     # diff basionyms, ok:
-    else if (test_eq("basio",   ac)) continue
+    if (test_eq("basio",   ac)) continue
     # a missing 'ex ...' or 'in ...':
-    else if (test_pm("exin",    ac)) continue
+    if (test_pm("exin",    ac)) continue
+    # diff ex/in, ok:
+    if (test_eq("exin",    ac)) continue
     # both missing basionym or ex/in:
-    else if (test_pm("basexin", ac)) continue
-    # reject a match when A is 'auct.':
-    else if (Auct[ac]) no_match(ac)
+    if (test_pm("basexin", ac)) continue
+    # bypass manual when A is 'auct.':
+    if (Auct[ac]) {
+      if (CFO) { 
+        if (test_eq("cfonly",    ac)) continue
+      }
+      else {
+        no_match(ac)
+        continue
+      }
+    }
     # fuzzy matching and manual checking:
-    else if (FUZZY && GL[Bfn][G[ac]]) fuzzy(ac, line)
-    else no_match(ac)
+    if (FUZZY && GL[Bfn][G[ac]])
+      if (test_fuzzy(ac, line)) continue
+    # canonoical form only (g + s + ssp)
+    # NB: there will probably be many possible matches; only one will returned
+    if (CFO)
+      if (test_eq("cfonly",    ac)) continue
+    #default
+    no_match(ac)
   }
 
   exit 0
@@ -59,7 +75,7 @@ function config() {
   FS = "|"
   OFS= "|"
   PROCINFO["sorted_in"] =  "@ind_str_asc"
-  FUZZERR = 5
+  FUZZERR = 10
 
   # Column order; same in both files
   I_code = 1 ; I_xg = 2  ; I_g = 3  ; I_xs = 4 ; I_s = 5
@@ -75,12 +91,14 @@ function read_args(    arg) {
     else if (ARGV[arg] == "-o") OUTFILE  = ARGV[arg+1]
     else if (ARGV[arg] == "-f") FUZZY    = 1
     else if (ARGV[arg] == "-e") FUZZERR  = ARGV[arg+1]
-    else if (ARGV[arg] == "-1") NOAUTH  = 1
+    else if (ARGV[arg] == "-1") NOAUTHONE  = 1
+    else if (ARGV[arg] == "-s") CFO = 1
     else if (ARGV[arg] == "-c") APPEND  = 1
   }
   if (!Afn || !Bfn || !OUTFILE || ARGC == 1) {
-    print "usage:    match_names -a query_names_file -b " \
-      "ref_names_file -o outfile\n            [ -f [ -e fuzz_error ]] [ -1 -c ]"
+    print "Usage:    match_names -a query_names_file -b " \
+      "ref_names_file -o outfile \\\n" \
+      "            [ -f [ -e fuzz_error ]] [ -1 -s -c ]"
     exit 1
   }
 
@@ -132,7 +150,10 @@ function read_data(filename,     i, nameN, namex) {
     if (!$I_a) NA[$I_code] = 1
     apply_regex(filename, $I_code, namex, "", "noauth", "") 
     XNA[filename, X[filename, "noauth", $I_code]]++
-    
+
+    # plain depunct no author no subtype
+    apply_regex(filename, $I_code, ($I_g $I_s $I_ssp), "", "cfonly", "") 
+
     # depunct, with basionym removed
     apply_regex(filename, $I_code, namex, $I_a, "basio", "^\\([^)]+\\)")
     # depunct with 'ex' or 'in' removed
@@ -182,7 +203,7 @@ function test_na(code) {
 }
 
 function test_pm(method, code) {
-
+  # pm = 'plus/minus'
   # if there is a B code for the collapsed A key
   if (XC[Bfn, method, X[Afn, "punct", code]]) {
     print code, XC[Bfn, method, X[Afn, "punct", code]],                \
@@ -210,7 +231,7 @@ function apply_regex(AB, code, name, auth, method, regex,   i) {
   XC[AB, method, X[AB, method, code]] = code
   # check for possible duplicate keys. The used match will be the first one
   if ((++XN[AB, method, X[AB, method, code]] > 1) &&
-      (method != "noauth")) {
+      (method !~ /(noauth|cfonly)/)) {
     print "Warning: " code  \
         " has duplicate " method " form:\n           "  X[AB, method, code]
     # inefficient, but seldom called
@@ -234,7 +255,7 @@ function no_match(code) {
   close(OUTFILE)
 }
 
-function fuzzy(code, lineno,    j, r, found, nfound) {
+function test_fuzzy(code, lineno,    j, r, found, nfound) {
 
   # Old Agrep method : see commit 18e82ad26f436e1be988102b17680f27906781a5
 
@@ -245,6 +266,7 @@ function fuzzy(code, lineno,    j, r, found, nfound) {
     if (amatch(X[Bfn, "punct", i], ("^" X[Afn, "punct", code] "$"), FUZZERR))
       found[++nfound] = i
   }
+  # Todo, add another array and sort it: the potential matches are in order
   
   # If there was an match, list match(s)  
   if (nfound) {
@@ -253,7 +275,7 @@ function fuzzy(code, lineno,    j, r, found, nfound) {
     if (nfound == 1) {
       if (gensub(/(var|subsp)/, "", "G", X[Bfn, "punct", found[1]]) ==  \
           gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) {
-        no_match(code)
+        # no_match(code)
         return 0
       }
     }
@@ -282,7 +304,7 @@ function fuzzy(code, lineno,    j, r, found, nfound) {
         exit 0
       }
       else if (r == "e") {
-        no_match(code)
+        # no_match(code)
         break
       }
       # See the codes being compared
@@ -313,7 +335,8 @@ function fuzzy(code, lineno,    j, r, found, nfound) {
     # delete a ; delete b ; delete code_of_j
     delete found
   }
-  else no_match(code)
+  else return 0
+  # else no_match(code)
     
 }
 
@@ -355,12 +378,12 @@ function depunct(x) {
 
   gsub (/\ and\ /," \\& ", x)
 
-  # Now delete spaces and periods, and all other punctuation:
-  gsub(/[^A-Za-z0-9_]/,"", x)
+  # Now delete spaces and periods, and all other punctuation other than ()&×:
+  gsub(/[^A-Za-z0-9()&×]/,"", x)
   # [ was gsub(/[ .]/,"", x) ; gsub(/"/,"", x) ]
 
   # test
-  if (x ~ /[^A-Za-z0-9_()&]/) print "Warning: non al-num in x: " x
-  
-  return tolower(x)
+  x = tolower(x)
+  if (x ~ /[^a-z()&]×/) print "Warning: non 'a-z()&' in x: " x
+  return x
 }

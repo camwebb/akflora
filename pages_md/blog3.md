@@ -145,3 +145,183 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })(); </script>
 
+
+** Different ”simple” authors **
+
+    Androsace chamaejasme Host
+ != Androsace chamaejasme Wulfen
+
+    Glechoma hederacaea L.
+ != Glechoma hederacea Maxim.
+
+    Arabis holboelii var. retrofracta (Graham) Rydb.
+ != Arabis holboellii var. retrofracta (Graham) Jeps.
+
+    Packera ogotorukensis (Packer) W.A.Weber & A.Love
+ != Packera ogotorukensis (Packer) Á. Löve & D. Löve
+
+    Carex media var. stevenii (Holm) Kalela
+ != Carex media var. stevenii (T. Holm) Fernald
+
+    Ranunculus auricomus L.f.
+ != Ranunculus auricomus L. & W.Koch
+
+    Parnassia kotzebuei Cham. & Schltdl.
+ != Parnassia kotzebuei Cham. ex Spreng.  (but see ‘missing ex author’ below)
+
+** Different basionyms **
+
+    Mertensia paniculata var. eastwoodae (J.F.Macbr.) Hultén
+ != Mertensia paniculata var. eastwoodiae (Macbride) Hultén
+
+    Alnaster sinuata (Regel) Czerep.
+ != Alnaster sinuatus (Rydb.) Czerep.
+
+
+** Basionym vs new definition **
+
+    Glyceria pauciflora C.Presl
+ != Glyceria pauciflora (ex C.Presl) J.Presl
+
+    Myosotis palustris L.
+ != Myosotis palustris (L.) Nath.
+
+    Alnus fruticosa (Rupr.) Ledeb.
+ != Alnus fruticosa Rupr.
+
+    Platanthera convallariaefolia (Fisch. ex Lindl.) Lindl.
+ != Platanthera convallariifolia Fisch. ex Lindl.
+
+** Overlapping but different authors **
+
+    Draba eschscholtzii Pohle
+ != Draba eschscholtzii Pohle & N. Busch
+
+    Carex anthoxanthea C.Presl
+ != Carex anthoxanthea J. Presl & C. Presl
+
+    Solidago simplex Humb., Bonpl. & Kunth
+ != Solidago simplex Kunth
+
+    Potentilla elegans Cham. & Schltdl.
+ != Potentilla elegans Schltdl.
+
+    Arctous rubra (Rehder & E.H.Wilson) Nakai & Koidz.
+ != Arctous rubra (Rehder & E.H.Wilson) Nakai
+
+** Different ranks **
+
+    Aconitum delphinifolium subsp. delphinifolium
+ != Aconitum delphiniifolium var. delphiniifolium
+
+** Missing basionym **
+
+    Fauria crista-gallii (Menzies) Makino
+ ~= Fauria crista-galli Makino
+
+    Alnaster sinuata (Regel) Czerep.
+ ~= Alnaster sinuatus Czerep.
+
+    Thelypteris phegopteris (L.) Sloss.
+ ~= Thelypteris phegopteris Sloss. in Rydb.
+
+** Missing author, same basionym **
+
+    Calypso bulbosa (L.)
+ ~= Calypso bulbosa (L.) Oakes
+
+    Matteuccia struthiopteris var. pensylvanica (Willd.)
+ ~= Matteuccia struthiopteris var. pensylvanica (Willd.) C.V. Morton
+
+    Cirsium edule var. macounii (Greene)
+ ~= Cirsium edule var. macounii (Greene) D.J. Keil
+
+
+
+** Same author as ‘ex author’ **
+
+    Trisetum sibiricum subsp. litoralis (Rupr.) Roshev.
+ ~= Trisetum sibiricum subsp. litorale Rupr. ex Roshev.
+ 
+    Lloydia serotina (L.) Rchb.
+ ~= Lloydia serotina (L.) Salisb. ex Rchb.
+
+    Castilleja pallida subsp. mexiae Eastw. ex Pennell
+ ~= Castilleja pallida subsp. mexiae Pennell
+
+    Colophospermum mopane (Benth.) Leonard
+ ~= Colophospermum mopane (J. Kirk ex Benth.) J. Léonard
+
+    Carex sprengelii Sprengel
+ ~= Carex sprengelii Dewey ex Spreng.
+
+    Carex chordorrhiza Ehrh. ex L.f.
+ ~= Carex chordorrhiza L.f.
+
+    Eriophorum callitrix Cham. ex C.A.Mey.
+ ~= Eriophorum callitrix C.A.Mey.
+
+** Missing ‘ex author’ **
+
+    Colophospermum mopane (Benth.) Leonard
+ ~= Colophospermum mopane (J.Kirk ex Benth.) J.Léonard
+
+    Cystopteris montana (Lam.) Bernh.
+ ~= Cystopteris montana (Lam.) Bernh.; Desv.
+
+    Sparganium minimum (C.Hartm.) Fr.
+ ~= Sparganium minimum Fr. ex Wallr.
+
+    Artemisia lagocephala var. kruhsiana (Besser) Glehn
+ ~= Artemisia lagocephala var. kruhsiana (Besser) Gehn ex Hultén
+
+    Cardaminopsis umbrosa (Turcz.) Czern.
+ ~= Cardaminopsis umbrosa (Turcz. ex Steud.) Czerep.
+
+    Cardamine pennsylvanica Muhl.
+ ~= Cardamine pensylvanica Muhl. ex Willd.
+
+    Callitriche verna L. emend. Kütz.
+ ~= Callitriche verna L.
+
+    Puccinellia interior T.Sorensen
+ ~= Puccinellia interior T.J. Sørensen ex Hultén
+
+    Equisetum fluviatile L. ampl. Ehrh.
+ ~= Equisetum fluviatile L.
+
+    Puccinellia langeana subsp. asiatica T.Sorensen
+ ~= Puccinellia langeana subsp. asiatica T.J. Sørensen ex Hultén
+
+    Pulsatilla dahurica (Fisch.) Sprengel
+ ~= Pulsatilla dahurica (Fisch. ex DC.) Spreng.
+
+    Saxifraga caespitosa subsp. sileneflora (Sternb.) Hultén
+ ~= Saxifraga cespitosa subsp. sileneflora (Sternb. ex Cham.) Hultén
+
+    Rorippa curvisiliqua (Hook.) Besser
+ ~= Rorippa curvisiliqua (Hook.) Bessey ex Britton
+
+** Incomplete author **
+
+    Symphyotrichum pygmaeum (Lindl.) & Selliah
+ ~= Symphyotrichum pygmaeum (Lindl.) Brouillet & Selliah
+
+
+** Fuzzy author **
+
+    Osmorhiza depauperata L.Ll.Phillips
+ ~= Osmorhiza depauperata Phil.
+
+    Carex halleri W.W.H.Gunn
+ ~= Carex halleri Gunnerus
+
+    Papaver radicatum subsp. porsildii (Knaben) D.Love
+ ~= Papaver radicatum subsp. porsildii (Knaben) Á.Löve
+
+** Only one **
+
+    Juniperus communis subsp. nana (Willd.) Syme
+ ~= Juniperus communis subsp. nana
+
+

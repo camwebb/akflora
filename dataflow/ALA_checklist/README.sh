@@ -1,9 +1,16 @@
 # Making the base ALA checklist
-# Cam Webb, 2018-11-08
+# Cam Webb, 2018-11-08 to 2018-12-03
 
-# Prep
+# This script can be executed to recreate the output data. Set MANUAL=1
+#   to re-do the manual checking of GNR output
 
-rm -f ala.* tmp* ala-names* ala-rel* data_in/DFMAccepNameswLit20180609B.TXT ala-gnr names4gnr* ala-gnr_not_found
+export MANUAL=0
+
+# 1. Character encoding, cleaning, reformating
+
+rm -f ala.* ala-names* ala-rel* \
+   data_in/DFMAccepNameswLit20180609B.TXT \
+   ala-gnr names4gnr* ala-gnr_not_found 
 
 gunzip -k data_in/DFMAccepNameswLit20180609B.TXT.gz
 
@@ -22,7 +29,8 @@ gunzip -k data_in/DFMAccepNameswLit20180609B.TXT.gz
 #   https://en.wikipedia.org/wiki/%C3%89#Character_mappings
 # So it's probably https://en.wikipedia.org/wiki/Mac_OS_Roman
 
-iconv -f MACINTOSH -t UTF-8 data_in/DFMAccepNameswLit20180609B.TXT | tr "\r" "\n" | tr "\t" "|" | tail -n +2 > ala.1
+iconv -f MACINTOSH -t UTF-8 data_in/DFMAccepNameswLit20180609B.TXT | \
+    tr "\r" "\n" | tr "\t" "|" | tail -n +2 > ala.1
 
 # Find non-ASCII in emacs with M-C-s [^^@-^?]
 #   (enter as “C-M-s [ ^ C-q 0 0 0 RET - C-q 1 7 7 RET ]”)
@@ -97,7 +105,7 @@ cat ala.1 | \
 patch -o ala.3 ala.2 patch/p1.patch
 if [ $? -ne 0 ] ; then exit ; fi
 
-# Note: patch will attempt to fine the correct location to patch even
+# Note: patch will attempt to find the correct location to patch even
 # if the line numbers have changed. So edits can be made in the file
 # before the patch and it may still work. The exit status test is
 # needed though.
@@ -116,7 +124,7 @@ if [ $? -ne 0 ] ; then exit ; fi
 # Pyrola asarifolia Michx.|2
 # Carex capillaris L. subsp. chlorostachys (Steven) A.Love & D.Love|2
 #
-# Made patch file (deleting the one with less info)
+# Made patch file (deleting the one with less info):
 
 patch -o ala.4 ala.3 patch/p2.patch
 if [ $? -ne 0 ] ; then exit ; fi
@@ -128,7 +136,8 @@ if [ $? -ne 0 ] ; then exit ; fi
 #  Polygonaceae|Polygonum|Polygonum|F||
 # and drop the fmaily col.
 
-gawk 'BEGIN{FS="|"; OFS="|"} $2 ~ /\ / {print $2, $3, $4, $5, $6}' ala.4 > ala.5
+gawk 'BEGIN{FS="|"; OFS="|"} $2 ~ /\ / {print $2, $3, $4, $5, $6}' ala.4 \
+     > ala.5
 
 # > wc ala.4
 #  3815  48374 461868 ala.4
@@ -263,13 +272,11 @@ echo "|Pedicularis||pacifica|||(Hultén) Kozhevn.||Pedicularis||pacifica|||(Hult
 sed -i '/Bupleurum||triradiatum|||auct/ d' ala.8
 sed -i '/|Taraxacum||sect.|/ d' ala.8
 
-# Split into two tables with to_names_only.awk
+
+# 2. Split into two tables: names and relationships (ala-names and ala-rel)
+# with to_names_only.awk
 
 gawk -f lib/to_names_only.awk ala.8
-
-# Add Nulls and sort (NOT USED)
-# sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-names-tmp | sort > ala-names
-# sed -e 's/||/|\\N|/g' -e 's/||/|\\N|/g' -e 's/|$/|\\N/g' ala-rel-tmp | sort > ala-rel
 
 # Test with gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i]) print i}' ala-rel 
 # OK
@@ -279,9 +286,19 @@ gawk -f lib/to_names_only.awk ala.8
 #
 # ala-2120|\N|Eriophorum|\N|scheuchzeri|subsp.|arcticum|\N <- missing in /home/cam/akflora/FLOW/2018-08-20_ALAchecklist/1_ALA_list/ala-names - not sure why
 
-# See https://github.com/GlobalNamesArchitecture/gnresolver/issues/111
+rm -f ala.* data_in/DFMAccepNameswLit20180609B.TXT
+
+
+# (end clean-up)
+# ---------------------------------------------------------------------------
+
+# 3. GNR
+
+# Split up into chunks for GNA 
+#   see https://github.com/GlobalNamesArchitecture/gnresolver/issues/111
 gawk 'BEGIN{FS="|"}{s = $2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8 ; gsub(/\\N/,"",s); gsub(/×/,"",s); gsub(/\ \ +/," ",s); gsub(/^\ /,"",s); gsub(/\ $/,"",s); print $1 "|" s > "names4gnr-"  int(++i/995)+1 }' ala-names
 
+# Run through GNR
 for infile in names4gnr*
 do
     echo "Running GNA on " $infile
@@ -290,51 +307,97 @@ done
 
 ## gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3, parse_taxon_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
 
-# unique codes for each string
-gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$2]=$1} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listA
+# TODO: GNR ranks: gawk 'BEGIN{FS="|"}{s[$8]++}END{for (i in s) print i}' ala-gnr-tmp
+# prol. var. fo. f. nothovar. [infrasp.unranked] lus. subsp.
 
-# problem with auct.
+rm -f names4gnr*
+
+# ---------------------------------------------------------------------------
+# 4. Manual matching on GNR returns
+
+# Make a list of ALA names:
+# unique codes for each string
+
+# was: gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} {code[$2]=$1} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listA
+
+## But, NB! These have been stripped of hybrid signs for GNR! Ugh. Need to use ala-names. See, eg, Geum x macranthum (Kearney) B.Boivin
+
+gawk 'BEGIN{FS=OFS="|"} {gsub(/\\N/,"",$0); print $1, $2, $3, $4, $5, $6, $7, $8}' ala-names | sort > listA
+
+# There was a problem with auct. - fixed in parse_taxon_name.awk
 #.../ALA_checklist> grep ala-1105 ala-names 
 #ala-1105|\N|Gymnocarpium|\N|robertianum|\N|\N|auct.|T
 # grep ala-1105 listA
 #ala-1105||Gymnocarpium||robertianum|auct.||
-
-# unique codes for each string
-gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} $3 ~ /ipni/ {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listBipni
-gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} $3 ~ /trop/ {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listBtrop
-
-# sed 's/\\N//g' > listA
-
-# gawk 'BEGIN{FS=OFS="|"} {print $3, $4, $5, $6, $7, $8, $9, $10}' ala-gnr-tmp | sed 's/\\N//g' | sort | uniq > listB
-
-# ugh - ipni has duplicate IDs for the same name: ipni-1018959-1 ipni-1078427-2
-
-# HERE*****
-
-match_names -a listA -b listB -n test
-
-rm -f ala.* tmp ala-names-tmp ala-rel-tmp data_in/DFMAccepNameswLit20180609B.TXT names4gnr*
-
-
-
-## SQL
-
-# mysql -u $DBUSER -p$DBPASSWD -show-warnings < load_ala.sql
-# mkdir tmp_ala
-# java -jar ~/usr/schemaspy/target/schemaspy-6.0.1-SNAPSHOT.jar -t mariadb -u cam -p testtest -host localhost -o tmp_ala/ -db tmp_ala -s tmp_ala -dp /usr/share/java/mariadb-jdbc/mariadb-java-client.jar
-
-# gawk 'BEGIN{FS="|";OFS="|"} $5 == "GNR1" {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3}' ala-gnr > ala-gnr-tmp-sameas
-
-gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), $3, parse_tax_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
-
-## jump to 2018-11-12 
-
-# bin/sqlnulls ala-gnr-tmp
-
+# Also, beware of ' quote marks in Authority names
 # gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), gensub(/\x27/,"","G",$3), parse_tax_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
 
 
-# mysql [...] < load_ala.sql
+# Make a list of IPNI names:
+# unique codes for each string
+gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} $3 ~ /ipni/ {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listBipni
+# Make a list of Tropicos names:
+gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} $3 ~ /trop/ {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listBtrop
+
+# ugh - ipni has duplicate IDs for the same name: ipni-1018959-1 ipni-1078427-2
+
+if [ $MANUAL -eq 1 ]
+then
+    ../../tools/match_names -a listA -b listBipni -o ala2ipni_match -f -1
+    ../../tools/match_names -a listA -b listBtrop -o ala2trop_match -f -1
+else
+    cp manual/ala2* .
+fi
+
+rm -f ala-gnr* list* 
+
+# 4b. See how many were not matched
+
+cat ala2ipni_match ala2trop_match > tmp
+gawk 'BEGIN{FS=OFS="|"}{a[$1][$3]++}END{for (i in a) for (j in a[i]) if ((a[i]["no_match"]==2) && ($10 !~ /auct\./))print i}' tmp > ala_no_match
+
+# 300+!
+
+# Method 1 for finding some more: manual editing of file
+# sed -i -E -e 's/$/|/g' ala_no_match 
+# grep -f ala_no_match ala-gnr | sort > ala-poss
+# sed -i -E -e '/auct\./ d' -e 's/^/|/g' ala-poss
+# emacs ala-poss # add a symbol for new ones to add
+
+# Method 2 for finding some more: use a higher fuzzy value. In fact,
+# use `-e 10` from now on.
+
+grep -f ala_no_match listA > listA2 
+../../tools/match_names -a listA2 -b listBipni -o test.out -f -e 10
+grep "|manual|" test.out >> ala2ipni_match 
+../../tools/match_names -a listA2 -b listBtrop -o test.out -f -e 10
+grep "|manual|" test.out >> ala2trop_match 
+
+## 5. Load into SQL
+
+gawk 'BEGIN{FS=OFS="|"} $3 !~ /no_match/ {print $1, "IPNI", $2, $11, $12, $13, $14, $15, $16, $17, $3 }' ala2ipni_match > ala-gnr-tmp
+gawk 'BEGIN{FS=OFS="|"} $3 !~ /no_match/ {print $1, "TROP", $2, $11, $12, $13, $14, $15, $16, $17, $3 }' ala2trop_match >> ala-gnr-tmp
+../../bin/sqlnulls ala-gnr-tmp
+
+mysql -u $DBUSER -p$DBPASSWD --show-warnings < load_ala.sql
+
+# To see structure of DB:
+# mkdir tmp_ala
+# java -jar ~/usr/schemaspy/target/schemaspy-6.0.1-SNAPSHOT.jar -t mariadb -u cam -p testtest -host localhost -o tmp_ala/ -db tmp_ala -s tmp_ala -dp /usr/share/java/mariadb-jdbc/mariadb-java-client.jar
+
+# To see the ala names still lacking another name:
+
+echo "select ala.code, names.* from (select names.id, uids.code from names, uids where names.id = uids.nameID and uids.authority = 'ALA') as ala left join (select names.id from names, uids where names.id = uids.nameID and uids.authority != 'ALA') as oth on ala.id = oth.id left join ortho on ala.id = ortho.fromID left join names on ala.id = names.id where oth.id IS NULL and ortho.fromID IS NULL;" | mysql -N -u $DBUSER -p$DBPASSWD tmp_ala | gawk 'BEGIN{FS="\t"}{s = $3 " " $4 " " $5 " " $6 " " $7" " $8 " " $9; gsub(/NULL/,"",s); gsub(/^\ */,"",s);gsub(/\ *$/,"",s); gsub(/\ \ */," ",s); print $1 "|" s}' | sort
+
+A few manual fixes:
+
+insert into uids (code, authority, nameID) values ('288067-2', 'IPNI', 1667);
+
+# Work though miss-matchs one by one. - ahhh. problem with x in species at GNR.
+# ala-1650|IPNI|ipni-1115127-2|\N|Geum|\N|macranthum|\N|\N|(Kearney) B.Boivin|exact
+# lost the hybrid mark! Track back. It _is_ in the ipni record.
+
+
 
 # ARCTOS uids are not good. Ugh.
 # Uggh arct-'59066' is not the same as arct-59066 - i.e., ARCTOS names are not good.
@@ -342,16 +405,7 @@ gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper
 #ala-3231|Elymus alaskanus subsp. latiglumis (Scribn. & Sm.) A.Love|arct-'1771237'|Elymus alaskanus (Scribn.) A.Love subsp. latiglumis (Sm.) A.Love|GNR2|GNR: Exact match by canonical form
 #ala-949|Elymus trachycaulus (Link) Gould ex Shinners|arct-'1771237'|Elymus trachycaulus (Link) Shinners|GNR2|GNR: Exact match by canonical form
 
-# 2018-11-12 need to delveop strategy for matching names after GNR output.
 
-
-
-
-
-# -----------------------------------------------------------------------
-# TODO
-#
-# GNR ranks: gawk 'BEGIN{FS="|"}{s[$8]++}END{for (i in s) print i}' ala-gnr-tmp
-# prol. var. fo. f. nothovar. [infrasp.unranked] lus. subsp.
-
-# sed -n '11081 p' ala-gnr-tmp
+# -------------------------------------
+# Notes
+# To show a single line, with sed: sed -n '11081 p' ala-gnr-tmp

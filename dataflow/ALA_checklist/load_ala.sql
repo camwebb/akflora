@@ -21,7 +21,7 @@ USE `tmp_ala`;
 
 SELECT 'Making names';
 
-DROP TABLE IF EXISTS `names`;
+-- DROP TABLE IF EXISTS `names`;
 
 CREATE TABLE `names` (
   `code` varchar(20) NOT NULL,
@@ -52,7 +52,8 @@ UPDATE `names` SET `md5sum` = MD5(concat_ws(' ',  `genhyb`, `genus`, `sphyb` , `
 SELECT 'Making table uids';
 
 -- Codes
-DROP TABLE IF EXISTS `uids`;
+
+-- DROP TABLE IF EXISTS `uids`;
 
 CREATE TABLE `uids` (
   `id` int(11) PRIMARY KEY AUTO_INCREMENT,
@@ -85,7 +86,7 @@ INSERT INTO `uids` (`code`, `authority`, `nameID`)
 SELECT 'Making table rel';
 
 
-DROP TABLE IF EXISTS `rel`;
+-- DROP TABLE IF EXISTS `rel`;
 
 CREATE TABLE `rel` (
   `code` varchar(10) NOT NULL,
@@ -132,9 +133,10 @@ ALTER TABLE `rel`
 
 ALTER TABLE `names` DROP COLUMN `code`;
 
-----  ADD NEW NAMES AND uids
+----  ADD NEW NAMES AND uids from IPNI and TROP
 
 SELECT 'Making table gnr_tmp';
+
 
 -- CREATE TEMPORARY TABLE `gnr_tmp` (
 CREATE TABLE `gnr_tmp` (
@@ -148,7 +150,7 @@ CREATE TABLE `gnr_tmp` (
   `ssptype` varchar(20) DEFAULT NULL,
   `ssp` varchar(30) DEFAULT NULL,
   `author` varchar(100) DEFAULT NULL,
-  `matchtype` varchar(6)
+  `matchtype` varchar(15)
 ) ;
 
 LOAD DATA LOCAL INFILE 'ala-gnr-tmp' INTO TABLE `gnr_tmp` FIELDS TERMINATED BY '|' ;
@@ -165,7 +167,6 @@ ALTER TABLE `names` ADD INDEX `md5sum` (`md5sum`);
 -- select max(id) from names; -->  3740 
 
 SELECT 'Inserting new names into names';
-
 
 -- weird, it doesn't add trop-144959531
 -- SELECT DISTINCT `gnr_tmp`.`genhyb`, `gnr_tmp`.`genus`, `gnr_tmp`.`sphyb` , `gnr_tmp`.`species` , `gnr_tmp`.`ssptype` , `gnr_tmp`.`ssp` , `gnr_tmp`.`author`     FROM `gnr_tmp` LEFT JOIN `names` AS `A` ON  `gnr_tmp`.`md5sum` = `A`.`md5sum` WHERE `A`.`md5sum` IS NULL AND gnr_tmp.genus = 'Viola' AND gnr_tmp.species = 'langsdorffii';
@@ -186,32 +187,48 @@ INSERT INTO `uids` (`code`, `authority`, `nameID`)
     FROM `gnr_tmp`,`names`
     WHERE gnr_tmp.md5sum = `names`.`md5sum`  AND `gnr_tmp`.auth != 'ARCT';
 
--- -- ortho ... this strategy needs more work. Halt for now
+-- select * from names , uids where uids.nameID = names.id; -> 9705 rows
+-- see the multiple IDs:
+-- select A.* from (select names.id as id, count(names.id) as cnt from names , uids where uids.nameID = names.id group by names.id) AS A where cnt > 1;
+-- select * from names, uids where names.id = uids.nameID AND uids.nameID = 3724;
 
--- CREATE TABLE `ortho` (
---   `id` int(11) PRIMARY KEY AUTO_INCREMENT,
---   `fromID` int(11) NOT NULL,
---   `toID` int(11) NOT NULL,
---   `source` varchar(10) NOT NULL,
---   `type` varchar(10) DEFAULT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- ortho 
 
--- ALTER TABLE `gnr_tmp` ADD COLUMN `alaID` int(11) DEFAULT NULL;
--- ALTER TABLE `gnr_tmp` ADD COLUMN `otherID` int(11) DEFAULT NULL;
+CREATE TABLE `ortho` (
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+  `fromID` int(11) NOT NULL,
+  `toID` int(11) NOT NULL,
+  `source` varchar(10) NOT NULL,
+  `type` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- UPDATE gnr_tmp, uids SET gnr_tmp.alaID = uids.nameID WHERE gnr_tmp.ala_code = uids.code;
+ALTER TABLE `ortho` ADD INDEX `fromID` (`fromID`);
+ALTER TABLE `ortho` ADD INDEX `toID` (`toID`);
+
+ALTER TABLE `gnr_tmp` ADD COLUMN `alaID` int(11) DEFAULT NULL;
+ALTER TABLE `gnr_tmp` ADD COLUMN `otherID` int(11) DEFAULT NULL;
+
+UPDATE gnr_tmp, uids SET gnr_tmp.alaID = uids.nameID WHERE gnr_tmp.ala_code = uids.code;
 -- -- test:
 -- select * from gnr_tmp where alaID IS NULL;
--- UPDATE gnr_tmp, uids SET gnr_tmp.otherID = uids.nameID WHERE gnr_tmp.other_code = uids.code;
+
+UPDATE gnr_tmp, uids SET gnr_tmp.otherID = uids.nameID WHERE gnr_tmp.other_code = uids.code;
 -- -- test:
 -- select * from gnr_tmp where otherID IS NULL AND auth != 'ARCT';
--- -- Hmm: ala-2531
+-- -- (WAS Hmm: ala-2531)
 
--- INSERT INTO `ortho` ( `fromID`, `toID`, `source` , `type` )
--- SELECT `alaID`, `otherID`, `auth`, `matchtype` from gnr_tmp WHERE `matchtype` != 'GNR1' AND `auth` != 'ARCT';
+INSERT INTO `ortho` ( `fromID`, `toID`, `source` , `type` )
+SELECT `alaID`, `otherID`, `auth`, `matchtype` from gnr_tmp WHERE `matchtype` != 'exact';
 
+-- See the matches:
+-- select CONCAT_WS(' ',names.genhyb,names.genus,names.sphyb,names.species,names.ssptype,names.ssp,names.author) AS ala, A.source, A.type, CONCAT_WS(' ',B.genhyb,B.genus,B.sphyb,B.species,B.ssptype,B.ssp,B.author) as oth FROM `names` LEFT JOIN `ortho` AS `A` ON `names`.`id` = `A`.`fromID` LEFT JOIN `names` AS B ON A.toID = B.id WHERE A.id IS NOT NULL;
 
--- -- select CONCAT_WS(' ',names.genhyb,names.genus,names.sphyb,names.species,names.ssptype,names.ssp,names.author), A.source, A.type, CONCAT_WS(' ',B.genhyb,B.genus,B.sphyb,B.species,B.ssptype,B.ssp,B.author) FROM `names` LEFT JOIN `ortho` AS `A` ON `names`.`id` = `A`.`fromID` LEFT JOIN `names` AS B ON A.toID = B.id WHERE A.id IS NOT NULL;
+-- See the failures:
+-- select ala.id from (select names.id from names, uids where names.id = uids.nameID and uids.authority = 'ALA') as ala left join (select names.id from names, uids where names.id = uids.nameID and uids.authority != 'ALA') as oth on ala.id = oth.id left join `ortho` on ala.id = ortho.fromID where oth.id IS NULL and ortho.fromID IS NULL; --> 350
+-- OR :
+-- select names.* from (select names.id from names, uids where names.id = uids.nameID and uids.authority = 'ALA') as ala left join (select names.id from names, uids where names.id = uids.nameID and uids.authority != 'ALA') as oth on ala.id = oth.id left join `ortho` on ala.id = ortho.fromID left join names on ala.id = names.id where oth.id IS NULL and ortho.fromID IS NULL;
+
+-- note also you could use "not in" https://stackoverflow.com/a/19725206/563709
 
 
 
