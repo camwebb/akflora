@@ -175,8 +175,8 @@ function read_data(filename,     i, nameN, namex) {
 }
 
 function test_eq(method, code,      outmethod) {
-  
-  outmethod = method == "punct" ? "auto_punct" : method
+
+  outmethod = method == "exact" ? "exact" : ( "auto_" method )
   # if there is a B code for the A key, using the same method
   if (XC[Bfn, method, X[Afn, method, code]]) {
     print code, XC[Bfn, method, X[Afn, method, code]],    \
@@ -255,7 +255,7 @@ function no_match(code) {
   close(OUTFILE)
 }
 
-function test_fuzzy(code, lineno,    j, r, found, nfound) {
+function test_fuzzy(code, lineno,    j, r, found, nfound, mantype) {
 
   # Old Agrep method : see commit 18e82ad26f436e1be988102b17680f27906781a5
 
@@ -272,14 +272,20 @@ function test_fuzzy(code, lineno,    j, r, found, nfound) {
   if (nfound) {
   
     # catch and remove cases of only one agrep match,
+    #       and remove cases when one is a sp and one is subsp,
     if (nfound == 1) {
-      if (gensub(/(var|subsp)/, "", "G", X[Bfn, "punct", found[1]]) ==  \
-          gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) {
+      if ((gensub(/(var|subsp)/, "", "G", X[Bfn, "punct", found[1]]) == \
+           gensub(/(var|subsp)/, "", "G", X[Afn, "punct", code])) ||
+          ((X[Bfn, "exact", found[1]] ~ /\ (var|subsp|f)\.\ /) && \
+           (X[Afn, "exact", code]    !~ /\ (var|subsp|f)\.\ /)) || \
+          ((X[Bfn, "exact", found[1]] !~ /\ (var|subsp)\.\ /) && \
+           (X[Afn, "exact", code]    ~ /\ (var|subsp)\.\ /)))
+    {
         # no_match(code)
         return 0
       }
     }
-    
+
     printf "------------------------------------"     \
       "------------------- %-10s--(%4d/%4d)\n", code, lineno, Lines[Afn]
     printf "    %s\n", X[Afn, "exact", code]
@@ -303,10 +309,6 @@ function test_fuzzy(code, lineno,    j, r, found, nfound) {
         print "Halting... " lineno - 1 " lines of '" Afn "' processed" 
         exit 0
       }
-      else if (r == "e") {
-        # no_match(code)
-        break
-      }
       # See the codes being compared
       else if (r == "c") {
         printf "    %20s vs. %-20s\n", code , found[1] # code_of_j[1]
@@ -321,23 +323,26 @@ function test_fuzzy(code, lineno,    j, r, found, nfound) {
       #   close(OUTFILE)
       #   break
       # }
-
-      else if (found[r]) {
-        print code , found[r], "manual" , Data[ code ], \
-          Data[found[r]] >> OUTFILE
-        close(OUTFILE)
-        break
+      else if (r == "e") break
+      else if (r ~ /[0-9]+e?/) {
+        mantype = (gsub(/e/,"",r)) ? "manual?" : "manual"
+        if (found[r]) {
+          print code , found[r], mantype , Data[ code ],    \
+            Data[found[r]] >> OUTFILE
+          close(OUTFILE)
+          return 1
+        }
+        else printf "(number not found)\n"
       }
 
       else printf "(try again... q = abort, e = no match, c = codes; " \
              "1-9+ = pick)\n"
     }
     # delete a ; delete b ; delete code_of_j
-    delete found
+    delete found # not always reached, if match is found
   }
   else return 0
   # else no_match(code)
-    
 }
 
 function depunct(x) {

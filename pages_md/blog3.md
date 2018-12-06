@@ -319,9 +319,35 @@ s.setAttribute('data-timestamp', +new Date());
     Papaver radicatum subsp. porsildii (Knaben) D.Love
  ~= Papaver radicatum subsp. porsildii (Knaben) Á.Löve
 
+    Ranunculus auricomus L.f.
+ ~= Ranunculus auricomus L.      (L. and L. ‘filius’ are diff auths, but
+                                  this was a typo)
+
+
 ** Only one **
 
     Juniperus communis subsp. nana (Willd.) Syme
  ~= Juniperus communis subsp. nana
 
+** Too tricky **
 
+    Glyceria pauciflora C.Presl
+ ?= Glyceria pauciflora J.Presl
+ ?= Glyceria pauciflora (ex C.Presl) J.Presl
+ ?= Glyceria pauciflora J.Presl in C.Presl
+ ?= Glyceria pauciflora J.Presl & C.Presl
+
+
+
+    Digitaria ischaemum (Schreb.) Schreb. ex Muhl.
+ ~= Digitaria ischaemum (Schreb.) Muhl.
+
+making a call - an authjor was forgotten
+
+    Arnica alpina (L.) Olin
+ ~= Arnica alpina (L.) Olin & Ladau
+
+    Eriophorum callitrix Cham. ex C.A.Mey.
+ ~= Eriophorum callitrix C.A.Mey.
+
+ Juncus castaneus [Clairv.] bracket?

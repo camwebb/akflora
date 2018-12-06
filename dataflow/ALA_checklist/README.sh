@@ -259,8 +259,9 @@ gawk -f lib/split_name_string.awk ala.6 > ala.7
 patch -o ala.8 ala.7 patch/p3.patch
 if [ $? -ne 0 ] ; then exit ; fi
 
-# Check again with gawk 'BEGIN{FS="|"}{x[$1]++}END{for(i in x) print i}' ala.7
-#  | sort from $1 to $16 ... looks good
+# Check again with:
+#   gawk 'BEGIN{FS="|"}{x[$1]++}END{for(i in x) print i}' ala.7 | sort
+# from $1 to $16, scanning for bad parsing ... looks good
 
 # A species to be added (get the number from ala.7)
 
@@ -278,8 +279,8 @@ sed -i '/|Taraxacum||sect.|/ d' ala.8
 
 gawk -f lib/to_names_only.awk ala.8
 
-# Test with gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i]) print i}' ala-rel 
-# OK
+# Test with: gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i])
+#   print i}' ala-rel   #  seems OK
 
 # Test with
 # gawk 'BEGIN{FS="|"; while ((getline < "/home/cam/akflora/FLOW/2018-08-20_ALAchecklist/1_ALA_list/ala-names") > 0) a[$2 $3 $4 $5 $6 $7 $8]++} { if (!a[$2 $3 $4 $5 $6 $7 $8]) print $0}' ala-names
@@ -296,7 +297,8 @@ rm -f ala.* data_in/DFMAccepNameswLit20180609B.TXT
 
 # Split up into chunks for GNA 
 #   see https://github.com/GlobalNamesArchitecture/gnresolver/issues/111
-gawk 'BEGIN{FS="|"}{s = $2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8 ; gsub(/\\N/,"",s); gsub(/×/,"",s); gsub(/\ \ +/," ",s); gsub(/^\ /,"",s); gsub(/\ $/,"",s); print $1 "|" s > "names4gnr-"  int(++i/995)+1 }' ala-names
+#   ah - change × to x and it works, and returns the correct × results.
+gawk 'BEGIN{FS="|"}{s = $2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8 ; gsub(/\\N/,"",s); gsub(/×/,"x",s); gsub(/\ \ +/," ",s); gsub(/^\ /,"",s); gsub(/\ $/,"",s); print $1 "|" s > "names4gnr-"  int(++i/995)+1 }' ala-names
 
 # Run through GNR
 for infile in names4gnr*
@@ -324,15 +326,6 @@ rm -f names4gnr*
 
 gawk 'BEGIN{FS=OFS="|"} {gsub(/\\N/,"",$0); print $1, $2, $3, $4, $5, $6, $7, $8}' ala-names | sort > listA
 
-# There was a problem with auct. - fixed in parse_taxon_name.awk
-#.../ALA_checklist> grep ala-1105 ala-names 
-#ala-1105|\N|Gymnocarpium|\N|robertianum|\N|\N|auct.|T
-# grep ala-1105 listA
-#ala-1105||Gymnocarpium||robertianum|auct.||
-# Also, beware of ' quote marks in Authority names
-# gawk -i "../../lib/parse_tax_name.awk" 'BEGIN{FS="|";OFS="|"} {print $1, toupper(substr($3,1,match($3,/\-/)-1)), gensub(/\x27/,"","G",$3), parse_tax_name($4, 1), $5}' ala-gnr > ala-gnr-tmp
-
-
 # Make a list of IPNI names:
 # unique codes for each string
 gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} $3 ~ /ipni/ {code[$4]=$3} END{for (i in code) print code[i], parse_taxon_name(i, 1)}' ala-gnr | sort > listBipni
@@ -341,10 +334,12 @@ gawk -i "../../lib/parse_taxon_name.awk" 'BEGIN{FS=OFS="|"} $3 ~ /trop/ {code[$4
 
 # ugh - ipni has duplicate IDs for the same name: ipni-1018959-1 ipni-1078427-2
 
+exit;
+
 if [ $MANUAL -eq 1 ]
 then
-    ../../tools/match_names -a listA -b listBipni -o ala2ipni_match -f -1
-    ../../tools/match_names -a listA -b listBtrop -o ala2trop_match -f -1
+    ../../tools/match_names -a listA -b listBipni -o ala2ipni_match -f
+    ../../tools/match_names -a listA -b listBtrop -o ala2trop_match -f
 else
     cp manual/ala2* .
 fi
@@ -379,33 +374,49 @@ gawk 'BEGIN{FS=OFS="|"} $3 !~ /no_match/ {print $1, "IPNI", $2, $11, $12, $13, $
 gawk 'BEGIN{FS=OFS="|"} $3 !~ /no_match/ {print $1, "TROP", $2, $11, $12, $13, $14, $15, $16, $17, $3 }' ala2trop_match >> ala-gnr-tmp
 ../../bin/sqlnulls ala-gnr-tmp
 
-mysql -u $DBUSER -p$DBPASSWD --show-warnings < load_ala.sql
+mysql -N -u $DBUSER -p$DBPASSWD --show-warnings < load_ala.sql
 
-# To see structure of DB:
-# mkdir tmp_ala
-# java -jar ~/usr/schemaspy/target/schemaspy-6.0.1-SNAPSHOT.jar -t mariadb -u cam -p testtest -host localhost -o tmp_ala/ -db tmp_ala -s tmp_ala -dp /usr/share/java/mariadb-jdbc/mariadb-java-client.jar
 
 # To see the ala names still lacking another name:
 
-echo "select ala.code, names.* from (select names.id, uids.code from names, uids where names.id = uids.nameID and uids.authority = 'ALA') as ala left join (select names.id from names, uids where names.id = uids.nameID and uids.authority != 'ALA') as oth on ala.id = oth.id left join ortho on ala.id = ortho.fromID left join names on ala.id = names.id where oth.id IS NULL and ortho.fromID IS NULL;" | mysql -N -u $DBUSER -p$DBPASSWD tmp_ala | gawk 'BEGIN{FS="\t"}{s = $3 " " $4 " " $5 " " $6 " " $7" " $8 " " $9; gsub(/NULL/,"",s); gsub(/^\ */,"",s);gsub(/\ *$/,"",s); gsub(/\ \ */," ",s); print $1 "|" s}' | sort
+echo "select ala.code, names.* from (select names.id, uids.code from names, 
+   uids where names.id = uids.nameID and uids.authority = 'ALA') as ala 
+   left join (select names.id from names, uids where names.id = uids.nameID 
+   and uids.authority != 'ALA') as oth on ala.id = oth.id left join ortho 
+   on ala.id = ortho.fromID left join names on ala.id = names.id where 
+   oth.id IS NULL and ortho.fromID IS NULL;" | mysql -N -u $DBUSER \
+       -p$DBPASSWD tmp_ala | gawk 'BEGIN{FS="\t"}{s = $3 " " $4 " " $5 " " \
+   $6 " " $7" " $8 " " $9; gsub(/NULL/,"",s); gsub(/^\ */,"",s);\
+   gsub(/\ *$/,"",s); gsub(/\ \ */," ",s); print $1 "|" s}' | sort
 
-A few manual fixes:
-
-insert into uids (code, authority, nameID) values ('288067-2', 'IPNI', 1667);
-
-# Work though miss-matchs one by one. - ahhh. problem with x in species at GNR.
-# ala-1650|IPNI|ipni-1115127-2|\N|Geum|\N|macranthum|\N|\N|(Kearney) B.Boivin|exact
-# lost the hybrid mark! Track back. It _is_ in the ipni record.
-
-
-
-# ARCTOS uids are not good. Ugh.
-# Uggh arct-'59066' is not the same as arct-59066 - i.e., ARCTOS names are not good.
-#grep 1771237 ala-gnr
-#ala-3231|Elymus alaskanus subsp. latiglumis (Scribn. & Sm.) A.Love|arct-'1771237'|Elymus alaskanus (Scribn.) A.Love subsp. latiglumis (Sm.) A.Love|GNR2|GNR: Exact match by canonical form
-#ala-949|Elymus trachycaulus (Link) Gould ex Shinners|arct-'1771237'|Elymus trachycaulus (Link) Shinners|GNR2|GNR: Exact match by canonical form
+# 2018-12-05: yay, only down to 200 without matches
 
 
-# -------------------------------------
-# Notes
-# To show a single line, with sed: sed -n '11081 p' ala-gnr-tmp
+# ---------------------------------------------------------------------------
+
+# ** Notes **
+
+# 1. ARCTOS uids in GNR are not good. E.g., arct-'59066' is not the
+# same as arct-59066; and arct-'1771237' is not unique. No permanent
+# IDs in Arctos - need to access via name only
+
+# 2. To show a single line, with sed: sed -n '11081 p' ala-gnr-tmp
+
+# 3. Manual fixes in DB with: insert into uids (code, authority, nameID)
+# values ('288067-2', 'IPNI', 1667);
+
+# 4. To see structure of DB:
+#   mkdir tmp_ala
+#   java -jar ~/usr/schemaspy/target/schemaspy-6.0.1-SNAPSHOT.jar \
+#        -t mariadb -u cam -p testtest -host localhost -o tmp_ala/ \
+#        -db tmp_ala -s tmp_ala \
+#        -dp /usr/share/java/mariadb-jdbc/mariadb-java-client.jar
+
+# 5. Watch out for correct parsting of 'auct.' should be in author sting
+# See parse_taxon_name.awk
+
+# 6. Also, beware of ' and " quote marks in Authority names
+
+# 7. To use " or ' in an inline gawk script use ascii hex: /\x27/
+
+# 8. GNR fails sometimes with 

@@ -59,7 +59,7 @@ function parse_taxon_name(name, test,    parsed, p, remade) {
       print "'" depunct(name)  "'" > "/dev/stderr";
       print "** Fail: '" name "' does not match:\n         '" remade \
         "'\n            " parsed "  <- parsed"> "/dev/stderr";
-      exit 1;
+      # exit 1;
     }
   }
 
