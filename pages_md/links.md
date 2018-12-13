@@ -7,3 +7,6 @@
  * [Consortium of Pacific Northwest Herbaria](http://www.pnwherbaria.org/)
  * [Flora of the Canadian Arctic Archipelago](http://nature.ca/aaflora/data/index.htm) (based on DELTA character data)
  * [Flora of the Pacific Northwest, 2nd Edition](http://www.pnwherbaria.org/florapnw.php)
+ * [E-Flora BC](http://ibis.geog.ubc.ca/biodiversity/eflora/)
+ * [Northern Ontario Plant Database](http://northernontarioflora.ca/index.cfm)
+ * [Flora of the Canadian Arctic Archipelago](https://nature.ca/index.php?q=en/research-collections/research-projects/past-research-projects/flora-canadian-arctic-archipelago), and [here](http://nature.ca/aaflora/data) (in DELTA)
