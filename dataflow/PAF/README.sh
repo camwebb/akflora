@@ -19,3 +19,9 @@ echo "SELECT paf_id, ranking, name, label, subspecies, variety,
 
 gawk -f lib/parse_syns.awk paf.1 > paf.2
 
+# Manual check (use emacsmode.el) and build a patch
+
+patch -o paf.3 paf.2 patch/p1.patch
+if [ $? -ne 0 ] ; then exit ; fi
+
+
