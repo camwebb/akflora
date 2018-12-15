@@ -24,4 +24,8 @@ gawk -f lib/parse_syns.awk paf.1 > paf.2
 patch -o paf.3 paf.2 patch/p1.patch
 if [ $? -ne 0 ] ; then exit ; fi
 
+# add a unique code to syn
+
+gawk -f lib/make_all_names_list.awk | sort > paf.4
+
 
