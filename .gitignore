@@ -2,4 +2,14 @@ lib/db.awk
 bin/gawk
 bin/json.so
 pages_md/untracked*
+
 dataflow/ALA_checklist/bu*
+dataflow/ALA_checklist/ala-*
+dataflow/ALA_checklist/ala2ipni_match
+dataflow/ALA_checklist/ala2trop_match
+dataflow/ALA_checklist/ala_no_match
+dataflow/ALA_checklist/list*
+
+dataflow/PAF/paf.*
+dataflow/PAF/paf-*
+dataflow/PAF/list*

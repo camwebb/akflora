@@ -28,7 +28,7 @@ function parse_taxon_name(name, test,    parsed, p, remade) {
   
   # Use unwrapped/long lines to view regex structure
   #                 (× )   ( genus 2+   )   (× )   ( species 2+      )    ( rank                         )    ( infrasp         )    ( author string           )
-  parsed = gensub(/^([×xX]?)\ ?([A-Z][a-zë]+)\ ?([×xX]?)\ ?([a-z\-ﬂ][a-z\-ﬂ]+)?\ ?(var\.|f\.|forma|fo\.|subsp\.|prol\.|nothovar\.|lus\.|\[infrasp\.unranked\])?\ ?([a-z\-ﬂ]+)?\ ?([- \[\]().&;,'[:alpha:]]+)?$/, "\\1|\\2|\\3|\\4|\\5|\\6|\\7", "G", name);
+  parsed = gensub(/^([×xX]?)\ ?([A-Z][a-zë]+)\ ?([×xX]?)\ ?([a-z\-ﬂ][a-z\-ﬂ]+)?\ ?(var\.|f\.|forma|taxon|fo\.|subsp\.|prol\.|nothovar\.|lus\.|\[infrasp\.unranked\])?\ ?([a-z\-ﬂ_]+)?\ ?([- \[\]().&;,'[:alpha:]]+)?$/, "\\1|\\2|\\3|\\4|\\5|\\6|\\7", "G", name);
   # prob with auct. being drawn into infraspecific rank: made list of
   # rank sympols, from:
   # Full list of IPNI infra ranks: agamosp.  convar.  f.  forma
@@ -41,24 +41,24 @@ function parse_taxon_name(name, test,    parsed, p, remade) {
   
   if (test) {
     # tests
-    split(parsed, p, "|");
     remade = parsed;
     gsub("\\|"," ",remade);
     gsub(/\ \ +/," ",remade);
     gsub(/^\ /,"",remade);
     gsub(/\ $/,"",remade)
+    split(parsed, p, "|");
     if ((parsed !~ /\|/) ||        \
         (p[1] !~ /^[×xX]?$/) ||         \
         (p[2] !~ /^[A-Z][a-zë]+$/) ||                   \
         (p[3] !~ /^[×xX]?$/) ||                             \
         (p[4] !~ /^[a-z\-ﬂ][a-z\-ﬂ]+$/) ||               \
-        (p[5] !~ /^([a-z]+\.|\[infrasp\.unranked\])?$/) ||  \
-        (p[6] !~ /^([a-z\-ﬂ][a-z\-ﬂ]+$)?/) ||               \
+        (p[5] !~ /^([a-z]+\.?|\[infrasp\.unranked\])?$/) ||  \
+        (p[6] !~ /^([a-z\-ﬂ][a-z\-ﬂ_]+$)?/) ||               \
         (depunct(remade) != depunct(name))) {
-      print "'" depunct(remade) "'" > "/dev/stderr";
-      print "'" depunct(name)  "'" > "/dev/stderr";
-      print "** Fail: '" name "' does not match:\n         '" remade \
-        "'\n            " parsed "  <- parsed"> "/dev/stderr";
+      # print "'" depunct(remade) "'" > "/dev/stderr";
+      # print "'" depunct(name)  "'" > "/dev/stderr";
+      print "** Fail: '" name "' does not match:\n" \
+        "         " parsed "  <- parsed\n"> "/dev/stderr";
       # exit 1;
     }
   }
