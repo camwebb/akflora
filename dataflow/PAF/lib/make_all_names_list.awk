@@ -14,11 +14,27 @@ BEGIN{
     if (($2 == "subspecies") && $5) {subt = "subsp. " $5}
     else if (($2 == "subspecies") && $6) {gsub(/(_|\])/,"",$6);
       subt = "var. " $6}
+    # specifier = ~taxon
     else if (($2 == "subspecies") && $10) {
-      gsub(/[`_)(]/,"",$10)
+      gsub(/[`_)(.]/,"",$10)
       gsub(/\ \ */,"_",$10)
       gsub(/taxon_/,"",$10)
-      subt = "taxon " $10
+      subt = "taxon " tolower($10)
+    }
+    # Discard cf. and aff. -> just spp
+    # cf.
+    else if (($2 == "species") && $10) {
+      gsub(/[_.]/,"",$10)
+      # gsub(/\ \ */,"-",$10)
+      gsub(/cf\ /,"",$10)
+      subt = $10
+      print subt > "/dev/stderr"
+    }
+    # affinis
+    else if (($2 == "species") && $11) {
+      # subt = "aff-" $11
+      subt = $11
+      print subt > "/dev/stderr"
     }
     else if ($2 == "species")          {subt = ""}
     else print "Warning: " $1 " name not made" > "/dev/stderr"
@@ -27,11 +43,12 @@ BEGIN{
     name = $3 " " subt " " auth
     gsub(/\ \ */, " ", name)
     gsub(/(^\ |\ $)/, "", name)
+    gsub(/`/,"",name)
     code[name] = "paf-" $1
   }
   
   FS="|"
-  while (( getline < "paf.4") > 0) {
+  while (( getline < "paf.3") > 0) {
     gsub(/^\ */,"",$0)
     gsub(/\ *\|\ */,"|",$0)
     gsub(/\ *$/,"",$0)
@@ -73,4 +90,15 @@ BEGIN{
     print code[i], s, "PAF 2018", acc[code[i]] > "paf-rel"
   }
   close("paf-rel")
+}
+
+function clean(i) {
+  # clean some of the additional author info that will make it hard
+  # to integrate with other DBs
+
+  # sensu
+  #gsub(
+
+
+  
 }
