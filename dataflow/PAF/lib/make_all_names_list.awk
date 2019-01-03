@@ -28,13 +28,13 @@ BEGIN{
       # gsub(/\ \ */,"-",$10)
       gsub(/cf\ /,"",$10)
       subt = $10
-      print subt > "/dev/stderr"
+      # print subt > "/dev/stderr"
     }
     # affinis
     else if (($2 == "species") && $11) {
       # subt = "aff-" $11
       subt = $11
-      print subt > "/dev/stderr"
+      # print subt > "/dev/stderr"
     }
     else if ($2 == "species")          {subt = ""}
     else print "Warning: " $1 " name not made" > "/dev/stderr"

@@ -10,10 +10,12 @@
 <  090403   | Gymnocarpium continentale × dryopteris.
 72d70
 <  100101   | Lastrea dilatata var. alpina Moore
-74c72
+74,75c72,73
 <  100101   | Lastrea dilatata var. alpina Moore.^
+<  100101   | Aspidium spinulosum var. americanum var.  Fisch. ex Kunze
 ---
 >  100101   | Lastrea dilatata var. alpina Moore
+>  100101   | Aspidium spinulosum var. americanum Fisch. ex Kunze
 81c79
 <  110101   | Polypodium vulgare subsp. virginianum sensu Hultén (1962).^
 ---
@@ -26,7 +28,7 @@
 <  230102   | angustifolia. - 
 <  230102   | Zostera marina subsp. hornemanniana subsp.  (Tutin) Lemke. See notes.^
 ---
->  230102   | Zostera marina subsp. hornemanniana subsp.  (Tutin) Lemke.
+>  230102   | Zostera marina subsp. hornemanniana (Tutin) Lemke.
 156c153
 <  271003   | Limnorchis hyperborea auct. amer. - 
 ---
@@ -60,12 +62,14 @@
 <  3309044  | Carex capillaris var. robustior Drejer ex Lange
 ---
 >  3309044  | Carex capillaris var. major_et_robustior Drejer
-283,284c273,274
+283,285c273,275
 < *3309044  | Carex boecheriana Á. Löve
 <  3309044  | Carex capillaris var. robustior Drejer ex Lange.^
+<  3309044  | Carex capillaris var. porsildiana var.  Polunin
 ---
 >  3309044  | Carex boecheriana Á. Löve, D. Löve & Raymond
 >  3309044  | Carex capillaris var. robustior Drejer ex Lange
+>  3309044  | Carex capillaris var. porsildiana Polunin
 299d288
 <  3309067c | Temnemis (Raf.) V.I. Krecz.
 310,311c299
@@ -123,7 +127,7 @@
 <  343203c  | sibirica].^
 <  343203c  | Puccinellia phryganodes Siberian type sensu Sørensen (1953).
 ---
->  343203c  | Puccinellia phryganodes Siberian type sensu Sørensen (1953)
+>  343203c  | Puccinellia phryganodes taxon siberian_type sensu Sørensen (1953)
 598d579
 <  344101   | alpinum 2 Lappo. See notes.^
 617c598
@@ -156,10 +160,12 @@
 < *421215   | Silene soczavana var. macrosperma (A.E. Porsild) V.V. Petrovsky
 ---
 >  421215   | Silene soczavana var. macrosperma (A.E. Porsild) V.V. Petrovsky, D.F. Murray & Elven
-868c847
+868,869c847,848
 <  440104   | C. acutifolia.^
+<  440104   | Claytonia acutifolia subsp. graminifolia subsp.  Hultén
 ---
 >  440104   | Claytonia acutifolia
+>  440104   | Claytonia acutifolia subsp. graminifolia Hultén
 899d877
 <  500109   | Heterisia Raf. ex Small
 909c887
@@ -176,10 +182,12 @@
 <  500726   | Saxifraga hyperborea Flor. Melv. [1819-1820]
 ---
 >  500726   | Saxifraga hyperborea
-992c969
+992,993c969,970
 <  580213b  | Salix glauca var. stipulata. - 
+<  580213b  | Salix glauca var. stipulata var.  Flod. in Lindm.
 ---
 >  580213b  | Salix glauca var. stipulata
+>  580213b  | Salix glauca var. stipulata Flod. in Lindm.
 1012d988
 <  580261b  | Vimen Dumort.
 1025,1026c1001
@@ -210,10 +218,12 @@
 <  630703   | americanum Michx.
 ---
 >  630703   | Hedysarum alpinum taxon americanum Michx.
-1090c1063
+1090,1091c1063,1064
 <  640502   | Rubus acaulis.^
+<  640502   | Rubus arcticus var. grandiflorus var.  Ledeb.
 ---
 >  640502   | Rubus acaulis
+>  640502   | Rubus arcticus var. grandiflorus Ledeb.
 1100c1073
 <  640601b  | Rosa sayi.
 ---
@@ -222,20 +232,27 @@
 <  640904   | Geum no. 13 (1810). Described from western North America. - 
 1131d1102
 <  641001   | Multifidae (Rydb.) A. Nelson.
-1133c1104
+1133,1134c1104,1105
 <  641002   | Potentilla lyngei below.^
+<  641002   | Potentilla pulchella var. elatior var.  Lange
 ---
 >  641002   | Potentilla lyngei
+>  641002   | Potentilla pulchella var. elatior Lange
 1144d1114
 <  641012   | Niveae × Pensylvanicae.
 1155d1124
 <  641058   | Tormentilla Tausch.
-1167d1135
+1167,1168c1136
 <  641060d  | Potentilla pacifica. - 
-1171c1139
+<  641060d  | Potentilla egedii subsp. grandis subsp.  (Torr. & A. Gray) Hultén
+---
+>  641060d  | Potentilla egedii subsp. grandis (Torr. & A. Gray) Hultén
+1171,1172c1139,1140
 <  641101a  | Pentaphylloides fruticosa subsp. floribunda (Pursh) Laínz. See notes. - 
+<  641101a  | Potentilla fruticosa subsp. floribunda subsp.  (Pursh) Elkington
 ---
 >  641101a  | Pentaphylloides fruticosa subsp. floribunda (Pursh) Laínz
+>  641101a  | Potentilla fruticosa subsp. floribunda (Pursh) Elkington
 1213c1181
 < *670601   | Beringia bursifolia (DC.) R.A. Price
 ---
@@ -249,14 +266,19 @@
 <  671304a  | Rorippa palustris var. williamsii (Britton) Hultén^Hultén
 ---
 >  671304a  | Rorippa palustris var. williamsii (Britton) Hultén
-1254c1221
+1254,1255c1221,1222
 <  671603   | Cardamine pratensis subsp. polemonioides (Rouy) auct. (see notes).^
+<  671603   | Cardamine pratensis var. angustifolia var.  Hook.
 ---
 >  671603   | Cardamine pratensis subsp. polemonioides (Rouy) auct.
+>  671603   | Cardamine pratensis var. angustifolia Hook.
 1262d1228
 <  671611   | Cardamine digitata Richardson. - 
-1264d1229
+1264,1265c1230
 <  671611   | Cardamine digitata Richardson.^
+<  671611   | Cardamine digitata var. oxyphylla var.  Trautv.
+---
+>  671611   | Cardamine digitata var. oxyphylla Trautv.
 1320,1321c1285,1286
 <  672132   | Draba pyrenaica (?) Oeder]. 1764. See notes below and to 
 <  672132   | Draba rupestris.^
@@ -276,12 +298,17 @@
 <  710405   | Douglasia gormanii.
 ---
 >  710405   | Douglasia gormanii
-1387d1350
+1387,1388c1351
 <  710501   | Douglasia). Described from ad sinum St. Laurentii in East Chukotka (the Russian Far East). - 
-1405c1368
+<  710501   | Douglasia ochotensis subsp. arctica subsp.  (Cham. & Schltdl.) Á. Löve & D. Löve
+---
+>  710501   | Douglasia ochotensis subsp. arctica (Cham. & Schltdl.) Á. Löve & D. Löve
+1405,1406c1368,1369
 <  740105b  | Ledum palustre var. decumbens. - 
+<  740105b  | Rhododendron tomentosum subsp. subarcticum subsp.  (Harmaja) G.D. Wallace
 ---
 >  740105b  | Ledum palustre var. decumbens
+>  740105b  | Rhododendron tomentosum subsp. subarcticum (Harmaja) G.D. Wallace
 1424c1387
 < *741001   | Arctostaphylos adenotricha (Fernald & J.F. Macbr.) Á. Löve
 ---
@@ -327,21 +354,28 @@
 ---
 >  861801a  | Chrysanthemum arcticum subsp. arcticum
 >  861801a  | Dendranthema arcticum subsp. arcticum
-1751c1711
+1751,1752c1711,1712
 <  862811   | Senecio tomentosus Michx. (1803). Described from St. Lawrence Island (Alaska). - 
+<  862811   | Senecio atropurpureus subsp. tomentosus subsp.  (Kjellm.) Hultén
 ---
 >  862811   | Senecio tomentosus Michx.
+>  862811   | Senecio atropurpureus subsp. tomentosus (Kjellm.) Hultén
 1760c1720
 < *863101   | Packera cymbalaria (Pursh)
 ---
 >  863101   | Packera cymbalaria (Pursh) Á. Löve & D. Löve
-1774,1775d1733
+1763c1723,1724
+<  863101   | Senecio lyratus f. Packera resedifolia (Less.) Á. Löve & D. Löve
+---
+>  863101   | Senecio lyratus L. f.
+>  863101   | Packera resedifolia (Less.) Á. Löve & D. Löve
+1774,1775d1734
 <  864102   | Phymatocarpa Jurtz.
 <  864104   | Arctica p. p.
-1792,1793c1750
+1792,1793c1751
 <  910603   | Bupleurum sibiricum [Vest in Roem. & Schult.
 <  910603   | americanum (J.M. Coult. & Rose) Krasnob.
 ---
 >  910603   | Bupleurum sibiricum subsp. americanum (J.M. Coult. & Rose) Krasnob.
-1796d1752
+1796d1753
 <  910603   | ajanense].

@@ -1,9 +1,12 @@
 body { font-size: 1.7em; }
+code { font-size: 90%; }
 
 ol, ul {
     list-style-position: outside;
     padding-left: 3rem;
 }
+
+pre { font-size: 1.2rem; }
 
 /* ol ol {
     list-style-type: lower-alpha;

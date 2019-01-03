@@ -49,7 +49,11 @@ gawk -i ../../lib/parse_taxon_name.awk -f lib/make_all_names_list.awk
 # Allow this:
 # Warning: paf-343001, Dupontia fisheri R. Br. is both acc and syn (paf-343001b-s1)
 
-# test with: gawk 'BEGIN{FS="|"}{x[$8]++}END{for(i in x) print i}' paf-names | sort
+# tested with: gawk 'BEGIN{FS="|"}{x[$8]++}END{for(i in x) print i}' paf-names | sort... discovered some anomalies and recreated the patch for paf.3 to paf.4
+
+mysql -u cam -ptesttest tmp_ala < sql/query1.sql | sed 's/NULL//g' | tr "\t" "|" > out.csv
+
+# OK.. checking. Yes, some real cases of diff statements between ALA and PAF. Achillea millifilia, Agrostis Kudoi vs tenii... Also many cases of Diff when the spelling of ALA vs. PAF has not been ortho'd. Djzz... lots of work to do.
 
 
 
