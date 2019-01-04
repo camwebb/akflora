@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Alaska Flora : Variations of a taxonomic name</title>
+    <title>Alaska Flora : Blog 3: Variations of a taxonomic name</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../css/normalize.css"/>
@@ -15,16 +15,17 @@
     <div class="container">
       <div class="row">
         <div class="nine columns" style="margin-top: 5%">
-          <h1 id="variations-of-a-taxonomic-name">Variations of a taxonomic name</h1>
-          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2018-12-19</em></p>
+          <h1 id="blog-3-variations-of-a-taxonomic-name">Blog 3: Variations of a taxonomic name</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2019-01-03</em></p>
           <h2 id="the-problem">The problem</h2>
-          <p>A single taxonomic name often occurs in different forms in different publications. In terms of character string differences, the variation may be slight (e.g., a missing space after an author’s initials, or a single character mispelling of a specific epithet), or major (e.g., a missing basionym). Consider: <code>Ciminalis prostrata (Haenke) Á. Löve &amp; D. Löve</code> vs. <code>Ciminalis prostrata (Haenke) A.Love &amp; D.Love</code> vs. <code>Ciminalis prostrata Love &amp; Love</code>. These variations sometimes arise via copying or data entry errors, but more often are created through the choices of how to encode the history of a name that are made by authors citing an earlier name: to add the basionym or not, to treat a validly publishing author as an “ex” author or as the main author, and how to abbreviate the authors’ names. While the <em><a href="https://www.iapt-taxon.org/nomen/main.php">International Code of Nomenclature for algae, fungi, and plants</a></em> contains precise rules for name citation (Articles 46-50), there are also many reccomendations and often several “correct” ways to cite a name. The Code has also evolved over time, and many citations were published before clear rules existed. Hence the same name is often cited validly in a variety of forms, as well as being cited in erroneous ways. These citations find their way into databases and therefore present problems for the integration of data, whether it is linking synonyms to valid names, or linking secondary data from different sources.</p>
+          <p>A single taxonomic name often occurs in different forms in different publications. In terms of character string differences, the variation may be slight (e.g., a missing space after an author’s initials, or a single character misspelling of a specific epithet), or major (e.g., a missing basionym). Consider: <code>Ciminalis prostrata (Haenke) Á. Löve &amp; D. Löve</code> vs. <code>Ciminalis prostrata (Haenke) A.Love &amp; D.Love</code> vs. <code>Ciminalis prostrata Love &amp; Love</code>. These variations sometimes arise via copying or data entry errors, but more often are created through the choices of how to encode the history of a name that are made by authors citing an earlier name: to add the basionym or not, to treat a validly publishing author as an “ex” author or as the main author, and how to abbreviate the authors’ names. While the <em><a href="https://www.iapt-taxon.org/nomen/main.php">International Code of Nomenclature for algae, fungi, and plants</a></em> contains precise rules for name citation (Articles 46-50), there are also many recommendations, and often several “correct” ways to cite a name. The Code has also evolved over time, and many citations were published before clear rules existed. Hence the same name is often cited validly in a variety of forms, as well as being cited in erroneous ways. These citations find their way into databases and therefore present problems for the integration of data, whether it is linking synonyms to valid names, or linking secondary data from different sources.</p>
           <h2 id="name-matching">Name matching</h2>
-          <p>How do we then determine if two variants of a names are really “the same?” I.e., despite the variation, do these two name strings refer to the same name as <em>first published</em>. No judgement about the taxon concept (or circumscription) of the names is being attempted at this step. The most reliable way to solve this question is to track down the usage(s) of both names in the primary literature and carefully determine if the autors were refering to the same name as originally published. While this approach is feasible in the case of a taxonomist performing a revision, it is too slow to incorporate when assembling large lists of names, as in the data integrations step of our flora of Alaska project. What is needed is a sensible, transparent algorithm (set of rules) that can be applied by a machine, with human judgement being required in only a small number of cases. As long as the original names are preserved and the details of the automated judgment are recorded, then even if a few matches might later be found to be incorrect, no information is lost. This process of designing a taxonomic matching algorithm and associated software tool has occupied me for the past few weeks.</p>
+          <p>How do we then determine if two variants of a names are really “the same?” I.e., despite the variation, do these two name strings refer to the same name as <em>first published</em>. No judgment about the taxon concept (or circumscription) of the names is being attempted at this step. The most reliable way to solve this question is to track down the usage(s) of both names in the primary literature and carefully determine if the authors were referring to the same name as originally published. While this approach is feasible in the case of a taxonomist performing a revision, it is too slow to incorporate when assembling large lists of names, as in the data integration step of our flora of Alaska project. What is needed is a sensible, transparent algorithm (set of rules) that can be applied by a machine, with human judgment being required in only a small number of cases. As long as the original names are preserved and the details of the automated judgment are recorded, then even if a few matches might later be found to be incorrect, no information is lost. This process of designing a taxonomic matching algorithm and associated software tool has occupied me for the past weeks.</p>
           <h3 id="existing-tools">Existing tools</h3>
-          <p>There do exist online now at least two good tools to help match submitted names to various large names databases: The Global Names <a href="http://resolver.globalnames.org/">Resolver</a> of GNA and iPlant’s <a href="http://tnrs.iplantcollaborative.org/">TNRS</a> (Taxonomic Name Resolution Service). Both of these offer approximate (fuzzy) matching of submitted names to sources such as IPNI and Tropicos. TNRS returns an overall, numeric match score, as does GNR. GNR also returns one of five <code>match_type</code> values (Exact match, Exact match by canonical form of a name, Fuzzy match by canonical form, Partial exact match by species part of canonical form, Partial fuzzy match by species part of canonical form). However, where an non-exact match is found, both tools still require manual checking to confirm the exact nature of that match (e.g., mispelling, differences in author string). For our project’s purpose—building a network of data integrated by names—using the match scores these tools offer is not sufficient.</p>
+          <p>There do exist online now at least two good tools to help match submitted names to various large names databases: The Global Names <a href="http://resolver.globalnames.org/">Resolver</a> of GNA and iPlant’s <a href="http://tnrs.iplantcollaborative.org/">TNRS</a> (Taxonomic Name Resolution Service). Both of these offer approximate (fuzzy) matching of submitted names to sources such as IPNI and Tropicos. TNRS returns an overall, numeric match score, as does GNR. GNR also returns one of five <code>match_type</code> values (Exact match, Exact match by canonical form of a name, Fuzzy match by canonical form, Partial exact match by species part of canonical form, Partial fuzzy match by species part of canonical form). However, where an non-exact match is found, both tools still require manual checking to confirm the exact nature of that match (e.g., misspelling, differences in author string).</p>
+          <p>The majority of mismatches are due to minor variations in the author string and often an exact match between <em>intended</em> names can be inferred using some “taxonomic logic.” This additional taxonomic resolution is not available in any existing tool that I know of.</p>
           <h3 id="botanical-names-deconstructed">Botanical names, deconstructed</h3>
-          <p>Because there are general rules that govern the construction of taxonomic names, some additional pattern-matching can be applied in comparing the different elements of two similar names. This can then produce an estimate of the liklihood that two name strings actually refer to the same name.</p>
+          <p>Because there are general rules that govern the construction of taxonomic names, some additional pattern-matching can be applied in comparing the different elements of two similar names. This can then produce an estimate of the likelihood that two name strings actually refer to the same name.</p>
           <p>The most common elements of a (hypothetical) <em>botanical</em> name are these:</p>
           <pre>
           Salix alaxensis subsp. glauca (Andersson ex DC.) R. Coville ex Jones in Smith
@@ -37,7 +38,7 @@
           
                       author_string  =   <-------------------------------------------->
           </pre>
-          <p>These codes are:</p>
+          <p>(The codes used in this blog are:</p>
           <ul>
           <li><code>gen</code>: Genus.</li>
           <li><code>sp</code>: Specific epithet.</li>
@@ -50,11 +51,11 @@
           <li><code>in_auth</code>: <em>in</em> Author(s) for primary author: if <code>auth</code> or <code>ex_auth</code> were responsible for the combination but were not actually the authors of the publication in which that combination first appeared, the author(s) of the publication are should be added after <em>in</em>, usually with some bibliographic citation details following.</li>
           <li><code>taxon_name</code>: <code>gen</code> and <code>sp</code> (and <code>irank</code> and <code>infr</code> if they exist)</li>
           <li><code>canonical_form</code>: <code>gen</code> and <code>sp</code> and <code>infr</code> without <code>irank</code>.</li>
-          <li><code>author_string</code>: The whole author string.</li>
+          <li><code>author_string</code>: The whole author string.)</li>
           </ul>
           <h3 id="matching-two-variants">Matching two variants</h3>
-          <p>The presence or absence of, or variation in, these elements in two names that are being matched indicates different kinds of choices or errors by the person citing the name, and thus can give an indication of the liklihood that the matched names refer to the same name. Here is our current logic, which is encoded into the <code>matchnames</code> software tool (below). The types of variation are approximately ranked in order of decreasing likelihood that the names are truly the same:</p>
-          <table>
+          <p>The presence or absence of, or variation in, these elements in two names that are being matched indicates different kinds of choices or errors by the person citing the name, and thus can give an indication of the likelihood that the matched names refer to the same name. Here is our current logic, which is encoded into the <code>matchnames</code> software tool (<a href="#mn">below</a>). The types of variation are approximately ranked in order of <em>decreasing likelihood</em> that the names are truly the same:</p>
+          <table id="tab">
           <tr>
           <th>
           Variation
@@ -66,10 +67,10 @@
           Likely cause of variation
           </th>
           <th>
-          Liklihood that names refer to same name [3]
+          Likelihood that names refer to same name [3]
           </th>
           <th>
-          (Match code; see below)
+          (Match code; see <a href="#mn">below</a>)
           </th>
           </tr>
           <!-- punct -->
@@ -78,10 +79,10 @@
           Spacing differences, missing periods, differences in ASCII vs. non-ASCII characters (accents, etc.) in <code>author_string</code>
           </td>
           <td>
-          [A]
+          [<a href="#eg">A</a>]
           </td>
           <td>
-          Minor formatting choices, errors in encoding
+          Minor formatting choices, variation in encoding
           </td>
           <td>
           Very high
@@ -96,7 +97,7 @@
           Missing initials for an author, or different abbreviations of author’s surnames, in <code>author_string</code>
           </td>
           <td>
-          [B]
+          [<a href="#eg">B</a>]
           </td>
           <td>
           Choices and/or errors by the citing authors
@@ -111,10 +112,10 @@
           <!-- g+s variations -->
           <tr>
           <td>
-          Spelling variation in <code>gen</code>, <code>sp</code>, <code>infr</code> with (essentially) the same author string.
+          Spelling variation in <code>gen</code>, <code>sp</code>, <code>infr</code> with (essentially) the same <code>auth</code>
           </td>
           <td>
-          [A]
+          [<a href="#eg">B1</a>]
           </td>
           <td>
           Copying errors
@@ -132,7 +133,7 @@
           Missing <code>in_auth</code> in one of the names
           </td>
           <td>
-          [X]
+          [<a href="#eg">C</a>, <a href="#eg">D2</a>]
           </td>
           <td>
           One of the citing authors failed to include the <em>in</em> author
@@ -150,7 +151,7 @@
           One name with a basionym, the other without
           </td>
           <td>
-          [D]
+          [<a href="#eg">D</a>]
           </td>
           <td>
           One of the citing authors failed to include the basionym
@@ -168,7 +169,7 @@
           Missing <code>ex_auth</code> (or <code>ex_bas</code>) in one of the names
           </td>
           <td>
-          [X]
+          [<a href="#eg">E</a>]
           </td>
           <td>
           One of the citing authors failed to include the <em>ex</em> author
@@ -177,7 +178,7 @@
           Medium
           </td>
           <td>
-          <code>auto_ex+</code>, <code>auto_ex-</code>
+          <code>auto_exin+</code>, <code>auto_exin-</code>
           </td>
           </tr>
           <!-- ex to main -->
@@ -186,7 +187,7 @@
           <code>auth</code> in one name is <code>ex_auth</code> in the other
           </td>
           <td>
-          [X]
+          [<a href="#eg">F</a>]
           </td>
           <td>
           Confusion by citing author [5]
@@ -198,16 +199,16 @@
           <code>manual?</code>
           </td>
           </tr>
-          <!-- one of & auth -->
+          <!-- 2nd of & auth -->
           <tr>
           <td>
-          <code>auth</code> differs in one name missing one of a pair of names (sep. by “&amp;” or “et.”)
+          <code>auth</code> differs: 2nd author missing from a pair of authors (sep. by “&amp;” or “et.”)
           </td>
           <td>
-          [J]
+          [<a href="#eg">G</a>]
           </td>
           <td>
-          More likely to be an error (missing name) than a republication of the same <code>taxon_name</code> by a different author team
+          More likely to be an error (missing author) than a republication of the same <code>taxon_name</code> by a different author team [6]
           </td>
           <td>
           Medium
@@ -222,7 +223,7 @@
           Different basionym author (<code>basio</code>), same primary author (<code>auth</code>)
           </td>
           <td>
-          [C]
+          [<a href="#eg">H</a>]
           </td>
           <td>
           This should not happen [1], and is likely to be an error
@@ -231,7 +232,43 @@
           Medium
           </td>
           <td>
-          <code>auto_basio</code>
+          <code>auto_basexin</code>
+          </td>
+          </tr>
+          <!-- Obviously incomplete author -->
+          <tr>
+          <td>
+          Obviously incomplete author list in <code>auth</code>
+          </td>
+          <td>
+          [<a href="#eg">I</a>]
+          </td>
+          <td>
+          An error
+          </td>
+          <td>
+          Medium
+          </td>
+          <td>
+          <code>manual?</code>
+          </td>
+          </tr>
+          <!-- missing auth -->
+          <tr>
+          <td>
+          Same <code>basio</code>, missing <code>auth</code>
+          </td>
+          <td>
+          [<a href="#eg">J</a>]
+          </td>
+          <td>
+          An error [7]
+          </td>
+          <td>
+          Low
+          </td>
+          <td>
+          <code>manual??</code>
           </td>
           </tr>
           <!-- cfo -->
@@ -240,7 +277,7 @@
           Same <code>canonical_form</code> and <code>auth</code>, different <code>irank</code>
           </td>
           <td>
-          [A]
+          [<a href="#eg">K</a>]
           </td>
           <td>
           An error by citing author [2]
@@ -249,7 +286,7 @@
           Low
           </td>
           <td>
-          <code>auto_rank</code>
+          <code>auto_irank</code>, <code>manual??</code>
           </td>
           </tr>
           <!-- diff auth initials -->
@@ -258,7 +295,7 @@
           Same <code>taxon_name</code>, different <code>auth</code> initials
           </td>
           <td>
-          [I]
+          [<a href="#eg">L</a>]
           </td>
           <td>
           Probably separate publications of the name, but could be error
@@ -267,7 +304,25 @@
           Low
           </td>
           <td>
-          <code>no_match</code>
+          <code>manual??</code>
+          </td>
+          </tr>
+          <!-- missing first auth -->
+          <tr>
+          <td>
+          Same <code>taxon_name</code>, missing first author in <code>auth</code>
+          </td>
+          <td>
+          [<a href="#eg">M</a>]
+          </td>
+          <td>
+          Maybe separate publications of the name, but may also be error [6]
+          </td>
+          <td>
+          Low
+          </td>
+          <td>
+          <code>manual??</code>
           </td>
           </tr>
           <!-- diff auth -->
@@ -276,10 +331,10 @@
           Same <code>taxon_name</code>, clearly different <code>auth</code>
           </td>
           <td>
-          [A]
+          [<a href="#eg">N</a>]
           </td>
           <td>
-          Separate publications of the name
+          Separate publications of the name [6]
           </td>
           <td>
           Very low
@@ -289,9 +344,9 @@
           </td>
           </tr>
           </table>
-          <script> 
-          function showhide() {
-              var x = document.getElementById("notes");
+          <script>
+          function showhide(z) {
+              var x = document.getElementById(z);
               if (x.style.display == "none") {
                   x.style.display = "block";
               } else {
@@ -300,7 +355,7 @@
           }
           </script>
           <div style="text-align: right;">
-          <button onclick="showhide()">
+          <button onclick="showhide(&#39;notes&#39;)">
           Show/hide notes for this table
           </button>
           </div>
@@ -311,350 +366,182 @@
           <li>It is indeed possible that the same author will have published an infraspecific epithet twice, with different ranks, but seems quite unlikely. It seems more likely that one citing author gave an incorrect rank. However, the overall confidence in the names being the same is low.</li>
           <li>When two or more of these variations are combined (e.g., example B, below), they should generally reduce the likelihood of the two names matching, though probably less than additively.</li>
           <li>“L.” and “L.f.” (= filius) are different people, but in this case the difference was a copying error.</li>
-          <li>Since the <code>ex_auth</code> publication is a valid <em>republication</em> of the <code>auth</code> publication it should refer to exactly the same taxon concept as implied by the <code>auth</code> name, and should be effectively interchangable.</li>
+          <li>Since the <code>ex_auth</code> publication is a valid <em>republication</em> of the <code>auth</code> publication it should refer to exactly the same taxon concept as implied by the <code>auth</code> name, and should be effectively interchangeable.</li>
+          <li>A erroneously missing author in a string of authors is more likely when the missing author is a second (or third author) than a first author.</li>
+          <li>Care (i.e., further research) is needed if there are several alternate names that match <code>basio</code> but differ in <code>auth</code>.</li>
           </ol>
-          <p>Examples:</p>
-          <ul>
-          <li><strong>A</strong>: <em>Ciminalis prostrata</em> (Haenke) Á. Löve &amp; D. Löve vs. <em>Ciminalis prostrata</em> (Haenke) A.Love &amp; D.Love</li>
-          <li><strong>B</strong>: <em>Mertensia paniculata</em> var. <em>eastwoodae</em> (J.F.Macbr.) Hultén vs. <em>Mertensia paniculata</em> var. <em>eastwoodiae</em> (Macbride) Hultén; <em>Carex halleri</em> W.W.H.Gunn vs. <em>Carex halleri</em> Gunnerus; <em>Ranunculus auricomus</em> L.f. vs. <em>Ranunculus auricomus</em> L. [4]</li>
-          <li><strong>C</strong>: <em>Alnaster sinuata</em> (Regel) Czerep. vs. <em>Alnaster sinuatus</em> (Rydb.) Czerep.</li>
-          <li><strong>D</strong>: <em>Fauria crista-gallii</em> (Menzies) Makino vs. <em>Fauria crista-galli</em> Makino</li>
-          <li><strong>E</strong>: <em>Thelypteris phegopteris</em> (L.) Sloss. vs. <em>Thelypteris phegopteris</em> Sloss. in Rydb.</li>
-          <li><strong>F</strong>: <em>Calypso bulbosa</em> (L.) vs. <em>Calypso bulbosa</em> (L.) Oakes</li>
-          <li><strong>G</strong>: <em>Lloydia serotina</em> (L.) Rchb. vs. <em>Lloydia serotina</em> (L.) Salisb. ex Rchb.</li>
-          <li><strong>H</strong>: <em>Puccinellia interior</em> T.Sorensen vs. <em>Puccinellia interior</em> T.J. Sørensen ex Hultén; <em>Pulsatilla dahurica</em> (Fisch.) Sprengel vs. <em>Pulsatilla dahurica</em> (Fisch. ex DC.) Spreng.</li>
-          <li><strong>I</strong>: <em>Glyceria pauciflora</em> C.Presl vs. <em>Glyceria pauciflora</em> J.Presl</li>
-          <li><strong>J</strong>: <em>Arnica alpina</em> (L.) Olin vs. <em>Arnica alpina</em> (L.) Olin &amp; Ladau</li>
-          </ul>
           </div>
+          <a name="eg"></a>
+          <div style="text-align: right;">
+          <button onclick="showhide(&#39;example&#39;)">
+          Show/hide examples for this table
+          </button>
+          </div>
+          <div id="example" style="display:none;">
+          Examples:
+          <pre>
+            A:  Ciminalis prostrata (Haenke) Á. Löve & D. Löve
+                Ciminalis prostrata (Haenke) A.Love & D.Love
+               
+            B1: Mertensia paniculata var. eastwoodae (J.F.Macbr.) Hultén
+                Mertensia paniculata var. eastwoodiae (Macbride) Hultén
+          
+            B2: Carex halleri W.W.H.Gunn
+                Carex halleri Gunnerus
+          
+            B3: Ranunculus auricomus L.f.
+                Ranunculus auricomus L.       [4]
+          
+            C:  Athyrium filix-femina subsp. cyclosorum (Rupr.) C.Chr.
+                Athyrium filix-femina subsp. cyclosorum (Rupr.) C.Chr. in Hultén
+               
+            D1: Fauria crista-gallii (Menzies) Makino
+                Fauria crista-galli Makino
+          
+            D2: Thelypteris phegopteris Sloss. in Rydb.
+                Thelypteris phegopteris (L.) Sloss.
+          
+            E1: Puccinellia interior T.Sorensen
+                Puccinellia interior T.J. Sørensen ex Hultén
+               
+            E2: Pulsatilla dahurica (Fisch.) Sprengel
+                Pulsatilla dahurica (Fisch. ex DC.) Spreng.
+          
+            F:  Lloydia serotina (L.) Rchb.
+                Lloydia serotina (L.) Salisb. ex Rchb.
+          
+            G1: Arnica alpina (L.) Olin
+                Arnica alpina (L.) Olin & Ladau
+          
+            G2: Draba eschscholtzii Pohle
+                Draba eschscholtzii Pohle & N. Busch
+          
+            H:  Alnaster sinuata (Regel) Czerep.
+                Alnaster sinuatus (Rydb.) Czerep.
+          
+            I:  Symphyotrichum pygmaeum (Lindl.) & Selliah
+                Symphyotrichum pygmaeum (Lindl.) Brouillet & Selliah
+          
+            J1: Calypso bulbosa (L.)
+                Calypso bulbosa (L.) Oakes
+          
+            J2: Matteuccia struthiopteris var. pensylvanica (Willd.)
+                Matteuccia struthiopteris var. pensylvanica (Willd.) C.V. Morton
+          
+            K:  Vaccinium uliginosum subsp. vulcanorum (Kom.) Jurtzev
+                Vaccinium uliginosum var. vulcanorum (Kom.) Jurtzev
+          
+            L:  Glyceria pauciflora C.Presl
+                Glyceria pauciflora J.Presl
+          
+            M:  Potentilla elegans Cham. & Schltdl.
+                Potentilla elegans Schltdl.          [6]
+          
+            N1: Carex media var. stevenii (Holm) Kalela
+                Carex media var. stevenii (T. Holm) Fernald
+          
+            N2: Myosotis palustris L.
+                Myosotis palustris (L.) Nath.
+          
+          </pre>
+          </div>
+          <p/>
+          <p>These potential reasons for a mismatch between two citations of the same name can be classed so that at a later date users can limit the accepted matches to certain levels of confidence:</p>
           <table>
           <tr>
-          <td colspan="3">
-          <center>
+          <th>
           Confidence of match
-          </center>
-          </td>
+          </th>
+          <th>
+          Match codes
+          </th>
           </tr>
           <tr>
-          <th>
+          <td>
           Very High and High
-          </th>
-          <th>
-          Medium
-          </th>
-          <th>
-          Low
-          </th>
+          </td>
+          <td>
+          <code>auto_punct</code>, <code>manual</code>, <code>auto_in+</code>, <code>auto_in-</code>
+          </td>
           </tr>
           <tr>
           <td>
-          <code>auto_punct</code>, <code>manual</code>, <code>auto_in</code>
+          Medium
           </td>
           <td>
-          <code>auto_basio+</code>, <code>auto_basio-</code>, <code>auto_basio</code>, <code>auto_ex+</code>, <code>auto_ex-</code>, <code>manual?</code>
+          <code>auto_basio+</code>, <code>auto_basio-</code>, <code>auto_exin+</code>, <code>auto_exin-</code>, <code>manual?</code>, <code>auto_basexin</code>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          Low
           </td>
           <td>
-          <code>auto_rank</code>, <code>manual??</code>
+          <code>auto_irank</code>, <code>manual??</code>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          Very low; not a match
+          </td>
+          <td>
+          <code>no_match</code>
           </td>
           </tr>
           </table>
-          <p>To go beyond a general, numeric match</p>
-          <p>To deal with this problem of i) needing more taxonomic precision in judging name similarity, while ii) not having time to check every fuzzy match (and definitely not having time to return to the primary literature for every name encountered), I created a tool that applies a sequence of taxonomic, rule-based transformations to the names, and if a match is then found, records the kind of match. A limited number of non-matching names is subsequently presented to an operator for a human judgement based on details that are more nuanced than could be easily automated.</p>
-          <p>The tool is called <code>matchnames</code> (available on <a href="...">Github</a>). Full details of use are in the tool’s <a href="..."><code>man</code> page</a>. The general logical sequence (and output match codes) is as follows:</p>
+          <h2 id="the-matchnames-program">The <code>matchnames</code> program <a name="mn"></a></h2>
+          <p>To deal with this problem of i) needing more taxonomic precision in judging name similarity than that provided by a generic fuzzy-match score, while ii) not having time to check every fuzzy match (and definitely not having time to return to the primary literature for every name encountered), I created a tool that applies a sequence of taxonomic, rule-based transformations to the names, and then if a match is found records the kind of match. A limited number of non-matching names is subsequently presented to an operator for a human judgment based on details that are more nuanced than could be easily automated.</p>
+          <p>The tool is called <code>matchnames</code> (available on <a href="https://github.com/camwebb/taxon-tools">Github</a>). Full details of use are in the tool’s <a href="https://github.com/camwebb/taxon-tools/blob/master/doc/matchnames.md"><code>man</code> page</a>. The sequence of matching logic (and output match codes) follows the above framework of potential reasons for name mismatch:</p>
           <ol type="1">
-          <li>Is there an exact match to all parts of the name (genus hybrid marker, genus name, species hybrid marker, species epithet, infraspecific rank signifier, infraspecific rank, author sting)? If so match code is: <strong>exact</strong>.</li>
-          <li>Both query name and reference names are “de-punctuated” to remove the effect of mis-matching spaces, periods, non-ASCII author name characters, etc. The depunctuation procedure is: a) converting non-ASCII characters into their appropriate ASCII character (e.g., “ï” to “i”), b) converting “and” into “&amp;”, c) removing all punctuation other than “(“, “)” and “&amp;”, d) converting to lower-case. If an exact match exists between the depunctuated query string and a depunctuated reference name, the match code is: <strong>auto_punct</strong>.<br />
+          <li>Is there an exact match to all parts of the name (genus hybrid marker, genus name, species hybrid marker, species epithet, infraspecific rank signifier, infraspecific rank, author sting)? If so match code is: <code>exact</code>.</li>
+          <li>Both query name and reference names are “de-punctuated” to remove the effect of mis-matching spaces, periods, non-ASCII author name characters, etc. The depunctuation procedure is: a) converting non-ASCII characters into their appropriate ASCII character (e.g., “ï” to “i”), b) converting “and” or “et” into “&amp;”, c) removing all punctuation other than “(“, “)” and “&amp;”, d) converting to lower-case. If an exact match exists between the depunctuated query string and a depunctuated reference name, the match code is: <code>auto_punct</code>.<br />
           </li>
-          <li>If the author is missing in the query name, accept the reference name (with author) if there is <em>only one</em> with exactly the same (when matching to IPNI or TROPICOS only).</li>
-          <li>If basionyms are different or missing, a match is allowed (e.g., <em>Cardaminopsis umbrosa</em> Czerep. vs. <em>Cardaminopsis umbrosa</em> (Turcz.) Czerep.). Match code: <strong>auto_basio</strong>.</li>
-          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> elements have been stripped, a match is allowed (e.g., <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel vs. <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel ex D.F.Murray). Match code: <strong>auto_exin</strong>.</li>
-          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> and basionym elements have been stripped, a match is allowed. Match code: <strong>auto_basexin</strong>.</li>
-          <li>If there are any reference names that may match approximately the query name, move to “manual matching” (below). Match code: <strong>manual</strong> or <strong>manual?</strong>.</li>
-          <li>Record a failure to match. Match code: <strong>no_match</strong>.</li>
+          <li>If the author is missing in the query name, accept the reference name (with author) if there is <em>only one</em> with exactly the same (when matching to IPNI or TROPICOS only). Match code: <code>auto_noauth</code>.</li>
+          <li>If one basionym is missing, a match is allowed (e.g., <em>Cardaminopsis umbrosa</em> Czerep. vs. <em>Cardaminopsis umbrosa</em> (Turcz.) Czerep.). Match code: <code>auto_basio+</code>, <code>auto_basio-</code>.</li>
+          <li>If the names and author strings are the same after all <em>in</em> elements have been stripped, a match is allowed. Match code: <code>auto_in+</code>, <code>auto_in-</code>.</li>
+          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> elements have been stripped, a match is allowed (e.g., <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel vs. <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel ex D.F.Murray). Match code: <code>auto_exin+</code>, <code>auto_exin-</code>.</li>
+          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> and basionym elements have been stripped, a match is allowed. Match code: <code>auto_basexin</code>.</li>
+          <li>If all elements of the name match except for the infraspecific rank, record the match as: <code>auto_irank</code>.</li>
+          <li>If there are any reference names (list B) that may match the query name approximately, move to “manual matching” (below). Match code: <code>manual</code>, <code>manual?</code> or <code>manual??</code>.</li>
+          <li>Record a failure to match. Match code: <code>no_match</code>.</li>
           </ol>
           <h3 id="manual-matching">Manual matching</h3>
-          <p>The human operator can then apply further rules which are harder to program for automated decision-making. This is our current rule-set (Cam &amp; Steffi, Dec 2018):</p>
-          <p>Accept a match:</p>
+          <p>The human operator can then apply further rules which are hard to program for automated decision-making. This is our current rule-set, following the <a href="#tab">above</a> table:</p>
+          <p>Accept a match at high confidence (<code>match</code>):</p>
           <ol type="1">
-          <li>Spelling variations in the query name or author string.</li>
-          <li>If the query name is obviously missing one or more authors seperated by an “&amp;” in the reference string.</li>
-          <li>If the query and reference name differ in “var.” vs. “subsp.” <em>and</em> the author strings are the same.</li>
+          <li>Missing initials for an author, or different abbreviations of author’s surnames, in <code>author_string</code>,</li>
+          <li>Spelling variation in <code>gen</code>, <code>sp</code>, <code>infr</code> with (essentially) the same <code>auth</code>.</li>
           </ol>
-          <p>Reject a match:</p>
+          <p>Accept a match at medium confidence (<code>match?</code>):</p>
           <ol type="1">
-          <li>When the two author strings are clearly representing non-overlapping lists of authors.</li>
+          <li><code>auth</code> in one name is <code>ex_auth</code> in the other,</li>
+          <li><code>auth</code> differs: 2nd author missing from a pair of authors (sep. by “&amp;” or “et.”)</li>
+          <li>Obviously incomplete author list in <code>auth</code></li>
+          </ol>
+          <p>Accept a match at low confidence (<code>match??</code>):</p>
+          <ol type="1">
+          <li>Same <code>basio</code>, missing <code>auth</code></li>
+          <li>Same <code>taxon_name</code>, different <code>auth</code> initials</li>
+          <li>Same <code>taxon_name</code>, missing first author in <code>auth</code></li>
+          </ol>
+          <p>Reject the match (<code>no_match</code>):</p>
+          <ol type="1">
+          <li>When the two author strings are clearly representing different (sets of) of authors.</li>
           <li>If the query name contains only the basionym author, and the reference name has the basionym author plus the revising author, or vice versa.</li>
           <li>When the query name is of species rank and the reference name of infraspecific rank, or vice versa.</li>
           <li>If the query name is followed by “auct.”</li>
           </ol>
-          <p>Note again: when a manual match is accepted, the matching name is not being accepted as the <em>same</em> as the query name, only that it is judged worth recording as a possible, adjudicated match with a good possibility that it represents the intention of the creator of the query name.</p>
-          <p>With large lists this can be a time consuming phase, and is prone to errors due to concentration lapses. Some of these decisions might be achieved with clever code, but I haven’t done that yet.</p>
-          <p>(e.g., in the synonym lists of .</p>
-          <p>There are two parts to this question of name variation: i) how to structure the taxonomic name database, and ii) how to assess that the variations refer to the “same name”.</p>
-          <h2 id="database-structure">Database structure</h2>
-          <p>“How much detail to keep?” is a perenial question when modeling anything. In the case of modeling the taxonomic relationships among names, the specific question is</p>
-          <p>The two general options in modeling this name string variation in a database are: i) to maintain a single canonical name and to resolve variation prior to entering names into the database, or ii) to preserve all name variation in the database and record the resolution of variation within the database:</p>
-          <pre>
-          Data Source X:  Aaaa aaaa  is accepted,
-                          Aaaa bbbc  is a synonym of Aaaa aaaa
-          
-          We assessed:    Aaaa bbbb  is the “correct” spelling of Aaaa bbbc
-          
-          
-          Approach 1:     Names      Status/mapping     Source  (Optional notes)
-                          =========  =================  ======  ==================
-                          Aaaa aaaa  accepted           X
-                          Aaaa bbbb  syn. of Aaaa aaaa  X       spelled as “Aaaa
-                                                                bbbc” in Src X
-          
-          Approach 2:     Names      Status/Mapping     Source
-                          =========  =================  ======
-                          Aaaa aaaa  accepted           X
-                          Aaaa bbbc  syn. of Aaaa aaaa  X
-                          Aaaa bbbc  ~= Aaaa bbbb       Assessed
-          </pre>
-          <p>Because full recording of data provenance is a core design element of this project, I have chosen to go with the second approach. However, this way adds a layer of complexity, as every query of the taxonomic relationship of two names requires that any orthographic variation be resolved as well (though this resolution may be pre-calculated and cached).</p>
-          <p>Although the above diagram shows a single data table, in practice, it seems conceptually clearer to have two tables: a taxonomic relationship table and an orthographic mapping table (especially since eventually we need to model the taxonomic relationships as concept-to-concept relationships, not just name-to-name relationships). So for the moment, my data modeling approach is this:</p>
-          <pre>
-          +----------+          +-------------+          +----------------+
-          | Source   |          | Name        |          | Ortho. mapping |
-          +==========+          +=============+          +----------------+
-          | name     | -------> | row id      | <===---- | from name      |
-          +----------+          +-------------+     |    +----------------+
-          | source   |          | name string |     +--- | to name        |
-          +----------+          +-------------+          +----------------+
-          | (guid)   |                                   | how assessed   |
-          +----------+                                   +----------------+
-          </pre>
-          <p>…with additional tables to store name-to-name synonymy relationships, and taxon concept relationships.</p>
-          <h3 id="an-aside-use-a-graph-database">(An aside: Use a graph database?)</h3>
-          <p>Since I first became enamoured with RDF and the smeantic web, I’ve kept an eye on graph databases, and played around with triple stores (<a href="https://github.com/4store/4store">4store</a>, <a href="https://franz.com/agraph/support/documentation/current/agraph-introduction.html">Allegrograph</a>, <a href="https://www.stardog.com/">StarDog</a>, <a href="https://cliopatria.swi-prolog.org/home">ClioPatria</a>) and <a href="https://neo4j.com/">Neo4j</a> and <a href="https://tinkerpop.apache.org/">TinkerPop/Gremlin</a>. I also have a frequently re-occuring desire to learn Prolog, and the conceptual similarity between querying triples and Prolog’s declarative pattern matching tempts me to invest in learning <a href="https://cliopatria.swi-prolog.org/home">ClioPatria</a>, a Prolog-based triple store. So as it became clear that the flora project database would need to include name-to-name mappings, possibly in chains of arbitrary length, I wondered seriously if I should switch to a graph database for the underlying engine for this project. <a href="https://tinkerpop.apache.org/docs/3.3.4/tutorials/gremlins-anatomy/">Gremlin</a>, <a href="https://neo4j.com/cypher-graph-query-language/">Cypher</a> and <a href="https://www.w3.org/TR/sparql11-query/#propertypath-arbitrary-length">SPARQL 1.1</a> (and Prolog) all allow for searching over arbitrary length property paths.</p>
-          <p>In the end I’m deciding to stick to a SQL RDMS solution for reasons of familiarity, stability, speed, and hopeful longevity of the database. But what nailed it was discovering that MariaDB, which is my choice of DB platform, now has <a href="https://mariadb.com/kb/en/library/recursive-common-table-expressions-overview/">Recursive Common Table Expressions</a>, which permit following a data link chain of arbitrary length until some condition is met. So now I could query across multiple name-to-name orthographic mappings, if needed. Indeed, I hope I won’t need this (SQL is hard enough and ugly enough as it is!), but the facility is there.</p>
-          <h2 id="canonical-names">Canonical names</h2>
-          <p>Even if we preserve all name variation in the database, the final Flora will need a name string to be chosen for presentation. The choice of which variant is somewhat arbitrary — is the abbreviated author’s name really “better” than the full name? — but having a “canonical” name string for a name will simplify matters. By making all orthographic match assessments only one step from a canonical name, we perhaps will remove the need for recursive searches along orthographic name-to-name chains (see above).</p>
-          <p>So which name to chose? I had stated in the <a href="blog1.html">first blog post</a> that we would use <a href="http://www.theplantlist.org/">The Plant List</a> as our reference set. Rod Page rightly took issue with this, asking “why not IPNI?” Unfortunately, IPNI does not contain all the names we may want (neither does The Plant List), so I’ve decided to use a hierarchy of sources to come up with our canonical names set:</p>
-          <ol type="1">
-          <li>IPNI</li>
-          <li>Tropicos</li>
-          <li>WCSP (as found in The Plant List)</li>
-          </ol>
-          <p>I’d have liked to include the Flora of North America (FNA) in this list, probably at rank 2. There’s a team in Ottawa working on parsing and databasing the FNA accounts (including James Macklin, Jocelyn Pender, and Joel Sachs), and they have kindly given me access to the FNA names data, but it will take a while to come to grips with this resource. We will definitely link our Flora to the FNA work, and may include their names in the above canonical name list, but not quite yet.</p>
-          <h2 id="appendix-examples-of-judgment-calls-made-during-manual-matching">Appendix: Examples of judgment calls made during manual matching</h2>
-          <p>The exact question being asked is: “Despite the variation, do these two name strings refer to the same name as published in the same source?” No judgement about the taxon concept (or circumscription) of the names is being attempted. Symbol key: <code>!=</code> means not the same name; <code>~=</code> means judged to be the same name; <code>?=</code> means judged to be the same name with low confidence.</p>
-          <pre>
-          ** 1a. Different publishing authors **
-          
-              Androsace chamaejasme Host
-           != Androsace chamaejasme Wulfen
-          
-              Arabis holboelii var. retrofracta (Graham) Rydb.
-           != Arabis holboellii var. retrofracta (Graham) Jeps.
-          
-              Packera ogotorukensis (Packer) W.A.Weber & A.Love
-           != Packera ogotorukensis (Packer) Á. Löve & D. Löve
-          
-              Carex media var. stevenii (Holm) Kalela
-           != Carex media var. stevenii (T. Holm) Fernald
-          
-              Ranunculus auricomus L.f.
-           != Ranunculus auricomus L. & W.Koch
-          
-              Parnassia kotzebuei Cham. & Schltdl.
-           != Parnassia kotzebuei Cham. ex Spreng. {but see ‘missing ex author’ below}
-          
-              Papaver radicatum subsp. porsildii (Knaben) D.Love
-           ?= Papaver radicatum subsp. porsildii (Knaben) Á.Löve
-          
-          
-          ** 1b. Diff. authors (basionym author vs. new publishing author) **
-          
-              Glyceria pauciflora C.Presl
-           != Glyceria pauciflora (ex C.Presl) J.Presl
-          
-              Myosotis palustris L.
-           != Myosotis palustris (L.) Nath.
-          
-              Alnus fruticosa (Rupr.) Ledeb.
-           != Alnus fruticosa Rupr.
-          
-              Platanthera convallariaefolia (Fisch. ex Lindl.) Lindl.
-           ?= Platanthera convallariifolia Fisch. ex Lindl.
-          
-          
-          ** 1c. Overlapping but different authors **
-          
-              Draba eschscholtzii Pohle
-           != Draba eschscholtzii Pohle & N. Busch
-          
-              Carex anthoxanthea C.Presl
-           != Carex anthoxanthea J. Presl & C. Presl
-          
-              Solidago simplex Humb., Bonpl. & Kunth
-           != Solidago simplex Kunth
-          
-              Potentilla elegans Cham. & Schltdl.
-           != Potentilla elegans Schltdl.
-          
-              Arctous rubra (Rehder & E.H.Wilson) Nakai & Koidz.
-           != Arctous rubra (Rehder & E.H.Wilson) Nakai
-          
-          
-          ** 1d. Obviously incomplete author **
-          
-              Symphyotrichum pygmaeum (Lindl.) & Selliah
-           ~= Symphyotrichum pygmaeum (Lindl.) Brouillet & Selliah
-          
-          
-          ** 2. Different ranks **
-          
-              Aconitum delphinifolium subsp. delphinifolium
-           != Aconitum delphiniifolium var. delphiniifolium
-          
-          
-          ** 3a. Different basionyms **
-          
-              Mertensia paniculata var. eastwoodae (J.F.Macbr.) Hultén
-           ~= Mertensia paniculata var. eastwoodiae (Macbride) Hultén
-          
-              Alnaster sinuata (Regel) Czerep.
-           ?= Alnaster sinuatus (Rydb.) Czerep.
-          
-          
-          ** 3b. Missing basionym **
-          
-              Fauria crista-gallii (Menzies) Makino
-           ~= Fauria crista-galli Makino
-          
-              Alnaster sinuata (Regel) Czerep.
-           ~= Alnaster sinuatus Czerep.
-          
-              Thelypteris phegopteris (L.) Sloss.
-           ~= Thelypteris phegopteris Sloss. in Rydb.
-          
-          
-          ** 4. Missing author, same basionym **
-          
-              Calypso bulbosa (L.)
-           ?= Calypso bulbosa (L.) Oakes
-          
-              Matteuccia struthiopteris var. pensylvanica (Willd.)
-           ?= Matteuccia struthiopteris var. pensylvanica (Willd.) C.V. Morton
-          
-              Cirsium edule var. macounii (Greene)
-           ?= Cirsium edule var. macounii (Greene) D.J. Keil
-          
-          
-          ** 5. Same author as ‘ex author’ **
-          
-              Trisetum sibiricum subsp. litoralis (Rupr.) Roshev.
-           ~= Trisetum sibiricum subsp. litorale Rupr. ex Roshev.
-           
-              Lloydia serotina (L.) Rchb.
-           ~= Lloydia serotina (L.) Salisb. ex Rchb.
-          
-              Castilleja pallida subsp. mexiae Eastw. ex Pennell
-           ~= Castilleja pallida subsp. mexiae Pennell
-          
-              Colophospermum mopane (Benth.) Leonard
-           ~= Colophospermum mopane (J. Kirk ex Benth.) J. Léonard
-          
-              Carex sprengelii Sprengel
-           ~= Carex sprengelii Dewey ex Spreng.
-          
-              Carex chordorrhiza Ehrh. ex L.f.
-           ~= Carex chordorrhiza L.f.
-          
-              Eriophorum callitrix Cham. ex C.A.Mey.
-           ~= Eriophorum callitrix C.A.Mey.
-          
-          
-          ** 6. Missing ‘ex author’ **
-          
-              Colophospermum mopane (Benth.) Leonard
-           ~= Colophospermum mopane (J.Kirk ex Benth.) J.Léonard
-          
-              Cystopteris montana (Lam.) Bernh.
-           ~= Cystopteris montana (Lam.) Bernh.; Desv.
-          
-              Sparganium minimum (C.Hartm.) Fr.
-           ~= Sparganium minimum Fr. ex Wallr.
-          
-              Artemisia lagocephala var. kruhsiana (Besser) Glehn
-           ~= Artemisia lagocephala var. kruhsiana (Besser) Gehn ex Hultén
-          
-              Cardaminopsis umbrosa (Turcz.) Czern.
-           ~= Cardaminopsis umbrosa (Turcz. ex Steud.) Czerep.
-          
-              Cardamine pennsylvanica Muhl.
-           ~= Cardamine pensylvanica Muhl. ex Willd.
-          
-              Callitriche verna L. emend. Kütz.
-           ~= Callitriche verna L.
-          
-              Puccinellia interior T.Sorensen
-           ~= Puccinellia interior T.J. Sørensen ex Hultén
-          
-              Equisetum fluviatile L. ampl. Ehrh.
-           ~= Equisetum fluviatile L.
-          
-              Puccinellia langeana subsp. asiatica T.Sorensen
-           ~= Puccinellia langeana subsp. asiatica T.J. Sørensen ex Hultén
-          
-              Pulsatilla dahurica (Fisch.) Sprengel
-           ~= Pulsatilla dahurica (Fisch. ex DC.) Spreng.
-          
-              Saxifraga caespitosa subsp. sileneflora (Sternb.) Hultén
-           ~= Saxifraga cespitosa subsp. sileneflora (Sternb. ex Cham.) Hultén
-          
-              Rorippa curvisiliqua (Hook.) Besser
-           ~= Rorippa curvisiliqua (Hook.) Bessey ex Britton
-          
-              Digitaria ischaemum (Schreb.) Schreb. ex Muhl.
-           ~= Digitaria ischaemum (Schreb.) Muhl.
-          
-          
-          ** 8. Fuzzy-matched author **
-          
-              Osmorhiza depauperata L.Ll.Phillips
-           ~= Osmorhiza depauperata Phil.
-          
-              Carex halleri W.W.H.Gunn
-           ~= Carex halleri Gunnerus
-          
-          
-              Ranunculus auricomus L.f.
-           ~= Ranunculus auricomus L.      (L. and L. ‘filius’ are diff auths, but
-                                            this was a typo)
-          
-          
-          ** Too tricky to make a call **
-          
-              Glyceria pauciflora C.Presl
-           ?= Glyceria pauciflora J.Presl
-           ?= Glyceria pauciflora (ex C.Presl) J.Presl
-           ?= Glyceria pauciflora J.Presl in C.Presl
-           ?= Glyceria pauciflora J.Presl & C.Presl
-          
-          
-          
-          making a call - an authjor was forgotten
-          
-              Arnica alpina (L.) Olin
-           ~= Arnica alpina (L.) Olin & Ladau
-          
-              Eriophorum callitrix Cham. ex C.A.Mey.
-           ~= Eriophorum callitrix C.A.Mey.
-          
-           Juncus castaneus [Clairv.] bracket?
-          </pre>
+          <p>With large lists this manual checking can be a time consuming phase, and is prone to operator errors due to concentration lapses. Some of these decisions might still yet be achieved with clever code.</p>
+          <h2 id="summary">Summary</h2>
+          <p>Using the <code>matchnames</code> tool it is possible in a matter of only a few hours to compare a list of Alaskan plant names to other resources, such as IPNI and Tropicos. The type of orthographic match can be recorded, as can the original names, and the date and name of the operator. Thus if in the future, after further research, a particular match is deemed to actually be incorrect, no data has been lost and the match status can simply be corrected. In the next post I’ll talk about the data model we’re using to store these orthographic matches.</p>
           <hr />
           <div id="disqus_thread">
           
           </div>
           <script>
           var disqus_config = function () {
-          this.page.url = 'https://alaskaflora.org/pages/blog2.html';  // Edit
-          this.page.identifier = 'alaskaflora_blog2';                  // Edit
+          this.page.url = 'https://alaskaflora.org/pages/blog3.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog3';                  // Edit
           };(function() {  var d = document, s = d.createElement('script');
           s.src = 'https://alaskaflora-org.disqus.com/embed.js';
           s.setAttribute('data-timestamp', +new Date());

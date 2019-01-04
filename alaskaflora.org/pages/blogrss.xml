@@ -6,16 +6,23 @@
     <description>Step-by-step updates on the development of the informatics foundation for the new Flora of Alaska</description>
     <item>
       <link>https://alaskaflora.org/pages/blog1.html</link>
-      <pubDate>Fri, 17 Aug 2018 17:03:09 -0800</pubDate>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 -0800</pubDate>
       <title>Blog 1: Project roadmap</title>
       <guid>alaska-flora-blog1</guid>
       <description></description>
     </item>
     <item>
       <link>https://alaskaflora.org/pages/blog2.html</link>
-      <pubDate>Thu, 1 Nov 2018 18:20:17 -0800</pubDate>
-      <title>Names, names, names!</title>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0800</pubDate>
+      <title>Blog 2: Names, names, names!</title>
       <guid>alaska-flora-blog2</guid>
+      <description></description>
+    </item>
+    <item>
+      <link>https://alaskaflora.org/pages/blog3.html</link>
+      <pubDate>Thu, 3 Jan 2019 00:00:00 -0900</pubDate>
+      <title>Blog 3: Variations of a taxonomic name</title>
+      <guid>alaska-flora-blog3</guid>
       <description></description>
     </item>
   </channel>

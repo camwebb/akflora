@@ -1,4 +1,4 @@
-% Names, names, names!
+% Blog 2: Names, names, names!
 
 # Blog 2: Names, names, names!
 

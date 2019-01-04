@@ -8,10 +8,12 @@ then
     echo "  "${1/md/html}
     pandoc -s --template=template.html \
            -o ../alaskaflora.org/pages/${1/md/html} $1
+    # check
+    tidy -e ../alaskaflora.org/pages/${1/md/html} 2>&1 >/dev/null | grep errors
 else
     ../bin/makesitemap
     ../bin/makerss
-    for i in *.md
+    for i in [A-Za-z]*.md
     do
         echo "  "${i/md/html}
         pandoc -s --template=template.html -o ../alaskaflora.org/pages/${i/md/html} $i
