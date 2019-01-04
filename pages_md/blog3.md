@@ -69,7 +69,7 @@ that match (e.g., misspelling, differences in author string).
 The majority of mismatches are due to minor variations in the author
 string and often an exact match between _intended_ names can be
 inferred using some “taxonomic logic.” This additional taxonomic
-resolution is not available in any existing tool that I know of.
+resolution was not available in any pre-existing tool that I know of.
 
 ### Botanical names, deconstructed
 
@@ -219,7 +219,7 @@ Notes:
  incorrect rank. However, the overall confidence in the names being
  the same is low.
  3. When two or more of these variations are combined (e.g., example
- B, below), they should generally reduce the likelihood of the two
+ B1, below), they should generally reduce the likelihood of the two
  names matching, though probably less than additively.
  4. “L.” and “L.f.” (= filius) are different people, but in this case
  the difference was a copying error.
@@ -307,32 +307,6 @@ Examples:
 </div>
 <p/>
 
-These potential reasons for a mismatch between two citations of the
-same name can be classed so that at a later date users can limit the
-accepted matches to certain levels of confidence:
-
-<table>
-<tr>
-  <th>Confidence of match</th>
-  <th>Match codes</th>
-</tr>
-<tr>
-  <td>Very High and High</td>
-  <td>`auto_punct`, `manual`, `auto_in+`, `auto_in-`</td>
-</tr>
-<tr>
-  <td>Medium</td>
-  <td>`auto_basio+`, `auto_basio-`, `auto_exin+`, `auto_exin-`, `manual?`, `auto_basexin`</td>
-</tr>
-<tr>
-  <td>Low</td>
-  <td>`auto_irank`, `manual??`</td>
-</tr>
-<tr>
-  <td>Very low; not a match</td>
-  <td>`no_match`</td>
-</tr>
-</table>
 
 ## The `matchnames` program <a name="mn"></a>
 
@@ -340,14 +314,15 @@ To deal with this problem of i) needing more taxonomic precision in
 judging name similarity than that provided by a generic fuzzy-match
 score, while ii) not having time to check every fuzzy match (and
 definitely not having time to return to the primary literature for
-every name encountered), I created a tool that applies a sequence of
-taxonomic, rule-based transformations to the names, and then if a
-match is found records the kind of match. A limited number of
-non-matching names is subsequently presented to an operator for a
-human judgment based on details that are more nuanced than could be
-easily automated.
+every name encountered), I created the `matchnames` tool. It applies a
+sequence of taxonomic, rule-based transformations to the names in two
+lists---a query list (A) and a reference list (B)---and then if a
+match is found outputs the match and the kind of variation. If two
+names cannot be matched automatically, but do match approximately
+(“fuzzy regex matching”), they are presented to an operator for a
+human judgment. This is usually a small subset of the whole of list A.
 
-The tool is called `matchnames` (available on
+`matchnames` is available on
 [Github](https://github.com/camwebb/taxon-tools)). Full details of use
 are in the tool’s
 [`man` page](https://github.com/camwebb/taxon-tools/blob/master/doc/matchnames.md). The
@@ -429,6 +404,35 @@ Reject the match (`no_match`):
 With large lists this manual checking can be a time consuming phase,
 and is prone to operator errors due to concentration lapses. Some of
 these decisions might still yet be achieved with clever code.
+
+### Subsequent filtering of matches by confidence
+
+The potential reasons for a mismatch between two citations of the same
+name generate different match codes, which can at a later date be used
+to limit the accepted matches to certain levels of confidence:
+
+<table>
+<tr>
+  <th>Confidence of match</th>
+  <th>Match codes</th>
+</tr>
+<tr>
+  <td>Very High and High</td>
+  <td>`auto_punct`, `manual`, `auto_in+`, `auto_in-`</td>
+</tr>
+<tr>
+  <td>Medium</td>
+  <td>`auto_basio+`, `auto_basio-`, `auto_exin+`, `auto_exin-`, `manual?`, `auto_basexin`</td>
+</tr>
+<tr>
+  <td>Low</td>
+  <td>`auto_irank`, `manual??`</td>
+</tr>
+<tr>
+  <td>Very low; not a match</td>
+  <td>`no_match`</td>
+</tr>
+</table>
 
 ## Summary
 

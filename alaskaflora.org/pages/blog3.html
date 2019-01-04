@@ -23,7 +23,7 @@
           <p>How do we then determine if two variants of a names are really “the same?” I.e., despite the variation, do these two name strings refer to the same name as <em>first published</em>. No judgment about the taxon concept (or circumscription) of the names is being attempted at this step. The most reliable way to solve this question is to track down the usage(s) of both names in the primary literature and carefully determine if the authors were referring to the same name as originally published. While this approach is feasible in the case of a taxonomist performing a revision, it is too slow to incorporate when assembling large lists of names, as in the data integration step of our flora of Alaska project. What is needed is a sensible, transparent algorithm (set of rules) that can be applied by a machine, with human judgment being required in only a small number of cases. As long as the original names are preserved and the details of the automated judgment are recorded, then even if a few matches might later be found to be incorrect, no information is lost. This process of designing a taxonomic matching algorithm and associated software tool has occupied me for the past weeks.</p>
           <h3 id="existing-tools">Existing tools</h3>
           <p>There do exist online now at least two good tools to help match submitted names to various large names databases: The Global Names <a href="http://resolver.globalnames.org/">Resolver</a> of GNA and iPlant’s <a href="http://tnrs.iplantcollaborative.org/">TNRS</a> (Taxonomic Name Resolution Service). Both of these offer approximate (fuzzy) matching of submitted names to sources such as IPNI and Tropicos. TNRS returns an overall, numeric match score, as does GNR. GNR also returns one of five <code>match_type</code> values (Exact match, Exact match by canonical form of a name, Fuzzy match by canonical form, Partial exact match by species part of canonical form, Partial fuzzy match by species part of canonical form). However, where an non-exact match is found, both tools still require manual checking to confirm the exact nature of that match (e.g., misspelling, differences in author string).</p>
-          <p>The majority of mismatches are due to minor variations in the author string and often an exact match between <em>intended</em> names can be inferred using some “taxonomic logic.” This additional taxonomic resolution is not available in any existing tool that I know of.</p>
+          <p>The majority of mismatches are due to minor variations in the author string and often an exact match between <em>intended</em> names can be inferred using some “taxonomic logic.” This additional taxonomic resolution was not available in any pre-existing tool that I know of.</p>
           <h3 id="botanical-names-deconstructed">Botanical names, deconstructed</h3>
           <p>Because there are general rules that govern the construction of taxonomic names, some additional pattern-matching can be applied in comparing the different elements of two similar names. This can then produce an estimate of the likelihood that two name strings actually refer to the same name.</p>
           <p>The most common elements of a (hypothetical) <em>botanical</em> name are these:</p>
@@ -364,7 +364,7 @@
           <ol type="1">
           <li>The basionym author (of the specific or infraspecific epithet) should not change, even if a second new combination is made, since the epithet can only have one author.</li>
           <li>It is indeed possible that the same author will have published an infraspecific epithet twice, with different ranks, but seems quite unlikely. It seems more likely that one citing author gave an incorrect rank. However, the overall confidence in the names being the same is low.</li>
-          <li>When two or more of these variations are combined (e.g., example B, below), they should generally reduce the likelihood of the two names matching, though probably less than additively.</li>
+          <li>When two or more of these variations are combined (e.g., example B1, below), they should generally reduce the likelihood of the two names matching, though probably less than additively.</li>
           <li>“L.” and “L.f.” (= filius) are different people, but in this case the difference was a copying error.</li>
           <li>Since the <code>ex_auth</code> publication is a valid <em>republication</em> of the <code>auth</code> publication it should refer to exactly the same taxon concept as implied by the <code>auth</code> name, and should be effectively interchangeable.</li>
           <li>A erroneously missing author in a string of authors is more likely when the missing author is a second (or third author) than a first author.</li>
@@ -446,7 +446,51 @@
           </pre>
           </div>
           <p/>
-          <p>These potential reasons for a mismatch between two citations of the same name can be classed so that at a later date users can limit the accepted matches to certain levels of confidence:</p>
+          <h2 id="the-matchnames-program">The <code>matchnames</code> program <a name="mn"></a></h2>
+          <p>To deal with this problem of i) needing more taxonomic precision in judging name similarity than that provided by a generic fuzzy-match score, while ii) not having time to check every fuzzy match (and definitely not having time to return to the primary literature for every name encountered), I created the <code>matchnames</code> tool. It applies a sequence of taxonomic, rule-based transformations to the names in two lists—a query list (A) and a reference list (B)—and then if a match is found outputs the match and the kind of variation. If two names cannot be matched automatically, but do match approximately (“fuzzy regex matching”), they are presented to an operator for a human judgment. This is usually a small subset of the whole of list A.</p>
+          <p><code>matchnames</code> is available on <a href="https://github.com/camwebb/taxon-tools">Github</a>). Full details of use are in the tool’s <a href="https://github.com/camwebb/taxon-tools/blob/master/doc/matchnames.md"><code>man</code> page</a>. The sequence of matching logic (and output match codes) follows the above framework of potential reasons for name mismatch:</p>
+          <ol type="1">
+          <li>Is there an exact match to all parts of the name (genus hybrid marker, genus name, species hybrid marker, species epithet, infraspecific rank signifier, infraspecific rank, author sting)? If so match code is: <code>exact</code>.</li>
+          <li>Both query name and reference names are “de-punctuated” to remove the effect of mis-matching spaces, periods, non-ASCII author name characters, etc. The depunctuation procedure is: a) converting non-ASCII characters into their appropriate ASCII character (e.g., “ï” to “i”), b) converting “and” or “et” into “&amp;”, c) removing all punctuation other than “(“, “)” and “&amp;”, d) converting to lower-case. If an exact match exists between the depunctuated query string and a depunctuated reference name, the match code is: <code>auto_punct</code>.<br />
+          </li>
+          <li>If the author is missing in the query name, accept the reference name (with author) if there is <em>only one</em> with exactly the same (when matching to IPNI or TROPICOS only). Match code: <code>auto_noauth</code>.</li>
+          <li>If one basionym is missing, a match is allowed (e.g., <em>Cardaminopsis umbrosa</em> Czerep. vs. <em>Cardaminopsis umbrosa</em> (Turcz.) Czerep.). Match code: <code>auto_basio+</code>, <code>auto_basio-</code>.</li>
+          <li>If the names and author strings are the same after all <em>in</em> elements have been stripped, a match is allowed. Match code: <code>auto_in+</code>, <code>auto_in-</code>.</li>
+          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> elements have been stripped, a match is allowed (e.g., <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel vs. <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel ex D.F.Murray). Match code: <code>auto_exin+</code>, <code>auto_exin-</code>.</li>
+          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> and basionym elements have been stripped, a match is allowed. Match code: <code>auto_basexin</code>.</li>
+          <li>If all elements of the name match except for the infraspecific rank, record the match as: <code>auto_irank</code>.</li>
+          <li>If there are any reference names (list B) that may match the query name approximately, move to “manual matching” (below). Match code: <code>manual</code>, <code>manual?</code> or <code>manual??</code>.</li>
+          <li>Record a failure to match. Match code: <code>no_match</code>.</li>
+          </ol>
+          <h3 id="manual-matching">Manual matching</h3>
+          <p>The human operator can then apply further rules which are hard to program for automated decision-making. This is our current rule-set, following the <a href="#tab">above</a> table:</p>
+          <p>Accept a match at high confidence (<code>manual</code>):</p>
+          <ol type="1">
+          <li>Missing initials for an author, or different abbreviations of author’s surnames, in <code>author_string</code>,</li>
+          <li>Spelling variation in <code>gen</code>, <code>sp</code>, <code>infr</code> with (essentially) the same <code>auth</code>.</li>
+          </ol>
+          <p>Accept a match at medium confidence (<code>manual?</code>):</p>
+          <ol type="1">
+          <li><code>auth</code> in one name is <code>ex_auth</code> in the other,</li>
+          <li><code>auth</code> differs: 2nd author missing from a pair of authors (sep. by “&amp;” or “et.”)</li>
+          <li>Obviously incomplete author list in <code>auth</code></li>
+          </ol>
+          <p>Accept a match at low confidence (<code>manual??</code>):</p>
+          <ol type="1">
+          <li>Same <code>basio</code>, missing <code>auth</code></li>
+          <li>Same <code>taxon_name</code>, different <code>auth</code> initials</li>
+          <li>Same <code>taxon_name</code>, missing first author in <code>auth</code></li>
+          </ol>
+          <p>Reject the match (<code>no_match</code>):</p>
+          <ol type="1">
+          <li>When the two author strings are clearly representing different (sets of) of authors.</li>
+          <li>If the query name contains only the basionym author, and the reference name has the basionym author plus the revising author, or vice versa.</li>
+          <li>When the query name is of species rank and the reference name of infraspecific rank, or vice versa.</li>
+          <li>If the query name is followed by “auct.”</li>
+          </ol>
+          <p>With large lists this manual checking can be a time consuming phase, and is prone to operator errors due to concentration lapses. Some of these decisions might still yet be achieved with clever code.</p>
+          <h3 id="subsequent-filtering-of-matches-by-confidence">Subsequent filtering of matches by confidence</h3>
+          <p>The potential reasons for a mismatch between two citations of the same name generate different match codes, which can at a later date be used to limit the accepted matches to certain levels of confidence:</p>
           <table>
           <tr>
           <th>
@@ -489,49 +533,6 @@
           </td>
           </tr>
           </table>
-          <h2 id="the-matchnames-program">The <code>matchnames</code> program <a name="mn"></a></h2>
-          <p>To deal with this problem of i) needing more taxonomic precision in judging name similarity than that provided by a generic fuzzy-match score, while ii) not having time to check every fuzzy match (and definitely not having time to return to the primary literature for every name encountered), I created a tool that applies a sequence of taxonomic, rule-based transformations to the names, and then if a match is found records the kind of match. A limited number of non-matching names is subsequently presented to an operator for a human judgment based on details that are more nuanced than could be easily automated.</p>
-          <p>The tool is called <code>matchnames</code> (available on <a href="https://github.com/camwebb/taxon-tools">Github</a>). Full details of use are in the tool’s <a href="https://github.com/camwebb/taxon-tools/blob/master/doc/matchnames.md"><code>man</code> page</a>. The sequence of matching logic (and output match codes) follows the above framework of potential reasons for name mismatch:</p>
-          <ol type="1">
-          <li>Is there an exact match to all parts of the name (genus hybrid marker, genus name, species hybrid marker, species epithet, infraspecific rank signifier, infraspecific rank, author sting)? If so match code is: <code>exact</code>.</li>
-          <li>Both query name and reference names are “de-punctuated” to remove the effect of mis-matching spaces, periods, non-ASCII author name characters, etc. The depunctuation procedure is: a) converting non-ASCII characters into their appropriate ASCII character (e.g., “ï” to “i”), b) converting “and” or “et” into “&amp;”, c) removing all punctuation other than “(“, “)” and “&amp;”, d) converting to lower-case. If an exact match exists between the depunctuated query string and a depunctuated reference name, the match code is: <code>auto_punct</code>.<br />
-          </li>
-          <li>If the author is missing in the query name, accept the reference name (with author) if there is <em>only one</em> with exactly the same (when matching to IPNI or TROPICOS only). Match code: <code>auto_noauth</code>.</li>
-          <li>If one basionym is missing, a match is allowed (e.g., <em>Cardaminopsis umbrosa</em> Czerep. vs. <em>Cardaminopsis umbrosa</em> (Turcz.) Czerep.). Match code: <code>auto_basio+</code>, <code>auto_basio-</code>.</li>
-          <li>If the names and author strings are the same after all <em>in</em> elements have been stripped, a match is allowed. Match code: <code>auto_in+</code>, <code>auto_in-</code>.</li>
-          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> elements have been stripped, a match is allowed (e.g., <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel vs. <em>Papaver nudicaule</em> subsp. <em>americanum</em> Rändel ex D.F.Murray). Match code: <code>auto_exin+</code>, <code>auto_exin-</code>.</li>
-          <li>If the names and author strings are the same after all <em>ex</em> and <em>in</em> and basionym elements have been stripped, a match is allowed. Match code: <code>auto_basexin</code>.</li>
-          <li>If all elements of the name match except for the infraspecific rank, record the match as: <code>auto_irank</code>.</li>
-          <li>If there are any reference names (list B) that may match the query name approximately, move to “manual matching” (below). Match code: <code>manual</code>, <code>manual?</code> or <code>manual??</code>.</li>
-          <li>Record a failure to match. Match code: <code>no_match</code>.</li>
-          </ol>
-          <h3 id="manual-matching">Manual matching</h3>
-          <p>The human operator can then apply further rules which are hard to program for automated decision-making. This is our current rule-set, following the <a href="#tab">above</a> table:</p>
-          <p>Accept a match at high confidence (<code>match</code>):</p>
-          <ol type="1">
-          <li>Missing initials for an author, or different abbreviations of author’s surnames, in <code>author_string</code>,</li>
-          <li>Spelling variation in <code>gen</code>, <code>sp</code>, <code>infr</code> with (essentially) the same <code>auth</code>.</li>
-          </ol>
-          <p>Accept a match at medium confidence (<code>match?</code>):</p>
-          <ol type="1">
-          <li><code>auth</code> in one name is <code>ex_auth</code> in the other,</li>
-          <li><code>auth</code> differs: 2nd author missing from a pair of authors (sep. by “&amp;” or “et.”)</li>
-          <li>Obviously incomplete author list in <code>auth</code></li>
-          </ol>
-          <p>Accept a match at low confidence (<code>match??</code>):</p>
-          <ol type="1">
-          <li>Same <code>basio</code>, missing <code>auth</code></li>
-          <li>Same <code>taxon_name</code>, different <code>auth</code> initials</li>
-          <li>Same <code>taxon_name</code>, missing first author in <code>auth</code></li>
-          </ol>
-          <p>Reject the match (<code>no_match</code>):</p>
-          <ol type="1">
-          <li>When the two author strings are clearly representing different (sets of) of authors.</li>
-          <li>If the query name contains only the basionym author, and the reference name has the basionym author plus the revising author, or vice versa.</li>
-          <li>When the query name is of species rank and the reference name of infraspecific rank, or vice versa.</li>
-          <li>If the query name is followed by “auct.”</li>
-          </ol>
-          <p>With large lists this manual checking can be a time consuming phase, and is prone to operator errors due to concentration lapses. Some of these decisions might still yet be achieved with clever code.</p>
           <h2 id="summary">Summary</h2>
           <p>Using the <code>matchnames</code> tool it is possible in a matter of only a few hours to compare a list of Alaskan plant names to other resources, such as IPNI and Tropicos. The type of orthographic match can be recorded, as can the original names, and the date and name of the operator. Thus if in the future, after further research, a particular match is deemed to actually be incorrect, no data has been lost and the match status can simply be corrected. In the next post I’ll talk about the data model we’re using to store these orthographic matches.</p>
           <hr />
