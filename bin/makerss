@@ -10,7 +10,7 @@ echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel
 
 for i in `ls blog[0-9]* | sort -k 1.5,1.7n | sed -e 's/.md$//g'`
 do
-    echo -e '    <item>\n      <link>https://alaskaflora.org/pages/'$i'.html</link>' >> $RSS
+    echo -e '    <item>\n      <link>http://alaskaflora.org/pages/'$i'.html</link>' >> $RSS
     # TIME=`ls -l --time-style +"%a, %e %b %Y %H:%M:%S %z" $i.md | gawk '{print $6, $7, $8, $9, $10, $11 }'`
     DAY=`grep -E -e "^_Posted" $i.md | grep -o -E "20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"`
     TIME=`date --date="$DAY" +"%a, %e %b %Y %H:%M:%S %z"`
