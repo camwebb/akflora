@@ -14,4 +14,5 @@ will “live-blog” the process to share the decisions, discoveries
 
  * [2018-08-17](blog1.html): 1. **Project roadmap**
  * [2018-10-31](blog2.html): 2. **Names, names, names!**
+ * [2019-01-03](blog3.html): 3. **Variations of a taxonomic name**
 
