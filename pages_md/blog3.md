@@ -395,21 +395,21 @@ approximately, move to “manual matching” (below). Match code: `manual`, `man
 The human operator can then apply further rules which are hard to
 program for automated decision-making. This is our current rule-set, following the <a href="#tab">above</a> table:
 
-Accept a match at high confidence (`match`):
+Accept a match at high confidence (`manual`):
 
  1. Missing initials for an author, or different abbreviations of
  author’s surnames, in `author_string`,
  2. Spelling variation in `gen`, `sp`, `infr` with (essentially) the
  same `auth`.
 
-Accept a match at medium confidence (`match?`):
+Accept a match at medium confidence (`manual?`):
 
  1. `auth` in one name is `ex_auth` in the other,
  2. `auth` differs: 2nd author missing from a pair of authors (sep. by
  “&” or “et.”)
  3. Obviously incomplete author list in `auth`
  
-Accept a match at low confidence (`match??`):
+Accept a match at low confidence (`manual??`):
  
  1. Same `basio`, missing `auth`
  2. Same `taxon_name`, different `auth` initials 
