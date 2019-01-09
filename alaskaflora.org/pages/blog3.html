@@ -67,7 +67,7 @@
           Likely cause of variation
           </th>
           <th>
-          Likelihood that names refer to same name [3]
+          Likelihood that names refer to same name [<a href="#nts">3</a>]
           </th>
           <th>
           (Match code; see <a href="#mn">below</a>)
@@ -190,7 +190,7 @@
           [<a href="#eg">F</a>]
           </td>
           <td>
-          Confusion by citing author [5]
+          Confusion by citing author [<a href="#nts">5</a>]
           </td>
           <td>
           Medium
@@ -208,7 +208,7 @@
           [<a href="#eg">G</a>]
           </td>
           <td>
-          More likely to be an error (missing author) than a republication of the same <code>taxon_name</code> by a different author team [6]
+          More likely to be an error (missing author) than a republication of the same <code>taxon_name</code> by a different author team [<a href="#nts">6</a>]
           </td>
           <td>
           Medium
@@ -226,7 +226,7 @@
           [<a href="#eg">H</a>]
           </td>
           <td>
-          This should not happen [1], and is likely to be an error
+          This should not happen [<a href="#nts">1</a>], and is likely to be an error
           </td>
           <td>
           Medium
@@ -262,7 +262,7 @@
           [<a href="#eg">J</a>]
           </td>
           <td>
-          An error [7]
+          An error [<a href="#nts">7</a>]
           </td>
           <td>
           Low
@@ -280,7 +280,7 @@
           [<a href="#eg">K</a>]
           </td>
           <td>
-          An error by citing author [2]
+          An error by citing author [<a href="#nts">2</a>]
           </td>
           <td>
           Low
@@ -354,13 +354,14 @@
               }
           }
           </script>
+          <a name="nts"></a>
           <div style="text-align: right;">
           <button onclick="showhide(&#39;notes&#39;)">
           Show/hide notes for this table
           </button>
           </div>
           <div id="notes" style="display:none;">
-          <p>Notes:</p>
+          <p>Notes (numbers refer to bracketed numbers [1], [2]… above):</p>
           <ol type="1">
           <li>The basionym author (of the specific or infraspecific epithet) should not change, even if a second new combination is made, since the epithet can only have one author.</li>
           <li>It is indeed possible that the same author will have published an infraspecific epithet twice, with different ranks, but seems quite unlikely. It seems more likely that one citing author gave an incorrect rank. However, the overall confidence in the names being the same is low.</li>
@@ -450,7 +451,7 @@
           <p>To deal with this problem of i) needing more taxonomic precision in judging name similarity than that provided by a generic fuzzy-match score, while ii) not having time to check every fuzzy match (and definitely not having time to return to the primary literature for every name encountered), I created the <code>matchnames</code> tool. It applies a sequence of taxonomic, rule-based transformations to the names in two lists—a query list (A) and a reference list (B)—and then if a match is found outputs the match and the kind of variation. If two names cannot be matched automatically, but do match approximately (“fuzzy regex matching”), they are presented to an operator for a human judgment. This is usually a small subset of the whole of list A.</p>
           <p><code>matchnames</code> is available on <a href="https://github.com/camwebb/taxon-tools">Github</a>). Full details of use are in the tool’s <a href="https://github.com/camwebb/taxon-tools/blob/master/doc/matchnames.md"><code>man</code> page</a>. The sequence of matching logic (and output match codes) follows the above framework of potential reasons for name mismatch:</p>
           <ol type="1">
-          <li>Is there an exact match to all parts of the name (genus hybrid marker, genus name, species hybrid marker, species epithet, infraspecific rank signifier, infraspecific rank, author sting)? If so match code is: <code>exact</code>.</li>
+          <li>Is there an exact match to all parts of the name (genus hybrid marker, genus name, species hybrid marker, species epithet, infraspecific rank signifier, infraspecific rank, author string)? If so match code is: <code>exact</code>.</li>
           <li>Both query name and reference names are “de-punctuated” to remove the effect of mis-matching spaces, periods, non-ASCII author name characters, etc. The depunctuation procedure is: a) converting non-ASCII characters into their appropriate ASCII character (e.g., “ï” to “i”), b) converting “and” or “et” into “&amp;”, c) removing all punctuation other than “(“, “)” and “&amp;”, d) converting to lower-case. If an exact match exists between the depunctuated query string and a depunctuated reference name, the match code is: <code>auto_punct</code>.<br />
           </li>
           <li>If the author is missing in the query name, accept the reference name (with author) if there is <em>only one</em> with exactly the same (when matching to IPNI or TROPICOS only). Match code: <code>auto_noauth</code>.</li>

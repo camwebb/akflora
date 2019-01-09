@@ -135,7 +135,7 @@ are truly the same:
     <th>Variation</th>
     <th>E.g.</th>
     <th>Likely cause of variation</th>
-    <th>Likelihood that names refer to same name [3]</th>
+    <th>Likelihood that names refer to same name [<a href="#nts">3</a>]</th>
     <th>(Match code; see <a href="#mn">below</a>)</th>
   </tr>
 
@@ -165,22 +165,22 @@ errors</td><td>High</td><td>`manual`</td></tr>
 <tr><td>Missing `ex_auth` (or `ex_bas`) in one of the names</td><td>[<a href="#eg">E</a>]</td><td>One of the citing authors failed to include the _ex_ author</td><td>Medium</td><td>`auto_exin+`, `auto_exin-`</td></tr> 
 
 <!-- ex to main -->
-<tr><td>`auth` in one name is `ex_auth` in the other</td><td>[<a href="#eg">F</a>]</td><td>Confusion by citing author [5]</td><td>Medium</td><td>`manual?`</td></tr> 
+<tr><td>`auth` in one name is `ex_auth` in the other</td><td>[<a href="#eg">F</a>]</td><td>Confusion by citing author [<a href="#nts">5</a>]</td><td>Medium</td><td>`manual?`</td></tr> 
 
 <!-- 2nd of & auth -->
-<tr><td>`auth` differs: 2nd author missing from a pair of authors (sep. by “&” or “et.”)</td><td>[<a href="#eg">G</a>]</td><td>More likely to be an error (missing author) than a republication of the same `taxon_name` by a different author team [6]</td><td>Medium</td><td>`manual?`</td></tr> 
+<tr><td>`auth` differs: 2nd author missing from a pair of authors (sep. by “&” or “et.”)</td><td>[<a href="#eg">G</a>]</td><td>More likely to be an error (missing author) than a republication of the same `taxon_name` by a different author team [<a href="#nts">6</a>]</td><td>Medium</td><td>`manual?`</td></tr> 
 
 <!-- diff basio -->
-<tr><td>Different basionym author (`basio`), same primary author (`auth`)</td><td>[<a href="#eg">H</a>]</td><td>This should not happen [1], and is likely to be an error</td><td>Medium</td><td>`auto_basexin`</td></tr> 
+<tr><td>Different basionym author (`basio`), same primary author (`auth`)</td><td>[<a href="#eg">H</a>]</td><td>This should not happen [<a href="#nts">1</a>], and is likely to be an error</td><td>Medium</td><td>`auto_basexin`</td></tr> 
 
 <!-- Obviously incomplete author -->
 <tr><td>Obviously incomplete author list in `auth`</td><td>[<a href="#eg">I</a>]</td><td>An error</td><td>Medium</td><td>`manual?`</td></tr> 
 
 <!-- missing auth -->
-<tr><td>Same `basio`, missing `auth`</td><td>[<a href="#eg">J</a>]</td><td>An error [7]</td><td>Low</td><td>`manual??`</td></tr> 
+<tr><td>Same `basio`, missing `auth`</td><td>[<a href="#eg">J</a>]</td><td>An error [<a href="#nts">7</a>]</td><td>Low</td><td>`manual??`</td></tr> 
 
 <!-- cfo -->
-<tr><td>Same `canonical_form` and `auth`, different `irank`</td><td>[<a href="#eg">K</a>]</td><td>An error by citing author [2]</td><td>Low</td><td>`auto_irank`, `manual??`</td></tr>
+<tr><td>Same `canonical_form` and `auth`, different `irank`</td><td>[<a href="#eg">K</a>]</td><td>An error by citing author [<a href="#nts">2</a>]</td><td>Low</td><td>`auto_irank`, `manual??`</td></tr>
 
 <!-- diff auth initials -->
 <tr><td>Same `taxon_name`, different `auth` initials</td><td>[<a href="#eg">L</a>]</td><td>Probably separate publications of the name, but could be error</td><td>Low</td><td>`manual??`</td></tr>
@@ -204,11 +204,11 @@ function showhide(z) {
 }
 </script>
 
-<div style="text-align: right;"><button onclick="showhide('notes')">Show/hide notes for this table</button></div>
+<a name="nts"></a><div style="text-align: right;"><button onclick="showhide('notes')">Show/hide notes for this table</button></div>
 
 <div id="notes" style="display:none;">
 
-Notes:
+Notes (numbers refer to bracketed numbers [1], [2]... above):
 
  1. The basionym author (of the specific or infraspecific epithet)
  should not change, even if a second new combination is made, since
@@ -331,7 +331,7 @@ framework of potential reasons for name mismatch:
 
 1. Is there an exact match to all parts of the name (genus hybrid
 marker, genus name, species hybrid marker, species epithet,
-infraspecific rank signifier, infraspecific rank, author sting)? If
+infraspecific rank signifier, infraspecific rank, author string)? If
 so match code is: `exact`.
 2. Both query name and reference names
 are “de-punctuated” to remove the effect of mis-matching spaces,
