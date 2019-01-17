@@ -1,0 +1,44 @@
+/* Run: dot -Tpng BOdb_schema.dot > BOdb_schema.png */
+
+digraph g {
+
+graph [rankdir = "RL"]; 
+node [shape = "plaintext"];
+
+name [label = <<table border="0" cellborder="1" cellspacing="0">
+      <tr><td port="p0"><b>name</b></td></tr>
+      <tr><td port="p1">name string</td></tr>
+      <tr><td port="p2"><i>canonical flag</i></td></tr>
+      </table>>] ;
+
+lex [label = <<table border="0" cellborder="1" cellspacing="0">
+      <tr><td port="p0"><b>orthographic mapping</b></td></tr>
+      <tr><td port="p2">from_name</td></tr>
+      <tr><td port="p3">to_name</td></tr>
+      <tr><td port="p4"><i>mapping type,<br/>e.g., "misspelling"</i></td></tr>
+      </table>>] ;
+
+
+rel [label = <<table border="0" cellborder="1" cellspacing="0">
+      <tr><td port="p0"><b>synonymy</b></td></tr>
+      <tr><td port="p2">synonym</td></tr>
+      <tr><td port="p3">accepted name</td></tr>
+      <tr><td port="p5"><i>according to, etc.</i></td></tr>
+      </table>>] ;
+
+src [label = <<table border="0" cellborder="1" cellspacing="0">
+      <tr><td port="p0"><b>occurence<br/>in resource DB</b></td></tr>
+      <tr><td port="p2">name</td></tr>
+      <tr><td port="p3"><i>source database</i></td></tr>
+      <tr><td port="p5"><i>guid</i></td></tr>
+      </table>>] ; 
+
+
+      
+rel:p2 -> name:p1 [arrowhead=tee,arrowtail=crow,dir=both];
+rel:p3 -> name:p1 [arrowhead=tee,arrowtail=crow,dir=both];
+lex:p2 -> name:p1 [arrowhead=tee,arrowtail=crow,dir=both];
+lex:p3 -> name:p1 [arrowhead=tee,arrowtail=crow,dir=both];
+src:p2 -> name:p1 [arrowhead=tee,arrowtail=crow,dir=both];
+
+}

@@ -9,6 +9,7 @@
  * [Blog 1: Project roadmap](blog1.html)
  * [Blog 2: Names, names, names!](blog2.html)
  * [Blog 3: Variations of a taxonomic name](blog3.html)
+ * [Blog 4: Databasing name variations](blog4.html)
  * [Dev Blog](blog.html)
  * [Alaskan Botanical Resources Online](links.html)
  * [People](people.html)

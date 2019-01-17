@@ -66,6 +66,14 @@ canonical form). However, where an non-exact match is found, both
 tools still require manual checking to confirm the exact nature of
 that match (e.g., misspelling, differences in author string). 
 
+[Added 2019-01-10: There is also the generic
+[OpenRefine](http://openrefine.org/), a data-cleaning tool that can be
+applied to taxonomic names from any source. See these relevant posts:
+[Rod Page](https://iphylo.blogspot.com/2013/04/reconciling-author-names-using-open.html),
+[GBIF](https://gbif.blogspot.com/2013/07/validating-scientific-names-with.html),
+[Tersigni & Vaidya](https://docs.google.com/document/d/1tkDRXlYhmassYAk5T4v5oac5prF0jAiSMr_JEGTvhRo),
+[Vaidya](https://github.com/gaurav/taxrefine).]
+
 The majority of mismatches are due to minor variations in the author
 string and often an exact match between _intended_ names can be
 inferred using some “taxonomic logic.” This additional taxonomic
