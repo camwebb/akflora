@@ -13,3 +13,9 @@ dataflow/ALA_checklist/list*
 dataflow/PAF/paf.*
 dataflow/PAF/paf-*
 dataflow/PAF/list*
+
+dataflow/canonical/accs
+dataflow/canonical/accs2wcsp.tgz
+dataflow/canonical/gnr.out
+dataflow/canonical/*_base
+
