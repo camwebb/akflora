@@ -1,29 +1,51 @@
-# Assembling a canonical names list - this now precedes ALA, PAF, etc. Don't want to do every time a new list is added.
+# Assembling a canonical names list for Alaska
 
 # This list should be _wider_ than just the plants in AK, just the
 # accepted, just the correct variants. I.e., make a list that should
-# have all the available names in it.
+# have all the available names in it, or as many as can be picked up
+# in canonical form. Sources IPNI > Trop > WCSP (FNA does not have
+# GUIDs yet, plus the author citations are not abbreviated, so harder
+# to reconcile).
 
-# To generate: IPNI, FNA, Trop, WCSP
 
-# 1. Take the ACCS checklist as a start of Alaskan plants. BLAST to GNA for IPNI (and Tropicos), adding _all_ fuzzy matched names.
-
-# 2. Matchnames to FNA accept all autofuzzy
-
-# 3. Tropicos
-
+#    GNA for IPNI and Tropicos, adding _all_ fuzzy matched names.
 # 4. Matchnames to PL accept all autofuzzy.  Give canonical status as
 # they are added to master list
 
-# echo "select concat('acc-', acceptedID) as guid, concat_ws(' ', nameAccepted, authAccepted) as name, 'accepted' as status from speciesAccepted where nameAccepted REGEXP '[^\ ]+\ [^\ ]+' union select concat('non-', adjudicatedID) as guid, concat_ws(' ', nameAdjudicated, authAdjudicated) as name, concat('acc-', acceptedID) as status from speciesAdjudicated where nameAdjudicated REGEXP '[^\ ]+\ [^\ ]+';" | mysql -N -u cam -ptesttest alaskaFlora > accs
+# 1. Assemble rough lists: ACCS + ALA + PAF (should add Hulten at some point)
 
-# could just use names from speciesAdjudicated
-echo "select concat('accs-', adjudicatedID) as guid, concat_ws(' ', nameAdjudicated, authAdjudicated) as name from speciesAdjudicated where nameAdjudicated REGEXP '[^\ ]+\ [^\ ]+';" | mysql -N -u cam -pPASS alaskaFlora > accs
+# 1a. ACCS
+echo "select concat('accs-', adjudicatedID) as guid, \
+  concat_ws(' ', nameAdjudicated, authAdjudicated) as name \
+  from speciesAdjudicated where nameAdjudicated REGEXP '[^\ ]+\ [^\ ]+';" \
+    | mysql -N -u cam -pPASSWORD alaskaFlora | tr "\t" "|" > accs
+# peel off the attached hybrid marks  
+sed -i -E 's/×([A-Za-z])/x \1/g' accs
+# tidy up (GNR chokes on ×)
+sed -i -e 's/ ssp. / subsp. /g' -e 's/| */|/g' -e 's/ *$//g' \
+    -e 's/  */ /g' -e 's/×/x/g' accs
 
-gawk 'BEGIN{FS="\t"}{gsub(/NULL/,"",$2); gsub(/×/," x ",$2); gsub(/\ ssp\.\ /," subsp. ",$2); gsub(/\ \ +/," ",$2); gsub(/^\ */,"",$2); gsub(/\ *$/,"",$2); print $1 "|" $2 > "names4gnr-"  int(++i/995)+1 }' accs
-sed -i 's/ ssp. / subsp. /g' accs
+# 1b. ALA
+gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
+     ../ALA_checklist/ala-names > ala
+sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+    -e 's/×/x/g' ala
 
-# # Run through GNR
+# 1c. PAF
+gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
+     ../PAF/paf-names > paf
+sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+    -e 's/×/x/g' paf
+
+# remove duplicates
+cat accs ala paf | gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] \
+   = "@ind_str_asc"}{n[$2]=$1}END{for (i in n) print n[i] "|" i}' > all_rough
+
+# split into batches of 1,000 for GNR
+gawk 'BEGIN{FS="|"}{print $1 "|" $2 > "names4gnr-"  int(++i/995)+1 }' all_rough
+
+# 2. Run through GNR
+rm -f gnr.out
 for infile in names4gnr*
 do
      echo "Running GNA on " $infile
@@ -36,36 +58,31 @@ rm -f names4gnr-*
 
 grep "ipni-" gnr.out | gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$4] = $3} END{for (i in code) {p = parse_taxon_name(i, 1); if (p) print code[i], p}}' > ipni_base
 
-../../bin/sqlnulls ipni_base
+# ../../bin/sqlnulls ipni_base
 
 grep "trop-" gnr.out | gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$4] = $3} END{for (i in code) {p = parse_taxon_name(i, 1); if (p) print code[i], p}}' > trop_base
 
-../../bin/sqlnulls trop_base
-
+# ../../bin/sqlnulls trop_base
 
 # Some errors but these are errors in GNR records
 # ** Fail: 'Hordeum x caespitosum 8999+' does not match:
 #          Hordeum x caespitosum 8999+  <- parsed
-
 # ** Fail: 'Botrychium virginianum var. ? simplex A. Gray' does not match:
 #          Botrychium virginianum var. ? simplex A. Gray  <- parsed
-
 # ** Fail: 'Sphagnum riparium var. > *fallax Sanio' does not match:
 #          Sphagnum riparium var. > *fallax Sanio  <- parsed
 
-# 10,000 IPNI names!  good
 
-
-# Now WCSP
+# 3. WCSP from the Plant List
 
 gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{for(i=1;i<=NF;i++) if(substr($i,1,1)=="\"") $i=substr($i,2,length($i)-2); print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21}' ~/public_html/MaTCH/recipes/theplantlist/data/all.csv > tpl.csv
 
-# # fix a few - some records had """ which did not parrse
+# # fix a few - some records had """ which did not parse, found via:
 # gawk 'BEGIN{FS="|"}{x[$14]++}END{for(i in x) print i, x[i]}' tpl.csv 
 # gawk 'BEGIN{FS="|"}$14 == "Unresolved" {print $0}'
 # gawk 'BEGIN{FS="|"}$14 == "" {print $1}' tpl.csv
 # grep Höltzer tpl.csv
-
+# # manually:
 # sed -i '/gcc-17049|/ d' tpl.csv 
 # sed -i '/gcc-22474|/ d' tpl.csv
 # sed -i '/gcc-18503|/ d' tpl.csv
@@ -95,95 +112,115 @@ gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{for(i=1;i<=NF;i++) if(substr(
 # sed -i '/gcc-151659|/ d' tpl.csv
 # sed -i '/gcc-155168|/ d' tpl.csv
 # sed -i '/gcc-150007|/ d' tpl.csv
+# # Made a patch
 
 patch tpl.csv < fixtpl.patch
 
 gawk 'BEGIN{FS="|"} $14 ~ /WCSP/ {print $0}' tpl.csv > wcsp.csv
+rm -f tpl.csv
 
-# check
+# check via
 # gawk 'BEGIN{FS="|"}{x[$8]++}END{for(i in x) print i, x[i]}' wcsp.csv
-# more fixes:
+# a few more fixes:
 
 sed -i 's/|var|/|var.|/g' wcsp.csv
 sed -i 's/|var. schneideri|/|var.|schneideri/g' wcsp.csv
 
-gawk -i "taxon-tools.awk" 'BEGIN{FS="\t";OFS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {p = parse_taxon_name($2, 1); if (p) print $1, p}' accs > listA
+# Convert all_rough into a delimited list
+# a few fixes
+sed -i -E -e 's/Uva\-Ursi/Uva-ursi/g' -e 's/\?//g' -e 's/,\ sensu.*$//g' \
+    all_rough
+gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["sorted_in"] = \
+  "@ind_str_asc"} {p = parse_taxon_name($2, 1); if (p) print $1, p}' \
+     all_rough > all_rough.listA
 
 # lots of fails in accs:
 # 'Betula neoalaskana × glandulosa '
 # 'Caloplaca tornoe?nsis H. Magn.'
 # 'Cetraria fastigata (Del. ex Nyl. in Norrl.) Ka?rnef.'
 # 'Chamaepericlymenum canadense × suecicum '
-# 'Lecidea tornoe?nsis Nyl.'
 # 'Coniferous Shrub (blank)'
-# 'Coniferous Tree (blank)'
-# 'Crustose Lichen (blank)'
-# 'Betula neoalaskana × glandulosa '
-# 'Calliergon subsarmentosum Kindb., sensu Ottawa Nat. 23: 137. 1909'
-# 'Caloplaca tornoe?nsis H. Magn.'
-# 'Cetraria fastigata (Del. ex Nyl. in Norrl.) Ka?rnef.'
-# 'Chamaepericlymenum canadense × suecicum '
-# 'Chamaepericlymenum canadensis × suecicum '
-# 'Coniferous Shrub '
-# 'Coniferous Tree '
-# 'Cornus canadensis × suecica '
-# 'Cornus suecica × canadensis '
-# 'Crustose Lichen '
-# 'Cryptobiotic Crust '
-# 'Cryptobiotic Crust (blank)'
-# 'Deciduous Shrub '
-# 'Deciduous Shrub (blank)'
-# 'Deciduous Tree '
-# 'Deciduous Tree (blank)'
-# 'Dwarf Shrub '
-# 'Dwarf Shrub (blank)'
-# 'Eriophorum russeolum x scheuchzeri '
-# 'Foliose Lichen '
-# 'Foliose Lichen (blank)'
-# 'Fruticose Lichen '
-# 'Fruticose Lichen (blank)'
-# 'Lecidea tornoe?nsis Nyl.'
-# 'Picea glauca x sitchensis '
-# 'Salix pulchra × scouleriana na'
-# 'Salix pulchra × scouleriana NULL'
-# 'Subularia aquatica ssp. mexicana G.A. Mulligan & Calder, ined.?'
 # 'ThelIdium methorium (Nyl.) Hellb.'
-# 'Uva-Ursi uva-ursi (L.) Britton'
-# 'Xanthomendoza fallax (Hepp) So?chting, Ka?rnefelt & S. Kondr.'
-
-# gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' wcsp.csv > listB
-# Dang, duplicates
+# etc.
 
 function alphaloop() {
     for i in A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     do
         echo $i
-        gawk -v letter=$i 'BEGIN{FS="|"} $3 ~ letter {print $0}' listA > listA_$i
-        gawk -v letter=$i 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} $5 ~ letter {code[$4 "|" $5 "|" $6 "|" $7 "|" $8 "|" $9 "|" $10]=$1} END{for (i in code) print code[i] "|" i}' wcsp.csv > listB_$i
-        matchnames -a listA_$i -b listB_$i -o accs2wcsp_match_$i -F -e 5
+        gawk -v letter=$i 'BEGIN{FS="|"} $3 ~ letter {print $0}' \
+             all_rough.listA > listA_$i
+        gawk -v letter=$i 'BEGIN{FS="|"; PROCINFO["sorted_in"] = \
+           "@ind_str_asc"} $5 ~ letter {code[$4 "|" $5 "|" $6 "|" $7 \
+           "|" $8 "|" $9 "|" $10]=$1} END{for (i in code) \
+           print code[i] "|" i}' wcsp.csv > listB_$i
+        matchnames -a listA_$i -b listB_$i -o all2wcsp_match_$i -F -e 5 -q
     done
 }
 
 export -f alphaloop
+# gets hot! use cpulimit if you have it
 cpulimit -l 50 -i bash -c alphaloop
 
-for i in `ls accs2wcsp_match_*`
+# gather the parts
+for i in `ls all2wcsp_match_*`
 do
     echo $i
-    grep -v no_match $i >> accs2wcsp_all
+    grep -v no_match $i >> all2wcsp_all
 done
 
-# gawk 'BEGIN{FS="|"}{x[$3]++}END{for(i in x) print i, x[i]}' accs2wcsp_match 
-# auto_fuzzy 265
-# auto_basio+ 37
-# auto_irank 701
-# auto_basio- 21
-# auto_punct 794
-# auto_exin+ 30
-# exact 2250
-# auto_exin- 21
-# auto_basexin 147
+rm -f listA_* listB_* all2wcsp_match_*
 
-gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$11 "|" $12 "|" $13 "|" $14 "|" $15 "|" $16 "|" $17]=$2} END{for (i in code) print code[i] "|" i}' accs2wcsp_all > wcsp_base
+# summarize_field 3 all2wcsp_all 
+# auto_basexin                   :    240
+# auto_basio+                    :     50
+# auto_basio-                    :     30
+# auto_exin+                     :     38
+# auto_exin-                     :     61
+# auto_fuzzy                     :    344
+# auto_in+                       :     36
+# auto_irank                     :   1095
+# auto_punct                     :    950
+# exact                          :   3042
+
+gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$11 "|" $12 "|" $13 "|" $14 "|" $15 "|" $16 "|" $17]=$2} END{for (i in code) print code[i] "|" i}' all2wcsp_all > wcsp_base
+
+mysql --show-warnings -u cam -ptesttest < load_canon.sql
+
+echo "select concat_ws('-', names.id, uids.authority), genhyb, genus, sphyb, species, ssptype, ssp, author from names , uids where names.id = uids.nameID and uids.canon = 1 order by genus, species, ssp;" | mysql -N -u cam -ptesttest akflora | tr "\t" "|" > canon_listB
+
+# ------------------------------------------------------- ala-1687  --( 762/3740)
+#     Schoenoplectus acutis (Muhl. ex Bigelow) A.Love & D.Love
+#  1: Schoenoplectus acutus (Muhl. ex Bigelow) A. Love & D. Love
+#  2: Schoenoplectus acutus (Muhl. ex Bigelow) Á.Löve & D.Löve
+#  3: Schoenoplectus acutus (Muhl. ex J.M.Bigelow) Á.Löve & D.Löve
+#   > c
+#                 ala-1687 vs. 16414-TROP          
+#                          vs. 19328-WCSP          
+#                          vs. 8984-IPNI           
+#   > 3
+
+# *** Ah... need to reconcile trop to ipni, to remove the variants!
+
+matchnames -a trop_listA -b ipni_listB -o trop2ipni_match -f -q
+grep -c "|manual" trop2ipni_match 
+# 41
+
+sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' trop2ipni_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > trop_base.2
+
+cat ipni_base trop_base.2 > ipni+trop_base
+summarize_field 1 ipni+trop_base | grep " 2"
+# all uniq
+
+sed 's/\\N//g' wcsp_base > wcsp_listA
+cp ipni+trop_base ipni+trop_listB
+
+matchnames -a wcsp_listA -b ipni+trop_listB -o wcsp2i+t_match -f -q
+sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' wcsp2i+t_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > wcsp_base.2
+
+cat ipni_base trop_base.2 wcsp_base.2 | sort > i+t+w_base
+../../bin/sqlnulls i+t+w_base
 
 
+
+
+ 

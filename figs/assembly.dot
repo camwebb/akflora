@@ -1,0 +1,156 @@
+/* dot -T png test.dot > test.png */
+
+digraph structure {
+    rankdir="TB";
+    newrank=true; 
+    node [fontname="Helvetica",shape=box];
+    edge [fontname="Courier", len=1.5, arrowhead=normal];
+
+    { rank=same; wcsp; ipni; trop; accs}
+    { rank=same; wcsp2; ipni2; trop2 }
+    { rank=same; base; ala }
+
+    accs [label="ACCS Provisional\nAK checklist\n(11,780 names)"];
+    ipni [label="IPNI",style=dashed];
+    trop [label="Tropicos",style=dashed];
+    wcsp [label="WCSP\nvia download of\nThe Plant List\n(714,813 names)"];
+    accs -> ipni -> trop -> wcsp [style=invis];
+    
+
+    accsXipni [label="Fuzzy match to\nIPNI names\nvia GNR",shape=oval];
+    ipni -> accsXipni;
+    accs -> accsXipni;
+
+    accsXtrop [label="Fuzzy match to\nTropicos names\nvia GNR",shape=oval];
+    trop -> accsXtrop;
+    accs -> accsXtrop;
+
+    accsXwcsp [label="Fuzzy match to\nWCSP names (using\n'matchnames')",shape=oval];
+    wcsp -> accsXwcsp;
+    accs -> accsXwcsp;
+
+    ipni2 [label="IPNI AK\nbase list\n(10,518 names)"];
+    trop2 [label="Tropicos AK\nbase list\n(10,988 names)"];
+    wcsp2 [label="WCSP AK\nbase list\n(4,102 names)"];
+    accsXtrop -> trop2;
+    accsXipni -> ipni2;
+    accsXwcsp -> wcsp2;
+    
+    
+    ipniXtrop [label="Reconciliation of\nTropicos to IPNI\n(matchnames)",shape=oval];
+    ipni2 -> ipniXtrop;
+    trop2 -> ipniXtrop;
+
+    iptrXwcsp [label="Reconciliation of\nWCSP to 'IPNI + Tropicos'\n(matchnames)",shape=oval];
+    ipniXtrop -> iptrXwcsp;
+    wcsp2 -> iptrXwcsp;
+
+    base [label="Base AK canonical list\n(IPNI: 10,518 names,\nTropicos: 4,889, WCSP: 472)"];
+    iptrXwcsp -> base;
+    
+    ala [label="ALA Checklist of\nAccepted Names\n(3,740 names)"]
+
+    alaXbase [label="Reconciliation of\nALA to Canonical list\n(matchnames)\nMatched = 3,138, new = 602",shape=oval];
+    ala -> alaXbase;
+    base -> alaXbase;
+    
+
+
+
+    
+    /* 
+    WCSP [label="World Checklist\nof Selected\nPlant Families",shape=box,style=bold,color=invis];
+
+    taxmon [label="Taxonomic\npublications",shape=box,color=invis];
+
+    GenBANK [label="Taxa sequenced\nfor GenBANK",color=invis];
+
+    Specs [label="Label data on\nspecimens",color=invis];
+
+    // primary
+    
+    taxmon -> IPNI;
+    IPNI [shape=box,style=bold];
+
+    // PAF [style=bold];
+    // taxmon -> PAF;
+    
+    Tropicos [shape=box,style=bold];
+    taxmon -> Tropicos;
+    Specs -> Tropicos;
+
+    GRIN [style=bold];
+    taxmon -> GRIN;
+
+    BONAP [style=bold];
+    taxmon -> BONAP;
+    Specs -> BONAP;
+
+    VASCAN [style=bold];
+    taxmon -> VASCAN;
+    
+    plants [label="PLANTS",style=bold];
+    // GRIN -> plants;
+    // BONAP -> plants;
+    taxmon -> plants;
+    Specs -> plants;
+
+//    FNA [label="Flora N.A.",style=bold];
+//    taxmon -> FNA;
+//    Specs -> FNA;
+
+    // secondary
+    
+    PL [label="The Plant List"];        
+    WCSP -> PL;
+    taxmon -> PL;
+    Tropicos -> PL;
+    IPNI -> PL;
+
+
+    GBIF [label="GBIF Backbone"];
+    COL -> GBIF;
+    // Specs -> GBIF;
+     
+    ITIS;
+    BONAP -> ITIS;
+    plants -> ITIS;
+
+    IPNI -> WP;
+    WP [label="World Plants\n(Hassler 2018)",color=invis];
+
+    PL -> WFO;
+    WFO [label="World Flora Online"];
+    
+    COL [label="Catalogue of Life"];
+    ITIS -> COL;
+    taxmon -> COL;
+    WP -> COL;
+ 
+    GenBANK -> NCBI;
+    NCBI [label="NCBI Taxonomy"];
+    GRIN -> NCBI;
+    Tropicos -> NCBI;
+
+    // tertiary
+    EOL;
+    ITIS -> EOL;
+    COL -> EOL ;
+    NCBI -> EOL;
+
+    // GNA
+    
+    GNA;
+    IPNI -> GNA [style=dashed];
+    VASCAN -> GNA [style=dashed];
+    plants -> GNA [style=dashed];
+    ITIS -> GNA [style=dashed];
+    COL -> GNA [style=dashed];
+    EOL -> GNA [style=dashed];
+    GBIF -> GNA [style=dashed];
+    Tropicos -> GNA [style=dashed];
+    NCBI -> GNA [style=dashed];
+    GRIN -> GNA [style=dashed];
+    */
+}
+
