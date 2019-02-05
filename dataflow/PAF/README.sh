@@ -92,3 +92,15 @@ gawk -i "taxon-tools.awk" -f create_syn_lookup.awk > paf
 
 # 7. Clean up
 rm -f paf.1 paf.2 paf.3
+
+
+# Notes:
+
+# This script is useful for accessing PAF info:
+# echo "select paf_id,ranking,name,label,subspecies,variety,author,\
+#   original_author, syns from entries left join ( select entry_id , \
+#   GROUP_CONCAT(\`raw\` SEPARATOR '^') as syns from \`references\` \
+#   group by entry_id ) as b on entries.id = b.entry_id where \
+#   ( ranking = 'species' or ranking = 'subspecies' ) \
+#   AND entries.paf_id = '$1';" | mysql -N -u cam -ptesttest paf | \
+#     sed 's/NULL//g'
