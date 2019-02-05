@@ -12,7 +12,7 @@
 # 4. Matchnames to PL accept all autofuzzy.  Give canonical status as
 # they are added to master list
 
-# 1. Assemble rough lists: ACCS + ALA + PAF (should add Hulten at some point)
+# 1. Assemble rough lists: ACCS + ALA + PAF + FNA (should add Hulten at some point)
 
 # 1a. ACCS
 echo "select concat('accs-', adjudicatedID) as guid, \
@@ -37,8 +37,14 @@ gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
 sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
     -e 's/×/x/g' paf
 
+# 1d. FNA
+gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
+     ../FNA/fna_alaska > fna
+sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+    -e 's/×/x/g' fna
+
 # remove duplicates
-cat accs ala paf | gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] \
+cat accs ala paf fna | gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] \
    = "@ind_str_asc"}{n[$2]=$1}END{for (i in n) print n[i] "|" i}' > all_rough
 
 # split into batches of 1,000 for GNR
@@ -72,6 +78,7 @@ grep "trop-" gnr.out | gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["so
 # ** Fail: 'Sphagnum riparium var. > *fallax Sanio' does not match:
 #          Sphagnum riparium var. > *fallax Sanio  <- parsed
 
+exit
 
 # 3. WCSP from the Plant List
 
@@ -184,9 +191,41 @@ rm -f listA_* listB_* all2wcsp_match_*
 
 gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$11 "|" $12 "|" $13 "|" $14 "|" $15 "|" $16 "|" $17]=$2} END{for (i in code) print code[i] "|" i}' all2wcsp_all > wcsp_base
 
+
+
+# *** Ah... need to reconcile trop to ipni, to remove the variants!
+
+cp trop_base trop_listA
+cp ipni_base ipni_listB
+
+matchnames -a trop_listA -b ipni_listB -o trop2ipni_match -f -q
+grep -c "|manual" trop2ipni_match 
+# 41
+
+sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' trop2ipni_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > trop_base.2
+
+cat ipni_base trop_base.2 > ipni+trop_base
+summarize_field 1 ipni+trop_base | grep " 2"
+# all uniq
+
+cp wcsp_base wcsp_listA
+cp ipni+trop_base ipni+trop_listB
+
+matchnames -a wcsp_listA -b ipni+trop_listB -o wcsp2i+t_match -f -q
+sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' wcsp2i+t_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > wcsp_base.2
+
+cat ipni_base trop_base.2 wcsp_base.2 | sort > i+t+w_base
+../../bin/sqlnulls i+t+w_base
+
 mysql --show-warnings -u cam -ptesttest < load_canon.sql
 
+
+#  move ot other README
+
 echo "select concat_ws('-', names.id, uids.authority), genhyb, genus, sphyb, species, ssptype, ssp, author from names , uids where names.id = uids.nameID and uids.canon = 1 order by genus, species, ssp;" | mysql -N -u cam -ptesttest akflora | tr "\t" "|" > canon_listB
+
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' ../ALA_checklist/ala-names > ala_listA
+
 
 # ------------------------------------------------------- ala-1687  --( 762/3740)
 #     Schoenoplectus acutis (Muhl. ex Bigelow) A.Love & D.Love
@@ -199,28 +238,8 @@ echo "select concat_ws('-', names.id, uids.authority), genhyb, genus, sphyb, spe
 #                          vs. 8984-IPNI           
 #   > 3
 
-# *** Ah... need to reconcile trop to ipni, to remove the variants!
+cp ../PAF/paf-names paf.listA
+sed -i -e 's/\\N//g' paf.listA
 
-matchnames -a trop_listA -b ipni_listB -o trop2ipni_match -f -q
-grep -c "|manual" trop2ipni_match 
-# 41
+matchnames -a paf.listA -b canon_listB -o paf2canon_match -f -q
 
-sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' trop2ipni_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > trop_base.2
-
-cat ipni_base trop_base.2 > ipni+trop_base
-summarize_field 1 ipni+trop_base | grep " 2"
-# all uniq
-
-sed 's/\\N//g' wcsp_base > wcsp_listA
-cp ipni+trop_base ipni+trop_listB
-
-matchnames -a wcsp_listA -b ipni+trop_listB -o wcsp2i+t_match -f -q
-sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' wcsp2i+t_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > wcsp_base.2
-
-cat ipni_base trop_base.2 wcsp_base.2 | sort > i+t+w_base
-../../bin/sqlnulls i+t+w_base
-
-
-
-
- 
