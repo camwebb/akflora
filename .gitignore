@@ -5,6 +5,10 @@ pages_md/untracked*
 
 dataflow/ENV.sh
 
+dataflow/FNA/coarse_grained_fna_xml/
+dataflow/FNA/fna
+dataflow/FNA/fna_all.gz
+
 dataflow/ALA_checklist/bu*
 dataflow/ALA_checklist/ala-*
 dataflow/ALA_checklist/ala2ipni_match
