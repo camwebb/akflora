@@ -5,9 +5,13 @@ pages_md/untracked*
 
 dataflow/ENV.sh
 
-dataflow/FNA/coarse_grained_fna_xml/
+dataflow/FNA/coarse_grained_fna_xml*
 dataflow/FNA/fna
 dataflow/FNA/fna_all.gz
+
+dataflow/PAF/paf.1
+dataflow/PAF/paf.2
+dataflow/PAF/paf.3
 
 dataflow/ALA_checklist/bu*
 dataflow/ALA_checklist/ala-*
@@ -16,9 +20,6 @@ dataflow/ALA_checklist/ala2trop_match
 dataflow/ALA_checklist/ala_no_match
 dataflow/ALA_checklist/list*
 
-dataflow/PAF/paf.*
-dataflow/PAF/paf-*
-dataflow/PAF/list*
 
 dataflow/canonical/accs
 dataflow/canonical/accs2wcsp.tgz

@@ -10,5 +10,16 @@ then
     echo "Extracting ACCS data" > "/dev/stderr"
     cd ACCS
     sh README.sh
+    cd ..
 fi
+
+# Generate FNA Alaska checklist
+if [ $AKFLORA_FNAXML -eq 1 ]
+then
+    echo "Generating FNA data" > "/dev/stderr"
+    cd FNA
+    sh README.sh
+    cd ..
+fi
+
 
