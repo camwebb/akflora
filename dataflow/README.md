@@ -33,6 +33,7 @@ required,
  * `matchnames`
  * `xqilla`
  * `curl`
+ * `mysqld` and `mysql` client, with an account than can create DBs
 
 ## Environment variables
  
