@@ -34,6 +34,7 @@ required,
  * `xqilla`
  * `curl`
  * `mysqld` and `mysql` client, with an account than can create DBs
+ * `iconv`
 
 ## Environment variables
  

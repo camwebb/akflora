@@ -13,13 +13,7 @@ dataflow/PAF/paf.1
 dataflow/PAF/paf.2
 dataflow/PAF/paf.3
 
-dataflow/ALA_checklist/bu*
-dataflow/ALA_checklist/ala-*
-dataflow/ALA_checklist/ala2ipni_match
-dataflow/ALA_checklist/ala2trop_match
-dataflow/ALA_checklist/ala_no_match
-dataflow/ALA_checklist/list*
-
+dataflow/ALA/ala.*
 
 dataflow/canonical/accs
 dataflow/canonical/accs2wcsp.tgz
