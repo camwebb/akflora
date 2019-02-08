@@ -7,45 +7,42 @@
 # GUIDs yet, plus the author citations are not abbreviated, so harder
 # to reconcile).
 
+# See http://alaskaflora.org/pages/blog5.html
 
-#    GNA for IPNI and Tropicos, adding _all_ fuzzy matched names.
-# 4. Matchnames to PL accept all autofuzzy.  Give canonical status as
-# they are added to master list
 
-# 1. Assemble rough lists: ACCS + ALA + PAF + FNA (should add Hulten at some point)
+# 1. Assemble rough lists: ACCS + ALA + PAF + FNA (should add Hulten
+# at some point)
 
 # 1a. ACCS
-echo "select concat('accs-', adjudicatedID) as guid, \
-  concat_ws(' ', nameAdjudicated, authAdjudicated) as name \
-  from speciesAdjudicated where nameAdjudicated REGEXP '[^\ ]+\ [^\ ]+';" \
-    | mysql -N -u cam -pPASSWORD alaskaFlora | tr "\t" "|" > accs
-# peel off the attached hybrid marks  
-sed -i -E 's/×([A-Za-z])/x \1/g' accs
+gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
+     ../ACCS/accs > accs
 # tidy up (GNR chokes on ×)
-sed -i -e 's/ ssp. / subsp. /g' -e 's/| */|/g' -e 's/ *$//g' \
-    -e 's/  */ /g' -e 's/×/x/g' accs
+sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+    -e 's/×/x/g' accs
 
 # 1b. ALA
 gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../ALA_checklist/ala-names > ala
-sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+     ../ALA/ala > ala
+sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
     -e 's/×/x/g' ala
 
 # 1c. PAF
 gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../PAF/paf-names > paf
-sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+     ../PAF/paf > paf
+sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
     -e 's/×/x/g' paf
 
 # 1d. FNA
 gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../FNA/fna_alaska > fna
-sed -i -e 's/\\N//g' -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
+     ../FNA/fna > fna
+sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
     -e 's/×/x/g' fna
 
 # remove duplicates
 cat accs ala paf fna | gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] \
    = "@ind_str_asc"}{n[$2]=$1}END{for (i in n) print n[i] "|" i}' > all_rough
+
+rm -f accs ala paf fna
 
 # split into batches of 1,000 for GNR
 gawk 'BEGIN{FS="|"}{print $1 "|" $2 > "names4gnr-"  int(++i/995)+1 }' all_rough
@@ -55,7 +52,7 @@ rm -f gnr.out
 for infile in names4gnr*
 do
      echo "Running GNA on " $infile
-     gawk -v INFILE=$infile -f lib/gnr.awk >> gnr.out
+     gawk -v INFILE=$infile -f gnr.awk >> gnr.out
 done
 
 rm -f names4gnr-*
@@ -68,8 +65,6 @@ grep "ipni-" gnr.out | gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["so
 
 grep "trop-" gnr.out | gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$4] = $3} END{for (i in code) {p = parse_taxon_name(i, 1); if (p) print code[i], p}}' > trop_base
 
-# ../../bin/sqlnulls trop_base
-
 # Some errors but these are errors in GNR records
 # ** Fail: 'Hordeum x caespitosum 8999+' does not match:
 #          Hordeum x caespitosum 8999+  <- parsed
@@ -80,58 +75,6 @@ grep "trop-" gnr.out | gawk -i "taxon-tools.awk" 'BEGIN{FS=OFS="|"; PROCINFO["so
 
 exit
 
-# 3. WCSP from the Plant List
-
-gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{for(i=1;i<=NF;i++) if(substr($i,1,1)=="\"") $i=substr($i,2,length($i)-2); print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21}' ~/public_html/MaTCH/recipes/theplantlist/data/all.csv > tpl.csv
-
-# # fix a few - some records had """ which did not parse, found via:
-# gawk 'BEGIN{FS="|"}{x[$14]++}END{for(i in x) print i, x[i]}' tpl.csv 
-# gawk 'BEGIN{FS="|"}$14 == "Unresolved" {print $0}'
-# gawk 'BEGIN{FS="|"}$14 == "" {print $1}' tpl.csv
-# grep Höltzer tpl.csv
-# # manually:
-# sed -i '/gcc-17049|/ d' tpl.csv 
-# sed -i '/gcc-22474|/ d' tpl.csv
-# sed -i '/gcc-18503|/ d' tpl.csv
-# sed -i '/ild-47379|/ d' tpl.csv
-# sed -i '/ild-47380|/ d' tpl.csv
-# sed -i '/gcc-34703|/ d' tpl.csv
-# sed -i '/gcc-108480|/ d' tpl.csv
-# sed -i '/gcc-17799|/ d' tpl.csv
-# sed -i '/gcc-7104|/ d' tpl.csv
-# sed -i '/gcc-9594|/ d' tpl.csv
-# sed -i '/gcc-144759|/ d' tpl.csv
-# sed -i '/gcc-135361|/ d' tpl.csv
-# sed -i '/gcc-89224|/ d' tpl.csv
-# sed -i '/ild-52413|/ d' tpl.csv
-# sed -i '/ild-52414|/ d' tpl.csv
-# sed -i '/gcc-88328|/ d' tpl.csv
-# sed -i '/gcc-6229|/ d' tpl.csv
-# sed -i '/ild-52641|/ d' tpl.csv
-# sed -i '/ild-29900|/ d' tpl.csv
-# sed -i '/ild-52648|/ d' tpl.csv
-# sed -i '/ild-51842|/ d' tpl.csv
-# sed -i '/gcc-155879|/ d' tpl.csv
-# sed -i '/gcc-28873|/ d' tpl.csv
-# sed -i '/gcc-156518|/ d' tpl.csv
-# sed -i '/gcc-147121|/ d' tpl.csv
-# sed -i '/gcc-148273|/ d' tpl.csv
-# sed -i '/gcc-151659|/ d' tpl.csv
-# sed -i '/gcc-155168|/ d' tpl.csv
-# sed -i '/gcc-150007|/ d' tpl.csv
-# # Made a patch
-
-patch tpl.csv < fixtpl.patch
-
-gawk 'BEGIN{FS="|"} $14 ~ /WCSP/ {print $0}' tpl.csv > wcsp.csv
-rm -f tpl.csv
-
-# check via
-# gawk 'BEGIN{FS="|"}{x[$8]++}END{for(i in x) print i, x[i]}' wcsp.csv
-# a few more fixes:
-
-sed -i 's/|var|/|var.|/g' wcsp.csv
-sed -i 's/|var. schneideri|/|var.|schneideri/g' wcsp.csv
 
 # Convert all_rough into a delimited list
 # a few fixes
