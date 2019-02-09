@@ -4,7 +4,6 @@
 source ENV.sh
 
 # Generate ACCS Alaska Checklist
-# **NB do not run this unless you have the ACCS alaskaFlora database**
 if [ $AKFLORA_ACCSDB -eq 1 ]
 then
     echo "Extracting ACCS data"
@@ -12,6 +11,12 @@ then
     sh README.sh
     cd ..
 fi
+
+# Generate ALA checklist
+echo "Generating ALA data"
+cd ALA
+sh README.sh
+cd ..
 
 # Generate FNA Alaska checklist
 if [ $AKFLORA_FNAXML -eq 1 ]
@@ -28,6 +33,10 @@ cd PAF
 sh README.sh
 cd ..
 
-
+# Generate WCSP list
+echo "Generating WCSP data"
+cd WCSP
+sh README.sh
+cd ..
 
 

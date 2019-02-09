@@ -16,6 +16,9 @@ do
     done
 done
 
+# clean dashes
+sed -i -e 's/—/-/g' fna.raw
+
 gawk -f clean_fna.awk fna.raw > fna
 
 # Tidy up

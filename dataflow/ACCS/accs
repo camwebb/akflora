@@ -1556,7 +1556,6 @@ accs-1706||Betula||nana|subsp.|exilis|(Sukaczev) Hultén|accepted
 accs-1707||Betula||nana|var.|sibirica|Ledeb.|accs-1706
 accs-1708||Betula||neoalaskana|||Sarg.|accepted
 accs-1710||Betula||neoalaskana|var.|kenaica|(W.H. Evans) B. Boivin|accs-1704
-accs-1709||accepted
 accs-1712||Betula||occidentalis|var.|inopina|(Jeps.) C.L. Hitchc.|accs-1709
 accs-1713||Betula||papyrifera|||Marshall|accs-1708
 accs-1714||Betula||papyrifera|subsp.|humilis|(Regel) Hultén|accs-1708
@@ -2204,7 +2203,6 @@ accs-2400||Calliergon||stramineum|var.|laxifolium|(Kindb.) Karcz.|accs-2397
 accs-2401||Calliergon||stramineum|var.|nivale|(Lor.) G. Roth|accs-2397
 accs-2402||Calliergon||stramineum|var.|patens|(Lindb.) G. Roth|accs-2397
 accs-2403||Calliergon||subgiganteum|||Kindb.|accs-2385
-accs-2404||accs-10943
 accs-2405||Calliergon||trifarium|||(F. Weber & D. Mohr) Kindb.|accs-9619
 accs-2406||Calliergon||turgescens|||(T. Jensen) Kindb.|accs-9620
 accs-2407||Calliergon||wickesiae|||Grout|accs-6863
@@ -2268,7 +2266,6 @@ accs-2469||Caloplaca||subnigricans|||H. Magn.|accs-2437
 accs-2470||Caloplaca||subolivacea|||(Th. Fr.) Lynge|accs-2472
 accs-2471||Caloplaca||tetraspora|||(Nyl.) H. Olivier|accepted
 accs-2472||Caloplaca||tiroliensis|||Zahlbr.|accepted
-accs-2473||accepted
 accs-2474||Caloplaca||verruculifera|||(Vain.) Zahlbr.|accepted
 accs-2476||Caltha||arctica|||R. Br.|accs-2499
 accs-2477||Caltha||arctica|subsp.|arctica|R. Br.|accs-2499
@@ -2980,7 +2977,6 @@ accs-3229||Cetraria||delisei|||(Bory) Th. Fr.|accepted
 accs-3230||Cetraria||elenkinii|||Krog|accs-1030
 accs-3231||Cetraria||ericetorum|||Opiz|accepted
 accs-3232||Cetraria||fahunensis|||(L.) Schreb.|accs-7249
-accs-3233||accepted
 accs-3234||Cetraria||fastigiata|||(Delise ex Nyl.) Karnefelt|accs-3262
 accs-3235||Cetraria||glauca|||(L.) Ach.|accs-8786
 accs-3236||Cetraria||halei|||W.L. Culb. & C.F. Culb.|accs-12570
@@ -3023,8 +3019,6 @@ accs-3277||Chamaenerion||angustifolium|||(L.) Scop.|accs-3299
 accs-3278||Chamaenerion||angustifolium|subsp.|circumvagum|(Mosquin) Moldenke|accs-3300
 accs-3279||Chamaenerion||latifolium|||(L.) Sweet|accs-3304
 accs-3281||Chamaepericlymenum||canadense|||(L.) Asch. & Graebn.|accepted
-accs-3282||accepted
-accs-3283||accs-3282
 accs-3284||Chamaepericlymenum||suecicum|||(L.) Asch. & Graebn.|accepted
 accs-3285||Chamaepericlymenum||unalaschkense|||(Ledeb.) Rydb.|accepted
 accs-3287||Chamaerhodos||erecta|||(L.) Bunge|accepted
@@ -3403,8 +3397,6 @@ accs-3696||Comandra||umbellata|||(L.) Nutt.|accepted
 accs-3698||Comarum||palustre|||L.|accepted
 accs-3700||Comastoma||tenella|||(Rottb.) Toyok.|accs-3701
 accs-3701||Comastoma||tenellum|||(Rottb.) Toyokuni|accepted
-accs-4987||accepted
-accs-4988||accepted
 accs-3703||Coniocybe||furfuracea|||(L.) Tibell|accepted
 accs-3705||Conioselinum||chinense|||(L.) Britton, Sterns & Poggenb.|accs-3709
 accs-3706||Conioselinum||chinense|var.|pacificum|(S. Watson) B. Boivin|accs-3709
@@ -3472,7 +3464,6 @@ accs-3782||Cornus||baileyi|||J.M. Coult. & Evans|accs-12012
 accs-3783||Cornus||canadensis|||L.|accs-3281
 accs-3785||Cornus||canadensis|var.|dutillyi|(Lepage) B. Boivin|accs-3281
 accs-3786||Cornus||canadensis|var.|intermedia|Farr p.p.|accs-3282
-accs-3784||accs-3282
 accs-3787||Cornus||instolonea|||A. Nelson|accs-12012
 accs-3788||Cornus||interior|||(Rydb.) N. Petersen|accs-12012
 accs-3789||Cornus||intermedia|||(Farr) Calder & Roy L. Taylor, database artifact|accs-3282
@@ -3489,7 +3480,6 @@ accs-3800||Cornus||stolonifera|var.|interior|(Rydb.) H. St. John|accs-12012
 accs-3801||Cornus||stolonifera|var.|occidentalis|(Torr. & A. Gray) C.L. Hitchc.|accs-12012
 accs-3802||Cornus||stolonifera|var.|stolonifera|Michx.|accs-12012
 accs-3803||Cornus||suecica|||L.|accs-3284
-accs-3804||accs-3282
 accs-3805||Cornus||unalaschkensis|||Ledeb.|accs-3285
 accs-3773||Cornus|×|californica|||C.A. Mey.|accs-12012
 accs-3774||Cornus|×|intermedia|||(Farr) Calder & Roy L. Taylor|accs-3282
@@ -3531,7 +3521,6 @@ accs-3851||Critesion||jubatum|||(L.) Nevski|accs-5791
 accs-3852||Critesion||jubatum|subsp.|breviaristatum|(Bowden) Á. Löve & D. Löve|accs-5782
 accs-3855||Crumia||deciduidentata|||Sharp & Z. Iwats.|accepted
 accs-3856||Crunocallis||chamissoi|||(Ledeb. ex Spreng.) Rydb.|accs-7583
-accs-4989||accepted
 accs-3858||Cryptantha||calycosa|||(A. Gray) Rydb.|accs-3866
 accs-3859||Cryptantha||eastwoodiae|||H. St. John|accs-3866
 accs-3860||Cryptantha||fendleri|||(A. Gray) Greene|accepted
@@ -3543,7 +3532,6 @@ accs-3865||Cryptantha||spiculifera|||(Piper) Payson|accs-3863
 accs-3866||Cryptantha||torreyana|||(A. Gray) Greene|accepted
 accs-3867||Cryptantha||torreyana|var.|calycosa|(A. Gray) Greene|accs-3866
 accs-3868||Cryptantha||torreyana|var.|pumila|(A. Heller) I.M. Johnst.|accs-3866
-accs-4990||accepted
 accs-3870||Cryptocolea||imbricata|||R.M. Schust.|accepted
 accs-3872||Cryptogramma||acrostichoides|||R. Br.|accepted
 accs-3873||Cryptogramma||acrostichoides|var.|sitchensis|R. Br.|accs-3878
@@ -3629,8 +3617,6 @@ accs-3973||Dasiphora||fruticosa|||(L.) Rydb.|accepted
 accs-3974||Dasiphora||fruticosa|subsp.|floribunda|(Pursh) Kartesz|accepted
 accs-3975||Dasystephana||glauca|||(Pall.) Rydb.|accs-5338
 accs-3977||Daucus||carota|||L.|accepted
-accs-4992||accepted
-accs-4993||accepted
 accs-3981||Delphinium||brownii|||Rydb.|accs-3983
 accs-3982||Delphinium||chamissonis|||Pritz. ex Walp.|accepted
 accs-3983||Delphinium||glaucum|||S. Watson|accepted
@@ -4128,7 +4114,6 @@ accs-4525||Dupontia||fisheri|var.|aristata|Malte ex Polunin|accs-4522
 accs-4526||Dupontia||psilosantha|||(Rupr.) Griseb.|accs-4522
 accs-4527||Duschekia||sinuata|||(Regel) Pouzar|accs-434
 accs-4528||Duschekia||viridis|||(Chaix) Opiz p.p.|accs-432
-accs-4998||accepted
 accs-4530||Echinochloa||crus-galli|||(L.) P. Beauv.|accepted
 accs-4531||Echinochloa||crus-galli|subsp.|spiralis|(Vasinger) Tzvelev|accs-4530
 accs-4532||Echinopanax||horridum|||(Sm.) Decne. & Planch. ex Harms|accs-7859
@@ -4518,7 +4503,6 @@ accs-4946||Eriophorum||russeolum|subsp.|leiocarpum|M.S. Novos.|accepted
 accs-4947||Eriophorum||russeolum|subsp.|leiocarpum|x scheuchzeri subsp. scheuchzeri |accs-4918
 accs-4948||Eriophorum||russeolum|subsp.|rufescens|(E.S. Anderson) Hyl., nom. inq.|accs-4934
 accs-4949||Eriophorum||russeolum|var.|albidum|F. Nyl.|accs-4946
-accs-4951||accs-4918
 accs-4952||Eriophorum||scheuchzeri|||Hoppe|accepted
 accs-4953||Eriophorum||scheuchzeri|subsp.|arcticum|Novoselova|accepted
 accs-4954||Eriophorum||scheuchzeri|subsp.|scheuchzeri|Hoppe|accepted
@@ -4715,7 +4699,6 @@ accs-9934||Fisturiella||scoparia|||(Vain.) Bowler & Rundel|accepted
 accs-5209||Flavocetraria||cucullata|||(Bellardi) Karnefelt & A. Thell|accepted
 accs-5210||Flavocetraria||nivalis|||(L.) Karnefelt & A. Thell|accepted
 accs-5213||Fluminia||festucacea|||(Willd.) Hitchc.|accs-11255
-accs-9935||accepted
 accs-5215||Fontinalis||antipyretica|||Hedw.|accepted
 accs-5216||Fontinalis||neomexicana|||Sull. & Lesq.|accepted
 accs-5217||Foraminella||ambigua|||(Wulfen) S.L.F. Mey.|accs-8212
@@ -4736,7 +4719,6 @@ accs-5232||Franseria||chamissonis|subsp.|bipinnatisecta|(Less.) Wiggins & Stockw
 accs-5233||Franseria||chamissonis|var.|bipinnatisecta|Less.|accs-514
 accs-5235||Fritillaria||camschatcensis|||(L.) Ker Gawl.|accepted
 accs-5237||Frullania||nisquallensis|||Sull.|accepted
-accs-9937||accepted
 accs-5240||Fulgensia||bracteata|||(Hoffm.) Rasanen|accepted
 accs-5242||Funaria||arctica|||(Berggr.) Kindb.|accepted
 accs-5243||Funaria||groutiana|||Fife|accepted
@@ -5909,7 +5891,6 @@ accs-6554||Lecidea||symmicta|||(Ach.) Ach.|accs-6433
 accs-6555||Lecidea||templetonii|||Taylor|accs-7630
 accs-6556||Lecidea||tenebrosa|||Flotow|accs-11130
 accs-6557||Lecidea||tessellata|||Flörke|accepted
-accs-9958||accepted
 accs-6558||Lecidea||tumida|||A. Massal.|accs-9295
 accs-6559||Lecidea||turgidula|||Fr.|accs-1731
 accs-6560||Lecidea||uliginosa|||(Schrad.) Ach.|accs-8645
@@ -7667,7 +7648,6 @@ accs-8589||Picea||canadensis|||(Mill.) Britton, Sterns & Poggenb.|accs-8590
 accs-8590||Picea||glauca|||(Moench) Voss|accepted
 accs-8591||Picea||glauca|var.|albertiana|(S. Br.) Sarg.|accs-8590
 accs-8592||Picea||glauca|var.|porsildii|Raup|accs-8590
-accs-8593||accs-8588
 accs-8594||Picea||mariana|||(Mill.) Britton, Sterns & Poggenb.|accepted
 accs-8595||Picea||mariana|var.|mariana|(Mill.) Britton, Sterns & Poggenb.|accs-8594
 accs-8596||Picea||sitchensis|||(Bong.) Carrière|accepted
@@ -9684,7 +9664,6 @@ accs-10838||Salix||pulchra|||Cham.|accepted
 accs-10839||Salix||pulchra|var.|looffiae|C.R. Ball|accs-10838
 accs-10840||Salix||pulchra|var.|palmeri|C.R. Ball|accs-10838
 accs-10841||Salix||pulchra|var.|yukonensis|C.K. Schneid.|accs-10838
-accs-13066||accepted
 accs-10842||Salix||pychnocarpa|||Andersson|accs-10819
 accs-10843||Salix||pyrolifolia|var.|hoyeriana|(Dieck) Dippel|accs-10637
 accs-10844||Salix||regelii|||Andersson|accs-10637
@@ -10750,7 +10729,6 @@ accs-11997||Suaeda||occidentalis|||(S. Watson) S. Watson|accs-11991
 accs-11999||Subularia||aquatica|||L.|accepted
 accs-12000||Subularia||aquatica|subsp.|americana|G. Mulligan & Calder|accepted
 accs-12001||Subularia||aquatica|subsp.|aquatica|L.|accepted
-accs-12002||accs-12000
 accs-12003||Subularia||aquatica|var.|americana|(G. Mulligan & Calder) B. Boivin|accs-12000
 accs-12006||Swertia||obtusa|||Ledeb.|accepted
 accs-12008||Swertia||perennis|var.|obtusa|(Ledeb.) Ledeb. ex Griseb.|accs-12006
@@ -10967,7 +10945,6 @@ accs-12225||Thamnobryum||neckeroides|||(Hook.) E. Lawton|accepted
 accs-12228||Thamnolia||subuliformis|||(Ehrh.) W.L. Culb.|accepted
 accs-12229||Thamnolia||subvermicularis|||Asah.|accs-12228
 accs-12230||Thamnolia||vermicularis|||(Sw.) Ach. ex Schaerer|accepted
-accs-12236||accs-12234
 accs-12233||Thelidium||acrotellum|||Arnold|accs-12237
 accs-12234||Thelidium||aeneovinosum|||(Anzi) Arnold|accepted
 accs-12235||Thelidium||mesotropum|||(Nyl.) A.L. Sm.|accs-12237
@@ -11338,7 +11315,6 @@ accs-12669||Utricularia||stygia|||Thor|accs-12668
 accs-12670||Utricularia||vulgaris|||L.|accepted
 accs-12671||Utricularia||vulgaris|subsp.|macrorhiza|(Leconte) R.T. Clausen|accepted
 accs-12672||Utricularia||vulgaris|var.|americana|A. Gray|accs-12671
-accs-12673||accs-1051
 accs-12674||Uvularia||amplexifolia|||L.|accs-11953
 accs-12676||Vaccaria||hispanica|||(Mill.) Rauschert|accepted
 accs-12677||Vaccaria||pyramidata|||Medik.|accs-12676
@@ -11595,7 +11571,6 @@ accs-12955||Woodsia||scopulina|||D.C. Eaton|accepted
 accs-12956||Woodsia||scopulina|subsp.|scopulina|D.C. Eaton|accepted
 accs-12957||Xanthocyparis||nootkatensis|||(D.Don) Farjon & D.K. Harder|accs-2433
 accs-12959||Xanthomendoza||borealis|||(R. Sant. & Poelt) Søchting, Kärnefelt, & S. Kondr.|accepted
-accs-12960||accs-12974
 accs-12962||Xanthoparmelia||centrifuga|||(L.) Hale|accs-1035
 accs-12963||Xanthoparmelia||coloradoensis|||(Gyel.) Hale|accepted
 accs-12964||Xanthoparmelia||incurva|||(Pers.) Hale|accs-1036

@@ -13,8 +13,10 @@ syntax of Bash scripts is easier, and few -- if anyone -- will be
 editing and rebuilding parts of the whole build-tree.)
 
 Many steps in this integration process require manual
-intervention. However, setting `$AKFLORA_AUTO` to `1` will substitute
-a pre-calculated intermediate file.
+intervention. The automated scripts leave these steps out,
+substituting in a pre-calculated files. The user is alerted to these
+manual phases as the scripts run, and the manual steps can be
+uncommented-out.
 
 ## Steps/directories
 
@@ -22,6 +24,8 @@ a pre-calculated intermediate file.
  * [ACCS](./ACCS): The ACCS Alaska checklist 
  * [PAF](./PAF): The Panarctic Flora checklist
  * [FNA](./FNA): The Flora of North America
+ * [WCSP](./WCSP): World Checklist of Selected Plant Families (via The
+   Plant List)
 
 ## Dependencies
 
@@ -35,11 +39,10 @@ required,
  * `curl`
  * `mysqld` and `mysql` client, with an account than can create DBs
  * `iconv`
+ * `gzip`
 
 ## Environment variables
  
  * Executable programs must be findable via `$PATH`
  * Gawk binary libraries must be findable via `$AWKLIBPATH`
  * Gawk scripts libraries must be findable via `$AWKPATH`
- * To run scripts without manual intervention, `$AKFLORA_AUTO` must be
-   set to `1`

@@ -10,7 +10,7 @@ digraph structure {
     { rank=same; wcsp2; ipni2; trop2 }
     { rank=same; base; ala; paf}
 
-    accs [label="'Rough list'\n(ACCS checklist,\nplus ALA checklist,\nplus PAF in AK,\nplus FNA in AK)\n(21,097 names)"];
+    accs [label="'Rough list'\n(ACCS checklist,\nplus ALA checklist,\nplus PAF in AK,\nplus FNA in AK)\n(20,994 names)"];
     ipni [label="IPNI",style=dashed];
     trop [label="Tropicos",style=dashed];
     wcsp [label="WCSP\nvia download of\nThe Plant List\n(714,813 names)"];
@@ -29,9 +29,9 @@ digraph structure {
     wcsp -> accsXwcsp;
     accs -> accsXwcsp;
 
-    ipni2 [label="IPNI AK\nbase list\n(13,775 names)"];
-    trop2 [label="Tropicos AK\nbase list\n(15,095 names)"];
-    wcsp2 [label="WCSP AK\nbase list\n(5,520 names)"];
+    ipni2 [label="IPNI AK\nbase list\n(13,755 names)"];
+    trop2 [label="Tropicos AK\nbase list\n(15,067 names)"];
+    wcsp2 [label="WCSP AK\nbase list\n(5,527 names)"];
     accsXtrop -> trop2;
     accsXipni -> ipni2;
     accsXwcsp -> wcsp2;
@@ -45,18 +45,18 @@ digraph structure {
     ipniXtrop -> iptrXwcsp;
     wcsp2 -> iptrXwcsp;
 
-    base [label="Base AK canonical list\n(IPNI: 13,775 names,\nTropicos: 4,890, WCSP: 787)",style=bold];
+    base [label="Base AK canonical list\n(IPNI: 13,755 names,\nTropicos: 4,897, WCSP: 783)",style=bold];
     iptrXwcsp -> base;
     
     ala [label="ALA Checklist of\nAccepted Names\n(3,740 names)"]
 
-    alaXbase [label="Reconciliation of\nALA to Canonical list\n(matchnames)\nMatched = 3,358,\nnot matched = 382",shape=oval];
+    alaXbase [label="Reconciliation of\nALA to Canonical list\n(matchnames)\nMatched = 3,649,\nnot matched = 91",shape=oval];
     ala -> alaXbase;
     base -> alaXbase;
 
     paf [label="Panarctic Flora\nAK plants\n(2,823 names)"]
 
-    pafXbase [label="Reconciliation of\nPAF to Canonical list\n(matchnames)\nMatched = 2,405,\nnot matched = 418",shape=oval];
+    pafXbase [label="Reconciliation of\nPAF to Canonical list\n(matchnames)\nMatched = 2,722,\nnot matched = 101",shape=oval];
     paf -> pafXbase;
     base -> pafXbase;
 

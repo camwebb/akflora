@@ -29,10 +29,12 @@ BEGIN{
 END{
   
   for (i in s) {
-    if (t[i] == 1)
-      print "accs-" s[i], parse_taxon_name(i, 1) , "accepted"
-    else
-      print "accs-" s[i], parse_taxon_name(i, 1) , "accs-" s[l[i]]
+    pn = parse_taxon_name(i, 1)
+    if (pn)
+      if (t[i] == 1)
+        print "accs-" s[i], pn , "accepted"
+      else
+        print "accs-" s[i], pn , "accs-" s[l[i]]
   }
 }
 
