@@ -221,7 +221,7 @@ echo "Skipping manual stage (matchnames -a paf -b canon)"
 #   `grep -c no_match paf2canon_match` 
 # }}}
 
-
+rm -f ala ala2canon_match paf paf2canon_match
 
 ### HERE STOP
 
