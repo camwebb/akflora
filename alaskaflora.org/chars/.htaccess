@@ -1,0 +1,9 @@
+Options +ExecCGI -Indexes
+
+<Files "do">
+  SetHandler cgi-script
+</Files>
+
+# Not working
+# SetEnv AWKPATH ".:/usr/local/share/awk/"
+

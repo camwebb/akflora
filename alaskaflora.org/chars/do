@@ -1,0 +1,138 @@
+#!/bin/gawk -f
+
+# Include function libraries
+# Set explicit path, since # SetEnv in .htaccess was not passing
+#   the AWKPATH env var.
+@include "/usr/local/share/awk/db_sql.awk"
+@include "/usr/local/share/awk/util_http.awk"
+@include "/usr/local/share/awk/db_secrets.awk"
+
+BEGIN{
+  PROCINFO["sorted_in"] = "@ind_str_asc"
+  
+  db_secrets()
+ 
+  # READ QUERY STRING
+  split(ENVIRON["QUERY_STRING"], qs, "&");
+  for (i in qs) {
+    split(qs[i], qp, "=");
+    f[qp[1]] = substr(urldecode(qp[2]),1,2000); 
+  }
+  
+  # DETERMINE AND EXECUTE METHOD
+  if           (f["page"] == "matrix")  matrix()
+  else if           (f["page"] == "enter")   enter()
+  else defaultpage() ;
+
+  exit 0
+}
+
+
+function matrix(   ntaxa, charID, taxaID, haschar, charx, name, \
+                   i, j, s, out, gen) {
+
+  header("Data matrix")
+  
+  # Table header
+  db_query("akchars", "SELECT `text`, `char`, `state`, `id` FROM chars \
+            ORDER BY `char`, `state`;")
+  for (i = 1; i <= DBQr; i++) {
+    charID[i] = DBQ[i, "id"]
+    char[i] = DBQ[i, "char"]
+    state[i] = DBQ[i, "state"]
+    charx[char[i]][state[i]] = DBQ[i, "id"]
+  }
+  
+  print "<table>"
+  print "<tr>"
+  print "<td>Taxon</td>"
+  for (i in charx) 
+    print "<td><b>" i "</b></td>"
+  print "</tr>"
+  db_clear()
+
+  # Taxon names
+  db_query("akchars", "SELECT `name`, `guid`, `id`, `genID` FROM \
+            `taxa` ORDER BY `name`;")
+  ntaxa = DBQr
+  for (i = 1; i <= DBQr; i++) {
+    name[i] = DBQ[i, "name"] " (" DBQ[i, "guid"] ")"
+    taxaID[i] = DBQ[i, "id"]
+    if (DBQ[i, "genID"]) gen[taxaID[i]] = DBQ[i, "genID"]
+  }
+  db_clear()
+
+  # Table data
+  db_query("akchars", "SELECT `taxaID`, `charID` FROM `TxC`;")
+  for (i = 1 ; i <= DBQr; i++)
+    haschar[DBQ[i, "taxaID"], DBQ[i, "charID"]] = 1
+  db_clear()
+  
+  for (i = 1 ; i <= ntaxa; i++) {
+    print "<tr>"
+    print "<td>" gensub(/^(.*)\ (\(.*\))$/, "<b>\\1</b> \\2", "G", \
+                        name[i]) "</td>"
+    for (j in charx) {
+      print "<td>"
+      out = ""
+      for (s in charx[j]) {
+        # test for char at genus level
+        if (haschar[gen[taxaID[i]], charx[j][s]]) out = out \
+               "<span style=\"color:blue;\">{" s "}</span>, "
+        if (haschar[taxaID[i], charx[j][s]]) out = out s ", "
+      }
+      gsub(/,\ $/,"",out)
+      if (!out) out = "<a href=\"do?page=enter&charID=" charx[j][s] \
+                  "&taxaID=" taxaID[i]"\">+</a>"
+      print out
+      print "</td>"
+    }
+    print "</tr>"
+  }
+
+  print "</table>"
+
+  footer()
+
+}
+
+# function enter(   ntaxa, charID, taxaID, haschar, charx, name,   \
+#                    i, j, s, out, gen) {
+
+#   header("Data entry for ")
+  
+
+
+function header(title) {
+  
+  # Use html5
+  print "Content-type: text/html\n"
+  print "<!DOCTYPE html>"
+  print "<html xmlns=\"http://www.w3.org/1999/xhtml\">"
+  print "<head><title>" title "</title>"
+  print "<meta http-equiv=\"Content-Type\" content=\"text/html; \
+           charset=utf-8\" /><link rel=\"stylesheet\" \
+           href=\"../css/default.css\" type=\"text/css\" />"
+  print "<link href=\"https://fonts.googleapis.com/css?family=Montserrat\" \
+           rel=\"stylesheet\"/>"
+  print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
+           type=\"image/x-icon\"/>"
+  print "</head>\n<body>"
+}
+
+function defaultpage()
+{
+  header("Character entry webapp");
+  
+  print "<h1>Character entry webapp</h1>"
+  print "<ul>"
+  print "<li><a href=\"do?page=matrix\">Character matrix</a></li>"
+  print "</ul>"
+  
+  footer()
+}
+
+function footer()
+{
+  print "</body>\n</html>";
+}
