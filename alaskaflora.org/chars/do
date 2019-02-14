@@ -30,7 +30,7 @@ BEGIN{
 
 
 function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
-                   i, j, s, out, gen, warningtext) {
+                   i, j, s, out, gen, warningtext, guid) {
 
   header("Data matrix")
   
@@ -47,6 +47,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   print "<table>"
   print "<tr>"
   print "<td>Taxon</td>"
+  print "<td>ID</td>"
   for (i in charx) 
     print "<td><b>" i "</b></td>"
   print "<td>fill</td>"
@@ -58,7 +59,8 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
             `taxa` WHERE `name` LIKE '%" f["genus"] "%'ORDER BY `name`;")
   ntaxa = DBQr
   for (i = 1; i <= DBQr; i++) {
-    name[i] = DBQ[i, "name"] " (" DBQ[i, "guid"] ")"
+    name[i] = DBQ[i, "name"]
+    guid[i] = DBQ[i, "guid"]
     taxaID[i] = DBQ[i, "id"]
     if (DBQ[i, "genID"]) gen[taxaID[i]] = DBQ[i, "genID"]
   }
@@ -72,8 +74,8 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   
   for (i = 1 ; i <= ntaxa; i++) {
     print "<tr>"
-    print "<td>" gensub(/^(.*)\ (\(.*\))$/, "<b>\\1</b> \\2", "G", \
-                        name[i]) "</td>"
+    print "<td><b>" name[i] "</b></td>"
+    print "<td>" guid[i] "</td>"
     for (j in charx) {
       print "<td onclick=\"location.href='do?page=cell&amp;char=" j \
                   "&amp;taxaID=" taxaID[i]"&amp;genus=" f["genus"] "';\">"
@@ -91,12 +93,8 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
           warningtext = warningtext "<p style=\"color:red;\">WARNING: genus " name[i] " has >1 states for '" j "'</p>"
       }
       gsub(/,\ $/,"",out)
-      # if (out) out = out " "
-      # out = out "<a href=\"do?page=cell&amp;char=" j \
-      #          "&amp;taxaID=" taxaID[i]"&amp;genus=" f["genus"] "\">→</a>"
       if (!out) out = "&#160;"
       print out
-      # print "</a>"
       print "</td>"
     }
     print "<td onclick=\"location.href='do?page=copy&amp;taxaID=" \
@@ -105,7 +103,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   }
 
   print "</table>"
-  print "<p align=\"right\"><br/><br/><a href=\"do\">Home</a></p>"
+  print "<p style=\"text-align:right;font-weight:bold\"><br/><br/><a href=\"do\">Home</a></p>"
 
   if (warningtext) print warningtext
 
@@ -120,8 +118,8 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   if (f["preaction"] == "delete") {
     ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `id` = " f["charID"] ";")
     if (ES) actiontext = "<p style=\"color:red;\">UPDATE FAILURE</p>"
-    else actiontext = "<p>Status: character state datum " f["charID"] \
-           " deleted</p>"
+    # else actiontext = "<p>Status: character state datum " f["charID"] \
+    #       " deleted</p>"
   }
   else if (f["preaction"] == "new") {
     # first test for accepable sources
@@ -131,17 +129,21 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     if (f["sources"] && srcfail) actiontext =                       \
       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
     else {
+      gsub(/'/,"\"",f["notes"])
       ES = db_sql("akchars", "INSERT INTO `TxC` \
-                  (`taxaID`, `charID`, `person`, `sources`) \
+                  (`taxaID`, `charID`, `person`, `sources`, `notes`) \
                  VALUES (" f["taxaID"] "," f["charID"]", '" \
-                  f["person"] "','" f["sources"] "');")
+                  f["person"] "','" f["sources"] "','" f["notes"] "');")
       if (ES) actiontext = "<p style=\"color:red;\">INSERT FAILURE</p>"
-      else actiontext = "<p>Status: character state datum " f["charID"]
-      " added</p>"
+      # else actiontext = "<p>Status: character state datum " f["charID"]
+      # " added</p>"
     }
   }
 
   header("Data cell")
+
+  print "<p style=\"position:absolute;right:30px;top:15px;font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" f["genus"] \
+    "\">Matrix</a></p>" 
   
   # Taxon names
   db_query("akchars", "SELECT `name`, `guid`, `genID` FROM \
@@ -150,7 +152,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   db_clear()
 
   # top-level table
-  print "<table style=\"border:none;\"><tr><td style=\"border:none;\">"
+  print "<table style=\"border:none;\"><tr><td style=\"border:none;vertical-align:top;width:400px;\">"
   print "<table><tr><td><i>Taxon</i></td><td>" name "</td></tr>"
   print "<tr><td><i>Character</i></td><td><b>" f["char"] \
     "</b></td></tr></table>"
@@ -164,15 +166,15 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
 
   for (i = 1; i <= DBQr; i++) {
     print "<b>" DBQ[i, "state"] "</b>"
-    print "&#160;&#160;&#160;<span style=\"font-size: 80%;\">(<a href=\"do?page=cell&amp;char=" f["char"] "&amp;taxaID=" f["taxaID"] "&amp;genus=" f["genus"] "&amp;preaction=delete&amp;charID=" DBQ[i,"id"] "\">DELETE</a>)</span>"
+    print "&#160;&#160;&#160;<span style=\"font-size: 80%;\">(<a href=\"do?page=cell&amp;char=" urlencode(f["char"]) "&amp;taxaID=" f["taxaID"] "&amp;genus=" f["genus"] "&amp;preaction=delete&amp;charID=" DBQ[i,"id"] "\">DELETE</a>)</span>"
 
     print "<div style=\"padding:15px;\">"
     print "<table>"
     print "<tr><td><i>Sources</i></td><td style=\"width:400px;\">" DBQ[i, "sources"] "</td></tr>"
     print "<tr><td><i>Notes</i></td><td>" DBQ[i, "notes"] "</td></tr>"
+    print "<tr><td><i>By</i></td><td>" DBQ[i, "person"] "</td></tr>"
     print "<tr><td><i>Date</i></td><td>" gensub(/^([^ ]+).*/,"\\1","G", \
              DBQ[i, "timestamp"]) "</td></tr>"
-    print "<tr><td><i>By</i></td><td>" DBQ[i, "person"] "</td></tr>"
     print "</table>"
     print "</div>"
   }
@@ -181,56 +183,67 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
 
   print "</td><td style=\"border:none;vertical-align:top;\">"
   
-  print "<form action=\"do\">"
+  print "<form action=\"do\"><p>"
   print "<input type=\"hidden\" name=\"page\" value=\"cell\"/>"
   print "<input type=\"hidden\" name=\"preaction\" value=\"new\"/>"
   print "<input type=\"hidden\" name=\"char\" value=\"" f["char"] "\"/>"
   print "<input type=\"hidden\" name=\"taxaID\" value=\"" f["taxaID"] "\"/>"
   print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
-  print "<p>Enter new character state:</p>"
-  print "<ul><li><select name=\"charID\">"
+  print "Add new character state:</p>"
+  print "<div style=\"padding:15px;\">"
+  print "<select name=\"charID\" style=\"font-weight:bold;font-size:1em;\">"
   db_query("akchars", "SELECT `state`, `id` FROM `chars` WHERE `char` = \
                        '" f["char"] "';")
   for (i = 1; i <= DBQr; i++)
     print "<option value=\"" DBQ[i, "id"] "\">" DBQ[i, "state"] "</option>"
   db_clear()
   print "</select>"
-  
-  print "<ul><li>By: "
-  print "<select name=\"person\">"
+  print "&#160;&#160;&#160;(<input type=\"submit\" value=\"GO\"/>)"
+
+  print "<div style=\"padding:15px;\">"
+  print "<table>"
+  print "<tr><td><i>Sources*</i></td>"
+  print "<td><input type=\"text\" name=\"sources\" style=\"width:300px;\"/></td></tr>"
+  print "<tr><td><i>Notes</i></td>"
+  print "<td><input type=\"text\" name=\"notes\" style=\"width:300px;\"/></td></tr>"
+  print "<tr><td><i>By</i></td>"
+  print "<td><select name=\"person\">"
   print "<option value=\"Brian\">Brian</option>"
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
-  print "</select></li>"
-  print "<li>Sources: <input type=\"text\" name=\"sources\"/>  (Allowed: <tt>hult, fna, cody, dall</tt>)</li>"
-  print "<li><input type=\"submit\" value=\"Go\"/></li>"
-  print "</ul></ul></form>"
+  print "</select></td></tr>"
+  print "</table><br/>(* Allowed: <code>hult, fna, cody, dall</code>)</div>"
 
-  print "</td></tr></table>"
+  print "</div></form></td></tr></table>"
   
-  print "<p align=\"right\"><a href=\"do?page=matrix&amp;genus=" f["genus"]    \
-    "\">Matrix</a></p>" 
 
   if (actiontext) print actiontext
   
   footer()
 }
 
-function copy(   name, i, actiontext){
+function copy(   name, i, actiontext, sql, ES){
 
   header("Data copy")
 
+  print "<p style=\"position:absolute;right:30px;top:15px;font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" f["genus"] \
+    "\">Matrix</a></p>" 
+
   if (f["preaction"] == "copy") {
-    ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `taxaID` = " f["totaxaID"] ";")
+    ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `taxaID` = "    \
+                f["totaxaID"] ";")
     if (ES) actiontext = "<p style=\"color:red;\">DELETE FAILURE</p>"
     db_clear()
     
-    db_query("akchars", "SELECT `charID`,`sources`,`person` FROM `TxC` WHERE `taxaID` = " f["fromtaxaID"] ";")
+    db_query("akchars", "SELECT `charID`,`sources`,`person` FROM `TxC` \
+             WHERE `taxaID` = " f["fromtaxaID"] ";")
     for (i = 1; i <= DBQr; i++) {
       sql = "INSERT INTO `TxC` (`taxaID`, `charID`, `person`, `sources`) \
-             VALUES (" f["totaxaID"] "," DBQ[i, "charID"] ", '" DBQ[i, "person"] "','" DBQ[i, "sources"] "'); "
+             VALUES (" f["totaxaID"] "," DBQ[i, "charID"] ", '" \
+        DBQ[i, "person"] "','" DBQ[i, "sources"] "'); "
       ES = db_sql("akchars", sql)
-      if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED: '" sql "'</p>"
+      if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED: '" \
+                sql "'</p>"
     }
     db_clear()
     
@@ -244,27 +257,26 @@ function copy(   name, i, actiontext){
     name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
     db_clear()
 
-    print "<form action=\"do\">"
+    print "<form action=\"do\"><p>"
     print "<input type=\"hidden\" name=\"page\" value=\"copy\"/>"
     print "<input type=\"hidden\" name=\"preaction\" value=\"copy\"/>"
     print "<input type=\"hidden\" name=\"totaxaID\" value=\"" f["taxaID"] "\"/>"
     print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
 
-    print "<p>Copy data <i>into</i> " name " from "
+    print "Copy data <i>into</i> " name " from "
     print "<select name=\"fromtaxaID\">"
     db_query("akchars", "SELECT `name`, `guid`, `id` FROM \
-            `taxa` WHERE `genID` IS NOT NULL AND `id` != " f["taxaID"] " AND `name` LIKE '%" f["genus"] "%' ORDER BY `name`;")
+            `taxa` WHERE `genID` IS NOT NULL AND `id` != " f["taxaID"] \
+             " AND `name` LIKE '%" f["genus"] "%' ORDER BY `name`;")
     for (i = 1; i <= DBQr; i++)
       print "<option value=\"" DBQ[i, "id"] "\">" DBQ[i, "name"] "</option>"
     db_clear()
     print "</select>"
-    print "<input type=\"submit\" value=\"Go\"/></p>"
+    print "<input type=\"submit\" value=\"GO\"/></p>"
     print "</form>"
-    print "<p>(<i style=\"color:red;\">All exiting data will be overwritten</i>)</p>"
+    print "<p>(<i style=\"color:red;\">All exiting data will be "\
+      "overwritten</i>)</p>"
   }
-
-  print "<p align=\"right\"><a href=\"do?page=matrix&amp;genus=" f["genus"] \
-    "\">Matrix</a></p>" 
 
   if (actiontext) print actiontext
   
