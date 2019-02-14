@@ -56,7 +56,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
 
   # Taxon names
   db_query("akchars", "SELECT `name`, `guid`, `id`, `genID` FROM \
-            `taxa` WHERE `name` LIKE '%" f["genus"] "%'ORDER BY `name`;")
+            `taxa` WHERE `name` LIKE '" f["genus"] "%'ORDER BY `name`;")
   ntaxa = DBQr
   for (i = 1; i <= DBQr; i++) {
     name[i] = DBQ[i, "name"]
@@ -125,9 +125,11 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     # first test for accepable sources
     split(gensub(/\ /,"","G",f["sources"]),s,",")
     for (i in s)
-      if (s[i] !~ /^(cody|dall|fna|hult)$/) srcfail = 1
-    if (f["sources"] && srcfail) actiontext =                       \
+      if (s[i] !~ /^(cody|dall|fna|hult|judd)$/) srcfail = 1
+    if (srcfail) actiontext =                                       \
       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
+    else if (!f["sources"]) actiontext =                                     \
+        "<p style=\"color:red;\">AT LEAST ONE SOURCE NEEDED</p>"
     else {
       gsub(/'/,"\"",f["notes"])
       ES = db_sql("akchars", "INSERT INTO `TxC` \
@@ -212,7 +214,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
   print "</select></td></tr>"
-  print "</table><br/>(* Allowed: <code>hult, fna, cody, dall</code>)</div>"
+  print "</table><br/>(* Allowed: <code>hult, fna, cody, dall, judd</code>)</div>"
 
   print "</div></form></td></tr></table>"
   
@@ -270,7 +272,7 @@ function copy(   name, i, actiontext, sql, ES){
     print "<select name=\"fromtaxaID\">"
     db_query("akchars", "SELECT `name`, `guid`, `id` FROM \
             `taxa` WHERE `genID` IS NOT NULL AND `id` != " f["taxaID"] \
-             " AND `name` LIKE '%" f["genus"] "%' ORDER BY `name`;")
+             " AND `name` LIKE '" f["genus"] "%' ORDER BY `name`;")
     for (i = 1; i <= DBQr; i++)
       print "<option value=\"" DBQ[i, "id"] "\">" DBQ[i, "name"] "</option>"
     db_clear()
