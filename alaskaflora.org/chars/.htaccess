@@ -4,6 +4,17 @@ Options +ExecCGI -Indexes
   SetHandler cgi-script
 </Files>
 
+DirectoryIndex do
+
+<FilesMatch "^\.pw$">
+  Deny from all
+</FilesMatch>
+
+AuthType Basic
+AuthName "Password Protected"
+AuthUserFile /home/cam/public_html/akflora/alaskaflora.org/chars/.pw
+Require valid-user
+
 # Not working
 # SetEnv AWKPATH ".:/usr/local/share/awk/"
 
