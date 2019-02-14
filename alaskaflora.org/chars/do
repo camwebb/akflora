@@ -113,28 +113,31 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
 
 }
 
-function cell(   name, actiontext, ES, i, srcfail) {
+# The Cell editing page
+function cell(   name, actiontext, ES, i,s ,srcfail) {
 
+  # If reentering into this page after an action
   if (f["preaction"] == "delete") {
     ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `id` = " f["charID"] ";")
-    if (ES) actiontext = "UPDATE FAILURE"
-    else actiontext = "Character state datum " f["charID"] " deleted"
-    actiontext = "<p style=\"color:red;\">" actiontext "</p>"
+    if (ES) actiontext = "<p style=\"color:red;\">UPDATE FAILURE</p>"
+    else actiontext = "<p>Status: character state datum " f["charID"] \
+           " deleted</p>"
   }
   else if (f["preaction"] == "new") {
-    # test for accepable sources
-    gsub(/\ /,"",f["sources"])
-    split(f["sources"],s,",")
+    # first test for accepable sources
+    split(gensub(/\ /,"","G",f["sources"]),s,",")
     for (i in s)
       if (s[i] !~ /^(cody|dall|fna|hult)$/) srcfail = 1
-    if (f["sources"] && srcfail) actiontext =                           \
-      "<br/><p><span style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</span>"
+    if (f["sources"] && srcfail) actiontext =                       \
+      "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
     else {
-      ES = db_sql("akchars", "INSERT INTO `TxC` (`taxaID`, `charID`, `person`, `sources`) \
-                 VALUES (" f["taxaID"] "," f["charID"]", '" f["person"] "','" f["sources"] "');")
-      if (ES) actiontext = "INSERT FAILURE"
-      else actiontext = "Character state datum " f["charID"] " added"
-      actiontext = "<p style=\"color:red;\">" actiontext "</p>"
+      ES = db_sql("akchars", "INSERT INTO `TxC` \
+                  (`taxaID`, `charID`, `person`, `sources`) \
+                 VALUES (" f["taxaID"] "," f["charID"]", '" \
+                  f["person"] "','" f["sources"] "');")
+      if (ES) actiontext = "<p style=\"color:red;\">INSERT FAILURE</p>"
+      else actiontext = "<p>Status: character state datum " f["charID"]
+      " added</p>"
     }
   }
 
@@ -145,32 +148,39 @@ function cell(   name, actiontext, ES, i, srcfail) {
             `taxa` WHERE `id` = " f["taxaID"] ";")
   name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
   db_clear()
-  
-  # print "<h1>Data cell</h1>"
-  print "<table><tr><td><i>Taxon</i></td><td>" name "</td></tr>"
-  print "<tr><td><i>Character</i></td><td><b>" f["char"] "</b></td></tr></table>"
 
-  db_query("akchars", "SELECT `state`, `timestamp`, `person`, `sources`, `TxC`.`id` FROM `TxC`, \
+  # top-level table
+  print "<table style=\"border:none;\"><tr><td style=\"border:none;\">"
+  print "<table><tr><td><i>Taxon</i></td><td>" name "</td></tr>"
+  print "<tr><td><i>Character</i></td><td><b>" f["char"] \
+    "</b></td></tr></table>"
+
+  db_query("akchars", "SELECT `state`, `timestamp`, `person`, `sources`, \
+           `TxC`.`id`, `notes` FROM `TxC`, \
             `chars` WHERE `taxaID` = " f["taxaID"] " AND `chars`.`id` = \
             `TxC`.`charID` AND `chars`.`char` = '" f["char"] "';")
 
-  # if (DBQr) print "<p>Scored as:</p>"
-  print "<ul>"
+  print "<div style=\"padding:15px;\">"
 
   for (i = 1; i <= DBQr; i++) {
-    print "<li><b>" DBQ[i, "state"] "</b><ul>"
-    print "<li><table>"
-    print "<tr><td><i>Sources</i></td><td>" DBQ[i, "sources"] "</td></tr>"
-    print "<tr><td><i>Date</i></td><td>" DBQ[i, "timestamp"] "</td></tr>"
+    print "<b>" DBQ[i, "state"] "</b>"
+    print "&#160;&#160;&#160;<span style=\"font-size: 80%;\">(<a href=\"do?page=cell&amp;char=" f["char"] "&amp;taxaID=" f["taxaID"] "&amp;genus=" f["genus"] "&amp;preaction=delete&amp;charID=" DBQ[i,"id"] "\">DELETE</a>)</span>"
+
+    print "<div style=\"padding:15px;\">"
+    print "<table>"
+    print "<tr><td><i>Sources</i></td><td style=\"width:400px;\">" DBQ[i, "sources"] "</td></tr>"
+    print "<tr><td><i>Notes</i></td><td>" DBQ[i, "notes"] "</td></tr>"
+    print "<tr><td><i>Date</i></td><td>" gensub(/^([^ ]+).*/,"\\1","G", \
+             DBQ[i, "timestamp"]) "</td></tr>"
     print "<tr><td><i>By</i></td><td>" DBQ[i, "person"] "</td></tr>"
-    print "<tr><td><a href=\"do?page=cell&amp;char=" f["char"] "&amp;taxaID=" f["taxaID"] "&amp;genus=" f["genus"] "&amp;preaction=delete&amp;charID=" DBQ[i,"id"] "\">DELETE</a></td><td></td></tr>"
-    print "</table></li>"
-    print "</ul></li>"
+    print "</table>"
+    print "</div>"
   }
-  print "</ul>"
+  print "</div>"
   db_clear()
 
-  # print "<hr/>"
+  print "</td><td style=\"border:none;vertical-align:top;\">"
+  
   print "<form action=\"do\">"
   print "<input type=\"hidden\" name=\"page\" value=\"cell\"/>"
   print "<input type=\"hidden\" name=\"preaction\" value=\"new\"/>"
@@ -195,6 +205,8 @@ function cell(   name, actiontext, ES, i, srcfail) {
   print "<li>Sources: <input type=\"text\" name=\"sources\"/>  (Allowed: <tt>hult, fna, cody, dall</tt>)</li>"
   print "<li><input type=\"submit\" value=\"Go\"/></li>"
   print "</ul></ul></form>"
+
+  print "</td></tr></table>"
   
   print "<p align=\"right\"><a href=\"do?page=matrix&amp;genus=" f["genus"]    \
     "\">Matrix</a></p>" 
@@ -268,13 +280,15 @@ function header(title) {
   print "<html xmlns=\"http://www.w3.org/1999/xhtml\">"
   print "<head><title>" title "</title>"
   print "<meta http-equiv=\"Content-Type\" content=\"text/html; \
-           charset=utf-8\" /><link rel=\"stylesheet\" \
-           href=\"../css/default.css\" type=\"text/css\" />"
+           charset=utf-8\" />"
   print "<link href=\"https://fonts.googleapis.com/css?family=Montserrat\" \
            rel=\"stylesheet\"/>"
+  print "<link rel=\"stylesheet\" href=\"../css/default.css\" \
+           type=\"text/css\" />"
+  print "<link rel=\"stylesheet\" href=\"../css/chars.css\" \
+           type=\"text/css\" />"
   print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
            type=\"image/x-icon\"/>"
-  # print "<style>td a:hover { display:block; width:100%; text-decoration: none;}</style>"
   print "</head>\n<body>"
 }
 
