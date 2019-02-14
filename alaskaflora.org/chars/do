@@ -158,7 +158,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     "</b></td></tr></table>"
 
   db_query("akchars", "SELECT `state`, `timestamp`, `person`, `sources`, \
-           `TxC`.`id`, `notes` FROM `TxC`, \
+           `TxC`.`id`, `TxC`.`notes` FROM `TxC`, \
             `chars` WHERE `taxaID` = " f["taxaID"] " AND `chars`.`id` = \
             `TxC`.`charID` AND `chars`.`char` = '" f["char"] "';")
 
@@ -226,8 +226,9 @@ function copy(   name, i, actiontext, sql, ES){
 
   header("Data copy")
 
-  print "<p style=\"position:absolute;right:30px;top:15px;font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" f["genus"] \
-    "\">Matrix</a></p>" 
+  print "<p style=\"position:absolute; right:30px; top:15px; \
+            font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" \
+            f["genus"] "\">Matrix</a></p>" 
 
   if (f["preaction"] == "copy") {
     ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `taxaID` = "    \
@@ -235,12 +236,14 @@ function copy(   name, i, actiontext, sql, ES){
     if (ES) actiontext = "<p style=\"color:red;\">DELETE FAILURE</p>"
     db_clear()
     
-    db_query("akchars", "SELECT `charID`,`sources`,`person` FROM `TxC` \
-             WHERE `taxaID` = " f["fromtaxaID"] ";")
+    db_query("akchars", "SELECT `charID`,`sources`,`person`, `taxa`.`name`,\
+             `taxa`.`guid` FROM `TxC`,`taxa` WHERE `taxa`.`id` = \
+             `TxC`.`taxaID` AND `taxaID` = " f["fromtaxaID"] ";")
     for (i = 1; i <= DBQr; i++) {
-      sql = "INSERT INTO `TxC` (`taxaID`, `charID`, `person`, `sources`) \
-             VALUES (" f["totaxaID"] "," DBQ[i, "charID"] ", '" \
-        DBQ[i, "person"] "','" DBQ[i, "sources"] "'); "
+      sql = "INSERT INTO `TxC` (`taxaID`, `charID`, `person`, `sources`, \
+             `notes`) VALUES (" f["totaxaID"] "," DBQ[i, "charID"] ", '" \
+        DBQ[i, "person"] "','" DBQ[i, "sources"] \
+        "', 'Data copied from " DBQ[i,"name"] " (" DBQ[i,"guid"] ")'); "
       ES = db_sql("akchars", sql)
       if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED: '" \
                 sql "'</p>"
@@ -304,18 +307,20 @@ function header(title) {
   print "</head>\n<body>"
 }
 
-function defaultpage()
+function defaultpage(   i)
 {
   header("Character entry webapp");
   
   print "<h1>Character entry webapp</h1>"
+
+  print "<p>Select genus:</p>"
   print "<ul>"
-  print "<li>Character matrix for genus: "
-  print "  <form action=\"do\">"
-  print "    <input type=\"text\" name=\"genus\"/>"
-  print "    <input type=\"hidden\" name=\"page\" value=\"matrix\"/>"
-  print "    <input type=\"submit\" value=\"Go\"/>"
-  print "  </form></li>"
+  db_query("akchars", "SELECT `name` FROM `taxa` WHERE `genID` IS NULL \
+            ORDER BY `name`;")
+  for (i = 1; i <= DBQr; i++)
+    print "<li><a href=\"do?page=matrix&amp;genus=" DBQ[i, "name"] "\">" \
+      DBQ[i, "name"] "</a></li>"
+  db_clear()
   print "</ul>"
   
   footer()
