@@ -126,11 +126,13 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     # first test for accepable sources
     split(gensub(/\ /,"","G",f["sources"]),s,",")
     for (i in s)
-      if (s[i] !~ /^(cody|dall|fna|hult|judd)$/) srcfail = 1
+      if (s[i] !~ /^(cody|dall|fna|hult|judd|oth)$/) srcfail = 1
     if (srcfail) actiontext =                                       \
       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
     else if (!f["sources"]) actiontext =                                     \
         "<p style=\"color:red;\">AT LEAST ONE SOURCE NEEDED</p>"
+    else if ((f["sources"] ~ /oth/) && !f["notes"])  actiontext =  \
+        "<p style=\"color:red;\">IF 'oth' THEN SOURCE INFO NEEDED</p>"
     else {
       gsub(/'/,"\"",f["notes"])
       ES = db_sql("akchars", "INSERT INTO `TxC` \
@@ -218,7 +220,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
   print "</select></td></tr>"
-  print "</table><br/>(* Allowed: <code>hult, fna, cody, dall, judd</code>)</div>"
+  print "</table><br/>(* Allowed: <code>hult, fna, cody, dall, judd, oth</code>)</div>"
 
   print "</div></form></td></tr></table>"
   
@@ -333,7 +335,7 @@ function defaultpage(   i)
     FROM `taxa`, (SELECT `taxaID`, `charID` FROM `TxC`) AS `a` WHERE \
     `a`.`taxaID` = `taxa`.`id` AND `genID` IS NOT NULL GROUP BY `name`) \
     AS `b` ON `taxa`.`id` = `b`.`genID` WHERE `taxa`.`genID` IS NULL \
-    GROUP BY `taxa`.`id` ORDER BY `name`;")
+    GROUP BY `taxa`.`id` ORDER BY `fam`, `name`;")
   for (i = 1; i <= DBQr; i++)
     print "<tr><td>" DBQ[i,"fam"] "</td><td><a href=\"do?page=matrix&amp;genus=" DBQ[i, "name"] "\">" \
       DBQ[i, "name"] "</a></td><td>" gensub(/0/,"","G", DBQ[i,"ct"]) "</td><td>" DBQ[i,"sc"] "</td></tr>"
