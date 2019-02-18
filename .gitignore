@@ -6,7 +6,6 @@ pages_md/untracked*
 dataflow/ENV.sh
 
 dataflow/FNA/coarse_grained_fna_xml*
-dataflow/FNA/fna
 dataflow/FNA/fna_all.gz
 
 dataflow/PAF/paf.1
