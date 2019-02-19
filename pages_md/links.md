@@ -11,3 +11,4 @@
  * [Northern Ontario Plant Database](http://northernontarioflora.ca/index.cfm)
  * [Flora of the Canadian Arctic Archipelago](https://nature.ca/index.php?q=en/research-collections/research-projects/past-research-projects/flora-canadian-arctic-archipelago), and [here](http://nature.ca/aaflora/data) (in DELTA)
  * [Arctic Flora of Canada and Alaska](http://arcticplants.myspecies.info/)
+ * [Flora of North America (new)](http://beta.floranorthamerica.org/wiki/Main_Page)
