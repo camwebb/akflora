@@ -1,0 +1,494 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://alaskaflora.org/onto/plantchars.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix ft: <http://rs.tdwg.org/ft/terms/> .
+
+# Relations
+
+obo:BFO_0000051
+    rdfs:label "has_part" ;
+    a owl:ObjectProperty, owl:TransitiveProperty .
+
+obo:RO_0000052
+    rdfs:label "inheres in" ;
+    a owl:ObjectProperty .
+
+obo:RO_0000053
+    rdfs:label "has quality" ;
+    a owl:ObjectProperty .
+
+# Phenotype
+
+obo:UPHENO_0001001
+  a owl:Class ;
+  rdfs:label "Phenotype" .
+
+obo:FLOPO_0000000
+    rdfs:label "flora phenotype" ;
+    rdfs:subClassOf obo:UPHENO_0001001 .
+
+# ===== Leaf insertion/arrangement/placement =====
+
+obo:PO_0025034
+    obo:IAO_0000115 """A phyllome (PO:0006001) that is not associated 
+      with a reproductive structure.""" ;
+    rdfs:label "leaf" .
+
+:Leafinsertion
+    rdfs:subClassOf obo:FLOPO_0000000 ;
+    rdfs:label "Leaf insertion" .
+
+# Leaf insertion alternate
+
+obo:PATO_0001932
+    obo:IAO_0000115 """A pattern quality inhering in a bearer by virtue 
+      of the bearer's being placed alternately one above the other.""" ;
+    rdfs:label "alternate placement" ;
+    owl:equivalentClass ft:alternate .
+
+:LeafinsertionAlternate
+  rdfs:label "Leaf insertion alternate" ;
+  rdfs:subClassOf :Leafinsertion ;
+  owl:equivalentClass obo:FLOPO_0001032 .
+
+obo:FLOPO_0001032
+    rdfs:subClassOf :Leafinsertion ;
+    rdfs:label "leaf alternate placement"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0025034
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0001932
+                ]
+            )
+        ]
+    ] .
+
+# Leaf insertion not alternate
+
+:LeafinsertionNotalternate
+    a owl:Class ;
+    rdfs:comment "Includes both opposite and whorled leaves" ;
+    rdfs:subClassOf :Leafinsertion ;
+    rdfs:label "Leaf insertion not alternate" ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            owl:intersectionOf (
+                obo:PO_0025034
+                [
+                  a owl:Restriction ;
+                  owl:onProperty obo:RO_0000053 ;
+                  owl:allValuesFrom [
+                      a owl:Class ;
+                      owl:complementOf obo:PATO_0001932
+                  ]
+                ]
+            )
+         ]
+    ] .
+
+obo:FLOPO_0000420
+    rdfs:label "leaf opposite" ;
+    rdfs:subClassOf :LeafinsertionNotalternate .
+
+obo:FLOPO_0002264
+    rdfs:label "leaf whorled"^^xsd:string ;
+    rdfs:subClassOf :LeafinsertionNotalternate .
+
+# ===== Leaf margin =====
+
+:Leafmargin
+    rdfs:subClassOf obo:FLOPO_0000000 ;
+    rdfs:label "Leaf margin structure" .
+
+obo:PO_0020128
+    obo:IAO_0000115 """A phyllome margin (PO:0025018) that is part of a 
+       leaf (PO:0025034).""" ;
+    rdfs:comment """If you are annotating to this term, please add an
+      additional annotation to vascular leaf (PO:0009025) or
+      non-vascular leaf (PO:0025075), depending on the species. All
+      annotations for angiosperms, gymnosperms, and pteridophytes
+      should go to vascular leaf and all annotations for bryophytes
+      should go to non-vascular leaf.""" ;
+    rdfs:label "leaf margin"^^xsd:string .
+
+# Leaf margin entire
+
+obo:PATO_0001412
+    obo:IAO_0000115 """A structural quality inhering in a bearer by 
+      virtue of the bearer's lacking distinct structure.""";
+    rdfs:label "unstructured"^^xsd:string ;
+    owl:equivalentClass ft:entire .
+
+:LeafmarginEntire
+  rdfs:label "Leaf margin entire" ;
+  rdfs:subClassOf :Leafmargin ;
+  owl:equivalentClass obo:FLOPO_0900073 .
+
+obo:FLOPO_0900073
+    a owl:Class ;
+    rdfs:label "leaf margin entire" ;
+    rdfs:subClassOf :Leafmargin ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0020128
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0001412
+                ]
+            )
+        ]
+    ] .
+
+# Leaf margin not entire
+
+:LeafmarginNotentire
+    rdfs:label "Leaf margin not entire" ;
+    rdfs:comment "Includes serrate, toothed, etc." ;
+    rdfs:subClassOf :Leafmargin ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            owl:intersectionOf (
+                obo:PO_0020128
+                [
+                  a owl:Restriction ;
+                  owl:onProperty obo:RO_0000053 ;
+                  owl:allValuesFrom [
+                      a owl:Class ;
+                      owl:complementOf obo:PATO_0001412
+                  ]
+                ]
+            )
+         ]
+    ] .
+
+obo:FLOPO_0900074
+    rdfs:label "leaf margin serrate" ;
+    rdfs:subClassOf :LeafmarginNotentire .
+
+obo:FLOPO_0900075
+    rdfs:label "leaf margin crenate" ;
+    rdfs:subClassOf :LeafmarginNotentire .
+
+# ===== Flower color =====
+
+obo:PO_0009046
+    rdfs:label "flower" ;
+    owl:equivalentClass ft:flower .
+
+:Flowercolor
+    rdfs:subClassOf obo:FLOPO_0000000 ;
+    rdfs:label "Flower color" .
+
+# NB: :Flowercolor owl:equivalentClass obo:FLOPO_0001221
+#   But not all character phenotypes have FLOPO entities (e.g.,
+#   there is not "leaf placement/insertion") so I'm going with a
+#   local class
+
+# Flower color red
+
+obo:PATO_0000322
+    obo:IAO_0000115 """A color hue with high wavelength of the long-wave 
+      end of the visible spectrum, evoked in the human observer by radiant 
+      energy with wavelengths of approximately 630 to 750 nanometers.""" ;
+    rdfs:label "red" ;
+    owl:equivalentClass ft:red .
+
+:FlowercolorRed
+  rdfs:label "Flower color red" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0007599 .
+
+obo:FLOPO_0007599
+    a owl:Class ;
+    rdfs:subClassOf :Flowercolor ;
+    rdfs:label "flower red"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000322
+                ]
+            )
+        ]
+    ] .
+
+## Flower color blue
+
+obo:PATO_0000318
+    obo:IAO_0000115 """A color hue with low wavelength of that portion 
+      of the visible spectrum lying between green and indigo, evoked in 
+      the human observer by radiant energy with wavelengths of approximately
+      420 to 490 nanometers.""";
+    rdfs:label "blue" ;
+    owl:equivalentClass ft:blue .
+
+:FlowercolorBlue
+  rdfs:label "Flower color blue" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0015261 .
+
+obo:FLOPO_0015261
+    a owl:Class ;
+    rdfs:subClassOf :Flowercolor ;
+    rdfs:label "flower blue"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000318
+                ]
+            )
+        ]
+    ] .
+
+# Flower color yellow
+
+obo:PATO_0000324
+    obo:IAO_0000115 """A color hue with medium wavelength of that portion 
+      of the visible spectrum lying between orange and green, evoked in the 
+      human observer by radiant energy with wavelengths of approximately 
+      570 to 590 nanometers.""" ;
+    rdfs:label "yellow" ;
+    owl:equivalentClass ft:yellow .
+
+:FlowercolorYellow
+  rdfs:label "Flower color yellow" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0004976 .
+
+obo:FLOPO_0004976
+    a owl:Class ;
+    rdfs:label "flower yellow"^^xsd:string ;
+    rdfs:subClassOf :Flowercolor ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000324
+                ]
+            )
+        ]
+    ] .
+
+# Flower color purple
+
+:FlowercolorPurple
+  rdfs:label "Flower color purple" ;
+  rdfs:comment "Includes both purple and violet flowers" ;
+  rdfs:subClassOf :Flowercolor .
+
+obo:PATO_0000951
+    obo:IAO_0000115 """A color that falls about midway between red and 
+      blue in hue.""" ;
+    rdfs:label "purple" ;
+    owl:equivalentClass ft:purple .
+
+obo:FLOPO_0001220
+    a owl:Class ;
+  rdfs:subClassOf :FlowercolorPurple ;
+    rdfs:label "flower purple"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000951
+                ]
+            )
+        ]
+    ] .
+
+obo:PATO_0001424
+    obo:IAO_0000115 """A color hue with very low wavelength of that portion 
+      of the visible spectrum lying between reddish blue or bluish purple, 
+      evoked in the human observer by radiant energy with wavelengths of 
+      approximately 420 to 380 nanometers.""" ;
+    rdfs:label "violet"^^xsd:string ;
+    owl:equivalentClass ft:violet .
+
+obo:FLOPO_0022275
+    a owl:Class ;
+    rdfs:label "flower violet"^^xsd:string ;
+  rdfs:subClassOf :FlowercolorPurple ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0001424
+                ]
+            )
+        ]
+    ] .
+
+# Flower color white
+
+:FlowercolorWhite
+  rdfs:label "Flower color white" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0001722 .
+
+obo:PATO_0000323
+    obo:IAO_0000115 """An achromatic color of maximum brightness; the color 
+      of objects that reflect nearly all light of all visible wavelengths.""";
+    rdfs:label "white"^^xsd:string ;
+    owl:equivalentClass ft:white .
+
+obo:FLOPO_0001722
+    a owl:Class ;
+    rdfs:label "flower white"^^xsd:string ;
+    rdfs:subClassOf :Flowercolor ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000323
+                ]
+            )
+        ]
+    ] .
+
+# Flower color orange
+
+:FlowercolorOrange
+  rdfs:label "Flower color orange" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0018524 .
+
+obo:PATO_0000953
+    obo:IAO_0000115 """A color hue with high-medium wavelength that of
+      that portion of the visible spectrum lying between red and
+      yellow, evoked in the human observer by radiant energy with
+      wavelengths of approximately 585 to 620 nanometers.""" ;
+    rdfs:label "orange"^^xsd:string ;
+    owl:equivalentClass ft:orange .
+
+obo:FLOPO_0018524
+    a owl:Class ;
+      rdfs:subClassOf :Flowercolor ;
+    rdfs:label "flower orange"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000953
+                ]
+            )
+        ]
+    ] .
+
+# Flower color pink
+
+:FlowercolorPink
+  rdfs:label "Flower color pink" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0001659 .
+
+obo:PATO_0000954
+    obo:IAO_0000115 """Red color having medium to high brightness and 
+      low to moderate saturation.""" ;
+    rdfs:label "pink"^^xsd:string ;
+    owl:equivalentClass ft:pink .
+
+obo:FLOPO_0001659
+    a owl:Class ;
+    rdfs:subClassOf :Flowercolor ;
+    rdfs:label "flower pink"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000954
+                ]
+            )
+        ]
+    ] .
+
+# Flower color green
+
+:FlowercolorGreen
+  rdfs:label "Flower color green" ;
+  rdfs:subClassOf :Flowercolor ;
+  owl:equivalentClass obo:FLOPO_0004148 .
+
+obo:PATO_0000320
+    obo:IAO_0000115 """A color hue with medium-low wavelength of that
+      portion of the visible spectrum lying between yellow and blue,
+      evoked in the human observer by radiant energy with wavelengths
+      of approximately 490 to 570 nanometers.""" ;
+    rdfs:label "green"^^xsd:string ;
+    owl:equivalentClass ft:green .
+
+obo:FLOPO_0004148
+    a owl:Class ;
+    rdfs:subClassOf :Flowercolor ;
+    rdfs:label "flower green"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009046
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0000320
+                ]
+            )
+        ]
+    ] .

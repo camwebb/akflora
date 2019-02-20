@@ -14,6 +14,9 @@ dataflow/PAF/paf.3
 
 dataflow/ALA/ala.*
 
+dataflow/DB*
+dataflow/authors*
+
 dataflow/canonical/accs
 dataflow/canonical/accs2wcsp.tgz
 dataflow/canonical/gnr.out
@@ -22,4 +25,6 @@ dataflow/canonical/*_base
 alaskaflora.org/chars/.pw
 alaskaflora.org/chars/.htaccess
 alaskaflora.org/chars/transfer*
+alaskaflora.org/chars/sql
+
 
