@@ -3,6 +3,8 @@ bin/gawk
 bin/json.so
 pages_md/untracked*
 
+
+
 dataflow/ENV.sh
 
 dataflow/FNA/coarse_grained_fna_xml*
@@ -27,4 +29,5 @@ alaskaflora.org/chars/.htaccess
 alaskaflora.org/chars/transfer*
 alaskaflora.org/chars/sql
 
+alaskaflora.org/onto/catalog-v001.xml
 
