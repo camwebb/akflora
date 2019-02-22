@@ -126,13 +126,13 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     # first test for accepable sources
     split(gensub(/\ /,"","G",f["sources"]),s,",")
     for (i in s)
-      if (s[i] !~ /^(cody|dall|fna|hult|judd|oth)$/) srcfail = 1
+      if (s[i] !~ /^(cody|dall|fna|hult|jep|judd|welsh|walt|inat|ASC|oth)$/) srcfail = 1
     if (srcfail) actiontext =                                       \
       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
     else if (!f["sources"]) actiontext =                                     \
         "<p style=\"color:red;\">AT LEAST ONE SOURCE NEEDED</p>"
-    else if ((f["sources"] ~ /oth/) && !f["notes"])  actiontext =  \
-        "<p style=\"color:red;\">IF 'oth' THEN SOURCE INFO NEEDED</p>"
+    else if ((f["sources"] ~ /(oth|inat)/) && !f["notes"])  actiontext =  \
+        "<p style=\"color:red;\">IF 'oth' or 'inat' THEN SOURCE INFO NEEDED</p>"
     else {
       gsub(/'/,"\\'",f["notes"])
       gsub(/"/,"\\\"",f["notes"])
@@ -221,7 +221,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
   print "</select></td></tr>"
-  print "</table><br/>(* Allowed: <code>hult, fna, cody, dall, judd, oth</code>)</div>"
+  print "</table><br/>(* Allowed: <code>cody, dall, fna, hult, jep, judd, welsh, walt, inat, <i>oth</i>, <b>ASC</b></code>)</div>"
 
   print "</div></form></td></tr></table>"
   
