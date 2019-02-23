@@ -1043,7 +1043,89 @@ obo:FLOPO_0004148
 
 # ===== Fruit type =====
 
-# :Fruitfleshiness
+:Fruitfleshiness
+    rdfs:subClassOf obo:UPHENO_0001001 ;
+   rdfs:label "Fruit fleshiness" .
+
+obo:PO_0009001
+    rdfs:subClassOf obo:PO_0025131 ;
+    obo:IAO_0000115 """A multi-tissue plant structure (PO:0025496) that 
+     develops from a gynoecium (PO:0009062), or a single carpel (PO:0009030), 
+     and at maturity may have as parts one or more seeds (PO:0009010).""" ;
+    rdfs:label "fruit"^^xsd:string .
+
+# Fruit fleshy
+
+:FruitfleshinessFleshy
+   rdfs:subClassOf :Fruitfleshiness ;
+   rdfs:label "Fruit fleshy" ;
+  owl:disjointWith :FruitfleshinessDry ;
+  owl:equivalentClass obo:FLOPO_0002102 .
+
+obo:PATO_0002351
+    obo:IAO_0000115 """A structural quality inhering in a bearer by 
+       virtue of the bearer resembling or containing flesh.""" ;
+    rdfs:label "fleshy"^^xsd:string ;
+    rdfs:subClassOf obo:PATO_0000001 .
+
+obo:FLOPO_0002102
+    a owl:Class ;
+    rdfs:subClassOf :Fruitfleshiness ;
+    rdfs:label "fruit fleshy"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009001
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0002351
+                ]
+            )
+        ]
+    ] .
+
+# Fruit dry
+
+:FruitfleshinessDry
+   rdfs:subClassOf :Fruitfleshiness ;
+  owl:disjointWith :FruitfleshinessFleshy ;
+   rdfs:label "Fruit dry" ;
+    owl:equivalentClass obo:FLOPO_0000586 .
+
+obo:PATO_0001824
+    obo:IAO_0000115 "A wetness quality inhering in a bearer by virtue of the bearer's not being covered by a liquid."^^xsd:string ;
+    rdfs:label "dry"^^xsd:string ;
+    rdfs:subClassOf obo:PATO_0000001 .
+
+obo:FLOPO_0000586
+    a owl:Class ;
+   rdfs:subClassOf :Fruitfleshiness ;
+    rdfs:label "fruit dry"^^xsd:string ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty obo:BFO_0000051 ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:intersectionOf (obo:PO_0009001
+                [
+                    a owl:Restriction ;
+                    owl:onProperty obo:RO_0000053 ;
+                    owl:someValuesFrom obo:PATO_0001824
+                ]
+            )
+        ]
+    ] .
+
+# ===== Inflorescence or solitary flowers =====
+
+# :Inflorescence  # no yes
+
+# ===== Flower pedicels =====
+
+# :Flowerpedicel # no yes
 
 
 # ========== Examples and Inferences ==========
