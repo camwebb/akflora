@@ -66,6 +66,12 @@ END{
 
   for (i in namelist)
     print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],  \
+      ssp[i], auth[i], ns2a[i], inak[i] > "ala_ak"
+  close("ala_ak")
+
+  for (i in namelist)
+    print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],  \
       ssp[i], auth[i], ns2a[i]
+
 }
 

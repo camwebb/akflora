@@ -282,3 +282,4 @@ gawk -f make_syns.awk ala.8 > ala
 
 rm -f ala.*
 
+rm ala_ak

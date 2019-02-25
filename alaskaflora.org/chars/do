@@ -46,6 +46,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   print "<table>"
   print "<tr>"
   print "<td>Taxon</td>"
+  print "<td>Synonyms</td>"
   print "<td>ID</td>"
   for (i in charx) 
     print "<td><b>" i "</b></td>"
@@ -54,13 +55,14 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   db_clear()
 
   # Taxon names
-  db_query("akchars", "SELECT `name`, `guid`, `id`, `genID` FROM \
+  db_query("akchars", "SELECT `name`, `guid`, `id`, `genID`, `syn` FROM \
             `taxa` WHERE `name` LIKE '" f["genus"] "%'ORDER BY `name`;")
   ntaxa = DBQr
   for (i = 1; i <= DBQr; i++) {
     name[i] = DBQ[i, "name"]
     guid[i] = DBQ[i, "guid"]
     taxaID[i] = DBQ[i, "id"]
+    syn[i] = DBQ[i, "syn"]
     if (DBQ[i, "genID"]) gen[taxaID[i]] = DBQ[i, "genID"]
   }
   db_clear()
@@ -74,6 +76,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   for (i = 1 ; i <= ntaxa; i++) {
     print "<tr>"
     print "<td><b>" name[i] "</b></td>"
+    print "<td>" syn[i] "</td>"
     print "<td>" guid[i] "</td>"
     for (j in charx) {
       print "<td onclick=\"location.href='do?page=cell&amp;char=" j \
