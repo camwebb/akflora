@@ -1,13 +1,21 @@
-body { max-width: 1000px; } 
+body { max-width: 1200px; } 
 
 td, th {
-	font-size: 0.9em;
-    padding: 5px;
+	font-size: 0.8em;
+    padding: 3px;
 }
 
-select , select { font-size: 0.9em; }
+/* th b {
+	font-size: 0.8em;
+} */
 
+select , select { font-size: 0.8em; }
 
+table { max-width: 1100px; /* word-break: break-all ; */ word-break:break-word ; table-layout: fixed;}
+
+.syn1:hover .syn2 {display: none;}
+.syn1:hover .syn3 {display: block;}
+.syn3 {display: none;}
 
 
 

@@ -22,6 +22,7 @@ BEGIN{
   # DETERMINE AND EXECUTE METHOD
   if           (f["page"] == "matrix")  matrix()
   else if      (f["page"] == "cell")    cell()
+  else if      (f["page"] == "tnote")   taxonnote()
   else if      (f["page"] == "copy")    copy()
   else defaultpage() ;
   
@@ -46,16 +47,17 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   print "<table>"
   print "<tr>"
   print "<td>Taxon</td>"
-  print "<td>Synonyms</td>"
+  print "<td>Syn-<br/>onyms</td>"
   print "<td>ID</td>"
   for (i in charx) 
     print "<td><b>" i "</b></td>"
+  print "<td>taxon<br/>notes</td>"
   print "<td>fill</td>"
   print "</tr>"
   db_clear()
 
   # Taxon names
-  db_query("akchars", "SELECT `name`, `guid`, `id`, `genID`, `syn` FROM \
+  db_query("akchars", "SELECT `name`, `guid`, `id`, `genID`, `syn`, `tnote` FROM \
             `taxa` WHERE `name` LIKE '" f["genus"] "%'ORDER BY `name`;")
   ntaxa = DBQr
   for (i = 1; i <= DBQr; i++) {
@@ -63,6 +65,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
     guid[i] = DBQ[i, "guid"]
     taxaID[i] = DBQ[i, "id"]
     syn[i] = DBQ[i, "syn"]
+    tnote[i] = DBQ[i, "tnote"]
     if (DBQ[i, "genID"]) gen[taxaID[i]] = DBQ[i, "genID"]
   }
   db_clear()
@@ -76,7 +79,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   for (i = 1 ; i <= ntaxa; i++) {
     print "<tr>"
     print "<td><b>" name[i] "</b></td>"
-    print "<td>" syn[i] "</td>"
+    print "<td class=\"syn1\"><div class=\"syn2\">"gensub(/.+/,"...","G",syn[i])"</div><div class=\"syn3\">" syn[i] "</div></td>"
     print "<td>" guid[i] "</td>"
     for (j in charx) {
       print "<td onclick=\"location.href='do?page=cell&amp;char=" j \
@@ -99,6 +102,8 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
       print out
       print "</td>"
     }
+    print "<td onclick=\"location.href='do?page=tnote&amp;taxaID="   \
+      taxaID[i]"&amp;genus=" f["genus"] "';\">" substr(tnote[i],1,100) "</td>" 
     print "<td onclick=\"location.href='do?page=copy&amp;taxaID=" \
       taxaID[i]"&amp;genus=" f["genus"] "';\"/>"
     print "</tr>"
@@ -301,6 +306,48 @@ function copy(   name, i, actiontext, sql, ES){
 
   exit 0
 }
+
+function taxonnote(   name, i, actiontext, ES){
+
+  header("Data copy")
+
+  print "<p style=\"position:absolute; right:30px; top:15px; \
+            font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" \
+            f["genus"] "\">Matrix</a></p>" 
+
+  if (f["preaction"] == "tnote") {
+    ES = db_sql("akchars", "UPDATE `taxa` SET `tnote` = '" f["tnote"] "' WHERE id = " f["taxaID"] ";")
+    if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED</p>"
+    else actiontext = actiontext "<p style=\"color:green;\">Success</p>"
+  }
+
+  # Taxon names
+  db_query("akchars", "SELECT `name`, `guid`, `tnote` FROM \
+            `taxa` WHERE `id` = " f["taxaID"] ";")
+  name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
+  
+  print "<form action=\"do\"><p>"
+  print "<input type=\"hidden\" name=\"page\" value=\"tnote\"/>"
+  print "<input type=\"hidden\" name=\"preaction\" value=\"tnote\"/>"
+  print "<input type=\"hidden\" name=\"taxaID\" value=\"" f["taxaID"] "\"/>"
+  print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
+    
+  print "Make a note about " name "</p>"
+  print "<p>(Currently: '" DBQ[1, "tnote"] "')</p>"
+  print "<p><input type=\"text\" name=\"tnote\" style=\"width:600px;\">" 
+  print "<input type=\"submit\" value=\"GO\"/></p>"
+  print "</form>"
+  print "<p>(<i style=\"color:red;\">Note: exiting entry will be "  \
+    "overwritten</i>)</p>"
+  db_clear()
+
+  if (actiontext) print actiontext
+  
+  footer()
+
+  exit 0
+}
+
 
 function header(title) {
   
