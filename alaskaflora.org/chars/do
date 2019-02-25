@@ -103,7 +103,7 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
       print "</td>"
     }
     print "<td onclick=\"location.href='do?page=tnote&amp;taxaID="   \
-      taxaID[i]"&amp;genus=" f["genus"] "';\">" substr(tnote[i],1,100) "</td>" 
+      taxaID[i] "&amp;genus=" f["genus"] "';\" class=\"syn1\"><div class=\"syn2\">"gensub(/.+/,"...","G",tnote[i])"</div><div class=\"syn3\">" tnote[i] "</div></td>"
     print "<td onclick=\"location.href='do?page=copy&amp;taxaID=" \
       taxaID[i]"&amp;genus=" f["genus"] "';\"/>"
     print "</tr>"
