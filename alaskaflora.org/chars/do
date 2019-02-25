@@ -129,7 +129,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     # first test for accepable sources
     split(gensub(/\ /,"","G",f["sources"]),s,",")
     for (i in s)
-      if (s[i] !~ /^(cody|dall|fna|hult|jep|judd|welsh|walt|inat|ASC|oth)$/) srcfail = 1
+      if (s[i] !~ /^(cody|dall|fna|hult|jep|judd|welsh|walt|inat|ASC|oth|apw)$/) srcfail = 1
     if (srcfail) actiontext =                                       \
       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
     else if (!f["sources"]) actiontext =                                     \
@@ -224,7 +224,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
   print "</select></td></tr>"
-  print "</table><br/>(* Allowed: <code>cody, dall, fna, hult, jep, judd, welsh, walt, inat, <i>oth</i>, <b>ASC</b></code>)</div>"
+  print "</table><br/>(* Allowed: <code>apw, cody, dall, fna, hult, jep, judd, walt, welsh, <i>inat</i>, <i>oth</i>, <b>ASC</b></code>;  <i>inat</i> and <i>oth</i> require notes)</div>"
 
   print "</div></form></td></tr></table>"
   
@@ -328,22 +328,82 @@ function defaultpage(   i)
 
   print "<h1>Character entry webapp</h1>"
 
-  print "<table style=\"border:none;\"><tr><td style=\"border:none;vertical-align:top;padding:20px;width:500px\">"
-   
+  print "<table style=\"border:none;\"><tr><td style=\"border:none;"\
+    "vertical-align:top;padding:20px;width:500px\">"
+
   print "<p>Select genus:</p>"
   print "<table>"
-  print "<tr><th>Family</th><th>Genus</th><th>N taxa<br/>scored</th><th>N char<br/>scored</th></tr>"
-  db_query("akchars", "SELECT `fam`, `taxa`.`name`, COUNT(`b`.`genID`) \
-    AS `ct`, SUM(`c`) AS `sc` FROM `taxa` LEFT JOIN (SELECT `genID`, \
-    COUNT(`charID`) AS `c` \
-    FROM `taxa`, (SELECT `taxaID`, `charID` FROM `TxC`) AS `a` WHERE \
-    `a`.`taxaID` = `taxa`.`id` AND `genID` IS NOT NULL GROUP BY `name`) \
-    AS `b` ON `taxa`.`id` = `b`.`genID` WHERE `taxa`.`genID` IS NULL \
-    GROUP BY `taxa`.`id` ORDER BY `fam`, `name`;")
-  for (i = 1; i <= DBQr; i++)
-    print "<tr><td>" DBQ[i,"fam"] "</td><td><a href=\"do?page=matrix&amp;genus=" DBQ[i, "name"] "\">" \
-      DBQ[i, "name"] "</a></td><td>" gensub(/0/,"","G", DBQ[i,"ct"]) "</td><td>" DBQ[i,"sc"] "</td></tr>"
+  print "<tr><th>Family</th><th>Genus</th><th>N taxa</th><th>% done</th></tr>"
+
+  # get taxa
+  db_query("akchars", "SELECT * FROM taxa ORDER BY `fam`, `name`;")
+  for (i = 1; i <= DBQr; i++) {
+    if (!DBQ[i,"genID"]) {
+      fam[++g] = DBQ[i,"fam"]
+      name[g] = DBQ[i,"name"]
+      gid[g] = DBQ[i,"id"]
+    }
+    else
+      glist[DBQ[i,"genID"]][DBQ[i,"id"]] = 1
+  }
   db_clear()
+
+  # get states
+  db_query("akchars", "SELECT * FROM `chars`;")
+  for (i = 1; i <= DBQr; i++) {
+    char[DBQ[i,"id"]] = DBQ[i,"char"]
+    charx[DBQ[i,"char"]] = 1
+  }    
+  db_clear()
+  
+  # count the total number of chars (not states)
+  for (i in charx) nchars++
+  # fill a taxa x chars matrix
+  db_query("akchars", "SELECT * FROM TxC;")
+  for (i = 1; i <= DBQr; i++) {
+    chard[DBQ[i,"taxaID"], char[DBQ[i,"charID"]]] = 1
+  }
+  db_clear()
+
+  # now, for each genus
+  for (n = 1; n <= g; n++) {
+    filled = ntaxa = pcdone = 0
+    # for each taxon in genus
+    if (isarray(glist[gid[n]])) {
+      for (i in glist[gid[n]]) {
+        ntaxa++
+        # for each char
+        for (j in charx)
+          if (chard[i, j] || chard[gid[n], j]) filled++
+      }
+      pcdone = sprintf("%.2f", filled / (ntaxa * nchars))
+    }
+    
+    if (pcdone == "0.00") pcdone = ""
+    else if (pcdone == "1.00") pcdone = "<span style=\"color:green;\">" \
+                                 pcdone "</span>"
+
+    if (ntaxa && fam[n] !~ /^(Cyperaceae|Lycopodiaceae|Pinaceae|Poaceae|\
+          Woodsiaceae|Dryopteridaceae|Cupressaceae|Aspleniaceae)$/) 
+      print "<tr><td>" fam[n] "</td><td><a href=\"do?page=matrix&amp;genus=" \
+        name[n] "\">" name[n] "</a></td><td>" ntaxa "</td><td>" pcdone \
+        "</td></tr>"
+  }
+  
+  # print "<tr><th>Family</th><th>Genus</th><th>N taxa<br/>scored</th><th>N char<br/>scored</th></tr>"
+  # db_query("akchars", "SELECT `fam`, `taxa`.`name`, COUNT(`b`.`genID`) \
+  #   AS `ct`, SUM(`c`) AS `sc` FROM `taxa` LEFT JOIN (SELECT `genID`, \
+  #   COUNT(`charID`) AS `c` \
+  #   FROM `taxa`, (SELECT `taxaID`, `charID` FROM `TxC`) AS `a` WHERE \
+  #   `a`.`taxaID` = `taxa`.`id` AND `genID` IS NOT NULL GROUP BY `name`) \
+  #   AS `b` ON `taxa`.`id` = `b`.`genID` WHERE `taxa`.`genID` IS NULL \
+  #   GROUP BY `taxa`.`id` ORDER BY `fam`, `name`;")
+  # for (i = 1; i <= DBQr; i++)
+  #   print "<tr><td>" DBQ[i,"fam"] "</td><td><a href=\"do?page=matrix&amp;genus=" DBQ[i, "name"] "\">" \
+  #     DBQ[i, "name"] "</a></td><td>" gensub(/0/,"","G", DBQ[i,"ct"]) "</td><td>" DBQ[i,"sc"] "</td></tr>"
+  # db_clear()
+
+  
   print "</table>"
 
   print "</td><td style=\"border:none;vertical-align:top;padding:20px;\">"
