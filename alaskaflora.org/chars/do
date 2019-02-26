@@ -224,7 +224,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<tr><td><i>Sources*</i></td>"
   print "<td><input type=\"text\" name=\"sources\" style=\"width:300px;\"/></td></tr>"
   print "<tr><td><i>Notes</i></td>"
-  print "<td><input type=\"text\" name=\"notes\" style=\"width:300px;\"/></td></tr>"
+  print "<td><textarea name=\"notes\" cols=\"40\" rows=\"4\"></textarea></td></tr>"
   print "<tr><td><i>By</i></td>"
   print "<td><select name=\"person\">"
   print "<option value=\"Brian\">Brian</option>"
