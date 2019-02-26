@@ -33,6 +33,9 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
                    i, j, s, out, gen, warningtext, guid) {
 
   header("Data matrix")
+
+  print "<p style=\"text-align:right;font-weight:bold\"><a href=\"do\">Home</a></p>"
+
   
   # Table header
   db_query("akchars", "SELECT `char`, `state`, `id` FROM chars \
@@ -110,7 +113,6 @@ function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
   }
 
   print "</table>"
-  print "<p style=\"text-align:right;font-weight:bold\"><br/><br/><a href=\"do\">Home</a></p>"
 
   if (warningtext) print warningtext
 
@@ -333,8 +335,10 @@ function taxonnote(   name, i, actiontext, ES){
   print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
     
   print "Make a note about " name "</p>"
-  print "<p>(Currently: '" DBQ[1, "tnote"] "')</p>"
-  print "<p><input type=\"text\" name=\"tnote\" style=\"width:600px;\">" 
+  # print "<p>(Currently: '" DBQ[1, "tnote"] "')</p>"
+  print "<p><textarea name=\"tnote\" cols=\"60\" rows=\"10\">"
+  print DBQ[1, "tnote"]
+  print "</textarea>" 
   print "<input type=\"submit\" value=\"GO\"/></p>"
   print "</form>"
   print "<p>(<i style=\"color:red;\">Note: exiting entry will be "  \
