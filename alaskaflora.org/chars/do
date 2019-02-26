@@ -360,8 +360,8 @@ function header(title) {
            charset=utf-8\" />"
   print "<link href=\"https://fonts.googleapis.com/css?family=Montserrat\" \
            rel=\"stylesheet\"/>"
-  print "<link rel=\"stylesheet\" href=\"../css/default.css\" \
-           type=\"text/css\" />"
+#  print "<link rel=\"stylesheet\" href=\"../css/default.css\" \
+#           type=\"text/css\" />"
   print "<link rel=\"stylesheet\" href=\"../css/chars.css\" \
            type=\"text/css\" />"
   print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
