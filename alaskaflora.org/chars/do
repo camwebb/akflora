@@ -318,6 +318,8 @@ function taxonnote(   name, i, actiontext, ES){
             f["genus"] "\">Matrix</a></p>" 
 
   if (f["preaction"] == "tnote") {
+    gsub(/'/,"\\'",f["tnote"])
+    gsub(/"/,"\\\"",f["tnote"])
     ES = db_sql("akchars", "UPDATE `taxa` SET `tnote` = '" f["tnote"] "' , `tnoteauth` = '" f["tnoteauth"] "' WHERE id = " f["taxaID"] ";")
     if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED</p>"
     else actiontext = actiontext "<p style=\"color:green;\">Success</p>"
