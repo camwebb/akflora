@@ -231,7 +231,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
   print "</select></td></tr>"
-  print "</table><br/>(* Allowed: <code>apw, cody, dall, fna, hult, jep, judd, walt, welsh, <i>inat</i>, <i>oth</i>, <b>ASC</b></code>;  <i>inat</i> and <i>oth</i> require notes)</div>"
+  print "</table><br/>(* Allowed: <code>apw, cody, dall, fna, hult, jep, judd,<br/>walt, welsh, <i>inat</i>, <i>oth</i>, <b>ASC</b></code>;  <i>inat</i> and <i>oth</i> require notes)</div>"
 
   print "</div></form></td></tr></table>"
   
@@ -318,13 +318,13 @@ function taxonnote(   name, i, actiontext, ES){
             f["genus"] "\">Matrix</a></p>" 
 
   if (f["preaction"] == "tnote") {
-    ES = db_sql("akchars", "UPDATE `taxa` SET `tnote` = '" f["tnote"] "' WHERE id = " f["taxaID"] ";")
+    ES = db_sql("akchars", "UPDATE `taxa` SET `tnote` = '" f["tnote"] "' , `tnoteauth` = '" f["tnoteauth"] "' WHERE id = " f["taxaID"] ";")
     if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED</p>"
     else actiontext = actiontext "<p style=\"color:green;\">Success</p>"
   }
 
   # Taxon names
-  db_query("akchars", "SELECT `name`, `guid`, `tnote` FROM \
+  db_query("akchars", "SELECT `name`, `guid`, `tnote`, `tnoteauth` FROM \
             `taxa` WHERE `id` = " f["taxaID"] ";")
   name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
   
@@ -338,8 +338,14 @@ function taxonnote(   name, i, actiontext, ES){
   # print "<p>(Currently: '" DBQ[1, "tnote"] "')</p>"
   print "<p><textarea name=\"tnote\" cols=\"60\" rows=\"10\">"
   print DBQ[1, "tnote"]
-  print "</textarea>" 
-  print "<input type=\"submit\" value=\"GO\"/></p>"
+  print "</textarea> (" DBQ[1, "tnoteauth"] ")</p>"
+  print "<p>By: "
+  print "<select name=\"tnoteauth\">"
+  print "<option value=\"Brian\">Brian</option>"
+  print "<option value=\"Cam\">Cam</option>"
+  print "<option value=\"Steffi\">Steffi</option>"
+  print "</select></p>"
+  print "<p><input type=\"submit\" value=\"GO\"/></p>"
   print "</form>"
   print "<p>(<i style=\"color:red;\">Note: exiting entry will be "  \
     "overwritten</i>)</p>"
