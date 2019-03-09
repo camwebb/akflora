@@ -199,7 +199,7 @@ obo:PO_0020128
       annotations for angiosperms, gymnosperms, and pteridophytes
       should go to vascular leaf and all annotations for bryophytes
       should go to non-vascular leaf.""" ;
-    rdfs:subClassOf obo:PO_0025034 ;
+    rdfs:subClassOf     obo:PO_0025131 ;
     rdfs:label "leaf margin"^^xsd:string .
 
 # Leaf margin entire
@@ -529,7 +529,7 @@ obo:PO_0025413
     branching vein patterns, as found in some ferns and
     gymnosperms.""" ;
 rdfs:label "primary leaf vein"^^xsd:string ;
-    rdfs:subClassOf obo:PO_0025034 .
+    rdfs:subClassOf     obo:PO_0025131 .
 
 obo:PATO_0001968
     obo:IAO_0000115 """A branched quality inhering in a bearer by virtue
@@ -678,7 +678,8 @@ obo:PO_0009072
     #     # that Taxon is necessarily a Magnoliophyte
     #     owl:someValuesFrom obo:NCBITaxon_3398
     # ],
-    obo:PO_0009046 .
+    obo:PO_0025131 .
+    # Note: NOT a subclass of flower, a part_of flower obo:PO_0009046 .
 
 # Ovary superior
 

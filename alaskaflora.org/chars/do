@@ -136,7 +136,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
     # first test for accepable sources
     split(gensub(/\ /,"","G",f["sources"]),s,",")
     for (i in s)
-      if (s[i] !~ /^(cody|dall|fna|hult|jep|judd|welsh|walt|inat|ASC|oth|apw)$/) srcfail = 1
+      if (s[i] !~ /^(and|cody|dall|fna|hult|jep|judd|welsh|walt|inat|ASC|oth|apw)$/) srcfail = 1
     if (srcfail) actiontext =                                       \
       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
     else if (!f["sources"]) actiontext =                                     \
@@ -231,7 +231,7 @@ function cell(   name, actiontext, ES, i,s ,srcfail) {
   print "<option value=\"Cam\">Cam</option>"
   print "<option value=\"Steffi\">Steffi</option>"
   print "</select></td></tr>"
-  print "</table><br/>(* Allowed: <code>apw, cody, dall, fna, hult, jep, judd,<br/>walt, welsh, <i>inat</i>, <i>oth</i>, <b>ASC</b></code>;  <i>inat</i> and <i>oth</i> require notes)</div>"
+  print "</table><br/>(* Allowed: <code>and, apw, cody, dall, fna, hult, jep, judd,<br/>walt, welsh, <i>inat</i>, <i>oth</i>, <b>ASC</b></code>;  <i>inat</i> and <i>oth</i> require notes)</div>"
 
   print "</div></form></td></tr></table>"
   

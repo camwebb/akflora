@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Alaska Flora : Blog 5: Phenotype data entry and sharing</title>
+    <title>Alaska Flora : Blog 5: Sharing phenotype data</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../css/normalize.css"/>
@@ -15,11 +15,12 @@
     <div class="container">
       <div class="row">
         <div class="nine columns" style="margin-top: 5%">
-          <h1 id="blog-4-phenotype-data-entry-and-sharing">Blog 4: Phenotype data entry and sharing</h1>
-          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2019-02-28</em></p>
-          <p>I got diverted from “name wrangling” these past few weeks, and have been thinking about morphological characters and pehenotypes. Among the goals of the NSF-funded project is to develop a taxon × character matrix for all the ca. 2,300 taxa we will eventually have in the Flora. This matrix can be used for analyses and in descriptions of taxa, but the main use will be in an interactive identification key for Alaskan plants. An interactive key differs from a traditional dischotomous key primarily in allowing the user to start with any character they may have handy, rather than pre-determining the first character couplet. An interactive key is essentially the cumulative application of character filters on the taxon × character matrix until a single or small number of taxa remain.</p>
-          <p>Our plan in the proposal was to assemble data on enough characters to reduce the number of taxa to a size where visual scanning of thumbnail images would permit rapid selection of a final identified taxon. The primary trade-off for us in chosing the numnber of characters to score is “descriminatory capability” (i.e., reducing the potential taxa list as much as possible) vs. time needed to assemble the matrix. Since we intend the interactive key to be usable by interested but relatively untrained members of the public, the set of available characters is fairly constrained to those that do not need botanical experience (e.g., not “placentation type”) or special equipment (e.g., not “hairs stellate”).</p>
-          <p>After discussion among the Flora of Alaska Executive Committee, and some initial trial and error, we have settled on these 12 characters:</p>
+          <h1 id="blog-5-sharing-phenotype-data">Blog 5: Sharing phenotype data</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2019-03-08</em></p>
+          <p>I got diverted from “name wrangling” these past few weeks, and have been thinking about morphological characters and phenotypes. Among the goals of our NSF-funded project is to develop a taxon × character matrix for all the ca. 2,300 taxa we will eventually have in the Flora. This matrix can then be used for analyses and in descriptions of taxa, but the main use will be in an interactive identification key for Alaskan plants. An interactive key differs from a traditional dichotomous key primarily in allowing the user to start with any character they may have handy, rather than in pre-determining the first character couplet. An interactive key is essentially the cumulative application of character filters on the taxon × character matrix until a single or small number of taxa remain.</p>
+          <h2 id="our-character-list">Our character list</h2>
+          <p>Our plan in the proposal was to assemble data on enough characters to reduce the taxa list to a number where visual scanning of thumbnail images would allow selection of a final identified taxon. The primary trade-off for us in choosing the number of characters to score is “discriminatory capability” (i.e., reducing the potential taxa list as much as possible) vs. time needed to assemble the matrix. Since we intend the interactive key to be usable by interested but relatively untrained members of the public, the set of displayed characters is fairly constrained to those that do not need botanical experience (e.g., not “placentation type”) or special equipment (e.g., not “hairs stellate”).</p>
+          <p>After discussion among the Flora of Alaska Executive Committee, and some initial trial and error, we have settled (for the moment) on these 12 characters (and 40 character + state combinations, or phenotypes).</p>
           <ul>
           <li>Whole plant phenotypes
           <ul>
@@ -35,19 +36,25 @@
           </ul></li>
           <li>Flower/fruit phenotypes
           <ul>
-          <li>Inflorescence of multiple flowers: yes or no (solitary flowers)</li>
-          <li>Flower with pedicel: “stalked” or not</li>
+          <li>Inflorescence of multiple flowers: yes or no (= solitary flowers)</li>
+          <li>Flower with pedicel: “stalked” or not (= sessile)</li>
           <li>Flower symmetry: actinomorphic or zygomorphic<br />
           </li>
           <li>Flower color: blue, brown, green, orange, pink, purple, red, white, or yellow</li>
-          <li>Ovary position: inferior, semi-inferior or superior</li>
+          <li>Ovary position: inferior, semi-inferior or superior (possibly a bit tricky for general users)</li>
           <li>Fruit fleshiness: dry or fleshy</li>
           </ul></li>
           </ul>
-          <h2 id="phenotype-definition-interoperability">Phenotype definition interoperability</h2>
-          <p>As you know by now, <em>interoperability</em> is the name of the game with this project, and as we set out to record these morphological data, we need to try to maximize the possibility that they can be re-used by other projects. So, “how best to standardize and share phenotype data?” Vast numbers of taxon × character matrices (and individual × character matrices) have been assembled (see e.g., <a href="https://morphobank.org/">Morphobank</a>, but most of the matrices cannot easily be “aligned” with other matrices: even though the taxa may overlap, the characters are seldom standardized and often have definitions that are ideosyncratic to a particular project. This situtation is in contrast to the taxa × sequence data, which <em>can</em> generally be aligned, and thus can be contributed to vastly resources like <a href="https://www.ncbi.nlm.nih.gov/genbank/">Genbank</a>.</p>
-          <p>To answer the above questions about character standardization, we need to take a detour into the nuts and bolts of systematically recording phenotype data, whether for identification or for mophological analysis purposes. The simplest “model” of phenotype is <code>Character + Character state</code>, e.g., “leaf insertion into stem” (= <code>Character</code>) + “opposite” (= <code>Character state</code>). This was the approach taken by the the pioneering <a href="https://www.delta-intkey.com/">DELTA</a> system (DEscription Language for TAxonomy; see also <a href="http://downloads.ala.org.au/p/Open%20DELTA">OpenDelta</a> and <a href="http://freedelta.sourceforge.net/fde/">FreeDelta</a>), as well as that of MacClade, and its descendant <a href="https://www.mesquiteproject.org/">Mesquite</a>. This model was also adopted by the <a href="https://github.com/tdwg/sdd">Structured Descriptive Data</a> standard of <a href="https://www.tdwg.org/">TDWG</a>.</p>
-          <p>This two-part descriptive approach was critiqued in an <a href="http://dx.doi.org/10.2307/25065431">important paper</a> by Pullan et al. (2005), who had proposed a three-part “descriptive element” (part of the Prometheus II project): <code>Structure + Property + Score</code>. And in another lineage of this phenotype conversation, growing out of the gene annotation and Open Biological and Biomedical Ontology (OBO) community, <a href="https://www.usd.edu/faculty-and-staff/Paula-Mabee">Paula Mabee</a>, <a href="https://www.mendeley.com/profiles/jim-balhoff/">Jim Balhoff</a> and <a href="https://phenoscape.org/">Phenoscape</a> collegues have developed the <a href="https://wiki.phenoscape.org/wiki/EQ_for_character_matrices">Entity-Quality formalism</a>, where a complex <code>Quality</code> “inheres” in an <code>Entity</code>. The three approaches line up so:</p>
+          <h2 id="phenotype-data-interoperability">Phenotype data interoperability</h2>
+          <p>As you know by now, <em>interoperability</em> is the name of the game with this project, and as we set out to record these morphological characters, we need to try to maximize the possibility that the data can be re-used by other projects. So, “how best to standardize and share phenotype data?” Vast numbers of taxon × character matrices (and individual × character matrices) have been assembled (see e.g., <a href="https://morphobank.org/">Morphobank</a>), but most of the matrices cannot easily be “aligned” with other matrices: even though the taxa may overlap, the characters are seldom standardized and often have definitions that are idiosyncratic to a particular project. This situation is in contrast to taxa × sequence data, which <em>can</em> generally be aligned, and thus can be contributed to useful resources like <a href="https://www.ncbi.nlm.nih.gov/genbank/">Genbank</a>. What we’d like is a standard way of referring to particular phenotypes (e.g., “leaves opposite”). Imagine, for example, that every morphological variation documented in Bell’s <a href="https://issuu.com/hamdysayed/docs/_adrian_d._bell__plant_form_an_illu">Plant Form book</a>” had a code that different projects could reference (though there will always be the ever-present <a href="http://dx.doi.org/10.2307/2418787">concern</a> over whether an apparent phenotype in two species was truly homologous).</p>
+          <p>In searching for a usable pre-defined set of plant phenotypes to which to link (or cross-reference), I’ve been in touch with the Flora of North America (FNA) “data liberation” team in Ottawa (Jocelyn Pender, Joel Sachs, Beatriz Lujan-Toro, and James Macklin). They are well into the massive task of Natural Language Processing of the FNA accounts, and have a cool dev site presenting the decomposition of taxon descriptions into properties and values, using Semantic MediaWiki (see e.g., <a href="http://dev.semanticfna.org/wiki/Senecio_parryi">Senecio parryi</a>). The combination of property (= “character”) and value (= “character state”) does indeed provide a unique specification of a phenotype. E.g., the URI “<a href="http://dev.semanticfna.org/wiki/Special:SearchByProperty/:Corolla-20coloration/white" class="uri">http://dev.semanticfna.org/wiki/Special:SearchByProperty/:Corolla-20coloration/white</a>” pulls up a list of all taxa with the property/value combination “Corolla color : white”. However the URL itself does not define or specify the phenotype, and in conversation with the team I learned that the standardization of phenotypes in not really (yet) a goal of the team. There are many tens of thousands of property/value combinations in FNA and providing a definition, or even a specific label, for these is not feasible.</p>
+          <p>Another valuable output of the FNA data team is the <a href="https://terms.tdwg.org/wiki/FloraTerms">FloraTerms wiki</a> hosted by TDWG. This is a list of the botanically important terms (= words) in FNA, to which the user community can contribute by writing definitions. On its own though it is not a resource of phenotype definitions.</p>
+          <p>Last year, I was pleased to be able to join a workshop on “Next generation biodiversity data: developing an international traits system”, organized by John La Salle (RIP), Robina Sanderson, and Hamish Holewarait at the 2018 <a href="https://www.idigbio.org/wiki/index.php/Digital_Data_in_Biodiversity_Research_Conference,_Berkeley">iDigBio meeting</a> in Berkeley, CA (see workshop <a href="https://www.idigbio.org/wiki/images/9/9f/IDigBio_Traits_Discussion_-_Participants_and_agenda.pdf">agenda</a>). I had thought in advance that this matter of standardizing morphological characters would be discussed, but found that the “traits” of interest to the participants were, as is often the case, generally quantitative ecological and eco-physiological traits, and not qualitative morphological traits (see, e.g., <a href="https://boris.unibe.ch/116986/1/328302.full.pdf">here</a> and <a href="10.1038/s41559-018-0667-3">here</a>).</p>
+          <h2 id="representing-phenotypes-digitally">Representing phenotypes digitally</h2>
+          <p>The best phenotype definition resource I have found so far is the Flora Phenotype Ontology (FLOPO; <a href="http://dx.doi.org/10.1186/s13326-016-0107-8">Hoehndorf et al. 2016</a>). To appreciate this ontology-based approach fully, we need to take a detour into the nuts and bolts of the systematic recording of phenotypes, whether for identification or for morphological analysis purposes.</p>
+          <p>The simplest “model” of phenotype is <code>Character + Character state</code>, e.g., “leaf insertion geometry on stem” (= <code>Character</code>) + “opposite” (= <code>Character state</code>). This was the approach taken by the the pioneering <a href="https://www.delta-intkey.com/">DELTA</a> system (DEscription Language for TAxonomy; see also <a href="http://downloads.ala.org.au/p/Open%20DELTA">OpenDelta</a> and <a href="http://freedelta.sourceforge.net/fde/">FreeDelta</a>), as well as that of MacClade, and its descendant <a href="https://www.mesquiteproject.org/">Mesquite</a>. The <code>Character + State</code> model was also adopted by the <a href="https://github.com/tdwg/sdd">Structured Descriptive Data</a> serialization standard of <a href="https://www.tdwg.org/">TDWG</a>. This two-part descriptive approach was critiqued in an <a href="http://dx.doi.org/10.2307/25065431">important paper</a> by Pullan et al. (2005), who had proposed a three-part “descriptive element”: <code>Structure + Property + Score</code>.</p>
+          <p>In another lineage of this phenotype coding conversation, growing out of the gene annotation and Open Biological and Biomedical Ontology (OBO) community, <a href="https://www.usd.edu/faculty-and-staff/Paula-Mabee">Paula Mabee</a>, <a href="https://www.mendeley.com/profiles/jim-balhoff/">Jim Balhoff</a> and <a href="https://phenoscape.org/">Phenoscape</a> colleagues have developed the <a href="https://wiki.phenoscape.org/wiki/EQ_for_character_matrices">Entity-Quality formalism</a>, where a complex <code>Quality</code> “inheres” in an <code>Entity</code>.</p>
+          <p>The three approaches line up so:</p>
           <table class="blog5_tab">
           <tr>
           <th>
@@ -65,7 +72,8 @@
           </tr>
           <tr>
           <td>
-          DELTA, Mesquite, etc.
+          <ol type="1">
+          <li>DELTA, Mesquite, etc.
           </td>
           <td colspan="2">
           Character<br/><i>(Leaf insertion)</i>
@@ -76,7 +84,8 @@
           </tr>
           <tr>
           <td>
-          Prometheus II<br/>(Pullen et al. 2005)
+          <ol start="2" type="1">
+          <li>Prometheus II<br/>(Pullan et al. 2005)
           </td>
           <td>
           Structure<br/><i>(Leaf)</i>
@@ -90,7 +99,8 @@
           </tr>
           <tr>
           <td>
-          EQ Model<br/>(Phenoscape)
+          <ol start="3" type="1">
+          <li>EQ Model<br/>(Phenoscape)
           </td>
           <td>
           Entity<br/><i>(Leaf)</i>
@@ -99,31 +109,111 @@
           Quality<br/><i>(opposite insertion,<br/>= subclass of ‘insertion geometry’)</i>
           </td>
           </tr>
+          </table></li>
+          </ol></li>
+          </ol></li>
+          </ol>
+          <p>It is important to recognize that however one decomposes the phenotype, the phenotype referred to is the same; it is only the scoring model that varies. So a DELTA phenotype can be aligned directly to the equivalent phenotype modeled as EQ. The advantage of the EQ model is that it facilitates logical descriptions of phenotypes that permit machine <em>reasoning</em>, via the use of class-based <em>ontologies</em>.</p>
+          <p>There have existed for a number of years unique taxon-specific ontology projects, e.g., the <a href="http://browser.planteome.org/amigo">Plant Ontology</a> (PO), the <a href="http://obofoundry.org/ontology/mp.html">Mammalian Phenotype ontology</a> and even the <em>Xenopus laevis</em> <a href="http://www.xenbase.org/anatomy/xao.do?method=display">Anatomy Ontology</a>. These ontologies are careful class- and subclass-based abstractions of the anatomy of a group of organisms. For example, in PO the <code>calyx</code> is a subclass of <code>collective phyllome structure</code> and also a <code>part of</code> a <code>flower</code>. Because they all grew out of a “super-project” (OBO) they share common properties and permit cross-ontology statements.</p>
+          <p>When we combine the Plant Ontology with the Phenotype and Trait Ontology (PATO; an ontology of generic phenotypic qualities, e.g., “divided”, “red”), plant phenotypes can be defined and standardized efficiently. For example, the phenotype description in a flora “calyx yellow” is presented in EQ as “<code>has_part</code> <code>calyx</code> that <code>has_quality</code> <code>yellow</code>”, where <code>calyx</code> is a class in the Plant Ontology (a subclass of <code>phyllode</code>), <code>yellow</code> is a class in the Phenotype Quality Ontology (a subclass of <code>color</code>) and <code>has_part</code> and <code>has_quality</code> are properties in in Relations Ontology. A machine could thus infer that two phenotypes with the same semantic composition (as above) are the same, even if there is no explicit mapping of one to the other.</p>
+          <p>I tried playing with this approach back in <a href="http://xmalesia.info/doc/datamodel.html">2011</a> but at the time found many of the necessary entities and qualities missing from PO and PATO. However, in the years since, there has been further development of these ontologies and now many “Character/State” statements can be encoded directly as “Entity/Quality” statements.</p>
+          <p>Back to FLOPO now… Hoehndorf and colleagues scanned thousands of text descriptions and organized the various phenotypes into a hierarchy of 25,407 classes. Most of these are mapped to the their EQ equivalent (using PO &amp; PATO). Each phenotype has a self-documenting URI which can be used in linked data (semantic web) statements about a taxon or individual. For example, <code>http://purl.obolibrary.org/obo/FLOPO_0013358</code> is the phenotype “prickle black”. I should also note that the Napier/RGBE <a href="http://www.soc.napier.ac.uk/~prometheus/">Prometheus II</a> project developed an ontology of plant phenotypes, ten years previously, but that ontology seems not to have survived the end of the project (see Paterson et al. 2004 “A Universal Character Model and Ontology of Defined Terms for Taxonomic Description” <a href="http://www.soc.napier.ac.uk/~prometheus/prometheus_2/publications/Paterson_etal_DILS.pdf">PDF</a>/<a href="https://dx.doi.org/10.1007/978-3-540-24745-6_5">DOI</a>).</p>
+          <h2 id="our-plant-character-ontology">Our plant character ontology</h2>
+          <p>So, for our usage—scoring Alaskan plants for the above set of characters—can we just refer to FLOPO? Sadly not. About a quarter of our 40 phenotypes have no direct FLOPO representation. This is partly due to our decision to combine several phenotypes into a larger class (e.g., our “leaf margin not entire” includes FLOPO’s “leaf margin dentate”, “leaf margin serrate”, etc.), and partly due to missing phenotypes in FLOPO (e.g., no ovary superior/inferior phenotypes). So I decided to create an ontology file that contains identifiers for the complete set of characters we need (e.g., <code>LeafinsertionAlternate</code>, and <code>PlantstemAcaulescent</code>), defined where possible in EQ terms, but also uses the <code>owl:equivalentClass</code> property to map these local identifiers to the corresponding FLOPO ones. Our ontology is at: <a href="http://alaskaflora.org/onto/plantchars.ttl" class="uri">http://alaskaflora.org/onto/plantchars.ttl</a>. The master copy is in the <a href="https://www.w3.org/TR/turtle/">turtle</a> serialization; a derived RDFXML version is <a href="http://alaskaflora.org/onto/plantchars.rdf">here</a>. When loaded into Protege the class structure looks like this:</p>
+          <p><img src="../img/flopo.jpg" alt="FLOPO" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
+          <p>The ontology also includes a new property (<code>hasPhenotype</code>) that we need to make simple statements about the phenotypes of Alaskan taxa. Because the EQ model actually makes statements about an <em>individual organism</em> (not a taxon), which, e.g., <code>has_part</code> <code>calyx</code> that <code>has_quality</code> <code>yellow</code>, we need to combine properties “(taxon) has member organism” and “(organism) has phenotype” as a property chain. (This ontology and semantic reasoning stuff is tricky!) Here’s the final form of the <a href="https://www.w3.org/TR/owl-guide/">OWL DL</a> statements that will make up the semantic web version of the taxon × character matrix:</p>
+          <ul>
+          <li>(Individual) <code>Taxon1</code> (of class <code>dwc:Taxon</code>)</li>
+          <li><code>hasPhenotype</code> (a property combining properties “has member organism” and “has phenotype”)</li>
+          <li>(Individual) <code>Phenotype1</code> (of class, e.g., <code>LeafinsertionAlternate</code>, which is a subclass of <code>Phenotype</code>)</li>
+          </ul>
+          <p>See the <a href="http://alaskaflora.org/onto/plantchars.ttl">ontology file</a> for more details!</p>
+          <h2 id="on-the-use-of-class-hierarchies-to-express-set-relationsships">On the use of class hierarchies to express set relationsships</h2>
+          <p>A final thought for this blog post… The alignment or mapping of phenotypes in different taxon × character matrixes would essentially be a collection of set-theory statements. For example, Study A’s <code>LeafInsertionWhorled</code> is a phenotype that is included in Study B’s (more closely specified) <code>LeafInsertionNotAlternate</code>, or perhaps Study A’s <code>AntersFew</code> (i.e., 1-10) overlaps with Study B’s <code>AnthersMany</code> (10-∞).</p>
+          <p>We’ve been thinking about these set relationships a lot in a different context, that of Taxon Concepts. Nico Franz, Robert Peet and Alan Weakley have been promoting the use of set relationship expressions to indicate the way that two Taxon Concepts are related (see <a href="https://www.researchgate.net/profile/Alan_Weakley/publication/228951937_On_The_Use_Of_Taxonomic_Concepts_In_Support_Of_Biodiversity_Research_And_Taxonomy/links/0deec5216ad710dbaf000000/On-The-Use-Of-Taxonomic-Concepts-In-Support-Of-Biodiversity-Research-And-Taxonomy.pdf">Franz et al. 2008</a>). Two sets can be congruent, overlapping or disjunct, or one may include or be included in the other; five basic relationships.</p>
+          <p>These same set relationships can also be specified in the class-hierarchy form used in ontologies, using OWL, the Ontology Web Language:</p>
+          <table class="blog5_tab">
+          <tr>
+          <th>
+          Set relationship
+          </th>
+          <th>
+          RCC-5 expression<br/>(see Franz et al. 2008)
+          </th>
+          <th>
+          OWL specification
+          </th>
+          </tr>
+          <tr>
+          <td>
+          Set A is the same as (congruent with) set B
+          </td>
+          <td>
+          <code>A == B</code>
+          </td>
+          <td>
+          <code>A owl:equivalentClass B</code>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          A overlaps B
+          </td>
+          <td>
+          <code>A &gt;&lt; B</code>
+          </td>
+          <td>
+          <code>(no statement needed,</code><br/><code>assumed by the Open</code><br/><code>World Assumption)</code>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          A does not overlap B
+          </td>
+          <td>
+          <code>A | B</code>
+          </td>
+          <td>
+          <code>A owl:disjointWith B</code>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          A includes B
+          </td>
+          <td>
+          <code>A &gt; B</code>
+          </td>
+          <td>
+          <code>B rdfs:subClassOf A</code>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          A is included in B
+          </td>
+          <td>
+          <code>A &lt; B</code>
+          </td>
+          <td>
+          <code>A rdfs:subClassOf B</code>
+          </td>
+          </tr>
           </table>
-          <p>One major advantage Ontology based…</p>
-          <p>Two are needed: a structural ontology… and a</p>
-          <p>Functionally, it doesn’t matter how you score the character in a local database…</p>
-          <p>https://www.researchgate.net/publication/221502264_A_Universal_Character_Model_and_Ontology_of_Defined_Terms_for_Taxonomic_Description/download</p>
-          <p>The authors also</p>
-          <p>We just hired a project researcher, Brian</p>
-          <p>Taxon that inverse(‘member of taxon’) some (Organism that ‘has phenotype’ some ‘Leaf insertion not alternate’)</p>
-          <p>Organism that ‘has phenotype’ some ‘Leaf insertion not alternate’</p>
-          <p>Phenotype that ‘Leaf insertion not alternate’</p>
-          <p>RDF open world</p>
-          <p>A &gt; B :: B rdfs:subClassOf A A &lt; B :: A rdfs:subClassOf B A == B :: A owl:equivalentClass B A &gt;&lt; B :: ( no statement needed, assumed by OWA ) A | B :: A owl:disjointWith B</p>
-          <ol type="1">
-          <li>The FNA Categorical Glossary: http://www.huntbotanical.org/databases/show.php?4 Can be queried here: http://fmhibd.library.cmu.edu/HIBD-DB/FNA/findrecords.php</li>
-          </ol>
-          <p>This resource covers a large proportion of the terms used in the FNA, but is not complete.</p>
-          <ol start="2" type="1">
-          <li>The FloraTerms TDWG resource: https://terms.tdwg.org/wiki/FloraTerms</li>
-          </ol>
-          <p>This project originated from the development of the FNA Categorical Glossary. It extracts and enhances terms from the FNA Categorical Glossary, through the use of CharaParser on the FNA. It was intended to be a simple, collaborative space for the agreement on definitions by botanists. Its terms are more simple than PATO’s.</p>
-          <p>In fact, a few of us proposed that we should begin contributing to this resource again, and attempt to revive it under our new project building a Carex ontology for a treatment authoring tool.</p>
-          <ol start="3" type="1">
-          <li>Planteome has been amenable to accepting contributed terms, and so another approach would be creating a set of definitions de novo, and contribute what is developed.</li>
-          </ol>
-          <p>Lastly, a final consensus of our discussion was that we will need an answer to this question for our work in the future. If we can collaborate in some way to advance this cause, please reach out.</p>
+          <p>This further confirms for me that sharing phenotypes as ontologies is the way to go!</p>
+          <hr />
+          <div id="disqus_thread">
+          
+          </div>
+          <script>
+          var disqus_config = function () {
+          this.page.url = 'https://alaskaflora.org/pages/blog5.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog5';                  // Edit
+          };(function() {  var d = document, s = d.createElement('script');
+          s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })(); </script>
         </div>
         <div class="three columns" style="margin-top: 5%">
           <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
