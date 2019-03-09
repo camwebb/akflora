@@ -238,7 +238,7 @@ corresponding FLOPO ones.  Our ontology is at:
 the [turtle](https://www.w3.org/TR/turtle/) serialization; a derived
 RDFXML version is
 [here](http://alaskaflora.org/onto/plantchars.rdf). When loaded into
-Protege the class structure looks like this:
+[Protege](https://protege.stanford.edu/) the class structure looks like this:
 
 <img src="../img/flopo.jpg" alt="FLOPO" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/>
 
