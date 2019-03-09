@@ -262,10 +262,10 @@ character matrix:
 See the [ontology file](http://alaskaflora.org/onto/plantchars.ttl)
 for more details!
 
-## On the use of class hierarchies to express set relationsships
+## On the use of OWL to express set relationships
 
 A final thought for this blog post... The alignment or mapping of
-phenotypes in different taxon × character matrixes
+phenotypes in different taxon × character matrices
 would essentially be a collection of set-theory statements. For
 example, Study A’s `LeafInsertionWhorled` is a phenotype that is included
 in Study B’s (more closely specified) `LeafInsertionNotAlternate`, or
