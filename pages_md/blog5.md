@@ -317,7 +317,7 @@ Language:
 </tr>
 </table>
 
-This further confirms for me that sharing phenotypes as ontologies is the way to go!
+This further confirms for me that sharing phenotypes using ontologies is the way to go!
 
 ----
 
