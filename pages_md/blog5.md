@@ -304,7 +304,7 @@ Language:
 <tr>
   <td>A overlaps B</td>
   <td><code>A >< B</code></td>
-  <td><code>PhenotypeX rdf:type A, B</code></td>
+  <td>The Open World Assumption in OWL means class overlap is the default condition; to be more explicit: <code>PhenotypeX rdf:type A, B</code></td>
 </tr>
 <tr>
   <td>A does not overlap B</td>
