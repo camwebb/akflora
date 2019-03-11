@@ -81,15 +81,17 @@ phenotype in two species was truly homologous).
 In searching for a usable pre-defined set of plant phenotypes to which
 to link (or cross-reference), I’ve been in touch with the Flora of
 North America (FNA) “data liberation” team in Ottawa (Jocelyn Pender,
-Joel Sachs, Beatriz Lujan-Toro, and James Macklin). They are well into
-the massive task of Natural Language Processing of the FNA accounts,
-and have a cool dev site presenting the decomposition of taxon
-descriptions into properties and values, using Semantic MediaWiki (see
-e.g.,
+Joel Sachs, Beatriz Lujan-Toro, and James Macklin; plus Hong Cui in
+AZ). They are well into the massive task of Natural Language
+Processing of the FNA accounts, and have a cool dev site presenting
+the decomposition of taxon descriptions into properties and values,
+using Semantic MediaWiki (see e.g.,
 [Senecio parryi](http://dev.semanticfna.org/wiki/Senecio_parryi)). The
 combination of property (= “character”) and value (= “character
 state”) does indeed provide a unique specification of a
-phenotype. E.g., the URI “<http://dev.semanticfna.org/wiki/Special:SearchByProperty/:Corolla-20coloration/white>” pulls up a list of all taxa with the property/value combination
+phenotype. E.g., the URI
+“<http://dev.semanticfna.org/wiki/Special:SearchByProperty/:Corolla-20coloration/white>”
+pulls up a list of all taxa with the property/value combination
 “Corolla color : white”. However the URL itself does not define or
 specify the phenotype, and in conversation with the team I learned
 that the standardization of phenotypes in not really (yet) a goal of
