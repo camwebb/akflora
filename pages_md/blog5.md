@@ -95,7 +95,7 @@ specify the phenotype, and in conversation with the team I learned
 that the standardization of phenotypes in not really (yet) a goal of
 the team. There are many tens of thousands of property/value
 combinations in FNA and providing a definition, or even a specific
-label, for these is not feasible.
+label, for these is probably not feasible.
 
 Another valuable output of the FNA data team is the
 [FloraTerms wiki](https://terms.tdwg.org/wiki/FloraTerms) hosted by
@@ -203,12 +203,17 @@ PATO. However, in the years since, there has been further development
 of these ontologies and now many “Character/State” statements can be
 encoded directly as “Entity/Quality” statements. 
 
-Back to FLOPO now... Hoehndorf and colleagues scanned thousands of
-text descriptions and organized the various phenotypes into a
-hierarchy of 25,407 classes. Most of these are mapped to the their EQ
-equivalent (using PO & PATO). Each phenotype has a self-documenting
-URI which can be used in linked data (semantic web) statements about a
-taxon or individual. For example,
+Back to FLOPO now... Hoehndorf and team scanned thousands of text
+descriptions from a range of floras and used NLP to extract
+phenotype-related phrases. This was partly facilitiated by the amazing
+prior work of Thomas Hamann who parsed _Flora Malesiana_ volumes
+(using [FlorML](http://doi.org/10.12705/632.11)), work I came to know
+during my prior interest in the flora of Southeast Asia. Hoehndorf et
+al.  then used the text phrases to create phenotypes, organizing these
+into a hierarchy of 25,407 classes.  Most of these phenotypes are
+mapped to the their EQ equivalent (using PO & PATO), and each 
+has a self-documenting URI which can be used in linked data (semantic
+web) statements about a taxon or individual. For example,
 `http://purl.obolibrary.org/obo/FLOPO_0013358` is the phenotype
 “prickle black”.  I should also note that the Napier/RGBE
 [Prometheus II](http://www.soc.napier.ac.uk/~prometheus/) project
