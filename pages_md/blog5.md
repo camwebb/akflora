@@ -187,15 +187,14 @@ share common properties and permit cross-ontology statements.
 When we combine the Plant Ontology with the Phenotype and Trait
 Ontology (PATO; an ontology of generic phenotypic qualities, e.g.,
 “divided”, “red”), plant phenotypes can be defined and standardized
-efficiently.  For example, the phenotype description in a flora
-“calyx yellow” is presented in EQ as “`has_part` `calyx` that
-`has_quality` `yellow`”, where `calyx` is a class in the Plant
-Ontology (a subclass of `phyllode`), `yellow` is a class in the
-Phenotype Quality Ontology (a subclass of `color`) and `has_part` and
-`has_quality` are properties in in Relations Ontology.  A machine
-could thus infer that two phenotypes with the same semantic
-composition (as above) are the same, even if there is no explicit
-mapping of one to the other.
+efficiently.  For example, the phenotype description in a flora “calyx
+yellow” is presented in EQ as “`has_part` `calyx` that `has_quality`
+`yellow`”, where `calyx` is a class in the Plant Ontology (a subclass
+of `phyllode`), `yellow` is a class in PATO (a subclass of `color`)
+and `has_part` and `has_quality` are properties in in Relations
+Ontology.  A machine could thus infer that two phenotypes with the
+same semantic composition (as above) are the same, even if there is no
+explicit mapping of one to the other.
 
 I tried playing with this approach back in
 [2011](http://xmalesia.info/doc/datamodel.html) but at the time found
@@ -267,8 +266,8 @@ for more details!
 A final thought for this blog post... The alignment or mapping of
 phenotypes in different taxon × character matrices
 would essentially be a collection of set-theory statements. For
-example, Study A’s `LeafInsertionWhorled` is a phenotype that is included
-in Study B’s (more closely specified) `LeafInsertionNotAlternate`, or
+example, Study A’s `LeafInsertionNotAlternate` is a phenotype that includes
+Study B’s (more closely specified) `LeafInsertionWhorled`, or
 perhaps Study A’s `AntersFew` (i.e., 1-10) overlaps with Study B’s
 `AnthersMany` (10-∞).
 
@@ -298,7 +297,7 @@ Language:
 <tr>
   <td>A overlaps B</td>
   <td><code>A >< B</code></td>
-  <td><code>(no statement needed,</code><br/><code>assumed by the Open</code><br/><code>World Assumption)</code></td>
+  <td><code>PhenotypeX rdf:type A, B</code></td>
 </tr>
 <tr>
   <td>A does not overlap B</td>
