@@ -31,3 +31,11 @@ _Website_: [frontierbotany.info](http://www.frontierbotany.info/people/faculty/)
 _Roles_: Software development, data wrangling, TCM<br/>
 _Website_: [camwebb.info](http://camwebb.info)
 
+<br/>
+<span style="font-size: 2.6rem; font-weight: 400;">Brian Heitz</span><a name="brian"></a>
+
+<img src="../img/brian.jpg" alt="Brian" width="35%"/>
+
+_Roles_: Phenotype and taxon concept research and data collection
+
+

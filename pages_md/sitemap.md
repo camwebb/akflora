@@ -11,6 +11,7 @@
  * [Blog 3: Variations of a taxonomic name](blog3.html)
  * [Blog 4: Databasing name variations](blog4.html)
  * [Blog 5: Sharing phenotype data](blog5.html)
+ * [Blog 6: A tool for phenotype data entry](blog6.html)
  * [Dev Blog](blog.html)
  * [Alaskan Botanical Resources Online](links.html)
  * [People](people.html)

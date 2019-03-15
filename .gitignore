@@ -17,6 +17,7 @@ dataflow/PAF/paf.3
 dataflow/ALA/ala.*
 
 dataflow/DB*
+dataflow/chars*
 dataflow/authors*
 
 dataflow/canonical/accs

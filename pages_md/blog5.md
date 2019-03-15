@@ -259,11 +259,12 @@ the final form of the [OWL DL](https://www.w3.org/TR/owl-guide/)
 statements that will make up the semantic web version of the taxon ×
 character matrix:
 
- * (Individual) `Taxon1` (of class `dwc:Taxon`)
- * `hasPhenotype` (a property combining properties “has member
-       organism” and “has phenotype”)
- * (Individual) `Phenotype1` (of class, e.g.,
-         `LeafinsertionAlternate`, which is a subclass of `Phenotype`)
+ * `Taxon1 hasPhenotype Phenotype1`, where
+    * `Taxon1` is an individual of class `dwc:Taxon`,
+    * `hasPhenotype` is a property combining properties “has member
+       organism” and “has phenotype”, and 
+    * `Phenotype1` is an individual of class, e.g.,
+         `LeafinsertionAlternate`, which is a subclass of `Phenotype`
 
 See the [ontology file](http://alaskaflora.org/onto/plantchars.ttl)
 for more details!

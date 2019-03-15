@@ -123,9 +123,12 @@
           <p><img src="../img/flopo.jpg" alt="FLOPO" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
           <p>The ontology also includes a new property (<code>hasPhenotype</code>) that we need to make simple statements about the phenotypes of Alaskan taxa. Because the EQ model actually makes statements about an <em>individual organism</em> (not a taxon), which, e.g., <code>has_part</code> <code>calyx</code> that <code>has_quality</code> <code>yellow</code>, we need to combine properties “(taxon) has member organism” and “(organism) has phenotype” as a property chain. (This ontology and semantic reasoning stuff is tricky!) Here’s the final form of the <a href="https://www.w3.org/TR/owl-guide/">OWL DL</a> statements that will make up the semantic web version of the taxon × character matrix:</p>
           <ul>
-          <li>(Individual) <code>Taxon1</code> (of class <code>dwc:Taxon</code>)</li>
-          <li><code>hasPhenotype</code> (a property combining properties “has member organism” and “has phenotype”)</li>
-          <li>(Individual) <code>Phenotype1</code> (of class, e.g., <code>LeafinsertionAlternate</code>, which is a subclass of <code>Phenotype</code>)</li>
+          <li><code>Taxon1 hasPhenotype Phenotype1</code>, where
+          <ul>
+          <li><code>Taxon1</code> is an individual of class <code>dwc:Taxon</code>,</li>
+          <li><code>hasPhenotype</code> is a property combining properties “has member organism” and “has phenotype”, and</li>
+          <li><code>Phenotype1</code> is an individual of class, e.g., <code>LeafinsertionAlternate</code>, which is a subclass of <code>Phenotype</code></li>
+          </ul></li>
           </ul>
           <p>See the <a href="http://alaskaflora.org/onto/plantchars.ttl">ontology file</a> for more details!</p>
           <h2 id="on-the-use-of-owl-to-express-set-relationships">On the use of OWL to express set relationships</h2>

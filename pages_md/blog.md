@@ -17,4 +17,5 @@ will “live-blog” the process to share the decisions, discoveries
  * [2019-01-03](blog3.html): 3. **Variations of a taxonomic name**
  * [2019-01-17](blog4.html): 4. **Databasing name variations**
  * [2019-03-08](blog5.html): 5. **Sharing phenotype data**
+ * [2019-03-14](blog6.html): 6. **A tool for phenotype data entry**
 
