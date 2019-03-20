@@ -244,7 +244,7 @@ function iNatProject(cmd, json, i, j, data, nresults, user, date, taxon, id, thu
       "\"/></td><td>" thumbn[i] "</td></tr>" ;
   }
   print "</table>";
-  print "<p style=\"font-size:80%;\"><i>Search via: 'https://alaskaflora.org/do?method=inatproj&users=XXX' where XXX is a comma-separated list of iNat usernames.</i></p>";
+  print "<p style=\"font-size:80%;\"><i>Search via: 'http://alaskaflora.org/do?method=inatproj&users=XXX' where XXX is a comma-separated list of iNat usernames.</i></p>";
 
   htmlFooter();
 }
