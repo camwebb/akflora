@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Blog 7: A canonical names list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <h1 id="blog-7-a-canonical-names-list">Blog 7: A canonical names list</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2019-05-01</em></p>
+          <p>Hi again! Back to <em>names</em> after our recent foray into phenotypes.</p>
+          <p>Having got hold of most of the names “engines”, taken them apart, laid out the parts, tried to jam them together several times, I’m now ready to document the details of assembling our integrated names list. Work over the past months has been “two steps forward, one-and-a-half steps back” as I learned about the complexities an limitations of each source database and the challenges of integrating them. Actually, I think that’s how the work will be all the way through this project! But I think I now have a good base <em>canonical names list</em>. This is the definition of our master list of names:</p>
+          <ol type="1">
+          <li>Names from “core” online names resources (i.e., not derived; see <a href="blog2.html">blog 2</a>),</li>
+          <li>Sourced preferentially by the highest name resource “quality” (IPNI &gt; Tropicos &gt; World Checklist of Selected Plant Families),</li>
+          <li>Internally reconciled to remove duplicates and orthographic variants,</li>
+          <li>Each with a Globally Unique Identifier (with a live URL), and,</li>
+          <li>Including almost all names applied to Alaskan plants (at least which are available online).</li>
+          </ol>
+          <p>The list itself makes no note of status (currently accepted vs. synonym); that comes next.</p>
+          <h2 id="assembling-the-list">Assembling the list</h2>
+          <p>The steps to assemble this list were to:</p>
+          <ol type="1">
+          <li>Obtain a comprehensive “rough list” of names for Alaskan plant names (new and old) from a variety of sources: the ACCS checklist (currently <a href="https://floraofalaska.org/comprehensive-checklist/">here</a>), the ALA herbarium checklist assembled by Dave Murray and colleagues (<a href="ALA_checklist.html">here</a>), the Alaskan names in the <a href="http://panarcticflora.org">Panarctic Flora</a>, and the Alaska names in FNA (thanks to the FNA/Botanical Knowledge Portal group at the Ottawa Research and Development Centre, AAFC).</li>
+          <li>Find all the fuzzy-matching names in IPNI and Tropicos using GNR.</li>
+          <li>Find all the fuzzy-matching names in the World Checklist of Selected Plant Families, via a download of The Plant List, and matching using <code>matchnames</code> (<a href="blog3.html">Blog 3</a>).</li>
+          <li>Reconcile the Tropicos names to the IPNI names using <code>matchnames</code>, to remove the Tropicos duplicates of IPNI names.</li>
+          <li>Reconcile the WCSP names to the IPNI-plus-Tropicos names using <code>matchnames</code>.</li>
+          </ol>
+          <p>The resulting <a href="https://github.com/akflora/akflora/blob/master/dataflow/canonical/canon">list</a> contains 19,452 names (13,775 with an IPNI GUID, 4,890 with a Tropicos GUID, and 787 with a PlantList GUID). Here’s a diagram of the process:</p>
+          <p><img src="../img/assembly1.png" alt="overview diagram" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
+          <p>Remember, this canonical list of names includes both accepted names and synonyms. As we move towards the goal of an <em>accepted</em> names, we can take our lists of names with taxonomic status, from, e.g., the ALA checklist and the PAF checklist, and reconcile these to the canonical list to get a “clean” name (i.e., as originally spelled, and with standardized authors) for each name we wish to accept and its synonyms. In this way, we were able to get clean names for 3,358 out of 3,740 names from the ALA checklist, and 2,405 out of 2,823 names from the Alaskan plants in PAF. The non-matching names are generally new names, or old, obscure names still not captured in mainline, online databases.</p>
+          <h2 id="access-to-code">Access to code</h2>
+          <p>In line with the project goals of maximum transparency and repeatability, all scripts and code needed to build this canonical list, and (later) to generate the accepted names and taxon concept databases are available via the project <a href="https://github.com/akflora/akflora">Github repo</a>. Organizing principles include:</p>
+          <ul>
+          <li>A directory called <a href="https://github.com/akflora/akflora/tree/master/dataflow">dataflow</a> contains directories for building the source data files (ACCS, ALA, FNA, PAF, and WCSP). Each sub-directory includes a copy of the generated list of names for that resource.</li>
+          <li>A <code>LICENSE</code> file gives the licensing information for each of these source lists, should anyone want to use them.</li>
+          <li>The building of each base list is managed via a heavily documented <code>bash</code> script called <code>README.sh</code>.</li>
+          <li>The canonical list (above) is generated via the <code>README.sh</code> script in the <a href="https://github.com/akflora/akflora/tree/master/dataflow/canonical">canonical</a> directory, with the output file called <code>canon</code>. The numbered steps (1 to 5) above correspond to the same numbered sections in the <code>README.sh</code> script.</li>
+          <li>(Theoretically) the entire set of source lists and canonical list can be refreshed by running the <code>README.sh</code> script in the <a href="https://github.com/akflora/akflora/tree/master/dataflow">dataflow</a> directory.</li>
+          <li>Many steps in this integration process require manual intervention (e.g., whenever human input is needed during runs of <code>matchnames</code>). The automated scripts leave these steps out, substituting in pre-calculated files, and patches. The user is alerted to these manual phases as the scripts run, and the manual steps can be uncommented-out if the user wants to re-run these manually.</li>
+          <li>Software dependencies are given in the top-level <a href="https://github.com/akflora/akflora/tree/master/dataflow">README</a> file.</li>
+          </ul>
+          <p>OK, so I’m not expecting anyone to clone the repo and rebuild the data! But by building this documented resource I hope to answer any questions people may have downstream about exactly how the Flora of Alaska database was assembled.</p>
+          <hr />
+          <div id="disqus_thread">
+          
+          </div>
+          <script>
+          var disqus_config = function () {
+          this.page.url = 'https://alaskaflora.org/pages/blog7.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog7';                  // Edit
+          };(function() {  var d = document, s = d.createElement('script');
+          s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })(); </script>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
