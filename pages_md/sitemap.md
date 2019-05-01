@@ -12,6 +12,7 @@
  * [Blog 4: Databasing name variations](blog4.html)
  * [Blog 5: Sharing phenotype data](blog5.html)
  * [Blog 6: A tool for phenotype data entry](blog6.html)
+ * [Blog 7: A canonical names list](blog7.html)
  * [Dev Blog](blog.html)
  * [Alaskan Botanical Resources Online](links.html)
  * [People](people.html)

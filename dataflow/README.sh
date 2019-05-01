@@ -39,4 +39,10 @@ cd WCSP
 sh README.sh
 cd ..
 
+# Generate canonical list
+echo "Generating canonical list"
+cd canonical
+sh README.sh
+cd ..
+
 
