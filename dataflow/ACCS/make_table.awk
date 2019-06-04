@@ -13,6 +13,7 @@ BEGIN{
   s[$2]=$1
   t[$2]=$3
   l[$2]=$5
+  src[$2]=$6
 
   # test:
   if ($3 == 1)
@@ -27,15 +28,21 @@ BEGIN{
 }
 
 END{
-  
+
   for (i in s) {
     pn = parse_taxon_name(i, 1)
-    if (pn)
+    if (pn) {
+      # refs
+      print "accs-" s[i], src[i] >> "accs_refs"
+      close("accs_refs")
+
       if (t[i] == 1)
         print "accs-" s[i], pn , "accepted"
       else
         print "accs-" s[i], pn , "accs-" s[l[i]]
+    }
   }
+  
 }
 
 

@@ -37,7 +37,8 @@ BEGIN{
   inak[key]   = ($16) ? $16 : "" ;
   comm[key]   = ($17) ? $17 : "" ;
   ref[key]    = ($18) ? $18 : "" ;
-
+  commref[key]= (comm[key] && ref[key]) ? comm[key] "; " ref[key] : \
+    comm[key] ref[key] ;
 }
 
 END{
@@ -64,10 +65,18 @@ END{
 
   # for (i in namelist) print "ala-" n[i],  xgen[i], gen[i], xsp[i], sp[i], typ[i], ssp[i], auth[i], inak[i] >> "ala-names" ;
 
+  # # with AK true/false
+  # for (i in namelist)
+  #   print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],  \
+  #     ssp[i], auth[i], ns2a[i], inak[i] > "ala_ak"
+  # close("ala_ak")
+
+  # # AK with refs (added May 10 2019)
   for (i in namelist)
-    print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],  \
-      ssp[i], auth[i], ns2a[i], inak[i] > "ala_ak"
-  close("ala_ak")
+    if (inak[i] == "T")
+      print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],    \
+        ssp[i], auth[i], ns2a[i], commref[i] > "ala_refs"
+  close("ala_refs")
 
   for (i in namelist)
     print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],  \

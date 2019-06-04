@@ -10,7 +10,7 @@ Having got hold of most of the names “engines”, taken them apart, laid out
 the parts, tried to jam them together several times, I’m now ready to
 document the details of assembling our integrated names list.  Work
 over the past months has been “two steps forward, one-and-a-half steps
-back” as I learned about the complexities an limitations of each
+back” as I learned about the complexities and limitations of each
 source database and the challenges of integrating
 them. Actually, I think that’s how the work will be all the way
 through this project! But I think I now have a good base _canonical

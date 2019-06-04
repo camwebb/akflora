@@ -197,31 +197,33 @@ echo "WCSP names in canon list: " `grep -c "kew-" canon`
 
 # 6. Reconcile ALA to Canon list
 
-echo "Skipping manual stage (matchnames -a ala -b canon)"
-# {{{
-# matchnames -a ala -b canon -o ala2canon_match -f -q
-# 
-# echo "ALA names: " `wc ala | gawk '{print $1}'`
-# echo "Reconciling ALA to Canon. Matching: \" \
-#   `grep -vc no_match ala2canon_match` 
-# echo "Reconciling ALA to Canon. No match: " \
-#   `grep -c no_match ala2canon_match` 
-# }}}
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
+     ../ALA/ala > ala.1
+
+# echo "Skipping manual stage (matchnames -a ala -b canon)"
+matchnames -a ala.1 -b canon -o ala2canon_match -f -q
+echo "ALA names: " `wc ala | gawk '{print $1}'`
+echo "Reconciling ALA to Canon. Matching: " \
+  `grep -vc no_match ala2canon_match`
+echo "Reconciling ALA to Canon. No match: " \
+  `grep -c no_match ala2canon_match` 
 
 # 7. Reconcile PAF to Canon list
 
-echo "Skipping manual stage (matchnames -a paf -b canon)"
-# {{{
-# matchnames -a paf -b canon -o paf2canon_match -f -q
-# 
-# echo "PAF names: " `wc paf | gawk '{print $1}'`
-# echo "Reconciling PAF to Canon. Matching: \" \
-#   `grep -vc no_match paf2canon_match` 
-# echo "Reconciling PAF to Canon. No match: " \
-#   `grep -c no_match paf2canon_match` 
-# }}}
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}'  \
+     ../PAF/paf > paf.1
 
-rm -f ala ala2canon_match paf paf2canon_match
+echo "Skipping manual stage (matchnames -a paf -b canon)"
+matchnames -a paf.1 -b canon -o paf2canon_match -f -q
+
+echo "PAF names: " `wc paf | gawk '{print $1}'`
+echo "Reconciling PAF to Canon. Matching: " \
+  `grep -vc no_match paf2canon_match` 
+echo "Reconciling PAF to Canon. No match: " \
+  `grep -c no_match paf2canon_match` 
+
+# rm -f ala.1 paf.1 # ala2canon_match paf paf2canon_match
 
 # mysql --show-warnings -u cam -pPASS < load_canon.sql
+
 

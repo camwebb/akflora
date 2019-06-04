@@ -12,3 +12,8 @@
  * [Flora of the Canadian Arctic Archipelago](https://nature.ca/index.php?q=en/research-collections/research-projects/past-research-projects/flora-canadian-arctic-archipelago), and [here](http://nature.ca/aaflora/data) (in DELTA)
  * [Arctic Flora of Canada and Alaska](http://arcticplants.myspecies.info/)
  * [Flora of North America (new)](http://beta.floranorthamerica.org/wiki/Main_Page)
+ *
+   [World Checklist of Selected Plant Families](http://wcsp.science.kew.org/)
+   Data was previously only available via The Plant List, but now has
+   its own site (since 2017). Data format not conducive to re-use.
+   
