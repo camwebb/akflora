@@ -33,13 +33,13 @@ END{
     pn = parse_taxon_name(i, 1)
     if (pn) {
       # refs
-      print "accs-" s[i], src[i] >> "accs_refs"
-      close("accs_refs")
+#      print "accs-" s[i], src[i] >> "accs_refs"
+#      close("accs_refs")
 
       if (t[i] == 1)
-        print "accs-" s[i], pn , "accepted"
+        print "accs-" s[i], pn , "accepted", src[i]
       else
-        print "accs-" s[i], pn , "accs-" s[l[i]]
+        print "accs-" s[i], pn , "accs-" s[l[i]], src[i]
     }
   }
   

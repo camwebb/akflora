@@ -29,6 +29,7 @@ echo "(waiting 10 seconds)"
 sleep 10
 echo "(back again)"
 
+# the entries.notes field has the references for the synonymy
 echo "SELECT paf_id, ranking, name, label, subspecies, variety, 
              author, original_author, syns , specifier, affinis
       FROM entries 
@@ -89,9 +90,16 @@ gawk -i "taxon-tools.awk" -f create_syn_lookup.awk > paf
 # Warning: paf-343001, Dupontia fisheri R. Br. is both acc and syn
 #  (paf-343001b-s1)
 
+# 7. Make the ref table (could have done this earlier, in the first query)
 
-# 7. Clean up
-rm -f paf.1 paf.2 paf.3
+echo "SELECT paf_id, notes FROM entries" | mysql -N -u $AKFLORA_DBUSER \
+        -p$AKFLORA_DBPASSWORD --show-warnings paf | sed 's/NULL//g' | sed 's/\t/|/g' > paf.4
+
+gawk 'BEGIN{FS=OFS="|"; while ((getline < "paf.4") > 0) notes[$1]=$2; while ((getline < "paf") > 0) { if ($9 == "accepted") id = $1 ; else id = $9; split(id,ix,"-"); print $1, $9, notes[ix[2]] }}' > paf_refs
+
+# 8. Clean up
+rm -f paf.1 paf.2 paf.3 paf.4
+
 
 
 # Notes:
@@ -104,3 +112,4 @@ rm -f paf.1 paf.2 paf.3
 #   ( ranking = 'species' or ranking = 'subspecies' ) \
 #   AND entries.paf_id = '$1';" | mysql -N -u cam -ptesttest paf | \
 #     sed 's/NULL//g'
+

@@ -19,6 +19,10 @@ echo "select speciesAdjudicated.adjudicatedID, concat_ws(' ', nameAdjudicated, a
 
 sed -i -e 's/ ssp. / subsp. /g' accs.1
 
-gawk -f make_table.awk accs.1 > accs
+gawk -f make_table.awk accs.1 > accs.2
 
-rm -f accs.1
+gawk 'BEGIN{FS=OFS="|"}{print $1,$2,$3,$4,$5,$6,$7,$8,$9}' accs.2 > accs
+
+gawk 'BEGIN{FS=OFS="|"}{print $1,$9,$10}' accs.2 > accs_refs
+
+rm -f accs.1 accs.2

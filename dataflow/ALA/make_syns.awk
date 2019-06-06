@@ -74,8 +74,7 @@ END{
   # # AK with refs (added May 10 2019)
   for (i in namelist)
     if (inak[i] == "T")
-      print "ala-" n[i], xgen[i], gen[i], xsp[i], sp[i], typ[i],    \
-        ssp[i], auth[i], ns2a[i], commref[i] > "ala_refs"
+      print "ala-" n[i], ns2a[i], commref[i] > "ala_refs"
   close("ala_refs")
 
   for (i in namelist)
