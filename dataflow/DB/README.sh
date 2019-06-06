@@ -23,6 +23,8 @@ echo "2. Loading ALA"
 
 mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora < 2_load_ala.sql
 
+rm -rf ala ala_refs
+
 # 3. PAF
 
 cp ../PAF/paf .
@@ -31,10 +33,11 @@ sed -i -E -e 's/\|\|/|\\N|/g' -e 's/\|\|/|\\N|/g' -e 's/^\|/\\N|/g' -e 's/\|$/|\
 cp -f ../PAF/paf_refs .
 sed -i -E -e 's/\|\|/|\\N|/g' -e 's/\|\|/|\\N|/g' -e 's/^\|/\\N|/g' -e 's/\|$/|\\N/g' paf_refs
 
-echo "2. Loading PAF"
+echo "3. Loading PAF"
 
 mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora < 3_load_paf.sql
 
+rm -rf paf paf_refs
 
 
 

@@ -19,6 +19,7 @@ dataflow/ALA/ala.*
 dataflow/chars*
 dataflow/authors*
 
+dataflow/DB/bu*
 dataflow/canonical/accs
 dataflow/canonical/accs2wcsp.tgz
 dataflow/canonical/gnr.out
