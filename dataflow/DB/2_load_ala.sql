@@ -117,15 +117,19 @@ update ala_ortho, uids set ala_ortho.fromID = uids.nameID
 update ala_ortho, uids set ala_ortho.toID = uids.nameID
   where uids.code = ala_ortho.code_canon;
 
-ALTER TABLE `ala_ortho`
-  ADD COLUMN `id` int(11) PRIMARY KEY AUTO_INCREMENT FIRST;
+-- ALTER TABLE `ala_ortho` ADD UNIQUE INDEX `fromID` (`fromID`);
+-- ALTER TABLE `ala_ortho` ADD INDEX `toID` (`toID`);
+-- ALTER TABLE `ala_ortho` DROP COLUMN code_ala;
+-- ALTER TABLE `ala_ortho` DROP COLUMN code_canon;
+-- RENAME TABLE `ala_ortho` TO `ortho`;
 
-ALTER TABLE `ala_ortho` ADD UNIQUE INDEX `fromID` (`fromID`);
-ALTER TABLE `ala_ortho` ADD INDEX `toID` (`toID`);
-  
-ALTER TABLE `ala_ortho` DROP COLUMN code_ala;
+-- Load the non-exact matches:
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT fromID, toID, `type`
+  FROM `ala_ortho` WHERE fromID != toID;
+-- Load the non_matches:
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT fromID, toID, 'self'
+  FROM `ala_ortho` WHERE fromID = toID AND `type` != 'exact';
 
-ALTER TABLE `ala_ortho` DROP COLUMN code_canon;
+select if((select count(*) from names) != (select count(*) from ortho),'names and ortho not same','names and ortho same') as 'query';
 
-RENAME TABLE `ala_ortho` TO `ortho`;
-
+DROP TABLE `ala_ortho`;

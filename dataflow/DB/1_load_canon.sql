@@ -110,3 +110,23 @@ update uids set authority = 'WCSP' where authority = 'KEW-';
 -- |      676 | WCSP      |
 -- +----------+-----------+
 
+-- PART 3 MAKE ORTHO (self-to-self)
+
+SELECT 'Making table ortho';
+
+DROP TABLE IF EXISTS `ortho`;
+CREATE TABLE `ortho` (
+  `id`             int(11) PRIMARY KEY AUTO_INCREMENT,
+  `fromID`   int(11) NOT NULL,
+  `toID` int(11) NOT NULL,
+  `type`       varchar(15) NOT NULL
+);
+
+ALTER TABLE `ortho` ADD UNIQUE INDEX `fromID` (`fromID`);
+ALTER TABLE `ortho` ADD INDEX `toID` (`toID`);
+ALTER TABLE `ortho` ADD FOREIGN KEY `fk_fromID` (`fromID`) REFERENCES `names`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `ortho` ADD FOREIGN KEY `fk_toID` (`toID`) REFERENCES `names`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT id, id, 'self' FROM `names`;
+
+

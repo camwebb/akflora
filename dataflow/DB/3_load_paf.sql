@@ -83,7 +83,7 @@ INSERT INTO `rel` (`fromID`, `toID`, `status`, `source`, `refs`)
 
 -- paf_ortho
 
-SELECT 'Making table paf_ortho';
+SELECT 'Making table ortho';
 
 DROP TABLE IF EXISTS `paf_ortho`;
 CREATE TABLE `paf_ortho` (
@@ -106,13 +106,55 @@ update paf_ortho, uids set paf_ortho.fromID = uids.nameID
 update paf_ortho, uids set paf_ortho.toID = uids.nameID
   where uids.code = paf_ortho.code_canon;
 
-INSERT INTO `ortho` (`fromID`, `toID`, `type`)
-  SELECT `paf_ortho`.`fromID`, `paf_ortho`.`toID`, `paf_ortho`.`type`
-  FROM `paf_ortho`
-  LEFT JOIN `ortho` ON ortho.fromID = paf_ortho.fromID
-  WHERE ortho.fromID IS NULL;
+-- ALTER TABLE `paf_ortho` ADD UNIQUE INDEX `fromID` (`fromID`);
+-- ALTER TABLE `paf_ortho` ADD INDEX `toID` (`toID`);
+-- ALTER TABLE `paf_ortho` DROP COLUMN code_paf;
+-- ALTER TABLE `paf_ortho` DROP COLUMN code_canon;
+-- RENAME TABLE `paf_ortho` TO `ortho`;
 
-DROP TABLE paf_ortho ;
+-- Load the non-exact matches:
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT fromID, toID, `type`
+  FROM `paf_ortho` WHERE fromID != toID;
+-- Load the non_matches:
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT fromID, toID, 'self'
+  FROM `paf_ortho` WHERE fromID = toID AND `type` != 'exact';
+
+select if((select count(*) from names) != (select count(*) from ortho),'names and ortho not same','names and ortho same') as 'query';
+
+DROP TABLE `paf_ortho`;
+
+-- -- paf_ortho
+
+-- SELECT 'Making table paf_ortho';
+
+-- DROP TABLE IF EXISTS `paf_ortho`;
+-- CREATE TABLE `paf_ortho` (
+--   `code_paf`   varchar(30) NOT NULL,
+--   `code_canon` varchar(30) NOT NULL,
+--   `type`       varchar(15) NOT NULL
+-- );
+
+-- LOAD DATA LOCAL INFILE 'paf_ortho' INTO TABLE `paf_ortho`
+--   FIELDS TERMINATED BY '|' ;
+
+
+-- ALTER TABLE paf_ortho ADD COLUMN fromID int(11) FIRST;
+
+-- ALTER TABLE paf_ortho ADD COLUMN toID int(11) AFTER `fromID`;
+
+-- update paf_ortho, uids set paf_ortho.fromID = uids.nameID
+--   where uids.code = paf_ortho.code_paf;
+
+-- update paf_ortho, uids set paf_ortho.toID = uids.nameID
+--   where uids.code = paf_ortho.code_canon;
+
+-- INSERT INTO `ortho` (`fromID`, `toID`, `type`)
+--   SELECT `paf_ortho`.`fromID`, `paf_ortho`.`toID`, `paf_ortho`.`type`
+--   FROM `paf_ortho`
+--   LEFT JOIN `ortho` ON ortho.fromID = paf_ortho.fromID
+--   WHERE ortho.fromID IS NULL;
+
+-- DROP TABLE paf_ortho ;
 
 
 

@@ -28,7 +28,7 @@ cp -f ../ALA/ala_refs .
 sqlnulls ala_refs
 sed -i -E -e 's/\|AK\ taxon\ list$/|\\N/g' ala_refs
 
-gawk 'BEGIN{FS=OFS="|"} $3 !~ /^(no_match|exact|auto_irank|manual\?\?)$/ {print $1, $2, $3}' \
+gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) {print $1, $2, $3} else {print $1, $1, $3}}' \
      ../canonical/ala2canon_match > ala_ortho
 sqlnulls ala_ortho 
 
@@ -39,6 +39,7 @@ mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora \
 
 rm -rf ala ala_refs
 
+
 # 3. PAF
 
 cp ../PAF/paf .
@@ -47,9 +48,11 @@ sqlnulls paf
 cp -f ../PAF/paf_refs .
 sqlnulls paf_refs
 
-gawk 'BEGIN{FS=OFS="|"} $3 !~ /^(no_match|exact|auto_irank|manual\?\?)$/ \
-      {print $1, $2, $3}' ../canonical/paf2canon_match > paf_ortho
-sqlnulls ala_ortho 
+#gawk 'BEGIN{FS=OFS="|"} $3 !~ /^(no_match|exact|auto_irank|manual\?\?)$/ \
+#      {print $1, $2, $3}' ../canonical/paf2canon_match > paf_ortho
+gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) \
+     {print $1, $2, $3} else {print $1, $1, $3}}' ../canonical/paf2canon_match > paf_ortho
+sqlnulls paf_ortho 
 
 echo "3. Loading PAF"
 
