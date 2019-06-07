@@ -40,7 +40,9 @@ SELECT DISTINCT ala_tmp.`code`, 'ALA' , `names`.`id`
     FROM `ala_tmp`,`names`
     WHERE ala_tmp.md5sum = `names`.`md5sum` ;
 
-SELECT 'making ala_rel';
+drop table `ala_tmp`;
+
+SELECT 'making rel';
 
 DROP TABLE IF EXISTS ala_rel;
 CREATE TABLE `ala_rel` (
@@ -83,38 +85,47 @@ UPDATE `ala_rel`, uids SET `ala_rel`.`toID` = `uids`.`nameID` WHERE `uids`.`code
 -- move to main rel
 
 RENAME TABLE `ala_rel` TO `rel`;
+ALTER TABLE `rel`
+  ADD COLUMN `id` int(11) PRIMARY KEY AUTO_INCREMENT FIRST;
 alter TABLE `rel` DROP FOREIGN KEY `fk_code`;
 alter TABLE `rel` DROP FOREIGN KEY `fk_tocode`;
 alter TABLE `rel` DROP COLUMN `code`;
 alter TABLE `rel` DROP COLUMN `tocode`;
 
+-- ala_ortho
 
--- Compare!
+SELECT 'Making table ortho';
 
--- select rel.source, rel.status, A.genhyb, A.genus, A.sphyb, A.species, A.ssptype, A.ssp, A.author, B.genhyb, B.genus, B.sphyb, B.species, B.ssptype, B.ssp, B.author from rel left join names as A on rel.fromID = A.id left join names as B on rel.toID = B.id ORDER BY A.genus, A.species;
+DROP TABLE IF EXISTS `ala_ortho`;
+CREATE TABLE `ala_ortho` (
+  `code_ala`   varchar(30) NOT NULL,
+  `code_canon` varchar(30) NOT NULL,
+  `type`       varchar(15) NOT NULL
+);
 
--- SELECT
---  A.genhyb, A.genus, A.sphyb, A.species,
---    A.ssptype, A.ssp, A.author,
---  B.source, B.status, B.genhyb, B.genus, B.sphyb, B.species,
---    B.ssptype, B.ssp, B.author,
---  C.source, C.status, C.genhyb, C.genus, C.sphyb, C.species,
---    C.ssptype, C.ssp, C.author
--- FROM
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID
---    FROM rel, names where names.id = rel.toID) AS A
--- LEFT JOIN 
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID, source, status
---    FROM rel, names where names.id = rel.fromID AND
---    rel.source = 'ALA') AS B
--- ON A.nID = B.nID
--- LEFT JOIN 
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID, source, status
---    FROM rel, names where names.id = rel.fromID AND
---    rel.source = 'ala') AS C
--- ON A.nID = C.nID
--- ORDER BY A.genus, A.species;
+LOAD DATA LOCAL INFILE 'ala_ortho' INTO TABLE `ala_ortho`
+  FIELDS TERMINATED BY '|' ;
+
+
+ALTER TABLE ala_ortho ADD COLUMN fromID int(11) FIRST;
+
+ALTER TABLE ala_ortho ADD COLUMN toID int(11) AFTER `fromID`;
+
+update ala_ortho, uids set ala_ortho.fromID = uids.nameID
+  where uids.code = ala_ortho.code_ala;
+
+update ala_ortho, uids set ala_ortho.toID = uids.nameID
+  where uids.code = ala_ortho.code_canon;
+
+ALTER TABLE `ala_ortho`
+  ADD COLUMN `id` int(11) PRIMARY KEY AUTO_INCREMENT FIRST;
+
+ALTER TABLE `ala_ortho` ADD UNIQUE INDEX `fromID` (`fromID`);
+ALTER TABLE `ala_ortho` ADD INDEX `toID` (`toID`);
+  
+ALTER TABLE `ala_ortho` DROP COLUMN code_ala;
+
+ALTER TABLE `ala_ortho` DROP COLUMN code_canon;
+
+RENAME TABLE `ala_ortho` TO `ortho`;
 

@@ -78,41 +78,41 @@ UPDATE `paf_rel`, uids SET `paf_rel`.`toID` = `uids`.`nameID` WHERE `uids`.`code
 
 -- copy to main rel
 
-alter TABLE `paf_rel` DROP FOREIGN KEY `fk_code`;
-alter TABLE `paf_rel` DROP FOREIGN KEY `fk_tocode`;
-alter TABLE `paf_rel` DROP COLUMN `code`;
-alter TABLE `paf_rel` DROP COLUMN `tocode`;
+INSERT INTO `rel` (`fromID`, `toID`, `status`, `source`, `refs`)
+  SELECT `fromID`, `toID`, `status`, `source`, `refs` FROM `paf_rel` ;
 
-INSERT INTO `rel` (`fromID`, `toID`, `status`, `source`, `refs`) SELECT * FROM
- `paf_rel` ;
+-- paf_ortho
+
+SELECT 'Making table paf_ortho';
+
+DROP TABLE IF EXISTS `paf_ortho`;
+CREATE TABLE `paf_ortho` (
+  `code_paf`   varchar(30) NOT NULL,
+  `code_canon` varchar(30) NOT NULL,
+  `type`       varchar(15) NOT NULL
+);
+
+LOAD DATA LOCAL INFILE 'paf_ortho' INTO TABLE `paf_ortho`
+  FIELDS TERMINATED BY '|' ;
 
 
--- Compare!
+ALTER TABLE paf_ortho ADD COLUMN fromID int(11) FIRST;
 
--- select rel.source, rel.status, A.genhyb, A.genus, A.sphyb, A.species, A.ssptype, A.ssp, A.author, B.genhyb, B.genus, B.sphyb, B.species, B.ssptype, B.ssp, B.author from rel left join names as A on rel.fromID = A.id left join names as B on rel.toID = B.id ORDER BY A.genus, A.species;
+ALTER TABLE paf_ortho ADD COLUMN toID int(11) AFTER `fromID`;
 
--- SELECT
---  A.genhyb, A.genus, A.sphyb, A.species,
---    A.ssptype, A.ssp, A.author,
---  B.source, B.status, B.genhyb, B.genus, B.sphyb, B.species,
---    B.ssptype, B.ssp, B.author,
---  C.source, C.status, C.genhyb, C.genus, C.sphyb, C.species,
---    C.ssptype, C.ssp, C.author
--- FROM
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID
---    FROM rel, names where names.id = rel.toID) AS A
--- LEFT JOIN 
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID, source, status
---    FROM rel, names where names.id = rel.fromID AND
---    rel.source = 'ALA') AS B
--- ON A.nID = B.nID
--- LEFT JOIN 
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID, source, status
---    FROM rel, names where names.id = rel.fromID AND
---    rel.source = 'ala') AS C
--- ON A.nID = C.nID
--- ORDER BY A.genus, A.species;
+update paf_ortho, uids set paf_ortho.fromID = uids.nameID
+  where uids.code = paf_ortho.code_paf;
+
+update paf_ortho, uids set paf_ortho.toID = uids.nameID
+  where uids.code = paf_ortho.code_canon;
+
+INSERT INTO `ortho` (`fromID`, `toID`, `type`)
+  SELECT `paf_ortho`.`fromID`, `paf_ortho`.`toID`, `paf_ortho`.`type`
+  FROM `paf_ortho`
+  LEFT JOIN `ortho` ON ortho.fromID = paf_ortho.fromID
+  WHERE ortho.fromID IS NULL;
+
+DROP TABLE paf_ortho ;
+
+
 
