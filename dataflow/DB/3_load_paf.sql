@@ -112,12 +112,18 @@ update paf_ortho, uids set paf_ortho.toID = uids.nameID
 -- ALTER TABLE `paf_ortho` DROP COLUMN code_canon;
 -- RENAME TABLE `paf_ortho` TO `ortho`;
 
--- Load the non-exact matches:
-INSERT INTO `ortho` (fromID, toID, `type`) SELECT fromID, toID, `type`
-  FROM `paf_ortho` WHERE fromID != toID;
--- Load the non_matches:
-INSERT INTO `ortho` (fromID, toID, `type`) SELECT fromID, toID, 'self'
-  FROM `paf_ortho` WHERE fromID = toID AND `type` != 'exact';
+-- Load the non-exact matches (new ones only):
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT paf_ortho.fromID,
+  paf_ortho.toID, paf_ortho.`type`
+  FROM `paf_ortho` LEFT JOIN ortho ON ortho.fromID = paf_ortho.fromID  WHERE
+  ortho.fromID IS NULL AND
+  paf_ortho.fromID != paf_ortho.toID;
+-- Load the non_matches (new ones only):
+INSERT INTO `ortho` (fromID, toID, `type`) SELECT paf_ortho.fromID,
+  paf_ortho.toID, 'self'
+  FROM `paf_ortho` LEFT JOIN ortho ON ortho.fromID = paf_ortho.fromID  WHERE
+  ortho.fromID IS NULL
+  AND paf_ortho.fromID = paf_ortho.toID AND paf_ortho.`type` != 'exact';
 
 select if((select count(*) from names) != (select count(*) from ortho),'names and ortho not same','names and ortho same') as 'query';
 

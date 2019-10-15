@@ -208,6 +208,8 @@ echo "Reconciling ALA to Canon. Matching: " \
 echo "Reconciling ALA to Canon. No match: " \
   `grep -c no_match ala2canon_match` 
 
+rm -f ala.1 
+
 # 7. Reconcile PAF to Canon list
 
 gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}'  \
@@ -222,8 +224,39 @@ echo "Reconciling PAF to Canon. Matching: " \
 echo "Reconciling PAF to Canon. No match: " \
   `grep -c no_match paf2canon_match` 
 
-# rm -f ala.1 paf.1 # ala2canon_match paf paf2canon_match
+rm -f paf.1 
 
-# mysql --show-warnings -u cam -pPASS < load_canon.sql
+
+# 7. Reconcile WCSP to Canon list
+
+gunzip -k -c ../WCSP/wcsp.gz > wcsp
+gawk 'BEGIN{FS="|"}{g[$3]++}END{for (i in g) print i}' \
+     canon | sort > canon_gen
+# need to drop the duplicate names, duplicate codes, and only load genera in canon list:
+gawk 'BEGIN{
+        FS=OFS="|";
+        while ((getline < "canon_gen") > 0) g[$0]++ }
+      {if(((++key[$4 $5 $6 $7 $8 $9 $10])==1) && g[$5] && (++code[$1]==1))
+      print "_" $1, $4, $5, $6, $7, $8, $9, $10}' wcsp > wcsp.1
+sed -i 's/|+|/|×|/g' wcsp.1
+
+echo "Skipping manual stage (matchnames -a paf -b canon)"
+matchnames -a wcsp.1 -b canon -o wcsp2canon_match -f -e 2 -q
+
+# There were identifiers that were some exactly the same in canon and wcsp, so
+# we added '_' to wcsp. Now remove:
+
+sed -i 's/^_//g' wcsp2canon_match
+
+echo "WCSP names: " `wc wcsp.1 | gawk '{print $1}'`
+echo "Reconciling WCSP to Canon. Matching: " \
+  `grep -vc no_match wcsp2canon_match` 
+echo "Reconciling WCSP to Canon. No match: " \
+  `grep -c no_match wcsp2canon_match` 
+
+rm -f wcsp wcsp.1 canon_gen
+
+
+
 
 

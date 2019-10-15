@@ -95,12 +95,18 @@ gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{for(i=1;i<=NF;i++) if(substr(
 # sed -i '/gcc-150007|/ d' tpl.csv
 # # Made a patch
 
-patch tpl.2 < fixtpl.patch
+patch -o tpl.3 tpl.2 fixtpl.patch
 
 # WCSP from the Plant List
 
-gawk 'BEGIN{FS="|"} $14 ~ /WCSP/ {print $0}' tpl.2 > wcsp
-rm -f tpl*
+# NOTE! searching on WCSP does not add the accepted names where the
+# accepted names are not 'according to WCSP'. How does this impact the
+# creation of the canonical list?  No problem, because the accepted
+# names are generally ipni or tro names. However, for the tcsp_rel
+# table, we need to add the accepted names as well.
+
+gawk 'BEGIN{FS="|"} $14 ~ /WCSP/ {print $0}' tpl.3 > wcsp
+# rm -f tpl*
 
 # check via
 # gawk 'BEGIN{FS="|"}{x[$8]++}END{for(i in x) print i, x[i]}' wcsp.csv
@@ -109,4 +115,7 @@ rm -f tpl*
 sed -i 's/|var|/|var.|/g' wcsp
 sed -i 's/|var. schneideri|/|var.|schneideri/g' wcsp
 
+gzip tpl.3
 gzip wcsp
+
+rm tpl tpl.2

@@ -22,7 +22,6 @@ USE `akflora`;
 SELECT 'Making names';
 
 -- DROP TABLE IF EXISTS `names`;
-
 CREATE TABLE `names` (
   `code` varchar(20) NOT NULL,
   `genhyb` enum('×') DEFAULT NULL,
@@ -32,7 +31,10 @@ CREATE TABLE `names` (
   `ssptype` varchar(20) DEFAULT NULL,
   `ssp` varchar(30) DEFAULT NULL,
   `author` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
+
+-- ENGINE=InnoDB ;
+-- Not needed. SHOW ENGINES: InnoDB is default
 
 LOAD DATA LOCAL INFILE 'canon' INTO TABLE `names` FIELDS TERMINATED BY '|' ;
 
@@ -47,9 +49,10 @@ ALTER TABLE `names` ADD `md5sum` VARCHAR(50) NULL DEFAULT NULL ;
 SELECT 'Making names md5sum';
 
 UPDATE `names` SET `md5sum` = MD5(concat_ws(' ',  `genhyb`, `genus`, `sphyb` , `species` , `ssptype` , `ssp` , `author`)); 
+ALTER TABLE `names` ADD UNIQUE INDEX `md5sum` (`md5sum`);
 
-ALTER TABLE `names`
-  ADD KEY `md5sum` (`md5sum`);
+--ALTER TABLE `names`
+--  ADD KEY `md5sum` (`md5sum`);
 
 ALTER TABLE `names` ADD `can` TINYINT(1) NULL DEFAULT NULL ;
 UPDATE `names` SET `can` = 1 ;
@@ -71,7 +74,7 @@ CREATE TABLE `uids` (
   `authority` varchar(20) NOT NULL,
 --  `canon` TINYINT(1) NULL DEFAULT NULL,
   `nameID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 ALTER TABLE `uids`
  ADD KEY `nameID` (`nameID`);
@@ -114,7 +117,7 @@ update uids set authority = 'WCSP' where authority = 'KEW-';
 
 SELECT 'Making table ortho';
 
-DROP TABLE IF EXISTS `ortho`;
+-- DROP TABLE IF EXISTS `ortho`;
 CREATE TABLE `ortho` (
   `id`             int(11) PRIMARY KEY AUTO_INCREMENT,
   `fromID`   int(11) NOT NULL,

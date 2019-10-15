@@ -10,60 +10,26 @@
 --
 --  canon -(unortho)-> ALA,PAF -(syn)-> ALAsyn,PAFsyn -(ortho)-> compare
 
--- ALTER TABLE names ADD COLUMN name VARCHAR(200);
--- UPDATE names SET name =
---   CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author);
+ALTER TABLE names ADD COLUMN name VARCHAR(200);
+UPDATE names SET name =
+  CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author);
 
 -- start with same names in both:
 
 -- for each of ALA and PAF develop a can -rel-> can mapping:
 
-SELECT * FROM
-( select fromID, toID from rel, ortho where rel.source = "ALA" and rel
+SELECT C1.name AS 'canon', `ON`.name AS 'ortho', A3.name AS 'ala', A.refs AS 'ala-refs', P3.name AS 'paf', P.refs AS 'paf-refs' FROM `names` AS C1
+  RIGHT JOIN ortho AS O ON C1.id = O.toID
+  LEFT JOIN `names` AS `ON` ON O.fromID = `ON`.id
+  LEFT JOIN rel AS A ON O.fromID = A.fromID AND A.`source` = 'ALA' 
+  LEFT JOIN rel AS P ON O.fromID = P.fromID AND P.`source` = 'PAF' 
+  LEFT JOIN ortho AS A2 ON A.toID = A2.fromID
+  LEFT JOIN `names` AS A3 ON A2.toID = A3.id
+  LEFT JOIN ortho AS P2 ON P.toID = P2.fromID
+  LEFT JOIN `names` AS P3 ON P2.toID = P3.id
+  WHERE A2.toID != P2.toID ;
+
+ALTER TABLE names DROP COLUMN `name`;
 
 
 
-
-
-
-
-SELECT *
-FROM
- (SELECT id, CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author) AS n
- FROM `names`) AS A
- LEFT JOIN
- (SELECT id, CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author) AS n
- FROM `names`) AS A
- 
- ;
-
--- mysql -N -u cam -ptesttest tmp_ala < sql/query1.sql | sed 's/NULL//g' | tr "\t" "|" > out.csv
--- SELECT
---  A.nID AS 'fromID' , A.genhyb, A.genus, A.sphyb, A.species,
---    A.ssptype, A.ssp, A.author,
---  B.nID AS 'toID ALA', B.source, B.status, B.genhyb, B.genus, B.sphyb, B.species,
---    B.ssptype, B.ssp, B.author,
---  C.nID AS 'toID PAF', C.source, C.status, C.genhyb, C.genus, C.sphyb, C.species,
---    C.ssptype, C.ssp, C.author,
---  IF(B.status IS NOT NULL AND C.status IS NOT NULL,
---     IF(((B.status = C.status) AND (B.nID = C.nID)), 'same', 'different'), NULL) AS `BvC`
--- FROM
---  -- could also just use all names, filtering by no match
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID
---    FROM rel, names where names.id = rel.fromID) AS A
--- LEFT JOIN 
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID, source, status, fromID
---    FROM rel, names where names.id = rel.toID AND
---    rel.source = 'ALA') AS B
--- ON A.nID = B.fromID
--- LEFT JOIN 
---  (SELECT DISTINCT genhyb, genus, sphyb, species,
---    ssptype, ssp, author, names.id AS nID, source, status, fromID
---    FROM rel, names where names.id = rel.toID AND
---    rel.source = 'PAF') AS C
--- ON A.nID = C.fromID
--- HAVING `BvC` = 'different'
---   -- IS NOT NULL
--- ORDER BY A.genus, A.species;
