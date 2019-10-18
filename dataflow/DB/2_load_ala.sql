@@ -1,8 +1,8 @@
 SELECT 'Making table ala_tmp';
 
-DROP TABLE IF EXISTS `ala_tmp`;
+-- DROP TABLE IF EXISTS `ala_tmp`;
 CREATE TABLE `ala_tmp` (
-  `code` varchar(30),
+  `code` varchar(20),
   `genhyb` enum('×') DEFAULT NULL,
   `genus` varchar(20) DEFAULT NULL,
   `sphyb` enum('×') DEFAULT NULL,
@@ -33,7 +33,8 @@ SELECT 'Remaking names.md5sum as a check';
 UPDATE `names` SET `md5sum` = MD5(concat_ws(' ',  `genhyb`, `genus`, `sphyb` , `species` , `ssptype` , `ssp` , `author`)); 
 
 -- test
-select count(*) as '...new ALA names:' from names where `can` IS NULL;
+select '...new ALA names:';
+select count(*) from names where `can` IS NULL;
 
 INSERT INTO `uids` (`code`, `authority`, `nameID`) 
 SELECT DISTINCT ala_tmp.`code`, 'ALA' , `names`.`id`
@@ -44,25 +45,20 @@ drop table `ala_tmp`;
 
 SELECT 'making rel';
 
-DROP TABLE IF EXISTS ala_rel;
+-- DROP TABLE IF EXISTS ala_rel;
 CREATE TABLE `ala_rel` (
   `code` varchar(20) NOT NULL,
   `tocode` varchar(20) DEFAULT NULL,
   -- long refs for later PAF field
   `refs` varchar(10000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 LOAD DATA LOCAL INFILE 'ala_refs' INTO TABLE `ala_rel` FIELDS TERMINATED BY '|' ;
 
-ALTER TABLE `ala_rel`
- ADD INDEX `code` (`code`);
-ALTER TABLE `ala_rel`
- ADD INDEX `tocode` (`tocode`);
-ALTER TABLE `ala_rel`
-  ADD COLUMN `status` ENUM('accepted','synonym') NULL DEFAULT NULL
-  AFTER `tocode`; 
-ALTER TABLE `ala_rel`
- ADD COLUMN `source` varchar(10) DEFAULT 'ALA' AFTER `status`;
+ALTER TABLE `ala_rel` ADD INDEX `code` (`code`);
+ALTER TABLE `ala_rel` ADD INDEX `tocode` (`tocode`);
+ALTER TABLE `ala_rel` ADD COLUMN `status` ENUM('accepted','synonym') NULL DEFAULT NULL AFTER `tocode`; 
+ALTER TABLE `ala_rel` ADD COLUMN `source` varchar(10) DEFAULT 'ALA' AFTER `status`;
 UPDATE `ala_rel` SET `status` = 'accepted' WHERE `tocode` = 'accepted';
 UPDATE `ala_rel` SET `status` = 'synonym' WHERE `tocode` != 'accepted';
 UPDATE `ala_rel` SET `tocode` = NULL WHERE `tocode` = 'accepted';
@@ -96,7 +92,7 @@ alter TABLE `rel` DROP COLUMN `tocode`;
 
 SELECT 'Making table ortho';
 
-DROP TABLE IF EXISTS `ala_ortho`;
+-- DROP TABLE IF EXISTS `ala_ortho`;
 CREATE TABLE `ala_ortho` (
   `code_ala`   varchar(30) NOT NULL,
   `code_canon` varchar(30) NOT NULL,

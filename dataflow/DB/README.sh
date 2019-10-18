@@ -39,7 +39,6 @@ mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora \
 
 rm -rf ala ala_refs ala_ortho
 
-
 # 3. PAF
 
 cp ../PAF/paf .
@@ -61,6 +60,7 @@ mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora \
 
 rm -rf paf paf_refs
 
+exit
 # 4. WCSP
 
 # Fields: [1] ID,Major group,Family,Genus hybrid marker, Genus, [6] Species

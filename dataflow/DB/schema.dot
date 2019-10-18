@@ -40,9 +40,9 @@ digraph g {
          </table>>] ;
     
     // Edges      
-    syn:p2 -> names:p0 [headlabel="1",taillabel="1",labeldistance=1];
+    syn:p2 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
     syn:p3 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
-    ortho:p2 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
+    ortho:p2 -> names:p0 [headlabel="1",taillabel="1",labeldistance=1];
     ortho:p3 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
     uids:p1 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
     names:p2 -> uids:p0 [headlabel="1",taillabel="1",labeldistance=1];

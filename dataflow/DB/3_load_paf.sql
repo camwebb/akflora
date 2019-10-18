@@ -1,8 +1,8 @@
 SELECT 'Making table paf_tmp';
 
-DROP TABLE IF EXISTS `paf_tmp`;
+--DROP TABLE IF EXISTS `paf_tmp`;
 CREATE TABLE `paf_tmp` (
-  `code` varchar(30),
+  `code` varchar(20),
   `genhyb` enum('×') DEFAULT NULL,
   `genus` varchar(20) DEFAULT NULL,
   `sphyb` enum('×') DEFAULT NULL,
@@ -39,12 +39,12 @@ SELECT DISTINCT paf_tmp.`code`, 'PAF' , `names`.`id`
 
 SELECT 'making paf_rel';
 
-DROP TABLE IF EXISTS paf_rel;
+-- DROP TABLE IF EXISTS paf_rel;
 CREATE TABLE `paf_rel` (
   `code` varchar(20) NOT NULL,
   `tocode` varchar(20) DEFAULT NULL,
   `refs` varchar(10000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 LOAD DATA LOCAL INFILE 'paf_refs' INTO TABLE `paf_rel` FIELDS TERMINATED BY '|' ;
 
@@ -85,10 +85,10 @@ INSERT INTO `rel` (`fromID`, `toID`, `status`, `source`, `refs`)
 
 SELECT 'Making table ortho';
 
-DROP TABLE IF EXISTS `paf_ortho`;
+--DROP TABLE IF EXISTS `paf_ortho`;
 CREATE TABLE `paf_ortho` (
-  `code_paf`   varchar(30) NOT NULL,
-  `code_canon` varchar(30) NOT NULL,
+  `code_paf`   varchar(20) NOT NULL,
+  `code_canon` varchar(20) NOT NULL,
   `type`       varchar(15) NOT NULL
 );
 
@@ -127,7 +127,7 @@ INSERT INTO `ortho` (fromID, toID, `type`) SELECT paf_ortho.fromID,
 
 select if((select count(*) from names) != (select count(*) from ortho),'names and ortho not same','names and ortho same') as 'query';
 
-DROP TABLE `paf_ortho`;
+--DROP TABLE `paf_ortho`;
 
 -- -- paf_ortho
 
