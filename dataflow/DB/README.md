@@ -43,17 +43,3 @@ Please read the individual (commented) SQL files for details.
     C    =    C   =    C
 
 
-... another attempt:
-
-
-  rel INNNER name = every name with a relationship
-
-
-Question:
-
-For each PAF accepted name, which matching ALA names are not accepted?
-
- paf=statusA -(ortho)-> canon -(unortho)-> ala?statusA
- 
- 
- ala
