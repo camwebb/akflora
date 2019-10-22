@@ -129,7 +129,7 @@ if [ $? -ne 0 ] ; then exit ; fi
 #  Polygonaceae|Polygonum|Polygonum|F||
 # and drop the fmaily col.
 
-gawk 'BEGIN{FS="|"; OFS="|"} $2 ~ /\ / {print $2, $3, $4, $5, $6}' ala.4 \
+gawk 'BEGIN{FS="|"; OFS="|"} $2 ~ / / {print $2, $3, $4, $5, $6}' ala.4 \
      > ala.5
 
 # > wc ala.4

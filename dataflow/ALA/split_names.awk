@@ -13,7 +13,7 @@ BEGIN{
 
 function parsename(instring,          words, word, gen, sphyb, sp, subtype, subtaxon, auth, i ) {
   
-  words = split(instring,word,/\ \ */);
+  words = split(instring,word,/  */);
   gen = sphyb = sp = subtype = subtaxon = auth = "";
   i = 0;
   gen = word[++i];
@@ -26,8 +26,8 @@ function parsename(instring,          words, word, gen, sphyb, sp, subtype, subt
   
   # is is a ssp etc?
   # if (match(instring,/(subsp\.|var\.)/)) {
-  if (match(instring,/\ subsp\.\ /)) subtype = "subsp.";
-  if (match(instring,/\ var\.\ /)) subtype = "var.";
+  if (match(instring,/ subsp\. /)) subtype = "subsp.";
+  if (match(instring,/ var\. /)) subtype = "var.";
   if (subtype) {
     # print "   " subtype;
     while (word[++i] != subtype) {}

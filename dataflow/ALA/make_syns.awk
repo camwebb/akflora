@@ -73,8 +73,8 @@ END{
 
   # # AK with refs (added May 10 2019)
   for (i in namelist)
-    if (inak[i] == "T")
-      print "ala-" n[i], ns2a[i], commref[i] > "ala_refs"
+    # if (inak[i] == "T")
+    print "ala-" n[i], ns2a[i], commref[i] > "ala_refs"
   close("ala_refs")
 
   for (i in namelist)
