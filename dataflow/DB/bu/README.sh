@@ -7,20 +7,6 @@ function sqlnulls() {
         -e 's/\|$/|\\N/g' $1
 }
 
-function checklines() {
-    WCn=`wc -l $1 | gawk '{printf "%d", $1}'`
-    WCo=`wc -l $2 | gawk '{printf "%d", $1}'`
-    WCr=`wc -l $3 | gawk '{printf "%d", $1}'`
-    if [ $WCn -ne $WCo -o $WCn -ne $WCr -o $WCo -ne $WCr ]
-    then
-        echo "  input file line numbers not same"
-        exit 1
-    else
-        echo "Input file line numbers of $1, $2, $3 are same ($WCn lines)"
-        
-    fi
-}
-
 # function skip() {
 
 # 1. Read in canonical names ---------------------------------------
@@ -33,59 +19,49 @@ sqlnulls canon
 mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
       < 1_load_canon.sql
 
-rm -rf canon
+# rm -rf canon
+
 
 # 2. ALA ----------------------------------------------------------------
 
-echo
 echo "** 2. Loading ALA **"
 
-gawk 'BEGIN{FS=OFS="|"} { print $1, $2, $3, $4, $5, $6, $7, $8 }' \
-     ../ALA/ala > names
-sqlnulls names
+cp ../ALA/ala .
+sqlnulls ala
+
+cp -f ../ALA/ala_refs .
+sqlnulls ala_refs
+sed -i -E -e 's/\|AK\ taxon\ list$/|\\N/g' ala_refs
 
 gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) \
-     {print $1, $2, $3} else {print $1, $1, "self"}}' \
-     ../canonical/ala2canon_match > ortho
-sqlnulls ortho # should be redundant
+     {print $1, $2, $3} else {print $1, $1, $3}}' \
+     ../canonical/ala2canon_match > ala_ortho
+sqlnulls ala_ortho 
 
-cp -f ../ALA/ala_rel rel
-sqlnulls rel
-sed -i -E -e 's/\|AK\ taxon\ list$/|\\N/g' rel
+mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora \
+      < 2_load_ala.sql
 
-checklines rel names ortho
-# test input files
-
-mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='ALA'; source 2_load_other.sql;" akflora
-
-rm -rf names rel ortho
+# rm -rf ala ala_refs ala_ortho
 
 # 3. PAF -------------------------------------------------------------------
 
-echo
-echo "** 3. Loading PAF **"
+echo "3. Loading PAF"
 
-gawk 'BEGIN{FS=OFS="|"} { print $1, $2, $3, $4, $5, $6, $7, $8 }' \
-     ../PAF/paf > names
-sqlnulls names
+cp ../PAF/paf .
+sqlnulls paf
+
+cp -f ../PAF/paf_refs .
+sqlnulls paf_refs
 
 gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) \
-     {print $1, $2, $3} else {print $1, $1, "self"}}' \
-     ../canonical/paf2canon_match > ortho
-sqlnulls ortho # should be redundant
+     {print $1, $2, $3} else {print $1, $1, $3}}' \
+     ../canonical/paf2canon_match > paf_ortho
+sqlnulls paf_ortho 
 
-gawk 'BEGIN{FS=OFS="|"} {if ($2 == "accepted") print $1, $1, "accepted", $3; else print $1, $2, "synonym", $3;}' ../PAF/paf_refs > rel
-sqlnulls rel
+mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora \
+      < 3_load_paf.sql
 
-checklines rel names ortho
-# test input files
-
-mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='PAF'; source 2_load_other.sql;" akflora
-
-rm -rf names rel ortho
-
+# rm -rf paf paf_refs
 
 # } # skip()
 

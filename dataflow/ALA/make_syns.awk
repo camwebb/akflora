@@ -72,9 +72,12 @@ END{
   # close("ala_ak")
 
   # # AK with refs (added May 10 2019)
-  for (i in namelist)
+  for (i in namelist) {
     # if (inak[i] == "T")
-    print "ala-" n[i], ns2a[i], commref[i] > "ala_refs"
+    if ( ns2a[i] == "accepted" )
+      print "ala-" n[i], "ala-" n[i], "accepted", commref[i] > "ala_rel"
+    else print "ala-" n[i], ns2a[i], "synonym", commref[i] > "ala_rel"
+  }
   close("ala_refs")
 
   for (i in namelist)
