@@ -36,10 +36,40 @@ BEGIN{
   }
 
   for (i in xg) {
-    print i, xg[i], g[i], xs[i], s[i], st[i], ss[i], a[i], stat[i], acc[i]
+    # if (stat[i] ~ /(Accepted|Synonym)/) 
+    print i, xg[i], g[i], xs[i], s[i], st[i], ss[i], a[i] > "names"
   }
-    
-  # for (i in gen) {
+  close("names")
+  
+  for (i in xg) {
+    if (stat[i] == "Synonym")
+      print i, acc[i], "synonym", "WCSP" > "rel"
+    else
+      # not quite correct, WCSP also has Misapplied and Unresolved
+      print i, i, "accepted", "WCSP" > "rel"
+  }
+  close("rel")
+
+  while ((getline < "../canonical/wcsp2canon_match") > 0) {
+    ortho[$1] = $2
+    type[$1] = $3
+  }
+
+  for (i in xg) {
+    # if (stat[i] ~ /(Accepted|Synonym)/)
+    # allows for the cases where there was no record of i in the matchnames
+    #   output:
+    if ((!type[i]) || (type[i] ~ /^(no_match|auto_irank|manual\?\?)$/))
+      print i, i, "self" > "ortho"
+    else print i, ortho[i], type[i] > "ortho"
+  }
+  close("ortho")
+
+}
+
+
+
+# for (i in gen) {
 #     if (acc[i]) {
 #       g2g[gen[acc[i]]][gen[i]]++
 #       print i, gen[i], acc[i], gen[acc[i]] "\n"
@@ -53,4 +83,4 @@ BEGIN{
 #   }
 #   # for (i in g) print i
 #
-}
+

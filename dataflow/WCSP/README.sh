@@ -17,35 +17,43 @@
 
 rm -rf data
 mkdir data
-curl "http://www.theplantlist.org/1.1/browse/-/-/" > data/genus_list.html
+cd data
+curl "http://www.theplantlist.org/1.1/browse/-/-/" > genus_list.html
 
 # 2a. Extract the genera from the web page
 
-grep -E '.*genus">' data/genus_list.html | \
+grep -E '.*genus">' genus_list.html | \
     sed -e 's|^.*/"><i\ class="||g' \
         -e 's/\ genus">/ /g' \
         -e 's|</i></a>\ (<i\ class="family">| |g' \
         -e 's|</i>.*||g' \
-        -e 's/×&nbsp;//g' > data/genus_list
+        -e 's/×&nbsp;//g' > genus_list
 
 # 2b. Get unique genus names (multiples present due to i. Unresolved
 #     taxonomy and ii. diff domains, e.g., Cedrus in angio and gymno)
 
-gawk '{g[$2]++}END{for(i in g) print i}' data/genus_list | sort > \
-    data/genus_list_unique
+gawk '{g[$2]++}END{for(i in g) print i}' genus_list | sort > \
+    genus_list_unique
 
 # 3. Create a download script
 
-mkdir data/genera
+mkdir genera
 # (remove the hybrid marks)
-cat data/genus_list_unique | sed -e 's/×\ //g' \
-    -e 's|\(.*\)|echo "\1"; curl -s "http://www.theplantlist.org/tpl1.1/search?q=\1\&csv=true" > data/genera/\1.csv|g' > data/download.sh
+cat genus_list_unique | sed -e 's/×\ //g' \
+    -e 's|\(.*\)|echo "\1"; curl -s "http://www.theplantlist.org/tpl1.1/search?q=\1\&csv=true" > genera/\1.csv|g' > download.sh
 
 # 4. Run the script (use nohup if sshing into another 'download' machine)
-sh data/download.sh
+sh download.sh
+
+cat genera/* >> tpl1
+
+gawk 'BEGIN{FS=","; while ((getline < "genus_list_unique")>0) g[$1]++;  while ((getline < "tpl1")>0) if (!g[$5]) n[$5]++; for (i in n) print i}' > genus_list2
+ls
+
+
 
 # 5. Combine and exctract just fields needed
-cat data/genera/* >> tpl
+
 sed -i -e '/^.*Major\ group,Family.*$/d' tpl
 
 # Fields: ID,Major group,Family,Genus hybrid marker, Genus,Species

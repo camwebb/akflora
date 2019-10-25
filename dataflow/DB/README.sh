@@ -104,10 +104,10 @@ mv ../WCSP/tpl.3 tpl
 #         3) load the additional genera where a synonym points outside
 #            the canon list of genera
 
-gawk -f tpl2wcsp.awk > wcsp
+gawk -f tpl2wcsp.awk
 
 # Fixing a few extra bits:
-sed -i 's/|+|/|×|/g' wcsp
+sed -i 's/|+|/|×|/g' names
 sed -E -i -e 's/\|1970$/|kew-387742/g' wcsp
 sed -E -i -e 's/\|1971$/|/g' wcsp
 # (Missing from tpl:)
@@ -124,14 +124,18 @@ fi
 
 sqlnulls wcsp
 
-gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) \
-     {print $1, $2, $3} else {print $1, $1, $3}}' \
-     ../canonical/wcsp2canon_match > wcsp_ortho
+# note, some of the names (genera) in this wcsp names list were not in
+# the matched set. Need to fix that:
+# gawk 'BEGIN{FS=OFS="|"; while ((getline < "ortho")>0) if (!$2) missing[$1]++; # while ((getline < "names") > 0) if (missing[$1]) print $0}' > Alist
+# found that none are named. Editted tpl2wcsp.awk to reflect this.
 
-sqlnulls wcsp_ortho 
+sqlnulls ortho # should be redundant
 
-mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD akflora \
-      < 4_load_wcsp.sql
+# now, some of the names (genera) in this wcsp names list were not in
+# the matched set. Need to fix that:
+
+gawk 'BEGIN{FS=OFS="|"; while ((getline < "ortho")>0) if (!$2) missing[$1]++; while ((getline < "names") > 0) if (missing[$1]) print $0}' > Alist
+
 
 
 
