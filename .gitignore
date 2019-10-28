@@ -25,6 +25,8 @@ dataflow/canonical/accs2wcsp.tgz
 dataflow/canonical/gnr.out
 dataflow/canonical/*_base
 
+dataflow/ING/ING_genus*
+
 alaskaflora.org/chars/.pw
 alaskaflora.org/chars/.htaccess
 alaskaflora.org/chars/transfer*

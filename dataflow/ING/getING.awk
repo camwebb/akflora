@@ -4,6 +4,13 @@ BEGIN{
   a="abcdefghijklmnopqrstuvwxyz"
   # this will find diacritics too, under the base letter, e.g.,
   # Adenoïdes is found by: Adenoi*
+
+  if (pre) {
+    for (i = 1; i <= use; i++)
+      callING(pre substr(a,i,1))
+    for (i in g) print i >> "ING_extras"
+    exit 0
+  }
   
   for (i = 1; i <= use; i++)
     for (j = 1; j <= use; j++)
@@ -60,9 +67,11 @@ function callING(x     , i, cmd, out, n, tmp, j) {
 
   if (n >= 300) {
     st[length(x)+1][x]++
-    if (length(x) == 3) {
+    if (length(x) >= 3) {
       print "  Warning, " x " has >= 300 lines. Will add another char." \
         > "/dev/stderr"
     }
   }
 }
+
+
