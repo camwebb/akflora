@@ -232,29 +232,42 @@ rm -f paf.1
 gunzip -k -c ../WCSP/wcsp.gz > wcsp
 gawk 'BEGIN{FS="|"}{g[$3]++}END{for (i in g) print i}' \
      canon | sort > canon_gen
-# need to drop the duplicate names, duplicate codes, and only load genera in canon list:
-gawk 'BEGIN{
-        FS=OFS="|";
-        while ((getline < "canon_gen") > 0) g[$0]++ }
-      {if(((++key[$4 $5 $6 $7 $8 $9 $10])==1) && g[$5] && (++code[$1]==1))
-      print "_" $1, $4, $5, $6, $7, $8, $9, $10}' wcsp > wcsp.1
-sed -i 's/|+|/|×|/g' wcsp.1
+# only load genera in canon list, and the syns
 
-echo "Skipping manual stage (matchnames -a paf -b canon)"
-matchnames -a wcsp.1 -b canon -o wcsp2canon_match -f -e 2 -q
+gawk 'BEGIN{
+        FS=OFS="|"
+        while ((getline < "canon_gen") > 0) g[$0]++
+        while((getline < "wcsp")>0)
+          if (g[$3]) {
+            w[$1]++
+            if ($21) w[$21]++
+          } 
+        close("wcsp")
+        while((getline < "wcsp")>0) 
+          if (w[$1]) print $0
+      }' > wcsp.1
+
+# reformat and change names from canon
+gawk 'BEGIN{FS=OFS="|"}{print "_" $1, $2, $3, $4, $5, $6, $7, $8}' wcsp.1 > wcsp.2
+
+# echo "Skipping manual stage (matchnames -a paf -b canon)"
+matchnames -a wcsp.2 -b canon -o wcsp2canon_match -f -e 2 -q
 
 # There were identifiers that were some exactly the same in canon and wcsp, so
 # we added '_' to wcsp. Now remove:
 
 sed -i 's/^_//g' wcsp2canon_match
 
-echo "WCSP names: " `wc wcsp.1 | gawk '{print $1}'`
+echo "WCSP names: " `wc wcsp.2 | gawk '{print $1}'`
 echo "Reconciling WCSP to Canon. Matching: " \
   `grep -vc no_match wcsp2canon_match` 
 echo "Reconciling WCSP to Canon. No match: " \
   `grep -c no_match wcsp2canon_match` 
 
-rm -f wcsp wcsp.1 canon_gen
+rm -f wcsp wcsp.2 canon_gen
+
+# leave wcsp.1 for the DB
+
 
 
 

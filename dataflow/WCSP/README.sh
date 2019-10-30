@@ -114,25 +114,43 @@ sed -i -E 's/"+",/#",/g' tpl.3
 gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{ print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21}' tpl.3 > tpl.4
 sed -i -E 's/"//g' tpl.4
 
-
 # WCSP from the Plant List
+#   - delete duplicate codes and names (just use the first)
 
-gawk 'BEGIN{FS=OFS="|"; while((getline < "tpl.4")>0) if (($14 ~ /WCSP/) && ($11 ~ /(Accepted|Synonym)/)) {w[$1]++; if ($21) w[$21]++} ; close("tpl.4");  while((getline < "tpl.4")>0) if (w[$1]) print $0}' > wcsp
+gawk 'BEGIN{
+        FS=OFS="|"
+        while((getline < "tpl.4")>0) 
+          if (($14 ~ /WCSP/) && ($11 ~ /(Accepted|Synonym)/)) {
+            w[$1]++
+            if ($21) w[$21]++
+          } 
+        close("tpl.4")
+        while((getline < "tpl.4")>0) 
+          if (w[$1])
+            if ((++key[$4 $5 $6 $7 $8 $9 $10]==1) && (++code[$1]==1))
+              print $1, $4, $5, $6, $7, $8, $9, $10, $11, $21}' > wcsp
 
-# test with
+# test duplicate codes 
+gawk 'BEGIN{FS="|"}{x[$1]++} END{for (i in x) if (x[i]>1) print i, x[i]}' wcsp
+
+# test duplicate names
+gawk 'BEGIN{FS=OFS="|"}{k = $2 $3 $4 $5 $6 $7 $8; x[k]++; id[k] = id[k] "," $1}END{for (i in x) if (x[i]>1) print i "  " x[i] "  " id[i]}' wcsp
+
+# test complete synonyms with
 gawk 'BEGIN{FS=OFS="|"}{x[$1]++; s[$21]++} END{for (i in s) if (!x[i]) print i " has no line"}' wcsp
 
 # final fixes
 sed -i 's/|var|/|var.|/g' wcsp
 sed -i 's/|var. schneideri|/|var.|schneideri/g' wcsp
 
-gawk 'BEGIN{FS=OFS="|"} {if ($11 == "Accepted") print $1, $1, "accepted", "WCSP"; else print $1, $21, "synonym", "WCSP"}' wcsp > wcsp_rel
+# gawk 'BEGIN{FS=OFS="|"} {if ($11 == "Accepted") print $1, $1, "accepted", "WCSP"; else print $1, $21, "synonym", "WCSP"}' wcsp > wcsp_rel
 
 # tidy up
 
 gzip tpl.3
 gzip tpl.4
-mv tpl.3.gz tpl.4.gz wcsp wcsp_rel ..
+gzip wcsp
+mv tpl.3.gz tpl.4.gz wcsp.gz ..
 
 cd ..
 
