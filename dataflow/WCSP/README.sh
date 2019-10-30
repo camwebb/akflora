@@ -70,8 +70,10 @@ sh download2.sh
 # sh download4.sh & ; pid4=$!
 # wait  # or... wait pid1; wait pid3; wait pid3; wait pid4; 
 
+# do the fail trick here too
+
 cat genera2/* > tpl.2
-sed -i '/group,Family,Genus/d' tpl2
+sed -i '/group,Family,Genus/d' tpl.2
 #  cat genera2/* | sed '1d' > tpl2   # should work but doesn't
 
 cat tpl.1 tpl.2 > tpl.3
@@ -87,7 +89,6 @@ sh download3.sh
 cat strag/* > stragglers.2
 sed -i '/group,Family,Genus/d' stragglers.2
 
-
 # 5. Combine and exctract just fields needed
 
 # Fields: ID,Major group,Family,Genus hybrid marker, Genus,Species
@@ -96,23 +97,29 @@ sed -i '/group,Family,Genus/d' stragglers.2
 #   data source,Confidence level,Source,Source id,IPNI
 #   id,Publication,Collation,Page,Date,Accepted ID
 
-rm tpl.3
-cat tpl.1 tpl.2 stragglers.2 > tpl.3
+cat stragglers.2 >> tpl.3
 # test again
 gawk '{n=split($0,tmp,","); x[tmp[1]]++; s[tmp[n]]++; delete tmp} END{for (i in s) if (!x[i]) print i}' tpl.3 
 
 # there were a few | symbols!
 sed -i 's/|//g' tpl.3
 
-sed -i -E 's/,"",/,,/g' tpl.3
-sed -i -E 's/,"",/,,/g' tpl.3
-sed -i -E 's/([^,"])"+([^",])/\1#\2/g' tpl.3
-sed -i -E 's/,""+/,"#/g' tpl.3
-sed -i -E 's/"+",/#",/g' tpl.3
+# tried writing my own CSV parser, but... hard. Consider, e.g., this line:
+# kew-437126,...
+# conataining ...,"Publ. Mus. Hist. Nat. ""Javier Prado"", Ser. B, Bot.",...
+# the content ',' after "" was very tricky. 
+#   sed -i -E 's/,"",/,,/g' tpl.3
+#   sed -i -E 's/,"",/,,/g' tpl.3
+#   sed -i -E 's/([^,"])"+([^",])/\1#\2/g' tpl.3
+#   sed -i -E 's/,""+/,"#/g' tpl.3
+#   sed -i -E 's/"+",/#",/g' tpl.3
+#   gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{ print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21}' tpl.3 > tpl.4
+#   sed -i -E 's/"//g' tpl.4
+# so... use a script, from awk-lib 
 
-# gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{for(i=1;i<=NF;i++) if(substr($i,1,1)=="\"") $i=substr($i,2,length($i)-2); print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21}' tpl.3 > tpl.4
-gawk 'BEGIN{OFS="|";FPAT = "([^,]*)|(\"[^\"]+\")"}{ print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21}' tpl.3 > tpl.4
-sed -i -E 's/"//g' tpl.4
+cpulimit -l 50 -i gawk -f ../csv.awk tpl.3 > tpl.4
+
+# gcc-99270 ... |"Phil."""""|... correct!
 
 # WCSP from the Plant List
 #   - delete duplicate codes and names (just use the first)

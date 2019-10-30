@@ -86,57 +86,58 @@ mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
 
 rm -rf names rel ortho
 
-
 # } # skip()
 
-exit
+# 3. PAF -------------------------------------------------------------------
 
-# 4. WCSP
-
-gawk 'BEGIN{FS="|"}{g[$3]++}END{for (i in g) print i}' ../canonical/canon | \
-    sort > canon_gen
-
-gunzip -k ../WCSP/tpl.3.gz 
-mv ../WCSP/tpl.3 tpl
+echo
+echo "** 4. Loading WCSP **"
 
 # need to 1) drop the duplicate names,
 #         2) only load genera in canon list
 #         3) load the additional genera where a synonym points outside
 #            the canon list of genera
+# previously used: gawk -f tpl2wcsp.awk
+# Now done in WCSP/ and canon
 
-gawk -f tpl2wcsp.awk
-
-# Fixing a few extra bits:
-sed -i 's/|+|/|×|/g' names
-sed -E -i -e 's/\|1970$/|kew-387742/g' wcsp
-sed -E -i -e 's/\|1971$/|/g' wcsp
-# (Missing from tpl:)
-echo "tro-25560763||Bellardiochloa||violacea|var.|argaea|\
-(Boiss. & Balansa) Chiov.|Unresolved|" >> wcsp
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
+     ../canonical/wcsp.1 > names
 
 # Check the uids in wcsp
+gawk 'BEGIN{
+        FS="|"
+        while ((getline < "../canonical/canon") > 0) 
+          name[gensub(/^trop/,"tro","G",$1)] = $2 $3 $4 $5 $6 $7
+        while ((getline < "names") > 0) {
+          if (name[$1] && (name[$1] != $2 $3 $4 $5 $6 $7))
+            print $1, name$1, $2 $3 $4 $5 $6 $7
+        }
+      }'
 
-if [ `gawk -f compare_wcsp_uids.awk | wc -c` -ne 0 ]
-then
-    echo "UIDS in canon not same as in wcsp"
-    exit 1
-fi
+# rel:
 
-sqlnulls wcsp
+gawk 'BEGIN{FS=OFS="|"}{
+        if ($9 == "Synonym")
+          print $1, $10, "synonym", "WCSP"
+        else
+          print $1, $1, "accepted", "WCSP"
+      }' ../canonical/wcsp.1 > rel
 
-# note, some of the names (genera) in this wcsp names list were not in
-# the matched set. Need to fix that:
-# gawk 'BEGIN{FS=OFS="|"; while ((getline < "ortho")>0) if (!$2) missing[$1]++; # while ((getline < "names") > 0) if (missing[$1]) print $0}' > Alist
-# found that none are named. Editted tpl2wcsp.awk to reflect this.
+gawk 'BEGIN{FS=OFS="|"}{
+        if ($3 ~ /^(no_match|auto_irank|manual\?\?)$/)
+          print $1, $1, "self"
+        else print $1, $2, $3
+      }' ../canonical/wcsp2canon_match > ortho
 
-sqlnulls ortho # should be redundant
+checklines rel names ortho
+sqlnulls names
+sqlnulls rel
+sqlnulls ortho
 
-# now, some of the names (genera) in this wcsp names list were not in
-# the matched set. Need to fix that:
+mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
+     -e "set @in_src='WCSP'; source 2_load_other.sql;" akflora
 
-gawk 'BEGIN{FS=OFS="|"; while ((getline < "ortho")>0) if (!$2) missing[$1]++; while ((getline < "names") > 0) if (missing[$1]) print $0}' > Alist
-
-
+rm -rf names rel ortho
 
 
 
