@@ -269,6 +269,18 @@ rm -f wcsp wcsp.2 canon_gen
 # leave wcsp.1 for the DB
 
 
+# 7. Reconcile ACCS to Canon list
+
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
+     ../ACCS/accs > accs
+
+# echo "Skipping manual stage (matchnames -a paf -b canon)"
+matchnames -a accs -b canon -o wcsp2canon_match -f -e 3 -q
+
+
+
+
+
 
 
 
