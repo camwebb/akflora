@@ -264,6 +264,7 @@ echo "Reconciling WCSP to Canon. Matching: " \
 echo "Reconciling WCSP to Canon. No match: " \
   `grep -c no_match wcsp2canon_match` 
 
+mv wcsp.1 ../WCSP/wcsp_ak
 rm -f wcsp wcsp.2 canon_gen
 
 # leave wcsp.1 for the DB
@@ -271,13 +272,20 @@ rm -f wcsp wcsp.2 canon_gen
 
 # 7. Reconcile ACCS to Canon list
 
-gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
-     ../ACCS/accs > accs
+matchnames -a ../ACCS/accs -b canon -o accs2canon_match -f -e 3 -q
 
-# echo "Skipping manual stage (matchnames -a paf -b canon)"
-matchnames -a accs -b canon -o wcsp2canon_match -f -e 3 -q
+# 8. FNA
 
+# Make abbrevs file, using matchnames, and 
+# gawk -f findabbrev.awk | sort >> abbrevs
+# then comb through abbrev and cf. with IPNI
+# Hidden API: https://www.ipni.org/api/1/download?q=author%20std%3ABr.
 
+gawk 'BEGIN{FS=OFS="|"; while ((getline < "abbrevs")>0) {if ($0 !~ /^#/) {g[++i]=$1;a[i]=$2}}}{for (x = 1; x<=i; x++) gsub(g[x],a[x],$8); print $1, $2, $3, $4, $5, $6, $7, $8}' ../FNA/fna > fna
+
+matchnames -a fna -b canon -o fna2canon_match -f -e 4 -q
+
+rm -f fna
 
 
 

@@ -19,10 +19,13 @@ done
 # clean dashes
 sed -i -e 's/—/-/g' fna.raw
 
-gawk -f clean_fna.awk fna.raw > fna
+gawk -f clean_fna.awk fna.raw > fna.1
+
+# remove dupes (all dropped ones are synonyms)
+gawk 'BEGIN{FS=OFS="|"}{if (++uniq[$2 $3 $4 $5 $6 $7 $8] == 1) print $1, $2, $3, $4, $5, $6, $7, $8, $9; else print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8 " is a dup" > "/dev/stderr"}' fna.1 > fna
 
 # Tidy up
-rm -f fna.raw
+rm -f fna.raw fna.1
 # rm -rf coarse_grained_fna_xml
 
 # Notes:

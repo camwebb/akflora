@@ -101,7 +101,7 @@ echo "** 4. Loading WCSP **"
 # Now done in WCSP/ and canon
 
 gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
-     ../canonical/wcsp.1 > names
+     ../WCSP/wcsp_ak > names
 
 # Check the uids in wcsp
 gawk 'BEGIN{
@@ -121,7 +121,7 @@ gawk 'BEGIN{FS=OFS="|"}{
           print $1, $10, "synonym", "WCSP"
         else
           print $1, $1, "accepted", "WCSP"
-      }' ../canonical/wcsp.1 > rel
+      }' ../WCSP/wcsp_ak > rel
 
 gawk 'BEGIN{FS=OFS="|"}{
         if ($3 ~ /^(no_match|auto_irank|manual\?\?)$/)
@@ -147,12 +147,7 @@ echo "** 4. Loading ACCS **"
 gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
      ../ACCS/accs > names
 
-gawk 'BEGIN{FS=OFS="|"}{
-        if ($2 != "accepted")
-          print $1, $2, "synonym", $3
-        else
-          print $1, $1, "accepted", $3
-      }' ../ACCS/accs_refs > rel
+cp ../ACCS/accs_rel rel
 
 gawk 'BEGIN{FS=OFS="|"}{
         if ($3 ~ /^(no_match|auto_irank|manual\?\?)$/)
@@ -167,6 +162,37 @@ sqlnulls ortho
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='ACCS'; source 2_load_other.sql;" akflora
+
+rm -rf names rel ortho
+
+# 6. FNA ---------------------------------------------------------------
+
+echo
+echo "** 4. Loading FNA **"
+
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
+     ../FNA/fna > names
+
+gawk 'BEGIN{FS=OFS="|"}{
+        if ($9 == "accepted")
+          print $1, $1, "accepted", "FNA"
+        else
+          print $1, $9, "synonym", "FNA"
+      }' ../FNA/fna > rel
+
+gawk 'BEGIN{FS=OFS="|"}{
+        if ($3 ~ /^(no_match|auto_irank|manual\?\?)$/)
+          print $1, $1, "self"
+        else print $1, $2, $3
+      }' ../canonical/fna2canon_match > ortho
+
+checklines rel names ortho
+sqlnulls names
+sqlnulls rel
+sqlnulls ortho
+
+mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
+     -e "set @in_src='FNA'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho
 

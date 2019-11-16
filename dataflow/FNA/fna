@@ -1346,7 +1346,6 @@ fna-22-299||Zannichellia||palustris|||Linnaeus|accepted
 fna-22-308||Juncus||biglumis|||Linnaeus|accepted
 fna-22-309||Juncus||falcatus|var.|sitchensis|Buchenau|accepted
 fna-22-309-s1||Juncus||falcatus|var.|alaskensis|Coville|fna-22-309
-fna-22-309-s2||Juncus||falcatus|var.|alaskensis|Coville|fna-22-309
 fna-22-309-s3||Juncus||menziesii||||fna-22-309
 fna-22-311||Luzula||wahlenbergii|||Ruprecht|accepted
 fna-22-316||Luzula||confusa|||Lindeberg|accepted
@@ -2010,7 +2009,6 @@ fna-24-1128-s4||Agropyron||spicatum|var.|molle||fna-24-1128
 fna-24-1128-s5||Agropyron||smithii|var.|palmeri||fna-24-1128
 fna-24-1128-s6||Agropyron||smithii|var.|molle||fna-24-1128
 fna-24-1128-s7||Agropyron||smithii||||fna-24-1128
-fna-24-1128-s8||Agropyron||smithii||||fna-24-1128
 fna-24-1128-s9||Agropyron||elmeri||||fna-24-1128
 fna-24-1129||Poa||arctica|||R. Br.|accepted
 fna-24-1130||Poa||secunda|||J. Presl|accepted
@@ -2032,7 +2030,6 @@ fna-24-280||Bromus||carinatus|||Hook. & Arn.|accepted
 fna-24-280-s1||Ceratochloa||carinata||||fna-24-280
 fna-24-285||Bromus||inermis|||Leyss.|accepted
 fna-24-285-s1||Bromus||inermis||||fna-24-285
-fna-24-285-s2||Bromus||inermis||||fna-24-285
 fna-24-285-s3||Bromopsis||inermis||||fna-24-285
 fna-24-304||Bromus||pacificus|||Shear|accepted
 fna-24-304-s1||Bromopsis||pacifica||||fna-24-304
@@ -2112,17 +2109,11 @@ fna-24-461-s1||Agropyron||dasystachyum|var.|riparium||fna-24-461
 fna-24-461-s2||Agropyron||dasystachyum||||fna-24-461
 fna-24-474||Elymus||repens|||(L.) Gould|accepted
 fna-24-474-s1||Elytrigia||repens||||fna-24-474
-fna-24-474-s2||Elytrigia||repens||||fna-24-474
 fna-24-474-s3||Agropyron||repens|var.|vaillantianum||fna-24-474
 fna-24-474-s4||Agropyron||repens||||fna-24-474
 fna-24-474-s5||Agropyron||repens|var.|typicum||fna-24-474
-fna-24-474-s6||Agropyron||repens||||fna-24-474
 fna-24-474-s7||Agropyron||repens|var.|subulatum||fna-24-474
-fna-24-474-s8||Agropyron||repens||||fna-24-474
 fna-24-474-s9||Agropyron||repens|var.|pilosum||fna-24-474
-fna-24-474-s10||Agropyron||repens||||fna-24-474
-fna-24-474-s11||Agropyron||repens||||fna-24-474
-fna-24-474-s12||Agropyron||repens||||fna-24-474
 fna-24-481||Elymus|×|palmerensis|||(Lepage) Barkworth & D. R. Dewey|accepted
 fna-24-483||Elymus|×|yukonensis|||(Scribn. & Merr.) Á. Löve|accepted
 fna-24-483-s1||Agropyron||yukonense|||Scribn. & Merr.|fna-24-483
@@ -2167,7 +2158,6 @@ fna-24-636||Schedonorus||arundinaceus|||(Schreb.) Dumort.|accepted
 fna-24-636-s1||Lolium||arundinaceum||||fna-24-636
 fna-24-636-s2||Festuca||elatior|var.|arundinacea||fna-24-636
 fna-24-636-s3||Festuca||elatior||||fna-24-636
-fna-24-636-s4||Festuca||elatior||||fna-24-636
 fna-24-636-s5||Festuca||arundinacea||||fna-24-636
 fna-24-638||Vulpia||myuros|||(L.) C.C. Gmel.|accepted
 fna-24-638-s1||Festuca||myuros||||fna-24-638
@@ -2990,8 +2980,6 @@ fna-27-390-b1||Trichostomum||sudeticum|||Funck|fna-27-390
 fna-27-390-s1||Campylopus||sudeticus|||(Funck) Fürnrohr.|fna-27-390
 fna-27-390-s2||Racomitrium||heterostichum|var.|sudeticum|(Funck) Dixon|fna-27-390
 fna-27-390-s3||Racomitrium||jensenii|||(Funck) Bruch & Schimper|fna-27-390
-fna-27-390-s4||Racomitrium||sudeticum||||fna-27-390
-fna-27-390-s5||Racomitrium||sudeticum||||fna-27-390
 fna-27-390-s6||Racomitrium||sudeticum|var.|alaskanum|Cardot & Thériot|fna-27-390
 fna-27-394||Niphotrichum||canescens|subsp.|canescens||accepted
 fna-27-395||Niphotrichum||canescens|subsp.|latifolium|(C. E. O. Jensen) Frisvoll|accepted
@@ -3965,7 +3953,6 @@ fna-28-424-b1||Amblystegium||molle|var.|alpinum|Lindberg|fna-28-424
 fna-28-425||Hygrohypnum||bestii|||(Renauld & Bryhn) Holzinger|accepted
 fna-28-425-b1||Hypnum||molle|subsp.|bestii|Renauld & Bryhn|fna-28-425
 fna-28-425-s1||Hygrohypnella||bestii|||(Renauld & Bryhn) Brotherus|fna-28-425
-fna-28-425-s2||Hygrohypnum||bestii|||(Renauld & Bryhn) Holzinger|fna-28-425
 fna-28-425-s3||Hygrohypnum||molle|var.|bestii|(Renauld & Bryhn) Habeeb|fna-28-425
 fna-28-425-s4||Limnobium||bestii||||fna-28-425
 fna-28-427||Hygrohypnum||cochleariifolium|||(Venturi) Brotherus in H. G. A. Engler and K. Prantl|accepted
@@ -3984,7 +3971,6 @@ fna-28-428-s5||Hygrohypnum||dilatatum|||(Wilson) Loeske|fna-28-428
 fna-28-428-s6||Hygrohypnum||eugyrium|var.|dilatatum|(Wilson) Grout|fna-28-428
 fna-28-428-s7||Hypnum||circulifolium|||Wilson|fna-28-428
 fna-28-428-s8||Hygrohypnum||dilatatum|||Kindberg|fna-28-428
-fna-28-428-s9||Hygrohypnum||pseudoarcticum|||(Kindberg) Kindberg|fna-28-428
 fna-28-428-s10||Hygrohypnum||pseudoarcticum|||(De Notaris) Ignatov & Ignatova|fna-28-428
 fna-28-428-s11||Ochyraea||duriuscula||||fna-28-428
 fna-28-430||Hygrohypnum||luridum|||(Hedwig) Jennings|accepted
@@ -4123,12 +4109,10 @@ fna-28-474-s2||Hygroamblystegium||tenax|||(Hedwig) C. E. O. Jensen|fna-28-474
 fna-28-474-s3||Hygroamblystegium||trichopodium|||(Schultz) Hartman|fna-28-474
 fna-28-474-s4||Hygroamblystegium||fluviatile|||(Hedwig) Loeske|fna-28-474
 fna-28-474-b1||H.||humile|||(P. Beauvois) Vanderpoorten|fna-28-474
-fna-28-474-s5||Hygroamblystegium||tenax|||(Hedwig) C. E. O. Jensen|fna-28-474
 fna-28-476||Hygroamblystegium||varium|subsp.|noterophilum|(Sullivant & Lesquereux) Vanderpoorten & Hedenas|accepted
 fna-28-476-b1||Hypnum||noterophilum|||(Sullivant & Lesquereux) Holzinger|fna-28-476
 fna-28-476-s1||Amblystegium||fluviatile|var.|noterophilum|(Sullivant & Lesquereux) Flowers|fna-28-476
 fna-28-476-s2||Hygroamblystegium||noterophilum||||fna-28-476
-fna-28-476-s3||Hygroamblystegium||noterophilum||||fna-28-476
 fna-28-480||Sanionia||uncinata|||(Hedwig) Loeske|accepted
 fna-28-480-b1||Hypnum||uncinatum|||Hedwig|fna-28-480
 fna-28-480-s1||Drepanocladus||uncinatus|||(Hedwig) Warnstorf|fna-28-480
@@ -4474,7 +4458,6 @@ fna-28-714||Sciuro-hypnum||reflexum|||(Starke) Ignatov & Huttunen|accepted
 fna-28-714-b1||Hypnum||reflexum|||Starke|fna-28-714
 fna-28-715||Sciuro-hypnum||oedipodium|||(Mitten) Ignatov & Huttunen|accepted
 fna-28-715-b1||Hypnum||oedipodium|||Mitten|fna-28-715
-fna-28-715-s1||Brachythecium||collinum|var.|holzingeri|Grout|fna-28-715
 fna-28-715-s2||Sciuro-hypnum||holzingeri|||(Mitten) A. Jaeger|fna-28-715
 fna-28-715-s3||Sciuro-hypnum||oedipodium||||fna-28-715
 fna-28-717||Sciuro-hypnum||latifolium|||(Kindberg) Ignatov & Huttunen|accepted
