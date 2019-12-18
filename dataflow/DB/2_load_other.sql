@@ -128,9 +128,33 @@ ALTER TABLE `tmp_rel` ADD FOREIGN KEY (`toID`) REFERENCES   `names` (id) ON DELE
 INSERT INTO `rel` (`fromID`, `toID`, `status`, `source`, `refs`)
   SELECT `fromID`, `toID`, `status`, @in_src, `refs` FROM `tmp_rel`;
 
+-- In Alaska
+
+SELECT '... making table tmp_ak and reading in data';
+CREATE TABLE `tmp_ak` (
+  `code`   varchar(30)    UNIQUE NOT NULL,
+  `in_ak`   int(1)        NULL DEFAULT NULL,
+  INDEX (code)
+);
+
+LOAD DATA LOCAL INFILE 'ak' INTO TABLE `tmp_ak`
+  FIELDS TERMINATED BY '|' ;
+
+ALTER TABLE tmp_ak ADD COLUMN nameID int(11) FIRST;
+UPDATE tmp_ak, uids set tmp_ak.nameID = uids.nameID
+  where uids.code = tmp_ak.code;
+ALTER TABLE `tmp_ak` ADD UNIQUE INDEX `nameID` (`nameID`);
+ALTER TABLE `tmp_ak` DROP COLUMN code;
+
+ALTER TABLE `tmp_ak` ADD FOREIGN KEY (`nameID`) REFERENCES `names` (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+INSERT INTO `ak` (`nameID`, `in_ak`, `source`)
+  SELECT `nameID`, `in_ak`, @in_src FROM `tmp_ak`;
+
 DROP TABLE tmp_ortho ;
 DROP TABLE tmp_names ;
 DROP TABLE tmp_rel ;
+DROP TABLE tmp_ak ;
 
 
 

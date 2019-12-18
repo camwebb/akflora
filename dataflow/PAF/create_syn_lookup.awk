@@ -7,7 +7,7 @@ BEGIN{
     if (!$8) {auth = $7}
 
     # If an aggregate, fix name
-    if ($3 ~ /\ aggregate/) {$3 = $4}
+    if ($3 ~ / aggregate/) {$3 = $4}
 
     # Sort out the var vs subsp vs sp vs taxon
     subt = ""
@@ -17,7 +17,7 @@ BEGIN{
     # specifier = ~taxon
     else if (($2 == "subspecies") && $10) {
       gsub(/[`_)(.]/,"",$10)
-      gsub(/\ \ */,"_",$10)
+      gsub(/  */,"_",$10)
       gsub(/taxon_/,"",$10)
       subt = "taxon " tolower($10)
     }
@@ -25,8 +25,8 @@ BEGIN{
     # cf.
     else if (($2 == "species") && $10) {
       gsub(/[_.]/,"",$10)
-      # gsub(/\ \ */,"-",$10)
-      gsub(/cf\ /,"",$10)
+      # gsub(/  */,"-",$10)
+      gsub(/cf /,"",$10)
       subt = $10
       # print subt > "/dev/stderr"
     }
@@ -41,17 +41,17 @@ BEGIN{
     
     acc["paf-" $1] = "paf-" $1 
     name = $3 " " subt " " auth
-    gsub(/\ \ */, " ", name)
-    gsub(/(^\ |\ $)/, "", name)
+    gsub(/  */, " ", name)
+    gsub(/(^ | $)/, "", name)
     gsub(/`/,"",name)
     code[name] = "paf-" $1
   }
   
   FS="|"
   while (( getline < "paf.3") > 0) {
-    gsub(/^\ */,"",$0)
-    gsub(/\ *\|\ */,"|",$0)
-    gsub(/\ *$/,"",$0)
+    gsub(/^ */,"",$0)
+    gsub(/ *\| */,"|",$0)
+    gsub(/ *$/,"",$0)
     ++c[$1]
     n[$2][c[$1]] = $1
   }

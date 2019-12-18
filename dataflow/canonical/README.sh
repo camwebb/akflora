@@ -240,7 +240,7 @@ gawk 'BEGIN{
         while((getline < "wcsp")>0)
           if (g[$3]) {
             w[$1]++
-            if ($21) w[$21]++
+            if ($10) w[$10]++
           } 
         close("wcsp")
         while((getline < "wcsp")>0) 
@@ -264,7 +264,7 @@ echo "Reconciling WCSP to Canon. Matching: " \
 echo "Reconciling WCSP to Canon. No match: " \
   `grep -c no_match wcsp2canon_match` 
 
-mv wcsp.1 ../WCSP/wcsp_ak
+mv -f wcsp.1 ../WCSP/wcsp_ak
 rm -f wcsp wcsp.2 canon_gen
 
 # leave wcsp.1 for the DB

@@ -85,6 +85,19 @@ CREATE TABLE `rel` (
   CONSTRAINT `fk_toID` FOREIGN KEY (`toID`) REFERENCES `names` (`id`)
 );
 
+-- PART 5 MAKE AK
+SELECT '... making ak';
+
+CREATE TABLE `ak` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nameID` int(11) DEFAULT NULL,
+  `in_ak` TINYINT(1) DEFAULT NULL,
+  `source` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ak_nameID` (`nameID`),
+  CONSTRAINT `ak_nameID` FOREIGN KEY (`nameID`) REFERENCES `names` (`id`)
+);
+
 
 
 

@@ -29,7 +29,7 @@ BEGIN{
 (!$8)                    {auth = $7}
 
 # If an aggregate, fix name
-$3 ~ /\ aggregate/       {$3 = $4}
+$3 ~ / aggregate/       {$3 = $4}
 
 # Sort out the var vs subsp vs sp
 $2 == "subspecies" && $5 {subt = "subsp.|" $5}
@@ -96,8 +96,8 @@ $2 == "species"          {subt = "|"}
       # check for upcoming syn
       if (substr($9,i,10) ~ /su?b?sp\./) ssp = 1
       else if (substr($9,i,10) ~ /var\./) var = 1
-      else if (substr($9,i,10) ~ /\ f\.\ /) frm = 1
-      else if (substr($9,i,10) ~ /\ x /) hyb = 1
+      else if (substr($9,i,10) ~ / f\. /) frm = 1
+      else if (substr($9,i,10) ~ / x /) hyb = 1
       else author = 1
       if (D) printf "<LEAVE %d %d %d>", nn, var+ssp+frm+hyb, author
     }

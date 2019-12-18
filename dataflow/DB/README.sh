@@ -8,16 +8,17 @@ function sqlnulls() {
 }
 
 function checklines() {
-    WCn=`wc -l $1 | gawk '{printf "%d", $1}'`
-    WCo=`wc -l $2 | gawk '{printf "%d", $1}'`
-    WCr=`wc -l $3 | gawk '{printf "%d", $1}'`
-    if [ $WCn -ne $WCo -o $WCn -ne $WCr -o $WCo -ne $WCr ]
+    WCn=`wc -l names | gawk '{printf "%d", $1}'`
+    WCo=`wc -l ortho | gawk '{printf "%d", $1}'`
+    WCr=`wc -l rel | gawk '{printf "%d", $1}'`
+    WCa=`wc -l ak | gawk '{printf "%d", $1}'`
+    if [ $WCn -ne $WCo -o $WCn -ne $WCr -o $WCn -ne $WCa ]
     then
         echo "  input file line numbers not same"
         exit 1
     else
-        echo "Input file line numbers of $1, $2, $3 are same ($WCn lines)"
-        
+        echo "Input file line numbers of names ortho rel ak are same "\
+             "($WCn lines)"
     fi
 }
 
@@ -53,13 +54,16 @@ cp -f ../ALA/ala_rel rel
 sqlnulls rel
 sed -i -E -e 's/\|AK\ taxon\ list$/|\\N/g' rel
 
-checklines rel names ortho
+cp ../ALA/ala_ak ak
+sqlnulls ak
+
+checklines
 # test input files
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='ALA'; source 2_load_other.sql;" akflora
 
-rm -rf names rel ortho
+rm -rf names rel ortho ak
 
 # 3. PAF -------------------------------------------------------------------
 
@@ -78,13 +82,17 @@ sqlnulls ortho # should be redundant
 gawk 'BEGIN{FS=OFS="|"} {if ($2 == "accepted") print $1, $1, "accepted", $3; else print $1, $2, "synonym", $3;}' ../PAF/paf_refs > rel
 sqlnulls rel
 
-checklines rel names ortho
+# All PAF accepted names pre-filtered for AK
+gawk 'BEGIN{FS=OFS="|"}{if ($1 ~ /\-s[0-9]+$/) print $1, ""; else print $1,1}' names > ak
+sqlnulls ak
+
+checklines
 # test input files
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='PAF'; source 2_load_other.sql;" akflora
 
-rm -rf names rel ortho
+rm -rf names rel ortho ak
 
 # } # skip()
 
@@ -102,6 +110,10 @@ echo "** 4. Loading WCSP **"
 
 gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
      ../WCSP/wcsp_ak > names
+
+# no info on presence in AK (other than filtering by canon list)
+gawk 'BEGIN{FS=OFS="|"}{print $1, ""}' names > ak
+sqlnulls ak
 
 # Check the uids in wcsp
 gawk 'BEGIN{
@@ -129,7 +141,7 @@ gawk 'BEGIN{FS=OFS="|"}{
         else print $1, $2, $3
       }' ../canonical/wcsp2canon_match > ortho
 
-checklines rel names ortho
+checklines
 sqlnulls names
 sqlnulls rel
 sqlnulls ortho
@@ -137,7 +149,7 @@ sqlnulls ortho
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='WCSP'; source 2_load_other.sql;" akflora
 
-rm -rf names rel ortho
+rm -rf names rel ortho ak
 
 # 5. ACCS -------------------------------------------------------------------
 
@@ -155,7 +167,11 @@ gawk 'BEGIN{FS=OFS="|"}{
         else print $1, $2, $3
       }' ../canonical/accs2canon_match > ortho
 
-checklines rel names ortho
+# All ACCS accepted names are in AK (?)
+gawk 'BEGIN{FS=OFS="|"}{if ($3 = "accepted") print $1, 1; else print $1,""}' rel > ak
+sqlnulls ak
+
+checklines
 sqlnulls names
 sqlnulls rel
 sqlnulls ortho
@@ -163,7 +179,7 @@ sqlnulls ortho
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='ACCS'; source 2_load_other.sql;" akflora
 
-rm -rf names rel ortho
+rm -rf names rel ortho ak
 
 # 6. FNA ---------------------------------------------------------------
 
@@ -186,7 +202,12 @@ gawk 'BEGIN{FS=OFS="|"}{
         else print $1, $2, $3
       }' ../canonical/fna2canon_match > ortho
 
-checklines rel names ortho
+# In Alaska?  original list is filtered for accepted names in AK, no
+# info available on the synonym status (in Alaska)?. So...:
+gawk 'BEGIN{FS=OFS="|"}{if ($1 ~ /\-[sb][0-9]+$/) print $1, ""; else print $1,1}' names > ak
+sqlnulls ak
+
+checklines
 sqlnulls names
 sqlnulls rel
 sqlnulls ortho
@@ -194,7 +215,7 @@ sqlnulls ortho
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='FNA'; source 2_load_other.sql;" akflora
 
-rm -rf names rel ortho
+rm -rf names rel ortho ak
 
 
 

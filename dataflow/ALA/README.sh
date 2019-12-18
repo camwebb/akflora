@@ -270,7 +270,9 @@ sed -i '/|Taraxacum||sect.|/ d' ala.8
 # 2. Split into two tables: names and relationships (ala-names and ala-rel)
 # with to_names_only.awk
 
-gawk -f make_syns.awk ala.8 > ala
+gawk -f make_syns.awk ala.8 
+
+sed -i -e 's/|T/|1/g' -e 's/|F/|0/g' ala_ak
 
 # Test with: gawk 'BEGIN{FS="|"}{a[$1]++;b[$6]++}END{for (i in b) if(!a[i])
 #   print i}' ala-rel   #  seems OK
@@ -281,5 +283,3 @@ gawk -f make_syns.awk ala.8 > ala
 # ala-2120|\N|Eriophorum|\N|scheuchzeri|subsp.|arcticum|\N <- missing in /home/cam/akflora/FLOW/2018-08-20_ALAchecklist/1_ALA_list/ala-names - not sure why
 
 rm -f ala.*
-
-# rm ala_ak
