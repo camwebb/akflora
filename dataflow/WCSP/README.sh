@@ -119,6 +119,9 @@ sed -i 's/|//g' tpl.3
 
 cpulimit -l 50 -i gawk -f ../csv.awk tpl.3 > tpl.4
 
+# make a genus to family lookup
+gawk 'BEGIN{FS=OFS="|"}{gsub(/Leguminosae/,"Fabaceae",$3); gsub(/Compositae/,"Asteraceae",$3); f[$5]=$3; c[$5]=$2}END{for (i in f) print i,f[i],c[i]}' tpl.4 | sort > g2f
+
 # gcc-99270 ... |"Phil."""""|... correct!
 
 # WCSP from the Plant List
@@ -157,8 +160,9 @@ sed -i 's/|var. schneideri|/|var.|schneideri/g' wcsp
 gzip tpl.3
 gzip tpl.4
 gzip wcsp
-mv tpl.3.gz tpl.4.gz wcsp.gz ..
+mv tpl.3.gz tpl.4.gz wcsp.gz g2f ..
 
 cd ..
 
 rm -rf data
+

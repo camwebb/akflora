@@ -55,6 +55,7 @@ ALTER TABLE `names` ADD `canuidID` INT(11) NULL DEFAULT NULL ;
 UPDATE `names`, `uids` SET `names`.`canuidID`= `uids`.id
 WHERE `names`.`id`= `uids`.`nameID` ;
 
+ALTER TABLE names ADD INDEX ( canuidID );
 
 -- PART 3 MAKE ORTHO (self-to-self)
 
@@ -98,7 +99,15 @@ CREATE TABLE `ak` (
   CONSTRAINT `ak_nameID` FOREIGN KEY (`nameID`) REFERENCES `names` (`id`)
 );
 
+-- PART 6 MAKE FAMILY LOOKUP
 
-
+CREATE TABLE `g2f` (
+  `gen` VARCHAR(30) NOT NULL,
+  `fam` VARCHAR(30) NULL DEFAULT NULL,
+  `class` VARCHAR(1) NULL DEFAULT NULL
+);
+LOAD DATA LOCAL INFILE 'g2f' INTO TABLE `g2f` FIELDS TERMINATED BY '|' ;
+ALTER TABLE `g2f` ADD UNIQUE KEY (`gen`);
+ALTER TABLE `names` ADD INDEX (`genus`);
 
 

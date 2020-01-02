@@ -5,46 +5,58 @@ digraph g {
     node [shape = "plaintext"];
 
     names [label = <<table border="0" cellborder="1" cellspacing="0">
-           <tr><td><b>Names</b></td></tr>
+           <tr><td><b>Names</b> ('names')</td></tr>
            <tr><td port="p0">id</td></tr>
            <tr><td port="p1">md5sum<br/>(<i>unique</i>)</td></tr>
-           <tr><td>FoA canonical?<br/>(<i>bool.</i>)</td></tr>
            <tr><td port="p2">canonical UID id<br/>(<i>may be null</i>)</td></tr>
+           <tr><td port="p3"><b>orthographic mapping</b><br/>to  name id</td></tr>
+           <tr><td>orthographic mapping<br/>type (<i>exact, auto_puct,<br/>manual</i>, etc)</td></tr>
            <tr><td ><i>genus_hybrid,<br/>genus,<br/>species_hybrid,<br/>species_epithet,<br/>infrasp_rank,<br/>infrasp_epithet,<br/>author_string</i></td></tr>
            </table>>] ;
 
-    ortho [label = <<table border="0" cellborder="1" cellspacing="0">
+/*     ortho [label = <<table border="0" cellborder="1" cellspacing="0">
            <tr><td><b>Orthographic<br/>variation mapping<br/>to canon. name</b></td></tr>
            <tr><td port="p0">id</td></tr>
            <tr><td port="p2">from name id</td></tr>
            <tr><td port="p3">to name id<br/>(<i>from+to: unique</i>)</td></tr>
            <tr><td port="p4">mapping type</td></tr>
            <tr><td port="p5">(<i>to do: date, method</i>)</td></tr>
-           </table>>] ;
+           </table>>] ; */
     
-    uids [label = <<table border="0" cellborder="1" cellspacing="0">
-          <tr><td><b>External identifiers<br/>for names</b></td></tr>
+    ak  [label = <<table border="0" cellborder="1" cellspacing="0">
+          <tr><td><b>Occurrence in<br/>Alaska</b> ('ak')</td></tr>
           <tr><td port="p0">id</td></tr>
-          <tr><td port="p1">name id</td></tr>
-          <tr><td port="p2">uid string<br/>(<i>unique</i>)</td></tr>
-          <tr><td port="p3">authority</td></tr>
+          <tr><td>authority</td></tr>
+          <tr><td port="p1">name id<br/>(<i>auth. + name id<br/>is unique</i>)</td></tr>
+          <tr><td>in Alaksa?<br/>(<i>bool.</i>)</td></tr>
           </table>>] ;
-    
+
+    uids [label = <<table border="0" cellborder="1" cellspacing="0">
+          <tr><td><b>External identifiers<br/>for names</b> ('uids')</td></tr>
+          <tr><td port="p0">id</td></tr>
+          <tr><td port="p3">authority</td></tr>
+          <tr><td port="p1">name id<br/>(<i>auth. + name id<br/>is unique</i>)</td></tr>
+          <tr><td port="p2">uid string<br/>(<i>unique</i>)</td></tr>
+          </table>>] ;
+
     syn [label = <<table border="0" cellborder="1" cellspacing="0">
-         <tr><td port="p0"><b>Name status</b><br/>(<i>non-concept</i>)</td></tr>
+         <tr><td port="p0"><b>Name status</b><br/>('rel'; <i>non-taxon<br/>concept</i>)</td></tr>
          <tr><td>id</td></tr>
-         <tr><td port="p2">from name id<br/>(<i>unique</i>)</td></tr>
-         <tr><td port="p3">to name id<br/>(<i>may be null</i>)</td></tr>
+         <tr><td>authority</td></tr>
+         <tr><td port="p2">from name id<br/>(<i>auth. + from id<br/>is unique</i>)</td></tr>
+         <tr><td port="p3">to name id<br/></td></tr>
          <tr><td port="p4">"accepted"/<br/>"synonym"</td></tr>
          <tr><td port="p5">citation for<br/>status</td></tr>
          </table>>] ;
     
     // Edges      
-    syn:p2 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
+    syn:p2 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1,minlen=2];
     syn:p3 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
-    ortho:p2 -> names:p0 [headlabel="1",taillabel="1",labeldistance=1];
-    ortho:p3 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
+//    ortho:p2 -> names:p0 [headlabel="1",taillabel="1",labeldistance=1];
+//    ortho:p3 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
     uids:p1 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
     names:p2 -> uids:p0 [headlabel="1",taillabel="1",labeldistance=1];
+    names:p3 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
+    ak:p1 -> names:p0 [headlabel="1",taillabel="n",labeldistance=1];
 
 }
