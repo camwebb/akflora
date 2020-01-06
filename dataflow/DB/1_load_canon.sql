@@ -100,11 +100,14 @@ CREATE TABLE `ak` (
 );
 
 -- PART 6 MAKE FAMILY LOOKUP
+-- Note, there are a few errors in g2f for Alaska plants.
+--   Fixed later in listall.sh
 
 CREATE TABLE `g2f` (
   `gen` VARCHAR(30) NOT NULL,
   `fam` VARCHAR(30) NULL DEFAULT NULL,
-  `class` VARCHAR(1) NULL DEFAULT NULL
+  `class` VARCHAR(1) NULL DEFAULT NULL,
+  `dup` INT(11) NULL DEFAULT NULL
 );
 LOAD DATA LOCAL INFILE 'g2f' INTO TABLE `g2f` FIELDS TERMINATED BY '|' ;
 ALTER TABLE `g2f` ADD UNIQUE KEY (`gen`);

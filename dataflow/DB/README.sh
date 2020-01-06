@@ -29,12 +29,14 @@ function checklines() {
 echo "** 1. Loading Canonical list **"
 
 cp ../canonical/canon .
+cp ../WCSP/g2f .
 sqlnulls canon
+sqlnulls g2f
 
 mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
       < 1_load_canon.sql
 
-rm -rf canon
+rm -rf canon g2f
 
 # 2. ALA ----------------------------------------------------------------
 
