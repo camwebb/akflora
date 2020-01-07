@@ -121,7 +121,13 @@ cpulimit -l 50 -i gawk -f ../csv.awk tpl.3 > tpl.4
 
 # # make a genus to family lookup
 ## Note - this method introduced errors, eg Juncus in Cyperaceae
-# gawk 'BEGIN{FS=OFS="|"}{gsub(/Leguminosae/,"Fabaceae",$3); gsub(/Compositae/,"Asteraceae",$3); f[$5]=$3; c[$5]=$2}END{for (i in f) print i,f[i],c[i]}' tpl.4 | sort > g2f
+## needs to be checked when n>1
+gawk 'BEGIN{FS=OFS="|"}{
+        gsub(/Leguminosae/,"Fabaceae",$3)
+        gsub(/Compositae/,"Asteraceae",$3) 
+        if (f[$5] && f[$5]!=$3) warn[$5] = 1
+        f[$5]=$3; c[$5]=$2
+      } END{for (i in f) print i,f[i],c[i],warn[i]}' tpl.4 | sort > g2f
 
 # gcc-99270 ... |"Phil."""""|... correct!
 
@@ -167,37 +173,38 @@ cd ..
 
 rm -rf data
 
+# ---- Alt method for g2f, but misses too many synonym gen -----
 
-# Make g2f lookup:
+# # Make g2f lookup:
 
-curl "http://www.theplantlist.org/1.1/browse/P/-/" > P.html
-curl "http://www.theplantlist.org/1.1/browse/A/-/" > A.html
-curl "http://www.theplantlist.org/1.1/browse/G/-/" > G.html
-curl "http://www.theplantlist.org/1.1/browse/B/-/" > B.html
+# curl "http://www.theplantlist.org/1.1/browse/P/-/" > P.html
+# curl "http://www.theplantlist.org/1.1/browse/A/-/" > A.html
+# curl "http://www.theplantlist.org/1.1/browse/G/-/" > G.html
+# curl "http://www.theplantlist.org/1.1/browse/B/-/" > B.html
 
-# 2a. Extract the genera from the web page
+# # 2a. Extract the genera from the web page
 
-function extractnames() {
-grep -E '.*genus">' $1 | \
-    sed -e 's|^.*/"><i\ class="||g' \
-        -e 's/\ genus">/ /g' \
-        -e 's|</i></a>\ (<i\ class="family">| |g' \
-        -e 's|</i>.*||g' \
-        -e 's/×&nbsp;//g' \
-        -e "s/\$/ $2/" \
-        -e 's/ /|/g'
-}
-extractnames P.html P > genera
-extractnames A.html A >> genera
-extractnames G.html G >> genera
-extractnames B.html B >> genera
-# was ... $1 == "Accepted" {gsub(/Leg...
-gawk 'BEGIN{FS=OFS="|"} {gsub(/Leguminosae/,"Fabaceae",$3); gsub(/Compositae/,"Asteraceae",$3); f[$2]=$3; c[$2] = $4; n[$2]++} END{for (i in f) print i, f[i], c[i], n[i]}' genera | sort > g2f
+# function extractnames() {
+# grep -E '.*genus">' $1 | \
+#     sed -e 's|^.*/"><i\ class="||g' \
+#         -e 's/\ genus">/ /g' \
+#         -e 's|</i></a>\ (<i\ class="family">| |g' \
+#         -e 's|</i>.*||g' \
+#         -e 's/×&nbsp;//g' \
+#         -e "s/\$/ $2/" \
+#         -e 's/ /|/g'
+# }
+# extractnames P.html P > genera
+# extractnames A.html A >> genera
+# extractnames G.html G >> genera
+# extractnames B.html B >> genera
+# # was ... $1 == "Accepted" {gsub(/Leg...
+# gawk 'BEGIN{FS=OFS="|"} {gsub(/Leguminosae/,"Fabaceae",$3); gsub(/Compositae/,"Asteraceae",$3); f[$2]=$3; c[$2] = $4; n[$2]++} END{for (i in f) print i, f[i], c[i], n[i]}' genera | sort > g2f
 
-# # fix errors in plantlist
-# sed -i -E -e '/^Asteriscium/d' -e '/^Swartzia/d' g2f
-# echo "Asteriscium|Asteraceae|A" >> g2f
-# echo "Swartzia|Fabaceae|A" >> g2f
+# # # fix errors in plantlist
+# # sed -i -E -e '/^Asteriscium/d' -e '/^Swartzia/d' g2f
+# # echo "Asteriscium|Asteraceae|A" >> g2f
+# # echo "Swartzia|Fabaceae|A" >> g2f
 
-rm -f A.html P.html G.html B.html genera
+# rm -f A.html P.html G.html B.html genera
 
