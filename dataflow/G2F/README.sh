@@ -121,7 +121,7 @@ echo "How many genera in base list not in Kew list?"
 gawk 'BEGIN{FS=OFS="|"; 
       while ((getline < "kew_g2f")) g[$1]++; 
       while ((getline < "akflora_g") > 0) 
-        if (!g[$1]) print $1}' | sort
+        if (!g[$1]) print $1}' | sort | wc
 
 # 254 genera names not in Kew
 

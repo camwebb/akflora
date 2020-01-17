@@ -29,7 +29,7 @@ function checklines() {
 echo "** 1. Loading Canonical list **"
 
 cp ../canonical/canon .
-cp ../WCSP/g2f .
+cp ../G2F/g2f .
 sqlnulls canon
 sqlnulls g2f
 

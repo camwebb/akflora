@@ -62,16 +62,17 @@ END{
   # for (i in status) test[status[i]]++
   # print "5 = " test["5"]
   # print "1 = " test["1"]
-  # 5 = 7794
-  # 1 = 3840
+  # 5 = 7794 names
+  # 1 = 3840 names
 
   # how to fix this?
   # 217|Agropyron latiglume (Scribn. & J.G. Sm.) Rydb.|5|1763|\
   #   Elymus violaceus (Hornem.) Feilberg|Panarctic Flora Checklist
   #4647|Elymus violaceus (Hornem.) Böcher ex J. Feilberg|1|1763|\
   #   Elymus violaceus (Hornem.) Feilberg|Panarctic Flora Checklist
+  # fixed above, overwriting name 1 where status = accepted and names differ
 
-  
+  # main: first parse the names, using the unparse names as keys
   # for each name string in the adjudicated table
   for (i in id_of_name) {
     # parse it
@@ -89,6 +90,8 @@ END{
   # wc
   # 11634  119144 1245159 accs.1
   # 11601   43633 1043578 accs.2 # 33 failures to parse
+
+  # TODO: add code here to drop misapplied names and their synonyms
   
   for (i in id_of_name)
     if (listed[i])
@@ -97,7 +100,13 @@ END{
       if (status[i] == 1)
         print "accs-" id_of_name[i], pn[i] , "accepted", \
           "accs-" id_of_name[i], src[i]
-      else # now includes name misapplied, etc
+      else if (status[i] == 5)
+        # 2020-01-15: originally I just used 1 and 5 in the SQL, but
+        #   commented this out.  A comment was added here "now
+        #   includes name misapplied, etc", with as simple `else, but
+        #   I'm not sure why I decided to do this. After the list was
+        #   checked by Timm, it is clear that I need to limit it to
+        #   just true synonyms
         print "accs-" id_of_name[i], pn[i] , "synonym", "accs-" id_of_name[accepted_name[i]], src[i]
 
   # Finally, this would not parse, so add

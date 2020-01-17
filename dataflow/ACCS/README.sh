@@ -28,7 +28,8 @@ echo "select
       left join taxonSource on 
         taxonSource.taxonSourceID = speciesAccepted.taxonSourceID 
       where 
-        -- (statusAdjudicatedID = 1 or statusAdjudicatedID = 5) and 
+        (statusAdjudicatedID = 1 or statusAdjudicatedID = 5) and 
+        speciesAccepted.presenceAlaska = 1 AND
         -- just get species, not genera
         nameAdjudicated REGEXP '[^\ ]+\ [^\ ]+';" \
             | mysql -N -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD alaskaFlora \
@@ -58,4 +59,4 @@ gawk 'BEGIN{FS=OFS="|"}{print $1,$2,$3,$4,$5,$6,$7,$8}' accs.3 > accs
 
 gawk 'BEGIN{FS=OFS="|"}{print $1,$10,$9,$11}' accs.3 > accs_rel
 
-rm -f accs.1 accs.2  accs.3
+# rm -f accs.1 accs.2  accs.3

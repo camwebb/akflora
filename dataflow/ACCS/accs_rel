@@ -121,14 +121,11 @@ accs-134|accs-130|synonym|Panarctic Flora Checklist
 accs-136|accs-136|accepted|Panarctic Flora Checklist
 accs-137|accs-137|accepted|Panarctic Flora Checklist
 accs-138|accs-138|accepted|Panarctic Flora Checklist
-accs-139|accs-136|synonym|Panarctic Flora Checklist
 accs-140|accs-138|synonym|Panarctic Flora Checklist
 accs-141|accs-136|synonym|Panarctic Flora Checklist
 accs-142|accs-138|synonym|Panarctic Flora Checklist
 accs-143|accs-138|synonym|Panarctic Flora Checklist
-accs-145|accs-146|synonym|C.L. Parker
 accs-146|accs-146|accepted|C.L. Parker
-accs-147|accs-146|synonym|C.L. Parker
 accs-148|accs-2361|synonym|PLANTS
 accs-149|accs-2410|synonym|PLANTS
 accs-4956|accs-4956|accepted|ACCS Rare List
@@ -294,16 +291,13 @@ accs-320|accs-279|synonym|Panarctic Flora Checklist
 accs-321|accs-279|synonym|Panarctic Flora Checklist
 accs-322|accs-279|synonym|Panarctic Flora Checklist
 accs-323|accs-8951|synonym|Flora of North America
-accs-324|accs-327|synonym|Panarctic Flora Checklist
 accs-325|accs-325|accepted|Panarctic Flora Checklist
-accs-326|accs-327|synonym|Panarctic Flora Checklist
 accs-327|accs-327|accepted|Panarctic Flora Checklist
 accs-328|accs-279|synonym|Panarctic Flora Checklist
 accs-330|accs-12610|synonym|PLANTS
 accs-331|accs-12615|synonym|PLANTS
 accs-332|accs-12616|synonym|PLANTS
 accs-335|accs-3107|synonym|Panarctic Flora Checklist
-accs-336|accs-12730|synonym|Panarctic Flora Checklist
 accs-337|accs-4037|synonym|Panarctic Flora Checklist
 accs-338|accs-338|accepted|ITIS
 accs-339|accs-339|accepted|ITIS
@@ -545,7 +539,6 @@ accs-593|accs-593|accepted|Panarctic Flora Checklist
 accs-594|accs-593|synonym|Panarctic Flora Checklist
 accs-596|accs-636|synonym|Panarctic Flora Checklist
 accs-597|accs-637|synonym|Panarctic Flora Checklist
-accs-599|accs-636|synonym|Panarctic Flora Checklist
 accs-600|accs-606|synonym|Panarctic Flora Checklist
 accs-601|accs-604|synonym|Panarctic Flora Checklist
 accs-602|accs-607|synonym|Panarctic Flora Checklist
@@ -589,7 +582,6 @@ accs-639|accs-639|accepted|ITIS
 accs-640|accs-640|accepted|Panarctic Flora Checklist
 accs-641|accs-641|accepted|Panarctic Flora Checklist
 accs-642|accs-642|accepted|Panarctic Flora Checklist
-accs-643|accs-642|synonym|Panarctic Flora Checklist
 accs-644|accs-639|synonym|ITIS
 accs-645|accs-2076|synonym|ITIS
 accs-647|accs-4131|synonym|PLANTS
@@ -778,7 +770,6 @@ accs-835|accs-832|synonym|PLANTS
 accs-837|accs-5749|synonym|Panarctic Flora Checklist
 accs-838|accs-5746|synonym|Panarctic Flora Checklist
 accs-839|accs-5747|synonym|Panarctic Flora Checklist
-accs-840|accs-5739|synonym|Panarctic Flora Checklist
 accs-841|accs-5739|synonym|Panarctic Flora Checklist
 accs-842|accs-5739|synonym|Panarctic Flora Checklist
 accs-843|accs-5746|synonym|Panarctic Flora Checklist
@@ -868,7 +859,6 @@ accs-942|accs-1798|synonym|Flora of North America
 accs-943|accs-12579|synonym|Flora of North America
 accs-944|accs-12579|synonym|Flora of North America
 accs-945|accs-12579|synonym|Flora of North America
-accs-946|accs-982|synonym|Flora of North America
 accs-947|accs-941|synonym|Flora of North America
 accs-948|accs-984|synonym|Flora of North America
 accs-949|accs-984|synonym|Flora of North America
@@ -876,7 +866,6 @@ accs-950|accs-941|synonym|Flora of North America
 accs-951|accs-984|synonym|Flora of North America
 accs-952|accs-1798|synonym|Flora of North America
 accs-953|accs-1798|synonym|Flora of North America
-accs-954|accs-1798|synonym|Flora of North America
 accs-955|accs-1790|synonym|Flora of North America
 accs-956|accs-1798|synonym|Flora of North America
 accs-957|accs-1798|synonym|Flora of North America
@@ -894,7 +883,6 @@ accs-968|accs-1795|synonym|Flora of North America
 accs-969|accs-1798|synonym|Flora of North America
 accs-970|accs-1797|synonym|Flora of North America
 accs-971|accs-1797|synonym|Flora of North America
-accs-972|accs-905|synonym|Panarctic Flora Checklist
 accs-973|accs-905|synonym|Panarctic Flora Checklist
 accs-974|accs-905|synonym|Panarctic Flora Checklist
 accs-975|accs-905|synonym|Panarctic Flora Checklist
@@ -1145,7 +1133,6 @@ accs-4970|accs-4970|accepted|Panarctic Flora Checklist
 accs-4971|accs-4970|synonym|Panarctic Flora Checklist
 accs-1238|accs-1236|synonym|Panarctic Flora Checklist
 accs-1239|accs-1236|synonym|Panarctic Flora Checklist
-accs-1240|accs-1235|synonym|Panarctic Flora Checklist
 accs-1241|accs-1236|synonym|Panarctic Flora Checklist
 accs-1242|accs-1236|synonym|Panarctic Flora Checklist
 accs-1243|accs-1236|synonym|Panarctic Flora Checklist
@@ -1290,7 +1277,6 @@ accs-1388|accs-832|synonym|PLANTS
 accs-1389|accs-832|synonym|PLANTS
 accs-1391|accs-1391|accepted|Flora of North America
 accs-1392|accs-1392|accepted|Flora of North America
-accs-1393|accs-1392|synonym|Flora of North America
 accs-1394|accs-1395|synonym|Panarctic Flora Checklist
 accs-1395|accs-1395|accepted|Panarctic Flora Checklist
 accs-1396|accs-339|synonym|ITIS
@@ -1340,7 +1326,6 @@ accs-1444|accs-1441|synonym|Panarctic Flora Checklist
 accs-1445|accs-1475|synonym|Panarctic Flora Checklist
 accs-1446|accs-1446|accepted|Panarctic Flora Checklist
 accs-1447|accs-1441|synonym|Panarctic Flora Checklist
-accs-1448|accs-1470|synonym|Panarctic Flora Checklist
 accs-1449|accs-1429|synonym|Panarctic Flora Checklist
 accs-1450|accs-1470|synonym|Panarctic Flora Checklist
 accs-1451|accs-1470|synonym|Panarctic Flora Checklist
@@ -2232,7 +2217,6 @@ accs-2421|accs-2420|synonym|Panarctic Flora Checklist
 accs-2422|accs-2420|synonym|Panarctic Flora Checklist
 accs-2423|accs-2423|accepted|D.F. Murray
 accs-2424|accs-2424|accepted|D.F. Murray
-accs-2425|accs-2417|synonym|Panarctic Flora Checklist
 accs-2426|accs-2424|synonym|D.F. Murray
 accs-2427|accs-2417|synonym|Panarctic Flora Checklist
 accs-2428|accs-2428|accepted|Panarctic Flora Checklist
@@ -2278,7 +2262,6 @@ accs-2469|accs-2437|synonym|PLANTS
 accs-2470|accs-2472|synonym|PLANTS
 accs-2471|accs-2471|accepted|PLANTS
 accs-2472|accs-2472|accepted|PLANTS
-accs-2473|accs-2473|accepted|PLANTS
 accs-2474|accs-2474|accepted|PLANTS
 accs-2476|accs-2499|synonym|Panarctic Flora Checklist
 accs-2477|accs-2499|synonym|Panarctic Flora Checklist
@@ -2306,7 +2289,6 @@ accs-2498|accs-2498|accepted|Panarctic Flora Checklist
 accs-2499|accs-2499|accepted|Panarctic Flora Checklist
 accs-2500|accs-2498|synonym|Panarctic Flora Checklist
 accs-2501|accs-2498|synonym|Panarctic Flora Checklist
-accs-2502|accs-2498|synonym|Panarctic Flora Checklist
 accs-2503|accs-2499|synonym|Panarctic Flora Checklist
 accs-2504|accs-2499|synonym|Panarctic Flora Checklist
 accs-2505|accs-2499|synonym|Panarctic Flora Checklist
@@ -2317,10 +2299,6 @@ accs-2510|accs-2510|accepted|ITIS
 accs-2511|accs-2511|accepted|PLANTS
 accs-2512|accs-2512|accepted|ITIS
 accs-2513|accs-2513|accepted|PLANTS
-accs-2515|accs-2510|synonym|ITIS
-accs-2516|accs-2511|synonym|PLANTS
-accs-2517|accs-2512|synonym|ITIS
-accs-2518|accs-2513|synonym|PLANTS
 accs-2520|accs-2520|accepted|Panarctic Flora Checklist
 accs-2521|accs-2523|synonym|Flora of North America
 accs-2522|accs-2522|accepted|Panarctic Flora Checklist
@@ -2444,7 +2422,6 @@ accs-2651|accs-2652|synonym|Panarctic Flora Checklist
 accs-2652|accs-2652|accepted|Panarctic Flora Checklist
 accs-2653|accs-2652|synonym|Panarctic Flora Checklist
 accs-2654|accs-2654|accepted|Panarctic Flora Checklist
-accs-2655|accs-2654|synonym|Panarctic Flora Checklist
 accs-2656|accs-2654|synonym|Panarctic Flora Checklist
 accs-2657|accs-2654|synonym|Panarctic Flora Checklist
 accs-2658|accs-2647|synonym|Flora of North America
@@ -2499,7 +2476,6 @@ accs-2707|accs-2707|accepted|A. Reznicek
 accs-2708|accs-2707|synonym|A. Reznicek
 accs-2709|accs-2707|synonym|A. Reznicek
 accs-2710|accs-2710|accepted|Panarctic Flora Checklist
-accs-2711|accs-2702|synonym|A. Reznicek
 accs-2712|accs-2712|accepted|A. Reznicek
 accs-2713|accs-2713|accepted|A. Reznicek
 accs-2714|accs-2958|synonym|A. Reznicek
@@ -2518,7 +2494,6 @@ accs-2726|accs-2726|accepted|A. Reznicek
 accs-2727|accs-2976|synonym|A. Reznicek
 accs-2728|accs-2728|accepted|A. Reznicek
 accs-2729|accs-2729|accepted|D.F. Murray
-accs-2730|accs-2729|synonym|D.F. Murray
 accs-2731|accs-2731|accepted|PLANTS
 accs-2732|accs-2732|accepted|A. Reznicek
 accs-2733|accs-2733|accepted|A. Reznicek
@@ -2541,7 +2516,6 @@ accs-2749|accs-2748|synonym|Panarctic Flora Checklist
 accs-2750|accs-2781|synonym|Panarctic Flora Checklist
 accs-2751|accs-2751|accepted|A. Reznicek
 accs-2752|accs-2752|accepted|A. Reznicek
-accs-2753|accs-2752|synonym|A. Reznicek
 accs-2754|accs-2754|accepted|A. Reznicek
 accs-2755|accs-2755|accepted|Panarctic Flora Checklist
 accs-2756|accs-2717|synonym|Panarctic Flora Checklist
@@ -2676,7 +2650,6 @@ accs-2884|accs-2883|synonym|A. Reznicek
 accs-2885|accs-2883|synonym|A. Reznicek
 accs-2886|accs-2886|accepted|A. Reznicek
 accs-2887|accs-2950|synonym|Panarctic Flora Checklist
-accs-2888|accs-2941|synonym|Panarctic Flora Checklist
 accs-2889|accs-2941|synonym|Panarctic Flora Checklist
 accs-2890|accs-2941|synonym|Panarctic Flora Checklist
 accs-2891|accs-2891|accepted|Panarctic Flora Checklist
@@ -2713,7 +2686,6 @@ accs-2921|accs-3008|synonym|A. Reznicek
 accs-2922|accs-2922|accepted|A. Reznicek
 accs-2923|accs-2945|synonym|A. Reznicek
 accs-2924|accs-2945|synonym|A. Reznicek
-accs-2925|accs-2896|synonym|Panarctic Flora Checklist
 accs-2926|accs-2896|synonym|Panarctic Flora Checklist
 accs-2927|accs-2896|synonym|Panarctic Flora Checklist
 accs-2928|accs-2928|accepted|A. Reznicek
@@ -3001,7 +2973,6 @@ accs-3229|accs-3229|accepted|PLANTS
 accs-3230|accs-1030|synonym|PLANTS
 accs-3231|accs-3231|accepted|PLANTS
 accs-3232|accs-7249|synonym|PLANTS
-accs-3233|accs-3233|accepted|PLANTS
 accs-3234|accs-3262|synonym|CNALH
 accs-3235|accs-8786|synonym|PLANTS
 accs-3236|accs-12570|synonym|CNALH
@@ -3282,7 +3253,6 @@ accs-3537|accs-3466|synonym|PLANTS
 accs-3538|accs-3538|accepted|CNALH
 accs-3539|accs-3539|accepted|PLANTS
 accs-3540|accs-3548|synonym|PLANTS
-accs-3541|accs-3542|synonym|CNALH
 accs-3542|accs-3542|accepted|CNALH
 accs-3543|accs-3543|accepted|PLANTS
 accs-3544|accs-3491|synonym|PLANTS
@@ -3304,7 +3274,6 @@ accs-3557|accs-3557|accepted|PLANTS
 accs-3558|accs-3558|accepted|PLANTS
 accs-3559|accs-3456|synonym|PLANTS
 accs-3560|accs-3560|accepted|CNALH
-accs-3561|accs-3560|synonym|CNALH
 accs-3562|accs-3562|accepted|PLANTS
 accs-3563|accs-3563|accepted|CNALH
 accs-4984|accs-4984|accepted|CNALH
@@ -3494,7 +3463,6 @@ accs-3787|accs-12012|synonym|D.F. Murray
 accs-3788|accs-12012|synonym|D.F. Murray
 accs-3790|accs-12012|synonym|D.F. Murray
 accs-3791|accs-12012|synonym|D.F. Murray
-accs-3792|accs-12012|synonym|D.F. Murray
 accs-3793|accs-12012|synonym|D.F. Murray
 accs-3794|accs-12012|synonym|D.F. Murray
 accs-3795|accs-12012|synonym|D.F. Murray
@@ -3593,7 +3561,6 @@ accs-3911|accs-3922|synonym|Flora of North America
 accs-3912|accs-3912|accepted|Flora of North America
 accs-3913|accs-3913|accepted|C. Sheviak
 accs-3914|accs-3914|accepted|C. Sheviak
-accs-3915|accs-3914|synonym|C. Sheviak
 accs-3916|accs-3916|accepted|C. Sheviak
 accs-3917|accs-3917|accepted|Panarctic Flora Checklist
 accs-3918|accs-3917|synonym|Panarctic Flora Checklist
@@ -3643,7 +3610,6 @@ accs-3973|accs-3973|accepted|Panarctic Flora Checklist
 accs-3974|accs-3974|accepted|Panarctic Flora Checklist
 accs-3975|accs-5338|synonym|Panarctic Flora Checklist
 accs-3977|accs-3977|accepted|ITIS
-accs-3980|accs-3982|synonym|Panarctic Flora Checklist
 accs-3981|accs-3983|synonym|Panarctic Flora Checklist
 accs-3982|accs-3982|accepted|Panarctic Flora Checklist
 accs-3983|accs-3983|accepted|Panarctic Flora Checklist
@@ -3674,7 +3640,6 @@ accs-4014|accs-12731|synonym|Panarctic Flora Checklist
 accs-4015|accs-4015|accepted|Panarctic Flora Checklist
 accs-4016|accs-4037|synonym|Panarctic Flora Checklist
 accs-4017|accs-4017|accepted|Panarctic Flora Checklist
-accs-4018|accs-4037|synonym|Panarctic Flora Checklist
 accs-4019|accs-4015|synonym|Panarctic Flora Checklist
 accs-4020|accs-4017|synonym|Panarctic Flora Checklist
 accs-4021|accs-4037|synonym|Panarctic Flora Checklist
@@ -3753,7 +3718,6 @@ accs-4096|accs-4096|accepted|ITIS
 accs-4097|accs-4096|synonym|ITIS
 accs-4098|accs-4098|accepted|ITIS
 accs-4099|accs-4099|accepted|Panarctic Flora Checklist
-accs-4101|accs-4105|synonym|Panarctic Flora Checklist
 accs-4102|accs-4105|synonym|Panarctic Flora Checklist
 accs-4103|accs-4105|synonym|Panarctic Flora Checklist
 accs-4104|accs-4105|synonym|Panarctic Flora Checklist
@@ -3978,7 +3942,6 @@ accs-4346|accs-4390|synonym|Panarctic Flora Checklist
 accs-4347|accs-4345|synonym|Panarctic Flora Checklist
 accs-4995|accs-4995|accepted|Al-Shehbaz and Mulligan 2014
 accs-4348|accs-4341|synonym|Panarctic Flora Checklist
-accs-4349|accs-4345|synonym|Panarctic Flora Checklist
 accs-4350|accs-4350|accepted|Panarctic Flora Checklist
 accs-4351|accs-4350|synonym|Panarctic Flora Checklist
 accs-4352|accs-4392|synonym|Panarctic Flora Checklist
@@ -4032,7 +3995,6 @@ accs-4398|accs-4329|synonym|Panarctic Flora Checklist
 accs-4399|accs-4399|accepted|Panarctic Flora Checklist
 accs-4400|accs-4331|synonym|Panarctic Flora Checklist
 accs-4401|accs-4401|accepted|Panarctic Flora Checklist
-accs-4402|accs-4389|synonym|Flora of North America
 accs-4403|accs-4389|synonym|Flora of North America
 accs-4404|accs-4392|synonym|Panarctic Flora Checklist
 accs-4405|accs-4405|accepted|Panarctic Flora Checklist
@@ -4079,7 +4041,6 @@ accs-4447|accs-6812|synonym|PLANTS
 accs-4448|accs-6810|synonym|PLANTS
 accs-4449|accs-11260|synonym|PLANTS
 accs-4450|accs-12934|synonym|PLANTS
-accs-4451|accs-4441|synonym|Hedenäs 1998
 accs-4997|accs-4997|accepted|ACCS Rare List
 accs-4452|accs-12939|synonym|PLANTS
 accs-4453|accs-12940|synonym|PLANTS
@@ -4101,19 +4062,14 @@ accs-4470|accs-4470|accepted|Panarctic Flora Checklist
 accs-4471|accs-4470|synonym|Panarctic Flora Checklist
 accs-4472|accs-4470|synonym|Panarctic Flora Checklist
 accs-4473|accs-4470|synonym|Panarctic Flora Checklist
-accs-4474|accs-4497|synonym|Panarctic Flora Checklist
 accs-4475|accs-4475|accepted|Panarctic Flora Checklist
 accs-4476|accs-4476|accepted|Panarctic Flora Checklist
 accs-4477|accs-4479|synonym|Panarctic Flora Checklist
-accs-4478|accs-4475|synonym|Panarctic Flora Checklist
 accs-4479|accs-4479|accepted|Panarctic Flora Checklist
 accs-4480|accs-4480|accepted|Panarctic Flora Checklist
 accs-4481|accs-4479|synonym|Panarctic Flora Checklist
 accs-4482|accs-4480|synonym|Panarctic Flora Checklist
-accs-4483|accs-4464|synonym|Panarctic Flora Checklist
 accs-4484|accs-4497|synonym|Panarctic Flora Checklist
-accs-4485|accs-4497|synonym|Panarctic Flora Checklist
-accs-4486|accs-4464|synonym|Panarctic Flora Checklist
 accs-4487|accs-4465|synonym|Panarctic Flora Checklist
 accs-4488|accs-4465|synonym|Panarctic Flora Checklist
 accs-4489|accs-4497|synonym|Panarctic Flora Checklist
@@ -4121,7 +4077,6 @@ accs-4490|accs-4497|synonym|Panarctic Flora Checklist
 accs-4491|accs-4479|synonym|Panarctic Flora Checklist
 accs-4492|accs-4497|synonym|Panarctic Flora Checklist
 accs-4493|accs-4464|synonym|Panarctic Flora Checklist
-accs-4494|accs-4464|synonym|Panarctic Flora Checklist
 accs-4495|accs-4497|synonym|Panarctic Flora Checklist
 accs-4496|accs-4496|accepted|Panarctic Flora Checklist
 accs-4497|accs-4497|accepted|Panarctic Flora Checklist
@@ -4191,7 +4146,6 @@ accs-4571|accs-4574|synonym|Panarctic Flora Checklist
 accs-4572|accs-4561|synonym|Panarctic Flora Checklist
 accs-4573|accs-4561|synonym|Panarctic Flora Checklist
 accs-4574|accs-4574|accepted|Panarctic Flora Checklist
-accs-4575|accs-4555|synonym|Panarctic Flora Checklist
 accs-4576|accs-4556|synonym|Panarctic Flora Checklist
 accs-4577|accs-8258|synonym|Panarctic Flora Checklist
 accs-4579|accs-4579|accepted|Flora of North America
@@ -4449,7 +4403,6 @@ accs-4846|accs-4844|synonym|Panarctic Flora Checklist
 accs-4847|accs-4844|synonym|Panarctic Flora Checklist
 accs-4848|accs-4844|synonym|Panarctic Flora Checklist
 accs-4849|accs-4878|synonym|Flora of North America
-accs-4850|accs-4851|synonym|Panarctic Flora Checklist
 accs-4851|accs-4851|accepted|Panarctic Flora Checklist
 accs-4852|accs-4829|synonym|Panarctic Flora Checklist
 accs-4853|accs-4853|accepted|Panarctic Flora Checklist
@@ -4465,7 +4418,6 @@ accs-4862|accs-4858|synonym|Panarctic Flora Checklist
 accs-4863|accs-4908|synonym|Panarctic Flora Checklist
 accs-4864|accs-4864|accepted|Panarctic Flora Checklist
 accs-4865|accs-4865|accepted|Panarctic Flora Checklist
-accs-4866|accs-5001|synonym|Panarctic Flora Checklist
 accs-4867|accs-5001|synonym|Panarctic Flora Checklist
 accs-4868|accs-4877|synonym|Panarctic Flora Checklist
 accs-4869|accs-4869|accepted|ITIS
@@ -4483,7 +4435,6 @@ accs-4880|accs-4880|accepted|Panarctic Flora Checklist
 accs-4881|accs-4880|synonym|Panarctic Flora Checklist
 accs-4882|accs-4880|synonym|Panarctic Flora Checklist
 accs-4883|accs-4858|synonym|Panarctic Flora Checklist
-accs-4884|accs-4851|synonym|Panarctic Flora Checklist
 accs-4885|accs-4880|synonym|Panarctic Flora Checklist
 accs-4886|accs-4886|accepted|Panarctic Flora Checklist
 accs-4887|accs-4865|synonym|Panarctic Flora Checklist
@@ -4545,7 +4496,6 @@ accs-4946|accs-4946|accepted|Panarctic Flora Checklist
 accs-4947|accs-4918|synonym|Panarctic Flora Checklist
 accs-4948|accs-4934|synonym|Panarctic Flora Checklist
 accs-4949|accs-4946|synonym|Panarctic Flora Checklist
-accs-4950|accs-4946|synonym|Panarctic Flora Checklist
 accs-4952|accs-4952|accepted|Panarctic Flora Checklist
 accs-4953|accs-4953|accepted|Panarctic Flora Checklist
 accs-4954|accs-4954|accepted|Panarctic Flora Checklist
@@ -4556,7 +4506,6 @@ accs-5004|accs-5004|accepted|Panarctic Flora Checklist
 accs-5005|accs-5005|accepted|Panarctic Flora Checklist
 accs-5006|accs-5007|synonym|Panarctic Flora Checklist
 accs-5007|accs-5007|accepted|Panarctic Flora Checklist
-accs-5008|accs-5007|synonym|Panarctic Flora Checklist
 accs-5009|accs-5007|synonym|Panarctic Flora Checklist
 accs-5011|accs-5010|synonym|Panarctic Flora Checklist
 accs-5010|accs-5010|accepted|Panarctic Flora Checklist
@@ -4567,7 +4516,6 @@ accs-5014|accs-5014|accepted|Panarctic Flora Checklist
 accs-5015|accs-5015|accepted|Panarctic Flora Checklist
 accs-5016|accs-5015|synonym|Panarctic Flora Checklist
 accs-5017|accs-5014|synonym|Panarctic Flora Checklist
-accs-5018|accs-5013|synonym|Panarctic Flora Checklist
 accs-5019|accs-5014|synonym|Panarctic Flora Checklist
 accs-5020|accs-5015|synonym|Panarctic Flora Checklist
 accs-5021|accs-5021|accepted|Panarctic Flora Checklist
@@ -4888,10 +4836,7 @@ accs-5370|accs-5338|synonym|Panarctic Flora Checklist
 accs-5372|accs-5372|accepted|Panarctic Flora Checklist
 accs-5373|accs-5373|accepted|Panarctic Flora Checklist
 accs-5374|accs-5373|synonym|Panarctic Flora Checklist
-accs-5375|accs-5379|synonym|Panarctic Flora Checklist
-accs-5376|accs-5379|synonym|Panarctic Flora Checklist
 accs-5377|accs-5373|synonym|Panarctic Flora Checklist
-accs-5378|accs-5373|synonym|Panarctic Flora Checklist
 accs-5379|accs-5379|accepted|Panarctic Flora Checklist
 accs-5381|accs-5381|accepted|Panarctic Flora Checklist
 accs-5383|accs-5383|accepted|D.F. Murray
@@ -5031,7 +4976,6 @@ accs-5541|accs-5541|accepted|Flora of North America
 accs-5542|accs-5542|accepted|Panarctic Flora Checklist
 accs-5543|accs-5541|synonym|Flora of North America
 accs-5544|accs-5541|synonym|Flora of North America
-accs-5545|accs-5540|synonym|Panarctic Flora Checklist
 accs-5546|accs-5540|synonym|Panarctic Flora Checklist
 accs-5547|accs-5540|synonym|Panarctic Flora Checklist
 accs-5538|accs-5538|accepted|ITIS
@@ -5116,7 +5060,6 @@ accs-5647|accs-5649|synonym|Panarctic Flora Checklist
 accs-5648|accs-5649|synonym|Panarctic Flora Checklist
 accs-9942|accs-9944|synonym|Panarctic Flora Checklist
 accs-5649|accs-5649|accepted|Panarctic Flora Checklist
-accs-5650|accs-5655|synonym|Panarctic Flora Checklist
 accs-5651|accs-5655|synonym|Panarctic Flora Checklist
 accs-5652|accs-5655|synonym|Panarctic Flora Checklist
 accs-5653|accs-5655|synonym|Panarctic Flora Checklist
@@ -5196,7 +5139,6 @@ accs-5739|accs-5739|accepted|Panarctic Flora Checklist
 accs-5740|accs-5739|synonym|Panarctic Flora Checklist
 accs-5741|accs-5747|synonym|Panarctic Flora Checklist
 accs-5742|accs-5746|synonym|Panarctic Flora Checklist
-accs-5743|accs-5746|synonym|Panarctic Flora Checklist
 accs-5744|accs-5747|synonym|Panarctic Flora Checklist
 accs-5745|accs-5746|synonym|Panarctic Flora Checklist
 accs-5746|accs-5746|accepted|Panarctic Flora Checklist
@@ -5325,7 +5267,6 @@ accs-5883|accs-5883|accepted|PLANTS
 accs-5884|accs-5884|accepted|PLANTS
 accs-5885|accs-5885|accepted|PLANTS
 accs-5886|accs-5886|accepted|PLANTS
-accs-5887|accs-5886|synonym|PLANTS
 accs-5888|accs-5890|synonym|PLANTS
 accs-9951|accs-9951|accepted|ACCS Rare List
 accs-5889|accs-5889|accepted|PLANTS
@@ -5478,7 +5419,6 @@ accs-6052|accs-6052|accepted|Panarctic Flora Checklist
 accs-6053|accs-6053|accepted|Panarctic Flora Checklist
 accs-6054|accs-6054|accepted|Panarctic Flora Checklist
 accs-6055|accs-6054|synonym|Panarctic Flora Checklist
-accs-6056|accs-6054|synonym|Panarctic Flora Checklist
 accs-6057|accs-6054|synonym|Panarctic Flora Checklist
 accs-6058|accs-6054|synonym|Panarctic Flora Checklist
 accs-6059|accs-6054|synonym|Panarctic Flora Checklist
@@ -5490,7 +5430,6 @@ accs-6064|accs-6064|accepted|Panarctic Flora Checklist
 accs-6065|accs-6065|accepted|Panarctic Flora Checklist
 accs-6066|accs-6079|synonym|Panarctic Flora Checklist
 accs-6067|accs-6079|synonym|Panarctic Flora Checklist
-accs-6068|accs-6079|synonym|Panarctic Flora Checklist
 accs-6069|accs-6065|synonym|Panarctic Flora Checklist
 accs-6070|accs-6065|synonym|Panarctic Flora Checklist
 accs-6071|accs-6079|synonym|Panarctic Flora Checklist
@@ -5517,11 +5456,8 @@ accs-6091|accs-6127|synonym|Panarctic Flora Checklist
 accs-6092|accs-6090|synonym|Panarctic Flora Checklist
 accs-6093|accs-6127|synonym|Panarctic Flora Checklist
 accs-6094|accs-6127|synonym|Panarctic Flora Checklist
-accs-6095|accs-6116|synonym|Panarctic Flora Checklist
-accs-6096|accs-6116|synonym|Panarctic Flora Checklist
 accs-6097|accs-6116|synonym|Panarctic Flora Checklist
 accs-6098|accs-6116|synonym|Panarctic Flora Checklist
-accs-6099|accs-6116|synonym|Panarctic Flora Checklist
 accs-6100|accs-6100|accepted|Panarctic Flora Checklist
 accs-6101|accs-6100|synonym|Panarctic Flora Checklist
 accs-6102|accs-6100|synonym|Panarctic Flora Checklist
@@ -5560,7 +5496,6 @@ accs-6134|accs-6134|accepted|Flora of North America
 accs-6135|accs-6135|accepted|Panarctic Flora Checklist
 accs-6136|accs-6135|synonym|Panarctic Flora Checklist
 accs-6137|accs-6135|synonym|Panarctic Flora Checklist
-accs-6138|accs-6052|synonym|Panarctic Flora Checklist
 accs-6139|accs-6052|synonym|Panarctic Flora Checklist
 accs-6140|accs-6052|synonym|Panarctic Flora Checklist
 accs-6141|accs-6109|synonym|Flora of North America
@@ -5658,7 +5593,6 @@ accs-6246|accs-7612|synonym|Flora of North America
 accs-6247|accs-6247|accepted|Flora of North America
 accs-6248|accs-6243|synonym|Flora of North America
 accs-6249|accs-6243|synonym|Flora of North America
-accs-6250|accs-7612|synonym|Flora of North America
 accs-6251|accs-7612|synonym|Flora of North America
 accs-6252|accs-7612|synonym|Flora of North America
 accs-6253|accs-7612|synonym|Flora of North America
@@ -5748,7 +5682,6 @@ accs-6350|accs-6350|accepted|PLANTS
 accs-6351|accs-12163|synonym|PLANTS
 accs-6352|accs-6352|accepted|PLANTS
 accs-6353|accs-9585|synonym|PLANTS
-accs-6354|accs-6443|synonym|Śliwa 2007
 accs-6355|accs-6443|synonym|Śliwa 2007
 accs-6356|accs-1358|synonym|PLANTS
 accs-6357|accs-6357|accepted|PLANTS
@@ -5951,7 +5884,6 @@ accs-6554|accs-6433|synonym|PLANTS
 accs-6555|accs-7630|synonym|PLANTS
 accs-6556|accs-11130|synonym|PLANTS
 accs-6557|accs-6557|accepted|PLANTS
-accs-9958|accs-9958|accepted|ACCS Rare List
 accs-6558|accs-9295|synonym|PLANTS
 accs-6559|accs-1731|synonym|PLANTS
 accs-6560|accs-8645|synonym|PLANTS
@@ -5987,7 +5919,6 @@ accs-6593|accs-6905|synonym|PLANTS
 accs-6595|accs-6595|accepted|PLANTS
 accs-6597|accs-6601|synonym|Panarctic Flora Checklist
 accs-6598|accs-6601|synonym|Panarctic Flora Checklist
-accs-6599|accs-6601|synonym|Panarctic Flora Checklist
 accs-6600|accs-6600|accepted|Panarctic Flora Checklist
 accs-6601|accs-6601|accepted|Panarctic Flora Checklist
 accs-6603|accs-6603|accepted|CNALH
@@ -6071,7 +6002,6 @@ accs-6691|accs-6691|accepted|PLANTS
 accs-6692|accs-6666|synonym|PLANTS
 accs-6693|accs-6693|accepted|PLANTS
 accs-6694|accs-6686|synonym|PLANTS
-accs-6695|accs-11277|synonym|CNALH
 accs-6696|accs-11277|synonym|CNALH
 accs-6698|accs-6657|synonym|Panarctic Flora Checklist
 accs-6700|accs-9627|synonym|PLANTS
@@ -6229,7 +6159,6 @@ accs-6889|accs-6887|synonym|Panarctic Flora Checklist
 accs-6890|accs-6891|synonym|ITIS
 accs-6891|accs-6891|accepted|ITIS
 accs-6892|accs-6891|synonym|ITIS
-accs-6894|accs-6895|synonym|CNALH
 accs-6895|accs-6895|accepted|CNALH
 accs-6896|accs-11127|synonym|PLANTS
 accs-6897|accs-1997|synonym|PLANTS
@@ -6320,7 +6249,6 @@ accs-6990|accs-6990|accepted|Panarctic Flora Checklist
 accs-6991|accs-6984|synonym|Panarctic Flora Checklist
 accs-6992|accs-6992|accepted|Panarctic Flora Checklist
 accs-6993|accs-6993|accepted|Flora of North America
-accs-6994|accs-6990|synonym|Panarctic Flora Checklist
 accs-6995|accs-6993|synonym|Flora of North America
 accs-6996|accs-6970|synonym|Flora of North America
 accs-6997|accs-6990|synonym|Panarctic Flora Checklist
@@ -6583,7 +6511,6 @@ accs-7285|accs-7281|synonym|Panarctic Flora Checklist
 accs-7286|accs-7286|accepted|D.F. Murray
 accs-7287|accs-7286|synonym|D.F. Murray
 accs-7291|accs-7290|synonym|ITIS
-accs-7292|accs-7301|synonym|Panarctic Flora Checklist
 accs-7293|accs-7301|synonym|Panarctic Flora Checklist
 accs-7294|accs-7301|synonym|Panarctic Flora Checklist
 accs-7295|accs-7301|synonym|Panarctic Flora Checklist
@@ -6624,7 +6551,6 @@ accs-7332|accs-7332|accepted|Panarctic Flora Checklist
 accs-7333|accs-7337|synonym|Panarctic Flora Checklist
 accs-7334|accs-7337|synonym|Panarctic Flora Checklist
 accs-7335|accs-7332|synonym|Panarctic Flora Checklist
-accs-7336|accs-7337|synonym|Panarctic Flora Checklist
 accs-7337|accs-7337|accepted|Panarctic Flora Checklist
 accs-7338|accs-7344|synonym|Panarctic Flora Checklist
 accs-7339|accs-7339|accepted|Panarctic Flora Checklist
@@ -7188,7 +7114,6 @@ accs-7989|accs-7989|accepted|Panarctic Flora Checklist
 accs-7990|accs-7990|accepted|Panarctic Flora Checklist
 accs-7991|accs-8053|synonym|Panarctic Flora Checklist
 accs-7992|accs-7992|accepted|Panarctic Flora Checklist
-accs-7993|accs-8051|synonym|Panarctic Flora Checklist
 accs-7994|accs-8023|synonym|Panarctic Flora Checklist
 accs-7995|accs-8032|synonym|Panarctic Flora Checklist
 accs-7996|accs-8041|synonym|Panarctic Flora Checklist
@@ -7230,10 +7155,8 @@ accs-8031|accs-8053|synonym|Panarctic Flora Checklist
 accs-8032|accs-8032|accepted|Panarctic Flora Checklist
 accs-8033|accs-8032|synonym|Panarctic Flora Checklist
 accs-8034|accs-8034|accepted|Panarctic Flora Checklist
-accs-8035|accs-7992|synonym|Panarctic Flora Checklist
 accs-8036|accs-7992|synonym|Panarctic Flora Checklist
 accs-8037|accs-8019|synonym|Panarctic Flora Checklist
-accs-8038|accs-7992|synonym|Panarctic Flora Checklist
 accs-8039|accs-8019|synonym|Panarctic Flora Checklist
 accs-8040|accs-8046|synonym|Panarctic Flora Checklist
 accs-8041|accs-8041|accepted|Panarctic Flora Checklist
@@ -7256,7 +7179,6 @@ accs-8057|accs-7516|synonym|Flora of North America
 accs-8058|accs-7516|synonym|Flora of North America
 accs-8059|accs-7228|synonym|PLANTS
 accs-8060|accs-7228|synonym|PLANTS
-accs-8063|accs-8071|synonym|Panarctic Flora Checklist
 accs-8064|accs-8066|synonym|Panarctic Flora Checklist
 accs-8065|accs-8066|synonym|Panarctic Flora Checklist
 accs-8066|accs-8066|accepted|Panarctic Flora Checklist
@@ -7292,7 +7214,7 @@ accs-8096|accs-8205|synonym|PLANTS
 accs-8098|accs-8098|accepted|Panarctic Flora Checklist
 accs-8099|accs-8098|synonym|Panarctic Flora Checklist
 accs-8100|accs-8098|synonym|Panarctic Flora Checklist
-accs-8101|accs-8118|synonym|Panarctic Flora Checklist
+accs-8101|accs-|synonym|Panarctic Flora Checklist
 accs-8102|accs-8102|accepted|Panarctic Flora Checklist
 accs-8103|accs-8126|synonym|Panarctic Flora Checklist
 accs-8104|accs-8104|accepted|Panarctic Flora Checklist
@@ -7307,13 +7229,11 @@ accs-8111|accs-8110|synonym|Panarctic Flora Checklist
 accs-8112|accs-8112|accepted|Panarctic Flora Checklist
 accs-8113|accs-8114|synonym|Panarctic Flora Checklist
 accs-8114|accs-8114|accepted|Panarctic Flora Checklist
-accs-8115|accs-8110|synonym|Panarctic Flora Checklist
 accs-8116|accs-8110|synonym|Panarctic Flora Checklist
 accs-8117|accs-8110|synonym|Panarctic Flora Checklist
-accs-8118|accs-8112|synonym|Panarctic Flora Checklist
 accs-8119|accs-8098|synonym|Panarctic Flora Checklist
 accs-8120|accs-8112|synonym|Panarctic Flora Checklist
-accs-8121|accs-8118|synonym|Panarctic Flora Checklist
+accs-8121|accs-|synonym|Panarctic Flora Checklist
 accs-8122|accs-8112|synonym|Panarctic Flora Checklist
 accs-8123|accs-8123|accepted|Panarctic Flora Checklist
 accs-8124|accs-8112|synonym|Panarctic Flora Checklist
@@ -7326,19 +7246,15 @@ accs-8130|accs-8104|synonym|Panarctic Flora Checklist
 accs-8131|accs-8114|synonym|Panarctic Flora Checklist
 accs-8132|accs-8114|synonym|Panarctic Flora Checklist
 accs-8133|accs-8110|synonym|Panarctic Flora Checklist
-accs-8134|accs-8110|synonym|Panarctic Flora Checklist
 accs-8135|accs-8098|synonym|Panarctic Flora Checklist
 accs-8136|accs-8114|synonym|Panarctic Flora Checklist
 accs-8137|accs-8114|synonym|Panarctic Flora Checklist
 accs-8138|accs-8110|synonym|Panarctic Flora Checklist
 accs-8139|accs-8110|synonym|Panarctic Flora Checklist
-accs-8140|accs-8126|synonym|Panarctic Flora Checklist
 accs-8141|accs-8110|synonym|Panarctic Flora Checklist
-accs-8142|accs-8110|synonym|Panarctic Flora Checklist
 accs-8143|accs-8143|accepted|Flora of North America
 accs-8144|accs-8112|synonym|Panarctic Flora Checklist
 accs-9977|accs-9977|accepted|Panarctic Flora Checklist
-accs-9978|accs-9977|synonym|Panarctic Flora Checklist
 accs-8145|accs-8145|accepted|Panarctic Flora Checklist
 accs-8147|accs-8145|synonym|Panarctic Flora Checklist
 accs-8146|accs-8145|synonym|Panarctic Flora Checklist
@@ -7452,8 +7368,6 @@ accs-8270|accs-8270|accepted|Panarctic Flora Checklist
 accs-8271|accs-8271|accepted|Panarctic Flora Checklist
 accs-8272|accs-8270|synonym|Panarctic Flora Checklist
 accs-9981|accs-9981|accepted|Panarctic Flora Checklist
-accs-8273|accs-8269|synonym|Panarctic Flora Checklist
-accs-8274|accs-8270|synonym|Panarctic Flora Checklist
 accs-8275|accs-8275|accepted|Panarctic Flora Checklist
 accs-8276|accs-8281|synonym|Panarctic Flora Checklist
 accs-8277|accs-8255|synonym|Panarctic Flora Checklist
@@ -7610,7 +7524,6 @@ accs-8438|accs-8437|synonym|ACCS Rare List
 accs-8439|accs-8437|synonym|ACCS Rare List
 accs-8445|accs-8445|accepted|PLANTS
 accs-8446|accs-8446|accepted|CNALH
-accs-8447|accs-8446|synonym|CNALH
 accs-8448|accs-8448|accepted|CNALH
 accs-8449|accs-8449|accepted|PLANTS
 accs-8450|accs-8450|accepted|CNALH
@@ -7678,9 +7591,7 @@ accs-8521|accs-8519|synonym|Panarctic Flora Checklist
 accs-8522|accs-8522|accepted|ACCS Rare List
 accs-8523|accs-8515|synonym|Panarctic Flora Checklist
 accs-8524|accs-8522|synonym|ACCS Rare List
-accs-8525|accs-8515|synonym|Panarctic Flora Checklist
 accs-8526|accs-8515|synonym|Panarctic Flora Checklist
-accs-8527|accs-8515|synonym|Panarctic Flora Checklist
 accs-8528|accs-8522|synonym|ACCS Rare List
 accs-8529|accs-8515|synonym|Panarctic Flora Checklist
 accs-8530|accs-8515|synonym|Panarctic Flora Checklist
@@ -7885,7 +7796,6 @@ accs-8761|accs-8780|synonym|C. Sheviak
 accs-8762|accs-8762|accepted|ACCS Rare List
 accs-8763|accs-8780|synonym|C. Sheviak
 accs-8764|accs-8764|accepted|C. Sheviak
-accs-8765|accs-8748|synonym|C. Sheviak
 accs-8766|accs-8780|synonym|C. Sheviak
 accs-8767|accs-8764|synonym|C. Sheviak
 accs-8768|accs-8748|synonym|C. Sheviak
@@ -8472,7 +8382,6 @@ accs-9376|accs-9365|synonym|Panarctic Flora Checklist
 accs-9377|accs-9370|synonym|Panarctic Flora Checklist
 accs-9378|accs-9378|accepted|Panarctic Flora Checklist
 accs-9379|accs-9379|accepted|Panarctic Flora Checklist
-accs-9380|accs-9379|synonym|Panarctic Flora Checklist
 accs-9381|accs-9381|accepted|D.F. Murray
 accs-9382|accs-9382|accepted|D.F. Murray
 accs-9383|accs-9382|synonym|D.F. Murray
@@ -8487,7 +8396,6 @@ accs-9391|accs-9435|synonym|Flora of North America
 accs-9392|accs-9435|synonym|Flora of North America
 accs-9393|accs-9490|synonym|Panarctic Flora Checklist
 accs-9394|accs-9394|accepted|Flora of North America
-accs-9395|accs-9379|synonym|Panarctic Flora Checklist
 accs-9396|accs-9511|synonym|Panarctic Flora Checklist
 accs-9397|accs-9382|synonym|D.F. Murray
 accs-9398|accs-9398|accepted|Flora of North America
@@ -8535,9 +8443,6 @@ accs-9437|accs-9437|accepted|Flora of North America
 accs-9438|accs-9435|synonym|Flora of North America
 accs-9439|accs-9435|synonym|Flora of North America
 accs-9440|accs-9435|synonym|Flora of North America
-accs-9441|accs-9378|synonym|Panarctic Flora Checklist
-accs-9442|accs-9379|synonym|Panarctic Flora Checklist
-accs-9443|accs-9379|synonym|Panarctic Flora Checklist
 accs-9444|accs-9427|synonym|Panarctic Flora Checklist
 accs-9445|accs-9379|synonym|Panarctic Flora Checklist
 accs-9446|accs-9446|accepted|Panarctic Flora Checklist
@@ -8548,12 +8453,10 @@ accs-9450|accs-9450|accepted|Panarctic Flora Checklist
 accs-9451|accs-9447|synonym|Panarctic Flora Checklist
 accs-9452|accs-9435|synonym|Flora of North America
 accs-9453|accs-9435|synonym|Flora of North America
-accs-9454|accs-9379|synonym|Panarctic Flora Checklist
 accs-9455|accs-9999|synonym|Panarctic Flora Checklist
 accs-9456|accs-9456|accepted|Panarctic Flora Checklist
 accs-9457|accs-9437|synonym|Flora of North America
 accs-9458|accs-9437|synonym|Flora of North America
-accs-9459|accs-9398|synonym|Flora of North America
 accs-9460|accs-9399|synonym|Panarctic Flora Checklist
 accs-9461|accs-9511|synonym|Panarctic Flora Checklist
 accs-9462|accs-9481|synonym|Panarctic Flora Checklist
@@ -8561,7 +8464,6 @@ accs-9463|accs-9386|synonym|Panarctic Flora Checklist
 accs-9992|accs-9990|synonym|Panarctic Flora Checklist
 accs-9464|accs-9464|accepted|Panarctic Flora Checklist
 accs-9465|accs-9465|accepted|Panarctic Flora Checklist
-accs-9466|accs-9379|synonym|Panarctic Flora Checklist
 accs-9467|accs-9490|synonym|Panarctic Flora Checklist
 accs-9468|accs-9465|synonym|Panarctic Flora Checklist
 accs-9469|accs-9379|synonym|Panarctic Flora Checklist
@@ -8575,7 +8477,6 @@ accs-9476|accs-9465|synonym|Panarctic Flora Checklist
 accs-9477|accs-9523|synonym|Panarctic Flora Checklist
 accs-9478|accs-9478|accepted|Panarctic Flora Checklist
 accs-9479|accs-9479|accepted|Panarctic Flora Checklist
-accs-9480|accs-9479|synonym|Panarctic Flora Checklist
 accs-9481|accs-9481|accepted|Panarctic Flora Checklist
 accs-9482|accs-9479|synonym|Panarctic Flora Checklist
 accs-9483|accs-9479|synonym|Panarctic Flora Checklist
@@ -8621,9 +8522,7 @@ accs-9519|accs-9490|synonym|Panarctic Flora Checklist
 accs-9996|accs-9996|accepted|Panarctic Flora Checklist
 accs-9997|accs-9997|accepted|Panarctic Flora Checklist
 accs-9998|accs-9993|synonym|Panarctic Flora Checklist
-accs-9520|accs-9999|synonym|Panarctic Flora Checklist
 accs-9521|accs-9504|synonym|Panarctic Flora Checklist
-accs-9522|accs-9996|synonym|Panarctic Flora Checklist
 accs-9523|accs-9523|accepted|Panarctic Flora Checklist
 accs-9524|accs-9523|synonym|Panarctic Flora Checklist
 accs-9525|accs-9525|accepted|Panarctic Flora Checklist
@@ -8779,7 +8678,6 @@ accs-9708|accs-9708|accepted|PLANTS
 accs-9709|accs-9709|accepted|PLANTS
 accs-9711|accs-9711|accepted|PLANTS
 accs-9713|accs-2130|synonym|PLANTS
-accs-9714|accs-2192|synonym|PLANTS
 accs-9716|accs-9722|synonym|Panarctic Flora Checklist
 accs-9717|accs-9751|synonym|Panarctic Flora Checklist
 accs-9718|accs-9718|accepted|Panarctic Flora Checklist
@@ -9006,7 +8904,6 @@ accs-10030|accs-10157|synonym|Panarctic Flora Checklist
 accs-10031|accs-10157|synonym|Panarctic Flora Checklist
 accs-10032|accs-10020|synonym|Panarctic Flora Checklist
 accs-10033|accs-10033|accepted|Panarctic Flora Checklist
-accs-10034|accs-10130|synonym|Panarctic Flora Checklist
 accs-10035|accs-10130|synonym|Panarctic Flora Checklist
 accs-10036|accs-10130|synonym|Panarctic Flora Checklist
 accs-10037|accs-10037|accepted|D.F. Murray
@@ -9022,7 +8919,6 @@ accs-10045|accs-5623|synonym|Panarctic Flora Checklist
 accs-10046|accs-5623|synonym|Panarctic Flora Checklist
 accs-10047|accs-5623|synonym|Panarctic Flora Checklist
 accs-10048|accs-5623|synonym|Panarctic Flora Checklist
-accs-10049|accs-10033|synonym|Panarctic Flora Checklist
 accs-10050|accs-10050|accepted|Panarctic Flora Checklist
 accs-10051|accs-10052|synonym|Panarctic Flora Checklist
 accs-10052|accs-10052|accepted|Panarctic Flora Checklist
@@ -9093,12 +8989,10 @@ accs-10116|accs-10116|accepted|D.F. Murray
 accs-10117|accs-10116|synonym|D.F. Murray
 accs-10118|accs-10116|synonym|D.F. Murray
 accs-10119|accs-10116|synonym|D.F. Murray
-accs-10120|accs-10116|synonym|D.F. Murray
 accs-10121|accs-10116|synonym|D.F. Murray
 accs-10122|accs-10116|synonym|D.F. Murray
 accs-10123|accs-10123|accepted|Panarctic Flora Checklist
 accs-10124|accs-3730|synonym|Panarctic Flora Checklist
-accs-10125|accs-10033|synonym|Panarctic Flora Checklist
 accs-10126|accs-10033|synonym|Panarctic Flora Checklist
 accs-10127|accs-10033|synonym|Panarctic Flora Checklist
 accs-10128|accs-10033|synonym|Panarctic Flora Checklist
@@ -9144,10 +9038,7 @@ accs-10165|accs-10157|synonym|Panarctic Flora Checklist
 accs-10166|accs-10157|synonym|Panarctic Flora Checklist
 accs-10167|accs-10167|accepted|Panarctic Flora Checklist
 accs-10168|accs-10168|accepted|Panarctic Flora Checklist
-accs-10169|accs-10037|synonym|D.F. Murray
-accs-10170|accs-10037|synonym|D.F. Murray
 accs-10171|accs-10037|synonym|D.F. Murray
-accs-10172|accs-10037|synonym|D.F. Murray
 accs-10173|accs-10067|synonym|Flora of North America
 accs-10175|accs-10176|synonym|Flora of North America
 accs-10176|accs-10176|accepted|Flora of North America
@@ -9163,7 +9054,6 @@ accs-10192|accs-10195|synonym|Panarctic Flora Checklist
 accs-10193|accs-10195|synonym|Panarctic Flora Checklist
 accs-10194|accs-10194|accepted|Panarctic Flora Checklist
 accs-10195|accs-10195|accepted|Panarctic Flora Checklist
-accs-10196|accs-10195|synonym|Panarctic Flora Checklist
 accs-10198|accs-10198|accepted|PLANTS
 accs-10199|accs-4252|synonym|PLANTS
 accs-10200|accs-10200|accepted|PLANTS
@@ -9217,7 +9107,6 @@ accs-10252|accs-10252|accepted|Panarctic Flora Checklist
 accs-10253|accs-10253|accepted|Panarctic Flora Checklist
 accs-10254|accs-10255|synonym|Panarctic Flora Checklist
 accs-10255|accs-10255|accepted|Panarctic Flora Checklist
-accs-10256|accs-10255|synonym|Panarctic Flora Checklist
 accs-10257|accs-10255|synonym|Panarctic Flora Checklist
 accs-10258|accs-10258|accepted|Panarctic Flora Checklist
 accs-10259|accs-10259|accepted|Panarctic Flora Checklist
@@ -9457,7 +9346,6 @@ accs-10510|accs-7975|synonym|Panarctic Flora Checklist
 accs-10511|accs-10517|synonym|Panarctic Flora Checklist
 accs-10512|accs-10531|synonym|Panarctic Flora Checklist
 accs-10513|accs-10513|accepted|Flora of North America
-accs-10514|accs-10506|synonym|Panarctic Flora Checklist
 accs-10515|accs-10515|accepted|Panarctic Flora Checklist
 accs-10516|accs-10516|accepted|Panarctic Flora Checklist
 accs-10517|accs-10517|accepted|Panarctic Flora Checklist
@@ -9481,9 +9369,7 @@ accs-10534|accs-10531|synonym|Panarctic Flora Checklist
 accs-10535|accs-10531|synonym|Panarctic Flora Checklist
 accs-10536|accs-10513|synonym|Flora of North America
 accs-10537|accs-10537|accepted|Panarctic Flora Checklist
-accs-10538|accs-10542|synonym|Panarctic Flora Checklist
 accs-10539|accs-10542|synonym|Panarctic Flora Checklist
-accs-10540|accs-10542|synonym|Panarctic Flora Checklist
 accs-10541|accs-10545|synonym|Flora of North America
 accs-10542|accs-10542|accepted|Panarctic Flora Checklist
 accs-10543|accs-10531|synonym|Panarctic Flora Checklist
@@ -9643,13 +9529,11 @@ accs-10706|accs-10705|synonym|Panarctic Flora Checklist
 accs-10707|accs-10797|synonym|Panarctic Flora Checklist
 accs-10708|accs-10708|accepted|Panarctic Flora Checklist
 accs-10709|accs-10709|accepted|Panarctic Flora Checklist
-accs-10710|accs-10709|synonym|Panarctic Flora Checklist
 accs-10711|accs-10709|synonym|Panarctic Flora Checklist
 accs-10712|accs-10709|synonym|Panarctic Flora Checklist
 accs-10713|accs-10713|accepted|Panarctic Flora Checklist
 accs-10714|accs-10709|synonym|Panarctic Flora Checklist
 accs-10715|accs-10709|synonym|Panarctic Flora Checklist
-accs-10716|accs-10709|synonym|Panarctic Flora Checklist
 accs-10717|accs-10780|synonym|Panarctic Flora Checklist
 accs-10718|accs-10709|synonym|Panarctic Flora Checklist
 accs-10719|accs-10709|synonym|Panarctic Flora Checklist
@@ -9695,7 +9579,6 @@ accs-10758|accs-10734|synonym|G. Argus
 accs-10759|accs-10734|synonym|G. Argus
 accs-10760|accs-10734|synonym|G. Argus
 accs-10761|accs-10609|synonym|Panarctic Flora Checklist
-accs-10762|accs-10742|synonym|G. Argus
 accs-10763|accs-10745|synonym|G. Argus
 accs-10764|accs-10748|synonym|G. Argus
 accs-10765|accs-10748|synonym|G. Argus
@@ -9896,16 +9779,12 @@ accs-10970|accs-10970|accepted|Flora of North America
 accs-10971|accs-6657|synonym|Panarctic Flora Checklist
 accs-10972|accs-11092|synonym|Panarctic Flora Checklist
 accs-10973|accs-10973|accepted|Panarctic Flora Checklist
-accs-10974|accs-11025|synonym|Panarctic Flora Checklist
 accs-10975|accs-11001|synonym|Panarctic Flora Checklist
 accs-10976|accs-11002|synonym|Panarctic Flora Checklist
 accs-10977|accs-11025|synonym|Panarctic Flora Checklist
 accs-10978|accs-11001|synonym|Panarctic Flora Checklist
 accs-10979|accs-11025|synonym|Panarctic Flora Checklist
-accs-10980|accs-10993|synonym|Panarctic Flora Checklist
-accs-10981|accs-10994|synonym|Panarctic Flora Checklist
 accs-10982|accs-10994|synonym|Panarctic Flora Checklist
-accs-10983|accs-10996|synonym|Panarctic Flora Checklist
 accs-10984|accs-10996|synonym|Panarctic Flora Checklist
 accs-10985|accs-10994|synonym|Panarctic Flora Checklist
 accs-10986|accs-10994|synonym|Panarctic Flora Checklist
@@ -9939,7 +9818,6 @@ accs-11013|accs-7364|synonym|Flora of North America
 accs-11014|accs-7364|synonym|Flora of North America
 accs-11015|accs-7364|synonym|Flora of North America
 accs-11016|accs-11025|synonym|Panarctic Flora Checklist
-accs-11017|accs-11103|synonym|Panarctic Flora Checklist
 accs-11018|accs-11072|synonym|Panarctic Flora Checklist
 accs-11019|accs-11103|synonym|Panarctic Flora Checklist
 accs-11020|accs-11072|synonym|Panarctic Flora Checklist
@@ -9965,7 +9843,6 @@ accs-11039|accs-11039|accepted|Panarctic Flora Checklist
 accs-11040|accs-11040|accepted|Panarctic Flora Checklist
 accs-11041|accs-11040|synonym|Panarctic Flora Checklist
 accs-11042|accs-11042|accepted|Panarctic Flora Checklist
-accs-11043|accs-11042|synonym|Panarctic Flora Checklist
 accs-11044|accs-7373|synonym|Panarctic Flora Checklist
 accs-11045|accs-7370|synonym|Panarctic Flora Checklist
 accs-11046|accs-7371|synonym|Panarctic Flora Checklist
@@ -9991,7 +9868,6 @@ accs-11065|accs-7380|synonym|Flora of North America
 accs-11066|accs-7380|synonym|Flora of North America
 accs-11067|accs-11067|accepted|Panarctic Flora Checklist
 accs-11068|accs-11070|synonym|Panarctic Flora Checklist
-accs-11069|accs-11070|synonym|Panarctic Flora Checklist
 accs-11070|accs-11070|accepted|Panarctic Flora Checklist
 accs-11071|accs-6915|synonym|Flora of North America
 accs-11072|accs-11072|accepted|Panarctic Flora Checklist
@@ -10009,7 +9885,6 @@ accs-11083|accs-7382|synonym|Panarctic Flora Checklist
 accs-11084|accs-6657|synonym|Panarctic Flora Checklist
 accs-11085|accs-11085|accepted|Panarctic Flora Checklist
 accs-11086|accs-7383|synonym|Panarctic Flora Checklist
-accs-11087|accs-7365|synonym|Panarctic Flora Checklist
 accs-11088|accs-7384|synonym|Panarctic Flora Checklist
 accs-11089|accs-7380|synonym|Flora of North America
 accs-11090|accs-1865|synonym|Panarctic Flora Checklist
@@ -10099,7 +9974,6 @@ accs-11179|accs-11991|synonym|Panarctic Flora Checklist
 accs-11181|accs-11182|synonym|Flora of North America
 accs-11182|accs-11182|accepted|Flora of North America
 accs-11183|accs-11182|synonym|Flora of North America
-accs-11184|accs-11190|synonym|Panarctic Flora Checklist
 accs-11185|accs-11182|synonym|Flora of North America
 accs-11186|accs-11192|synonym|Flora of North America
 accs-11187|accs-11192|synonym|Flora of North America
@@ -10228,7 +10102,6 @@ accs-11327|accs-12174|synonym|Panarctic Flora Checklist
 accs-11328|accs-12174|synonym|Panarctic Flora Checklist
 accs-11329|accs-12174|synonym|Panarctic Flora Checklist
 accs-11330|accs-12174|synonym|Panarctic Flora Checklist
-accs-11331|accs-8071|synonym|Panarctic Flora Checklist
 accs-11332|accs-8073|synonym|Panarctic Flora Checklist
 accs-11333|accs-8066|synonym|Panarctic Flora Checklist
 accs-11334|accs-8076|synonym|Flora of North America
@@ -10295,8 +10168,6 @@ accs-11399|accs-11402|synonym|Panarctic Flora Checklist
 accs-11400|accs-11402|synonym|Panarctic Flora Checklist
 accs-11401|accs-11402|synonym|Panarctic Flora Checklist
 accs-11402|accs-11402|accepted|Panarctic Flora Checklist
-accs-11403|accs-11402|synonym|Panarctic Flora Checklist
-accs-11404|accs-11402|synonym|Panarctic Flora Checklist
 accs-11405|accs-11402|synonym|Panarctic Flora Checklist
 accs-11406|accs-11418|synonym|ITIS
 accs-11407|accs-11407|accepted|ITIS
@@ -10331,7 +10202,6 @@ accs-11435|accs-11430|synonym|ITIS
 accs-11436|accs-11436|accepted|Panarctic Flora Checklist
 accs-11437|accs-11436|synonym|Panarctic Flora Checklist
 accs-11438|accs-11436|synonym|Panarctic Flora Checklist
-accs-11439|accs-11429|synonym|Panarctic Flora Checklist
 accs-11440|accs-11430|synonym|ITIS
 accs-11441|accs-11441|accepted|Panarctic Flora Checklist
 accs-11442|accs-11446|synonym|Panarctic Flora Checklist
@@ -10376,7 +10246,6 @@ accs-11489|accs-11487|synonym|Panarctic Flora Checklist
 accs-11490|accs-11487|synonym|Panarctic Flora Checklist
 accs-11491|accs-11487|synonym|Panarctic Flora Checklist
 accs-11492|accs-11487|synonym|Panarctic Flora Checklist
-accs-11493|accs-11500|synonym|Panarctic Flora Checklist
 accs-11494|accs-11500|synonym|Panarctic Flora Checklist
 accs-11495|accs-11500|synonym|Panarctic Flora Checklist
 accs-11496|accs-11499|synonym|Panarctic Flora Checklist
@@ -10473,7 +10342,6 @@ accs-11595|accs-11596|synonym|Panarctic Flora Checklist
 accs-11596|accs-11596|accepted|Panarctic Flora Checklist
 accs-11597|accs-11596|synonym|Panarctic Flora Checklist
 accs-11598|accs-11596|synonym|Panarctic Flora Checklist
-accs-11599|accs-11596|synonym|Panarctic Flora Checklist
 accs-11600|accs-11596|synonym|Panarctic Flora Checklist
 accs-11601|accs-11596|synonym|Panarctic Flora Checklist
 accs-11602|accs-11605|synonym|Panarctic Flora Checklist
@@ -10767,7 +10635,6 @@ accs-11902|accs-11902|accepted|Panarctic Flora Checklist
 accs-13034|accs-13034|accepted|CNALH
 accs-11904|accs-11904|accepted|PLANTS
 accs-11905|accs-11905|accepted|CNALH
-accs-11906|accs-11905|synonym|CNALH
 accs-11907|accs-11907|accepted|PLANTS
 accs-11908|accs-11908|accepted|PLANTS
 accs-11909|accs-11909|accepted|PLANTS
@@ -10838,7 +10705,6 @@ accs-11977|accs-11977|accepted|Panarctic Flora Checklist
 accs-11978|accs-11980|synonym|Panarctic Flora Checklist
 accs-11979|accs-11980|synonym|Panarctic Flora Checklist
 accs-11980|accs-11980|accepted|Panarctic Flora Checklist
-accs-11981|accs-11980|synonym|Panarctic Flora Checklist
 accs-11982|accs-11982|accepted|Panarctic Flora Checklist
 accs-11983|accs-11980|synonym|Panarctic Flora Checklist
 accs-11984|accs-11982|synonym|Panarctic Flora Checklist
@@ -10860,7 +10726,6 @@ accs-12001|accs-12001|accepted|Panarctic Flora Checklist
 accs-12002|accs-12000|synonym|Panarctic Flora Checklist
 accs-12003|accs-12000|synonym|Panarctic Flora Checklist
 accs-12006|accs-12006|accepted|Panarctic Flora Checklist
-accs-12007|accs-12006|synonym|Panarctic Flora Checklist
 accs-12008|accs-12006|synonym|Panarctic Flora Checklist
 accs-12010|accs-12012|synonym|D.F. Murray
 accs-12011|accs-12012|synonym|D.F. Murray
@@ -11350,14 +11215,8 @@ accs-12554|accs-188|synonym|Flora of North America
 accs-12556|accs-7503|synonym|Panarctic Flora Checklist
 accs-12558|accs-12558|accepted|Flora of North America
 accs-12559|accs-12559|accepted|Flora of North America
-accs-12561|accs-12570|synonym|CNALH
-accs-12562|accs-12571|synonym|CNALH
 accs-12563|accs-12570|synonym|CNALH
-accs-12564|accs-12573|synonym|CNALH
-accs-12565|accs-12574|synonym|CNALH
 accs-12566|accs-12926|synonym|PLANTS
-accs-12567|accs-12575|synonym|CNALH
-accs-12568|accs-12576|synonym|CNALH
 accs-12570|accs-12570|accepted|CNALH
 accs-12571|accs-12571|accepted|CNALH
 accs-12572|accs-12570|synonym|CNALH
@@ -11473,7 +11332,6 @@ accs-12693|accs-7963|synonym|Panarctic Flora Checklist
 accs-12694|accs-12685|synonym|Panarctic Flora Checklist
 accs-12695|accs-12705|synonym|Panarctic Flora Checklist
 accs-12696|accs-12696|accepted|Panarctic Flora Checklist
-accs-12697|accs-7963|synonym|Panarctic Flora Checklist
 accs-12698|accs-7963|synonym|Panarctic Flora Checklist
 accs-12699|accs-7963|synonym|Panarctic Flora Checklist
 accs-12700|accs-7963|synonym|Panarctic Flora Checklist
@@ -11501,7 +11359,6 @@ accs-12721|accs-7126|synonym|Flora of North America
 accs-12722|accs-7128|synonym|Flora of North America
 accs-12723|accs-7128|synonym|Flora of North America
 accs-12724|accs-7128|synonym|Flora of North America
-accs-12726|accs-12730|synonym|Panarctic Flora Checklist
 accs-12727|accs-12731|synonym|Panarctic Flora Checklist
 accs-12728|accs-12732|synonym|Panarctic Flora Checklist
 accs-12729|accs-12732|synonym|Panarctic Flora Checklist
@@ -11514,8 +11371,6 @@ accs-12736|accs-12735|synonym|D.F. Murray
 accs-12737|accs-12735|synonym|D.F. Murray
 accs-12739|accs-12740|synonym|PLANTS
 accs-12740|accs-12740|accepted|PLANTS
-accs-12742|accs-12749|synonym|Panarctic Flora Checklist
-accs-12743|accs-12749|synonym|Panarctic Flora Checklist
 accs-12744|accs-12749|synonym|Panarctic Flora Checklist
 accs-12745|accs-12749|synonym|Panarctic Flora Checklist
 accs-12746|accs-12750|synonym|Panarctic Flora Checklist
@@ -11584,7 +11439,6 @@ accs-12812|accs-12812|accepted|Panarctic Flora Checklist
 accs-12813|accs-12812|synonym|Panarctic Flora Checklist
 accs-12814|accs-12786|synonym|Panarctic Flora Checklist
 accs-12815|accs-12808|synonym|D.F. Murray
-accs-12816|accs-12812|synonym|Panarctic Flora Checklist
 accs-12817|accs-12790|synonym|D.F. Murray
 accs-12758|accs-12768|synonym|Panarctic Flora Checklist
 accs-12818|accs-12801|synonym|Panarctic Flora Checklist
@@ -11668,7 +11522,6 @@ accs-12901|accs-12901|accepted|Panarctic Flora Checklist
 accs-12902|accs-12901|synonym|Panarctic Flora Checklist
 accs-12903|accs-12903|accepted|Flora of North America
 accs-12904|accs-12904|accepted|Panarctic Flora Checklist
-accs-12905|accs-12904|synonym|Panarctic Flora Checklist
 accs-12906|accs-12883|synonym|Panarctic Flora Checklist
 accs-12907|accs-12907|accepted|Panarctic Flora Checklist
 accs-12908|accs-12907|synonym|Panarctic Flora Checklist
@@ -11747,7 +11600,6 @@ accs-12996|accs-12996|accepted|Flora of North America
 accs-12997|accs-12996|synonym|Flora of North America
 accs-12998|accs-12996|synonym|Flora of North America
 accs-12999|accs-12996|synonym|Flora of North America
-accs-13001|accs-851|synonym|Panarctic Flora Checklist
 accs-13003|accs-13003|accepted|Flora of North America
 accs-2|accs-2|accepted|Panarctic Flora Checklist
 accs-4|accs-2|synonym|Panarctic Flora Checklist

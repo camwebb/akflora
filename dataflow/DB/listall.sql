@@ -93,6 +93,6 @@ SELECT
   LEFT JOIN g2f ON N1.genus = g2f.gen
   WHERE A1.orthoID IS NOT NULL
   AND   S1.orthoID IS NOT NULL
-  AND   (g2f.`class` = 'A' OR g2f.`class` = 'G')
+  AND   (g2f.`class` = 'A' OR g2f.`class` = 'G' OR g2f.`class` = 'P')
   ORDER BY g2f.fam, N1.name ;
 
