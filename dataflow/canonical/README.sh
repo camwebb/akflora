@@ -273,6 +273,7 @@ rm -f wcsp wcsp.2 canon_gen
 # 7. Reconcile ACCS to Canon list
 
 matchnames -a ../ACCS/accs -b canon -o accs2canon_match -f -e 3 -q
+# manually created a accs2canon_match.new after messing with ACCS 2020-01-17
 
 # 8. FNA
 

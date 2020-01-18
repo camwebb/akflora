@@ -167,7 +167,9 @@ gawk 'BEGIN{FS=OFS="|"}{
         if ($3 ~ /^(no_match|auto_irank|manual\?\?)$/)
           print $1, $1, "self"
         else print $1, $2, $3
-      }' ../canonical/accs2canon_match > ortho
+      }' ../canonical/accs2canon_match.new > ortho
+# 2020-01-17: using accs2canon_match.new after working on ACCS and not
+# redoing canon match
 
 # All ACCS accepted names are in AK (?)
 gawk 'BEGIN{FS=OFS="|"}{if ($3 = "accepted") print $1, 1; else print $1,""}' rel > ak
@@ -219,6 +221,9 @@ mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
 
 rm -rf names rel ortho ak
 
+# Finally
+
+mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD -e "ALTER TABLE names ADD COLUMN name VARCHAR(200); UPDATE names SET name = CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author);" akflora
 
 
 
