@@ -178,7 +178,6 @@ accs-207||Agropyron||cristatum|||(L.) Gaertn.
 accs-208||Agropyron||cristatum|subsp.|pectinatum|(M. Bieb.) Tzvelev
 accs-209||Agropyron||dasystachyum|||(Hook.) Scribn. & J.G. Sm.
 accs-210||Agropyron||dasystachyum|var.|riparium|(Scribn. & J.G. Sm.) Bowden
-accs-211||Agropyron||dasystachyum|var.|riparum|(Scribn. & J.G. Sm.) Bowden, orth. var.
 accs-212||Agropyron||dasystachyum|var.|sericeum|(Hitchc.) B. Boivin
 accs-213||Agropyron||desertorum|||(Fisch. ex Link) J.A. Schult.
 accs-214||Agropyron||elmeri|||Scribn.
@@ -202,7 +201,6 @@ accs-231||Agropyron||pectiniforme|||Roem. & Schult.
 accs-232||Agropyron||repens|||(L.) P. Beauv.
 accs-233||Agropyron||repens|var.|subulatum|(Schreb.) Roem. & Schult.
 accs-234||Agropyron||riparium|||Scribn. & J.G. Sm.
-accs-235||Agropyron||riparum|||Scribn. & J.G. Sm., orth. var.
 accs-236||Agropyron||sericeum|||Hitchc.
 accs-237||Agropyron||smithii|||Rydb.
 accs-238||Agropyron||smithii|var.|molle|(Scribn. & J.G. Sm.) M.E. Jones
@@ -301,7 +299,6 @@ accs-335||Aira||aquatica|||L.
 accs-337||Aira||caespitosa|||L.
 accs-338||Aira||caryophyllea|||L.
 accs-339||Aira||caryophyllea|var.|caryophyllea|L.
-accs-340||Aira||cespitosa|||L., orth. var.
 accs-341||Aira||danthonioides|||Trin.
 accs-342||Aira||elongata|||Hook.
 accs-343||Aira||spicata|||L.
@@ -771,7 +768,6 @@ accs-837||Anthoxanthum||arcticum|||Veldkamp
 accs-838||Anthoxanthum||hirtum|||(Schrank) Y. Schouten & Veldkamp
 accs-839||Anthoxanthum||hirtum|subsp.|arcticum|(J. Presl) G. Tucker
 accs-841||Anthoxanthum||monticola|subsp.|alpinum|(Sw. ex Willd.) Soreng
-accs-842||Anthoxanthum||monticolum|||(Bigelow) Veldkamp, orth. var.
 accs-843||Anthoxanthum||nitens|||(Weber) Y. Schouten & Veldkamp
 accs-844||Anthoxanthum||odoratum|||L.
 accs-845||Anthoxanthum||odoratum|subsp.|odoratum|L.
@@ -1470,7 +1466,6 @@ accs-1606||Baeomyces||placophyllus|||Ach.
 accs-1607||Baeomyces||roseus|||Pers.
 accs-1608||Baeomyces||rufus|||(Huds.) Rebent.
 accs-1609||Baeothryon||alpinum|||(L.) Egor.
-accs-1610||Baeothryon||caespitosum|||(L.) A. Dietr., orth. var.
 accs-1611||Baeothryon||cespitosum|||(L.) A. Dietr.
 accs-1612||Baeothryon||pumilum|||(Vahl) Á. Löve & D. Löve
 accs-1614||Barbarea||americana|||Rydb.
@@ -1833,7 +1828,6 @@ accs-2012||Bromopsis||pumpelliana|subsp.|pumpelliana|(Scribn.) Holub
 accs-2013||Bromopsis||richardsonii|||(Link) Holub
 accs-2015||Bromus||aleutensis|||Trin. ex Griseb.
 accs-2016||Bromus||breviaristatus|||Buckley
-accs-2017||Bromus||brizaeformis|||Fisch. & C.A. Mey., orth. var.
 accs-2018||Bromus||briziformis|||Fisch. & C.A. Mey.
 accs-2019||Bromus||canadensis|||Michx.
 accs-2020||Bromus||carinatus|||Hook. & Arn.
@@ -2262,6 +2256,7 @@ accs-2469||Caloplaca||subnigricans|||H. Magn.
 accs-2470||Caloplaca||subolivacea|||(Th. Fr.) Lynge
 accs-2471||Caloplaca||tetraspora|||(Nyl.) H. Olivier
 accs-2472||Caloplaca||tiroliensis|||Zahlbr.
+accs-2473||Caloplaca||tornoensis|||H. Magn.
 accs-2474||Caloplaca||verruculifera|||(Vain.) Zahlbr.
 accs-2476||Caltha||arctica|||R. Br.
 accs-2477||Caltha||arctica|subsp.|arctica|R. Br.
@@ -2973,6 +2968,7 @@ accs-3229||Cetraria||delisei|||(Bory) Th. Fr.
 accs-3230||Cetraria||elenkinii|||Krog
 accs-3231||Cetraria||ericetorum|||Opiz
 accs-3232||Cetraria||fahunensis|||(L.) Schreb.
+accs-3233||Cetraria||fastigata|||(Del. ex Nyl. in Norrl.) Karnef.
 accs-3234||Cetraria||fastigiata|||(Delise ex Nyl.) Karnefelt
 accs-3235||Cetraria||glauca|||(L.) Ach.
 accs-3236||Cetraria||halei|||W.L. Culb. & C.F. Culb.
@@ -3419,18 +3415,7 @@ accs-3734||Coptis||groenlandica|||(Oeder) Fernald
 accs-3735||Coptis||trifolia|||(L.) Salisb.
 accs-3736||Coptis||trifolia|subsp.|groenlandica|(Oeder) Hultén
 accs-3737||Coptis||trifolia|var.|groenlandica|(Oeder) Fassett
-accs-3739||Corallorhiza||corallorhiza|||(L.) Karst.
 accs-3740||Corallorhiza||maculata|||(Raf.) Raf.
-accs-3741||Corallorhiza||maculata|subsp.|mertensiana|(Bong.) Calder & Roy L. Taylor
-accs-3742||Corallorhiza||mertensiana|||Bong.
-accs-3749||Corallorhiza||mertensiana|||Bong., orth. var.
-accs-3743||Corallorhiza||trifida|||Chatelain
-accs-3750||Corallorhiza||trifida|||Chatelain, orth. var.
-accs-3744||Corallorhiza||trifida|var.|verna|(Nutt.) Fernald
-accs-3746||Corallorrhiza||corallorrhiza|||(L.) Karst., orth. var.
-accs-3747||Corallorrhiza||maculata|||(Raf.) Raf., orth. var.
-accs-3748||Corallorrhiza||maculata|subsp.|mertensiana|(Bong.) Calder & Roy L. Taylor, orth. var.
-accs-3751||Corallorrhiza||trifida|var.|verna|(Nutt.) Fernald, orth. var.
 accs-3752||Coriscium||viride|||(Ach.) Vain.
 accs-3754||Corispermum||americanum|||(Nutt.) Nutt.
 accs-3755||Corispermum||americanum|var.|americanum|(Nutt.) Nutt.
@@ -3520,7 +3505,6 @@ accs-3860||Cryptantha||fendleri|||(A. Gray) Greene
 accs-3861||Cryptantha||flexulosa|||(A. Nelson) A. Nelson
 accs-3862||Cryptantha||pattersonii|||(A. Gray) Greene
 accs-3863||Cryptantha||shackletteana|||Higgins
-accs-3864||Cryptantha||shacklettiana|||Higgins, orth. var.
 accs-3865||Cryptantha||spiculifera|||(Piper) Payson
 accs-3866||Cryptantha||torreyana|||(A. Gray) Greene
 accs-3867||Cryptantha||torreyana|var.|calycosa|(A. Gray) Greene
@@ -3640,23 +3624,6 @@ accs-4014||Deschampsia||atropurpurea|var.|payettii|Lepage
 accs-4015||Deschampsia||beringensis|||Hultén
 accs-4016||Deschampsia||bottnica|||(Wahlenb.) Trin.
 accs-4017||Deschampsia||brevifolia|||R. Br.
-accs-4019||Deschampsia||caespitosa|subsp.|beringensis|(Hultén) W.E. Lawrence, orth. var.
-accs-4020||Deschampsia||caespitosa|subsp.|brevifolia|(R. Br.) Tzvelev, orth. var.
-accs-4021||Deschampsia||caespitosa|subsp.|genuina|(Rchb.) O.H. Volk, orth. var.
-accs-4022||Deschampsia||caespitosa|subsp.|glauca|(C. Hartm.) C. Hartm., orth. var.
-accs-4023||Deschampsia||caespitosa|subsp.|orientalis|Hultén, orth. var.
-accs-4024||Deschampsia||caespitosa|subsp.|paramushirensis|(Honda) Tzvelev, orth. var.
-accs-4025||Deschampsia||caespitosa|subsp.|parviflora|(Thuill.) K. Richt., orth. var.
-accs-4026||Deschampsia||caespitosa|var.|abbei|B. Boivin, orth. var.
-accs-4027||Deschampsia||caespitosa|var.|alpicola|(Rydb.) Á. Löve & D. Löve & Kapoor, orth. var.
-accs-4028||Deschampsia||caespitosa|var.|arctica|Vasey, orth. var.
-accs-4029||Deschampsia||caespitosa|var.|glauca|(C. Hartm.) C. Hartm., non Regel, orth. var.
-accs-4030||Deschampsia||caespitosa|var.|intercotidalis|B. Boivin, orth. var.
-accs-4031||Deschampsia||caespitosa|var.|littoralis|(Gaudin) K. Richt., orth. var.
-accs-4032||Deschampsia||caespitosa|var.|longiflora|Beal, orth. var.
-accs-4033||Deschampsia||caespitosa|var.|mackenzieana|(Raup) B. Boivin, orth. var.
-accs-4034||Deschampsia||caespitosa|var.|maritima|Vasey, orth. var.
-accs-4035||Deschampsia||caespitosa|var.|parviflora|(Thuill.) Coss. & Germ., orth. var.
 accs-4036||Deschampsia||calycina|||J. Presl
 accs-4037||Deschampsia||cespitosa|||(L.) P. Beauv.
 accs-4038||Deschampsia||cespitosa|subsp.|beringensis|(Hultén) W.E. Lawrence
@@ -4221,7 +4188,6 @@ accs-4650||Elyna||sibirica|||Turcz. ex Ledeb.
 accs-4651||Elytrigia||dasystachya|||(Hook.) Á. Löve & D. Löve
 accs-4652||Elytrigia||repens|||(L.) Desv. ex Nevski
 accs-4653||Elytrigia||repens|var.|vaillantiana|(Wulfen & Schreb.) Prokudin
-accs-4654||Elytrigia||ripara|||(Scribn. & J.G. Sm.) Beetle, orth. var.
 accs-4655||Elytrigia||riparia|||(Scribn. & J.G. Sm.) Beetle
 accs-4656||Elytrigia||smithii|||(Rydb.) Nevski
 accs-4657||Elytrigia||smithii|var.|mollis|(Scribn. & J.G. Sm.) Beetle
@@ -4240,7 +4206,6 @@ accs-4671||Encalypta||longicolla|||Bruch
 accs-4672||Encalypta||longicollis|||Bruch
 accs-4673||Encalypta||mutica|||I. Hagen
 accs-4674||Encalypta||procera|||Bruch
-accs-4675||Encalypta||rhabdocarpa|||Schwägr., orth. var.
 accs-4676||Encalypta||rhaptocarpa|||Schwägr.
 accs-4677||Encalypta||rhaptocarpa|var.|subspathulata|(Müll. Hal. & Kindb.) Flow.
 accs-4678||Encalypta||vulgaris|var.|rhaptocarpa|(Schwägr.) E. Lawton
@@ -5174,7 +5139,6 @@ accs-5782||Hordeum||brachyantherum|subsp.|brachyantherum|Nevski
 accs-5783||Hordeum||caespitosum|||Scribn. ex Pammel
 accs-5784||Hordeum||distichon|||L.
 accs-5785||Hordeum||hexastichon|||L.
-accs-5786||Hordeum||hexastichum|||L., orth. var.
 accs-5787||Hordeum||irregulare|||Aberg & Wiebe
 accs-5788||Hordeum||jubatum|||L.
 accs-5789||Hordeum||jubatum|subsp.|breviaristatum|Bowden
@@ -5790,7 +5754,6 @@ accs-6460||Lecidea||auriculata|||Th. Fr.
 accs-6461||Lecidea||berengeriana|||(A. Massal.) Nyl.
 accs-6462||Lecidea||brachyspora|||(Th. Fr.) Nyl.
 accs-6463||Lecidea||brandegeei|||Tuck.
-accs-6464||Lecidea||brandegei|||Tuck., orth. var.
 accs-6465||Lecidea||carbonoidea|||J.W. Thomson
 accs-6466||Lecidea||carpathica|||(Körb.) Szat.
 accs-6467||Lecidea||cinereorufa|||Schaerer
@@ -5884,6 +5847,7 @@ accs-6554||Lecidea||symmicta|||(Ach.) Ach.
 accs-6555||Lecidea||templetonii|||Taylor
 accs-6556||Lecidea||tenebrosa|||Flotow
 accs-6557||Lecidea||tessellata|||Flörke
+accs-9958||Lecidea||tornoensis|||Nyl.
 accs-6558||Lecidea||tumida|||A. Massal.
 accs-6559||Lecidea||turgidula|||Fr.
 accs-6560||Lecidea||uliginosa|||(Schrad.) Ach.
@@ -6502,7 +6466,6 @@ accs-7272||Melanolecia||jurana|||(Schaerer) Hertel
 accs-7276||Melica||purpurascens|||(Torr.) Hitchc.
 accs-7277||Melica||subulata|||(Griseb.) Scribn.
 accs-7278||Melica||subulata|var.|subulata|(Griseb.) Scribn.
-accs-7280||Melilotus||alba|||Medikus, orth. var.
 accs-7281||Melilotus||albus|||Medik.
 accs-7282||Melilotus||albus|var.|annuus|Coe
 accs-7283||Melilotus||arvensis|||Wallr.
@@ -6980,7 +6943,6 @@ accs-7836||Oncophorus||wahlenbergii|||Brid.
 accs-7837||Oncophorus||wahlenbergii|var.|compactus|(Bruch & Schimp.) Braithw.
 accs-7838||Oncophorus||wahlenbergii|var.|gracilis|(Broth.) Arnell & C.E.O. Jensen
 accs-7840||Onobrychis||sativa|||Lam.
-accs-7841||Onobrychis||viciaefolia|||Scop., orth. var.
 accs-7842||Onobrychis||viciifolia|||Scop.
 accs-7843||Onoclea||struthiopteris|||(L.) Hoffm. p.p.
 accs-7844||Onoclea||struthiopteris|var.|pensylvanica|(Willd.) B. Boivin
@@ -7231,6 +7193,7 @@ accs-8113||Papaver||kluanense|||D. Löve
 accs-8114||Papaver||kluanensis|||D. Löve
 accs-8116||Papaver||lapponicum|subsp.|occidentale|(Lundstr.) Knaben
 accs-8117||Papaver||lapponicum|subsp.|porsildii|Knaben
+accs-2x||Papaver||macounii|||Greene
 accs-8119||Papaver||macounii|subsp.|alaskanum|Greene
 accs-8120||Papaver||macounii|subsp.|discolor|(Hultén) Rändel ex D.F. Murray
 accs-8121||Papaver||macounii|subsp.|macounii|Greene
@@ -9987,10 +9950,6 @@ accs-11194||Schoenoplectus||validus|subsp.|creber|(Fernald) Á. Löve & D. Löve
 accs-11195||Schoenoplectus||validus|subsp.|luxurians|(Miq.) Soják
 accs-11197||Scirpus||acutus|||Muhl. ex Bigelow
 accs-11198||Scirpus||americanus|||Pers.
-accs-11199||Scirpus||caespitosus|||L., orth. var.
-accs-11200||Scirpus||caespitosus|var.|austriacus|(Pall.) Asch. & Graebn., orth. var.
-accs-11201||Scirpus||caespitosus|var.|callosus|Bigelow, orth. var.
-accs-11202||Scirpus||caespitosus|var.|delicatulus|Fernald, orth. var.
 accs-11203||Scirpus||cernuus|||Vahl p.p.
 accs-11204||Scirpus||cernuus|subsp.|californicus|(Torr.) Thorne
 accs-11205||Scirpus||cernuus|var.|californicus|(Torr.) Beetle
@@ -10074,10 +10033,6 @@ accs-11295||Sedum||rosea|subsp.|integrifolium|(Raf.) Hultén
 accs-11296||Sedum||rosea|var.|alaskanum|(Rose) A. Berger
 accs-11297||Sedum||rosea|var.|frigidum|(Rydb.) Hultén
 accs-11298||Sedum||rosea|var.|integrifolium|(Raf.) A. Berger
-accs-11299||Sedum||roseum|subsp.|integrifolium|(Raf.) Hultén, orth. var.
-accs-11300||Sedum||roseum|var.|alaskanum|(Rose) A. Berger, orth. var.
-accs-11301||Sedum||roseum|var.|frigidum|(Rydb.) Hultén, orth. var.
-accs-11302||Sedum||roseum|var.|integrifolium|(Raf.) A. Berger, orth. var.
 accs-11303||Sedum||subalpinum|||Blank.
 accs-11306||Selaginella||densa|var.|standleyi|(Maxon) R. Tryon
 accs-11307||Selaginella||engelmannii|var.|standleyi|(Maxon) C.F. Reed
@@ -10276,7 +10231,6 @@ accs-11521||Solanum||physalifolium|||Rusby
 accs-11522||Solanum||physalifolium|var.|nitidibaccatum|(Bitter) Edmonds
 accs-11523||Solanum||rubrum|||auct. non L.
 accs-11524||Solanum||sarachoides|||auct. non Sendtn.
-accs-11525||Solanum||sarrachoides|||auct. non Sendtn., orth. var.
 accs-11526||Solanum||villosum|||auct. non (L.) Mill.
 accs-11529||Solidago||anticostensis|||Fernald
 accs-11530||Solidago||canadensis|||L.
@@ -10703,7 +10657,6 @@ accs-11974||Strigula||sychnogonioides|||(Nitschke) R.C. Harris
 accs-11975||Struthiopteris||spicant|||(L.) Weiss
 accs-11977||Stuckenia||filiformis|||(Pers.) Börner
 accs-11978||Stuckenia||filiformis|subsp.|alpina|(Blytt) Haynes, D.H. Les & M. Kral
-accs-11979||Stuckenia||filiformis|subsp.|alpinus|(Blytt) Haynes, D.H. Les & M. Kral, orth. var.
 accs-11980||Stuckenia||filiformis|subsp.|borealis|(Raf.) Tzvelev & Elven
 accs-11982||Stuckenia||filiformis|subsp.|occidentalis|(J.W. Robbins) Haynes, D.H. Les & M. Kral
 accs-11983||Stuckenia||filiformis|var.|alpina|(Blytt) Dorn
@@ -11014,9 +10967,6 @@ accs-12320||Tofieldia||racemosa|var.|glutinosa|(Michx.) H.E. Ahles
 accs-12321||Tolmachevia||integrifolia|||(Raf.) Á. Löve & D. Löve
 accs-12323||Tolmiea||diplomenziesii|||Judd, Soltis & P.S. Soltis
 accs-12324||Tolmiea||menziesii|||(Pursh) Torr. & A. Gray
-accs-12327||Tomenthypnum||nitens|||(Hedw.) Loeske, orth. var.
-accs-12328||Tomenthypnum||nitens|var.|insigne|(Milde) C.E.O. Jensen, orth. var.
-accs-12329||Tomenthypnum||nitens|var.|involutum|(Limpr.) C.E.O. Jensen, orth. var.
 accs-12331||Tomentypnum||nitens|||(Hedw.) Loeske
 accs-12332||Tomentypnum||nitens|var.|insigne|(Milde) C.E.O. Jensen
 accs-12333||Tomentypnum||nitens|var.|involutum|(Limpr.) C.E.O. Jensen
@@ -11076,8 +11026,6 @@ accs-12400||Triantha||occidentalis|subsp.|montana|(C.L. Hitchc.) Packer
 accs-12401||Trianthella||glutinosa|||(Michx.) House
 accs-12404||Trichodon||cylindricus|||(Hedw.) Schimp.
 accs-12406||Trichophorum||alpinum|||(L.) Pers.
-accs-12407||Trichophorum||caespitosum|||(L.) Hartm., orth. var.
-accs-12408||Trichophorum||caespitosum|var.|callosum|(Bigelow) Mohlenbr., orth. var.
 accs-12409||Trichophorum||cespitosum|||(L.) Hartm.
 accs-12410||Trichophorum||palustre|var.|calvum|(Torr.) House
 accs-12411||Trichophorum||pumilum|||(Vahl) Schinz & Thell.
@@ -11139,12 +11087,8 @@ accs-12471||Trifolium||wormskioldii|var.|fimbriatum|(Lindl.) Jeps.
 accs-12472||Trifolium||wormskioldii|var.|kennedianum|(McDermott) Jeps.
 accs-12473||Trifolium||wormskjoldii|||Lehm.
 accs-12475||Triglochin||elata|||Nutt.
-accs-12476||Triglochin||elatum|||Nutt., orth. var.
 accs-12477||Triglochin||maritima|||L.
 accs-12478||Triglochin||maritima|var.|elata|(Nutt.) A. Gray
-accs-12479||Triglochin||maritimum|||L., orth. var.
-accs-12480||Triglochin||maritimum|var.|elatum|(Nutt.) A. Gray, orth. var.
-accs-12481||Triglochin||palustre|||L., orth. var.
 accs-12482||Triglochin||palustris|||L.
 accs-12484||Trimorpha||acris|||auct. non (L.) Gray p.p.
 accs-12485||Trimorpha||acris|var.|asteroides|(Andrz. ex Besser) G.L. Nesom
@@ -11318,18 +11262,7 @@ accs-12678||Vaccaria||segetalis|||Garcke ex Asch.
 accs-12679||Vaccaria||vaccaria|||(L.) Britton
 accs-12680||Vaccaria||vulgaris|||Host
 accs-12682||Vaccinium||alaskaense|||Howell
-accs-12683||Vaccinium||alaskense|||Howell, orth. var.
-accs-12684||Vaccinium||arbuscula|||(A. Gray) Merriam
-accs-12685||Vaccinium||caespitosum|||Michx., orth. var.
-accs-12686||Vaccinium||caespitosum|var.|arbuscula|A. Gray, orth. var.
-accs-12687||Vaccinium||caespitosum|var.|caespitosum|Michx., orth. var.
-accs-12688||Vaccinium||caespitosum|var.|paludicola|(Camp) Hultén, orth. var.
-accs-12689||Vaccinium||cespitosum|||Michx.
-accs-12690||Vaccinium||cespitosum|var.|arbuscula|A. Gray
-accs-12691||Vaccinium||cespitosum|var.|cespitosum|Michx.
-accs-12692||Vaccinium||cespitosum|var.|paludicola|(Camp) Hultén
 accs-12693||Vaccinium||microcarpos|||(Turcz. ex Rupr.) Schmalh.
-accs-12694||Vaccinium||nivictum|||Camp
 accs-12695||Vaccinium||occidentale|||A. Gray
 accs-12696||Vaccinium||ovalifolium|||Sm.
 accs-12698||Vaccinium||oxycoccos|subsp.|microcarpum|A. Blytt
