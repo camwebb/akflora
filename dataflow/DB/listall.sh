@@ -31,7 +31,7 @@ gawk '
     print "---\n"
     print "title: \\bf List of Alaskan Seed Plant and Fern names\n"
     print "subtitle: Compiled from ALA, ACCS, PAF, WCSP, FNA\n"
-    print "author: C. Webb\n"
+    print "author: (Questions to cowebb@alaska.edu)\n"
     print "date: \\today\n---\n\n"
     print "\\raggedright\n\n"
   }
