@@ -1,0 +1,130 @@
+#!/usr/bin/gawk -f
+
+BEGIN{
+
+  "mktemp -d" | getline TMPDIR;
+  
+  # Check arguments
+  if (ARGC == 0) exit
+  else if (ARGV[1] == "split") {
+    if (ARGC != 3) exit
+    export(ARGV[2])
+    chunkup(ARGV[2])
+  }
+
+  system("rm -rf " TMPDIR)
+  exit 1
+  
+}
+
+function export(page){
+  # page 23 of the pdf is page number 1 of the book
+  #   but missing pages: 8,9 so taxa start pn 25 = p 45
+  print "Extracting book page " page " (pdf page " page+20 ")"
+  system("cd tiff; pdfimages -tiff -f " page+20 " -l " page+20 " ../hulten.pdf p" page " ; mv p" page "-000.tif p" page ".tiff; rm -f *.tif")
+}
+
+function chunkup(page,  infile , cmd, c, bn, n) {
+  infile = "tiff/p" page ".tiff"
+  # take off the top
+  # system("convert " infile " -crop 4510x6000+0+450 " TMPDIR "/out.tif")
+
+  # See it:
+  # display -resize x100 -threshold 97% -depth 1 -resize x1000 tif/out.tif 
+
+  cmd = "convert " infile " -crop 4510x6000+0+450 -resize x100 " \
+    "-threshold 97% -depth 1 txt:-"
+  while ((cmd | getline) > 0 ) {
+    gsub(/:/,"",$1)
+    # only lines that have coordinates
+    if ($1 ~ ",") {
+      split($1,c,",")
+      # print c[1], c[2]
+      if ($3 == "#000000") bn[c[2]]++
+    }
+  }
+
+  thres = 2 # 3 black out of 75 -> row is black
+  j = 0
+
+  # coordinates numbered from 0, line beyond top is white
+  bn[-1] = 0
+  for (i = 0; i < 100; i++) {
+    # print i , bn[i]
+    # black
+    if (bn[i] > thres) {
+      # change to black
+      if (bn[i-1] <= thres) {
+        # new band
+        j++
+        top[j] = i
+      }
+      # print i " black " j
+    }
+    else {
+      # change to white
+      if (bn[i-1] > thres) {
+        # new band
+        bot[j] = i
+      }
+      # print i " white " j
+    }
+  }  
+
+  # end black band if last line was black 
+  if (!bot[j]) bot[j] = 100
+  
+  pad = 10
+  for (i in top) {
+    hgt =  (bot[i]- top[i]) * 60 + pad + pad
+    ytop = 450 + top[i]*60 - pad
+    ybot = 450 + bot[i]*60 + pad
+    # print "band " i ", top " top[i] " (" ytop "), bot " bot[i] " (" ybot "), hgt " bot[i]-top[i]+1 " (" hgt ")"
+    # system("display -crop 4510x" hgt "+0+" ytop " -resize 1000x " infile " &")
+
+    # odd page
+    if ((page/2) != int(page/2)) { 
+      # system("display -crop 3100x" hgt "+0+" ytop " -resize 1000x " infile " &")
+      # system("display -crop 1410x" hgt "+3100+" ytop " -resize 1000x " infile " &")
+      system("convert " infile " -crop 3050x" hgt "+0+" ytop " tiff/p" page "-" i "-t.tiff")
+      system("convert " infile " -crop 1460x" hgt "+3050+" ytop " tiff/p" page "-" i "-i.tiff")
+    }
+    else {
+      system("convert " infile " -crop 3020x" hgt "+1490+" ytop " tiff/p" page "-" i "-t.tiff")
+      system("convert " infile " -crop 1490x" hgt "+0+" ytop " tiff/p" page "-" i "-i.tiff")
+    }
+  }
+}
+
+# ImageMagick tricks
+
+# magick display -crop 4510x6000+0+450 -resize x1080 p26.tif
+
+# Old method for finding whitespace, use slim bands
+# for h in `seq 1000 200 5000`
+# do
+#   BLACK=`convert out.tif -crop 4510x10+0+$h -threshold 80%             \
+#     -format %c -define histogram:unique-colors=true histogram:info:-    \
+#     | gawk 'BEGIN{z=0} /#000000/ {gsub(/:/,"",$1); if ($1+0 > 100) z=1}   \
+#            END{print z}'`
+#     # record the first
+#     if [ $BLACK -eq 0 -a $INWHITE -eq 0 ]
+#     then
+#         let WSTART=h
+#         let INWHITE=1
+#     elif [ $BLACK -eq 1 -a $INWHITE -eq 1 ]
+#     then
+#         let WEND=h-190
+#         let INWHITE=0
+#         # assume that the main break has been found and bail
+#         break
+#     fi
+#     # echo $h $BLACK $INWHITE $WSTART $WEND 
+# done
+# let SPLIT=`gawk "BEGIN{print int($WSTART+(($WEND-$WSTART)/2))}"`
+# echo $WSTART $WEND $SPLIT
+# # now crop:
+# let H2=6000-$SPLIT
+# convert out.tif -crop 4510x$SPLIT+0+0 top.tif
+# convert out.tif -crop 4510x$H2+0+$SPLIT bot.tif
+
