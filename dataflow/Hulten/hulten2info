@@ -18,10 +18,41 @@ BEGIN{
 
     # extract the image from the PDF
     export(Page, Imgfile)
+
+    # TMP v-----------------------------
+
+    # Imgfile = "maps.tiff"
+    # chunkup(3020, 1145, 0, 0, Imgfile, 1, 300)
+    # for (i in Chunk["len"]) 
+    #   print "band " i ", top " Chunk["vec"][i] ", hgt " Chunk["len"][i]
+
+    # # for (j in Chunk["len"]) {
+    # # assume 2: map 1
+    # W[++SubimgN] = Chunk["len"][1]
+    # H[SubimgN]   = 1145
+    # X[SubimgN]   = Chunk["vec"][1]
+    # Y[SubimgN]   = 0
+    # N[SubimgN]   = Page "-" SubimgN "-m1.tiff"
+    # # map 2
+    # W[++SubimgN] = Chunk["len"][2]
+    # H[SubimgN]   = 1145
+    # X[SubimgN]   = Chunk["vec"][2]
+    # Y[SubimgN]   = 0
+    # N[SubimgN]   = Page "-" SubimgN "-m2.tiff"
+    # delete(Chunk)  # Clear this, to use for second pass
+    
+    # for (i in W)
+    #    #   printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
+    #   system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] " -resize 500x500 -title " N[i] " tiff/maps.tiff &")
+
+    # exit
+
+    # TMP ^-----------------------------
+
     
     # first pass, slicing off the stop 450 page header,
     #   and a bit of the bottom, scanning horizontally
-    chunkup(4510, 6000, 0, 450, Imgfile, 2)
+    chunkup(4510, 6000, 0, 450, Imgfile, 2, 100)
 
     # for (i in Chunk["len"]) 
     #  print "band " i ", top " Chunk["vec"][i] ", hgt " Chunk["len"][i]
@@ -31,49 +62,37 @@ BEGIN{
       # odd page
       if ((Page/2) != int(Page/2)) {
         # text
-        W[++SubimgN] = 3050
-        H[SubimgN]   = Chunk["len"][i]
-        X[SubimgN]   = 0
-        Y[SubimgN]   = Chunk["vec"][i]
+        W[++SubimgN] = 3050            ;  H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 0               ;  Y[SubimgN]   = Chunk["vec"][i]
         N[SubimgN]   = Page "-" SubimgN "-t.tiff"
         # illustration
-        W[++SubimgN] = 1460
-        H[SubimgN]   = Chunk["len"][i]
-        X[SubimgN]   = 3050
-        Y[SubimgN]   = Chunk["vec"][i]
+        W[++SubimgN] = 1460            ;  H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 3050            ;  Y[SubimgN]   = Chunk["vec"][i]
         N[SubimgN]   = Page "-" SubimgN "-i.tiff"
       }
       else {
         # even page
-        W[++SubimgN] = 3020
-        H[SubimgN]   = Chunk["len"][i]
-        X[SubimgN]   = 1490
-        Y[SubimgN]   = Chunk["vec"][i]
+        W[++SubimgN] = 3020            ;  H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 1490            ;  Y[SubimgN]   = Chunk["vec"][i]
         N[SubimgN]   = Page "-" SubimgN "-t.tiff"
         # illustration
-        W[++SubimgN] = 1490
-        H[SubimgN]   = Chunk["len"][i]
-        X[SubimgN]   = 0
-        Y[SubimgN]   = Chunk["vec"][i]
+        W[++SubimgN] = 1490            ;  H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 0               ;  Y[SubimgN]   = Chunk["vec"][i]
         N[SubimgN]   = Page "-" SubimgN "-i.tiff"
       }
     }
   }
-  delete(Chunk)  # Clear this, to use for second pass
-  
+  delete(Chunk) 
+
+  # View the main image
   system("display -resize x1000 tiff/p" Page ".tiff &")
 
-  # for (i in W)
-  #   printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
-  #   system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] " -resize 500x500 tiff/p" Page ".tiff &")
-  
   # second pass, slicing off the maps
   for (i in W) {
     if (N[i] ~ /-t\./) {
       print N[i] > "/dev/stderr"
-      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 2)
-      # for (j in Chunk["len"]) {
-      # assume 2: maps
+      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 2, 200)
+      # assume 2 parts: maps
       W[++SubimgN] = W[i]
       H[SubimgN]   = Chunk["len"][1]
       X[SubimgN]   = X[i]
@@ -85,27 +104,33 @@ BEGIN{
       X[SubimgN]   = X[i]
       Y[SubimgN]   = Chunk["vec"][2]
       N[SubimgN]   = Page "-" SubimgN "-tt.tiff"
-      delete(Chunk)  # Clear this, to use for second pass
+      delete(Chunk) 
     }
   }
 
+  # exit
+  # for (i in W)
+  #   system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] " -resize 500x500 -title " N[i] " tiff/p" Page ".tiff &")
+
+  
+  # exit
+  
   # third pass, slicing up the maps
   for (i in W) {
     if (N[i] ~ /-m\./) {
       print N[i] > "/dev/stderr"
-      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 1)
-      # for (j in Chunk["len"]) {
+      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 1, 300)
       # assume 2: map 1
-      W[++SubimgN] = W[i]
-      H[SubimgN]   = Chunk["len"][1]
-      X[SubimgN]   = X[i]
-      Y[SubimgN]   = Chunk["vec"][1]
+      W[++SubimgN] = Chunk["len"][1]
+      H[SubimgN]   = H[i]
+      X[SubimgN]   = Chunk["vec"][1]
+      Y[SubimgN]   = Y[i]
       N[SubimgN]   = Page "-" SubimgN "-m1.tiff"
       # map 2
-      W[++SubimgN] = W[i]
-      H[SubimgN]   = Chunk["len"][2]
-      X[SubimgN]   = X[i]
-      Y[SubimgN]   = Chunk["vec"][2]
+      W[++SubimgN] = Chunk["len"][2]
+      H[SubimgN]   = H[i]
+      X[SubimgN]   = Chunk["vec"][2]
+      Y[SubimgN]   = Y[i]
       N[SubimgN]   = Page "-" SubimgN "-m2.tiff"
       delete(Chunk)  # Clear this, to use for second pass
     }
@@ -114,7 +139,6 @@ BEGIN{
   for (i in W)
   #   printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
     system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] " -resize 500x500 -title " N[i] " tiff/p" Page ".tiff &")
-
   
   # system("rm -rf " TMPDIR)
   exit 1
@@ -128,20 +152,18 @@ function export(page, imgfile,     paper){
          " ../hulten.pdf tmp ; mv tmp-000.tif " imgfile " ; rm -f tmp*")
 }
 
-function chunkup(w, h, x, y, infile, orient,                      \
-          cmd, c, bn, thres, j, i, bot, pad, top, hgt, xdim, ydim, newdim) {
+function chunkup(w, h, x, y, infile, orient, dim                     \
+                 , cmd, c, bn, thres, j, i, bot, pad, top, hgt) {
   
   # orient=2: scan for horiz gaps; orient=1: scan for vert gaps
-  xdim = ydim = ""
-  if      (orient == 2) ydim = newdim = int(h/60)
-  else if (orient == 1) xdim = newdim = int(w/60)
-  else exit 0
   
-  # resize to 1/60 size, this blurs the content, but maintains the major
+  # resize to ~1/60 size, this blurs the content, but maintains the major
   # (but not inter-line) spaces.
   cmd = "convert tiff/" infile " -crop " w "x" h "+" x "+" y \
-    " -resize " xdim "x" ydim " -threshold 97% -depth 1 txt:-"
+    " -resize " dim "x" dim " -threshold 97% -depth 1 txt:-"
   # print cmd
+  system("display -crop " w "x" h "+" x "+" y    \
+         " -resize " dim "x" dim " -threshold 97% -depth 1 tiff/" infile " & ") 
   while ((cmd | getline) > 0 ) {
     gsub(/:/,"",$1)
     # only lines that have coordinates
@@ -154,7 +176,7 @@ function chunkup(w, h, x, y, infile, orient,                      \
   thres = 1  # 3 black out of 75 -> row is black ; test on p112
   bn[-1] = 0 # coordinates numbered from 0, line beyond top is white
   j = 0
-  for (i = 0; i < newdim; i++) {
+  for (i = 0; i < dim; i++) {
     # black
     if (bn[i] > thres) {
       # change to black
@@ -174,50 +196,18 @@ function chunkup(w, h, x, y, infile, orient,                      \
   }  
 
   # end black band if last line was black 
-  if (!bot[j]) bot[j] = newdim
+  if (!bot[j]) bot[j] = dim
 
-  if (orient==1) {
-    # system("display -crop " w "x" h "+" x "+" y " -resize 500x500 tiff/p" Page ".tiff &")
-    for (i in top) {
-        # Chunk["len"][i] =  (bot[i]- top[i]) * 60 + pad + pad
-        # Chunk["vec"][i] = y + top[i]*60 - pad
-    
-      print "band " i ", top " top[i] " (" ytop "), bot " bot[i] " ("   \
-        ybot "), hgt " bot[i]-top[i]+1 " (" hgt ")"
-    }
-    exit
-  }
-
-  
   # pixel padding
   pad = 10
+  if (orient == 1) {
+    h = w # if scanning vertically, the longest dim is width
+    y = x #                         and we add the x, not y
+  }
   # for each band
   for (i in top) {
-    Chunk["len"][i] =  (bot[i]- top[i]) * 60 + pad + pad
-    Chunk["vec"][i] = y + top[i]*60 - pad
-    
-    # print "band " i ", top " top[i] " (" ytop "), bot " bot[i] " ("   \
-    #   ybot "), hgt " bot[i]-top[i]+1 " (" hgt ")"
-
-
-    
-    # # odd page
-    # if ((page/2) != int(page/2)) { 
-    #   # system("display -crop 3100x" hgt "+0+" ytop " -resize 1000x \
-    #   #   " infile " &")
-    #   # system("display -crop 1410x" hgt "+3100+" ytop " -resize 1000x \
-    #   #   " infile " &")
-    #   system("convert tiff/" infile " -crop 3050x" hgt "+0+" ytop \
-    #          " tiff/p" page "-" i "-t.tiff")
-    #   system("convert tiff/" infile " -crop 1460x" hgt "+3050+" ytop \
-    #          " tiff/p" page "-" i "-i.tiff")
-    # }
-    # else {
-    #   system("convert tiff/" infile " -crop 3020x" hgt "+1490+" ytop \
-    #          " tiff/p" page "-" i "-t.tiff")
-    #   system("convert tiff/" infile " -crop 1490x" hgt "+0+" ytop \
-    #          " tiff/p" page "-" i "-i.tiff")
-    # }
+    Chunk["len"][i] =     (bot[i]- top[i]) * int(h / dim)  + pad + pad
+    Chunk["vec"][i] =  y + top[i]          * int(h / dim)  - pad
   }
 }
 
