@@ -1,56 +1,160 @@
 #!/usr/bin/gawk -f
 
+
+# Images in hulten are 4510 wide x 6590 high
+
 BEGIN{
 
-  "mktemp -d" | getline TMPDIR;
+  # "mktemp -d" | getline TMPDIR;
+
+  Page    = ARGV[2]
+  Imgfile = "p" ARGV[2] ".tiff"
+  SubimgN = 0
   
   # Check arguments
   if (ARGC == 0) exit
   else if (ARGV[1] == "split") {
     if (ARGC != 3) exit
-    export(ARGV[2])
-    chunkup(ARGV[2])
+
+    # extract the image from the PDF
+    export(Page, Imgfile)
+    
+    # first pass, slicing off the stop 450 page header,
+    #   and a bit of the bottom, scanning horizontally
+    chunkup(4510, 6000, 0, 450, Imgfile, 2)
+
+    # for (i in Chunk["len"]) 
+    #  print "band " i ", top " Chunk["vec"][i] ", hgt " Chunk["len"][i]
+
+    # make subimages
+    for (i in Chunk["len"]) { 
+      # odd page
+      if ((Page/2) != int(Page/2)) {
+        # text
+        W[++SubimgN] = 3050
+        H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 0
+        Y[SubimgN]   = Chunk["vec"][i]
+        N[SubimgN]   = Page "-" SubimgN "-t.tiff"
+        # illustration
+        W[++SubimgN] = 1460
+        H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 3050
+        Y[SubimgN]   = Chunk["vec"][i]
+        N[SubimgN]   = Page "-" SubimgN "-i.tiff"
+      }
+      else {
+        # even page
+        W[++SubimgN] = 3020
+        H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 1490
+        Y[SubimgN]   = Chunk["vec"][i]
+        N[SubimgN]   = Page "-" SubimgN "-t.tiff"
+        # illustration
+        W[++SubimgN] = 1490
+        H[SubimgN]   = Chunk["len"][i]
+        X[SubimgN]   = 0
+        Y[SubimgN]   = Chunk["vec"][i]
+        N[SubimgN]   = Page "-" SubimgN "-i.tiff"
+      }
+    }
+  }
+  delete(Chunk)  # Clear this, to use for second pass
+  
+  system("display -resize x1000 tiff/p" Page ".tiff &")
+
+  # for (i in W)
+  #   printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
+  #   system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] " -resize 500x500 tiff/p" Page ".tiff &")
+  
+  # second pass, slicing off the maps
+  for (i in W) {
+    if (N[i] ~ /-t\./) {
+      print N[i] > "/dev/stderr"
+      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 2)
+      # for (j in Chunk["len"]) {
+      # assume 2: maps
+      W[++SubimgN] = W[i]
+      H[SubimgN]   = Chunk["len"][1]
+      X[SubimgN]   = X[i]
+      Y[SubimgN]   = Chunk["vec"][1]
+      N[SubimgN]   = Page "-" SubimgN "-m.tiff"
+      # just text
+      W[++SubimgN] = W[i]
+      H[SubimgN]   = Chunk["len"][2]
+      X[SubimgN]   = X[i]
+      Y[SubimgN]   = Chunk["vec"][2]
+      N[SubimgN]   = Page "-" SubimgN "-tt.tiff"
+      delete(Chunk)  # Clear this, to use for second pass
+    }
   }
 
-  system("rm -rf " TMPDIR)
+  # third pass, slicing up the maps
+  for (i in W) {
+    if (N[i] ~ /-m\./) {
+      print N[i] > "/dev/stderr"
+      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 1)
+      # for (j in Chunk["len"]) {
+      # assume 2: map 1
+      W[++SubimgN] = W[i]
+      H[SubimgN]   = Chunk["len"][1]
+      X[SubimgN]   = X[i]
+      Y[SubimgN]   = Chunk["vec"][1]
+      N[SubimgN]   = Page "-" SubimgN "-m1.tiff"
+      # map 2
+      W[++SubimgN] = W[i]
+      H[SubimgN]   = Chunk["len"][2]
+      X[SubimgN]   = X[i]
+      Y[SubimgN]   = Chunk["vec"][2]
+      N[SubimgN]   = Page "-" SubimgN "-m2.tiff"
+      delete(Chunk)  # Clear this, to use for second pass
+    }
+  }
+  
+  for (i in W)
+  #   printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
+    system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] " -resize 500x500 -title " N[i] " tiff/p" Page ".tiff &")
+
+  
+  # system("rm -rf " TMPDIR)
   exit 1
   
 }
 
-function export(page){
-  # page 23 of the pdf is page number 1 of the book
-  #   but missing pages: 8,9 so taxa start pn 25 = p 45
-  print "Extracting book page " page " (pdf page " page+20 ")"
-  system("cd tiff; pdfimages -tiff -f " page+20 " -l " page+20 " ../hulten.pdf p" page " ; mv p" page "-000.tif p" page ".tiff; rm -f *.tif")
+function export(page, imgfile,     paper){
+  paper = paperpage(page)
+  print "Extracting book page " page " (pdf page " paper ")" > "/dev/stderr"
+  system("cd tiff; pdfimages -tiff -f " paper " -l " paper \
+         " ../hulten.pdf tmp ; mv tmp-000.tif " imgfile " ; rm -f tmp*")
 }
 
-function chunkup(page,  infile , cmd, c, bn, n) {
-  infile = "tiff/p" page ".tiff"
-  # take off the top
-  # system("convert " infile " -crop 4510x6000+0+450 " TMPDIR "/out.tif")
-
-  # See it:
-  # display -resize x100 -threshold 97% -depth 1 -resize x1000 tif/out.tif 
-
-  cmd = "convert " infile " -crop 4510x6000+0+450 -resize x100 " \
-    "-threshold 97% -depth 1 txt:-"
+function chunkup(w, h, x, y, infile, orient,                      \
+          cmd, c, bn, thres, j, i, bot, pad, top, hgt, xdim, ydim, newdim) {
+  
+  # orient=2: scan for horiz gaps; orient=1: scan for vert gaps
+  xdim = ydim = ""
+  if      (orient == 2) ydim = newdim = int(h/60)
+  else if (orient == 1) xdim = newdim = int(w/60)
+  else exit 0
+  
+  # resize to 1/60 size, this blurs the content, but maintains the major
+  # (but not inter-line) spaces.
+  cmd = "convert tiff/" infile " -crop " w "x" h "+" x "+" y \
+    " -resize " xdim "x" ydim " -threshold 97% -depth 1 txt:-"
+  # print cmd
   while ((cmd | getline) > 0 ) {
     gsub(/:/,"",$1)
     # only lines that have coordinates
     if ($1 ~ ",") {
-      split($1,c,",")
-      # print c[1], c[2]
-      if ($3 == "#000000") bn[c[2]]++
+      split($1,c,",")  # coordinates are xpix, ypix
+      if ($3 == "#000000") bn[c[orient]]++
     }
   }
 
-  thres = 2 # 3 black out of 75 -> row is black
+  thres = 1  # 3 black out of 75 -> row is black ; test on p112
+  bn[-1] = 0 # coordinates numbered from 0, line beyond top is white
   j = 0
-
-  # coordinates numbered from 0, line beyond top is white
-  bn[-1] = 0
-  for (i = 0; i < 100; i++) {
-    # print i , bn[i]
+  for (i = 0; i < newdim; i++) {
     # black
     if (bn[i] > thres) {
       # change to black
@@ -59,7 +163,6 @@ function chunkup(page,  infile , cmd, c, bn, n) {
         j++
         top[j] = i
       }
-      # print i " black " j
     }
     else {
       # change to white
@@ -67,33 +170,82 @@ function chunkup(page,  infile , cmd, c, bn, n) {
         # new band
         bot[j] = i
       }
-      # print i " white " j
     }
   }  
 
   # end black band if last line was black 
-  if (!bot[j]) bot[j] = 100
-  
-  pad = 10
-  for (i in top) {
-    hgt =  (bot[i]- top[i]) * 60 + pad + pad
-    ytop = 450 + top[i]*60 - pad
-    ybot = 450 + bot[i]*60 + pad
-    # print "band " i ", top " top[i] " (" ytop "), bot " bot[i] " (" ybot "), hgt " bot[i]-top[i]+1 " (" hgt ")"
-    # system("display -crop 4510x" hgt "+0+" ytop " -resize 1000x " infile " &")
+  if (!bot[j]) bot[j] = newdim
 
-    # odd page
-    if ((page/2) != int(page/2)) { 
-      # system("display -crop 3100x" hgt "+0+" ytop " -resize 1000x " infile " &")
-      # system("display -crop 1410x" hgt "+3100+" ytop " -resize 1000x " infile " &")
-      system("convert " infile " -crop 3050x" hgt "+0+" ytop " tiff/p" page "-" i "-t.tiff")
-      system("convert " infile " -crop 1460x" hgt "+3050+" ytop " tiff/p" page "-" i "-i.tiff")
+  if (orient==1) {
+    # system("display -crop " w "x" h "+" x "+" y " -resize 500x500 tiff/p" Page ".tiff &")
+    for (i in top) {
+        # Chunk["len"][i] =  (bot[i]- top[i]) * 60 + pad + pad
+        # Chunk["vec"][i] = y + top[i]*60 - pad
+    
+      print "band " i ", top " top[i] " (" ytop "), bot " bot[i] " ("   \
+        ybot "), hgt " bot[i]-top[i]+1 " (" hgt ")"
     }
-    else {
-      system("convert " infile " -crop 3020x" hgt "+1490+" ytop " tiff/p" page "-" i "-t.tiff")
-      system("convert " infile " -crop 1490x" hgt "+0+" ytop " tiff/p" page "-" i "-i.tiff")
-    }
+    exit
   }
+
+  
+  # pixel padding
+  pad = 10
+  # for each band
+  for (i in top) {
+    Chunk["len"][i] =  (bot[i]- top[i]) * 60 + pad + pad
+    Chunk["vec"][i] = y + top[i]*60 - pad
+    
+    # print "band " i ", top " top[i] " (" ytop "), bot " bot[i] " ("   \
+    #   ybot "), hgt " bot[i]-top[i]+1 " (" hgt ")"
+
+
+    
+    # # odd page
+    # if ((page/2) != int(page/2)) { 
+    #   # system("display -crop 3100x" hgt "+0+" ytop " -resize 1000x \
+    #   #   " infile " &")
+    #   # system("display -crop 1410x" hgt "+3100+" ytop " -resize 1000x \
+    #   #   " infile " &")
+    #   system("convert tiff/" infile " -crop 3050x" hgt "+0+" ytop \
+    #          " tiff/p" page "-" i "-t.tiff")
+    #   system("convert tiff/" infile " -crop 1460x" hgt "+3050+" ytop \
+    #          " tiff/p" page "-" i "-i.tiff")
+    # }
+    # else {
+    #   system("convert tiff/" infile " -crop 3020x" hgt "+1490+" ytop \
+    #          " tiff/p" page "-" i "-t.tiff")
+    #   system("convert tiff/" infile " -crop 1490x" hgt "+0+" ytop \
+    #          " tiff/p" page "-" i "-i.tiff")
+    # }
+  }
+}
+
+function paperpage(page    , p1, p2, i) {
+
+  # page structure of scan
+  p1[1]  = 23;
+  p1[8]  ="M"; p1[9]  ="M"; p1[10]  =30
+  p1[40] ="M"; p1[41] ="M"; p1[42]  =60
+  p1[104]="M"; p1[105]="M"; p1[106]=122
+  p1[456]=480
+  for (i = 1; i <= 960 ; i++) {
+    if (p1[i]) 
+      p2[i] = p1[i]
+    else
+      p2[i] = p2[i-1] + 1
+  }
+
+  if ((page < 1) || (page > 960)) {
+    print "page out of range" > "/dev/stderr"
+    exit 0
+  }
+  else if (p2[page] == "M") {
+    print "page " page " missing" > "/dev/stderr"
+    exit 0
+  }
+  else
+    return p2[page]
 }
 
 # ImageMagick tricks
