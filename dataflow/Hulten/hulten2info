@@ -32,21 +32,25 @@ BEGIN{
         # text
         W[++Img] = 3050    ;  H[Img] = Chunk["len"][i] + 2*pad
         X[Img]   = 0       ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" sprintf("%02d",Img) "-T.tiff"
+        N[Img]   =            Page "-" i "-T.tiff"
+        B[Img]   = i
         # illustration
         W[++Img] = 1460    ;  H[Img] = Chunk["len"][i] + 2*pad
         X[Img]   = 3050    ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" sprintf("%02d",Img) "-I.tiff"
+        N[Img]   =            Page "-" i "-I.tiff"
+        B[Img]   = i
       }
       else {
         # even page
         W[++Img] = 3020    ;  H[Img] = Chunk["len"][i] + 2*pad
         X[Img]   = 1490    ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" Img "-T.tiff"
+        N[Img]   =            Page "-" i "-T.tiff"
+        B[Img]   = i
         # illustration
         W[++Img] = 1490    ;  H[Img] = Chunk["len"][i] + 2*pad
         X[Img]   = 0       ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" sprintf("%02d",Img) "-I.tiff"
+        N[Img]   =            Page "-" i "-I.tiff"
+        B[Img]   = i
       }
     }
   }
@@ -59,13 +63,15 @@ BEGIN{
       # assume 2 parts: maps and all else
       W[++Img] = W[i]      ;  H[Img] = Chunk["len"][1] + 2*pad
       X[Img]   = X[i]      ;  Y[Img] = Chunk["beg"][1] -   pad
-      N[Img]   =              Page "-" sprintf("%02d",Img) "-m.tiff"
+      N[Img]   =              Page "-" B[i] "-m.tiff"
+      B[Img]   = B[i]
       # the text, may be 1 or more bits
       for (j in Chunk["len"]) maxj = j 
       W[++Img] = W[i]      ;  H[Img] = Chunk["end"][maxj] - Chunk["beg"][2] \
                                 + 2*pad
       X[Img]   = X[i]      ;  Y[Img] = Chunk["beg"][2] -   pad
-      N[Img]   =              Page "-" sprintf("%02d",Img) "-t.tiff"
+      N[Img]   =              Page "-" B[i] "-t.tiff"
+      B[Img]   = B[i]
     }
   }
 
@@ -76,11 +82,11 @@ BEGIN{
       # assume 2: map 1 ; add no padding
       W[++Img] = Chunk["len"][1] ;  H[Img]   = H[i]
       X[Img]   = Chunk["beg"][1] ;  Y[Img]   = Y[i]
-      N[Img]   =                    Page "-" sprintf("%02d",Img) "-1.tiff"
+      N[Img]   =                    Page "-" B[i] "-1.tiff"
       # map 2
       W[++Img] = Chunk["len"][2] ;  H[Img]   = H[i]
       X[Img]   = Chunk["beg"][2] ;  Y[Img]   = Y[i]
-      N[Img]   =                    Page "-" sprintf("%02d",Img) "-2.tiff"
+      N[Img]   =                    Page "-" B[i] "-2.tiff"
     }
   }
 
