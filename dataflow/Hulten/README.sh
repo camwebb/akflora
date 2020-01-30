@@ -1,5 +1,17 @@
 # Digitizing Hulten
 
+## make a names list
+
+echo "select distinct genus   from names where can = 1 ; " \
+     "select distinct species from names where can = 1 ; " \
+     "select distinct ssp     from names where can = 1 ; " \
+     | mysql -N -ucam -ptesttest akflora | sort | uniq > gen+sp_list
+
+
+
+
+
+
 # Extract pages in correctly numbered order
 
 START=25

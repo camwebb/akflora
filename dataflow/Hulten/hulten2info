@@ -4,54 +4,81 @@
 
 BEGIN{
 
-  Page    = ARGV[2] # page number in book
-  Imgfile = "p" sprintf("%03d", ARGV[2]) ".tiff"
+  DEBUG = 0
   Img     = 0       # image number counter
   pad     = 10      # padding pixels to add to image
   
   # Check arguments
-  if (ARGC == 0) exit
-  else if (ARGV[1] == "split") {
-    if (ARGC != 3) exit
+  if ((ARGC == 1) || (ARGV[ARGC-1] !~ /^[0-9]+$/)) {
+    echo "Usage: hulten2info [ --redo ] <page>" > "/dev/stderr"
+    exit 1
+  }
 
+  Page    = ARGV[ARGC-1] # page number in book
+  Page3   = sprintf("%03d",Page)
+  Imgfile = "tiff/" Page3 "/" Page3 ".tiff" 
+
+  if (ARGV[1] == "--tes") {
+
+    while (("ls tiff/" Page3 "/*t.tiff" | getline) > 0) {
+      print "OCRing " $1 
+      system("tesseract " $1 " "  \
+             gensub(/\.tiff$/,"","G", $1)             \
+             " --user-words gen+sp_list")
+      print "---------------------------------------------------------------"
+      system("cat " gensub(/\.tiff$/,".txt","G", $1))
+      print "---------------------------------------------------------------"
+    }
+    exit 0
+  }
+  
+  if (ARGV[1] != "--nop") {  # no page
+    
     # extract the image from the PDF
-    export(Page, Imgfile)
+    export(Page)
     # View the main image
-    # system("display -resize x1000 tiff/" Imgfile " &")
-
-    # 1. first pass, slicing off the top 450 page header,
-    #   and a bit of the bottom, scanning by rows
-    chunkup(4510, 6000, 0, 450, Imgfile, 2, 100, 1)
-    # returns an array Chunk with n chunks: starting row and length of rows
-
-    # 1b. for each horizontal chunk, divide text from illustrations
-    for (i in Chunk["len"]) { 
-      # odd page
-      # <--- 3050 text ---><--- 1460 ill --->    sum=4510 
-      if ((Page/2) != int(Page/2)) {
-        # text
-        W[++Img] = 3050    ;  H[Img] = Chunk["len"][i] + 2*pad
-        X[Img]   = 0       ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" i "-T.tiff"
-        B[Img]   = i
-        # illustration
-        W[++Img] = 1460    ;  H[Img] = Chunk["len"][i] + 2*pad
-        X[Img]   = 3050    ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" i "-I.tiff"
-        B[Img]   = i
-      }
-      else {
-        # even page
-        W[++Img] = 3020    ;  H[Img] = Chunk["len"][i] + 2*pad
-        X[Img]   = 1490    ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" i "-T.tiff"
-        B[Img]   = i
-        # illustration
-        W[++Img] = 1490    ;  H[Img] = Chunk["len"][i] + 2*pad
-        X[Img]   = 0       ;  Y[Img] = Chunk["beg"][i] -   pad
-        N[Img]   =            Page "-" i "-I.tiff"
-        B[Img]   = i
-      }
+    # system("display -resize x1000 " Imgfile " &")
+    
+    if (ARGV[1] == "--pgo")  # page only
+      # extract image only
+      exit 0
+  }
+    
+  # 1. first pass, slicing off the top 450 page header,
+  #   and a bit of the bottom, scanning by rows
+  # tweak                450 or 470
+  chunkup(4510, 6000, 0, 470, Imgfile, 2, 100, 1)
+  # returns an array Chunk with n chunks: starting row and length of rows
+  
+  # 1b. for each horizontal chunk, divide text from illustrations
+  for (i in Chunk["len"]) { 
+    # <--- 3050 text ---><--- 1460 ill --->    sum=4510
+    two = 3050 ; twe = 3000
+    # odd page
+    if ((Page/2) != int(Page/2)) {
+      # text
+      W[++Img] = two     ;  H[Img] = Chunk["len"][i] + 2*pad
+      X[Img]   = 0       ;  Y[Img] = Chunk["beg"][i] -   pad
+      N[Img]   =            Page3 "-" i "-T.tiff"
+      B[Img]   = i
+      # illustration
+      W[++Img] = 4510-two;  H[Img] = Chunk["len"][i] + 2*pad
+      X[Img]   = two     ;  Y[Img] = Chunk["beg"][i] -   pad
+      N[Img]   =            Page3 "-" i "-I.tiff"
+      B[Img]   = i
+    }
+    else {
+      # even page
+      # text
+      W[++Img] = twe     ;  H[Img] = Chunk["len"][i] + 2*pad
+      X[Img]   = 4510-twe;  Y[Img] = Chunk["beg"][i] -   pad
+      N[Img]   =            Page3 "-" i "-T.tiff"
+      B[Img]   = i
+      # illustration
+      W[++Img] = 4510-twe;  H[Img] = Chunk["len"][i] + 2*pad
+      X[Img]   = 0       ;  Y[Img] = Chunk["beg"][i] -   pad
+      N[Img]   =            Page3 "-" i "-I.tiff"
+      B[Img]   = i
     }
   }
 
@@ -63,55 +90,70 @@ BEGIN{
       # assume 2 parts: maps and all else
       W[++Img] = W[i]      ;  H[Img] = Chunk["len"][1] + 2*pad
       X[Img]   = X[i]      ;  Y[Img] = Chunk["beg"][1] -   pad
-      N[Img]   =              Page "-" B[i] "-m.tiff"
+      N[Img]   =              Page3 "-" B[i] "-m.tiff"
       B[Img]   = B[i]
       # the text, may be 1 or more bits
       for (j in Chunk["len"]) maxj = j 
       W[++Img] = W[i]      ;  H[Img] = Chunk["end"][maxj] - Chunk["beg"][2] \
                                 + 2*pad
       X[Img]   = X[i]      ;  Y[Img] = Chunk["beg"][2] -   pad
-      N[Img]   =              Page "-" B[i] "-t.tiff"
+      N[Img]   =              Page3 "-" B[i] "-t.tiff"
       B[Img]   = B[i]
     }
   }
-
+  
   # third pass, slicing up the maps, vertically
   for (i in W) {
     if (N[i] ~ /-m\./) {
-      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 1, 300, 1)
+      # play with this thresh value:                   v
+      chunkup(W[i], H[i], X[i], Y[i], Imgfile, 1, 300, 3)
       # assume 2: map 1 ; add no padding
       W[++Img] = Chunk["len"][1] ;  H[Img]   = H[i]
       X[Img]   = Chunk["beg"][1] ;  Y[Img]   = Y[i]
-      N[Img]   =                    Page "-" B[i] "-1.tiff"
+      N[Img]   =                    Page3 "-" B[i] "-1.tiff"
       # map 2
-      W[++Img] = Chunk["len"][2] ;  H[Img]   = H[i]
+      for (j in Chunk["len"]) maxj = j 
+      W[++Img] = Chunk["end"][maxj] - Chunk["beg"][2]
+      H[Img]   = H[i]
       X[Img]   = Chunk["beg"][2] ;  Y[Img]   = Y[i]
-      N[Img]   =                    Page "-" B[i] "-2.tiff"
+      N[Img]   =                    Page3 "-" B[i] "-2.tiff"
     }
   }
 
-  # printf "%4s  %4s  %4s  %4s  %s\n", "W", "H", "X", "Y", "name"
+  if (DEBUG) printf "%4s  %4s  %4s  %4s  %s\n", "W", "H", "X", "Y", "name"
   for (i in W) {
-    # view in print:
-    # printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
-    # view in display
-    # system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i] \
-    #        " -resize 500x500 -title " N[i] " tiff/p" Page ".tiff &")
-    # make subfiles
-    if (N[i] ~ /-[It12]\./)
-      system("convert tiff/p" Page ".tiff -crop " \
-             W[i] "x" H[i] "+" X[i] "+" Y[i] " tiff/" N[i] )
+    if (DEBUG) {
+      # view in print:
+      printf "%4d  %4d  %4d  %4d  %s\n", W[i], H[i], X[i], Y[i], N[i]
+      view in display
+      system("display -crop " W[i] "x" H[i] "+" X[i] "+" Y[i]   \
+             " -resize 500x500 -title " N[i] " " Imgfile " &")
+    }
+    else {
+      # make subfiles
+      if (N[i] ~ /-[It]\./)
+        system("cd tiff/" Page3 " ; convert " \
+               Page3 ".tiff -crop " \
+               W[i] "x" H[i] "+" X[i] "+" Y[i] " " N[i] )
+      if (N[i] ~ /-[12]\./)
+        system("cd tiff/" Page3 " ; convert " \
+               Page3 ".tiff -crop " \
+               W[i] "x" H[i] "+" X[i] "+" Y[i] \
+               " -fuzz 50% -trim " N[i])
+    }
   }
   
   exit 1
-  
 }
 
-function export(page, imgfile,     paper){
+function export(page,     paper){
   paper = paperpage(page)
-  print "Extracting book page " page " (pdf page " paper ")" > "/dev/stderr"
-  system("cd tiff; pdfimages -tiff -f " paper " -l " paper \
-         " ../hulten.pdf tmp ; mv tmp-000.tif " imgfile " ; rm -f tmp*")
+  print "... extracting book page " page " (pdf page " paper ")" \
+    > "/dev/stderr"
+  system("cd tiff ; mkdir " sprintf("%03d",page) " ; cd " sprintf("%03d",page) \
+         "; pdfimages -tiff -f " paper " -l " paper \
+         " ../../hulten.pdf tmp ; mv tmp-000.tif " sprintf("%03d",page) \
+         ".tiff ; rm -f tmp*")
 }
 
 
@@ -124,7 +166,7 @@ function chunkup(w, h, x, y, infile, orient, dim, thres                   \
   
   # resize to ~1/60 size, this blurs the content, but maintains the major
   # (but not inter-line) spaces.
-  cmd = "convert tiff/" infile " -crop " w "x" h "+" x "+" y \
+  cmd = "convert " infile " -crop " w "x" h "+" x "+" y \
     " -resize " dimt " -threshold 97% -depth 1 txt:-"
   # if (dim==80) # print cmd
   #   system("display -crop " w "x" h "+" x "+" y                         \
