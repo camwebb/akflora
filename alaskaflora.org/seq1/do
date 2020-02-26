@@ -91,7 +91,7 @@ function seeall() {
   print "<form action=\"do\"><p style=\"padding-bottom:10px;\">"
   print "<input type=\"hidden\" name=\"preaction\" value=\"add\"/>"
   print "Sample: <input type=\"text\" name=\"sample_no\" "\
-    "style=\"width:100px;\"/>"
+    "style=\"width:50px;\"/>"
   print "&#160;&#160;Barcode: <input type=\"text\" name=\"barcode\" "\
     "style=\"width:100px;\"/>"
   print "&#160;&#160;Notes: <input type=\"text\" name=\"notes\" "\
