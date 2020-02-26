@@ -66,6 +66,7 @@ function seeall() {
   
   else if (f["preaction"] == "add") {
     # check barcode
+    gsub(/[[:space:]]/,"",f["barcode"])
     db_query("seq1", "SELECT id FROM ala WHERE barcode = '" f["barcode"] \
              "';")
     if (!DBQ[1,"id"])
