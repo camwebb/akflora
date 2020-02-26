@@ -52,7 +52,7 @@ BEGIN{
 function seeall() {
 
   header("Samples")
-  print "<h1 style=\"padding-bottom:10px;\">Sequencing herbarium samples Feb 2020</h1>"
+  print "<h2 style=\"padding-bottom:10px;\">Sample-barcode DB</h2>"
 
   # preactions
   actiontext = "<p>&#160;</p>"
