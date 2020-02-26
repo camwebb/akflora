@@ -104,11 +104,11 @@ function seeall() {
   print "<tr>"
   print "<td>Sample</td>"
   print "<td>Barcode</td>"
-  print "<td>Notes</td>"
   print "<td>Taxon</td>"
   print "<td>ALAAC</td>"
   print "<td>GUID</td>"
   print "<td></td>"
+  print "<td>Notes</td>"
   print "</tr>"
 
   # Table data
@@ -118,13 +118,13 @@ function seeall() {
     print "<tr>"
     print "<td>" DBQ[i, "sample_no"] "</td>"
     print "<td>" DBQ[i, "barcode"] "</td>"
-    print "<td>" substr(DBQ[i, "notes"],1,100) "</td>"
     print "<td>" DBQ[i, "taxon"] "</td>"
     print "<td>" DBQ[i, "alaac"] "</td>"
     print "<td><a href=\"https://arctos.database.museum/guid/" DBQ[i, "guid"]\
       "\" target=\"_blank\">" DBQ[i, "guid"] "</a></td>"
     print "<td> <a href=\"do?page=seeall&amp;preaction=delete&amp;del=" \
       DBQ[i, "sample_no"] "\">delete</a> </td>"
+    print "<td>" substr(DBQ[i, "notes"],1,100) "</td>"
     print "</tr>"
   }
   db_clear()
