@@ -73,7 +73,8 @@ function seeall() {
       actiontext = "<p style=\"color:red;\">Barcode " f["barcode"]  \
         " not found</p>"
     else {
-      if (f["notes"]) f["notes"] = "'" gensub(/'/,"\"","G",f["notes"]) "'"
+      if (f["notes"]) f["notes"] = "'" \
+                        gensub(/(['"])/,"\\\\\\1","G",f["notes"]) "'"
       else f["notes"] = "NULL"
       error = db_sql("seq1", "INSERT INTO sample (sample_no, alaID, notes) " \
                      "VALUES (" f["sample_no"] ",'" DBQ[1,"id"] "'," \
