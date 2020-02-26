@@ -3,17 +3,18 @@
 # Images in hulten are 4510 wide x 6590 high
 
 BEGIN{
-
+  
   DEBUG = 0
   Img     = 0       # image number counter
   pad     = 10      # padding pixels to add to image
   
   # Check arguments
-  if ((ARGC == 1) || (ARGV[ARGC-1] !~ /^[0-9]+$/)) {
-    echo "Usage: hulten2info [ --redo ] <page>" > "/dev/stderr"
+  #if ((ARGC == 1) || (ARGV[ARGC-1] !~ /^[0-9]+$/)) {
+  if (ARGC == 1) {
+    print "Usage: hulten2info ... <page>" > "/dev/stderr"
     exit 1
   }
-
+  
   Page    = ARGV[ARGC-1] # page number in book
   Page3   = sprintf("%03d",Page)
   Imgfile = "tiff/" Page3 "/" Page3 ".tiff" 
@@ -23,16 +24,24 @@ BEGIN{
     while (("ls tiff/" Page3 "/*t.tiff" | getline) > 0) {
       print "OCRing " $1 
       system("tesseract " $1 " "  \
-             gensub(/\.tiff$/,"","G", $1)             \
-             " --user-words gen+sp_list")
+             gensub(/\.tiff$/,"","G", $1)       \
+             " --user-words gen+sp_list ; "\
+             "sed -i -E 's/[|^\f]//g' " gensub(/\.tiff$/,".txt","G", $1))
       print "---------------------------------------------------------------"
       system("cat " gensub(/\.tiff$/,".txt","G", $1))
       print "---------------------------------------------------------------"
+      system("emacs " gensub(/\.tiff$/,".txt","G", $1) " >& /dev/null &")
     }
     exit 0
   }
-  
-  if (ARGV[1] != "--nop") {  # no page
+
+  else if (ARGV[1] == "--col") {
+    # collect the OCR text
+    collect()
+    exit 0
+  }
+
+  else if (ARGV[1] != "--nop") {  # no page
     
     # extract the image from the PDF
     export(Page)
@@ -43,7 +52,7 @@ BEGIN{
       # extract image only
       exit 0
   }
-    
+  
   # 1. first pass, slicing off the top 450 page header,
   #   and a bit of the bottom, scanning by rows
   # tweak                450 or 470
@@ -53,7 +62,8 @@ BEGIN{
   # 1b. for each horizontal chunk, divide text from illustrations
   for (i in Chunk["len"]) { 
     # <--- 3050 text ---><--- 1460 ill --->    sum=4510
-    two = 3050 ; twe = 3000
+    # opt: two = 3050 ; twe = 3000
+    two = 3050 ; twe = 2950
     # odd page
     if ((Page/2) != int(Page/2)) {
       # text
@@ -154,6 +164,20 @@ function export(page,     paper){
          "; pdfimages -tiff -f " paper " -l " paper \
          " ../../hulten.pdf tmp ; mv tmp-000.tif " sprintf("%03d",page) \
          ".tiff ; rm -f tmp*")
+  # test for size
+  cmd = "identify tiff/" sprintf("%03d",page) "/" sprintf("%03d",page) \
+         ".tiff"
+  cmd | getline size
+  if (substr(size, 24, 4) != "4510") {
+    print "Warning, page is not 4510 pixels wide. Expanding..." > "/dev/stderr"
+    system("cd tiff/" sprintf("%03d",page) " ; convert " sprintf("%03d",page) \
+           ".tiff -resize 4510x " sprintf("%03d",page) ".tiff")
+  }
+  # normal size: 4510x6590
+  # normal alignment of header divider:
+  #   Length : ~3930; To top: ~395; To outer edge: ~470; to spine: ~100
+  # In GIMP: expand %, crop to 4510x6590, shift (using measure),
+  #   add white layer to fill in gaps, flatten, overwrite
 }
 
 
@@ -246,6 +270,50 @@ function paperpage(page    , p1, p2, i) {
   else
     return p2[page]
 }
+
+function collect (     cmd, i, j, file) {
+
+  cmd = "for i in `find tiff -name '*txt' | sort`; do echo '===='; "    \
+    "echo $i; echo '----'; cat $i ; done"
+  RS = "====\n"
+  while ((cmd | getline) > 0 )
+    file[++i] = $0
+
+  OFS="|"
+  for (j = 2; j <= i; j++) {
+    # split filename from data
+    split(file[j], part, "\n----\n")
+    commonname = ""
+    id = part[1] ; gsub(/tiff\/[0-9]+\//,"",id); gsub(/\-t\.txt/,"",id)
+
+    # split into (5) fields
+    split(part[2],parts,/\n *\n/)
+    for (k in parts) gsub(/^\- *\n*$/,"", parts[k])
+
+    # names - get common name
+    cn = split(parts[1],cname, "|")
+    if (cn == 2) commonname = cname[2]
+    gsub(/ *$/,"",commonname);     gsub(/^ */,"",commonname); 
+
+    # scientific name
+    split(cname[1],sname, "/")
+    gsub(/ *$/,"",sname[1]);  gsub(/^ */,"",sname[1]); 
+    
+    print id , lowersecondword(sname[1]), commonname, gensub(/\n/,"^","G",parts[2]), \
+      gensub(/\n/," ","G",parts[3]),  gensub(/\n/," ","G",parts[4]), \
+      gensub(/\n/," ","G",parts[5])
+  }
+
+}
+
+
+function lowersecondword(x,    n, y, out, i) {
+  n = split(x, y, / +/)
+  out = y[1] " " tolower(y[2])
+  for (i = 3; i <=n; i++) out = out " " y[i]
+  return out
+}
+
 
 # ImageMagick tricks
 

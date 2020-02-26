@@ -1,0 +1,172 @@
+#!/bin/gawk -f
+
+# A simple webapp for managing sequence sampling 
+# (c) Cam Webb <cw@camwebb.info>, 2020
+
+# INSTALLATION
+#
+# 1. If using Apache httpd, install this file in a cgi executable
+#    location and create a .htaccess file, minimally: 
+#        Options +ExecCGI -Indexes
+#        <Files "do">
+#          SetHandler cgi-script
+#        </Files>
+#        DirectoryIndex do
+#    Optionally add:
+#        <FilesMatch "^\.pw$">
+#          Deny from all
+#        </FilesMatch>
+#        AuthType Basic
+#        AuthName "Password Protected"
+#        AuthUserFile /full/path/to/.pw
+#        Require valid-user
+#
+# 2. Install function libraries from https://github.com/camwebb/awk-lib
+#    and include, using full path
+
+@include "/usr/local/share/awk/db_sql.awk"
+@include "/usr/local/share/awk/util_http.awk"
+@include "/usr/local/share/awk/db_secrets.awk"
+
+# 3. On and available MySQL or MariaDB DB, install the empty DB at
+#    http://alaskaflora.org/chars/chars.sql and modify as needed. Make sure
+#    the access info is in the included db_secrets.awk
+
+BEGIN{
+  PROCINFO["sorted_in"] = "@ind_str_asc"
+  
+  db_secrets()
+ 
+  # READ QUERY STRING
+  split(ENVIRON["QUERY_STRING"], qs, "&");
+  for (i in qs) {
+    split(qs[i], qp, "=");
+    f[qp[1]] = substr(urldecode(qp[2]),1,2000); 
+  }
+  
+  # DETERMINE AND EXECUTE METHOD
+  seeall() ;
+  
+}
+
+function seeall() {
+
+  header("Samples")
+  print "<h1 style=\"padding-bottom:10px;\">Sequencing herbarium samples Feb 2020</h1>"
+
+  # preactions
+  actiontext = "<p>&#160;</p>"
+  
+  if (f["preaction"] == "delete") {
+    error = db_sql("seq1", "DELETE FROM sample WHERE sample_no = " f["del"] \
+                   ";")
+    if (error) actiontext = "<p style=\"color:red;\">UPDATE FAILURE</p>"
+    else actiontext = "<p style=\"color:green;\">Sample " f["del"] " deleted</p>"
+  }
+  
+  else if (f["preaction"] == "add") {
+    # check barcode
+    db_query("seq1", "SELECT id FROM ala WHERE barcode = '" f["barcode"] \
+             "';")
+    if (!DBQ[1,"id"])
+      actiontext = "<p style=\"color:red;\">Barcode " f["barcode"]  \
+        " not found</p>"
+    else {
+      if (f["notes"]) f["notes"] = "'" gensub(/'/,"\"","G",f["notes"]) "'"
+      else f["notes"] = "NULL"
+      error = db_sql("seq1", "INSERT INTO sample (sample_no, alaID, notes) " \
+                     "VALUES (" f["sample_no"] ",'" DBQ[1,"id"] "'," \
+                     f["notes"] ");")
+      if (error) actiontext = "<p style=\"color:red;\">INSERT FAILURE</p>"
+      else actiontext = "<p style=\"color:green;\">Sample " f["sample_no"] " added</p>"
+    }
+    db_clear()
+  }
+  
+  # form
+  
+  print "<form action=\"do\"><p style=\"padding-bottom:10px;\">"
+  print "<input type=\"hidden\" name=\"preaction\" value=\"add\"/>"
+  print "Sample: <input type=\"text\" name=\"sample_no\" "\
+    "style=\"width:100px;\"/>"
+  print "&#160;&#160;Barcode: <input type=\"text\" name=\"barcode\" "\
+    "style=\"width:100px;\"/>"
+  print "&#160;&#160;Notes: <input type=\"text\" name=\"notes\" "\
+    "style=\"width:300px;\"/>"
+  print "&#160;&#160;&#160;<input type=\"submit\" value=\"Add\"/></p></form>"
+
+  print actiontext
+
+
+  # table
+
+  print "<table>"
+  print "<tr>"
+  print "<td>Sample</td>"
+  print "<td>Barcode</td>"
+  print "<td>Notes</td>"
+  print "<td>Taxon</td>"
+  print "<td>ALAAC</td>"
+  print "<td>GUID</td>"
+  print "<td></td>"
+  print "</tr>"
+
+  # Table data
+  db_query("seq1", "SELECT sample_no, barcode, notes, taxon, alaac, guid "\
+           "FROM sample, ala WHERE sample.alaID = ala.id ORDER BY sample_no;")
+  for (i = 1 ; i <= DBQr; i++) {
+    print "<tr>"
+    print "<td>" DBQ[i, "sample_no"] "</td>"
+    print "<td>" DBQ[i, "barcode"] "</td>"
+    print "<td>" substr(DBQ[i, "notes"],1,100) "</td>"
+    print "<td>" DBQ[i, "taxon"] "</td>"
+    print "<td>" DBQ[i, "alaac"] "</td>"
+    print "<td><a href=\"https://arctos.database.museum/guid/" DBQ[i, "guid"]\
+      "\" target=\"_blank\">" DBQ[i, "guid"] "</a></td>"
+    print "<td> <a href=\"do?page=seeall&amp;preaction=delete&amp;del=" \
+      DBQ[i, "sample_no"] "\">delete</a> </td>"
+    print "</tr>"
+  }
+  db_clear()
+
+  print "</table>"
+
+  footer()
+
+}
+
+
+function header(title) {
+  
+  # Use html5
+  print "Content-type: text/html\n"
+  print "<!DOCTYPE html>"
+  print "<html xmlns=\"http://www.w3.org/1999/xhtml\">"
+  print "<head><title>" title "</title>"
+  print "<meta http-equiv=\"Content-Type\" content=\"text/html; \
+           charset=utf-8\" />"
+  print "<link href=\"https://fonts.googleapis.com/css?family=Montserrat\" \
+           rel=\"stylesheet\"/>"
+  print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
+           type=\"image/x-icon\"/>"
+  print "<style>"
+  print "body { font-size: 14px; width: 1200px;	font-family: 'Montserrat', \
+         Verdana, Arial, Helvetica, sans-serif; padding: 20px; \
+         position: absolute }"
+  # print "select , option { font-size: 14px }"
+  print "table { max-width: 1200px; border-collapse: collapse }"
+  print "td, th { border: 1px solid black; padding: 3px }"
+  print "a { color:#15358d; text-decoration:none; border-bottom-style:none }"
+  print "a:visited { color:#9f1dbc }"
+  print "a:hover {color:#15358d; border-bottom-style:solid; \
+	     border-bottom-width:thin }"
+  print "</style>"
+  print "</head>\n<body><div style=\"padding-left:100px;\">"
+}
+
+
+function footer()
+{
+  print "</div></body>\n</html>";
+}
+
