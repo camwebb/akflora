@@ -67,8 +67,8 @@ function seeall() {
   else if (f["preaction"] == "add") {
     # check barcode
     gsub(/[[:space:]]/,"",f["barcode"])
-    db_query("seq1", "SELECT id FROM ala WHERE barcode = '" f["barcode"] \
-             "';")
+    db_query("seq1", "SELECT id , alaac, taxon FROM ala WHERE barcode = '" \
+             f["barcode"] "';")
     if (!DBQ[1,"id"])
       actiontext = "<p style=\"color:red;\">Barcode " f["barcode"]  \
         " not found</p>"
@@ -79,7 +79,9 @@ function seeall() {
                      "VALUES (" f["sample_no"] ",'" DBQ[1,"id"] "'," \
                      f["notes"] ");")
       if (error) actiontext = "<p style=\"color:red;\">INSERT FAILURE</p>"
-      else actiontext = "<p style=\"color:green;\">Sample " f["sample_no"] " added</p>"
+      else actiontext = "<p style=\"color:green;\">Sample " f["sample_no"] \
+             " " f["barcode"] " " DBQ[1,"alaac"] " " \
+             DBQ[1,"taxon"] " added</p>"
     }
     db_clear()
   }
