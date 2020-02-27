@@ -127,7 +127,8 @@ function seeall() {
     print "<td><a href=\"https://arctos.database.museum/guid/" DBQ[i, "guid"]\
       "\" target=\"_blank\">" DBQ[i, "guid"] "</a></td>"
     print "<td> <a href=\"do?page=seeall&amp;preaction=delete&amp;del=" \
-      DBQ[i, "sample_no"] "\">delete</a> </td>"
+      DBQ[i, "sample_no"] "\" onclick=\"return confirm('Confirm sample " \
+      DBQ[i, "sample_no"] " deletion')\">delete</a> </td>"
     print "<td>" substr(DBQ[i, "notes"],1,100) "</td>"
     print "</tr>"
   }
