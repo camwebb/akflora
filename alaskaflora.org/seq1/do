@@ -49,19 +49,19 @@ BEGIN{
   
 }
 
-function seeall() {
+function seeall(       error, actiontext, i, ts, taxsum) {
 
   header("Samples")
-  print "<h2 style=\"padding-bottom:10px;\">Sample-barcode DB</h2>"
+
+  # Block 1: title
+  print "<h2>Sample-barcode DB</h2>"
 
   # preactions
-  actiontext = "<p>&#160;</p>"
-  
   if (f["preaction"] == "delete") {
     error = db_sql("seq1", "DELETE FROM sample WHERE sample_no = " f["del"] \
                    ";")
-    if (error) actiontext = "<p style=\"color:red;\">UPDATE FAILURE</p>"
-    else actiontext = "<p style=\"color:green;\">Sample " f["del"] " deleted</p>"
+    if (error) actiontext = "<span style=\"color:red;\">UPDATE FAILURE</span>"
+    else actiontext = "<span style=\"color:green;\">Sample " f["del"] " deleted</span>"
   }
   
   else if (f["preaction"] == "add") {
@@ -70,8 +70,8 @@ function seeall() {
     db_query("seq1", "SELECT id , alaac, taxon FROM ala WHERE barcode = '" \
              f["barcode"] "';")
     if (!DBQ[1,"id"])
-      actiontext = "<p style=\"color:red;\">Barcode " f["barcode"]  \
-        " not found</p>"
+      actiontext = "<span style=\"color:red;\">Barcode " f["barcode"]  \
+        " not found</span>"
     else {
       if (f["notes"]) f["notes"] = "'" \
                         gensub(/(['"])/,"\\\\\\1","G",f["notes"]) "'"
@@ -79,17 +79,18 @@ function seeall() {
       error = db_sql("seq1", "INSERT INTO sample (sample_no, alaID, notes) " \
                      "VALUES (" f["sample_no"] ",'" DBQ[1,"id"] "'," \
                      f["notes"] ");")
-      if (error) actiontext = "<p style=\"color:red;\">INSERT FAILURE</p>"
-      else actiontext = "<p style=\"color:green;\">Sample " f["sample_no"] \
+      if (error) actiontext = "<span style=\"color:red;\">INSERT FAILURE</span>"
+      else actiontext = "<span style=\"color:green;\">Sample " f["sample_no"] \
              " " f["barcode"] " " DBQ[1,"alaac"] " " \
-             DBQ[1,"taxon"] " added</p>"
+             DBQ[1,"taxon"] " added</span>"
     }
     db_clear()
   }
-  
-  # form
-  
-  print "<form action=\"do\"><p style=\"padding-bottom:10px;\">"
+
+  # Block 2: form
+
+  print "<div id=\"input\">"
+  print "<form action=\"do\"><p>"
   print "<input type=\"hidden\" name=\"preaction\" value=\"add\"/>"
   print "Sample: <input type=\"text\" name=\"sample_no\" "\
     "style=\"width:50px;\"/>"
@@ -98,26 +99,54 @@ function seeall() {
   print "&#160;&#160;Notes: <input type=\"text\" name=\"notes\" "\
     "style=\"width:300px;\"/>"
   print "&#160;&#160;&#160;<input type=\"submit\" value=\"Add\"/></p></form>"
+  print "</div>"
 
+  # Block 3: actions
+  print "<div id=\"action\">"
   print actiontext
+  print "</div>"
 
+  # Main query
+  db_query("seq1", "SELECT sample_no, barcode, notes, taxon, alaac, guid " \
+           "FROM sample, ala WHERE sample.alaID = ala.id ORDER BY sample_no;")
 
-  # table
+  # Block 4: taxon summary
 
+  for (i = 1 ; i <= DBQr; i++) {
+    split(DBQ[i, "taxon"],ts)
+    taxsum[(ts[1] " " ts[2])]++
+  }
+
+  print "<div id=\"summary\">"
   print "<table>"
   print "<tr>"
-  print "<td>Sample</td>"
-  print "<td>Barcode</td>"
-  print "<td>Taxon</td>"
-  print "<td>ALAAC</td>"
-  print "<td>GUID</td>"
-  print "<td></td>"
-  print "<td>Notes</td>"
+  print "<th>Species</th>"
+  print "<th>N samples</th>"
+  print "</tr>"
+  for (i in taxsum) {
+    print "<tr>"
+    print "<td><i>" i "</i></td>"
+    print "<td>" taxsum[i] "</td>"
+    print "</tr>"
+  }
+  print "</table>"
+  print "</div>"
+
+  # Block 5: main table
+
+  print "<div id=\"main\">"
+  print "<table>"
+  print "<tr>"
+  print "<th>Sample</th>"
+  print "<th>Barcode</th>"
+  print "<th>Taxon</th>"
+  print "<th>ALAAC</th>"
+  print "<th>GUID</th>"
+  print "<th></th>"
+  print "<th>Notes</th>"
   print "</tr>"
 
   # Table data
-  db_query("seq1", "SELECT sample_no, barcode, notes, taxon, alaac, guid "\
-           "FROM sample, ala WHERE sample.alaID = ala.id ORDER BY sample_no;")
   for (i = 1 ; i <= DBQr; i++) {
     print "<tr>"
     print "<td>" DBQ[i, "sample_no"] "</td>"
@@ -132,9 +161,10 @@ function seeall() {
     print "<td>" substr(DBQ[i, "notes"],1,100) "</td>"
     print "</tr>"
   }
-  db_clear()
-
   print "</table>"
+  print "</div>"
+
+  db_clear()
 
   footer()
 
@@ -154,11 +184,15 @@ function header(title) {
            rel=\"stylesheet\"/>"
   print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
            type=\"image/x-icon\"/>"
+
+  # CSS
   print "<style>"
   print "body { font-size: 14px; width: 1200px;	font-family: 'Montserrat', \
          Verdana, Arial, Helvetica, sans-serif; padding: 20px; \
          position: absolute }"
   # print "select , option { font-size: 14px }"
+  print "div { padding-top: 10px; padding-bottom: 10px;}"
+  print "div #action { min-height: 30px; }"
   print "table { max-width: 1200px; border-collapse: collapse }"
   print "td, th { border: 1px solid black; padding: 3px }"
   print "a { color:#15358d; text-decoration:none; border-bottom-style:none }"
@@ -166,6 +200,7 @@ function header(title) {
   print "a:hover {color:#15358d; border-bottom-style:solid; \
 	     border-bottom-width:thin }"
   print "</style>"
+
   print "</head>\n<body><div style=\"padding-left:100px;\">"
 }
 
