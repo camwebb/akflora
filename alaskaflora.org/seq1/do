@@ -121,6 +121,7 @@ function seeall(       error, actiontext, i, ts, taxsum) {
   # Block 4: taxon summary
 
   for (i = 1 ; i <= DBQr; i++) {
+    gsub(/<\/?i>/,"",DBQ[i, "taxon"]);
     split(DBQ[i, "taxon"],ts)
     taxsum[(ts[1] " " ts[2])]++
   }
