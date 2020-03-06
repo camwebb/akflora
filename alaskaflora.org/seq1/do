@@ -76,9 +76,11 @@ function seeall(       error, actiontext, i, ts, taxsum) {
       if (f["notes"]) f["notes"] = "'" \
                         gensub(/(['"])/,"\\\\\\1","G",f["notes"]) "'"
       else f["notes"] = "NULL"
-      error = db_sql("seq1", "INSERT INTO sample (sample_no, alaID, notes) " \
-                     "VALUES (" f["sample_no"] ",'" DBQ[1,"id"] "'," \
-                     f["notes"] ");")
+      if (f["sex"] != "NULL") f["sex"] = "'" f["sex"] "'"
+      else f["sex"] = "NULL"
+      error= db_sql("seq1","INSERT INTO sample (sample_no, alaID, sex, notes)"\
+                    "VALUES (" f["sample_no"] ",'" DBQ[1,"id"] "'," f["sex"] \
+                    "," f["notes"] ");")
       if (error) actiontext = "<span style=\"color:red;\">INSERT FAILURE</span>"
       else actiontext = "<span style=\"color:green;\">Sample " f["sample_no"] \
              " " f["barcode"] " " DBQ[1,"alaac"] " " \
@@ -96,6 +98,12 @@ function seeall(       error, actiontext, i, ts, taxsum) {
     "style=\"width:50px;\"/>"
   print "&#160;&#160;Barcode: <input type=\"text\" name=\"barcode\" "\
     "style=\"width:100px;\"/>"
+  print "&#160;&#160;Sex: <select name=\"sex\">"\
+    "<option value=\"NULL\" selected=\"1\"></option>"\
+    "<option value=\"M\">M</option>"\
+    "<option value=\"F\">F</option>"\
+    "<option value=\"F\">ST</option>"\
+    "</select>"
   print "&#160;&#160;Notes: <input type=\"text\" name=\"notes\" "\
     "style=\"width:300px;\"/>"
   print "&#160;&#160;&#160;<input type=\"submit\" value=\"Add\"/></p></form>"
@@ -107,7 +115,7 @@ function seeall(       error, actiontext, i, ts, taxsum) {
   print "</div>"
 
   # Main query
-  db_query("seq1", "SELECT sample_no, barcode, notes, taxon, alaac, guid " \
+  db_query("seq1", "SELECT sample_no, barcode, notes, taxon, alaac, sex, guid " \
            "FROM sample, ala WHERE sample.alaID = ala.id ORDER BY sample_no;")
 
   # Block 4: taxon summary
@@ -143,6 +151,7 @@ function seeall(       error, actiontext, i, ts, taxsum) {
   print "<th>ALAAC</th>"
   print "<th>GUID</th>"
   print "<th></th>"
+  print "<th>Sex</th>"
   print "<th>Notes</th>"
   print "</tr>"
 
@@ -158,6 +167,7 @@ function seeall(       error, actiontext, i, ts, taxsum) {
     print "<td> <a href=\"do?page=seeall&amp;preaction=delete&amp;del=" \
       DBQ[i, "sample_no"] "\" onclick=\"return confirm('Confirm sample " \
       DBQ[i, "sample_no"] " deletion')\">delete</a> </td>"
+    print "<td>" DBQ[i, "sex"] "</td>"
     print "<td>" substr(DBQ[i, "notes"],1,100) "</td>"
     print "</tr>"
   }
