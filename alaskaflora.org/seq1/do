@@ -126,7 +126,8 @@ function seeall(       error, actiontext, i, ts, taxsum) {
     taxsum[(ts[1] " " ts[2])]++
   }
 
-  print "<div id=\"summary\">"
+  print "<button id=\"button\" onclick=\"showhide()\">Show summary</button>"
+  print "<div id=\"summary\" style=\"display:none;\">"
   print "<table>"
   print "<tr>"
   print "<th>Species</th>"
@@ -212,6 +213,20 @@ function header(title) {
 	     border-bottom-width:thin }"
   print "</style>"
 
+  print "<script type=\"application/javascript\"> \
+           function showhide() {                            \
+             var x = document.getElementById(\"summary\"); \
+             var y = document.getElementById(\"button\");        \
+             if (x.style.display == \"none\") { \
+               x.style.display = \"block\"; \
+               y.innerHTML = \"Hide summary\"; \
+             } else { \
+               x.style.display = \"none\"; \
+               y.innerHTML = \"Show summary\"; \
+             } \
+           } \
+         </script>"
+  
   print "</head>\n<body><div style=\"padding-left:100px;\">"
 }
 
