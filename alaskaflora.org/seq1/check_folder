@@ -1,0 +1,109 @@
+#!/usr/bin/gawk -f
+
+BEGIN{
+  PROCINFO["sorted_in"] = "@ind_str_asc"
+  
+  split(ENVIRON["QUERY_STRING"], query, "&");
+  for (i1 in query) {
+    split(query[i1], tmpq, "=");
+    f[tmpq[1]] = substr(urldecode(tmpq[2]),1,2000); 
+  }
+  
+  htmlHeader()
+
+  print "<p style=\"font-size:40px;\">"
+  
+  if (f["barcode"]) {
+    FS=OFS="|"
+    while ((getline < "argus") > 0) {
+      folder[$1] = $2
+      sp[$1] = $5
+    }
+    print "In: <b>" f["barcode"] "</b><br/><br/>"
+    
+    for (i in folder) {
+      if (folder[i] == f["barcode"]) {
+        print "<b>" i "</b> <i>" sp[i] "</i><br/>"
+      }
+    }
+  }
+    
+  print "</p>"
+  
+  print "</div></body></html>"
+  
+}
+
+function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
+	
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  for (i=0; i<16; i++) hextab[hex[i+1]] = i
+  
+  # urldecode function from Heiner Steven
+  # http://www.shelldorado.com/scripts/cmds/urldecode
+
+  # decode %xx to ASCII char 
+  decoded = ""
+  i = 1
+  len = length(text)
+  
+  while ( i <= len ) {
+    c = substr (text, i, 1)
+    if ( c == "%" ) {
+      if ( i+2 <= len ) {
+	c1 = tolower(substr(text, i+1, 1))
+	c2 = tolower(substr(text, i+2, 1))
+	if ( hextab [c1] != "" || hextab [c2] != "" ) {
+	  # print "Read: %" c1 c2;
+	  # Allow: 
+	  # 20 begins main chars, but dissallow 7F (wrong in orig code!)
+	       # tab, newline, formfeed, carriage return
+	  if ( ( (c1 >= 2) && ((c1 c2) != "7f") )  \
+	       || (c1 == 0 && c2 ~ "[9acd]") )
+	  {
+	    code = 0 + hextab [c1] * 16 + hextab [c2] + 0
+	    # print "Code: " code
+	    c = sprintf ("%c", code)
+	  } else {
+	    # for dissallowed chars
+	    c = " "
+	  }
+	  i = i + 2
+	}
+      }
+    } else if ( c == "+" ) {	# special handling: "+" means " "
+      c = " "
+    }
+    decoded = decoded c
+    ++i
+  }
+  
+  # change linebreaks to \n
+  gsub(/\r\n/, "\n", decoded);
+  
+  # remove last linebreak
+  sub(/[\n\r]*$/,"",decoded);
+  
+  return decoded
+}
+
+function htmlHeader(title) 
+{
+  # Use html5
+  print "Content-type: text/html\n" ;
+  print "<!DOCTYPE html>";
+  print "<html xmlns=\"http://www.w3.org/1999/xhtml\">                  \
+         <head><title>Search for Argus</title>                          \
+         <meta http-equiv=\"Content-Type\" content=\"text/html;         \
+           charset=utf-8\" />                                           \
+           <link href=\"../img/akflora.ico\" rel=\"shortcut icon\"      \
+           type=\"image/x-icon\"/>                                      \
+           <script type=\"text/javascript\">                            \
+               function FocusOnInput() {                                \
+               document.getElementById(\"barcode\").focus(); }          \
+           </script></head><body onload=\"FocusOnInput()\"><div style=\"margin:50px;\">"
+  
+  print "<form action=\"check_folder\"><input type=\"text\" id=\"barcode\" name=\"barcode\"/></form>"
+
+}
+
