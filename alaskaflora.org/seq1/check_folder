@@ -19,11 +19,14 @@ BEGIN{
       folder[$1] = $2
       sp[$1] = $5
     }
-    print "In: <b>" f["barcode"] "</b><br/><br/>"
-    
+
+    found = 0
     for (i in folder) {
       if (folder[i] == f["barcode"]) {
+        if (!found)
+          print "In: <b>" f["barcode"] "</b><br/><br/>"
         print "<b>" i "</b> <i>" sp[i] "</i><br/>"
+        found = 1
       }
     }
   }
