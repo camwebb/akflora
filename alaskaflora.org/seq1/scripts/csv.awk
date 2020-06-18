@@ -8,7 +8,7 @@ BEGIN{
   if ((NR % 10000) == 0)
     print "  line " NR "\n" > "/dev/stderr"
   n = qsplit($0, x)
-  if (n != 5)
+  if (n != 7)
     print NR ": n != 5, = " n > "/dev/stderr" 
   print x[1]
   for (i = 2; i <= n; i++)
