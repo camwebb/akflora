@@ -7,6 +7,7 @@
 @include "../../lib/db_secrets.awk"
 
 # TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
+# DEV - use -L to lint on regular basis
 
 BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
@@ -19,23 +20,23 @@ BEGIN{
   #           field2 ; ... | table2 | ...
   Config = \
     "pub , Publication , auth , CONCAT%5FWS('_'%2C_`code`%2C_`auth`)   /" \
-    "  id   , ID     , i , 0           ;" \
-    "  code , Code   , c , 1           ;" \
-    "  auth , Author , c , 2           |" \
+    "  id   , ID     , i , 0 ,          ;" \
+    "  code , Code   , c , 1  ,         ;" \
+    "  auth , Author , c , 2   ,        |" \
     "name ,Taxon_Name , code , code    /" \
-    "  id    , ID    , i , 0           ;" \
-    "  code  , Code  , c , 1           ;" \
-    "  genus, Genus , c,   2           ;" \
-    "  species, Species, c, 3          ;" \
-    "  author, Author, c , 4           ;" \
+    "  id    , ID    , i , 0    ,       ;" \
+    "  code  , Code  , c , 1    ,       ;" \
+    "  genus, Genus , c,   2    ,       ;" \
+    "  species, Species, c, 3   ,       ;" \
+    "  author, Author, c , 4     ,      ;" \
     "  pubID , Publication ,i , 5 , pub      "
   config()
   db_secrets()
 
   # READ QUERY STRING
   split(ENVIRON["QUERY_STRING"], qs, "&")
-  for (i in qs) {
-    split(qs[i], qp, "=")
+  for (q in qs) {
+    split(qs[q], qp, "=")
     f[qp[1]] = substr(urldecode(qp[2]),1,2000)
   }
   clean_quotes();
@@ -254,7 +255,7 @@ function preaction(     sql, i, err) {
     sql = sql ");"
     # print sql
   }
-
+  
   if (f["preaction"] == "edit") {
     sql = "UPDATE `" f["table"] "` SET "
     for (i in f)
@@ -360,7 +361,7 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
 
 # =========================== Util ================================
 
-function config(    t, t2, ta, f, fa,     i, j, forderx) {
+function config(    t, t2, ta, fld, fa,     i, j, forderx) {
   # Config:
   #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
   #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
@@ -385,9 +386,9 @@ function config(    t, t2, ta, f, fa,     i, j, forderx) {
     gsub(/%2C/,",",Tforshow[ta[1]])
 
     # fields
-    split(t2[2], f, ";")
-    for (j in f) {
-      split(f[j], fa, ",")
+    split(t2[2], fld, ";")
+    for (j in fld) {
+      split(fld[j], fa, ",")
       Flabel[ ta[1]][fa[1]]  = fa[2]
       Ftype[  ta[1]][fa[1]]  = fa[3] # c (char) or i (int)
       forderx[ta[1]][fa[1]]  = fa[4] # 1...n ; if 0, do not print
@@ -400,7 +401,7 @@ function config(    t, t2, ta, f, fa,     i, j, forderx) {
   }
 }
 
-function clean_quotes() {
+function clean_quotes(   i) {
    # clean text input in case of attempt to insert as SQL
    for (i in f) {
      gsub(/'/,"\\'", f[i])
