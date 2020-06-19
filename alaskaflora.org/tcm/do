@@ -3,37 +3,11 @@
 # A webapp for managing Taxon Concept Mapping data with a MySQL DB
 # (c) Cam Webb <cw@camwebb.info>, 2020; License: GPL v3
 
-# INSTALLATION
-#
-# 1. If using Apache httpd, install this file in a cgi executable
-#    location and create a .htaccess file, minimally: 
-#        Options +ExecCGI -Indexes
-#        <Files "do">
-#          SetHandler cgi-script
-#        </Files>
-#        DirectoryIndex do
-#    Optionally add:
-#        <FilesMatch "^\.pw$">
-#          Deny from all
-#        </FilesMatch>
-#        AuthType Basic
-#        AuthName "Password Protected"
-#        AuthUserFile /full/path/to/.pw
-#        Require valid-user
-#
-# 2. Install function libraries from https://github.com/camwebb/awk-lib
-#    and include, using full path
-
-# @include "/usr/local/share/awk/db_sql.awk"
 @include "/usr/local/share/awk/util_http.awk"
 @include "../../lib/db_secrets.awk"
 
-# 3. On any available MySQL or MariaDB DB, install the empty DB at
-#    http://alaskaflora.org/tcm/tcm.sql and modify as needed. Make sure
-#    the access info is in the included db_secrets.awk
-
-
 # TODO - get rid of table variable - use f["table"]
+#      - created e.g., 'linked names' link in show pubs leading to a WHERE
 
 BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
@@ -52,7 +26,10 @@ BEGIN{
     "name ,Taxon_Name , code , code    /" \
     "  id    , ID    , i , 0           ;" \
     "  code  , Code  , c , 1           ;" \
-    "  pubID , Publication ,i , 2 , pub      "
+    "  genus, Genus , c,   2           ;" \
+    "  species, Species, c, 3          ;" \
+    "  author, Author, c , 4           ;" \
+    "  pubID , Publication ,i , 5 , pub      "
   config()
   db_secrets()
 
@@ -78,7 +55,8 @@ BEGIN{
 function defaultpage(   i)
 {
   header("TCM");
-
+  navbar()
+  
   print "<h1>TCM</h1>"
   print "<p>Go to table:</p>" 
   print "<ul>"
@@ -108,20 +86,18 @@ function header(title) {
   print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
            type=\"image/x-icon\"/>"
   print "<style>"
-  print "body { font-size: 14px; width: 1200px;	font-family: 'Montserrat', \
-         Verdana, Arial, Helvetica, sans-serif; padding: 20px; \
-         position: absolute }"
+  print "body { font-size: 14px; font-family: 'Montserrat', " \
+    "Verdana, Arial, Helvetica, sans-serif; }"
+  print ".main {width: 500px; padding-top: 30px; margin-left: auto;"\
+    "  margin-right: auto; }"
+  print ".navbar { float: right; margin-bottom: 10px;}"
   print "select , option { font-size: 14px }"
-  print "table { max-width: 1200px; border-collapse: collapse }"
-  print "td, th { border: 1px solid black; padding: 3px }"
+  print "table { border-collapse: collapse }"
+  print "td, th { border: 1px solid black; padding: 5px }"
   print "a { color:#15358d; text-decoration:none; border-bottom-style:none }"
   print "a:visited { color:#9f1dbc }"
   print "a:hover {color:#15358d; border-bottom-style:solid; \
 	     border-bottom-width:thin }"
-  print ".syn1:hover .syn2 {display: none;}"
-  print ".syn1:hover .syn3 {display: block;}"
-  print ".syn3 {display: none;}"
-  print ".main {margin-left:200px; margin-right:200px;}"
   print "</style>"
   print "</head>\n<body>"
   print "<div class=\"main\">"
@@ -133,11 +109,13 @@ function footer() {
   print "</body>\n</html>";
 }
 
-function show(table,   x, n, i, j, sql, lookup) {
+function show(table,   x, n, i, j, sql) {
   # version history: this is original version
   
   header(Tlabel[table])
 
+  navbar()
+  
   print "<h1>" Tlabel[table] "</h1>"
   
   if (f["preaction"])
@@ -152,25 +130,7 @@ function show(table,   x, n, i, j, sql, lookup) {
   print "<th></th><th></th>"
   print "</tr>"
 
-  # make lookups
-  for (i = 1; i <= length(Forder[table]); i++)
-    if (Fforid[table][Forder[table][i]]) {
-      sql = "SELECT id, "                                               \
-        Tforshow[Fforid[table][Forder[table][i]]] " AS `_lookup` FROM `" \
-        Fforid[table][Forder[table][i]] "`;"
-      # print sql
-      db_query(DATABASE, sql)
-      for (j = 1; j <= DBQr; j++) {
-        lookup[Fforid[table][Forder[table][i]]][DBQ[j,"id"]] =             \
-          DBQ[j, "_lookup"]
-        # print i, DBQ[j,"id"], Forder[table][i],  DBQ[j, Tforshow[Fforid[table][Forder[table][i]]]]
-      }
-      db_clear()
-    }
-
-  # for (i in lookup)
-  #   for (j in lookup[i])
-  #     print i, j, lookup[i][j]
+  make_lookup()
   
   # Table rows
   db_query(DATABASE, "SELECT * FROM `" table "` ORDER BY `" Tsort[table] ";" )
@@ -181,7 +141,7 @@ function show(table,   x, n, i, j, sql, lookup) {
         # print Fforid[table][Forder[table][j]], DBQ[i , Forder[table][j]]
         print "<td><a href=\"do?table=" Fforid[table][Forder[table][j]] \
           "&amp;action=show#id" DBQ[i , Forder[table][j]] "\">"         \
-          lookup[ Fforid[table][Forder[table][j]] ][ DBQ[i , Forder[table][j]]] "</a></td>"
+          Lookup[ Fforid[table][Forder[table][j]] ][ DBQ[i , Forder[table][j]]] "</a></td>"
       }
       else
         print "<td>" DBQ[i,Forder[table][j]] "</td>"
@@ -201,9 +161,6 @@ function show(table,   x, n, i, j, sql, lookup) {
 
   print "<p><a href=\"do?table=" table "&amp;action=add\">New entry</a>"
 
-  print "<p><a href=\"do\">Home</a></p>"
-
-  
   footer()
 }
 
@@ -272,19 +229,24 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   #   error("Database not accessible")
 }
 
-function addedit(table, fshow,     x, n, i) {
+function addedit(table, fshow,     x, n, i, j, sel) {
   # version history: this is original version
 
-  if (f["action"] == "edit") {
+  if (f["action"] == "edit")
     header("Editing " Tlabel[table] ", record " f["id"])
-    print "<h1>Editing " Tlabel[table] ", record " f["id"] "</h1>"
-  }
-  else if (f["action"] == "add") {
+  else if (f["action"] == "add")
     header("New " Tlabel[table])
-    print "<h1>New " Tlabel[table] " record</h1>"
-  }
   else defaultpage()
+
+  navbar()
   
+  if (f["action"] == "edit") 
+    print "<h1>Editing " Tlabel[table] ", record " f["id"] "</h1>"
+  else if (f["action"] == "add")
+    print "<h1>New " Tlabel[table] " record</h1>"
+
+  make_lookup()
+    
   print "<form action=\"do\">"
   print "<input type=\"hidden\" name=\"table\" value=\"" table "\"/>"
   print "<input type=\"hidden\" name=\"action\" value=\"show\"/>"
@@ -294,14 +256,32 @@ function addedit(table, fshow,     x, n, i) {
     print "<input type=\"hidden\" name=\"id\" value=\"" f["id"] "\"/>"
     db_query(DATABASE, "SELECT * FROM `" table "` WHERE id = " f["id"] ";")
   }
-  
+
   print "<table>"
   for (i = 1; i <= length(Forder[table]); i++) { 
     print "<tr>"
     print "<td align=\"right\">" Flabel[table][Forder[table][i]] "</td>"
-    print "<td><input type=\"text\" name=\"f-" Forder[table][i] "\" size=\"30\"" \
-      " value=\"" DBQ[1, Forder[table][i]] "\"/></td>"
-    # TODO - deal with quotes
+    # if a Foreign ID, create dropdown
+    if (Fforid[table][Forder[table][i]]) {
+      print "<td>"
+      print "<select name=\"f-" Forder[table][i] "\" autocomplete=\"off\">"
+      # See for firefox bug: https://stackoverflow.com/questions/4831848/
+      #  firefox-ignores-option-selected-selected
+      PROCINFO["sorted_in"] = "@val_str_asc"
+      for (j in Lookup[ Fforid[table][Forder[table][i]] ]) {
+        if (j == DBQ[1, Forder[table][i]])
+          sel = " selected=\"selected\""
+        else sel= ""
+        print "<option value=\"" j "\"" sel ">"                            \
+          Lookup[ Fforid[table][Forder[table][i]] ][j] "</option>"
+      }
+      PROCINFO["sorted_in"] = "@ind_str_asc"
+      print "</select>"
+      print "</td>"
+    }
+    else
+      print "<td><input type=\"text\" name=\"f-" Forder[table][i]       \
+        "\" size=\"30\" value=\"" DBQ[1, Forder[table][i]] "\"/></td>"
     print "</tr>"
   }
   print "</table>"
@@ -392,7 +372,7 @@ function preaction(table, sql, i, err) {
       }
     gsub(/, $/,"",sql)
     sql = sql " WHERE `id` = " f["id"] " ;"
-    print sql
+    # print sql
   }
   else if (f["preaction"] == "delete")
     sql = "DELETE FROM`" table "` WHERE id = " f["id"] ";"
@@ -401,4 +381,37 @@ function preaction(table, sql, i, err) {
   if (err)
     print "<p style=\"color:red;\">FAILED: " err "</p>"
   else print "<p style=\"color:green;\">Success</p>"
+}
+
+function make_lookup(       i, j, sql) {
+    # make lookups
+  for (i = 1; i <= length(Forder[f["table"]]); i++)
+    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
+      sql = "SELECT id, "                                   \
+        Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]] \
+        " AS `_lookup` FROM `"                              \
+        Fforid[f["table"]][Forder[f["table"]][i]] "`;"
+      # print sql
+      db_query(DATABASE, sql)
+      for (j = 1; j <= DBQr; j++) {
+        Lookup[Fforid[f["table"]][Forder[f["table"]][i]]][DBQ[j,"id"]] = \
+          DBQ[j, "_lookup"]
+      }
+      db_clear()
+    }
+
+  # for (i in Lookup)
+  #   for (j in Lookup[i])
+  #     print i, j, Lookup[i][j]
+}
+
+function navbar(  i, str) {
+  str = "<div class=\"navbar\">"
+  str = str "<a href=\"do\">Home</a>&#160;&#160;|&#160;&#160;"
+  for (i in Tlabel)
+    str = str "<a href=\"do?table=" i "&amp;action=show\">" Tlabel[i] \
+      "</a>&#160;&#160;|&#160;&#160;"
+  gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
+  str = str "</div>"
+  print str
 }
