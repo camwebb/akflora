@@ -45,7 +45,7 @@ BEGIN{
   #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
   #           field2 ; ... | table2 | ...
   Config = \
-    "pub , Publication , auth , code   /" \
+    "pub , Publication , auth , CONCAT%5FWS('_'%2C `code`%2C_`auth`)   /" \
     "  id   , ID     , i , 0           ;" \
     "  code , Code   , c , 1           ;" \
     "  auth , Author , c , 2           |" \
@@ -155,12 +155,14 @@ function show(table,   x, n, i, j, sql, lookup) {
   # make lookups
   for (i = 1; i <= length(Forder[table]); i++)
     if (Fforid[table][Forder[table][i]]) {
-      db_query(DATABASE, "SELECT id, `"                             \
-               Tforshow[Fforid[table][Forder[table][i]]] "` FROM `" \
-               Fforid[table][Forder[table][i]] "`;")
+      sql = "SELECT id, "                                               \
+        Tforshow[Fforid[table][Forder[table][i]]] " AS `_lookup` FROM `" \
+        Fforid[table][Forder[table][i]] "`;"
+      # print sql
+      db_query(DATABASE, sql)
       for (j = 1; j <= DBQr; j++) {
         lookup[Fforid[table][Forder[table][i]]][DBQ[j,"id"]] =             \
-          DBQ[j, Tforshow[Fforid[table][Forder[table][i]]]]
+          DBQ[j, "_lookup"]
         # print i, DBQ[j,"id"], Forder[table][i],  DBQ[j, Tforshow[Fforid[table][Forder[table][i]]]]
       }
       db_clear()
@@ -173,11 +175,14 @@ function show(table,   x, n, i, j, sql, lookup) {
   # Table rows
   db_query(DATABASE, "SELECT * FROM `" table "` ORDER BY `" Tsort[table] ";" )
   for (i = 1; i <= DBQr; i++) {
-    print "<tr>"
+    print "<tr name=\"id" DBQ[i,"id"] "\">"
     for (j = 1; j <= length(Forder[table]); j++) {
-      if (Fforid[table][Forder[table][j]])
+      if (Fforid[table][Forder[table][j]]) {
         # print Fforid[table][Forder[table][j]], DBQ[i , Forder[table][j]]
-        print "<td>" lookup[ Fforid[table][Forder[table][j]] ][ DBQ[i , Forder[table][j]]] "</td>"
+        print "<td><a href=\"do?table=" Fforid[table][Forder[table][j]] \
+          "&amp;action=show#id" DBQ[i , Forder[table][j]] "\">"         \
+          lookup[ Fforid[table][Forder[table][j]] ][ DBQ[i , Forder[table][j]]] "</a></td>"
+      }
       else
         print "<td>" DBQ[i,Forder[table][j]] "</td>"
     }
@@ -328,6 +333,8 @@ function config(    t, t2, ta, f, fa,     i, j, forderx) {
     Tlabel[ta[1]]   = ta[2]
     Tsort[ta[1]]    = ta[3]
     Tforshow[ta[1]] = ta[4]
+    gsub(/%5F/,"_",Tforshow[ta[1]])
+    gsub(/%2C/,",",Tforshow[ta[1]])
 
     # fields
     split(t2[2], f, ";")
