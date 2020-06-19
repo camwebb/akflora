@@ -41,11 +41,18 @@ BEGIN{
   # Init
   DATABASE = "tcm"
   # Config:
-  #   Tables                                                       sep by "|"
-  #   Table attributes (table, Full name, sort field, show fields) sep by ":"
-  #   Fields                                                       sep by ","
-  #   Field attributes (field, Full name, c/i, sort order)         sep by "="
-  Config = "pub:Publication:auth:code=Code=c=1,auth=Author=c=2"
+  #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
+  #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
+  #           field2 ; ... | table2 | ...
+  Config = \
+    "pub , Publication , auth , code   /" \
+    "  id   , ID     , i , 0           ;" \
+    "  code , Code   , c , 1           ;" \
+    "  auth , Author , c , 2           |" \
+    "name ,Taxon_Name , code , code    /" \
+    "  id    , ID    , i , 0           ;" \
+    "  code  , Code  , c , 1           ;" \
+    "  pubID , Pub ID ,i , 2 , pub      "
   config()
   db_secrets()
 
@@ -59,455 +66,26 @@ BEGIN{
   
   # DETERMINE AND EXECUTE METHOD
   if (f["table"]) {
-    if (f["action"] == "show") {
-      if (f["table"] == "pub")
-        show("pub", "code|auth", \
-             "SELECT id, code, auth FROM pub ORDER BY auth;")
-    }
+    if (f["action"] == "show") 
+      show(f["table"])
     else if ((f["action"] == "add") || (f["action"] == "edit")) 
-      addedit(f["table"], "code|auth")
-  # else if      (f["page"] == "cell")    cell()
-  # else if      (f["page"] == "tnote")   taxonnote()
-  # else if      (f["page"] == "copy")    copy()
+      addedit(f["table"])
   }
   else defaultpage()
   
 }
-
-
-# function matrix(   ntaxa, charID, taxaID, haschar, charx, name,  \
-#                    i, j, s, out, gen, warningtext, guid) {
-
-#   header("Data matrix")
-
-#   print "<p style=\"text-align:right;font-weight:bold\"><a href=\"do\">Home</a></p>"
-
-  
-#   # Table header
-#   db_query("akchars", "SELECT `char`, `state`, `id` FROM chars \
-#             ORDER BY `char`, `state`;")
-#   for (i = 1; i <= DBQr; i++) {
-#     charID[i] = DBQ[i, "id"]
-#     char[i] = DBQ[i, "char"]
-#     state[i] = DBQ[i, "state"]
-#     charx[char[i]][state[i]] = DBQ[i, "id"]
-#   }
-
-#   print "<table>"
-#   print "<tr>"
-#   print "<td>Taxon</td>"
-#   print "<td>Syn-<br/>onyms</td>"
-#   print "<td>ID</td>"
-#   for (i in charx) 
-#     print "<td><b>" i "</b></td>"
-#   print "<td>taxon<br/>notes</td>"
-#   print "<td>fill</td>"
-#   print "</tr>"
-#   db_clear()
-
-#   # Taxon names
-#   db_query("akchars", "SELECT `name`, `guid`, `id`, `genID`, `syn`, `tnote` FROM \
-#             `taxa` WHERE `name` LIKE '" f["genus"] "%'ORDER BY `name`;")
-#   ntaxa = DBQr
-#   for (i = 1; i <= DBQr; i++) {
-#     name[i] = DBQ[i, "name"]
-#     guid[i] = DBQ[i, "guid"]
-#     taxaID[i] = DBQ[i, "id"]
-#     syn[i] = DBQ[i, "syn"]
-#     tnote[i] = DBQ[i, "tnote"]
-#     if (DBQ[i, "genID"]) gen[taxaID[i]] = DBQ[i, "genID"]
-#   }
-#   db_clear()
-
-#   # Table data
-#   db_query("akchars", "SELECT `taxaID`, `charID` FROM `TxC`;")
-#   for (i = 1 ; i <= DBQr; i++)
-#     haschar[DBQ[i, "taxaID"], DBQ[i, "charID"]] = 1
-#   db_clear()
-  
-#   for (i = 1 ; i <= ntaxa; i++) {
-#     print "<tr>"
-#     print "<td><b>" name[i] "</b></td>"
-#     print "<td class=\"syn1\"><div class=\"syn2\">"gensub(/.+/,"...","G",syn[i])"</div><div class=\"syn3\">" syn[i] "</div></td>"
-#     print "<td>" guid[i] "</td>"
-#     for (j in charx) {
-#       print "<td onclick=\"location.href='do?page=cell&amp;char=" j \
-#                   "&amp;taxaID=" taxaID[i]"&amp;genus=" f["genus"] "';\">"
-#       out = ""
-#       sn = 0
-#       for (s in charx[j]) {
-#         # test for char at genus level
-#         if (haschar[gen[taxaID[i]], charx[j][s]]) out = out \
-#                "<span style=\"color:blue;\">" s "</span>, "
-#         if (haschar[taxaID[i], charx[j][s]]) {
-#           out = out s ", "
-#           sn++
-#         }
-#         if (!gen[taxaID[i]] && (sn > 1))
-#           warningtext = warningtext "<p style=\"color:red;\">WARNING: genus " name[i] " has >1 states for '" j "'</p>"
-#       }
-#       gsub(/,\ $/,"",out)
-#       if (!out) out = "&#160;"
-#       print out
-#       print "</td>"
-#     }
-#     print "<td onclick=\"location.href='do?page=tnote&amp;taxaID="   \
-#       taxaID[i] "&amp;genus=" f["genus"] "';\" class=\"syn1\"><div class=\"syn2\">"gensub(/.+/,"...","G",tnote[i])"</div><div class=\"syn3\">" tnote[i] "</div></td>"
-#     print "<td onclick=\"location.href='do?page=copy&amp;taxaID=" \
-#       taxaID[i]"&amp;genus=" f["genus"] "';\"/>"
-#     print "</tr>"
-#   }
-
-#   print "</table>"
-
-#   if (warningtext) print warningtext
-
-#   footer()
-
-#   exit 0
-# }
-
-# # The Cell editing page
-# function cell(   name, actiontext, ES, i,s ,srcfail) {
-
-#   # If reentering into this page after an action
-#   if (f["preaction"] == "delete") {
-#     ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `id` = " f["charID"] ";")
-#     if (ES) actiontext = "<p style=\"color:red;\">UPDATE FAILURE</p>"
-#     # else actiontext = "<p>Status: character state datum " f["charID"] \
-#     #       " deleted</p>"
-#     if (!actiontext) matrix()
-#   }
-#   else if (f["preaction"] == "new") {
-#     # first test for accepable sources
-#     split(gensub(/\ /,"","G",f["sources"]),s,",")
-#     for (i in s)
-#       if (s[i] !~ /^(and|cody|dall|fna|hult|jep|judd|welsh|walt|inat|ASC|oth|apw)$/) srcfail = 1
-#     if (srcfail) actiontext =                                       \
-#       "<p style=\"color:red;\">INCORRECT SOURCE ABBREVIATION</p>"
-#     else if (!f["sources"]) actiontext =                                     \
-#         "<p style=\"color:red;\">AT LEAST ONE SOURCE NEEDED</p>"
-#     else if ((f["sources"] ~ /(oth|inat)/) && !f["notes"])  actiontext =  \
-#         "<p style=\"color:red;\">IF 'oth' or 'inat' THEN SOURCE INFO NEEDED</p>"
-#     else {
-#       gsub(/'/,"\\'",f["notes"])
-#       gsub(/"/,"\\\"",f["notes"])
-#       ES = db_sql("akchars", "INSERT INTO `TxC` \
-#                   (`taxaID`, `charID`, `person`, `sources`, `notes`) \
-#                  VALUES (" f["taxaID"] "," f["charID"]", '" \
-#                   f["person"] "','" f["sources"] "','" f["notes"] "');")
-#       if (ES) actiontext = "<p style=\"color:red;\">INSERT FAILURE</p>"
-#       # else actiontext = "<p>Status: character state datum " f["charID"]
-#       # " added</p>"
-
-#       if (!actiontext) matrix()
-
-#     }
-#   }
-
-#   header("Data cell")
-
-#   print "<p style=\"position:absolute;right:30px;top:15px;font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" f["genus"] \
-#     "\">Matrix</a></p>" 
-  
-#   # Taxon names
-#   db_query("akchars", "SELECT `name`, `guid`, `genID` FROM \
-#             `taxa` WHERE `id` = " f["taxaID"] ";")
-#   name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
-#   db_clear()
-
-#   # top-level table
-#   print "<table style=\"border:none;\"><tr><td style=\"border:none;vertical-align:top;width:400px;\">"
-#   print "<table><tr><td><i>Taxon</i></td><td>" name "</td></tr>"
-#   print "<tr><td><i>Character</i></td><td><b>" f["char"] \
-#     "</b></td></tr></table>"
-
-#   db_query("akchars", "SELECT `state`, `timestamp`, `person`, `sources`, \
-#            `TxC`.`id`, `TxC`.`notes` FROM `TxC`, \
-#             `chars` WHERE `taxaID` = " f["taxaID"] " AND `chars`.`id` = \
-#             `TxC`.`charID` AND `chars`.`char` = '" f["char"] "';")
-
-#   print "<div style=\"padding:15px;\">"
-
-#   for (i = 1; i <= DBQr; i++) {
-#     print "<b>" DBQ[i, "state"] "</b>"
-#     print "&#160;&#160;&#160;<span style=\"font-size: 80%;\">(<a href=\"do?page=cell&amp;char=" urlencode(f["char"]) "&amp;taxaID=" f["taxaID"] "&amp;genus=" f["genus"] "&amp;preaction=delete&amp;charID=" DBQ[i,"id"] "\">DELETE</a>)</span>"
-
-#     print "<div style=\"padding:15px;\">"
-#     print "<table>"
-#     print "<tr><td><i>Sources</i></td><td style=\"width:400px;\">" DBQ[i, "sources"] "</td></tr>"
-#     print "<tr><td><i>Notes</i></td><td>" DBQ[i, "notes"] "</td></tr>"
-#     print "<tr><td><i>By</i></td><td>" DBQ[i, "person"] "</td></tr>"
-#     print "<tr><td><i>Date</i></td><td>" gensub(/^([^ ]+).*/,"\\1","G", \
-#              DBQ[i, "timestamp"]) "</td></tr>"
-#     print "</table>"
-#     print "</div>"
-#   }
-#   print "</div>"
-#   db_clear()
-
-#   print "</td><td style=\"border:none;vertical-align:top;\">"
-  
-#   print "<form action=\"do\"><p>"
-#   print "<input type=\"hidden\" name=\"page\" value=\"cell\"/>"
-#   print "<input type=\"hidden\" name=\"preaction\" value=\"new\"/>"
-#   print "<input type=\"hidden\" name=\"char\" value=\"" f["char"] "\"/>"
-#   print "<input type=\"hidden\" name=\"taxaID\" value=\"" f["taxaID"] "\"/>"
-#   print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
-#   print "Add new character state:</p>"
-#   print "<div style=\"padding:15px;\">"
-#   print "<select name=\"charID\" style=\"font-weight:bold;font-size:1em;\">"
-#   db_query("akchars", "SELECT `state`, `id` FROM `chars` WHERE `char` = \
-#                        '" f["char"] "';")
-#   for (i = 1; i <= DBQr; i++)
-#     print "<option value=\"" DBQ[i, "id"] "\">" DBQ[i, "state"] "</option>"
-#   db_clear()
-#   print "</select>"
-#   print "&#160;&#160;&#160;(<input type=\"submit\" value=\"GO\"/>)"
-
-#   print "<div style=\"padding:15px;\">"
-#   print "<table>"
-#   print "<tr><td><i>Sources*</i></td>"
-#   print "<td><input type=\"text\" name=\"sources\" style=\"width:300px;\"/></td></tr>"
-#   print "<tr><td><i>Notes</i></td>"
-#   print "<td><textarea name=\"notes\" cols=\"40\" rows=\"4\"></textarea></td></tr>"
-#   print "<tr><td><i>By</i></td>"
-#   print "<td><select name=\"person\">"
-#   print "<option value=\"Brian\">Brian</option>"
-#   print "<option value=\"Cam\">Cam</option>"
-#   print "<option value=\"Steffi\">Steffi</option>"
-#   print "</select></td></tr>"
-#   print "</table><br/>(* Allowed: <code>and, apw, cody, dall, fna, hult, jep, judd,<br/>walt, welsh, <i>inat</i>, <i>oth</i>, <b>ASC</b></code>;  <i>inat</i> and <i>oth</i> require notes)</div>"
-
-#   print "</div></form></td></tr></table>"
-  
-
-#   if (actiontext) print actiontext
-  
-#   footer()
-
-#   exit 0
-# }
-
-# function copy(   name, i, actiontext, sql, ES){
-
-#   header("Data copy")
-
-#   print "<p style=\"position:absolute; right:30px; top:15px; \
-#             font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" \
-#             f["genus"] "\">Matrix</a></p>" 
-
-#   if (f["preaction"] == "copy") {
-#     ES = db_sql("akchars", "DELETE FROM `TxC` WHERE `taxaID` = "    \
-#                 f["totaxaID"] ";")
-#     if (ES) actiontext = "<p style=\"color:red;\">DELETE FAILURE</p>"
-#     db_clear()
-    
-#     db_query("akchars", "SELECT `charID`,`sources`,`person`, `taxa`.`name`,\
-#              `taxa`.`guid` FROM `TxC`,`taxa` WHERE `taxa`.`id` = \
-#              `TxC`.`taxaID` AND `taxaID` = " f["fromtaxaID"] ";")
-#     for (i = 1; i <= DBQr; i++) {
-#       sql = "INSERT INTO `TxC` (`taxaID`, `charID`, `person`, `sources`, \
-#              `notes`) VALUES (" f["totaxaID"] "," DBQ[i, "charID"] ", '" \
-#         DBQ[i, "person"] "','" DBQ[i, "sources"] \
-#         "', 'Data copied from " DBQ[i,"name"] " (" DBQ[i,"guid"] ")'); "
-#       ES = db_sql("akchars", sql)
-#       if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED: '" \
-#                 sql "'</p>"
-#     }
-#     db_clear()
-    
-#     if (!actiontext) print "<p>Successfully copied</p>"
-#   }
-#   else {
-
-#     # Taxon names
-#     db_query("akchars", "SELECT `name`, `guid`, `genID` FROM \
-#             `taxa` WHERE `id` = " f["taxaID"] ";")
-#     name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
-#     db_clear()
-
-#     print "<form action=\"do\"><p>"
-#     print "<input type=\"hidden\" name=\"page\" value=\"copy\"/>"
-#     print "<input type=\"hidden\" name=\"preaction\" value=\"copy\"/>"
-#     print "<input type=\"hidden\" name=\"totaxaID\" value=\"" f["taxaID"] "\"/>"
-#     print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
-
-#     print "Copy data <i>into</i> " name " from "
-#     print "<select name=\"fromtaxaID\">"
-#     db_query("akchars", "SELECT `name`, `guid`, `id` FROM \
-#             `taxa` WHERE `genID` IS NOT NULL AND `id` != " f["taxaID"] \
-#              " AND `name` LIKE '" f["genus"] "%' ORDER BY `name`;")
-#     for (i = 1; i <= DBQr; i++)
-#       print "<option value=\"" DBQ[i, "id"] "\">" DBQ[i, "name"] "</option>"
-#     db_clear()
-#     print "</select>"
-#     print "<input type=\"submit\" value=\"GO\"/></p>"
-#     print "</form>"
-#     print "<p>(<i style=\"color:red;\">All exiting data will be "\
-#       "overwritten</i>)</p>"
-#   }
-
-#   if (actiontext) print actiontext
-  
-#   footer()
-
-#   exit 0
-# }
-
-# function taxonnote(   name, i, actiontext, ES){
-
-#   header("Data copy")
-
-#   print "<p style=\"position:absolute; right:30px; top:15px; \
-#             font-weight:bold;\"><a href=\"do?page=matrix&amp;genus=" \
-#             f["genus"] "\">Matrix</a></p>" 
-
-#   if (f["preaction"] == "tnote") {
-#     gsub(/'/,"\\'",f["tnote"])
-#     gsub(/"/,"\\\"",f["tnote"])
-#     ES = db_sql("akchars", "UPDATE `taxa` SET `tnote` = '" f["tnote"] "' , `tnoteauth` = '" f["tnoteauth"] "' WHERE id = " f["taxaID"] ";")
-#     if (ES) actiontext = actiontext "<p style=\"color:red;\">FAILED</p>"
-#     else actiontext = actiontext "<p style=\"color:green;\">Success</p>"
-#   }
-
-#   # Taxon names
-#   db_query("akchars", "SELECT `name`, `guid`, `tnote`, `tnoteauth` FROM \
-#             `taxa` WHERE `id` = " f["taxaID"] ";")
-#   name = "<b>" DBQ[1,"name"] "</b> (" DBQ[1,"guid"] ")"
-  
-#   print "<form action=\"do\"><p>"
-#   print "<input type=\"hidden\" name=\"page\" value=\"tnote\"/>"
-#   print "<input type=\"hidden\" name=\"preaction\" value=\"tnote\"/>"
-#   print "<input type=\"hidden\" name=\"taxaID\" value=\"" f["taxaID"] "\"/>"
-#   print "<input type=\"hidden\" name=\"genus\" value=\"" f["genus"] "\"/>"
-    
-#   print "Make a note about " name "</p>"
-#   # print "<p>(Currently: '" DBQ[1, "tnote"] "')</p>"
-#   print "<p><textarea name=\"tnote\" cols=\"60\" rows=\"10\">"
-#   print DBQ[1, "tnote"]
-#   print "</textarea> (" DBQ[1, "tnoteauth"] ")</p>"
-#   print "<p>By: "
-#   print "<select name=\"tnoteauth\">"
-#   print "<option value=\"Brian\">Brian</option>"
-#   print "<option value=\"Cam\">Cam</option>"
-#   print "<option value=\"Steffi\">Steffi</option>"
-#   print "</select></p>"
-#   print "<p><input type=\"submit\" value=\"GO\"/></p>"
-#   print "</form>"
-#   print "<p>(<i style=\"color:red;\">Note: exiting entry will be "  \
-#     "overwritten</i>)</p>"
-#   db_clear()
-
-#   if (actiontext) print actiontext
-  
-#   footer()
-
-#   exit 0
-# }
-
 
 function defaultpage(   i)
 {
   header("TCM");
 
   print "<h1>TCM</h1>"
-
-  print "<p><a href=\"do?table=pub&amp;action=show\">Pubs</a></p>"
-  
-  # print "<table style=\"border:none;\"><tr><td style=\"border:none;"\
-  #   "vertical-align:top;padding:20px;width:500px\">"
-
-  # print "<p>Select genus:</p>"
-  # print "<table>"
-  # print "<tr><th>Family</th><th>Genus</th><th>N taxa</th><th>% done</th></tr>"
-
-  # # get taxa
-  # db_query("akchars", "SELECT * FROM taxa ORDER BY `fam`, `name`;")
-  # for (i = 1; i <= DBQr; i++) {
-  #   if (!DBQ[i,"genID"]) {
-  #     fam[++g] = DBQ[i,"fam"]
-  #     name[g] = DBQ[i,"name"]
-  #     gid[g] = DBQ[i,"id"]
-  #   }
-  #   else
-  #     glist[DBQ[i,"genID"]][DBQ[i,"id"]] = 1
-  # }
-  # db_clear()
-
-  # # get states
-  # db_query("akchars", "SELECT * FROM `chars`;")
-  # for (i = 1; i <= DBQr; i++) {
-  #   char[DBQ[i,"id"]] = DBQ[i,"char"]
-  #   charx[DBQ[i,"char"]] = 1
-  # }    
-  # db_clear()
-  
-  # # count the total number of chars (not states)
-  # for (i in charx) nchars++
-  # # fill a taxa x chars matrix
-  # db_query("akchars", "SELECT * FROM TxC;")
-  # for (i = 1; i <= DBQr; i++) {
-  #   chard[DBQ[i,"taxaID"], char[DBQ[i,"charID"]]] = 1
-  # }
-  # db_clear()
-
-  # # now, for each genus
-  # for (n = 1; n <= g; n++) {
-  #   filled = ntaxa = pcdone = 0
-  #   # for each taxon in genus
-  #   if (isarray(glist[gid[n]])) {
-  #     for (i in glist[gid[n]]) {
-  #       ntaxa++
-  #       # for each char
-  #       for (j in charx)
-  #         if (chard[i, j] || chard[gid[n], j]) filled++
-  #     }
-  #     pcdone = sprintf("%.2f", filled / (ntaxa * nchars))
-  #   }
-    
-  #   if (pcdone == "0.00") pcdone = ""
-  #   else if (pcdone == "1.00") pcdone = "<span style=\"color:green;\">" \
-  #                                pcdone "</span>"
-
-  #   if (ntaxa && fam[n] !~ /^(Cyperaceae|Lycopodiaceae|Pinaceae|Poaceae|\
-  #         Woodsiaceae|Dryopteridaceae|Cupressaceae|Aspleniaceae)$/) 
-  #     print "<tr><td>" fam[n] "</td><td><a href=\"do?page=matrix&amp;genus=" \
-  #       name[n] "\">" name[n] "</a></td><td>" ntaxa "</td><td>" pcdone \
-  #       "</td></tr>"
-  # }
-  
-  # # print "<tr><th>Family</th><th>Genus</th><th>N taxa<br/>scored</th><th>N char<br/>scored</th></tr>"
-  # # db_query("akchars", "SELECT `fam`, `taxa`.`name`, COUNT(`b`.`genID`) \
-  # #   AS `ct`, SUM(`c`) AS `sc` FROM `taxa` LEFT JOIN (SELECT `genID`, \
-  # #   COUNT(`charID`) AS `c` \
-  # #   FROM `taxa`, (SELECT `taxaID`, `charID` FROM `TxC`) AS `a` WHERE \
-  # #   `a`.`taxaID` = `taxa`.`id` AND `genID` IS NOT NULL GROUP BY `name`) \
-  # #   AS `b` ON `taxa`.`id` = `b`.`genID` WHERE `taxa`.`genID` IS NULL \
-  # #   GROUP BY `taxa`.`id` ORDER BY `fam`, `name`;")
-  # # for (i = 1; i <= DBQr; i++)
-  # #   print "<tr><td>" DBQ[i,"fam"] "</td><td><a href=\"do?page=matrix&amp;genus=" DBQ[i, "name"] "\">" \
-  # #     DBQ[i, "name"] "</a></td><td>" gensub(/0/,"","G", DBQ[i,"ct"]) "</td><td>" DBQ[i,"sc"] "</td></tr>"
-  # # db_clear()
-
-  
-  # print "</table>"
-
-  # print "</td><td style=\"border:none;vertical-align:top;padding:20px;\">"
-  
-  # print "<p>Recent activity:</p>"
-  # print "<table>"
-  # print "<tr><th>Family</th><th>Taxon</th><th>Char</th><th>State</th><th>Date</th></tr>"
-  # db_query("akchars", "select fam, taxa.name, `char`, `state`, \
-  #          date(`timestamp`) as dt from TxC, taxa, chars where TxC.charID = \
-  #          `chars`.id and TxC.taxaID = taxa.id order by `timestamp` \
-  #          desc limit 10;")
-  # for (i = 1; i <= DBQr; i++)
-  #   print "<tr><td>" DBQ[i,"fam"] "</td><td>" DBQ[i, "name"] "</td><td>" DBQ[i,"char"] "</td><td>" DBQ[i,"state"]  "</td><td>" DBQ[i,"dt"] "</td></tr>"
-  # db_clear()
-  # print "</table>"
-
-  # print "</td></tr></table>"
+  print "<p>Go to table:</p>" 
+  print "<ul>"
+  for (i in Tlabel)
+    print "<li><a href=\"do?table=" i "&amp;action=show\">" Tlabel[i]   \
+      "</a></p>"
+  print "</ul>"
   
   footer()
 }
@@ -555,7 +133,7 @@ function footer() {
   print "</body>\n</html>";
 }
 
-function show(table, fshow, select,   x, n, i, j, sql) {
+function show(table,   x, n, i, j, sql, order) {
   # version history: this is original version
   
   header(Tlabel[table])
@@ -569,24 +147,23 @@ function show(table, fshow, select,   x, n, i, j, sql) {
 
   # Table header
   print "<tr>"
-  n = split (fshow, x, "|")
-  for (i = 1; i <= n; i++) 
-    print "<th>" Flabel[table][x[i]] "</th>"
+  for (i = 1; i <= length(Forder[table]); i++) 
+    print "<th>" Flabel[table][Forder[table][i]] "</th>"
   print "<th></th><th></th>"
   print "</tr>"
-
+  
   # Table rows
-  db_query(DATABASE, select)
+  db_query(DATABASE, "SELECT * FROM `" table "` ORDER BY `" Tsort[table] ";" )
   for (i = 1; i <= DBQr; i++) {
     print "<tr>"
-    for (j = 1; j <= n; j++)
-      print "<td>" DBQ[i,x[j]] "</td>"
+    for (j = 1; j <= length(Forder[table]); j++) 
+      print "<td>" DBQ[i,Forder[table][j]] "</td>"
     # Edit
     print "<td><a href=\"do?table=" table "&amp;action=edit&amp;id=" \
       DBQ[i,"id"] "\">edit</a></td>"
     # Delete
     print "<td><a href=\"do?table=" table "&amp;action=show&amp;preaction=delete&amp;id=" \
-      DBQ[i,"id"] "\" onclick=\"return" \
+      DBQ[i,"id"] "\" onclick=\"return"                                 \
       " confirm('Confirm deletion')\">delete</a></td>"
     print "</tr>"
   }
@@ -690,15 +267,12 @@ function addedit(table, fshow,     x, n, i) {
     db_query(DATABASE, "SELECT * FROM `" table "` WHERE id = " f["id"] ";")
   }
   
-  # get columns
-  n = split (fshow, x, "|")
-
   print "<table>"
-  for (i = 1; i <= n; i++) { 
+  for (i = 1; i <= length(Forder[table]); i++) { 
     print "<tr>"
-    print "<td align=\"right\">" Flabel[table][x[i]] "</td>"
-    print "<td><input type=\"text\" name=\"f-" x[i] "\" size=\"30\""\
-      " value=\"" DBQ[1, x[i]] "\"/></td>"
+    print "<td align=\"right\">" Flabel[table][Forder[table][i]] "</td>"
+    print "<td><input type=\"text\" name=\"f-" Forder[table][i] "\" size=\"30\"" \
+      " value=\"" DBQ[1, Forder[table][i]] "\"/></td>"
     # TODO - deal with quotes
     print "</tr>"
   }
@@ -710,20 +284,43 @@ function addedit(table, fshow,     x, n, i) {
   footer()
 }
 
-function config(    w, x, y, z, i, j, k) {
-  split(Labels, w, "|")
-  for (i in w) {
-    split(w[i],x,":")
-    Tlabel[x[1]] = x[2]
-    split(x[3], y, ",")
-    for (k in y) {
-      split(y[k],z,"=")
-      Ftype[x[1]][z[1]] = z[2] # c (char) or i (int)
-      Flabel[x[1]][z[1]] = z[3]
+function config(    t, t2, ta, f, fa,     i, j, forderx) {
+  # Config:
+  #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
+  #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
+  #           field2 ; ... | table2 | ...
+
+  gsub(/ /,"",Config)
+  gsub(/_/," ",Config)
+
+  # split into tables
+  split(Config, t, "|")
+  for (i in t) {
+
+    # split into table atts and fields
+    split(t[i],t2,"/")
+
+    # table atts
+    split(t2[1] ,ta,",")
+    Tlabel[ta[1]]   = ta[2]
+    Tsort[ta[1]]    = ta[3]
+    Tforshow[ta[1]] = ta[4]
+
+    # fields
+    split(t2[2], f, ";")
+    for (j in f) {
+      split(f[j], fa, ",")
+      Flabel[ ta[1]][fa[1]]  = fa[2]
+      Ftype[  ta[1]][fa[1]]  = fa[3] # c (char) or i (int)
+      forderx[ta[1]][fa[1]]  = fa[4] # 1...n ; if 0, do not print
+      Fforid[ ta[1]][fa[1]]  = fa[5] # 
     }
+    # swap forderx to Forder
+    for (j in forderx[ta[1]])
+      if (forderx[ta[1]][j])
+        Forder[ta[1]][forderx[ta[1]][j]] = j
   }
 }
-
 
 function clean_quotes() {
    # clean text input in case of attempt to insert as SQL
