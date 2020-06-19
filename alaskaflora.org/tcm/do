@@ -6,8 +6,7 @@
 @include "/usr/local/share/awk/util_http.awk"
 @include "../../lib/db_secrets.awk"
 
-# TODO - get rid of table variable - use f["table"]
-#      - created e.g., 'linked names' link in show pubs leading to a WHERE
+# TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
 
 BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
@@ -44,9 +43,9 @@ BEGIN{
   # DETERMINE AND EXECUTE METHOD
   if (f["table"]) {
     if (f["action"] == "show") 
-      show(f["table"])
+      show()
     else if ((f["action"] == "add") || (f["action"] == "edit")) 
-      addedit(f["table"])
+      addedit()
   }
   else defaultpage()
   
@@ -109,57 +108,57 @@ function footer() {
   print "</body>\n</html>";
 }
 
-function show(table,   x, n, i, j, sql) {
+function show(      x, n, i, j, sql) {
   # version history: this is original version
   
-  header(Tlabel[table])
+  header(Tlabel[f["table"]])
 
   navbar()
   
-  print "<h1>" Tlabel[table] "</h1>"
+  print "<h1>" Tlabel[f["table"]] "</h1>"
   
   if (f["preaction"])
-    preaction(table)
+    preaction()
   
   print "<table>"
 
   # Table header
   print "<tr>"
-  for (i = 1; i <= length(Forder[table]); i++)
-    print "<th>" Flabel[table][Forder[table][i]] "</th>"
-  print "<th></th><th></th>"
+  for (i = 1; i <= length(Forder[f["table"]]); i++)
+    print "<th>" Flabel[f["table"]][Forder[f["table"]][i]] "</th>"
+  print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"
   print "</tr>"
 
   make_lookup()
   
   # Table rows
-  db_query(DATABASE, "SELECT * FROM `" table "` ORDER BY `" Tsort[table] ";" )
+  db_query(DATABASE, "SELECT * FROM `" f["table"] "` ORDER BY `" Tsort[f["table"]] ";" )
   for (i = 1; i <= DBQr; i++) {
     print "<tr name=\"id" DBQ[i,"id"] "\">"
-    for (j = 1; j <= length(Forder[table]); j++) {
-      if (Fforid[table][Forder[table][j]]) {
-        # print Fforid[table][Forder[table][j]], DBQ[i , Forder[table][j]]
-        print "<td><a href=\"do?table=" Fforid[table][Forder[table][j]] \
-          "&amp;action=show#id" DBQ[i , Forder[table][j]] "\">"         \
-          Lookup[ Fforid[table][Forder[table][j]] ][ DBQ[i , Forder[table][j]]] "</a></td>"
+    for (j = 1; j <= length(Forder[f["table"]]); j++) {
+      if (Fforid[f["table"]][Forder[f["table"]][j]]) {
+        # print Fforid[f["table"]][Forder[f["table"]][j]], DBQ[i , Forder[f["table"]][j]]
+        print "<td><a href=\"do?table=" Fforid[f["table"]][Forder[f["table"]][j]] \
+          "&amp;action=show#id" DBQ[i , Forder[f["table"]][j]] "\">"         \
+          Lookup[ Fforid[f["table"]][Forder[f["table"]][j]] ][ DBQ[i , Forder[f["table"]][j]]] "</a></td>"
       }
       else
-        print "<td>" DBQ[i,Forder[table][j]] "</td>"
+        print "<td>" DBQ[i,Forder[f["table"]][j]] "</td>"
     }
     # Edit
-    print "<td><a href=\"do?table=" table "&amp;action=edit&amp;id=" \
-      DBQ[i,"id"] "\">edit</a></td>"
+    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] "&amp;action=edit&amp;id=" \
+      DBQ[i,"id"] "\">E</a></td>"
     # Delete
-    print "<td><a href=\"do?table=" table "&amp;action=show&amp;preaction=delete&amp;id=" \
+    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] "&amp;action=show&amp;preaction=delete&amp;id=" \
       DBQ[i,"id"] "\" onclick=\"return"                                 \
-      " confirm('Confirm deletion')\">delete</a></td>"
+      " confirm('Confirm deletion')\">D</a></td>"
     print "</tr>"
   }
   db_clear()
 
   print "</table>"
 
-  print "<p><a href=\"do?table=" table "&amp;action=add\">New entry</a>"
+  print "<p><a href=\"do?table=" f["table"] "&amp;action=add\">New entry</a>"
 
   footer()
 }
@@ -229,59 +228,59 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   #   error("Database not accessible")
 }
 
-function addedit(table, fshow,     x, n, i, j, sel) {
+function addedit(      x, n, i, j, sel) {
   # version history: this is original version
 
   if (f["action"] == "edit")
-    header("Editing " Tlabel[table] ", record " f["id"])
+    header("Editing " Tlabel[f["table"]] ", record " f["id"])
   else if (f["action"] == "add")
-    header("New " Tlabel[table])
+    header("New " Tlabel[f["table"]])
   else defaultpage()
 
   navbar()
   
   if (f["action"] == "edit") 
-    print "<h1>Editing " Tlabel[table] ", record " f["id"] "</h1>"
+    print "<h1>Editing " Tlabel[f["table"]] ", record " f["id"] "</h1>"
   else if (f["action"] == "add")
-    print "<h1>New " Tlabel[table] " record</h1>"
+    print "<h1>New " Tlabel[f["table"]] " record</h1>"
 
   make_lookup()
     
   print "<form action=\"do\">"
-  print "<input type=\"hidden\" name=\"table\" value=\"" table "\"/>"
+  print "<input type=\"hidden\" name=\"table\" value=\"" f["table"] "\"/>"
   print "<input type=\"hidden\" name=\"action\" value=\"show\"/>"
   print "<input type=\"hidden\" name=\"preaction\" value=\"" f["action"] "\"/>"
 
   if (f["action"] == "edit") {
     print "<input type=\"hidden\" name=\"id\" value=\"" f["id"] "\"/>"
-    db_query(DATABASE, "SELECT * FROM `" table "` WHERE id = " f["id"] ";")
+    db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
   }
 
   print "<table>"
-  for (i = 1; i <= length(Forder[table]); i++) { 
+  for (i = 1; i <= length(Forder[f["table"]]); i++) { 
     print "<tr>"
-    print "<td align=\"right\">" Flabel[table][Forder[table][i]] "</td>"
+    print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] "</td>"
     # if a Foreign ID, create dropdown
-    if (Fforid[table][Forder[table][i]]) {
+    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
       print "<td>"
-      print "<select name=\"f-" Forder[table][i] "\" autocomplete=\"off\">"
+      print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
       # See for firefox bug: https://stackoverflow.com/questions/4831848/
       #  firefox-ignores-option-selected-selected
       PROCINFO["sorted_in"] = "@val_str_asc"
-      for (j in Lookup[ Fforid[table][Forder[table][i]] ]) {
-        if (j == DBQ[1, Forder[table][i]])
+      for (j in Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ]) {
+        if (j == DBQ[1, Forder[f["table"]][i]])
           sel = " selected=\"selected\""
         else sel= ""
         print "<option value=\"" j "\"" sel ">"                            \
-          Lookup[ Fforid[table][Forder[table][i]] ][j] "</option>"
+          Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][j] "</option>"
       }
       PROCINFO["sorted_in"] = "@ind_str_asc"
       print "</select>"
       print "</td>"
     }
     else
-      print "<td><input type=\"text\" name=\"f-" Forder[table][i]       \
-        "\" size=\"30\" value=\"" DBQ[1, Forder[table][i]] "\"/></td>"
+      print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i]       \
+        "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
     print "</tr>"
   }
   print "</table>"
@@ -340,9 +339,9 @@ function clean_quotes() {
    }
 }
 
-function preaction(table, sql, i, err) {
+function preaction(     sql, i, err) {
   if (f["preaction"] == "add") {
-    sql = "INSERT INTO `" table "` ("
+    sql = "INSERT INTO `" f["table"] "` ("
     for (i in f)
       if (substr(i,1,2) == "f-")
         sql = sql "`" substr(i,3) "`, "
@@ -350,7 +349,7 @@ function preaction(table, sql, i, err) {
     sql = sql ") VALUES ("
     for (i in f)
       if (substr(i,1,2) == "f-") {
-        if (Ftype[table][substr(i,3)] == "c")
+        if (Ftype[f["table"]][substr(i,3)] == "c")
           sql = sql "'" f[i] "', "
         else
           sql = sql f[i] ", "
@@ -361,11 +360,11 @@ function preaction(table, sql, i, err) {
   }
 
   if (f["preaction"] == "edit") {
-    sql = "UPDATE `" table "` SET "
+    sql = "UPDATE `" f["table"] "` SET "
     for (i in f)
       if (substr(i,1,2) == "f-") {
         sql = sql "`" substr(i,3) "` = "
-        if (Ftype[table][substr(i,3)] == "c")
+        if (Ftype[f["table"]][substr(i,3)] == "c")
           sql = sql "'" f[i] "', "
         else
           sql = sql f[i] ", "
@@ -375,7 +374,7 @@ function preaction(table, sql, i, err) {
     # print sql
   }
   else if (f["preaction"] == "delete")
-    sql = "DELETE FROM`" table "` WHERE id = " f["id"] ";"
+    sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
 
   err = db_sql(DATABASE, sql)
   if (err)
