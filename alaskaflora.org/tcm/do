@@ -3,7 +3,7 @@
 # A webapp for managing Taxon Concept Mapping data with a MySQL DB
 # (c) Cam Webb <cw@camwebb.info>, 2020; License: GPL v3
 
-@include "/usr/local/share/awk/util_http.awk"
+# @include "/usr/local/share/awk/util_http.awk"
 @include "../../lib/db_secrets.awk"
 
 # TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
@@ -18,7 +18,7 @@ BEGIN{
   #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
   #           field2 ; ... | table2 | ...
   Config = \
-    "pub , Publication , auth , CONCAT%5FWS('_'%2C `code`%2C_`auth`)   /" \
+    "pub , Publication , auth , CONCAT%5FWS('_'%2C_`code`%2C_`auth`)   /" \
     "  id   , ID     , i , 0           ;" \
     "  code , Code   , c , 1           ;" \
     "  auth , Author , c , 2           |" \
@@ -51,24 +51,7 @@ BEGIN{
   
 }
 
-function defaultpage(   i)
-{
-  header("TCM");
-  navbar()
-  
-  print "<h1>TCM</h1>"
-  print "<p>Go to table:</p>" 
-  print "<ul>"
-  for (i in Tlabel)
-    print "<li><a href=\"do?table=" i "&amp;action=show\">" Tlabel[i]   \
-      "</a></p>"
-  print "</ul>"
-  
-  footer()
-}
-
-
-# =========================== Generic functions ============================
+# ========================= Pages =========================================
 
 function header(title) {
   # version history: [chars app] -> here
@@ -108,6 +91,24 @@ function footer() {
   print "</body>\n</html>";
 }
 
+
+function defaultpage(   i)
+{
+  header("TCM");
+  navbar()
+  
+  print "<h1>TCM</h1>"
+  print "<p>Go to table:</p>" 
+  print "<ul>"
+  for (i in Tlabel)
+    print "<li><a href=\"do?table=" i "&amp;action=show\">" Tlabel[i]   \
+      "</a></p>"
+  print "</ul>"
+  
+  footer()
+}
+
+
 function show(      x, n, i, j, sql) {
   # version history: this is original version
   
@@ -132,24 +133,30 @@ function show(      x, n, i, j, sql) {
   make_lookup()
   
   # Table rows
-  db_query(DATABASE, "SELECT * FROM `" f["table"] "` ORDER BY `" Tsort[f["table"]] ";" )
+  if (f["where"])
+    where = "WHERE " gensub(/\\'/,"'","G",f["where"]) 
+  db_query(DATABASE, "SELECT * FROM `" f["table"] "` " where \
+           " ORDER BY `" Tsort[f["table"]] ";" )
   for (i = 1; i <= DBQr; i++) {
     print "<tr name=\"id" DBQ[i,"id"] "\">"
     for (j = 1; j <= length(Forder[f["table"]]); j++) {
+      # show lookup value if the field is a foreign key
       if (Fforid[f["table"]][Forder[f["table"]][j]]) {
-        # print Fforid[f["table"]][Forder[f["table"]][j]], DBQ[i , Forder[f["table"]][j]]
-        print "<td><a href=\"do?table=" Fforid[f["table"]][Forder[f["table"]][j]] \
-          "&amp;action=show#id" DBQ[i , Forder[f["table"]][j]] "\">"         \
-          Lookup[ Fforid[f["table"]][Forder[f["table"]][j]] ][ DBQ[i , Forder[f["table"]][j]]] "</a></td>"
+        print "<td><a href=\"do?table=" \
+          Fforid[f["table"]][Forder[f["table"]][j]]                     \
+          "&amp;action=show#id" DBQ[i , Forder[f["table"]][j]] "\">"    \
+          Lookup[ Fforid[f["table"]][Forder[f["table"]][j]] ][          \
+            DBQ[i , Forder[f["table"]][j]]] "</a></td>"
       }
       else
         print "<td>" DBQ[i,Forder[f["table"]][j]] "</td>"
     }
     # Edit
-    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] "&amp;action=edit&amp;id=" \
-      DBQ[i,"id"] "\">E</a></td>"
+    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
+      "&amp;action=edit&amp;id=" DBQ[i,"id"] "\">E</a></td>"
     # Delete
-    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] "&amp;action=show&amp;preaction=delete&amp;id=" \
+    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
+      "&amp;action=show&amp;preaction=delete&amp;id="                   \
       DBQ[i,"id"] "\" onclick=\"return"                                 \
       " confirm('Confirm deletion')\">D</a></td>"
     print "</tr>"
@@ -157,12 +164,134 @@ function show(      x, n, i, j, sql) {
   db_clear()
 
   print "</table>"
-
   print "<p><a href=\"do?table=" f["table"] "&amp;action=add\">New entry</a>"
 
   footer()
 }
 
+
+function addedit(      x, n, i, j, sel) {
+  # version history: this is original version
+
+  if (f["action"] == "edit")
+    header("Editing " Tlabel[f["table"]] ", record " f["id"])
+  else if (f["action"] == "add")
+    header("New " Tlabel[f["table"]])
+  else defaultpage()
+
+  navbar()
+  
+  if (f["action"] == "edit") 
+    print "<h1>Editing " Tlabel[f["table"]] ", record " f["id"] "</h1>"
+  else if (f["action"] == "add")
+    print "<h1>New " Tlabel[f["table"]] " record</h1>"
+
+  make_lookup()
+    
+  print "<form action=\"do\">"
+  print "<input type=\"hidden\" name=\"table\" value=\"" f["table"] "\"/>"
+  print "<input type=\"hidden\" name=\"action\" value=\"show\"/>"
+  print "<input type=\"hidden\" name=\"preaction\" value=\"" f["action"] "\"/>"
+
+  if (f["action"] == "edit") {
+    print "<input type=\"hidden\" name=\"id\" value=\"" f["id"] "\"/>"
+    db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
+  }
+
+  print "<table>"
+  for (i = 1; i <= length(Forder[f["table"]]); i++) { 
+    print "<tr>"
+    print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
+      "</td>"
+    # if a Foreign ID, create dropdown
+    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
+      print "<td>"
+      print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
+      # See for firefox bug: https://stackoverflow.com/questions/4831848/
+      #  firefox-ignores-option-selected-selected
+      PROCINFO["sorted_in"] = "@val_str_asc"
+      for (j in Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ]) {
+        if (j == DBQ[1, Forder[f["table"]][i]])
+          sel = " selected=\"selected\""
+        else sel= ""
+        print "<option value=\"" j "\"" sel ">"                            \
+          Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][j] "</option>"
+      }
+      PROCINFO["sorted_in"] = "@ind_str_asc"
+      print "</select>"
+      print "</td>"
+    }
+    else
+      print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i]  \
+        "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
+    print "</tr>"
+  }
+  print "</table>"
+  print "<p><input type=\"submit\" value=\"GO\"/></p>"
+  print "</form>"
+
+  db_clear()
+  footer()
+}
+
+
+function preaction(     sql, i, err) {
+  if (f["preaction"] == "add") {
+    sql = "INSERT INTO `" f["table"] "` ("
+    for (i in f)
+      if (substr(i,1,2) == "f-")
+        sql = sql "`" substr(i,3) "`, "
+    gsub(/, $/,"",sql)
+    sql = sql ") VALUES ("
+    for (i in f)
+      if (substr(i,1,2) == "f-") {
+        if (Ftype[f["table"]][substr(i,3)] == "c")
+          sql = sql "'" f[i] "', "
+        else
+          sql = sql f[i] ", "
+      }
+    gsub(/, $/,"",sql)
+    sql = sql ");"
+    # print sql
+  }
+
+  if (f["preaction"] == "edit") {
+    sql = "UPDATE `" f["table"] "` SET "
+    for (i in f)
+      if (substr(i,1,2) == "f-") {
+        sql = sql "`" substr(i,3) "` = "
+        if (Ftype[f["table"]][substr(i,3)] == "c")
+          sql = sql "'" f[i] "', "
+        else
+          sql = sql f[i] ", "
+      }
+    gsub(/, $/,"",sql)
+    sql = sql " WHERE `id` = " f["id"] " ;"
+    # print sql
+  }
+  else if (f["preaction"] == "delete")
+    sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
+
+  err = db_sql(DATABASE, sql)
+  if (err)
+    print "<p style=\"color:red;\">FAILED: " err "</p>"
+  else print "<p style=\"color:green;\">Success</p>"
+}
+
+
+function navbar(  i, str) {
+  str = "<div class=\"navbar\">"
+  str = str "<a href=\"do\">Home</a>&#160;&#160;|&#160;&#160;"
+  for (i in Tlabel)
+    str = str "<a href=\"do?table=" i "&amp;action=show\">" Tlabel[i] \
+      "</a>&#160;&#160;|&#160;&#160;"
+  gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
+  str = str "</div>"
+  print str
+}
+
+
+# =========================== Database ============================
 
 function db_query(db, query            , row, i, cmd, preFS ) {
   # version history: [awk-lib] -> [asriSMS] -> here
@@ -228,68 +357,8 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   #   error("Database not accessible")
 }
 
-function addedit(      x, n, i, j, sel) {
-  # version history: this is original version
 
-  if (f["action"] == "edit")
-    header("Editing " Tlabel[f["table"]] ", record " f["id"])
-  else if (f["action"] == "add")
-    header("New " Tlabel[f["table"]])
-  else defaultpage()
-
-  navbar()
-  
-  if (f["action"] == "edit") 
-    print "<h1>Editing " Tlabel[f["table"]] ", record " f["id"] "</h1>"
-  else if (f["action"] == "add")
-    print "<h1>New " Tlabel[f["table"]] " record</h1>"
-
-  make_lookup()
-    
-  print "<form action=\"do\">"
-  print "<input type=\"hidden\" name=\"table\" value=\"" f["table"] "\"/>"
-  print "<input type=\"hidden\" name=\"action\" value=\"show\"/>"
-  print "<input type=\"hidden\" name=\"preaction\" value=\"" f["action"] "\"/>"
-
-  if (f["action"] == "edit") {
-    print "<input type=\"hidden\" name=\"id\" value=\"" f["id"] "\"/>"
-    db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
-  }
-
-  print "<table>"
-  for (i = 1; i <= length(Forder[f["table"]]); i++) { 
-    print "<tr>"
-    print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] "</td>"
-    # if a Foreign ID, create dropdown
-    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
-      print "<td>"
-      print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
-      # See for firefox bug: https://stackoverflow.com/questions/4831848/
-      #  firefox-ignores-option-selected-selected
-      PROCINFO["sorted_in"] = "@val_str_asc"
-      for (j in Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ]) {
-        if (j == DBQ[1, Forder[f["table"]][i]])
-          sel = " selected=\"selected\""
-        else sel= ""
-        print "<option value=\"" j "\"" sel ">"                            \
-          Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][j] "</option>"
-      }
-      PROCINFO["sorted_in"] = "@ind_str_asc"
-      print "</select>"
-      print "</td>"
-    }
-    else
-      print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i]       \
-        "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
-    print "</tr>"
-  }
-  print "</table>"
-  print "<p><input type=\"submit\" value=\"GO\"/></p>"
-  print "</form>"
-
-  db_clear()
-  footer()
-}
+# =========================== Util ================================
 
 function config(    t, t2, ta, f, fa,     i, j, forderx) {
   # Config:
@@ -339,48 +408,6 @@ function clean_quotes() {
    }
 }
 
-function preaction(     sql, i, err) {
-  if (f["preaction"] == "add") {
-    sql = "INSERT INTO `" f["table"] "` ("
-    for (i in f)
-      if (substr(i,1,2) == "f-")
-        sql = sql "`" substr(i,3) "`, "
-    gsub(/, $/,"",sql)
-    sql = sql ") VALUES ("
-    for (i in f)
-      if (substr(i,1,2) == "f-") {
-        if (Ftype[f["table"]][substr(i,3)] == "c")
-          sql = sql "'" f[i] "', "
-        else
-          sql = sql f[i] ", "
-      }
-    gsub(/, $/,"",sql)
-    sql = sql ");"
-    # print sql
-  }
-
-  if (f["preaction"] == "edit") {
-    sql = "UPDATE `" f["table"] "` SET "
-    for (i in f)
-      if (substr(i,1,2) == "f-") {
-        sql = sql "`" substr(i,3) "` = "
-        if (Ftype[f["table"]][substr(i,3)] == "c")
-          sql = sql "'" f[i] "', "
-        else
-          sql = sql f[i] ", "
-      }
-    gsub(/, $/,"",sql)
-    sql = sql " WHERE `id` = " f["id"] " ;"
-    # print sql
-  }
-  else if (f["preaction"] == "delete")
-    sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
-
-  err = db_sql(DATABASE, sql)
-  if (err)
-    print "<p style=\"color:red;\">FAILED: " err "</p>"
-  else print "<p style=\"color:green;\">Success</p>"
-}
 
 function make_lookup(       i, j, sql) {
     # make lookups
@@ -404,13 +431,54 @@ function make_lookup(       i, j, sql) {
   #     print i, j, Lookup[i][j]
 }
 
-function navbar(  i, str) {
-  str = "<div class=\"navbar\">"
-  str = str "<a href=\"do\">Home</a>&#160;&#160;|&#160;&#160;"
-  for (i in Tlabel)
-    str = str "<a href=\"do?table=" i "&amp;action=show\">" Tlabel[i] \
-      "</a>&#160;&#160;|&#160;&#160;"
-  gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
-  str = str "</div>"
-  print str
+
+function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
+# decode urlencoded string
+# urldecode function from Heiner Steven
+#   http://www.shelldorado.com/scripts/cmds/urldecode
+# version 1
+	
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  for (i=0; i<16; i++) hextab[hex[i+1]] = i
+  
+  decoded = ""
+  i = 1
+  len = length(text)
+  
+  while ( i <= len ) {
+    c = substr (text, i, 1)
+    if ( c == "%" ) {
+      if ( i+2 <= len ) {
+        c1 = tolower(substr(text, i+1, 1))
+        c2 = tolower(substr(text, i+2, 1))
+        if ( hextab [c1] != "" || hextab [c2] != "" ) {
+          # print "Read: %" c1 c2;
+          # Allow: 
+          # 20 begins main chars, but dissallow 7F (wrong in orig code!)
+          #   tab, newline, formfeed, carriage return
+          if ( ( (c1 >= 2) && ((c1 c2) != "7f") )   \
+               || (c1 == 0 && c2 ~ "[9acd]") )
+            {
+              code = 0 + hextab [c1] * 16 + hextab [c2] + 0
+              # print "Code: " code
+              c = sprintf ("%c", code)
+            } else {
+            # for dissallowed chars
+            c = " "
+          }
+          i = i + 2
+        }
+      }
+    } else if ( c == "+" ) 	# special handling: "+" means " "
+      c = " "
+    decoded = decoded c
+    ++i
+  }
+  
+  # change linebreaks to \n
+  gsub(/\r\n/, "\n", decoded);
+  # remove last linebreak
+  sub(/[\n\r]*$/,"",decoded);
+  return decoded
 }
+
