@@ -52,7 +52,7 @@ BEGIN{
     "name ,Taxon_Name , code , code    /" \
     "  id    , ID    , i , 0           ;" \
     "  code  , Code  , c , 1           ;" \
-    "  pubID , Pub ID ,i , 2 , pub      "
+    "  pubID , Publication ,i , 2 , pub      "
   config()
   db_secrets()
 
@@ -133,7 +133,7 @@ function footer() {
   print "</body>\n</html>";
 }
 
-function show(table,   x, n, i, j, sql, order) {
+function show(table,   x, n, i, j, sql, lookup) {
   # version history: this is original version
   
   header(Tlabel[table])
@@ -147,17 +147,40 @@ function show(table,   x, n, i, j, sql, order) {
 
   # Table header
   print "<tr>"
-  for (i = 1; i <= length(Forder[table]); i++) 
+  for (i = 1; i <= length(Forder[table]); i++)
     print "<th>" Flabel[table][Forder[table][i]] "</th>"
   print "<th></th><th></th>"
   print "</tr>"
+
+  # make lookups
+  for (i = 1; i <= length(Forder[table]); i++)
+    if (Fforid[table][Forder[table][i]]) {
+      db_query(DATABASE, "SELECT id, `"                             \
+               Tforshow[Fforid[table][Forder[table][i]]] "` FROM `" \
+               Fforid[table][Forder[table][i]] "`;")
+      for (j = 1; j <= DBQr; j++) {
+        lookup[Fforid[table][Forder[table][i]]][DBQ[j,"id"]] =             \
+          DBQ[j, Tforshow[Fforid[table][Forder[table][i]]]]
+        # print i, DBQ[j,"id"], Forder[table][i],  DBQ[j, Tforshow[Fforid[table][Forder[table][i]]]]
+      }
+      db_clear()
+    }
+
+  # for (i in lookup)
+  #   for (j in lookup[i])
+  #     print i, j, lookup[i][j]
   
   # Table rows
   db_query(DATABASE, "SELECT * FROM `" table "` ORDER BY `" Tsort[table] ";" )
   for (i = 1; i <= DBQr; i++) {
     print "<tr>"
-    for (j = 1; j <= length(Forder[table]); j++) 
-      print "<td>" DBQ[i,Forder[table][j]] "</td>"
+    for (j = 1; j <= length(Forder[table]); j++) {
+      if (Fforid[table][Forder[table][j]])
+        # print Fforid[table][Forder[table][j]], DBQ[i , Forder[table][j]]
+        print "<td>" lookup[ Fforid[table][Forder[table][j]] ][ DBQ[i , Forder[table][j]]] "</td>"
+      else
+        print "<td>" DBQ[i,Forder[table][j]] "</td>"
+    }
     # Edit
     print "<td><a href=\"do?table=" table "&amp;action=edit&amp;id=" \
       DBQ[i,"id"] "\">edit</a></td>"
