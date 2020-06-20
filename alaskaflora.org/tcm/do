@@ -16,34 +16,35 @@ BEGIN{
   DATABASE = "tcm"
   # Config:
   #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
-  #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
+  #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
   Config = \
     "pub , Publication , auth , CONCAT%5FWS('_'%2C_`code`%2C_`auth`)   /" \
-    "  id   , ID     , i , 0 ,          ;" \
-    "  code , Code   , c , 1  ,         ;" \
-    "  auth , Author , c , 1   ,        |" \
-    "name ,Name , code , code    /" \
-    "  id    , ID    , i , 0    ,       ;" \
-    "  code  , Code  , c , 1    ,       ;" \
-    "  genus, Genus , c,   1    ,       ;" \
-    "  species, Species, c, 1   ,       ;" \
-    "  author, Author, c , 1     ,      ;" \
-    "  pubID , Publication ,i , 1 , pub |" \
-    "tc, Taxon_Concept, id, code          /" \
-    "  id    , ID    , i , 0    ,       ;" \
-    "  code  , Code,  c  , 1    ,       ;" \
-    "  nameID, Name  , i,  1    , name  ;" \
-    "  pubID,  Publication, i, 1, pub   |" \
-    "rel, Relationships, id, label      /" \
-    "  id    , ID    , i , 0    ,       ;" \
-    "  label , Label , c,  1    ,       |" \
-    "tcm, TCM, id, id                   /" \
-    "  id    , ID    , i , 0    ,       ;" \
-    "  tc1ID , TC1   , i,  1    , tc    ;" \
-    "  relID , Relation, i, 1   , rel   ;" \
-    "  tc2ID , TC2   , i,  1    , tc    ;" \
-    "  pubID,  Publication, i, 1, pub   "
+    "  id     , ID           , i , 0 ,     ;" \
+    "  code   , Code         , c , 1 ,     ;" \
+    "  auth   , Author       , c , 1 ,     |" \
+    "name , Name , code , code             /" \
+    "  id     , ID           , i , 0 ,     ;" \
+    "  code   , Code         , c , 1 ,     ;" \
+    "  genus  , Genus        , c , 1 ,     ;" \
+    "  species, Species      , c , 1 ,     ;" \
+    "  author , Author       , c , 0 ,     ;" \
+    "  pubID  , Publication  , i , 1 , pub |" \
+    "tc , Taxon_Concept, id, code          /" \
+    "  id     , ID           , i , 0 ,     ;" \
+    "  code   , Code         , c , 1 ,     ;" \
+    "  nameID , Name         , i , 1 , name;" \
+    "  pubID  , Publication  , i , 1 , pub |" \
+    "rel , Relationship , id , label       /" \
+    "  id     , ID           , i , 0 ,     ;" \
+    "  label  , Label        , c , 1 ,     |" \
+    "tcm , TCM , id , id                   /" \
+    "  id     , ID           , i , 0 ,     ;" \
+    "  tc1ID  , TC1          , i , 1 , tc  ;" \
+    "  relID  , Relation     , i , 1 , rel ;" \
+    "  tc2ID  , TC2          , i , 1 , tc  ;" \
+    "  pubID  ,  Publication , i , 1 , pub ;" \
+    "  notes  , Notes        , c , 0 ,      "
   config()
   db_secrets()
 
@@ -153,8 +154,8 @@ function show(      x, n, i, j, k, sql) {
   
   # Table header
   print "<tr>"
-  for (i = 1; i <= length(Forder[f["table"]]); i++)
-    print "<th>" Flabel[f["table"]][Forder[f["table"]][i]] "</th>"
+  for (i = 1; i <= length(Fgorder[f["table"]]); i++)
+    print "<th>" Flabel[f["table"]][Fgorder[f["table"]][i]] "</th>"
   # backlinks
   for (i in backt)
     # print "<th style=\"font-size:smaller;\">used in<br/>" Tlabel[backt[i]] ":<br/>" Flabel[backt[i]][backf[i]] "</th>"
@@ -172,17 +173,17 @@ function show(      x, n, i, j, k, sql) {
            " ORDER BY `" Tsort[f["table"]] ";" )
   for (i = 1; i <= DBQr; i++) {
     print "<tr name=\"id" DBQ[i,"id"] "\">"
-    for (j = 1; j <= length(Forder[f["table"]]); j++) {
+    for (j = 1; j <= length(Fgorder[f["table"]]); j++) {
       # show lookup value if the field is a foreign key
-      if (Fforid[f["table"]][Forder[f["table"]][j]]) {
+      if (Fforid[f["table"]][Fgorder[f["table"]][j]]) {
         print "<td><a href=\"do?table=" \
-          Fforid[f["table"]][Forder[f["table"]][j]]                     \
-          "&amp;action=show#id" DBQ[i , Forder[f["table"]][j]] "\">"    \
-          Lookup[ Fforid[f["table"]][Forder[f["table"]][j]] ][          \
-            DBQ[i , Forder[f["table"]][j]]] "</a></td>"
+          Fforid[f["table"]][Fgorder[f["table"]][j]]                     \
+          "&amp;action=show#id" DBQ[i , Fgorder[f["table"]][j]] "\">"    \
+          Lookup[ Fforid[f["table"]][Fgorder[f["table"]][j]] ][          \
+            DBQ[i , Fgorder[f["table"]][j]]] "</a></td>"
       }
       else
-        print "<td>" DBQ[i,Forder[f["table"]][j]] "</td>"
+        print "<td>" DBQ[i,Fgorder[f["table"]][j]] "</td>"
     }
     
     # backlinks
@@ -369,8 +370,9 @@ function preaction(     sql, i, err) {
 function navbar(  i, str) {
   str = "<div class=\"navbar\">"
   str = str "<a href=\"do\">Home</a>&#160;&#160;|&#160;&#160;"
-  for (i in Tlabel)
-    str = str "<a href=\"do?table=" i "&amp;action=show\">" Tlabel[i] \
+  for (i = 1; i <= length(Torder); i++)
+  # for (i in Tlabel)
+    str = str "<a href=\"do?table=" Torder[i] "&amp;action=show\">" Tlabel[Torder[i]] \
       "</a>&#160;&#160;|&#160;&#160;"
   gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
   str = str "</div>"
@@ -447,16 +449,18 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
 
 # =========================== Util ================================
 
-function config(    t, t2, ta, fld, fa,     i, j, fgshow) {
+function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
   # Config:
   #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
   #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
+  # order of tables and fields is used in display
 
   gsub(/ /,"",Config)
   gsub(/_/," ",Config)
 
   # split into tables
+  tcnt = 1
   split(Config, t, "|")
   for (i in t) {
 
@@ -467,6 +471,7 @@ function config(    t, t2, ta, fld, fa,     i, j, fgshow) {
     split(t2[1] ,ta,",")
     Tlabel[ta[1]]   = ta[2]
     Tsort[ta[1]]    = ta[3]
+    Torder[tcnt++]  = ta[1]
     Tforshow[ta[1]] = ta[4]
     gsub(/%5F/,"_",Tforshow[ta[1]])
     gsub(/%2C/,",",Tforshow[ta[1]])
@@ -482,13 +487,8 @@ function config(    t, t2, ta, fld, fa,     i, j, fgshow) {
       if (fa[4])
         Fgorder[ ta[1]][gocnt++] = fa[1]
       Forder[ ta[1]][locnt++] = fa[1]
-      # fgshow[ta[1]][fa[1]]  = fa[4]  # 1...n ; if 0, do not print
       Fforid[ ta[1]][fa[1]]  = fa[5] # 
     }
-    # # swap fgshow to Forder
-    # for (j in fgshow[ta[1]])
-    #   if (fgshow[ta[1]][j])
-    #     Forder[ta[1]][fgshow[ta[1]][j]] = j
   }
 }
 
