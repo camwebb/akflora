@@ -28,7 +28,7 @@ BEGIN{
     "  code   , Code         , c , 1 ,     ;" \
     "  genus  , Genus        , c , 1 ,     ;" \
     "  species, Species      , c , 1 ,     ;" \
-    "  author , Author       , c , 0 ,     ;" \
+    "  author , Author       , c , 1 ,     ;" \
     "  pubID  , Publication  , i , 1 , pub |" \
     "tc , Taxon_Concept, id, code          /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -44,7 +44,7 @@ BEGIN{
     "  relID  , Relation     , i , 1 , rel ;" \
     "  tc2ID  , TC2          , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
-    "  notes  , Notes        , c , 0 ,      "
+    "  notes  , Notes        , n , 0 ,      "
   config()
   db_secrets()
 
@@ -190,7 +190,7 @@ function show(      x, n, i, j, k, sql) {
     for (j in backt)
       print "<th style=\"border:none; font-size:smaller;\">"\
         "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
-        backf[j] "%3D" DBQ[i,"id"] "\">[in " backt[j] "]</a></td>"
+        backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
 
     # View
     print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
@@ -309,9 +309,15 @@ function addedit(      x, n, i, j, sel) {
       print "</select>"
       print "</td>"
     }
-    else
-      print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i]  \
-        "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
+    else {
+      if (Ftype[f["table"]][Forder[f["table"]][i]] == "n")
+        print "<td><textarea style=\"height:100px;width:300px;\" name=\"f-" \
+          Forder[f["table"]][i] "\">" DBQ[1, Forder[f["table"]][i]] \
+          "</textarea></td>"
+      else
+        print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i] \
+          "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
+    }
     print "</tr>"
   }
   print "</table>"
@@ -333,7 +339,8 @@ function preaction(     sql, i, err) {
     sql = sql ") VALUES ("
     for (i in f)
       if (substr(i,1,2) == "f-") {
-        if (Ftype[f["table"]][substr(i,3)] == "c")
+        if ((Ftype[f["table"]][substr(i,3)] == "c") ||  \
+            (Ftype[f["table"]][substr(i,3)] == "n"))
           sql = sql "'" f[i] "', "
         else
           sql = sql f[i] ", "
@@ -348,7 +355,8 @@ function preaction(     sql, i, err) {
     for (i in f)
       if (substr(i,1,2) == "f-") {
         sql = sql "`" substr(i,3) "` = "
-        if (Ftype[f["table"]][substr(i,3)] == "c")
+        if ((Ftype[f["table"]][substr(i,3)] == "c") ||  \
+            (Ftype[f["table"]][substr(i,3)] == "n"))
           sql = sql "'" f[i] "', "
         else
           sql = sql f[i] ", "
