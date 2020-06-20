@@ -23,13 +23,27 @@ BEGIN{
     "  id   , ID     , i , 0 ,          ;" \
     "  code , Code   , c , 1  ,         ;" \
     "  auth , Author , c , 2   ,        |" \
-    "name ,Taxon_Name , code , code    /" \
+    "name ,Name , code , code    /" \
     "  id    , ID    , i , 0    ,       ;" \
     "  code  , Code  , c , 1    ,       ;" \
     "  genus, Genus , c,   2    ,       ;" \
     "  species, Species, c, 3   ,       ;" \
     "  author, Author, c , 4     ,      ;" \
-    "  pubID , Publication ,i , 5 , pub      "
+    "  pubID , Publication ,i , 5 , pub |" \
+    "tc, Taxon_Concept, id, code          /" \
+    "  id    , ID    , i , 0    ,       ;" \
+    "  code  , Code,  c  , 1    ,       ;" \
+    "  nameID, Name  , i,  2    , name  ;" \
+    "  pubID,  Publication, i, 3, pub   |" \
+    "rel, Relationships, id, label      /" \
+    "  id    , ID    , i , 0    ,       ;" \
+    "  label , Label , c,  1    ,       |" \
+    "tcm, TCM, id, id                   /" \
+    "  id    , ID    , i , 0    ,       ;" \
+    "  tc1ID , TC1   , i,  1    , tc    ;" \
+    "  relID , Relation, i, 2   , rel   ;" \
+    "  tc2ID , TC2   , i,  3    , tc    ;" \
+    "  pubID,  Publication, i, 4, pub   "
   config()
   db_secrets()
 
@@ -73,7 +87,8 @@ function header(title) {
     "Verdana, Arial, Helvetica, sans-serif; }"
   print ".main {width: 500px; padding-top: 30px; margin-left: auto;"\
     "  margin-right: auto; }"
-  print ".navbar { float: right; margin-bottom: 10px;}"
+  print ".navbar { float: right; }"
+  print "h1 { padding-top:20px; }"
   print "select , option { font-size: 14px }"
   print "table { border-collapse: collapse }"
   print "td, th { border: 1px solid black; padding: 5px }"
@@ -110,7 +125,7 @@ function defaultpage(   i)
 }
 
 
-function show(      x, n, i, j, sql) {
+function show(      x, n, i, j, k, sql) {
   # version history: this is original version
   
   header(Tlabel[f["table"]])
@@ -124,10 +139,22 @@ function show(      x, n, i, j, sql) {
   
   print "<table>"
 
+  # check for linked tables
+  for (i in Tlabel)
+    for (j in Flabel[i])
+      if (Fforid[i][j] == f["table"]) {
+        backt[++k] = i
+        backf[k]   = j
+      }
+  
   # Table header
   print "<tr>"
   for (i = 1; i <= length(Forder[f["table"]]); i++)
     print "<th>" Flabel[f["table"]][Forder[f["table"]][i]] "</th>"
+  # backlinks
+  for (i in backt)
+    # print "<th style=\"font-size:smaller;\">used in<br/>" Tlabel[backt[i]] ":<br/>" Flabel[backt[i]][backf[i]] "</th>"
+    print "<th style=\"border:none;\"></th>"
   print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"
   print "</tr>"
 
@@ -152,6 +179,13 @@ function show(      x, n, i, j, sql) {
       else
         print "<td>" DBQ[i,Forder[f["table"]][j]] "</td>"
     }
+    
+    # backlinks
+    for (j in backt)
+      print "<th style=\"border:none; font-size:smaller;\">"\
+        "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
+        backf[j] "%3D" DBQ[i,"id"] "\">[in " backt[j] "]</a></td>"
+
     # Edit
     print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
       "&amp;action=edit&amp;id=" DBQ[i,"id"] "\">E</a></td>"
