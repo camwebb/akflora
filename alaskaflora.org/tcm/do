@@ -22,28 +22,28 @@ BEGIN{
     "pub , Publication , auth , CONCAT%5FWS('_'%2C_`code`%2C_`auth`)   /" \
     "  id   , ID     , i , 0 ,          ;" \
     "  code , Code   , c , 1  ,         ;" \
-    "  auth , Author , c , 2   ,        |" \
+    "  auth , Author , c , 1   ,        |" \
     "name ,Name , code , code    /" \
     "  id    , ID    , i , 0    ,       ;" \
     "  code  , Code  , c , 1    ,       ;" \
-    "  genus, Genus , c,   2    ,       ;" \
-    "  species, Species, c, 3   ,       ;" \
-    "  author, Author, c , 4     ,      ;" \
-    "  pubID , Publication ,i , 5 , pub |" \
+    "  genus, Genus , c,   1    ,       ;" \
+    "  species, Species, c, 1   ,       ;" \
+    "  author, Author, c , 1     ,      ;" \
+    "  pubID , Publication ,i , 1 , pub |" \
     "tc, Taxon_Concept, id, code          /" \
     "  id    , ID    , i , 0    ,       ;" \
     "  code  , Code,  c  , 1    ,       ;" \
-    "  nameID, Name  , i,  2    , name  ;" \
-    "  pubID,  Publication, i, 3, pub   |" \
+    "  nameID, Name  , i,  1    , name  ;" \
+    "  pubID,  Publication, i, 1, pub   |" \
     "rel, Relationships, id, label      /" \
     "  id    , ID    , i , 0    ,       ;" \
     "  label , Label , c,  1    ,       |" \
     "tcm, TCM, id, id                   /" \
     "  id    , ID    , i , 0    ,       ;" \
     "  tc1ID , TC1   , i,  1    , tc    ;" \
-    "  relID , Relation, i, 2   , rel   ;" \
-    "  tc2ID , TC2   , i,  3    , tc    ;" \
-    "  pubID,  Publication, i, 4, pub   "
+    "  relID , Relation, i, 1   , rel   ;" \
+    "  tc2ID , TC2   , i,  1    , tc    ;" \
+    "  pubID,  Publication, i, 1, pub   "
   config()
   db_secrets()
 
@@ -59,7 +59,11 @@ BEGIN{
   if (f["table"]) {
     if (f["action"] == "show") 
       show()
-    else if ((f["action"] == "add") || (f["action"] == "edit")) 
+    else if ((f["action"] == "showone") && f["id"])
+      showone()
+    else if (f["action"] == "add")
+      addedit()
+    else if ((f["action"] == "edit") && f["id"])
       addedit()
   }
   else defaultpage()
@@ -85,7 +89,7 @@ function header(title) {
   print "<style>"
   print "body { font-size: 14px; font-family: 'Montserrat', " \
     "Verdana, Arial, Helvetica, sans-serif; }"
-  print ".main {width: 500px; padding-top: 30px; margin-left: auto;"\
+  print ".main {width: 700px; padding-top: 30px; margin-left: auto;"\
     "  margin-right: auto; }"
   print ".navbar { float: right; }"
   print "h1 { padding-top:20px; }"
@@ -155,7 +159,8 @@ function show(      x, n, i, j, k, sql) {
   for (i in backt)
     # print "<th style=\"font-size:smaller;\">used in<br/>" Tlabel[backt[i]] ":<br/>" Flabel[backt[i]][backf[i]] "</th>"
     print "<th style=\"border:none;\"></th>"
-  print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"
+  print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"\
+    "<th style=\"border:none;\"></th>"
   print "</tr>"
 
   make_lookup()
@@ -186,6 +191,9 @@ function show(      x, n, i, j, k, sql) {
         "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
         backf[j] "%3D" DBQ[i,"id"] "\">[in " backt[j] "]</a></td>"
 
+    # View
+    print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
+      "&amp;action=showone&amp;id=" DBQ[i,"id"] "\">V</a></td>"
     # Edit
     print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
       "&amp;action=edit&amp;id=" DBQ[i,"id"] "\">E</a></td>"
@@ -199,8 +207,52 @@ function show(      x, n, i, j, k, sql) {
   db_clear()
 
   print "</table>"
-  print "<p><a href=\"do?table=" f["table"] "&amp;action=add\">New entry</a>"
+  print "<p><a href=\"do?table=" f["table"] "&amp;action=add\"><b>Add</b></a>"
 
+  footer()
+}
+
+
+function showone(      x, n, i, j, sel) {
+  # version history: this is original version
+
+  header(Tlabel[f["table"]] ", record " f["id"])
+
+  navbar()
+  
+  print "<h1>" Tlabel[f["table"]] ", record " f["id"] "</h1>"
+
+  make_lookup()
+    
+  db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
+  
+  print "<table>"
+  for (i = 1; i <= length(Forder[f["table"]]); i++) { 
+    print "<tr>"
+    print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
+      "</td>"
+    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
+      print "<td><a href=\"do?table="                                   \
+        Fforid[f["table"]][Forder[f["table"]][i]]                       \
+          "&amp;action=show#id" DBQ[1 , Forder[f["table"]][i]] "\">"    \
+          Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][          \
+            DBQ[1 , Forder[f["table"]][i]]] "</a></td>"
+    }
+    else 
+      print "<td>" DBQ[1, Forder[f["table"]][i]] "</td>"
+    print "</tr>"
+  }
+  print "</table>"
+
+  print "<p><a href=\"do?table=" f["table"]                             \
+    "&amp;action=edit&amp;id=" f["id"] "\"><b>Edit</B></a>"             \
+    "&#160;&#160;|&#160;&#160;"                                         \
+    "<a href=\"do?table=" f["table"]                                    \
+    "&amp;action=show&amp;preaction=delete&amp;id="                     \
+    f["id"] "\" onclick=\"return"                                       \
+    " confirm('Confirm deletion')\"><b>Delete</b></a></td>"
+  
+  db_clear()
   footer()
 }
 
@@ -395,10 +447,10 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
 
 # =========================== Util ================================
 
-function config(    t, t2, ta, fld, fa,     i, j, forderx) {
+function config(    t, t2, ta, fld, fa,     i, j, fgshow) {
   # Config:
   #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
-  #   fields { field1 { fieldname, full_name, ci, sort_order , foreign_id? } ;
+  #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
 
   gsub(/ /,"",Config)
@@ -421,17 +473,22 @@ function config(    t, t2, ta, fld, fa,     i, j, forderx) {
 
     # fields
     split(t2[2], fld, ";")
-    for (j in fld) {
+    # go through fields, not including `id`
+    gocnt = locnt = 1
+    for (j = 2; j <= length(fld); j++) {
       split(fld[j], fa, ",")
       Flabel[ ta[1]][fa[1]]  = fa[2]
       Ftype[  ta[1]][fa[1]]  = fa[3] # c (char) or i (int)
-      forderx[ta[1]][fa[1]]  = fa[4] # 1...n ; if 0, do not print
+      if (fa[4])
+        Fgorder[ ta[1]][gocnt++] = fa[1]
+      Forder[ ta[1]][locnt++] = fa[1]
+      # fgshow[ta[1]][fa[1]]  = fa[4]  # 1...n ; if 0, do not print
       Fforid[ ta[1]][fa[1]]  = fa[5] # 
     }
-    # swap forderx to Forder
-    for (j in forderx[ta[1]])
-      if (forderx[ta[1]][j])
-        Forder[ta[1]][forderx[ta[1]][j]] = j
+    # # swap fgshow to Forder
+    # for (j in fgshow[ta[1]])
+    #   if (fgshow[ta[1]][j])
+    #     Forder[ta[1]][fgshow[ta[1]][j]] = j
   }
 }
 
