@@ -35,13 +35,17 @@ BEGIN{
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
     "  pubID  , Publication  , i , 1 , pub |" \
-    "rel , Relationship , id , label       /" \
+    "rel , Relationship0 , id , label      /" \
+    "  id     , ID           , i , 0 ,     ;" \
+    "  label  , Label        , c , 1 ,     |" \
+    "syn , Synonym0 , id , label           /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
     "tcm , TCM , id , id                   /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1          , i , 1 , tc  ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
+    "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2          , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
     "  notes  , Notes        , n , 0 ,      "
@@ -119,12 +123,7 @@ function defaultpage(   i)
   navbar()
   
   print "<h1>TCM</h1>"
-  print "<p>Go to table:</p>" 
-  print "<ul>"
-  for (i in Tlabel)
-    print "<li><a href=\"do?table=" i "&amp;action=show\">" Tlabel[i]   \
-      "</a></p>"
-  print "</ul>"
+  print "<p>Intro text</p>" 
   
   footer()
 }
@@ -132,7 +131,7 @@ function defaultpage(   i)
 
 function show(      x, n, i, j, k, sql) {
   # version history: this is original version
-  
+
   header(Tlabel[f["table"]])
 
   navbar()
@@ -258,7 +257,7 @@ function showone(      x, n, i, j, sel) {
 }
 
 
-function addedit(      x, n, i, j, sel) {
+function addedit(      x, n, i, j, sel, sql, schema) {
   # version history: this is original version
 
   if (f["action"] == "edit")
@@ -275,6 +274,12 @@ function addedit(      x, n, i, j, sel) {
     print "<h1>New " Tlabel[f["table"]] " record</h1>"
 
   make_lookup()
+  
+  # # get NOT NULLs etc
+  # for (i in Tlabel)  
+  #   sql = sql "SHOW CREATE TABLE `" i "`; "
+  # schema = db_sql(DATABASE, sql)
+  # # print "<pre>" schema "</pre>"
     
   print "<form action=\"do\">"
   print "<input type=\"hidden\" name=\"table\" value=\"" f["table"] "\"/>"
@@ -297,6 +302,12 @@ function addedit(      x, n, i, j, sel) {
       print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
       # See for firefox bug: https://stackoverflow.com/questions/4831848/
       #  firefox-ignores-option-selected-selected
+      # if value is NULL
+      if ((DBQ[1, Forder[f["table"]][i]] == "NULL") ||
+          (f["action"] == "add"))
+        print "<option value=\"NULL\" selected=\"selected\"></option>"
+      else
+        print "<option value=\"NULL\"></option>"
       PROCINFO["sorted_in"] = "@val_str_asc"
       for (j in Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ]) {
         if (j == DBQ[1, Forder[f["table"]][i]])
@@ -339,7 +350,10 @@ function preaction(     sql, i, err) {
     sql = sql ") VALUES ("
     for (i in f)
       if (substr(i,1,2) == "f-") {
-        if ((Ftype[f["table"]][substr(i,3)] == "c") ||  \
+        # if blank, translate to NULL
+        if (!f[i])
+          sql = sql "NULL , "
+        else if ((Ftype[f["table"]][substr(i,3)] == "c") ||    \
             (Ftype[f["table"]][substr(i,3)] == "n"))
           sql = sql "'" f[i] "', "
         else
@@ -379,12 +393,14 @@ function navbar(  i, str) {
   str = "<div class=\"navbar\">"
   str = str "<a href=\"do\">Home</a>&#160;&#160;|&#160;&#160;"
   for (i = 1; i <= length(Torder); i++)
-  # for (i in Tlabel)
-    str = str "<a href=\"do?table=" Torder[i] "&amp;action=show\">" Tlabel[Torder[i]] \
+    if (Tlabel[Torder[i]] !~ /0/)
+      str = str "<a href=\"do?table=" Torder[i] "&amp;action=show\">" Tlabel[Torder[i]] \
       "</a>&#160;&#160;|&#160;&#160;"
   gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
   str = str "</div>"
   print str
+  # correct the label, in case there is a 'forced' show
+  gsub(/0/,"",Tlabel[f["table"]])
 }
 
 
