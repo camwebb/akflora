@@ -13,7 +13,7 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
 
   # Init
-  DATABASE = "tcm"
+  DATABASE = "tcmonline"
   # DEBUG = 1
   # Config:
   #   table1 { table_atts {
@@ -56,7 +56,7 @@ BEGIN{
     "syn , Synonym0 , id , label           /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tcm , TCM , id , id ,`show`_=_1       /" \
+    "tcm , TC_Relationships , id , id ,`show`_=_1       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1          , i , 1 , tc  ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
@@ -169,12 +169,14 @@ function show(      x, n, i, j, k, sql) {
   print "<tr>"
   for (i = 1; i <= length(Fgorder[f["table"]]); i++)
     print "<th>" Flabel[f["table"]][Fgorder[f["table"]][i]] "</th>"
+  print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"\
+    "<th style=\"border:none;\"></th>"
+
   # backlinks
   for (i in backt)
     # print "<th style=\"font-size:smaller;\">used in<br/>" Tlabel[backt[i]] ":<br/>" Flabel[backt[i]][backf[i]] "</th>"
     print "<th style=\"border:none;\"></th>"
-  print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"\
-    "<th style=\"border:none;\"></th>"
+
   print "</tr>"
 
   make_lookup(0)  # filter off: all foreign values looked up
@@ -220,11 +222,6 @@ function show(      x, n, i, j, k, sql) {
       }
     }
     
-    # backlinks
-    for (j in backt)
-      print "<th style=\"border:none; font-size:smaller;\">"\
-        "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
-        backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
 
     # View
     print "<td style=\"border:none;\"><a href=\"do?table=" f["table"] \
@@ -237,6 +234,13 @@ function show(      x, n, i, j, k, sql) {
       "&amp;action=show&amp;preaction=delete&amp;id="                   \
       DBQ[i,"id"] "\" onclick=\"return"                                 \
       " confirm('Confirm deletion')\">D</a></td>"
+
+    # backlinks
+    for (j in backt)
+      print "<th style=\"border:none; font-size:smaller;\">"\
+        "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
+        backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
+
     print "</tr>"
   }
   db_clear()

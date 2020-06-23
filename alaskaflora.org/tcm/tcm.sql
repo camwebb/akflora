@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 22, 2020 at 04:12 PM
+-- Generation Time: Jun 23, 2020 at 10:14 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -58,16 +58,18 @@ CREATE TABLE `name` (
   `author` varchar(200) COLLATE utf8_bin DEFAULT NULL,
   `url` varchar(200) COLLATE utf8_bin DEFAULT NULL,
   `notes` varchar(1000) COLLATE utf8_bin DEFAULT NULL,
-  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `show` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `name`
 --
 
-INSERT INTO `name` (`id`, `code`, `pubID`, `genus`, `species`, `irankID`, `infrasp`, `author`, `url`, `notes`, `ts`) VALUES
-(10, 'Claytonia arctica Adams', 18, 'Claytonia', 'arctica', NULL, NULL, 'Adams', 'https://biodiversitylibrary.org/page/10128719', NULL, '2020-06-22 23:54:58'),
-(11, 'Claytonia porsildii Jurtz.', 17, 'Claytonia', 'porsildii', NULL, NULL, 'Jurtz.', NULL, 'Claytonia porsildii Jurtz.', '2020-06-22 23:52:12');
+INSERT INTO `name` (`id`, `code`, `pubID`, `genus`, `species`, `irankID`, `infrasp`, `author`, `url`, `notes`, `ts`, `show`) VALUES
+(10, 'Claytonia arctica Adams', 18, 'Claytonia', 'arctica', NULL, NULL, 'Adams', 'https://biodiversitylibrary.org/page/10128719', NULL, '2020-06-23 16:41:32', 1),
+(11, 'Claytonia porsildii Jurtz.', 17, 'Claytonia', 'porsildii', NULL, NULL, 'Jurtz.', NULL, 'Claytonia porsildii Jurtz.', '2020-06-23 16:41:32', 1),
+(13, 'Montia scammaniana (Hultén) Welsh', 19, 'Montia', 'scammaniana', NULL, NULL, '(Hultén) Welsh', NULL, NULL, '2020-06-23 16:41:32', 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,8 @@ INSERT INTO `pub` (`id`, `code`, `cite`, `doi`, `url`, `notes`, `ts`) VALUES
 (16, 'Porsild 1974', 'Porsild, A. E. 1974. Publications in Botany. Canadian Museum of Nature', NULL, 'https://biodiversitylibrary.org/page/36177530', NULL, '2020-06-22 23:51:33'),
 (17, 'Yurtsez 1981', 'Yurtsev, B. 1981. Bot. Zhurn. (Moscow & Leningrad) 66: 1043.', NULL, NULL, NULL, '2020-06-22 23:51:33'),
 (18, 'Miller & Chambers 2006', 'Miller, J.M., Chambers, K.L. 2006. Systematics of Claytonia (Portulacaceae). Systematic Botany Monographs 78: 1-236.', NULL, NULL, NULL, '2020-06-22 23:51:33'),
-(19, 'Welsh 1974', 'Welsh, S. 1974. Anderson\'s Flora of Alaska', NULL, NULL, NULL, '2020-06-22 23:56:14');
+(19, 'Welsh 1974', 'Welsh, S. 1974. Anderson\'s Flora of Alaska', NULL, NULL, NULL, '2020-06-22 23:56:14'),
+(21, 'Cody 2000', 'Cody, W.J. 2000. Flora of the Yukon Territory.', NULL, NULL, NULL, '2020-06-23 03:00:46');
 
 --
 -- Triggers `pub`
@@ -165,18 +168,20 @@ CREATE TABLE `tc` (
   `nameID` int(11) NOT NULL,
   `pubID` int(11) NOT NULL,
   `notes` varchar(1000) COLLATE utf8_bin DEFAULT NULL,
-  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `show` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tc`
 --
 
-INSERT INTO `tc` (`id`, `code`, `nameID`, `pubID`, `notes`, `ts`) VALUES
-(6, 'C. arctica sec Adams', 10, 15, NULL, '2020-06-22 23:52:44'),
-(7, 'C. arctica sec Porsild', 10, 16, NULL, '2020-06-22 23:52:44'),
-(8, 'C. porsildii sec. Yurtsev', 11, 17, NULL, '2020-06-22 23:52:44'),
-(9, 'C. arctica sec Welsh', 10, 19, NULL, '2020-06-22 23:57:03');
+INSERT INTO `tc` (`id`, `code`, `nameID`, `pubID`, `notes`, `ts`, `show`) VALUES
+(6, 'C. arctica sec Adams', 10, 15, NULL, '2020-06-23 16:41:32', 1),
+(7, 'C. arctica sec Porsild', 10, 16, NULL, '2020-06-23 16:41:32', 1),
+(8, 'C. porsildii sec. Yurtsev', 11, 17, NULL, '2020-06-23 16:41:32', 1),
+(9, 'C. arctica sec. Welsh', 10, 19, NULL, '2020-06-23 16:41:32', 1),
+(11, 'M. scammaniana sec. Cody', 13, 21, NULL, '2020-06-23 16:41:32', 1);
 
 -- --------------------------------------------------------
 
@@ -192,18 +197,19 @@ CREATE TABLE `tcm` (
   `tc2ID` int(11) NOT NULL,
   `pubID` int(11) NOT NULL,
   `notes` varchar(1000) COLLATE utf8_bin DEFAULT NULL,
-  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `show` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tcm`
 --
 
-INSERT INTO `tcm` (`id`, `tc1ID`, `relID`, `synID`, `tc2ID`, `pubID`, `notes`, `ts`) VALUES
-(7, 7, 4, NULL, 6, 16, NULL, '2020-06-22 23:53:15'),
-(8, 8, 5, NULL, 7, 17, NULL, '2020-06-22 23:53:15'),
-(9, 8, 6, NULL, 6, 17, NULL, '2020-06-22 23:53:15'),
-(12, 9, 1, NULL, 6, 19, NULL, '2020-06-22 23:57:37');
+INSERT INTO `tcm` (`id`, `tc1ID`, `relID`, `synID`, `tc2ID`, `pubID`, `notes`, `ts`, `show`) VALUES
+(7, 7, 4, NULL, 6, 16, NULL, '2020-06-23 16:41:32', 1),
+(8, 8, 5, NULL, 7, 17, NULL, '2020-06-23 16:41:32', 1),
+(9, 8, 6, NULL, 6, 17, NULL, '2020-06-23 16:41:32', 1),
+(15, 11, 1, 3, 7, 21, NULL, '2020-06-23 16:41:32', 1);
 
 --
 -- Triggers `tcm`
@@ -298,13 +304,13 @@ ALTER TABLE `irank`
 -- AUTO_INCREMENT for table `name`
 --
 ALTER TABLE `name`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `pub`
 --
 ALTER TABLE `pub`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `rel`
@@ -322,13 +328,13 @@ ALTER TABLE `syn`
 -- AUTO_INCREMENT for table `tc`
 --
 ALTER TABLE `tc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tcm`
 --
 ALTER TABLE `tcm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
