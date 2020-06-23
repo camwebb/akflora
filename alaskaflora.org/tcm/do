@@ -14,27 +14,41 @@ BEGIN{
 
   # Init
   DATABASE = "tcm"
+  # DEBUG = 1
   # Config:
   #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
   #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
+  # fields not listed here will be ignored  
+  # foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
   Config = \
-    "pub , Publication , auth , CONCAT%5FWS('_'%2C_`code`%2C_`auth`)   /" \
+    "pub , Publication , code , code       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
-    "  auth   , Author       , c , 1 ,     |" \
+    "  cite   , Citation     , n , 1 ,     ;" \
+    "  doi    , DOI          , c , 1 ,     ;" \
+    "  url    , URL          , c , 1 ,     ;" \
+    "  notes  , Notes        , n , 0 ,     |" \
     "name , Name , code , code             /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  genus  , Genus        , c , 1 ,     ;" \
-    "  species, Species      , c , 1 ,     ;" \
+    "  species, species      , c , 1 ,     ;" \
+    "  irankID, rank         , i , 1 ,irank ;" \
+    "  infrasp, infrasp      , c , 1 ,     ;" \
     "  author , Author       , c , 1 ,     ;" \
-    "  pubID  , Publication  , i , 1 , pub |" \
+    "  pubID  , Publication  , i , 1 , pub ;" \
+    "  url    , URL          , c , 0 ,     ;" \
+    "  notes  , Notes        , n , 0 ,     |" \
+    "irank , Infra_rank0 , id , label      /" \
+    "  id     , ID           , i , 0 ,     ;" \
+    "  label  , Label        , c , 1 ,     |" \
     "tc , Taxon_Concept, id, code          /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
-    "  pubID  , Publication  , i , 1 , pub |" \
+    "  pubID  , Publication  , i , 1 , pub ;" \
+    "  notes  , Notes        , n , 0 ,     |" \
     "rel , Relationship0 , id , label      /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
@@ -71,6 +85,11 @@ BEGIN{
     else if ((f["action"] == "edit") && f["id"])
       addedit()
   }
+  
+  # Non-generic
+  else if (f["action"] == "graph")
+    graph()
+
   else defaultpage()
   
 }
@@ -94,7 +113,7 @@ function header(title) {
   print "<style>"
   print "body { font-size: 14px; font-family: 'Montserrat', " \
     "Verdana, Arial, Helvetica, sans-serif; }"
-  print ".main {width: 700px; padding-top: 30px; margin-left: auto;"\
+  print ".main {width: 1000px; padding-top: 30px; margin-left: auto;"\
     "  margin-right: auto; }"
   print ".navbar { float: right; }"
   print "h1 { padding-top:20px; }"
@@ -105,6 +124,7 @@ function header(title) {
   print "a:visited { color:#9f1dbc }"
   print "a:hover {color:#15358d; border-bottom-style:solid; \
 	     border-bottom-width:thin }"
+  print ".graph { max-width: 100%; }"
   print "</style>"
   print "</head>\n<body>"
   print "<div class=\"main\">"
@@ -123,7 +143,7 @@ function defaultpage(   i)
   navbar()
   
   print "<h1>TCM</h1>"
-  print "<p>Intro text</p>" 
+  print "<p><a href=\"do?action=graph\">see graph</a></p>"
   
   footer()
 }
@@ -181,8 +201,20 @@ function show(      x, n, i, j, k, sql) {
           Lookup[ Fforid[f["table"]][Fgorder[f["table"]][j]] ][          \
             DBQ[i , Fgorder[f["table"]][j]]] "</a></td>"
       }
-      else
-        print "<td>" DBQ[i,Fgorder[f["table"]][j]] "</td>"
+      else {
+        # DOIs and HTTP
+        if (substr(DBQ[i,Fgorder[f["table"]][j]],1,4) == "doi:")
+          print "<td><a href=\"https://doi.org/" substr(DBQ[i,Fgorder[f["table"]][j]],5)  "\">" substr(DBQ[i,Fgorder[f["table"]][j]],5,20) "</a></td>"
+        else if (DBQ[i,Fgorder[f["table"]][j]] ~ /^https?/)
+          print "<td><a href=\"" DBQ[i,Fgorder[f["table"]][j]] "\">" \
+            substr( gensub(/^https?:\/\//,"","G",DBQ[i,Fgorder[f["table"]][j]])\
+                    , 1, 15) "</a></td>"
+        # if the field is long, but also if it is not the sort/code field
+        else if ((length(DBQ[i,Fgorder[f["table"]][j]]) > 20) && \
+                 (Fgorder[f["table"]][j] != Tsort[f["table"]]))
+          print "<td>" substr(DBQ[i,Fgorder[f["table"]][j]],1,20) "...</td>"
+        else print "<td>" DBQ[i,Fgorder[f["table"]][j]] "</td>"
+      }
     }
     
     # backlinks
@@ -238,8 +270,14 @@ function showone(      x, n, i, j, sel) {
           Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][          \
             DBQ[1 , Forder[f["table"]][i]]] "</a></td>"
     }
-    else 
-      print "<td>" DBQ[1, Forder[f["table"]][i]] "</td>"
+    else {
+      # DOIs and HTTP
+      if (substr(DBQ[1, Forder[f["table"]][i]],1,4) == "doi:")
+        print "<td><a href=\"https://doi.org/" substr(DBQ[1, Forder[f["table"]][i]],5)  "\">" DBQ[1, Forder[f["table"]][i]] "</a></td>"
+      else if (substr(DBQ[1, Forder[f["table"]][i]],1,4) == "http")
+        print "<td><a href=\"" DBQ[1,Forder[f["table"]][i]] "\">" DBQ[1,Forder[f["table"]][i]] "</a></td>"
+      else print "<td>" DBQ[1,Forder[f["table"]][i]] "</td>"
+    }
     print "</tr>"
   }
   print "</table>"
@@ -361,7 +399,8 @@ function preaction(     sql, i, err) {
       }
     gsub(/, $/,"",sql)
     sql = sql ");"
-    # print sql
+    if (DEBUG)
+      print sql
   }
   
   if (f["preaction"] == "edit") {
@@ -369,7 +408,11 @@ function preaction(     sql, i, err) {
     for (i in f)
       if (substr(i,1,2) == "f-") {
         sql = sql "`" substr(i,3) "` = "
-        if ((Ftype[f["table"]][substr(i,3)] == "c") ||  \
+
+        # Translate NULLs
+        if (!f[i])
+          sql = sql "NULL , "
+        else if ((Ftype[f["table"]][substr(i,3)] == "c") || \
             (Ftype[f["table"]][substr(i,3)] == "n"))
           sql = sql "'" f[i] "', "
         else
@@ -377,7 +420,8 @@ function preaction(     sql, i, err) {
       }
     gsub(/, $/,"",sql)
     sql = sql " WHERE `id` = " f["id"] " ;"
-    # print sql
+    if (DEBUG)
+      print sql
   }
   else if (f["preaction"] == "delete")
     sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
@@ -412,7 +456,7 @@ function db_query(db, query            , row, i, cmd, preFS ) {
   gsub(/`/,"\\`", query)  # if writing directly in awk script, need: \\\`
   gsub(/\n/," ", query)
   gsub(/  */," ", query)
-  cmd = "/bin/echo -e \"" query "\" | mysql -u " DBUSER[db] " -p" \
+  cmd = "/bin/echo -e \"" query "\" | mysql --default-character-set=UTF8 -u " DBUSER[db] " -p" \
     DBPASSWORD[db] " -h " DBHOST[db] \
     " -B --column-names --default-character-set=utf8 " DBNAME[db] 
   row = -1
@@ -453,7 +497,7 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   gsub(/  */," ",query)
   inRS = RS
   RS = "\x04"
-  cmd = "mysql -u " DBUSER[db]                              \
+  cmd = "mysql --default-character-set=UTF8 -u " DBUSER[db]                              \
     " -p" DBPASSWORD[db] " -h " DBHOST[db] " " DBNAME[db] " 2>&1"
   # not using system(). This way allows v long SQL statements
   # system() returns mysql exit code. Here, we send stderr to stdout
@@ -598,3 +642,66 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
   return decoded
 }
 
+# =========================== Non-generic ================================
+
+function graph(  dir) {
+
+  # for now... only one fig at a time
+  # "mktemp -d" | getline dir
+  # close("mktemp -d")
+  
+  elab[1] = "[style=dotted,dir=none]" # intersects
+  elab[2] = "[dir=none]"              # congruent
+  elab[3] = "[style=dashed,dir=none]" # overlaps
+  elab[4] = "[style=dashed,dir=back]" # includes
+  elab[5] = "[style=dashed]" # is included in
+  elab[6] = "[color=red,dir=none]"    # disjunct
+  
+  db_query(DATABASE, "SELECT TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
+           "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 "\
+           "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id "\
+           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id;")
+  gv = "digraph structure { \n"                     \
+    "  rankdir=\"TB\"; \n"                          \
+    "  node [fontname=\"Helvetica\",shape=box]; \n"                 \
+    "  edge [fontname=\"Courier\", len=1.5, arrowhead=normal]; \n\n"
+  for (i = 1; i <= DBQr; i++) {
+    if (!node[DBQ[i, "TC1ID"]]) {
+      gv = gv "node" DBQ[i, "TC1ID"] " [label=\"" DBQ[i, "TC1"] "\"]; \n"
+      node[DBQ[i, "TC1ID"]]++
+    }
+    if (!node[DBQ[i, "TC2ID"]]) {
+      gv = gv "node" DBQ[i, "TC2ID"] " [label=\"" DBQ[i, "TC2"] "\"]; \n"
+      node[DBQ[i, "TC2ID"]]++
+    }
+    gv = gv "node" DBQ[i, "TC1ID"] " -> node" DBQ[i, "TC2ID"] " " \
+      elab[DBQ[i, "R"]] "; \n"
+  }
+  gv = gv "}"
+  db_clear()
+  
+  print gv > "tmp/graph.dot"
+  system("dot -Tjpg tmp/graph.dot > tmp/graph.jpg")
+  
+  header("TCM graph");
+  navbar()
+  
+  print "<h1>TCM graph</h1>"
+
+  print "<div class=\"graph\">"
+  print "<img src=\"tmp/graph.jpg\"/>"
+  print "<p><b>Key</b></p>"
+  print "<ul style=\"list-style-type:none\"><li>Solid black: <i>congruent with</i> (=)</li>"
+  print "<li>Dashed black: <i>overlaps</i> (&gt;&lt;)</li>"
+  print "<li>Dotted black: <i>intersects</i> (∩)</li>"
+  print "<li>Dashed black with arrow: &lt;arrow from&gt; <i>is included in</i>"\
+    " &lt;arrow to&gt; (&lt;)</li>"
+  print "<li>Solid red: <i>is disjunct from (|)</i></li></ul>"
+  print "</div>"
+  
+  footer()
+  
+}
+
+
+  
