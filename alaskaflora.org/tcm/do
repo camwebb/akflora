@@ -120,6 +120,7 @@ function header(title) {
     "Verdana, Arial, Helvetica, sans-serif; }"
   print ".main {width: 1000px; padding-top: 30px; margin-left: auto;"\
     "  margin-right: auto; }"
+  print ".info {max-width: 600px; }"
   print ".navbar { float: right; }"
   print "h1 { padding-top:20px; }"
   print "select , option { font-size: 14px }"
@@ -750,8 +751,9 @@ function defaultpage(   i)
   navbar()
   
   print "<h1>Taxonomic Concept Mapping for the Flora of Alaska</h1>"
+  print "<div class=\"info\">"
   print "<h2>Usage</h2>"
-  print "<p style=\"max-width: 500px;\">Add a new publication, then a name in that publication, " \
+  print "<p>Add a new publication, then a name in that publication, " \
     "then a taxonomic concept in that or another publication, then the "\
     "relationship between that taxon concept and another.</p>"
   print "<p>In the grid views, <b>V</b>: view single record, all fields,  "\
@@ -759,11 +761,11 @@ function defaultpage(   i)
     " (e.g., [tcm]) at end of row link to usages of that record in other "\
     "tables.</p>"
   print "<h2>Tools</h2>"
-  print "<ul style=\"max-width: 500px;\">"
+  print "<ul>"
   print "<li><a href=\"do?action=graph\">See TCM graph</a></li>"
   print "<li><a href=\"do?action=hideall\">Hide</a> all Names, TCs, TCMs, to unclutter the lists when moving to a, e.g., new genus</li>"
   print "<li><a href=\"do?action=unhideall\">Un-hide</a> all Names, TCs, TCMs</li>"
-  print "</ul>"
+  print "</ul></div>"
   
   footer()
 }
