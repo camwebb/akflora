@@ -22,5 +22,6 @@ dataflow/PAF/paf.1
 dataflow/PAF/paf.2
 dataflow/PAF/paf.3
 lib/db.awk
+lib/db_secrets.awk
 pages_md/untracked*
 

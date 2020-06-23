@@ -15,6 +15,4 @@ AuthName "Password Protected"
 AuthUserFile /home/cam/public_html/akflora/alaskaflora.org/chars/.pw
 Require valid-user
 
-# Not working
-# SetEnv AWKPATH ".:/usr/local/share/awk/"
 
