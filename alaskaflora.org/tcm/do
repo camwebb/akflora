@@ -16,20 +16,21 @@ BEGIN{
   DATABASE = "tcm"
   # DEBUG = 1
   # Config:
-  #   table1 { table_atts { table, full_name, sort_field, foreign_show } /
+  #   table1 { table_atts {
+  #              table, full_name, sort_field, foreign_show, filter } /
   #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
   # fields not listed here will be ignored  
   # foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
   Config = \
-    "pub , Publication , code , code       /" \
+    "pub , Publication , code , code ,     /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  cite   , Citation     , n , 1 ,     ;" \
     "  doi    , DOI          , c , 1 ,     ;" \
     "  url    , URL          , c , 1 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
-    "name , Name , code , code             /" \
+    "name , Name , code , code,`show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  genus  , Genus        , c , 1 ,     ;" \
@@ -43,7 +44,7 @@ BEGIN{
     "irank , Infra_rank0 , id , label      /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tc , Taxon_Concept, id, code          /" \
+    "tc , Taxon_Concept, id,code,`show`_=_1/" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
@@ -55,7 +56,7 @@ BEGIN{
     "syn , Synonym0 , id , label           /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tcm , TCM , id , id                   /" \
+    "tcm , TCM , id , id ,`show`_=_1       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1          , i , 1 , tc  ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
@@ -89,6 +90,10 @@ BEGIN{
   # Non-generic
   else if (f["action"] == "graph")
     graph()
+  else if (f["action"] == "hideall")
+    hide("hideall")
+  else if (f["action"] == "unhideall")
+    hide("unhideall")
 
   else defaultpage()
   
@@ -137,17 +142,6 @@ function footer() {
 }
 
 
-function defaultpage(   i)
-{
-  header("TCM");
-  navbar()
-  
-  print "<h1>TCM</h1>"
-  print "<p><a href=\"do?action=graph\">see graph</a></p>"
-  
-  footer()
-}
-
 
 function show(      x, n, i, j, k, sql) {
   # version history: this is original version
@@ -183,13 +177,22 @@ function show(      x, n, i, j, k, sql) {
     "<th style=\"border:none;\"></th>"
   print "</tr>"
 
-  make_lookup()
+  make_lookup(0)  # filter off: all foreign values looked up
   
   # Table rows
-  if (f["where"])
-    where = "WHERE " gensub(/\\'/,"'","G",f["where"]) 
-  db_query(DATABASE, "SELECT * FROM `" f["table"] "` " where \
-           " ORDER BY `" Tsort[f["table"]] ";" )
+  # filters
+  if(Twhere[f["table"]] && f["where"]) 
+    where = "WHERE " Twhere[f["table"]] " AND ( " \
+      gensub(/\\'/,"'","G",f["where"]) " )"
+  else if(Twhere[f["table"]])
+    where = "WHERE " Twhere[f["table"]]
+  else if (f["where"])
+    where = "WHERE " gensub(/\\'/,"'","G",f["where"])
+  sql = "SELECT * FROM `" f["table"] "` " where \
+           " ORDER BY `" Tsort[f["table"]] "`;"
+  if (DEBUG)
+    print sql
+  db_query(DATABASE,  sql)
   for (i = 1; i <= DBQr; i++) {
     print "<tr name=\"id" DBQ[i,"id"] "\">"
     for (j = 1; j <= length(Fgorder[f["table"]]); j++) {
@@ -254,7 +257,7 @@ function showone(      x, n, i, j, sel) {
   
   print "<h1>" Tlabel[f["table"]] ", record " f["id"] "</h1>"
 
-  make_lookup()
+  make_lookup(0)
     
   db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
   
@@ -311,7 +314,7 @@ function addedit(      x, n, i, j, sel, sql, schema) {
   else if (f["action"] == "add")
     print "<h1>New " Tlabel[f["table"]] " record</h1>"
 
-  make_lookup()
+  make_lookup(1) # filter the lookups by `show` value
   
   # # get NOT NULLs etc
   # for (i in Tlabel)  
@@ -355,6 +358,15 @@ function addedit(      x, n, i, j, sel, sql, schema) {
           Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][j] "</option>"
       }
       PROCINFO["sorted_in"] = "@ind_str_asc"
+
+      # just in case the value does not appear in the Lookup, because of
+      # a filter
+      if (!Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][ \
+             DBQ[1, Forder[f["table"]][i]] ] && (f["action"] == "edit" ))
+        print "<option value=\"" DBQ[1, Forder[f["table"]][i]] "\""  \
+          " selected=\"selected\"" ">Record ID = " \
+          DBQ[1, Forder[f["table"]][i]] " (currently hidden)</option>"
+ 
       print "</select>"
       print "</td>"
     }
@@ -545,6 +557,7 @@ function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
     Tsort[ta[1]]    = ta[3]
     Torder[tcnt++]  = ta[1]
     Tforshow[ta[1]] = ta[4]
+    Twhere[ta[1]]   = ta[5]
     gsub(/%5F/,"_",Tforshow[ta[1]])
     gsub(/%2C/,",",Tforshow[ta[1]])
 
@@ -573,15 +586,21 @@ function clean_quotes(   i) {
 }
 
 
-function make_lookup(       i, j, sql) {
-    # make lookups
+function make_lookup(filteron,       i, j, sql) {
+  # make lookups
   for (i = 1; i <= length(Forder[f["table"]]); i++)
     if (Fforid[f["table"]][Forder[f["table"]][i]]) {
       sql = "SELECT id, "                                   \
         Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]] \
         " AS `_lookup` FROM `"                              \
-        Fforid[f["table"]][Forder[f["table"]][i]] "`;"
-      # print sql
+        Fforid[f["table"]][Forder[f["table"]][i]] "`"
+
+      # if the filter is on (for dropdowns)
+      if (Twhere[ Fforid[f["table"]][Forder[f["table"]][i]] ] && filteron)
+        sql = sql " WHERE " Twhere[Fforid[f["table"]][Forder[f["table"]][i]] ]
+      sql = sql " ;"
+      if (DEBUG)
+        print sql
       db_query(DATABASE, sql)
       for (j = 1; j <= DBQr; j++) {
         Lookup[Fforid[f["table"]][Forder[f["table"]][i]]][DBQ[j,"id"]] = \
@@ -650,6 +669,11 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
 
 function graph(  dir) {
 
+  header("TCM graph");
+  navbar()
+  
+  print "<h1>TCM graph</h1>"
+
   # for now... only one fig at a time
   # "mktemp -d" | getline dir
   # close("mktemp -d")
@@ -664,7 +688,15 @@ function graph(  dir) {
   db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
            "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 "\
            "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id "\
-           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id;")
+           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`show` = 1;")
+
+  if (DBQr > 30) {
+    print "<p>Sorry, cannot display a graph of more than 30 taxonomic"\
+      "concepts.</p>"
+    footer()
+    exit 1
+  }
+    
   gv = "digraph structure { \n"                     \
     "  rankdir=\"TB\"; \n"                          \
     "  node [fontname=\"Helvetica\",shape=box]; \n"                 \
@@ -689,10 +721,6 @@ function graph(  dir) {
   RS="\x04"
   getline map < "tmp/graph.map"
   
-  header("TCM graph");
-  navbar()
-  
-  print "<h1>TCM graph</h1>"
 
   print "<div class=\"graph\">"
   print map
@@ -711,4 +739,47 @@ function graph(  dir) {
 }
 
 
+function defaultpage(   i)
+{
+  header("TCM for Flora AK");
+  navbar()
   
+  print "<h1>Taxonomic Concept Mapping for the Flora of Alaska</h1>"
+  print "<h2>Usage</h2>"
+  print "<p style=\"max-width: 500px;\">Add a new publication, then a name in that publication, " \
+    "then a taxonomic concept in that or another publication, then the "\
+    "relationship between that taxon concept and another.</p>"
+  print "<h2>Tools</h2>"
+  print "<ul style=\"max-width: 500px;\">"
+  print "<li><a href=\"do?action=graph\">See TCM graph</a></li>"
+  print "<li><a href=\"do?action=hideall\">Hide</a> all Names, TCs, TCMs, to unclutter the lists when moving to a, e.g., new genus</li>"
+  print "<li><a href=\"do?action=unhideall\">Un-hide</a> all Names, TCs, TCMs</li>"
+  print "</ul>"
+  
+  footer()
+}
+
+function hide(method,   sql, err) {
+
+  header("Hide and Show");
+  navbar()
+  
+  print "<h1>Hide and Show</h1>"
+
+  if (method == "hideall")
+    sql = "UPDATE `name` SET `show` = 0; " \
+      "UPDATE `tc` SET `show` = 0; "       \
+      "UPDATE `tcm` SET `show` = 0; " 
+  else if (method == "unhideall")
+    sql = "UPDATE `name` SET `show` = 1; " \
+      "UPDATE `tc` SET `show` = 1; "       \
+      "UPDATE `tcm` SET `show` = 1; "
+
+  print "<p>Action '" method "', results:</p>"
+  err = db_sql(DATABASE, sql)
+  if (err)
+    print "<p style=\"color:red;\">FAILED: " err "</p>"
+  else print "<p style=\"color:green;\">Success</p>"
+  
+  footer()
+}
