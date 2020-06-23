@@ -719,7 +719,8 @@ function graph(  dir) {
   }
   gv = gv "}"
   db_clear()
-  
+
+  # don't forget to make tmp/ chmod a+w
   print gv > "tmp/graph.dot"
   system("dot -Tcmapx -otmp/graph.map -Tjpg -otmp/graph.jpg tmp/graph.dot")
   RS="\x04"
@@ -753,6 +754,10 @@ function defaultpage(   i)
   print "<p style=\"max-width: 500px;\">Add a new publication, then a name in that publication, " \
     "then a taxonomic concept in that or another publication, then the "\
     "relationship between that taxon concept and another.</p>"
+  print "<p>In the grid views, <b>V</b>: view single record, all fields,  "\
+    "<b>E</b>: edit record, <b>D</b>: delete record. Table codes in brackets"\
+    " (e.g., [tcm]) at end of row link to usages of that record in other "\
+    "tables.</p>"
   print "<h2>Tools</h2>"
   print "<ul style=\"max-width: 500px;\">"
   print "<li><a href=\"do?action=graph\">See TCM graph</a></li>"
