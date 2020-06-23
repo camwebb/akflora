@@ -441,6 +441,10 @@ function navbar(  i, str) {
       str = str "<a href=\"do?table=" Torder[i] "&amp;action=show\">" Tlabel[Torder[i]] \
       "</a>&#160;&#160;|&#160;&#160;"
   gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
+
+  # Non-generic
+  str = str "&#160;&#160;|&#160;&#160;<a href=\"do?action=graph\">Graph</a>"
+
   str = str "</div>"
   print str
   # correct the label, in case there is a 'forced' show
@@ -650,14 +654,14 @@ function graph(  dir) {
   # "mktemp -d" | getline dir
   # close("mktemp -d")
   
-  elab[1] = "[style=dotted,dir=none]" # intersects
-  elab[2] = "[dir=none]"              # congruent
-  elab[3] = "[style=dashed,dir=none]" # overlaps
-  elab[4] = "[style=dashed,dir=back]" # includes
-  elab[5] = "[style=dashed]" # is included in
-  elab[6] = "[color=red,dir=none]"    # disjunct
+  elab[1] = "[style=dotted,dir=none," # intersects
+  elab[2] = "[dir=none,"              # congruent
+  elab[3] = "[style=dashed,dir=none," # overlaps
+  elab[4] = "[style=dashed,dir=back," # includes
+  elab[5] = "[style=dashed," # is included in
+  elab[6] = "[color=red,dir=none,"    # disjunct
   
-  db_query(DATABASE, "SELECT TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
+  db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
            "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 "\
            "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id "\
            "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id;")
@@ -667,21 +671,23 @@ function graph(  dir) {
     "  edge [fontname=\"Courier\", len=1.5, arrowhead=normal]; \n\n"
   for (i = 1; i <= DBQr; i++) {
     if (!node[DBQ[i, "TC1ID"]]) {
-      gv = gv "node" DBQ[i, "TC1ID"] " [label=\"" DBQ[i, "TC1"] "\"]; \n"
+      gv = gv "node" DBQ[i, "TC1ID"] " [label=\"" DBQ[i, "TC1"] "\",URL=\"do?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC1ID"] "\"]; \n"
       node[DBQ[i, "TC1ID"]]++
     }
     if (!node[DBQ[i, "TC2ID"]]) {
-      gv = gv "node" DBQ[i, "TC2ID"] " [label=\"" DBQ[i, "TC2"] "\"]; \n"
+      gv = gv "node" DBQ[i, "TC2ID"] " [label=\"" DBQ[i, "TC2"] "\",URL=\"do?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC2ID"] "\"]; \n"
       node[DBQ[i, "TC2ID"]]++
     }
     gv = gv "node" DBQ[i, "TC1ID"] " -> node" DBQ[i, "TC2ID"] " " \
-      elab[DBQ[i, "R"]] "; \n"
+      elab[DBQ[i, "R"]] "URL=\"do?action=showone&amp;table=tcm&amp;id=" DBQ[i, "ID"] "\"]; \n"
   }
   gv = gv "}"
   db_clear()
   
   print gv > "tmp/graph.dot"
-  system("dot -Tjpg tmp/graph.dot > tmp/graph.jpg")
+  system("dot -Tcmapx -otmp/graph.map -Tjpg -otmp/graph.jpg tmp/graph.dot")
+  RS="\x04"
+  getline map < "tmp/graph.map"
   
   header("TCM graph");
   navbar()
@@ -689,8 +695,9 @@ function graph(  dir) {
   print "<h1>TCM graph</h1>"
 
   print "<div class=\"graph\">"
-  print "<img src=\"tmp/graph.jpg\"/>"
-  print "<p><b>Key</b></p>"
+  print map
+  print "<img src=\"tmp/graph.jpg\" usemap=\"#structure\"/>"
+  print "<p>Nodes and edges are clickable. Symbols:</p>"
   print "<ul style=\"list-style-type:none\"><li>Solid black: <i>congruent with</i> (=)</li>"
   print "<li>Dashed black: <i>overlaps</i> (&gt;&lt;)</li>"
   print "<li>Dotted black: <i>intersects</i> (∩)</li>"
