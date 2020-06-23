@@ -703,7 +703,7 @@ function graph(  dir) {
   print "<li>Dotted black: <i>intersects</i> (∩)</li>"
   print "<li>Dashed black with arrow: &lt;arrow from&gt; <i>is included in</i>"\
     " &lt;arrow to&gt; (&lt;)</li>"
-  print "<li>Solid red: <i>is disjunct from (|)</i></li></ul>"
+  print "<li>Solid red: <i>is disjunct from</i> (|)</li></ul>"
   print "</div>"
   
   footer()
