@@ -165,7 +165,24 @@ function show(      x, n, i, j, k, sql) {
         backt[++k] = i
         backf[k]   = j
       }
+
+  make_lookup(0)  # filter off: all foreign values looked up
   
+  # Query DB
+  # filters
+  if(Twhere[f["table"]] && f["where"]) 
+    where = "WHERE " Twhere[f["table"]] " AND ( " \
+      gensub(/\\'/,"'","G",f["where"]) " )"
+  else if(Twhere[f["table"]])
+    where = "WHERE " Twhere[f["table"]]
+  else if (f["where"])
+    where = "WHERE " gensub(/\\'/,"'","G",f["where"])
+  sql = "SELECT * FROM `" f["table"] "` " where \
+           " ORDER BY `" Tsort[f["table"]] "`;"
+  if (DEBUG)
+    print sql
+  db_query(DATABASE,  sql)
+
   # Table header
   print "<tr>"
   for (i = 1; i <= length(Fgorder[f["table"]]); i++)
@@ -180,22 +197,7 @@ function show(      x, n, i, j, k, sql) {
 
   print "</tr>"
 
-  make_lookup(0)  # filter off: all foreign values looked up
-  
   # Table rows
-  # filters
-  if(Twhere[f["table"]] && f["where"]) 
-    where = "WHERE " Twhere[f["table"]] " AND ( " \
-      gensub(/\\'/,"'","G",f["where"]) " )"
-  else if(Twhere[f["table"]])
-    where = "WHERE " Twhere[f["table"]]
-  else if (f["where"])
-    where = "WHERE " gensub(/\\'/,"'","G",f["where"])
-  sql = "SELECT * FROM `" f["table"] "` " where \
-           " ORDER BY `" Tsort[f["table"]] "`;"
-  if (DEBUG)
-    print sql
-  db_query(DATABASE,  sql)
   for (i = 1; i <= DBQr; i++) {
     print "<tr name=\"id" DBQ[i,"id"] "\">"
     for (j = 1; j <= length(Fgorder[f["table"]]); j++) {
