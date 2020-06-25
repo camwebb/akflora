@@ -113,7 +113,7 @@ function header(title) {
            charset=utf-8\" />"
   print "<link href=\"https://fonts.googleapis.com/css?family=Montserrat\" \
            rel=\"stylesheet\"/>"
-  print "<link href=\"../img/akflora.ico\" rel=\"shortcut icon\" \
+  print "<link href=\"../img/akflora.png\" rel=\"shortcut icon\" \
            type=\"image/x-icon\"/>"
   print "<style>"
   print "body { font-size: 14px; font-family: 'Montserrat', " \
