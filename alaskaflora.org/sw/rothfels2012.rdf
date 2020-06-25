@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#"
+   xmlns="http://alaskaflora.org/sw/rothfels2012.rdf#">
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Aspleniaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Aspleniaceae Newman</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Athyriaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Athyriaceae Alston</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Blechnaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Blechnaceae Newman</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Cystopteridaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Cystopteridaceae (Payer) Shmakov</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Diplaziopsidaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Diplaziopsidaceae X.C. Zhang &amp; Christenh.</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Hemidictyaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Hemidictyaceae Christenh. &amp; H. Schneid.</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Onocleaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Onocleaceae Pic. Serm.</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Rhachidosoraceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Rhachidosoraceae X.C. Zhang</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Thelypteridaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Thelypteridaceae Ching ex Pic. Serm.</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Woodsiaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:nameString>Woodsiaceae Herter</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Aspleniaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.2307/25065646"/>
+    <tc:nameString>Aspleniaceae Newman</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Blechnaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.2307/25065646"/>
+    <tc:nameString>Blechnaceae Newman</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Onocleaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.2307/25065646"/>
+    <tc:nameString>Onocleaceae Pic. Serm.</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Thelypteridaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.2307/25065646"/>
+    <tc:nameString>Thelypteridaceae Ching ex Pic. Serm.</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:TaxonConcept rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae">
+    <tc:accordingTo rdf:resource="https://doi.org/10.2307/25065646"/>
+    <tc:nameString>Woodsiaceae Herter</tc:nameString>
+  </tc:TaxonConcept>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM10">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Rhachidosoraceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM11">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Woodsiaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM2">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Aspleniaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsCongruentTo"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Aspleniaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM3">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Blechnaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsCongruentTo"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Blechnaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM4">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Onocleaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsCongruentTo"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Onocleaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM5">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Thelypteridaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsCongruentTo"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Thelypteridaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM6">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Athyriaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM7">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Cystopteridaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM8">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Diplaziopsidaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae"/>
+  </tc:Relationship>
+  <tc:Relationship rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#TCM9">
+    <taxonConceptRelationshipAccordingTo rdf:resource="https://doi.org/10.1002/tax.613003"/>
+    <tc:fromTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Rothfels_Hemidictyaceae"/>
+    <tc:relationshipCategory rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn"/>
+    <tc:toTaxon rdf:resource="http://alaskaflora.org/sw/rothfels2012.rdf#Smith_Woodsiaceae"/>
+  </tc:Relationship>
+  <owl:ObjectProperty rdf:about="http://alaskaflora.org/sw/rothfels2012.rdf#taxonConceptRelationshipAccordingTo">
+    <rdfs:comment>The property that relates the Taxon Concept Relationship 
+                  (a proposition) to its Asserting source (article, personal 
+                  statement, etc.).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonConcept#Relationship"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/SEPIO_0000001"/>
+  </owl:ObjectProperty>
+</rdf:RDF>

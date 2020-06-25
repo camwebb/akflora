@@ -1,0 +1,153 @@
+@prefix tc: <http://rs.tdwg.org/ontology/voc/TaxonConcept#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix :   <http://alaskaflora.org/sw/rothfels2012.rdf#> .
+
+# rothfels2012.ttl is master, rothfels2012.rdf is derivative
+
+# New property
+
+:taxonConceptRelationshipAccordingTo
+  a owl:ObjectProperty ;
+  rdfs:comment """The property that relates the Taxon Concept Relationship 
+                  (a proposition) to its Asserting source (article, personal 
+                  statement, etc.).""" ;
+  rdfs:domain tc:Relationship ;
+  rdfs:range <http://purl.obolibrary.org/obo/SEPIO_0000001> .
+
+# Taxon Concepts
+
+:Rothfels_Aspleniaceae a tc:TaxonConcept;
+  tc:nameString "Aspleniaceae Newman" ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Athyriaceae a tc:TaxonConcept;
+  tc:nameString "Athyriaceae Alston" ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Blechnaceae a tc:TaxonConcept;
+  tc:nameString "Blechnaceae Newman" ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Cystopteridaceae a tc:TaxonConcept;
+  tc:nameString "Cystopteridaceae (Payer) Shmakov" ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Diplaziopsidaceae a tc:TaxonConcept;
+  tc:nameString "Diplaziopsidaceae X.C. Zhang & Christenh." ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Hemidictyaceae a tc:TaxonConcept;
+  tc:nameString "Hemidictyaceae Christenh. & H. Schneid."  ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Onocleaceae a tc:TaxonConcept;
+  tc:nameString "Onocleaceae Pic. Serm."  ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Rhachidosoraceae a tc:TaxonConcept;
+  tc:nameString "Rhachidosoraceae X.C. Zhang"  ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Thelypteridaceae a tc:TaxonConcept;
+  tc:nameString "Thelypteridaceae Ching ex Pic. Serm."  ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+:Rothfels_Woodsiaceae a tc:TaxonConcept;
+  tc:nameString "Woodsiaceae Herter"  ;
+  tc:accordingTo  <https://doi.org/10.1002/tax.613003>  .
+
+
+:Smith_Aspleniaceae a tc:TaxonConcept;
+  tc:nameString "Aspleniaceae Newman"  ;
+  tc:accordingTo <https://doi.org/10.2307/25065646> .
+
+:Smith_Blechnaceae a tc:TaxonConcept;
+  tc:nameString "Blechnaceae Newman"  ;
+  tc:accordingTo <https://doi.org/10.2307/25065646> .
+
+:Smith_Onocleaceae a tc:TaxonConcept;
+  tc:nameString "Onocleaceae Pic. Serm."  ;
+  tc:accordingTo <https://doi.org/10.2307/25065646> .
+
+:Smith_Thelypteridaceae a tc:TaxonConcept;
+  tc:nameString "Thelypteridaceae Ching ex Pic. Serm."  ;
+  tc:accordingTo <https://doi.org/10.2307/25065646> .
+
+:Smith_Woodsiaceae a tc:TaxonConcept;
+  tc:nameString "Woodsiaceae Herter"  ;
+  tc:accordingTo <https://doi.org/10.2307/25065646> .
+
+
+# Relationships
+
+:TCM2 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Aspleniaceae ;
+  tc:toTaxon   :Smith_Aspleniaceae ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+  
+:TCM3 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Blechnaceae ;
+  tc:toTaxon   :Smith_Blechnaceae ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM4 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Onocleaceae ;
+  tc:toTaxon   :Smith_Onocleaceae ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM5 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Thelypteridaceae ;
+  tc:toTaxon   :Smith_Thelypteridaceae ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+
+:TCM6 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Athyriaceae ;
+  tc:toTaxon   :Smith_Woodsiaceae ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM7 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Cystopteridaceae ;
+  tc:toTaxon   :Smith_Woodsiaceae ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM8 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Diplaziopsidaceae ;
+  tc:toTaxon   :Smith_Woodsiaceae ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM9 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Hemidictyaceae ;
+  tc:toTaxon   :Smith_Woodsiaceae ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM10 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Rhachidosoraceae ;
+  tc:toTaxon   :Smith_Woodsiaceae ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+:TCM11 a tc:Relationship ;
+  tc:fromTaxon :Rothfels_Woodsiaceae ;
+  tc:toTaxon   :Smith_Woodsiaceae ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  :taxonConceptRelationshipAccordingTo <https://doi.org/10.1002/tax.613003> .
+
+# Make figure with:
+# rapper -q -i turtle -o ntriples rothfels2012.ttl | \
+#   grep -E "(fromTaxon|toTaxon|relationshipCategory)" | \
+#   rapper -i ntriples -o rdfxml-abbrev - \
+#     http://alaskaflora.org/sw/rothfels2012.rdf# | \
+#   rapper -o dot - http://alaskaflora.org/sw/rothfels2012.rdf# | \
+#   sed "s|http://alaskaflora.org/sw/rothfels2012.rdf#|:|g" | \
+#   sed "s|ns1:|tc:|g"> rothfels2012.dot ; \
+# dot -Tpng rothfels2012.dot > rothfels2012.png
