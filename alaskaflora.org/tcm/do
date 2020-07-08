@@ -29,9 +29,9 @@ BEGIN{
     "  cite   , Citation     , n , 1 ,     ;" \
     "  doi    , DOI          , c , 1 ,     ;" \
     "  url    , URL          , c , 1 ,     ;" \
-    "  bhl_item,BHL_item_no , i , 0  ,     ;" \
-    "  bhl_pfirst,BHL_first_page,i,0 ,     ;" \
-    "  bhl_plast,BHL_last_page,i, 0  ,     ;" \
+    "  bhl_item,BHL_item_URL , c , 0  ,     ;" \
+    "  bhl_pfirst,BHL_first_page_URL,c,0 ,     ;" \
+    "  bhl_plast,BHL_last_page_URL,c, 0  ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "name , Name , code , code,`show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -214,8 +214,8 @@ function show(      x, n, i, j, k, sql) {
       }
       else {
         # DOIs and HTTP
-        if (substr(DBQ[i,Fgorder[f["table"]][j]],1,4) == "doi:")
-          print "<td><a href=\"https://doi.org/" substr(DBQ[i,Fgorder[f["table"]][j]],5)  "\">" substr(DBQ[i,Fgorder[f["table"]][j]],5,20) "</a></td>"
+        if (tolower(Fgorder[f["table"]][j]) == "doi")
+          print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[i,Fgorder[f["table"]][j]])  "\">" DBQ[i,Fgorder[f["table"]][j]] "</a></td>"
         else if (DBQ[i,Fgorder[f["table"]][j]] ~ /^https?/)
           print "<td><a href=\"" DBQ[i,Fgorder[f["table"]][j]] "\">" \
             substr( gensub(/^https?:\/\//,"","G",DBQ[i,Fgorder[f["table"]][j]])\
