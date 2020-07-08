@@ -286,7 +286,7 @@ function showone(      x, n, i, j, sel) {
     else {
       # DOIs and HTTP
       if (tolower(Fgorder[f["table"]][i]) == "doi")
-        print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[1,Fgorder[f["table"]][i]])  "\">" substr( DBQ[1,Fgorder[f["table"]][i]] , 1,15) "</a></td>"
+        print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[1,Fgorder[f["table"]][i]])  "\">" DBQ[1,Fgorder[f["table"]][i]]  "</a></td>"
       else if (substr(DBQ[1, Forder[f["table"]][i]],1,4) == "http")
         print "<td><a href=\"" DBQ[1,Forder[f["table"]][i]] "\">" DBQ[1,Forder[f["table"]][i]] "</a></td>"
       else print "<td>" DBQ[1,Forder[f["table"]][i]] "</td>"
