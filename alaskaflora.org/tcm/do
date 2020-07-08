@@ -29,9 +29,9 @@ BEGIN{
     "  cite   , Citation     , n , 1 ,     ;" \
     "  doi    , DOI          , c , 1 ,     ;" \
     "  url    , URL          , c , 1 ,     ;" \
-    "  bhl_item,BHL_item_URL , c , 0  ,     ;" \
-    "  bhl_pfirst,BHL_first_page_URL,c,0 ,     ;" \
-    "  bhl_plast,BHL_last_page_URL,c, 0  ,     ;" \
+    "  bhlItem,BHL_item_URL , c , 0  ,     ;" \
+    "  bhlPfirst,BHL_first_page_URL,c,0 ,     ;" \
+    "  bhlPlast,BHL_last_page_URL,c, 0  ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "name , Name , code , code,`show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
