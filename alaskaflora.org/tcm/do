@@ -29,8 +29,7 @@ BEGIN{
     "  cite   , Citation     , n , 1 ,     ;" \
     "  doi    , DOI          , c , 1 ,     ;" \
     "  url    , URL          , c , 1 ,     ;" \
-    "  bhlItem,BHL_item_URL , c , 0  ,     ;" \
-    "  bhlPfirst,BHL_first_page_URL,c,0 ,     ;" \
+    "  bhlPfirst,BHL_pg1_URL,c,1 ,     ;" \
     "  bhlPlast,BHL_last_page_URL,c, 0  ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "name , Name , code , code,`show`_=_1  /" \
