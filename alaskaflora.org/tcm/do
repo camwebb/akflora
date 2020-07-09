@@ -29,9 +29,10 @@ BEGIN{
     "  cite   , Citation     , n , 1 ,     ;" \
     "  pubtypeID , Pub_type  , i , 0 , pubtype;" \
     "  author , Authors      , c , 0 ,     ;" \
+    "  year   , Year         , c , 0 ,     ;" \
     "  title  , Title        , c , 0 ,     ;" \
     "  journal, Journal      , c , 0 ,     ;" \
-    "  volume , Volume       , i , 0 ,     ;" \
+    "  volume , Volume       , c , 0 ,     ;" \
     "  pages  , Pages        , c , 0 ,     ;" \
     "  publisher, Publisher  , c , 0 ,     ;" \
     "  address, Address      , c , 0 ,     ;" \
