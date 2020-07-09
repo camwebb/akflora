@@ -23,7 +23,7 @@ BEGIN{
   # fields not listed here will be ignored  
   # foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
   Config = \
-    "pub , Publication , code , code ,     /" \
+    "pub , Publication , code , code ,`show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  pubtypeID , Pub_type  , i , 0 , pubtype;" \
@@ -808,11 +808,14 @@ function hide(method,   sql, err) {
   if (method == "hideall")
     sql = "UPDATE `name` SET `show` = 0; " \
       "UPDATE `tc` SET `show` = 0; "       \
-      "UPDATE `tcm` SET `show` = 0; " 
+      "UPDATE `tcm` SET `show` = 0; "      \
+      "UPDATE `pub` SET `show` = 0; "      \
+      "UPDATE `pub` SET `show` = 1 WHERE id = 19 OR id = 21 OR id = 22 OR id = 23; " 
   else if (method == "unhideall")
     sql = "UPDATE `name` SET `show` = 1; " \
       "UPDATE `tc` SET `show` = 1; "       \
-      "UPDATE `tcm` SET `show` = 1; "
+      "UPDATE `tcm` SET `show` = 1; "      \
+      "UPDATE `pub` SET `show` = 1; " 
 
   print "<p>Action '" method "', results:</p>"
   err = db_sql(DATABASE, sql)
