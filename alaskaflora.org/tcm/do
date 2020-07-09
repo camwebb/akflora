@@ -26,11 +26,10 @@ BEGIN{
     "pub , Publication , code , code ,     /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
-    "  cite   , Citation     , n , 1 ,     ;" \
     "  pubtypeID , Pub_type  , i , 0 , pubtype;" \
     "  author , Authors      , c , 0 ,     ;" \
     "  year   , Year         , c , 0 ,     ;" \
-    "  title  , Title        , c , 0 ,     ;" \
+    "  title  , Title        , c , 1 ,     ;" \
     "  journal, Journal      , c , 0 ,     ;" \
     "  volume , Volume       , c , 0 ,     ;" \
     "  pages  , Pages        , c , 0 ,     ;" \
