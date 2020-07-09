@@ -219,8 +219,9 @@ function show(      x, n, i, j, k, sql) {
         # NON GENERIC:
         else if (Fgorder[f["table"]][j] ~ "bhlP")
           print "<td><a href=\"https://www.biodiversitylibrary.org/page/" \
-            DBQ[i,Fgorder[f["table"]][j]] "\">" Fgorder[f["table"]][j]  \
+            DBQ[i,Fgorder[f["table"]][j]] "\">" DBQ[i,Fgorder[f["table"]][j]] \
             "</a></td>"
+
         else if (DBQ[i,Fgorder[f["table"]][j]] ~ /^https?/)
           print "<td><a href=\"" DBQ[i,Fgorder[f["table"]][j]] "\">" \
             substr( gensub(/^https?:\/\//,"","G",DBQ[i,Fgorder[f["table"]][j]])\
@@ -295,7 +296,7 @@ function showone(      x, n, i, j, sel) {
       # NON GENERIC
       else if (Fgorder[f["table"]][i] ~ "bhlP")
         print "<td><a href=\"https://www.biodiversitylibrary.org/page/" \
-          DBQ[1,Fgorder[f["table"]][i]] "\">" Fgorder[f["table"]][i]   \
+          DBQ[1,Fgorder[f["table"]][i]] "\">" DBQ[1,Fgorder[f["table"]][i]] \
           "</a></td>"
       else if (substr(DBQ[1, Forder[f["table"]][i]],1,4) == "http")
         print "<td><a href=\"" DBQ[1,Forder[f["table"]][i]] "\">" DBQ[1,Forder[f["table"]][i]] "</a></td>"
