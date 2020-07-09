@@ -291,12 +291,12 @@ function showone(      x, n, i, j, sel) {
     }
     else {
       # DOIs and HTTP
-      if (tolower(Fgorder[f["table"]][i]) == "doi")
-        print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[1,Fgorder[f["table"]][i]])  "\">" DBQ[1,Fgorder[f["table"]][i]]  "</a></td>"
+      if (tolower(Forder[f["table"]][i]) == "doi")
+        print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[1,Forder[f["table"]][i]])  "\">" DBQ[1,Forder[f["table"]][i]]  "</a></td>"
       # NON GENERIC
-      else if (Fgorder[f["table"]][i] ~ /^bhlP/)
+      else if (Forder[f["table"]][i] ~ /^bhlP/)
         print "<td><a href=\"https://www.biodiversitylibrary.org/page/" \
-          DBQ[1,Fgorder[f["table"]][i]] "\">" DBQ[1,Fgorder[f["table"]][i]] \
+          DBQ[1,Forder[f["table"]][i]] "\">" DBQ[1,Forder[f["table"]][i]] \
           "</a></td>"
       
       else if (substr(DBQ[1, Forder[f["table"]][i]],1,4) == "http")
