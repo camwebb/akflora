@@ -41,7 +41,8 @@ BEGIN{
     "  url    , URL          , c , 1 ,     ;" \
     "  bhlPf  ,BHL_pg1_ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
-    "  notes  , Notes        , n , 0 ,     |" \
+    "  notes  , Notes        , n , 0 ,     ;" \
+    "  show   , Show         , b , 0 ,     |" \
     "pubtype  , Pub_type0 , id , label,    /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
@@ -420,15 +421,20 @@ function addedit(      x, n, i, j, sel, sql, schema) {
       print "</select>"
       print "</td>"
     }
-    else {
-      if (Ftype[f["table"]][Forder[f["table"]][i]] == "n")
+    else if (Ftype[f["table"]][Forder[f["table"]][i]] == "n")
         print "<td><textarea style=\"height:100px;width:300px;\" name=\"f-" \
           Forder[f["table"]][i] "\">" DBQ[1, Forder[f["table"]][i]] \
           "</textarea></td>"
-      else
+    else if (Ftype[f["table"]][Forder[f["table"]][i]] == "b") {
+      if (DBQ[1, Forder[f["table"]][i]]) checked = " checked=\"1\""
+      print "<td><input type=\"hidden\" name=\"f-" Forder[f["table"]][i] \
+        "\" value=\"0\"/><input type=\"checkbox\" name=\"f-"            \
+        Forder[f["table"]][i] "\" value=\"1\"" checked "/></td>"
+      # https://stackoverflow.com/a/1992745/563709
+    }
+    else
         print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i] \
           "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
-    }
     print "</tr>"
   }
   print "</table>"
@@ -808,8 +814,12 @@ function defaultpage(   i)
   print "<h2>Tools</h2>"
   print "<ul>"
   print "<li><a href=\"do?action=graph\">See TCM graph</a></li>"
-  print "<li><a href=\"do?action=hideall\">Hide</a> all Names, TCs, TCMs, to unclutter the lists when moving to a, e.g., new genus</li>"
-  print "<li><a href=\"do?action=unhideall\">Un-hide</a> all Names, TCs, TCMs</li>"
+  print "<li><a href=\"do?action=hideall\">Hide</a> all Pubs (except core "\
+    "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, "\
+    "e.g., new genus. Hidden records can still be searched for, and then "\
+    "edited to show themselves.</li>"
+  print "<li><a href=\"do?action=unhideall\">Un-hide</a> all Pubs, Names, "\
+    "TCs, TCMs</li>"
   print "</ul></div>"
   
   footer()
