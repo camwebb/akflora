@@ -8,13 +8,15 @@
 
 # TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
 # DEV - use -L to lint on regular basis
+# DB: use field types, foreign keys, and triggers to validate
+#     and GRANT (only) SELECT to prevent user editing of Code Tables
 
 BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
 
   # Init
-  DATABASE = "tcmonline"
-  # DEBUG = 1
+  DATABASE = "tcm"
+  DEBUG = 1
   # Config:
   #   table1 { table_atts {
   #              table, full_name, sort_field, foreign_show, filter } /
@@ -63,10 +65,10 @@ BEGIN{
     "  nameID , Name         , i , 1 , name;" \
     "  pubID  , Publication  , i , 1 , pub ;" \
     "  notes  , Notes        , n , 0 ,     |" \
-    "rel , Relationship0 , id , label      /" \
+    "rel , Relationship0 , id , label ,    /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "syn , Synonym0 , id , label           /" \
+    "syn , Synonym0 , id , label ,         /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
     "tcm , TC_Relationships , id , id ,`show`_=_1       /" \
@@ -90,7 +92,7 @@ BEGIN{
   
   # DETERMINE AND EXECUTE METHOD
   if (f["table"]) {
-    if (f["action"] == "show") 
+    if (f["action"] == "show")
       show()
     else if ((f["action"] == "showone") && f["id"])
       showone()
@@ -183,17 +185,22 @@ function show(      x, n, i, j, k, sql) {
   
   # Query DB
   # filters
-  if(Twhere[f["table"]] && f["where"]) 
-    where = "WHERE " Twhere[f["table"]] " AND ( " \
-      gensub(/\\'/,"'","G",f["where"]) " )"
+  if(f["searchbox"])
+    # if search box, override the `show` = 1, etc.
+    where = "WHERE `" Tsort[f["table"]] "` LIKE '" \
+      gensub(/'/,"\\'","G",f["searchbox"]) "'"
+  else if(Twhere[f["table"]] && f["where"]) 
+    where = "WHERE " Twhere[f["table"]] " AND ( " f["where"] " )"
+      # [not sure why I used gensub b4:] gensub(/\\'/,"'","G",f["where"]) " )"
   else if(Twhere[f["table"]])
     where = "WHERE " Twhere[f["table"]]
   else if (f["where"])
-    where = "WHERE " gensub(/\\'/,"'","G",f["where"])
+    where = "WHERE " f["where"]
+    # [not sure why I used gensub b4:] gensub(/\\'/,"'","G",f["where"])
   sql = "SELECT * FROM `" f["table"] "` " where \
            " ORDER BY `" Tsort[f["table"]] "`;"
   if (DEBUG)
-    print sql
+    printdebug(sql)
   db_query(DATABASE,  sql)
 
   # Table header
@@ -260,7 +267,7 @@ function show(      x, n, i, j, k, sql) {
 
     # backlinks
     for (j in backt)
-      print "<th style=\"border:none; font-size:smaller;\">"\
+      print "<td style=\"border:none; font-size:smaller;\">"\
         "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
         backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
 
@@ -269,7 +276,14 @@ function show(      x, n, i, j, k, sql) {
   db_clear()
 
   print "</table>"
-  print "<p><a href=\"do?table=" f["table"] "&amp;action=add\"><b>Add</b></a>"
+  print "<p><form action=\"do\"><a href=\"do?table=" f["table"] \
+    "&amp;action=add\">"
+  print "<b>Add</b></a>&#160;&#160;|&#160;&#160;<input type=\"hidden\" "\
+    "name=\"table\" value=\"" f["table"] "\"/><input type=\"hidden\" "\
+    "name=\"action\" value=\"show\"/><input type=\"text\" name=\"searchbox\" "\
+    "size=\"30\"/> <input type=\"submit\" value=\"Search\"/> "\
+    "<span style=\"font-size:smaller;\">(Searches on primary sort field; "\
+    "use '%' as wildcard)</span></form></p>"
 
   footer()
 }
@@ -362,7 +376,10 @@ function addedit(      x, n, i, j, sel, sql, schema) {
 
   if (f["action"] == "edit") {
     print "<input type=\"hidden\" name=\"id\" value=\"" f["id"] "\"/>"
-    db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
+    sql = "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";"
+    if (DEBUG)
+      printdebug(sql)
+    db_query(DATABASE, sql)
   }
 
   print "<table>"
@@ -445,7 +462,7 @@ function preaction(     sql, i, err) {
     gsub(/, $/,"",sql)
     sql = sql ");"
     if (DEBUG)
-      print sql
+      printdebug(sql)
   }
   
   if (f["preaction"] == "edit") {
@@ -466,7 +483,7 @@ function preaction(     sql, i, err) {
     gsub(/, $/,"",sql)
     sql = sql " WHERE `id` = " f["id"] " ;"
     if (DEBUG)
-      print sql
+      printdebug(sql)
   }
   else if (f["preaction"] == "delete")
     sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
@@ -633,7 +650,7 @@ function make_lookup(filteron,       i, j, sql) {
         sql = sql " WHERE " Twhere[Fforid[f["table"]][Forder[f["table"]][i]] ]
       sql = sql " ;"
       if (DEBUG)
-        print sql
+        printdebug(sql)
       db_query(DATABASE, sql)
       for (j = 1; j <= DBQr; j++) {
         Lookup[Fforid[f["table"]][Forder[f["table"]][i]]][DBQ[j,"id"]] = \
@@ -825,3 +842,8 @@ function hide(method,   sql, err) {
   
   footer()
 }
+
+function printdebug(msg) {
+  print "<div class=\"debugmsg\"><pre>" msg "</pre></div>"
+}
+
