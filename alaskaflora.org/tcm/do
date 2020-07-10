@@ -60,7 +60,7 @@ BEGIN{
     "irank , Infra_rank0 , id , label      /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tc , Taxon_Concept, id,code,`show`_=_1/" \
+    "tc , Taxon_Concept, code,code,`show`_=_1/" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
@@ -188,6 +188,8 @@ function show(      x, n, i, j, k, sql) {
   # filters
   if(f["searchbox"])
     # if search box, override the `show` = 1, etc.
+    # note that if the sort field is numeric, the search must be numeric
+    # which will not be possible for the user
     where = "WHERE `" Tsort[f["table"]] "` LIKE '" \
       gensub(/'/,"\\'","G",f["searchbox"]) "'"
   else if(Twhere[f["table"]] && f["where"]) 
