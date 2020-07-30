@@ -54,7 +54,7 @@ BEGIN{
     "  irankID, rank         , i , 1 ,irank ;" \
     "  infrasp, infrasp      , c , 1 ,     ;" \
     "  author , Author       , c , 1 ,     ;" \
-    "  pubID  , Publication  , i , 1 , pub ;" \
+    "  pubID  , Orig._Publ.  , i , 1 , pub ;" \
     "  url    , URL          , c , 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "irank , Infra_rank0 , id , label      /" \
