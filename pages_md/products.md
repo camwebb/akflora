@@ -7,6 +7,11 @@
  * Cam led a public [discussion on the Taxon Concepts problem](https://www.idigbio.org/wiki/index.php/Taxon_concept_discussion) at the [2nd Annual Digital Data in Biodiversity Research Conference](https://www.idigbio.org/content/second-annual-digital-data-biodiversity-research-conference-emerging-innovations) (2018)
  * During proposal development, Cam dafted a taxon concept relationship [extension](http://rs.gbif.org/sandbox/extension/tcrel.xml) for Darwin Core Archives.
  * The [development blog](blog.html)
+ * A [checklist](../files/FoA_names_list_2020-01-18.pdf) of Alaskan
+   plant names, highlighting conflicts in accepted status among source
+   lists (ALA Checklist, the Panarctic Flora, Flora of North America,
+   The Kew World Checklist of Selected Plant Families, and the UAA
+   Checklist for the Flora of Alaska).
 
 ## Other resources
 
