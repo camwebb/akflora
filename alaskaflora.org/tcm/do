@@ -72,9 +72,10 @@ BEGIN{
     "syn , Synonym0 , id , label ,         /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tcm , TC_Relationships , id , id ,`show`_=_1       /" \
+    "tcm , TC_Relationships , tc1lab , id ,`show`_=_1       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1          , i , 1 , tc  ;" \
+    "  tc1lab , TC1lab       , c , 0 ,     ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2          , i , 1 , tc  ;" \
