@@ -8,6 +8,9 @@
 
 # TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
 # DEV - use -L to lint on regular basis
+#     - the solution to sorting on the lookup of tcm.tc1ID, i.e.,
+#       creating a dummy, updated field tc1lab, is a kludge. Other fixes
+#       would require big rewrites (awk sorting, or ORDER BY using two tables
 # DB: use field types, foreign keys, and triggers to validate
 #     and GRANT (only) SELECT to prevent user editing of Code Tables
 
@@ -32,7 +35,7 @@ BEGIN{
     "  author , Authors      , c , 0 ,     ;" \
     "  year   , Year         , c , 0 ,     ;" \
     "  title  , Title        , c , 1 ,     ;" \
-    "  journal, Journal      , c , 0 ,     ;" \
+    "  journal, Journal_or_Book , c , 0 ,     ;" \
     "  volume , Volume       , c , 0 ,     ;" \
     "  pages  , Pages        , c , 0 ,     ;" \
     "  publisher, Publisher  , c , 0 ,     ;" \
@@ -75,7 +78,7 @@ BEGIN{
     "tcm , TC_Relationships , tc1lab , id ,`show`_=_1       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1          , i , 1 , tc  ;" \
-    "  tc1lab , TC1lab       , c , 0 ,     ;" \
+    "  tc1lab , IGNORE       , c , 0 ,     ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2          , i , 1 , tc  ;" \
