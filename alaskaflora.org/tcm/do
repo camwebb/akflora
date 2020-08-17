@@ -68,6 +68,9 @@ BEGIN{
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
     "  pubID  , Publication  , i , 1 , pub ;" \
+    "  bhlPf  ,BHL_pg1_ID    , i , 1 ,     ;" \
+    "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
+    "  foak  , Fl.AK  , b, 1  ,            ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "rel , Relationship0 , id , label ,    /" \
     "  id     , ID           , i , 0 ,     ;" \
