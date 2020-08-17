@@ -77,11 +77,11 @@ BEGIN{
     "  label  , Label        , c , 1 ,     |" \
     "tcm , TC_Relationships , tc1lab , id ,`show`_=_1       /" \
     "  id     , ID           , i , 0 ,     ;" \
-    "  tc1ID  , TC1          , i , 1 , tc  ;" \
+    "  tc1ID  , TC1_newer     , i , 1 , tc  ;" \
     "  tc1lab , IGNORE       , c , 0 ,     ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
-    "  tc2ID  , TC2          , i , 1 , tc  ;" \
+    "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
     "  notes  , Notes        , n , 0 ,      "
   config()
