@@ -22,13 +22,14 @@ BEGIN{
   # DEBUG = 1
   # Config:
   #   table1 { table_atts {
-  #              table, full_name, sort_field, foreign_show, filter } /
+  #              table, full_name, sort_field, foreign_show, select, filter } /
   #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
-  # fields not listed here will be ignored  
+  # fields not listed here will be ignored
+  # if comma is needed, code with ^ 
   # foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
   Config = \
-    "pub , Publication , code , code ,`show`_=_1  /" \
+    "pub , Publication , code , code , SELECT_*_FROM_`pub`, `show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  pubtypeID , Pub_type  , i , 0 , pubtype;" \
@@ -46,10 +47,10 @@ BEGIN{
     "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     ;" \
     "  show   , Show         , b , 0 ,     |" \
-    "pubtype  , Pub_type0 , id , label,    /" \
+    "pubtype  , Pub_type0 , id , label, SELECT_*_FROM_`pubtype` ,   /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "name , Name , code , code,`show`_=_1  /" \
+    "name , Name , code , code, SELECT_*_FROM_`name` , `show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  genus  , Genus        , c , 1 ,     ;" \
@@ -60,10 +61,10 @@ BEGIN{
     "  pubID  , Orig._Publ.  , i , 1 , pub ;" \
     "  url    , URL          , c , 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
-    "irank , Infra_rank0 , id , label      /" \
+    "irank , Infra_rank0 , id , label, SELECT_*_FROM_`irank`, /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tc , Taxon_Concept, code,code,`show`_=_1/" \
+    "tc , Taxon_Concept, code,code,SELECT_*_FROM_`tc` , `show`_=_1 /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
@@ -72,16 +73,16 @@ BEGIN{
     "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
     "  foak  , Fl.AK  , b, 1  ,            ;" \
     "  notes  , Notes        , n , 0 ,     |" \
-    "rel , Relationship0 , id , label ,    /" \
+    "rel , Relationship0 , id , label , SELECT_*_FROM_`rel` ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "syn , Synonym0 , id , label ,         /" \
+    "syn , Synonym0 , id , label ,  SELECT_*_FROM_`syn`,       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tcm , TC_Relationships , tc1lab , id ,`show`_=_1       /" \
+    "tcm , TC_Relationships , code , id , SELECT_tcm.*%2C_tc.code%2Ctc.foak_FROM_`tcm`%2C`tc`_WHERE_tc.id_=_tcm.tc1ID , `tcm`.`show`_=_1   /"    \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1_newer     , i , 1 , tc  ;" \
-    "  tc1lab , IGNORE       , c , 0 ,     ;" \
+    "  foak   , Fl.AK        , f , 1 ,     ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
@@ -197,18 +198,16 @@ function show(      x, n, i, j, k, sql) {
     # if search box, override the `show` = 1, etc.
     # note that if the sort field is numeric, the search must be numeric
     # which will not be possible for the user
-    where = "WHERE `" Tsort[f["table"]] "` LIKE '" \
+    where = " AND `" Tsort[f["table"]] "` LIKE '" \
       gensub(/'/,"\\'","G",f["searchbox"]) "'"
-  else if(Twhere[f["table"]] && f["where"]) 
-    where = "WHERE " Twhere[f["table"]] " AND ( " f["where"] " )"
-      # [not sure why I used gensub b4:] gensub(/\\'/,"'","G",f["where"]) " )"
-  else if(Twhere[f["table"]])
-    where = "WHERE " Twhere[f["table"]]
-  else if (f["where"])
-    where = "WHERE " f["where"]
-    # [not sure why I used gensub b4:] gensub(/\\'/,"'","G",f["where"])
-  sql = "SELECT * FROM `" f["table"] "` " where \
-           " ORDER BY `" Tsort[f["table"]] "`;"
+  else if (Tfilter[f["table"]])
+    where = " AND " Tfilter[f["table"]]
+
+  # add any user-created filters
+  if(f["where"]) 
+    where = where " AND " f["where"]
+
+  sql = Tselect[f["table"]] where " ORDER BY `" Tsort[f["table"]] "`;"
   if (DEBUG)
     printdebug(sql)
   db_query(DATABASE,  sql)
@@ -299,7 +298,7 @@ function show(      x, n, i, j, k, sql) {
 }
 
 
-function showone(      x, n, i, j, sel) {
+function showone(      x, n, i, j, sel, sql) {
   # version history: this is original version
 
   header(Tlabel[f["table"]] ", record " f["id"])
@@ -309,11 +308,14 @@ function showone(      x, n, i, j, sel) {
   print "<h1>" Tlabel[f["table"]] ", record " f["id"] "</h1>"
 
   make_lookup(0)
-    
-  db_query(DATABASE, "SELECT * FROM `" f["table"] "` WHERE id = " f["id"] ";")
+
+  sql = Tselect[f["table"]] " AND `" f["table"] "`.id = " f["id"] ";"
+  if (DEBUG)
+    printdebug(sql)
+  db_query(DATABASE, sql)
   
   print "<table>"
-  for (i = 1; i <= length(Forder[f["table"]]); i++) { 
+  for (i = 1; i <= length(Forder[f["table"]]); i++) {
     print "<tr>"
     print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
       "</td>"
@@ -393,7 +395,10 @@ function addedit(      x, n, i, j, sel, sql, schema) {
   }
 
   print "<table>"
-  for (i = 1; i <= length(Forder[f["table"]]); i++) { 
+  for (i = 1; i <= length(Forder[f["table"]]); i++) {
+    # omit foreign fields
+    if (Ftype[f["table"]][Forder[f["table"]][i]] == "f")
+      continue
     print "<tr>"
     print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
       "</td>"
@@ -638,10 +643,18 @@ function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
     Tsort[ta[1]]    = ta[3]
     Torder[tcnt++]  = ta[1]
     Tforshow[ta[1]] = ta[4]
-    Twhere[ta[1]]   = ta[5]
+    Tselect[ta[1]]  = ta[5]
+    Tfilter[ta[1]]   = ta[6]
     gsub(/%5F/,"_",Tforshow[ta[1]])
     gsub(/%2C/,",",Tforshow[ta[1]])
-
+    gsub(/%5F/,"_",Tselect[ta[1]])
+    gsub(/%2C/,",",Tselect[ta[1]])
+    gsub(/%5F/,"_",Tfilter[ta[1]])
+    gsub(/%2C/,",",Tfilter[ta[1]])
+    # ensure all select statements include a WHERE
+    if (Tselect[ta[1]] !~ /WHERE/)
+      Tselect[ta[1]] = Tselect[ta[1]] " WHERE TRUE"
+    
     # fields
     split(t2[2], fld, ";")
     # go through fields, not including `id`
@@ -677,8 +690,8 @@ function make_lookup(filteron,       i, j, sql) {
         Fforid[f["table"]][Forder[f["table"]][i]] "`"
 
       # if the filter is on (for dropdowns)
-      if (Twhere[ Fforid[f["table"]][Forder[f["table"]][i]] ] && filteron)
-        sql = sql " WHERE " Twhere[Fforid[f["table"]][Forder[f["table"]][i]] ]
+      if (Tfilter[ Fforid[f["table"]][Forder[f["table"]][i]] ] && filteron)
+        sql = sql " WHERE " Tfilter[Fforid[f["table"]][Forder[f["table"]][i]] ]
       sql = sql " ;"
       if (DEBUG)
         printdebug(sql)
