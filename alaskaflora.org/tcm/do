@@ -70,7 +70,7 @@ BEGIN{
     "  pubID  , Publication  , i , 1 , pub ;" \
     "  bhlPf  ,BHL_pg1_ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
-    "  foak  , Fl.AK  , b, 1  ,            ;" \
+    "  foak  , Fl.AK  , b, 0  ,            ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "rel , Relationship0 , id , label ,    /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -235,8 +235,8 @@ function show(      x, n, i, j, k, sql) {
       if (Fforid[f["table"]][Fgorder[f["table"]][j]]) {
         print "<td><a href=\"do?table=" \
           Fforid[f["table"]][Fgorder[f["table"]][j]]                     \
-          "&amp;action=show#id" DBQ[i , Fgorder[f["table"]][j]] "\">"    \
-          Lookup[ Fforid[f["table"]][Fgorder[f["table"]][j]] ][          \
+          "&amp;action=show&amp;where=id%3D" DBQ[i , Fgorder[f["table"]][j]] \
+          "\">"  Lookup[ Fforid[f["table"]][Fgorder[f["table"]][j]] ][  \
             DBQ[i , Fgorder[f["table"]][j]]] "</a></td>"
       }
       else {
