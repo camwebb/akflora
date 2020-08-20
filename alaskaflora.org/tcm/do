@@ -435,12 +435,28 @@ function addedit(      x, n, i, j, sel, sql, schema) {
           Forder[f["table"]][i] "\">" DBQ[1, Forder[f["table"]][i]] \
           "</textarea></td>"
     else if (Ftype[f["table"]][Forder[f["table"]][i]] == "b") {
-      if (DBQ[1, Forder[f["table"]][i]]) checked = " checked=\"1\""
-      print "<td><input type=\"hidden\" name=\"f-" Forder[f["table"]][i] \
-        "\" value=\"0\"/><input type=\"checkbox\" name=\"f-"            \
-        Forder[f["table"]][i] "\" value=\"1\"" checked "/></td>"
-      # https://stackoverflow.com/a/1992745/563709
+      # had previously used a checkbox, but this creates problems:
+      #   https://stackoverflow.com/a/1992745/563709
+      
+      print "<td>"
+      print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
+      if ((DBQ[1, Forder[f["table"]][i]] == "NULL") || (f["action"] == "add"))
+        print "<option value=\"NULL\" selected=\"selected\"></option>"
+      else
+        print "<option value=\"NULL\"></option>"
+      
+      if (DBQ[1, Forder[f["table"]][i]] == "0") {
+        print "<option value=\"0\" selected=\"selected\">no</option>"
+        print "<option value=\"1\">yes</option>"
+      }
+      else {
+        print "<option value=\"0\">no</option>"
+        print "<option value=\"1\" selected=\"selected\">yes</option>"
+      }
+      print "</select>"
+      print "</td>"
     }
+    
     else
         print "<td><input type=\"text\" name=\"f-" Forder[f["table"]][i] \
           "\" size=\"30\" value=\"" DBQ[1, Forder[f["table"]][i]] "\"/></td>"
