@@ -794,23 +794,46 @@ function graph(  dir) {
     footer()
     exit 1
   }
-    
+
+  floras = "PAF|FNA|Cody|Welsh|Hult[eé]n"
+  split(floras,flora,"|")
+  
   gv = "digraph structure { \n"                     \
     "  rankdir=\"TB\"; \n"                          \
     "  node [fontname=\"Helvetica\",shape=box]; \n"                 \
-    "  edge [fontname=\"Courier\", len=1.5, arrowhead=normal]; \n\n"
+    "  edge [fontname=\"Courier\", len=1.5, arrowhead=normal]; \n" \
+    "  newrank=true; \n\n"
+
   for (i = 1; i <= DBQr; i++) {
     if (!node[DBQ[i, "TC1ID"]]) {
       gv = gv "node" DBQ[i, "TC1ID"] " [label=\"" DBQ[i, "TC1"] "\",URL=\"do?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC1ID"] "\"]; \n"
       node[DBQ[i, "TC1ID"]]++
+      for (j in flora)
+        if (DBQ[i, "TC1"] ~ (" " flora[j]))     \
+          florarank[j][DBQ[i, "TC1ID"]]++
     }
     if (!node[DBQ[i, "TC2ID"]]) {
       gv = gv "node" DBQ[i, "TC2ID"] " [label=\"" DBQ[i, "TC2"] "\",URL=\"do?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC2ID"] "\"]; \n"
       node[DBQ[i, "TC2ID"]]++
+      for (j in flora)
+        if (DBQ[i, "TC2"] ~ (" " flora[j]))                 \
+          florarank[j][DBQ[i, "TC2ID"]]++
     }
-    gv = gv "node" DBQ[i, "TC1ID"] " -> node" DBQ[i, "TC2ID"] " " \
+    gv = gv "node" DBQ[i, "TC1ID"] " -> node" DBQ[i, "TC2ID"] " "       \
       elab[DBQ[i, "R"]] "URL=\"do?action=showone&amp;table=tcm&amp;id=" DBQ[i, "ID"] "\"]; \n"
   }
+  gv = gv "\n"
+
+  for (i in flora) {
+    rankstring = ""
+    if (isarray(florarank[i])) {
+      for (j in florarank[i])
+        rankstring = rankstring "node" j " ;"
+      gsub(/ ;$/,"",rankstring)
+      gv = gv "  { rank=same; " rankstring "}\n"
+    }
+  }
+  
   gv = gv "}"
   db_clear()
 
