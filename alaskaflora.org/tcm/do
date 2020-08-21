@@ -539,8 +539,9 @@ function navbar(  i, str) {
   str = str "<a href=\"do\">Home</a>&#160;&#160;|&#160;&#160;"
   for (i = 1; i <= length(Torder); i++)
     if (Tlabel[Torder[i]] !~ /0/)
-      str = str "<a href=\"do?table=" Torder[i] "&amp;action=show\">" Tlabel[Torder[i]] \
-      "</a>&#160;&#160;|&#160;&#160;"
+      str = str "<a href=\"do?table=" Torder[i] "&amp;action=show\">" \
+        Tlabel[Torder[i]] "</a> (<a href=\"do?table=" Torder[i] \
+        "&amp;action=add\">+</a>)&#160;&#160;|&#160;&#160;"
   gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
 
   # Non-generic
