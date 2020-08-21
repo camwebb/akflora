@@ -87,7 +87,8 @@ BEGIN{
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
-    "  notes  , Notes        , n , 0 ,      "
+    "  notes  , Notes        , n , 0 ,     ;" \
+    "  show   , Show         , b , 0 ,      "
   config()
   db_secrets()
 
