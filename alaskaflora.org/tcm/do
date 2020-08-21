@@ -34,7 +34,7 @@ BEGIN{
     "  code   , Code         , c , 1 ,     ;" \
     "  pubtypeID , Pub_type  , i , 0 , pubtype;" \
     "  author , Authors      , c , 0 ,     ;" \
-    "  year   , Year         , c , 0 ,     ;" \
+    "  year   , Year         , c , 1 ,     ;" \
     "  title  , Title        , c , 1 ,     ;" \
     "  journal, Journal_or_Book , c , 0 ,     ;" \
     "  volume , Volume       , c , 0 ,     ;" \
@@ -71,7 +71,7 @@ BEGIN{
     "  pubID  , Publication  , i , 1 , pub ;" \
     "  bhlPf  ,BHL_pg1_ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
-    "  foak  , Fl.AK  , b, 1  ,            ;" \
+    "  foak  , Fl  , b, 1  ,            ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "rel , Relationship0 , id , label , SELECT_*_FROM_`rel` ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -82,7 +82,7 @@ BEGIN{
     "tcm , TC_Relationships , code , id , SELECT_tcm.*%2C_tc.code%2Ctc.foak_FROM_`tcm`%2C`tc`_WHERE_tc.id_=_tcm.tc1ID , `tcm`.`show`_=_1   /"    \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1_newer     , i , 1 , tc  ;" \
-    "  foak   , Fl.AK        , f , 1 ,     ;" \
+    "  foak   , Fl        , f , 1 ,     ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
@@ -445,20 +445,20 @@ function addedit(      x, n, i, j, sel, sql, schema) {
       
       print "<td>"
       print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
-      if ((DBQ[1, Forder[f["table"]][i]] == "NULL") || (f["action"] == "add")){
-        print "<option value=\"NULL\" selected=\"selected\"></option>"
-        print "<option value=\"0\">no</option>"
-        print "<option value=\"1\">yes</option>"
-      }
-      else if (DBQ[1, Forder[f["table"]][i]] == "0") {
+      if (DBQ[1, Forder[f["table"]][i]] == "0") {
         print "<option value=\"NULL\"></option>"
         print "<option value=\"0\" selected=\"selected\">no</option>"
         print "<option value=\"1\">yes</option>"
       }
-      else {
+      else if (DBQ[1, Forder[f["table"]][i]] == "1") {
         print "<option value=\"NULL\"></option>"
         print "<option value=\"0\">no</option>"
         print "<option value=\"1\" selected=\"selected\">yes</option>"
+      }
+      else {
+        print "<option value=\"NULL\" selected=\"selected\"></option>"
+        print "<option value=\"0\">no</option>"
+        print "<option value=\"1\">yes</option>"
       }
       print "</select>"
       print "</td>"
