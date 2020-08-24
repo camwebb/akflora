@@ -87,6 +87,7 @@ BEGIN{
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
+    "  graph  , Graph        , b , 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     ;" \
     "  show   , Show         , b , 0 ,      "
   config()
@@ -786,7 +787,7 @@ function graph(  dir) {
   db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
            "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 "\
            "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id "\
-           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`show` = 1;")
+           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1;")
 
   if (DBQr > 30) {
     print "<p>Sorry, cannot display a graph of more than 30 taxonomic"\
