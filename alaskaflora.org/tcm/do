@@ -789,8 +789,8 @@ function graph(  dir) {
            "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1 "\
            "AND tcm.`show` = 1;")
 
-  if (DBQr > 40) {
-    print "<p>Sorry, cannot display a graph of more than 40 taxonomic"\
+  if (DBQr > 60) {
+    print "<p>Sorry, cannot display a graph of more than 60 taxonomic"\
       "concepts.</p>"
     footer()
     exit 1
@@ -904,7 +904,8 @@ function hide(method,   sql, err) {
       "UPDATE `tcm` SET `show` = 0; "      \
       "UPDATE `pub` SET `show` = 0; "      \
       "UPDATE `pub` SET `show` = 1 "                                    \
-      "WHERE id = 19 OR id = 21 OR id = 22 OR id = 23 OR id = 24 ; " 
+      "WHERE id = 19 OR id = 21 OR id = 22 OR id = 23 OR id = 24 OR id = 46 "\
+      "OR id = 52 ; " 
   else if (method == "unhideall") {
     if (!f["genus"])
       sql = \
