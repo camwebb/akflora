@@ -3,7 +3,6 @@
 # A webapp for managing Taxon Concept Mapping data with a MySQL DB
 # (c) Cam Webb <cw@camwebb.info>, 2020; License: GPL v3
 
-# @include "/usr/local/share/awk/util_http.awk"
 @include "../../lib/db_secrets.awk"
 
 # TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
@@ -87,7 +86,7 @@ BEGIN{
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
-    "  graph  , Graph        , b , 0 ,     ;" \
+    "  graph  , Graph        , b , 1 ,     ;" \
     "  notes  , Notes        , n , 0 ,     ;" \
     "  show   , Show         , b , 0 ,      "
   config()
@@ -787,10 +786,11 @@ function graph(  dir) {
   db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
            "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 "\
            "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id "\
-           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1;")
+           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1 "\
+           "AND tcm.`show` = 1;")
 
-  if (DBQr > 30) {
-    print "<p>Sorry, cannot display a graph of more than 30 taxonomic"\
+  if (DBQr > 40) {
+    print "<p>Sorry, cannot display a graph of more than 40 taxonomic"\
       "concepts.</p>"
     footer()
     exit 1
@@ -879,13 +879,13 @@ function defaultpage(   i)
     "tables.</p>"
   print "<h2>Tools</h2>"
   print "<ul>"
-  print "<li><a href=\"do?action=graph\">See TCM graph</a></li>"
   print "<li><a href=\"do?action=hideall\">Hide</a> all Pubs (except core "\
     "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, "\
     "e.g., new genus. Hidden records can still be searched for, and then "\
-    "edited to show themselves.</li>"
-  print "<li><a href=\"do?action=unhideall\">Un-hide</a> all Pubs, Names, "\
-    "TCs, TCMs</li>"
+    "edited to show themselves. TCMs to be graphed are not reset, but will "\
+    "only be graphed when the TCMs are not hidden.</li>"
+  print "<li><form action=\"do\"><input type=\"hidden\" name=\"action\" value=\"unhideall\"/><input type=\"submit\" value=\"Un-hide\"/> all Pubs, Names, "\
+    "TCs, TCMs<br/>(optional: give single genus to un-hide: <input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
   print "</ul></div>"
   
   footer()
@@ -902,14 +902,27 @@ function hide(method,   sql, err) {
     sql = "UPDATE `name` SET `show` = 0; " \
       "UPDATE `tc` SET `show` = 0; "       \
       "UPDATE `tcm` SET `show` = 0; "      \
-      "UPDATE `tcm` SET `graph` = 0; "      \
       "UPDATE `pub` SET `show` = 0; "      \
-      "UPDATE `pub` SET `show` = 1 WHERE id = 19 OR id = 21 OR id = 22 OR id = 23 OR id = 24 ; " 
-  else if (method == "unhideall")
-    sql = "UPDATE `name` SET `show` = 1; " \
-      "UPDATE `tc` SET `show` = 1; "       \
-      "UPDATE `tcm` SET `show` = 1; "      \
-      "UPDATE `pub` SET `show` = 1; " 
+      "UPDATE `pub` SET `show` = 1 "                                    \
+      "WHERE id = 19 OR id = 21 OR id = 22 OR id = 23 OR id = 24 ; " 
+  else if (method == "unhideall") {
+    if (!f["genus"])
+      sql = \
+        "UPDATE `name` SET `show` = 1; "        \
+        "UPDATE `tc` SET `show` = 1; "          \
+        "UPDATE `tcm` SET `show` = 1; "         \
+        "UPDATE `pub` SET `show` = 1; " 
+    else {
+      sql =                                                             \
+        "UPDATE `name` SET `show` = 1 WHERE genus LIKE '%" f["genus"] "%'; " \
+        "UPDATE `pub`,`name` SET `pub`.`show` = 1 WHERE `name`.`show` = 1 "\
+        "AND `name`.pubID = pub.id; "                                   \
+        "UPDATE `tc`, `name` SET `tc`.`show` = 1 WHERE `name`.`show` = 1 "\
+        "AND `tc`.nameID = name.id; " \
+        "UPDATE tcm, `tc` SET `tcm`.`show` = 1 WHERE `tc`.`show` = 1 "\
+        "AND (`tcm`.tc1ID = tc.id OR `tcm`.tc2ID = tc.id); "
+    }
+  }
 
   print "<p>Action '" method "', results:</p>"
   err = db_sql(DATABASE, sql)

@@ -4,6 +4,8 @@ alaskaflora.org/chars/sql
 alaskaflora.org/chars/transfer*
 alaskaflora.org/onto/catalog-v001.xml
 alaskaflora.org/tcm/tmp*
+alaskaflora.org/tcm/TAGS
+alaskaflora.org/tcm/.htaccess
 bin/gawk
 bin/json.so
 dataflow/ALA/ala.*
