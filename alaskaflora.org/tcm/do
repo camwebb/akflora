@@ -81,7 +81,6 @@ BEGIN{
     "tcm , TC_Relationships , code , id , SELECT_tcm.*%2C_tc.code%2Ctc.foak_FROM_`tcm`%2C`tc`_WHERE_tc.id_=_tcm.tc1ID , `tcm`.`show`_=_1   /"    \
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1_newer     , i , 1 , tc  ;" \
-    "  foak   , Fl        , f , 1 ,     ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
@@ -180,6 +179,10 @@ function show(      x, n, i, j, k, sql) {
   
   if (f["preaction"])
     preaction()
+
+  ## NOT GENERIC
+  if (f["table"] == "tc")
+    print "<form action=\"do\">"
   
   print "<table>"
 
@@ -225,6 +228,10 @@ function show(      x, n, i, j, k, sql) {
     # print "<th style=\"font-size:smaller;\">used in<br/>" Tlabel[backt[i]] ":<br/>" Flabel[backt[i]][backf[i]] "</th>"
     print "<th style=\"border:none;\"></th>"
 
+  ## NOT GENERIC
+  if (f["table"] == "tc")
+    print "<th style=\"border:none;\"></th>"
+  
   print "</tr>"
 
   # Table rows
@@ -281,19 +288,36 @@ function show(      x, n, i, j, k, sql) {
         "<a href=\"do?table=" backt[j] "&amp;action=show&amp;where=" \
         backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
 
+    ## NOT GENERIC
+    if (f["table"] == "tc")
+      print "<td style=\"border:none;\"><input type=\"checkbox\" name=\"tc" DBQ[i,"id"] \
+        "\" value=\"1\"/></td>"
+    
     print "</tr>"
   }
   db_clear()
 
   print "</table>"
-  print "<p><form action=\"do\"><a href=\"do?table=" f["table"] \
+
+  ## NOT GENERIC
+  if (f["table"] == "tc") {
+    print "<input type=\"hidden\" name=\"action\" value=\"show\"/>"
+    print "<input type=\"hidden\" name=\"table\" value=\"tcm\"/>"
+    print "<input type=\"hidden\" name=\"preaction\" value=\"bc\"/>"
+    print "<p>"
+    print "<input type=\"submit\" value=\"Make congruent TCMs for checked TCs\"/>"
+    print "</p>"
+    print "</form>"
+  }
+  
+  print "<form action=\"do\"><p><a href=\"do?table=" f["table"] \
     "&amp;action=add\">"
   print "<b>Add</b></a>&#160;&#160;|&#160;&#160;<input type=\"hidden\" "\
     "name=\"table\" value=\"" f["table"] "\"/><input type=\"hidden\" "\
     "name=\"action\" value=\"show\"/><input type=\"text\" name=\"searchbox\" "\
     "size=\"30\"/> <input type=\"submit\" value=\"Search\"/> "\
     "<span style=\"font-size:smaller;\">(Searches on primary sort field; "\
-    "use '%' as wildcard)</span></form></p>"
+    "use '%' as wildcard)</span></p></form>"
 
   footer()
 }
@@ -479,7 +503,8 @@ function addedit(      x, n, i, j, sel, sql, schema) {
 }
 
 
-function preaction(     sql, i, err) {
+function preaction(     sql, i, j, err, bcid) {
+
   if (f["preaction"] == "add") {
     sql = "INSERT INTO `" f["table"] "` ("
     for (i in f)
@@ -502,6 +527,7 @@ function preaction(     sql, i, err) {
     sql = sql ");"
     if (DEBUG)
       printdebug(sql)
+    err = db_sql(DATABASE, sql)
   }
   
   if (f["preaction"] == "edit") {
@@ -523,11 +549,53 @@ function preaction(     sql, i, err) {
     sql = sql " WHERE `id` = " f["id"] " ;"
     if (DEBUG)
       printdebug(sql)
+    err = db_sql(DATABASE, sql)
   }
-  else if (f["preaction"] == "delete")
+  else if (f["preaction"] == "delete") {
     sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
+    err = db_sql(DATABASE, sql)
+  }
 
-  err = db_sql(DATABASE, sql)
+  ## NOT GENERIC - batch creation of congruent
+  else if (f["preaction"] == "bc") {
+    # which tc IDs to make congruent?
+    for (i in f)
+      if (i ~ /^tc/) {
+        bcid[substr(i, 3)]++
+        nbc++
+      }
+
+    # check for 2 or more
+    if (nbc < 2)
+      err = "Only " (nbc + 0) " TCs checked. Two or more are needed"
+    else {
+      # get dates of the tcs
+      
+      db_query(DATABASE, "SELECT tc.id, pub.year FROM tc, pub WHERE "\
+               "tc.pubID = pub.id ORDER BY pub.year DESC;")
+      # run through all TCs newest to oldest, and check if any are selected
+      for (i = 1; i <= DBQr; i++)
+        if (bcid[DBQ[i, "id"]]) {
+          if (!tctmp)
+            tctmp = DBQ[i, "id"]
+          else {
+            tc1[++j] = tctmp
+            tc2[j]   = DBQ[i, "id"]
+            tctmp = DBQ[i, "id"]
+          }
+        }
+      db_clear()
+      for (i = 1; i <= j ; i++)
+        sql = sql                                                       \
+          "INSERT INTO tcm (tc1ID, relID, tc2ID, pubID, graph, notes, `show`)" \
+          " VALUES (" tc1[i] ", 2, " tc2[i] ", 46, 1, 'congruent batch', 1); "  
+
+      if (DEBUG)
+        printdebug(sql)
+      err = db_sql(DATABASE, sql)
+    }
+  }
+  
   if (err)
     print "<p style=\"color:red;\">FAILED: " err "</p>"
   else print "<p style=\"color:green;\">Success</p>"
@@ -791,7 +859,8 @@ function graph(  dir) {
 
   if (DBQr > 60) {
     print "<p>Sorry, cannot display a graph of more than 60 taxonomic"\
-      "concepts.</p>"
+      " concepts.<br/>Suggest un-showing some of the completed concept chains;"\
+      "<br/>the graph choices will not be lost.</p>"
     footer()
     exit 1
   }
