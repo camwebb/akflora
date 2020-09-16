@@ -857,8 +857,8 @@ function graph(  dir) {
            "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1 "\
            "AND tcm.`show` = 1;")
 
-  if (DBQr > 60) {
-    print "<p>Sorry, cannot display a graph of more than 60 taxonomic"\
+  if (DBQr > 100) {
+    print "<p>Sorry, cannot display a graph of more than 100 taxonomic"\
       " concepts.<br/>Suggest un-showing some of the completed concept chains;"\
       "<br/>the graph choices will not be lost.</p>"
     footer()
