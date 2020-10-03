@@ -954,7 +954,7 @@ function defaultpage(   i)
     "edited to show themselves. TCMs to be graphed are not reset, but will "\
     "only be graphed when the TCMs are not hidden.</li>"
   print "<li><form action=\"do\"><input type=\"hidden\" name=\"action\" value=\"unhideall\"/><input type=\"submit\" value=\"Un-hide\"/> all Pubs, Names, "\
-    "TCs, TCMs<br/>(optional: give single genus to un-hide: <input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
+    "TCs, TCMs<br/>(optional: un-hide/add genera, one-by-one: <input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
   print "</ul></div>"
   
   footer()

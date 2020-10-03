@@ -11,7 +11,7 @@ function error(msg) {
 function queryDB( query            , row, i, cmd ) {
   gsub(/`/,"\\`",query);  # if writing directly, need: \\\`
   gsub(/\n/," ",query);
-  gsub(/\ \ */," ",query);
+  gsub(/  */," ",query);
   cmd = "/bin/echo -e \"" query "\" | mysql -u " USER " -p" PASSWORD " -h " HOST " -B --column-names --default-character-set=utf8 " DBNAME ;
   # print cmd;
   row = -1;
@@ -246,6 +246,83 @@ function iNatProject(cmd, json, i, j, data, nresults, user, date, taxon, id, thu
   print "</table>";
   print "<p style=\"font-size:80%;\"><i>Search via: 'http://alaskaflora.org/do?method=inatproj&users=XXX' where XXX is a comma-separated list of iNat usernames.</i></p>";
 
+  htmlFooter();
+}
+
+
+function iNatLinks(       cmd, json, i, j, data, nresults, x, taxon, id, thumb,  pages, p) {
+
+  RS="\x04";
+  gsub(/,/,"%2C",f["taxon"]);
+  gsub(/[ ]/,"%20",f["taxon"]);
+
+  # first page (also getting total number of results)
+  cmd = "curl -s -X GET --header 'Accept: application/json' 'https://api.inaturalist.org/v1/observations?place_id=6&taxon_name=" f["taxon"] "'";
+  cmd | getline json ;
+  close(cmd);
+
+  if (! json_fromJSON(json, data)) {
+    print "JSON import failed!" > "/dev/stderr"
+    exit 1
+  }
+  
+  nresults = data["total_results"] ;
+  x = 0;
+
+  for (i = 1 ; (i <= nresults) && (i <= 30) ; i++ ) {
+    taxon[++x] =  data["results"][i]["taxon"]["name"]
+    id[x] =     data["results"][i]["id"]
+    thumb[x] =  data["results"][i]["photos"][1]["url"]
+  }
+  
+  # get the rest of the pages
+  pages = int(nresults / 30) + int(((nresults % 30) + 29) / 30);
+  if (pages >= 3) pages = 3
+
+  for (p = 2 ; p <= pages ; p++) {
+    delete data; json = "";
+    cmd = "curl -s -X GET --header 'Accept: application/json' 'https://api.inaturalist.org/v1/observations?place_id=6&taxon_name=" f["taxon"] "&page=" p "'";
+    cmd | getline json ;
+    close(cmd);
+    
+    if (! json_fromJSON(json, data)) {
+      print "JSON import failed!" > "/dev/stderr"
+      exit 1
+    }
+    
+    for (i = 1 ; i <= (nresults - ((p-1)*30)) && i <= 30 ; i++ ) {
+      taxon[++x] =  data["results"][i]["taxon"]["name"]
+      id[x] =     data["results"][i]["id"]
+      thumb[x] =  data["results"][i]["photos"][1]["url"]
+    }
+  }
+
+  # sort field
+  PROCINFO["sorted_in"] = "@val_str_asc";
+  
+  # make output page
+  htmlHeader("iNat Pics");
+  print "<h1>iNat Pics for '" gensub(/%20/," ","G",f["taxon"]) "' in Alaska</h1>";
+  print "<p><b>Total obs: " nresults "</b> (showing max of 90)</p>";
+  print "<table cellpadding=\"10\">";
+  print "<tr><th>n</th><th>Taxon</th><th>Obs. URL</th><th>Photo</th><th>Photo HTML</th></tr>";
+  
+  for (i in taxon)
+    print "<tr>"\
+      "<td>" ++j "</td>"                                           \
+      "<td>" taxon[i] "</td>"                                           \
+      "<td><a href=\"https://www.inaturalist.org/observations/" id[i]   \
+      "\">https://www.inaturalist.org/observations/" id[i] "</a></td>"  \
+      "<td><a href=\"" gensub(/square/,"large","G",thumb[i]) \
+      "\" target=\"_blank\"><img src=\"" gensub(/square/,"small","G",thumb[i])\
+      "\"/></a></td>"\
+      "<td>&lt;a href=\"" gensub(/square/,"large","G",thumb[i]) \
+      "\" target=\"_blank\"&gt;&lt;img src=\"" \
+      gensub(/square/,"small","G",thumb[i]) "\"&gt;&lt;/a&gt;</td>" \
+      "</tr>"
+  print "</table>";
+  print "<p style=\"font-size:80%;\"><i>Search via: 'http://alaskaflora.org/do?method=inatlinks&taxon=XXX' where XXX is a taxon name</i></p>";
+  
   htmlFooter();
 }
 

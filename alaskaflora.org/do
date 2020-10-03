@@ -22,6 +22,7 @@ BEGIN{
   # DETERMINE AND EXECUTE METHOD
   if           (f["method"] == "gquery")  gquery();
   else if      ((f["method"] == "inatproj") && f["users"])  iNatProject();
+  else if      ((f["method"] == "inatlinks") && f["taxon"])  iNatLinks();
   # else if      (f["method"] == "myquery") {} ;
 
   # other/no arguments
