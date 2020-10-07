@@ -82,6 +82,7 @@ BEGIN{
     "  id     , ID           , i , 0 ,     ;" \
     "  tc1ID  , TC1_newer     , i , 1 , tc  ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
+    "  uncertain  , Uncertain , b , 0 ,    ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
     "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
@@ -553,6 +554,8 @@ function preaction(     sql, i, j, err, bcid) {
   }
   else if (f["preaction"] == "delete") {
     sql = "DELETE FROM`" f["table"] "` WHERE id = " f["id"] ";"
+    if (DEBUG)
+      printdebug(sql)
     err = db_sql(DATABASE, sql)
   }
 
