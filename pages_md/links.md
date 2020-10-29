@@ -16,4 +16,6 @@
    [World Checklist of Selected Plant Families](http://wcsp.science.kew.org/)
    Data was previously only available via The Plant List, but now has
    its own site (since 2017). Data format not conducive to re-use.
-   
+ * [Forest Service: Books Our Botanists Use](https://www.fs.fed.us/wildflowers/features/books/akbooks.shtml)
+ * [ANPS Bibliography](https://aknps.org/bibliography/)
+ 

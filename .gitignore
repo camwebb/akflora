@@ -6,6 +6,7 @@ alaskaflora.org/onto/catalog-v001.xml
 alaskaflora.org/tcm/tmp*
 alaskaflora.org/tcm/TAGS
 alaskaflora.org/tcm/.htaccess
+alaskaflora.org/tcm/pw.awk
 bin/gawk
 bin/json.so
 dataflow/ALA/ala.*
