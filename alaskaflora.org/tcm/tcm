@@ -17,8 +17,8 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
 
   # Init
-  DATABASE = "tcr"
-  APPNAME = "tcr"
+  DATABASE = "tcm"
+  APPNAME = "tcm"
   # DEBUG = 1
   # Config:
   #   table1 { table_atts {
