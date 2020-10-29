@@ -120,6 +120,8 @@ BEGIN{
     hide("hideall")
   else if (f["action"] == "unhideall")
     hide("unhideall")
+  else if (f["action"] == "export")
+    exportRDF()
 
   else defaultpage()
   
@@ -634,8 +636,8 @@ function db_query(db, query            , row, i, cmd, preFS ) {
   gsub(/`/,"\\`", query)  # if writing directly in awk script, need: \\\`
   gsub(/\n/," ", query)
   gsub(/  */," ", query)
-  cmd = "/bin/echo -e \"" query "\" | mysql --default-character-set=UTF8 -u " DBUSER[db] " -p" \
-    DBPASSWORD[db] " -h " DBHOST[db] \
+  cmd = "/bin/echo -e \"" query "\" | mysql --default-character-set=UTF8 -u " \
+    DBUSER[db] " -p" DBPASSWORD[db] " -h " DBHOST[db]                   \
     " -B --column-names --default-character-set=utf8 " DBNAME[db] 
   row = -1
   preFS = FS
@@ -675,9 +677,9 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   gsub(/  */," ",query)
   inRS = RS
   RS = "\x04"
-  cmd = "mysql --default-character-set=UTF8 -u " DBUSER[db]                              \
+  cmd = "mysql --default-character-set=UTF8 -u " DBUSER[db]         \
     " -p" DBPASSWORD[db] " -h " DBHOST[db] " " DBNAME[db] " 2>&1"
-  # not using system(). This way allows v long SQL statements
+  # Not using system(). This way allows v long SQL statements.
   # system() returns mysql exit code. Here, we send stderr to stdout
   print query |& cmd
   close(cmd, "to")
@@ -686,8 +688,8 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   RS = inRS
   return mysqlout
 
-  # # check the db is accessible
-  # e = db_sql("asrisms1", "SELECT '  OK' AS 'testing DB connection...';")
+  # To check the db is accessible:
+  # e = db_sql("db", "SELECT '  OK' AS 'testing DB connection...';")
   # if (e)
   #   error("Database not accessible")
 
@@ -696,9 +698,9 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
   # PROCINFO[cmd, "pty"] = 1, fflush(cmd), 'stdbuf -oL' and more.
   # Seems that as soon as from pipe is closed, the child process
   # terminates.  A FIFo approach may work:
-  # https://stackoverflow.com/a/20297981/563709 But MYSQL is efficient
-  # at handling many short connections:
-  # https://mysqlserverteam.com/mysql-connection-handling-and-scaling/
+  #   https://stackoverflow.com/a/20297981/563709
+  # But MYSQL is efficient at handling many short connections:
+  #   https://mysqlserverteam.com/mysql-connection-handling-and-scaling/
   # See also http://spawk.info/
 }
 
@@ -788,10 +790,7 @@ function make_lookup(filteron,       i, j, sql) {
       }
       db_clear()
     }
-
-  # for (i in Lookup)
-  #   for (j in Lookup[i])
-  #     print i, j, Lookup[i][j]
+  
 }
 
 
@@ -841,13 +840,13 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
   # change linebreaks to \n
   gsub(/\r\n/, "\n", decoded);
   # remove last linebreak
-  sub(/[\n\r]*$/,"",decoded);
+  gsub(/[\n\r]*$/,"",decoded);
   return decoded
 }
 
 # =========================== Non-generic ================================
 
-function graph(  dir) {
+function graph(   floras, flora, i, gv, node, j, florarank, map) {
 
   header("TCM graph");
   navbar()
@@ -865,14 +864,15 @@ function graph(  dir) {
   elab[5] = "[style=dashed," # is included in
   elab[6] = "[color=red,dir=none,"    # disjunct
   
-  db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, tcm.relID AS R, " \
-           "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 "\
-           "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id "\
-           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1 "\
+  db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, "\
+           "tcm.relID AS R, "                                           \
+           "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 " \
+           "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id " \
+           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1 " \
            "AND tcm.`show` = 1;")
 
   if (DBQr > 100) {
-    print "<p>Sorry, cannot display a graph of more than 100 taxonomic"\
+    print "<p>Sorry, cannot display a graph of more than 100 taxonomic" \
       " concepts.<br/>Suggest un-showing some of the completed concept chains;"\
       "<br/>the graph choices will not be lost.</p>"
     footer()
@@ -890,21 +890,24 @@ function graph(  dir) {
 
   for (i = 1; i <= DBQr; i++) {
     if (!node[DBQ[i, "TC1ID"]]) {
-      gv = gv "node" DBQ[i, "TC1ID"] " [label=\"" DBQ[i, "TC1"] "\",URL=\"" APPNAME "?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC1ID"] "\"]; \n"
+      gv = gv "node" DBQ[i, "TC1ID"] " [label=\"" DBQ[i, "TC1"] "\",URL=\"" \
+        APPNAME "?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC1ID"] "\"]; \n"
       node[DBQ[i, "TC1ID"]]++
       for (j in flora)
         if (DBQ[i, "TC1"] ~ (" " flora[j]))     \
           florarank[j][DBQ[i, "TC1ID"]]++
     }
     if (!node[DBQ[i, "TC2ID"]]) {
-      gv = gv "node" DBQ[i, "TC2ID"] " [label=\"" DBQ[i, "TC2"] "\",URL=\"" APPNAME "?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC2ID"] "\"]; \n"
+      gv = gv "node" DBQ[i, "TC2ID"] " [label=\"" DBQ[i, "TC2"] "\",URL=\"" \
+        APPNAME "?action=showone&amp;table=tc&amp;id=" DBQ[i, "TC2ID"] "\"]; \n"
       node[DBQ[i, "TC2ID"]]++
       for (j in flora)
         if (DBQ[i, "TC2"] ~ (" " flora[j]))                 \
           florarank[j][DBQ[i, "TC2ID"]]++
     }
     gv = gv "node" DBQ[i, "TC1ID"] " -> node" DBQ[i, "TC2ID"] " "       \
-      elab[DBQ[i, "R"]] "URL=\"" APPNAME "?action=showone&amp;table=tcm&amp;id=" DBQ[i, "ID"] "\"]; \n"
+      elab[DBQ[i, "R"]] "URL=\"" APPNAME \
+      "?action=showone&amp;table=tcm&amp;id=" DBQ[i, "ID"] "\"]; \n"
   }
   gv = gv "\n"
 
@@ -962,13 +965,20 @@ function defaultpage(   i)
     "tables.</p>"
   print "<h2>Tools</h2>"
   print "<ul>"
-  print "<li><a href=\"" APPNAME "?action=hideall\">Hide</a> all Pubs (except core "\
-    "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, "\
+  print "<li><a href=\"" APPNAME "?action=hideall\">Hide</a> all Pubs "\
+    "(except core "                                                     \
+    "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, " \
     "e.g., new genus. Hidden records can still be searched for, and then "\
     "edited to show themselves. TCMs to be graphed are not reset, but will "\
     "only be graphed when the TCMs are not hidden.</li>"
-  print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" name=\"action\" value=\"unhideall\"/><input type=\"submit\" value=\"Un-hide\"/> all Pubs, Names, "\
-    "TCs, TCMs<br/>(optional: un-hide/add genera, one-by-one: <input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
+  print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" "      \
+    "name=\"action\" value=\"unhideall\"/><input type=\"submit\" "      \
+    "value=\"Un-hide\"/> all Pubs, Names, "                             \
+    "TCs, TCMs<br/>(optional: un-hide/add genera, one-by-one: "         \
+    "<input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
+  print "<li><a href=\"" APPNAME "?action=export\">Export</a> Taxon Concepts"\
+    " and Taxon Concept Relationships as RDF (Turtle serialization), using "\
+    "the <a href=\"https://github.com/tdwg/ontology\">TDWG Ontology</a>.</li>"
   print "</ul></div>"
   
   footer()
@@ -1021,3 +1031,60 @@ function printdebug(msg) {
   print "<div class=\"debugmsg\"><pre>" msg "</pre></div>"
 }
 
+function exportRDF(   i, relcode, relcodes) {
+
+  print "Content-type: text/html\n"
+  print "<!DOCTYPE html>"
+  print "<html xmlns=\"http://www.w3.org/1999/xhtml\">"
+  print "<head><title>Taxon concept relationship RDF dump</title>"
+  print "<meta http-equiv=\"Content-Type\" content=\"text/html; \
+           charset=utf-8\" />"
+  print "</head><body><pre>"
+
+  print "@prefix : &lt;#&gt; ."
+  print "@prefix tc: &lt;http://rs.tdwg.org/ontology/voc/TaxonConcept#&gt;"
+  print "@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .\n"
+  print "# Taxon Concepts\n"
+
+  # Taxon concepts
+  db_query(DATABASE, "SELECT tc.id AS ID, tc.code AS L, CONCAT_WS(' ', genus,"\
+           " species, irank.label, "                                    \
+           "infrasp, name.author) AS N, CONCAT_WS(', ', pub.author, pub.year," \
+           " pub.title, pub.journal, pub.volume, pub.pages, pub.publisher, "\
+           "pub.address) AS P FROM tc, pub, name LEFT JOIN irank ON "\
+           "irank.id = name.irankID WHERE tc.nameID  = name.id AND "\
+           "tc.pubID = pub.id ;")
+
+  for (i = 1; i <= DBQr; i++) {
+    print ":TC" DBQ[i, "ID"] " a tc:TaxonConcept ;" 
+    print "  rdfs:label           \"" gensub(/"/,"\\\"","G", DBQ[i, "L"]) "\" ;"
+    print "  tc:nameString        \"" gensub(/"/,"\\\"","G", DBQ[i, "N"]) "\" ;"
+    print "  tc:accordingToString \"" gensub(/"/,"\\\"","G", DBQ[i, "P"]) \
+      "\" .\n"  
+  }  
+
+  db_clear()
+  
+  print "# Taxon Concept Relationships\n"
+  
+  # TC relationships
+  db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, "\
+           "tcm.relID AS R, "                                           \
+           "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 " \
+           "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id " \
+           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id ;")
+
+  relcodes =  ":Intersects|tc:IsCongruentTo|tc:Overlaps|tc:Includes|"\
+    "tc:IsIncludedIn|tc:Excludes"
+  split(relcodes, relcode, "|")
+  
+  for (i = 1; i <= DBQr; i++) {
+    print ":TCrel" DBQ[i, "ID"] " a tc:Relationship ;"
+    print "  tc:fromTaxon            :TC" DBQ[i, "TC1ID"] " ;"
+    print "  tc:relationshipCategory " relcode[DBQ[i, "R"]] " ;"
+    print "  tc:toTaxon              :TC" DBQ[i, "TC2ID"] " .\n"
+  }
+  db_clear()
+
+  print "</pre></body></html>"
+}
