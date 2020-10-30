@@ -5,29 +5,33 @@
 
 @include "pw.awk"
 
-# TODO - create e.g., 'linked names' link in show pubs leading to a WHERE
-# DEV - use -L to lint on regular basis
-#     - the solution to sorting on the lookup of tcm.tc1ID, i.e.,
-#       creating a dummy, updated field tc1lab, is a kludge. Other fixes
-#       would require big rewrites (awk sorting, or ORDER BY using two tables
-# DB: use field types, foreign keys, and triggers to validate
-#     and GRANT (only) SELECT to prevent user editing of Code Tables
+# Dev Notes
+#   - Variable case naming convention: CONFIG, Global, local
+#   - Gawk: use -L to lint and -d to check vars on regular basis
+#   - DB: use field types, foreign keys, and triggers to validate,
+#     and GRANT (only) SELECT to prevent user editing of Code Tables.
+#   - This code is based on a generic relational database access framework;
+#     Non-generic parts are indicated.
 
 BEGIN{
-  PROCINFO["sorted_in"] = "@ind_str_asc"
 
-  # Init
+  # ==================== CONFIGURATION (non-generic) ====================
+
+  PROCINFO["sorted_in"] = "@ind_str_asc"
   DATABASE = "tcm"
   APPNAME = "tcm"
   # DEBUG = 1
-  # Config:
-  #   table1 { table_atts {
+
+  # Database config:
+  #  * table/field definitions - keep same as DB structure
+  #     table  { table_atts {
   #              table, full_name, sort_field, foreign_show, select, filter } /
-  #   fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
+  #     fields { field1 { fieldname, full_name, ci, grid_show , foreign_id? } ;
   #           field2 ; ... | table2 | ...
-  # fields not listed here will be ignored
-  # if comma is needed, code with ^ 
-  # foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
+  #  * Fields not listed here will be ignored.
+  #  * Table full_name with a '0' will not be listed in navbar
+  #  * Escaping: %2C for comma, _ for space, %5F for underscore
+  #  * foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
   Config = \
     "pub , Publication , code , code , SELECT_*_FROM_`pub`, `show`_=_1  /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -36,7 +40,7 @@ BEGIN{
     "  author , Authors      , c , 0 ,     ;" \
     "  year   , Year         , c , 1 ,     ;" \
     "  title  , Title        , c , 1 ,     ;" \
-    "  journal, Journal_or_Book , c , 0 ,     ;" \
+    "  journal, Journal_or_Book , c , 0 ,  ;" \
     "  volume , Volume       , c , 0 ,     ;" \
     "  pages  , Pages        , c , 0 ,     ;" \
     "  publisher, Publisher  , c , 0 ,     ;" \
@@ -79,9 +83,10 @@ BEGIN{
     "syn , Synonym0 , id , label ,  SELECT_*_FROM_`syn`,       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tcm , TC_Relationships , code , id , SELECT_tcm.*%2C_tc.code%2Ctc.foak_FROM_`tcm`%2C`tc`_WHERE_tc.id_=_tcm.tc1ID , `tcm`.`show`_=_1   /"    \
+    "tcm , TC_Relationships , code , id , SELECT_tcm.*%2C_tc.code%2Ctc."\
+      "foak_FROM_`tcm`%2C`tc`_WHERE_tc.id_=_tcm.tc1ID , `tcm`.`show`_=_1   /" \
     "  id     , ID           , i , 0 ,     ;" \
-    "  tc1ID  , TC1_newer     , i , 1 , tc  ;" \
+    "  tc1ID  , TC1_newer     , i , 1 , tc ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  uncertain  , Uncertain , b , 0 ,    ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
@@ -93,6 +98,8 @@ BEGIN{
   config()
   db_secrets()
 
+  # ==================== APP LOGIC =======================================
+  
   # READ QUERY STRING
   split(ENVIRON["QUERY_STRING"], qs, "&")
   for (q in qs) {
@@ -127,7 +134,7 @@ BEGIN{
   
 }
 
-# ========================= Pages =========================================
+# ========================= COMMON PAGE HTML =================================
 
 function header(title) {
   # version history: [chars app] -> here
@@ -164,16 +171,76 @@ function header(title) {
   print "<div class=\"main\">"
 }
 
+function navbar(  i, str) {
+  str = "<div class=\"navbar\">"
+  str = str "<a href=\"" APPNAME "\">Home</a>&#160;&#160;|&#160;&#160;"
+  for (i = 1; i <= length(Torder); i++)
+    if (Tlabel[Torder[i]] !~ /0/)
+      str = str "<a href=\"" APPNAME "?table=" Torder[i] "&amp;action=show\">" \
+        Tlabel[Torder[i]] "</a> (<a href=\"" APPNAME "?table=" Torder[i] \
+        "&amp;action=add\">+</a>)&#160;&#160;|&#160;&#160;"
+  gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
+
+  # Non-generic
+  str = str "&#160;&#160;|&#160;&#160;<a href=\"" APPNAME \
+    "?action=graph\">Graph</a>"
+
+  str = str "</div>"
+  print str
+  # correct the label, in case the table is a 'forced' display 
+  gsub(/0/,"",Tlabel[f["table"]])
+}
+
+function printdebug(msg) {
+  print "<div class=\"debugmsg\"><pre>" msg "</pre></div>"
+}
 
 function footer() {
   print "</div>"
   print "</body>\n</html>";
 }
 
+function defaultpage(   i) {
+  # Content Non-generic, but app must contain a default page
+  
+  header("TCM for Flora AK");
+  navbar()
+  
+  print "<h1>Taxonomic Concept Mapping for the Flora of Alaska</h1>"
+  print "<div class=\"info\">"
+  print "<h2>Usage</h2>"
+  print "<p>Add a new publication, then a name in that publication, " \
+    "then a taxonomic concept in that or another publication, then the "\
+    "relationship between that taxon concept and another.</p>"
+  print "<p>In the grid views, <b>V</b>: view single record, all fields,  "\
+    "<b>E</b>: edit record, <b>D</b>: delete record. Table codes in brackets"\
+    " (e.g., [tcm]) at end of row link to usages of that record in other "\
+    "tables.</p>"
+  print "<h2>Tools</h2>"
+  print "<ul>"
+  print "<li><a href=\"" APPNAME "?action=hideall\">Hide</a> all Pubs "\
+    "(except core "                                                     \
+    "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, " \
+    "e.g., new genus. Hidden records can still be searched for, and then "\
+    "edited to show themselves. TCMs to be graphed are not reset, but will "\
+    "only be graphed when the TCMs are not hidden.</li>"
+  print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" "      \
+    "name=\"action\" value=\"unhideall\"/><input type=\"submit\" "      \
+    "value=\"Un-hide\"/> all Pubs, Names, "                             \
+    "TCs, TCMs<br/>(optional: un-hide/add genera, one-by-one: "         \
+    "<input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
+  print "<li><a href=\"" APPNAME "?action=export\">Export</a> Taxon Concepts"\
+    " and Taxon Concept Relationships as RDF (Turtle serialization), using "\
+    "the <a href=\"https://github.com/tdwg/ontology\">TDWG Ontology</a>.</li>"
+  print "</ul></div>"
+  
+  footer()
+}
 
+# ========================= HTML FOR DISPLAY PAGES ===========================
 
 function show(      x, n, i, j, k, sql) {
-  # version history: this is original version
+  # version history: this is the original version
 
   header(Tlabel[f["table"]])
 
@@ -385,6 +452,7 @@ function showone(      x, n, i, j, sel, sql) {
   footer()
 }
 
+# ========================= HTML FOR INSERT/UPDATE PAGES ====================
 
 function addedit(      x, n, i, j, sel, sql, schema) {
   # version history: this is original version
@@ -506,6 +574,7 @@ function addedit(      x, n, i, j, sel, sql, schema) {
   footer()
 }
 
+# ========================= SQL ACTIONS PRIOR TO PAGE VIEW ==================
 
 function preaction(     sql, i, j, err, bcid) {
 
@@ -607,28 +676,7 @@ function preaction(     sql, i, j, err, bcid) {
   else print "<p style=\"color:green;\">Success</p>"
 }
 
-
-function navbar(  i, str) {
-  str = "<div class=\"navbar\">"
-  str = str "<a href=\"" APPNAME "\">Home</a>&#160;&#160;|&#160;&#160;"
-  for (i = 1; i <= length(Torder); i++)
-    if (Tlabel[Torder[i]] !~ /0/)
-      str = str "<a href=\"" APPNAME "?table=" Torder[i] "&amp;action=show\">" \
-        Tlabel[Torder[i]] "</a> (<a href=\"" APPNAME "?table=" Torder[i] \
-        "&amp;action=add\">+</a>)&#160;&#160;|&#160;&#160;"
-  gsub(/&#160;&#160;\|&#160;&#160;$/,"",str)
-
-  # Non-generic
-  str = str "&#160;&#160;|&#160;&#160;<a href=\"" APPNAME "?action=graph\">Graph</a>"
-
-  str = str "</div>"
-  print str
-  # correct the label, in case there is a 'forced' show
-  gsub(/0/,"",Tlabel[f["table"]])
-}
-
-
-# =========================== Database ============================
+# =========================== DATABASE ============================
 
 function db_query(db, query            , row, i, cmd, preFS ) {
   # version history: [awk-lib] -> [asriSMS] -> here
@@ -705,7 +753,7 @@ function db_sql(db, query            , cmd, inRS, mysqlout ) {
 }
 
 
-# =========================== Util ================================
+# =========================== UTILITIES ================================
 
 function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
   # Config:
@@ -844,9 +892,10 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
   return decoded
 }
 
-# =========================== Non-generic ================================
+# =========================== NON-GENERIC ================================
 
 function graph(   floras, flora, i, gv, node, j, florarank, map) {
+  # Generate a graph using graphviz
 
   header("TCM graph");
   navbar()
@@ -879,6 +928,9 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
     exit 1
   }
 
+  # Modify this if you have a set of standard publications you are mapping
+  #   among - if the phrase appears in the text string label for the taxon
+  #   concept, it will be aligned with other TCs with the same string.
   floras = "PAF|FNA|Cody|Welsh|Hult[eé]n"
   split(floras,flora,"|")
   
@@ -929,7 +981,6 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
   system("dot -Tcmapx -otmp/graph.map -Tjpg -otmp/graph.jpg tmp/graph.dot")
   RS="\x04"
   getline map < "tmp/graph.map"
-  
 
   print "<div class=\"graph\">"
   print map
@@ -942,44 +993,6 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
     " &lt;arrow to&gt; (&lt;)</li>"
   print "<li>Solid red: <i>is disjunct from</i> (|)</li></ul>"
   print "</div>"
-  
-  footer()
-  
-}
-
-
-function defaultpage(   i)
-{
-  header("TCM for Flora AK");
-  navbar()
-  
-  print "<h1>Taxonomic Concept Mapping for the Flora of Alaska</h1>"
-  print "<div class=\"info\">"
-  print "<h2>Usage</h2>"
-  print "<p>Add a new publication, then a name in that publication, " \
-    "then a taxonomic concept in that or another publication, then the "\
-    "relationship between that taxon concept and another.</p>"
-  print "<p>In the grid views, <b>V</b>: view single record, all fields,  "\
-    "<b>E</b>: edit record, <b>D</b>: delete record. Table codes in brackets"\
-    " (e.g., [tcm]) at end of row link to usages of that record in other "\
-    "tables.</p>"
-  print "<h2>Tools</h2>"
-  print "<ul>"
-  print "<li><a href=\"" APPNAME "?action=hideall\">Hide</a> all Pubs "\
-    "(except core "                                                     \
-    "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, " \
-    "e.g., new genus. Hidden records can still be searched for, and then "\
-    "edited to show themselves. TCMs to be graphed are not reset, but will "\
-    "only be graphed when the TCMs are not hidden.</li>"
-  print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" "      \
-    "name=\"action\" value=\"unhideall\"/><input type=\"submit\" "      \
-    "value=\"Un-hide\"/> all Pubs, Names, "                             \
-    "TCs, TCMs<br/>(optional: un-hide/add genera, one-by-one: "         \
-    "<input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
-  print "<li><a href=\"" APPNAME "?action=export\">Export</a> Taxon Concepts"\
-    " and Taxon Concept Relationships as RDF (Turtle serialization), using "\
-    "the <a href=\"https://github.com/tdwg/ontology\">TDWG Ontology</a>.</li>"
-  print "</ul></div>"
   
   footer()
 }
@@ -1027,9 +1040,6 @@ function hide(method,   sql, err) {
   footer()
 }
 
-function printdebug(msg) {
-  print "<div class=\"debugmsg\"><pre>" msg "</pre></div>"
-}
 
 function exportRDF(   i, relcode, relcodes) {
 
@@ -1043,6 +1053,7 @@ function exportRDF(   i, relcode, relcodes) {
 
   print "@prefix : &lt;#&gt; ."
   print "@prefix tc: &lt;http://rs.tdwg.org/ontology/voc/TaxonConcept#&gt;"
+  print "@prefix sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;"
   print "@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .\n"
   print "# Taxon Concepts\n"
 
@@ -1068,21 +1079,24 @@ function exportRDF(   i, relcode, relcodes) {
   print "# Taxon Concept Relationships\n"
   
   # TC relationships
-  db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, "\
-           "tcm.relID AS R, "                                           \
-           "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 " \
-           "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id " \
-           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id ;")
-
+  db_query(DATABASE, "SELECT tcm.id, tcm.tc1ID, tcm.relID, tcm.tc2ID, "\
+           "tcm.notes, CONCAT_WS(', ', pub.author, pub.year," \
+           " pub.title, pub.journal, pub.volume, pub.pages, pub.publisher, "\
+           "pub.address) AS P FROM tcm LEFT JOIN pub ON tcm.pubID = pub.id; ")
   relcodes =  ":Intersects|tc:IsCongruentTo|tc:Overlaps|tc:Includes|"\
     "tc:IsIncludedIn|tc:Excludes"
   split(relcodes, relcode, "|")
   
   for (i = 1; i <= DBQr; i++) {
-    print ":TCrel" DBQ[i, "ID"] " a tc:Relationship ;"
-    print "  tc:fromTaxon            :TC" DBQ[i, "TC1ID"] " ;"
-    print "  tc:relationshipCategory " relcode[DBQ[i, "R"]] " ;"
-    print "  tc:toTaxon              :TC" DBQ[i, "TC2ID"] " .\n"
+    print ":TCrel" DBQ[i, "id"] " a tc:Relationship ;"
+    print "  tc:fromTaxon            :TC" DBQ[i, "tc1ID"] " ;"
+    print "  tc:relationshipCategory " relcode[DBQ[i, "relID"]] " ;"
+    print "  tc:toTaxon              :TC" DBQ[i, "tc2ID"] " ;"
+    if ((DBQ[i, "notes"]) && (DBQ[i, "notes"] != "congruent batch"))
+      print "  rdfs:comment            \"" gensub(/"/,"\\\"","G",       \
+                                                  DBQ[i, "notes"]) "\" ;"
+    print "  sem:accordingTo         \"" gensub(/"/,"\\\"","G", DBQ[i,"P"]) \
+      "\" .\n"
   }
   db_clear()
 
