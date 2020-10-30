@@ -63,12 +63,10 @@ server. Adapt for use with other web servers (`nginx`, etc).
  1. Create a file called `.htaccess` in this directory, with contents:
 
     Options +ExecCGI -Indexes
-    
     <Files "tcm">
       SetHandler cgi-script
     </Files>
     DirectoryIndex tcm
-    
     <FilesMatch "^\.pw$">
       Deny from all
     </FilesMatch>
@@ -83,6 +81,13 @@ these lines:
     AuthName "Password Protected"
     AuthUserFile /full/path/to/this/directory/.pw
     Require valid-user
+
+For the cookie-based filtering by genus:
+
+    Session On
+    SessionEnv On
+    SessionCookieName session path=/
+    SessionHeader X-Replace-Session
 
 Then create the file `.pw` with `htpasswd -c .pw <username>` with your
 chosen password.  Different users can be created with different

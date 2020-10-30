@@ -15,12 +15,20 @@
 
 BEGIN{
 
+  # PROCESS COOKIES
+  if (ENVIRON["HTTP_SESSION"])
+    split(ENVIRON["HTTP_SESSION"], qs, "&")
+  for (q in qs) {
+    split(qs[q], qp, "=")
+    COOKIE[qp[1]] = substr(qp[2],1,200) # note, _not_ yet urldecoded
+  }
+
   # ==================== CONFIGURATION (non-generic) ====================
 
   PROCINFO["sorted_in"] = "@ind_str_asc"
   DATABASE = "tcm"
   APPNAME = "tcm"
-  # DEBUG = 1
+  DEBUG = 1
 
   # Database config:
   #  * table/field definitions - keep same as DB structure
@@ -30,31 +38,32 @@ BEGIN{
   #           field2 ; ... | table2 | ...
   #  * Fields not listed here will be ignored.
   #  * Table full_name with a '0' will not be listed in navbar
-  #  * Escaping: %2C for comma, _ for space, %5F for underscore
+  #  * Use URL Escaping: %2C for comma, + for space, %5F for underscore
   #  * foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
   Config = \
-    "pub , Publication , code , code , SELECT_*_FROM_`pub`, `show`_=_1  /" \
+    "pub , Publication , code , code , SELECT+%2A+FROM+%60pub%60,   /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
-    "  pubtypeID , Pub_type  , i , 0 , pubtype;" \
+    "  pubtypeID , Pub+type  , i , 0 , pubtype;" \
     "  author , Authors      , c , 0 ,     ;" \
     "  year   , Year         , c , 1 ,     ;" \
     "  title  , Title        , c , 1 ,     ;" \
-    "  journal, Journal_or_Book , c , 0 ,  ;" \
+    "  journal, Journal+or+Book , c , 0 ,  ;" \
     "  volume , Volume       , c , 0 ,     ;" \
     "  pages  , Pages        , c , 0 ,     ;" \
     "  publisher, Publisher  , c , 0 ,     ;" \
     "  address, Address      , c , 0 ,     ;" \
     "  doi    , DOI          , c , 1 ,     ;" \
     "  url    , URL          , c , 1 ,     ;" \
-    "  bhlPf  ,BHL_pg1_ID    , i , 1 ,     ;" \
-    "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
+    "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
+    "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     ;" \
     "  show   , Show         , b , 0 ,     |" \
-    "pubtype  , Pub_type0 , id , label, SELECT_*_FROM_`pubtype` ,   /" \
+    "pubtype  , Pub+type0 , id , label, SELECT+%2A+FROM+%60pubtype%60 ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "name , Name , code , code, SELECT_*_FROM_`name` , `show`_=_1  /" \
+    "name , Name , code , code, SELECT+%2A+FROM+%60name%60 , genus+REGEXP+%27" \
+      COOKIE["genregex"] "%27 /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  genus  , Genus        , c , 1 ,     ;" \
@@ -62,35 +71,37 @@ BEGIN{
     "  irankID, rank         , i , 1 ,irank ;" \
     "  infrasp, infrasp      , c , 1 ,     ;" \
     "  author , Author       , c , 1 ,     ;" \
-    "  pubID  , Orig._Publ.  , i , 1 , pub ;" \
+    "  pubID  , Orig.+Publ.  , i , 1 , pub ;" \
     "  url    , URL          , c , 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
-    "irank , Infra_rank0 , id , label, SELECT_*_FROM_`irank`, /" \
+    "irank , Infra+rank0 , id , label, SELECT+%2A+FROM+irank, /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tc , Taxon_Concept, code,code,SELECT_*_FROM_`tc` , `show`_=_1 /" \
+    "tc , Taxon+Concept, tc.code,code, SELECT+tc.%2A+FROM+tc%2C+name , "\
+       "tc.nameID+%3D+name.id+AND+name.genus+REGEXP+%27" COOKIE["genregex"] "%27 /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
     "  pubID  , Publication  , i , 1 , pub ;" \
-    "  bhlPf  ,BHL_pg1_ID    , i , 1 ,     ;" \
-    "  bhlPl  ,BHL_last_page_ID,i, 0 ,     ;" \
+    "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
+    "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
     "  foak  , Fl  , b, 1  ,            ;" \
     "  notes  , Notes        , n , 0 ,     |" \
-    "rel , Relationship0 , id , label , SELECT_*_FROM_`rel` ,  /" \
+    "rel , Relationship0 , id , label , SELECT+%2A+FROM+%60rel%60 ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "syn , Synonym0 , id , label ,  SELECT_*_FROM_`syn`,       /" \
+    "syn , Synonym0 , id , label ,  SELECT+%2A+FROM+%60syn%60 ,       /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
-    "tcm , TC_Relationships , code , id , SELECT_tcm.*%2C_tc.code%2Ctc."\
-      "foak_FROM_`tcm`%2C`tc`_WHERE_tc.id_=_tcm.tc1ID , `tcm`.`show`_=_1   /" \
+    "tcm , TC+Relationships , tc.code , id , SELECT+tcm.%2A%2C+tc.code+FROM+tcm+LEFT+JOIN+tc+ON+tc.id+%3D+tcm.tc1ID+LEFT+JOIN+tc+AS+TC1+ON+TC1.id+%3D+tcm.tc1ID+LEFT+JOIN+name+AS+N1+ON+N1.id+%3D+TC1.nameID+LEFT+JOIN+tc+AS+TC2+ON+TC2.id+%3D+tcm.tc2ID+LEFT+JOIN+name+AS+N2+ON+N2.id+%3D+TC2.nameID  , "               \
+      "%28N1.genus+REGEXP+%27" COOKIE["genregex"] "%27+OR+N2.genus+REGEXP+%27" \
+      COOKIE["genregex"] "%27%29   /"                             \
     "  id     , ID           , i , 0 ,     ;" \
-    "  tc1ID  , TC1_newer     , i , 1 , tc ;" \
+    "  tc1ID  , TC1+newer     , i , 1 , tc ;" \
     "  relID  , Relation     , i , 1 , rel ;" \
     "  uncertain  , Uncertain , b , 0 ,    ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
-    "  tc2ID  , TC2_older    , i , 1 , tc  ;" \
+    "  tc2ID  , TC2+older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
     "  graph  , Graph        , b , 1 ,     ;" \
     "  notes  , Notes        , n , 0 ,     ;" \
@@ -202,11 +213,20 @@ function footer() {
 
 function defaultpage(   i) {
   # Content Non-generic, but app must contain a default page
+
+  if ((f["preaction"] == "setcookie") && (f["genregex"])) {
+    print "X-Replace-Session: genregex=(" \
+      gensub(/ /,"","G", f["genregex"]) ")"
+  }
   
   header("TCM for Flora AK");
   navbar()
   
   print "<h1>Taxonomic Concept Mapping for the Flora of Alaska</h1>"
+
+  if ((f["preaction"] == "setcookie") && (f["genregex"]))
+    print "<p style=\"color:green;\">Cookie set to " f["genregex"] "</p>"
+  
   print "<div class=\"info\">"
   print "<h2>Usage</h2>"
   print "<p>Add a new publication, then a name in that publication, " \
@@ -218,6 +238,10 @@ function defaultpage(   i) {
     "tables.</p>"
   print "<h2>Tools</h2>"
   print "<ul>"
+  print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" "      \
+    "name=\"preaction\" value=\"setcookie\"/><input type=\"submit\" "      \
+    "value=\"Work on\"/> only names, TCs, and TCMs for genus: "          \
+    "<input type=\"text\" name=\"genregex\" size=\"30\"/></form></li>"
   print "<li><a href=\"" APPNAME "?action=hideall\">Hide</a> all Pubs "\
     "(except core "                                                     \
     "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, " \
@@ -239,7 +263,7 @@ function defaultpage(   i) {
 
 # ========================= HTML FOR DISPLAY PAGES ===========================
 
-function show(      x, n, i, j, k, sql) {
+function show(      x, n, i, j, k, sql, where) {
   # version history: this is the original version
 
   header(Tlabel[f["table"]])
@@ -264,7 +288,7 @@ function show(      x, n, i, j, k, sql) {
         backt[++k] = i
         backf[k]   = j
       }
-
+  
   make_lookup(0)  # filter off: all foreign values looked up
   
   # Query DB
@@ -278,11 +302,11 @@ function show(      x, n, i, j, k, sql) {
   else if (Tfilter[f["table"]])
     where = " AND " Tfilter[f["table"]]
 
-  # add any user-created filters
+  # add any GUI-created filters
   if(f["where"]) 
     where = where " AND " f["where"]
 
-  sql = Tselect[f["table"]] where " ORDER BY `" Tsort[f["table"]] "`;"
+  sql = Tselect[f["table"]] where " ORDER BY " Tsort[f["table"]] ";"
   if (DEBUG)
     printdebug(sql)
   db_query(DATABASE,  sql)
@@ -763,7 +787,6 @@ function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
   # order of tables and fields is used in display
 
   gsub(/ /,"",Config)
-  gsub(/_/," ",Config)
 
   # split into tables
   tcnt = 1
@@ -775,18 +798,13 @@ function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
 
     # table atts
     split(t2[1] ,ta,",")
-    Tlabel[ta[1]]   = ta[2]
-    Tsort[ta[1]]    = ta[3]
-    Torder[tcnt++]  = ta[1]
-    Tforshow[ta[1]] = ta[4]
-    Tselect[ta[1]]  = ta[5]
-    Tfilter[ta[1]]   = ta[6]
-    gsub(/%5F/,"_",Tforshow[ta[1]])
-    gsub(/%2C/,",",Tforshow[ta[1]])
-    gsub(/%5F/,"_",Tselect[ta[1]])
-    gsub(/%2C/,",",Tselect[ta[1]])
-    gsub(/%5F/,"_",Tfilter[ta[1]])
-    gsub(/%2C/,",",Tfilter[ta[1]])
+    Tlabel[ta[1]]   = urldecode(ta[2])
+    Tsort[ta[1]]    = urldecode(ta[3])
+    Torder[tcnt++]  = urldecode(ta[1])
+    Tforshow[ta[1]] = urldecode(ta[4])
+    Tselect[ta[1]]  = urldecode(ta[5])
+    Tfilter[ta[1]]  = urldecode(ta[6])
+
     # ensure all select statements include a WHERE
     if (Tselect[ta[1]] !~ /WHERE/)
       Tselect[ta[1]] = Tselect[ta[1]] " WHERE TRUE"
@@ -797,12 +815,12 @@ function config(    t, t2, ta, fld, fa,     i, j, gocnt, locnt, tcnt) {
     gocnt = locnt = 1
     for (j = 2; j <= length(fld); j++) {
       split(fld[j], fa, ",")
-      Flabel[ ta[1]][fa[1]]  = fa[2]
+      Flabel[ ta[1]][fa[1]]  = urldecode(fa[2])
       Ftype[  ta[1]][fa[1]]  = fa[3] # c (char) or i (int)
       if (fa[4])
         Fgorder[ ta[1]][gocnt++] = fa[1]
       Forder[ ta[1]][locnt++] = fa[1]
-      Fforid[ ta[1]][fa[1]]  = fa[5] # 
+      Fforid[ ta[1]][fa[1]]  = fa[5] 
     }
   }
 }
