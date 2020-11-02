@@ -60,7 +60,7 @@ the `.htaccess` file (see below), and change the config variable
 The `.htaccess` file performs local configutation of the apache web
 server. Adapt for use with other web servers (`nginx`, etc).
 
- 1. Create a file called `.htaccess` in this directory, with contents:
+Create a file called `.htaccess` in this directory, with contents:
 
     Options +ExecCGI -Indexes
     <Files "tcm">
