@@ -40,7 +40,7 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
   DATABASE = "tcm"
   APPNAME = "tcm"
-  DEBUG = 1
+  # DEBUG = 1
   LIMIT = 100  # max number of rows to show
   
   # Database config:
