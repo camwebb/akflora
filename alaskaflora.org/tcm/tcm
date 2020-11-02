@@ -70,7 +70,7 @@ BEGIN{
     "  url    , URL          , c , 1 ,     ;" \
     "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
-    "  notes  , Notes        , n , 0 ,     ;" \
+    "  notes  , Notes        , n , 0 ,     |" \
     "pubtype  , Pub+type0 , id , label, SELECT+%2A+FROM+%60pubtype%60 ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
@@ -98,7 +98,7 @@ BEGIN{
     "  pubID  , Publication  , i , 1 , pub ;" \
     "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
-    "  foak  , Fl  , b, 1  ,            ;" \
+    "  foak  , Fl  , b, 1  ,               ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "rel , Relationship0 , id , label , SELECT+%2A+FROM+%60rel%60 ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -834,20 +834,28 @@ function clean_quotes(   i) {
 }
 
 
-function make_lookup(filteron,       i, j, sql) {
+function make_lookup(filteron,       i, j, sql, already) {
   # make lookups
-  for (i = 1; i <= length(Forder[f["table"]]); i++)
-    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
-      sql = "SELECT `" Fforid[f["table"]][Forder[f["table"]][i]] "`.id, `" \
-        Fforid[f["table"]][Forder[f["table"]][i]] "`."                  \
-        Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]]             \
-        " AS `_lookup` FROM " gensub(/^.*FROM/,"","G",                  \
-          Tselect[Fforid[f["table"]][Forder[f["table"]][i]]])
-
-      # if the filter is on (for dropdowns)
+  for (i = 1; i <= length(Forder[f["table"]]); i++) {
+    
+    # only do it once per table, in case the table is referred mult. times
+    if (Fforid[f["table"]][Forder[f["table"]][i]] && \
+        !already[Fforid[f["table"]][Forder[f["table"]][i]]]) {
+      
+      # if filter on (for dropdowns)
       if (Tfilter[ Fforid[f["table"]][Forder[f["table"]][i]] ] && filteron)
-        sql = sql " AND " Tfilter[Fforid[f["table"]][Forder[f["table"]][i]] ]
-      sql = sql " LIMIT " LIMIT " ;"
+        sql = "SELECT `" Fforid[f["table"]][Forder[f["table"]][i]] "`.id, `" \
+          Fforid[f["table"]][Forder[f["table"]][i]] "`."                \
+          Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]]           \
+          " AS `_lookup` FROM " gensub(/^.*FROM/,"","G",                \
+              Tselect[Fforid[f["table"]][Forder[f["table"]][i]]])       \
+          " AND " Tfilter[Fforid[f["table"]][Forder[f["table"]][i]] ] " ;"
+      else
+        sql = "SELECT id, "                                     \
+          Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]]   \
+          " AS `_lookup` FROM `"                                \
+          Fforid[f["table"]][Forder[f["table"]][i]] "` ;" 
+      
       if (DEBUG)
         printdebug(sql)
       db_query(DATABASE, sql)
@@ -856,8 +864,9 @@ function make_lookup(filteron,       i, j, sql) {
           DBQ[j, "_lookup"]
       }
       db_clear()
+      already[Fforid[f["table"]][Forder[f["table"]][i]]] = 1
     }
-  
+  }
 }
 
 
