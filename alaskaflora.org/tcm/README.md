@@ -57,41 +57,10 @@ the `.htaccess` file (see below), and change the config variable
 
 ### 3. .htaccess
 
-The `.htaccess` file performs local configutation of the apache web
-server. Adapt for use with other web servers (`nginx`, etc).
+The `.htaccess` file performs local configuration of the apache web
+server. Adapt for use with other web servers (`nginx`, etc).  
 
-Create a file called `.htaccess` in this directory, with contents:
-
-    Options +ExecCGI -Indexes
-    <Files "tcm">
-      SetHandler cgi-script
-    </Files>
-    DirectoryIndex tcm
-    <FilesMatch "^\.pw$">
-      Deny from all
-    </FilesMatch>
-    <FilesMatch "^pw\.awk$">
-      Deny from all
-    </FilesMatch>
-
-If you wish to password-protect web access to this directory, add
-these lines:
-
-    AuthType Basic
-    AuthName "Password Protected"
-    AuthUserFile /full/path/to/this/directory/.pw
-    Require valid-user
-
-Then create the file `.pw` with `htpasswd -c .pw <username>` with your
-chosen password.  Different users can be created with different
-passwords.
-
-For the cookie-based filtering by genus:
-
-    Session On
-    SessionEnv On
-    SessionCookieName session path=/
-    SessionHeader X-Replace-Session
-
-And make sure that the `session_module` and `session_cookie_module`
-are loaded (in `httpd.conf`).
+Copy `htaccess_template` to `.htaccess` in this directory, and edit as
+needed. Note that cookie-based filtering by genus in `tcm` requires
+the `session_module` and `session_cookie_module` to be loaded (in
+`httpd.conf`).
