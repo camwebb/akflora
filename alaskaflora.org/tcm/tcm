@@ -1,9 +1,7 @@
 #!/bin/gawk -f
 
 # A webapp for managing Taxon Concept Mapping data with a MySQL DB
-# (c) Cam Webb <cw@camwebb.info>, 2020; License: GPL v3
-
-@include "pw.awk"
+# (c) Cam Webb <cw@camwebb.info> 2020; License: GPL v3
 
 # Dev Notes
 #   - Variable case naming convention: CONFIG, Global, local
@@ -12,6 +10,20 @@
 #     and GRANT (only) SELECT to prevent user editing of Code Tables.
 #   - This code is based on a generic relational database access framework;
 #     Non-generic parts are indicated.
+
+# Program sections:
+#   - Configuration
+#   - Core App Logic
+#   - Function groups
+#      - Common page HTML
+#      - Select pages HTML
+#      - Insert/Update pages HTML
+#      - 'Preactions' - SQL action prior to generating page
+#      - Database functions
+#      - Utilities
+#      - Non-generic actions for TCM app (graph, exportRDF)
+
+@include "pw.awk"
 
 BEGIN{
 
@@ -28,8 +40,9 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
   DATABASE = "tcm"
   APPNAME = "tcm"
-  DEBUG = 1
-
+  # DEBUG = 1
+  LIMIT = 100  # max number of rows to show
+  
   # Database config:
   #  * table/field definitions - keep same as DB structure
   #     table  { table_atts {
@@ -38,8 +51,8 @@ BEGIN{
   #           field2 ; ... | table2 | ...
   #  * Fields not listed here will be ignored.
   #  * Table full_name with a '0' will not be listed in navbar
-  #  * Use URL Escaping: %2C for comma, + for space, %5F for underscore
-  #  * foreign_show is SQL, e.g. CONCAT%5FWS('_'%2C_`code`%2C_`auth`)
+  #  * Use URL encoding (see 'man ascii')
+  #  * foreign_show, select and filter are SQL
   Config = \
     "pub , Publication , code , code , SELECT+%2A+FROM+%60pub%60,   /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -58,7 +71,6 @@ BEGIN{
     "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     ;" \
-    "  show   , Show         , b , 0 ,     |" \
     "pubtype  , Pub+type0 , id , label, SELECT+%2A+FROM+%60pubtype%60 ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
@@ -78,7 +90,8 @@ BEGIN{
     "  id     , ID           , i , 0 ,     ;" \
     "  label  , Label        , c , 1 ,     |" \
     "tc , Taxon+Concept, tc.code,code, SELECT+tc.%2A+FROM+tc%2C+name , "\
-       "tc.nameID+%3D+name.id+AND+name.genus+REGEXP+%27" COOKIE["genregex"] "%27 /" \
+       "tc.nameID+%3D+name.id+AND+name.genus+REGEXP+%27" \
+       COOKIE["genregex"] "%27 /"                           \
     "  id     , ID           , i , 0 ,     ;" \
     "  code   , Code         , c , 1 ,     ;" \
     "  nameID , Name         , i , 1 , name;" \
@@ -104,8 +117,7 @@ BEGIN{
     "  tc2ID  , TC2+older    , i , 1 , tc  ;" \
     "  pubID  ,  Publication , i , 1 , pub ;" \
     "  graph  , Graph        , b , 1 ,     ;" \
-    "  notes  , Notes        , n , 0 ,     ;" \
-    "  show   , Show         , b , 0 ,      "
+    "  notes  , Notes        , n , 0 ,      "
   config()
   db_secrets()
 
@@ -134,10 +146,6 @@ BEGIN{
   # Non-generic
   else if (f["action"] == "graph")
     graph()
-  else if (f["action"] == "hideall")
-    hide("hideall")
-  else if (f["action"] == "unhideall")
-    hide("unhideall")
   else if (f["action"] == "export")
     exportRDF()
 
@@ -225,7 +233,7 @@ function defaultpage(   i) {
   print "<h1>Taxonomic Concept Mapping for the Flora of Alaska</h1>"
 
   if ((f["preaction"] == "setcookie") && (f["genregex"]))
-    print "<p style=\"color:green;\">Cookie set to " f["genregex"] "</p>"
+    print "<p style=\"color:green;\">Filter set to " f["genregex"] "</p>"
   
   print "<div class=\"info\">"
   print "<h2>Usage</h2>"
@@ -241,18 +249,10 @@ function defaultpage(   i) {
   print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" "      \
     "name=\"preaction\" value=\"setcookie\"/><input type=\"submit\" "      \
     "value=\"Work on\"/> only names, TCs, and TCMs for genus: "          \
-    "<input type=\"text\" name=\"genregex\" size=\"30\"/></form></li>"
-  print "<li><a href=\"" APPNAME "?action=hideall\">Hide</a> all Pubs "\
-    "(except core "                                                     \
-    "floras), Names, TCs, TCMs, to unclutter the lists when moving to a, " \
-    "e.g., new genus. Hidden records can still be searched for, and then "\
-    "edited to show themselves. TCMs to be graphed are not reset, but will "\
-    "only be graphed when the TCMs are not hidden.</li>"
-  print "<li><form action=\"" APPNAME "\"><input type=\"hidden\" "      \
-    "name=\"action\" value=\"unhideall\"/><input type=\"submit\" "      \
-    "value=\"Un-hide\"/> all Pubs, Names, "                             \
-    "TCs, TCMs<br/>(optional: un-hide/add genera, one-by-one: "         \
-    "<input type=\"text\" name=\"genus\" size=\"30\"/>)</form></li>"
+    "<input type=\"text\" name=\"genregex\" size=\"30\"/></form>"\
+    "Separate alternatives with a '|' symbol; the submitted text (between "\
+    "parentheses) is used as a regexp applied to genus names, and is "\
+    "stored as a session cookie.</li>"
   print "<li><a href=\"" APPNAME "?action=export\">Export</a> Taxon Concepts"\
     " and Taxon Concept Relationships as RDF (Turtle serialization), using "\
     "the <a href=\"https://github.com/tdwg/ontology\">TDWG Ontology</a>.</li>"
@@ -306,7 +306,8 @@ function show(      x, n, i, j, k, sql, where) {
   if(f["where"]) 
     where = where " AND " f["where"]
 
-  sql = Tselect[f["table"]] where " ORDER BY " Tsort[f["table"]] ";"
+  sql = Tselect[f["table"]] where " ORDER BY " Tsort[f["table"]] \
+    " LIMIT " LIMIT " ;"
   if (DEBUG)
     printdebug(sql)
   db_query(DATABASE,  sql)
@@ -517,9 +518,6 @@ function addedit(      x, n, i, j, sel, sql, schema) {
 
   print "<table>"
   for (i = 1; i <= length(Forder[f["table"]]); i++) {
-    # omit foreign fields
-    if (Ftype[f["table"]][Forder[f["table"]][i]] == "f")
-      continue
     print "<tr>"
     print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
       "</td>"
@@ -529,8 +527,9 @@ function addedit(      x, n, i, j, sel, sql, schema) {
       print "<select name=\"f-" Forder[f["table"]][i] "\" autocomplete=\"off\">"
       # See for firefox bug: https://stackoverflow.com/questions/4831848/
       #  firefox-ignores-option-selected-selected
+
       # if value is NULL
-      if ((DBQ[1, Forder[f["table"]][i]] == "NULL") ||
+      if ((!DBQ[1, Forder[f["table"]][i]]) ||
           (f["action"] == "add"))
         print "<option value=\"NULL\" selected=\"selected\"></option>"
       else
@@ -540,19 +539,20 @@ function addedit(      x, n, i, j, sel, sql, schema) {
         if (j == DBQ[1, Forder[f["table"]][i]])
           sel = " selected=\"selected\""
         else sel= ""
-        print "<option value=\"" j "\"" sel ">"                            \
+        print "<option value=\"" j "\"" sel ">"                         \
           Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][j] "</option>"
       }
       PROCINFO["sorted_in"] = "@ind_str_asc"
 
       # just in case the value does not appear in the Lookup, because of
-      # a filter
+      # a filter (and is not NULL)
       if (!Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][ \
-             DBQ[1, Forder[f["table"]][i]] ] && (f["action"] == "edit" ))
+          DBQ[1, Forder[f["table"]][i]] ] && (f["action"] == "edit" ) \
+          && (DBQ[1, Forder[f["table"]][i]]))
         print "<option value=\"" DBQ[1, Forder[f["table"]][i]] "\""  \
           " selected=\"selected\"" ">Record ID = " \
-          DBQ[1, Forder[f["table"]][i]] " (currently hidden)</option>"
- 
+          DBQ[1, Forder[f["table"]][i]] \
+          " (currently hidden by filter)</option>"
       print "</select>"
       print "</td>"
     }
@@ -838,15 +838,16 @@ function make_lookup(filteron,       i, j, sql) {
   # make lookups
   for (i = 1; i <= length(Forder[f["table"]]); i++)
     if (Fforid[f["table"]][Forder[f["table"]][i]]) {
-      sql = "SELECT id, "                                   \
-        Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]] \
-        " AS `_lookup` FROM `"                              \
-        Fforid[f["table"]][Forder[f["table"]][i]] "`"
+      sql = "SELECT `" Fforid[f["table"]][Forder[f["table"]][i]] "`.id, `" \
+        Fforid[f["table"]][Forder[f["table"]][i]] "`."                  \
+        Tforshow[Fforid[f["table"]][Forder[f["table"]][i]]]             \
+        " AS `_lookup` FROM " gensub(/^.*FROM/,"","G",                  \
+          Tselect[Fforid[f["table"]][Forder[f["table"]][i]]])
 
       # if the filter is on (for dropdowns)
       if (Tfilter[ Fforid[f["table"]][Forder[f["table"]][i]] ] && filteron)
-        sql = sql " WHERE " Tfilter[Fforid[f["table"]][Forder[f["table"]][i]] ]
-      sql = sql " ;"
+        sql = sql " AND " Tfilter[Fforid[f["table"]][Forder[f["table"]][i]] ]
+      sql = sql " LIMIT " LIMIT " ;"
       if (DEBUG)
         printdebug(sql)
       db_query(DATABASE, sql)
@@ -932,12 +933,14 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
   elab[6] = "[color=red,dir=none,"    # disjunct
   
   db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, "\
-           "tcm.relID AS R, "                                           \
-           "TC2.id AS TC2ID, TC2.code AS TC2 FROM tcm LEFT JOIN tc AS TC1 " \
-           "ON tcm.tc1ID = TC1.id LEFT JOIN rel AS R ON tcm.relID = R.id " \
-           "LEFT JOIN tc AS TC2 ON tcm.tc2ID = TC2.id WHERE tcm.`graph` = 1 " \
-           "AND tcm.`show` = 1;")
-
+           "tcm.relID AS R, TC2.id AS TC2ID, TC2.code AS TC2, tcm.`graph` "\
+           "FROM tcm LEFT JOIN tc ON tc.id = tcm.tc1ID LEFT JOIN tc AS TC1 ON "\
+           "TC1.id = tcm.tc1ID LEFT JOIN name AS N1 ON N1.id = TC1.nameID "\
+           "LEFT JOIN tc AS TC2 ON TC2.id = tcm.tc2ID LEFT JOIN name AS N2 "\
+           "ON N2.id = TC2.nameID WHERE tcm.`graph` = 1 AND (N1.genus REGEXP '"\
+           urldecode(COOKIE["genregex"]) "' OR N2.genus REGEXP '"\
+           urldecode(COOKIE["genregex"]) "') ORDER BY tc.code LIMIT 110;")
+  
   if (DBQr > 100) {
     print "<p>Sorry, cannot display a graph of more than 100 taxonomic" \
       " concepts.<br/>Suggest un-showing some of the completed concept chains;"\
@@ -1011,49 +1014,6 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
     " &lt;arrow to&gt; (&lt;)</li>"
   print "<li>Solid red: <i>is disjunct from</i> (|)</li></ul>"
   print "</div>"
-  
-  footer()
-}
-
-function hide(method,   sql, err) {
-
-  header("Hide and Show");
-  navbar()
-  
-  print "<h1>Hide and Show</h1>"
-
-  if (method == "hideall")
-    sql = "UPDATE `name` SET `show` = 0; " \
-      "UPDATE `tc` SET `show` = 0; "       \
-      "UPDATE `tcm` SET `show` = 0; "      \
-      "UPDATE `pub` SET `show` = 0; "      \
-      "UPDATE `pub` SET `show` = 1 "                                    \
-      "WHERE id = 19 OR id = 21 OR id = 22 OR id = 23 OR id = 24 OR id = 46 "\
-      "OR id = 52 ; " 
-  else if (method == "unhideall") {
-    if (!f["genus"])
-      sql = \
-        "UPDATE `name` SET `show` = 1; "        \
-        "UPDATE `tc` SET `show` = 1; "          \
-        "UPDATE `tcm` SET `show` = 1; "         \
-        "UPDATE `pub` SET `show` = 1; " 
-    else {
-      sql =                                                             \
-        "UPDATE `name` SET `show` = 1 WHERE genus LIKE '%" f["genus"] "%'; " \
-        "UPDATE `pub`,`name` SET `pub`.`show` = 1 WHERE `name`.`show` = 1 "\
-        "AND `name`.pubID = pub.id; "                                   \
-        "UPDATE `tc`, `name` SET `tc`.`show` = 1 WHERE `name`.`show` = 1 "\
-        "AND `tc`.nameID = name.id; " \
-        "UPDATE tcm, `tc` SET `tcm`.`show` = 1 WHERE `tc`.`show` = 1 "\
-        "AND (`tcm`.tc1ID = tc.id OR `tcm`.tc2ID = tc.id); "
-    }
-  }
-
-  print "<p>Action '" method "', results:</p>"
-  err = db_sql(DATABASE, sql)
-  if (err)
-    print "<p style=\"color:red;\">FAILED: " err "</p>"
-  else print "<p style=\"color:green;\">Success</p>"
   
   footer()
 }
