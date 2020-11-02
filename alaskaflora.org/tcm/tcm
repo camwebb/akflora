@@ -40,7 +40,7 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
   DATABASE = "tcm"
   APPNAME = "tcm"
-  # DEBUG = 1
+  DEBUG = 1
   LIMIT = 100  # max number of rows to show
   
   # Database config:
@@ -336,9 +336,11 @@ function show(      x, n, i, j, k, sql, where) {
     for (j = 1; j <= length(Fgorder[f["table"]]); j++) {
       # show lookup value if the field is a foreign key
       if (Fforid[f["table"]][Fgorder[f["table"]][j]]) {
-        print "<td><a href=\"" APPNAME "?table=" \
+        print "<td><a href=\"" APPNAME "?table="                        \
           Fforid[f["table"]][Fgorder[f["table"]][j]]                     \
-          "&amp;action=show&amp;where=id%3D" DBQ[i , Fgorder[f["table"]][j]] \
+          "&amp;action=show&amp;where="                                 \
+          Fforid[f["table"]][Fgorder[f["table"]][j]] ".id%3D"           \
+          DBQ[i , Fgorder[f["table"]][j]]                               \
           "\">"  Lookup[ Fforid[f["table"]][Fgorder[f["table"]][j]] ][  \
             DBQ[i , Fgorder[f["table"]][j]]] "</a></td>"
       }
@@ -382,7 +384,7 @@ function show(      x, n, i, j, k, sql, where) {
     for (j in backt)
       print "<td style=\"border:none; font-size:smaller;\">"\
         "<a href=\"" APPNAME "?table=" backt[j] "&amp;action=show&amp;where=" \
-        backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
+        backt[j] "." backf[j] "%3D" DBQ[i,"id"] "\">[" backt[j] "]</a></td>"
 
     ## NOT GENERIC
     if (f["table"] == "tc")
