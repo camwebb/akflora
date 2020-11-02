@@ -70,7 +70,7 @@ Create a file called `.htaccess` in this directory, with contents:
     <FilesMatch "^\.pw$">
       Deny from all
     </FilesMatch>
-    <FilesMatch "^pw.awk$">
+    <FilesMatch "^pw\.awk$">
       Deny from all
     </FilesMatch>
 
@@ -82,6 +82,10 @@ these lines:
     AuthUserFile /full/path/to/this/directory/.pw
     Require valid-user
 
+Then create the file `.pw` with `htpasswd -c .pw <username>` with your
+chosen password.  Different users can be created with different
+passwords.
+
 For the cookie-based filtering by genus:
 
     Session On
@@ -89,7 +93,5 @@ For the cookie-based filtering by genus:
     SessionCookieName session path=/
     SessionHeader X-Replace-Session
 
-Then create the file `.pw` with `htpasswd -c .pw <username>` with your
-chosen password.  Different users can be created with different
-passwords.
-
+And make sure that the `session_module` and `session_cookie_module`
+are loaded (in `httpd.conf`).
