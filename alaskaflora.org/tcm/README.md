@@ -28,6 +28,8 @@ Prerequisites:
  * The MySQL/MariaDB command line client (`mysql`)
  * The Graphviz command line client (`dot`)
 
+Download the latest release from the [releases/](releases) directory.
+
 ### 1. Script
 
 The web app is a single Awk script (GNU Awk flavor), called
