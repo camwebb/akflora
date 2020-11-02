@@ -348,7 +348,9 @@ function show(      x, n, i, j, k, sql, where) {
         # special formatting
         # DOIs and HTTP
         if (tolower(Fgorder[f["table"]][j]) == "doi")
-          print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[i,Fgorder[f["table"]][j]])  "\">" substr( DBQ[i,Fgorder[f["table"]][j]] , 1,15) "</a></td>"
+          print "<td><a href=\"https://doi.org/" \
+            gensub(/^[dD][oO][iI]:/,"","G", DBQ[i,Fgorder[f["table"]][j]]) \
+            "\">" substr( DBQ[i,Fgorder[f["table"]][j]] , 1,15) "</a></td>"
         # NON GENERIC:
         else if (Fgorder[f["table"]][j] ~ /^bhlP/)
           print "<td><a href=\"https://www.biodiversitylibrary.org/page/" \
@@ -442,17 +444,20 @@ function showone(      x, n, i, j, sel, sql) {
     print "<tr>"
     print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
       "</td>"
-    if (Fforid[f["table"]][Forder[f["table"]][i]]) {
-      print "<td><a href=\"" APPNAME "?table="                                   \
+    if (Fforid[f["table"]][Forder[f["table"]][i]])
+      print "<td><a href=\"" APPNAME "?table="                          \
         Fforid[f["table"]][Forder[f["table"]][i]]                       \
-          "&amp;action=show#id" DBQ[1 , Forder[f["table"]][i]] "\">"    \
-          Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][          \
-            DBQ[1 , Forder[f["table"]][i]]] "</a></td>"
-    }
+        "&amp;action=show#id" DBQ[1 , Forder[f["table"]][i]] "\">"      \
+        Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][            \
+          DBQ[1 , Forder[f["table"]][i]]] "</a></td>"
+    
     else {
       # DOIs and HTTP
       if (tolower(Forder[f["table"]][i]) == "doi")
-        print "<td><a href=\"https://doi.org/" gensub(/^[dD][oO][iI]:/,"","G", DBQ[1,Forder[f["table"]][i]])  "\">" DBQ[1,Forder[f["table"]][i]]  "</a></td>"
+        print "<td><a href=\"https://doi.org/" \
+          gensub(/^[dD][oO][iI]:/,"","G", DBQ[1,Forder[f["table"]][i]]) \
+          "\">" DBQ[1,Forder[f["table"]][i]]  "</a></td>"
+
       # NON GENERIC
       else if (Forder[f["table"]][i] ~ /^bhlP/)
         print "<td><a href=\"https://www.biodiversitylibrary.org/page/" \
@@ -460,17 +465,19 @@ function showone(      x, n, i, j, sel, sql) {
           "</a></td>"
       
       else if (substr(DBQ[1, Forder[f["table"]][i]],1,4) == "http")
-        print "<td><a href=\"" DBQ[1,Forder[f["table"]][i]] "\">" DBQ[1,Forder[f["table"]][i]] "</a></td>"
+        print "<td><a href=\"" DBQ[1,Forder[f["table"]][i]] "\">" \
+          DBQ[1,Forder[f["table"]][i]] "</a></td>"
+      
       else print "<td>" DBQ[1,Forder[f["table"]][i]] "</td>"
     }
     print "</tr>"
   }
   print "</table>"
 
-  print "<p><a href=\"" APPNAME "?table=" f["table"]                             \
+  print "<p><a href=\"" APPNAME "?table=" f["table"]                    \
     "&amp;action=edit&amp;id=" f["id"] "\"><b>Edit</B></a>"             \
     "&#160;&#160;|&#160;&#160;"                                         \
-    "<a href=\"" APPNAME "?table=" f["table"]                                    \
+    "<a href=\"" APPNAME "?table=" f["table"]                           \
     "&amp;action=show&amp;preaction=delete&amp;id="                     \
     f["id"] "\" onclick=\"return"                                       \
     " confirm('Confirm deletion')\"><b>Delete</b></a></td>"
@@ -497,7 +504,7 @@ function addedit(      x, n, i, j, sel, sql, schema) {
   else if (f["action"] == "add")
     print "<h1>New " Tlabel[f["table"]] " record</h1>"
 
-  make_lookup(1) # filter the lookups by `show` value
+  make_lookup(1) # filter the lookups by cookie regexp value
   
   # # get NOT NULLs etc
   # for (i in Tlabel)  
@@ -523,6 +530,7 @@ function addedit(      x, n, i, j, sel, sql, schema) {
     print "<tr>"
     print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
       "</td>"
+    
     # if a Foreign ID, create dropdown
     if (Fforid[f["table"]][Forder[f["table"]][i]]) {
       print "<td>"
@@ -536,6 +544,7 @@ function addedit(      x, n, i, j, sel, sql, schema) {
         print "<option value=\"NULL\" selected=\"selected\"></option>"
       else
         print "<option value=\"NULL\"></option>"
+
       PROCINFO["sorted_in"] = "@val_str_asc"
       for (j in Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ]) {
         if (j == DBQ[1, Forder[f["table"]][i]])
@@ -548,13 +557,16 @@ function addedit(      x, n, i, j, sel, sql, schema) {
 
       # just in case the value does not appear in the Lookup, because of
       # a filter (and is not NULL)
-      if (!Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][ \
+      if (!Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][       \
           DBQ[1, Forder[f["table"]][i]] ] && (f["action"] == "edit" ) \
           && (DBQ[1, Forder[f["table"]][i]]))
-        print "<option value=\"" DBQ[1, Forder[f["table"]][i]] "\""  \
+        print "<option value=\"" DBQ[1, Forder[f["table"]][i]] "\"" \
           " selected=\"selected\"" ">Record ID = " \
-          DBQ[1, Forder[f["table"]][i]] \
+          DBQ[1, Forder[f["table"]][i]]            \
           " (currently hidden by filter)</option>"
+      # NB: this is needed because the !Lookup test above creates a new
+      #     array member if null (only spotted when Lookup reused)
+      delete Lookup[ Fforid[f["table"]][Forder[f["table"]][i]] ][ "" ]
       print "</select>"
       print "</td>"
     }
@@ -843,6 +855,8 @@ function make_lookup(filteron,       i, j, sql, already) {
     # only do it once per table, in case the table is referred mult. times
     if (Fforid[f["table"]][Forder[f["table"]][i]] && \
         !already[Fforid[f["table"]][Forder[f["table"]][i]]]) {
+      if (DEBUG)
+        printdebug("Making lookup " Fforid[f["table"]][Forder[f["table"]][i]]) 
       
       # if filter on (for dropdowns)
       if (Tfilter[ Fforid[f["table"]][Forder[f["table"]][i]] ] && filteron)

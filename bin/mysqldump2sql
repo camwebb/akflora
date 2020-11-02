@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo 'SET FOREIGN_KEY_CHECKS=0;'
+cat $1 | \
+    sed -E \
+        -e '/./{H;$!d} ; x ; s/\/\*!50003 TRIGGER ([^*]+)\*\//TRIGGER \1/g' |
+    sed -E \
+        -e 's/^--.*//g' \
+        -e 's/\/\*!50017[^*]+\*\///g' \
+        -e 's/\/\*!50003 CREATE\*\//CREATE/g' \
+        -e 's/^\/\*!.*//g' \
+        -e 's/^ALTER DATABASE.*//g' \
+        -e 's/^U?N?LOCK TABLE.*//g' \
+        -e 's/^INSERT INTO `(pub|name|tc|tcm)` VALUES.*//g' \
+        -e 's/AUTO_INCREMENT=[0-9]+//g' |   
+    sed -e '/^$/N;/^\n$/D'
+
+
