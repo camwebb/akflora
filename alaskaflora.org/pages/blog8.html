@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Blog 8: A taxon concept mapping tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <h1 id="blog-8-a-taxon-concept-mapping-tool">Blog 8: A taxon concept mapping tool</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2020-11-04</em></p>
+          <p>A central goal of this project is to confront the issue of <em>Taxon Concepts</em>, and develop solutions to manage taxon concepts for plants in the flora of Alaska.</p>
+          <h2 id="taxon-concepts">Taxon Concepts</h2>
+          <p>It has long been recognized that taxonomic names alone are not sufficient to communicate specific definitions (circumscriptions) of taxonomic groups of organisms, because the same name may be used in different ways by different taxonomists. The name is anchored only to a single type specimen, and not to an understanding, concept or definition of the taxon that ‘surrounds’ that single organism. Some taxonomists may take a broad view of a named taxon and lump together several pre-existing taxa, while other taxonomists may take a narrow view. This ambiguity presents many problems to users of names, for example making it difficult to combine specimens for ecological distribution modeling.</p>
+          <p>The solution is to always specify the particular <em>usage</em> of a name, with a reference to the publication or person using it. So, functionally, a Taxon Concept (TC; also known as a Taxonomic Name Usage, TNU) is the join between a name and a publication. It is easy to model this in a database, but very few biodiversity databases offer this facility. Our goal for the flora of Alaska is to list not just names, but also the various taxon concepts applied to each taxon, and their <em>interrelationships</em>.</p>
+          <p>Because taxon concepts represent sets of organisms, they can be related to each other using set relationship terms: <em>is congruent with</em>, <em>includes</em>, <em>overlaps with</em>, <em>intersects</em> and <em>is disjunct from</em>. For instance, we can say that Jane’s concept of species A is broader than John’s and <em>includes</em> John’s concept. These relationships are very useful to users of taxonomic names, permitting an understanding of the range of ways a name has been applied.</p>
+          <p>If we knew all the set members (organisms) of each taxon concept we could compute these set relationship terms for each pairwise comparison of taxon concepts. However, usually these interrelationships (or <em>mappings</em>, or <em>alignments</em>) have to be inferred by careful reading of taxonomic documents, a time-intensive human task, which is often cited as a barrier to the widespread adoption of taxon-concept-based approaches to biodiversity information management. A goal of our project is to explore whether this task can be shared out to non-specialists, who, with training, may be able to act as ‘taxonomic detectives’ and record details of taxon concepts and their relationships found in the literature. To this end, we are fortunate to have been joined by <a href="people.html#kimberly">Kimberly Cook</a>, who since the summer has been working through taxa in some complex genera (<em>Erigeron</em>, <em>Bromus</em>, <em>Achillea</em>,…), producing high quality data on taxon concepts and relationships.</p>
+          <h2 id="the-tcm-web-app">The tcm web app</h2>
+          <p>We have tried a variety of approaches to managing information on taxon concepts and relationships, and settled on a four-table data structure: Publications, Names, Taxon Concepts, and Taxon Concept Relationships. This structure can be implemented in a spreadsheet (see <a href="https://docs.google.com/spreadsheets/d/1i4SvHvxFmf5AAnqxA696BVBOgTqadwL9FygvfSpcV8E/edit#gid=1163411256">example</a>), but is more robust in a dedicated relational database.</p>
+          <p>The general structure of such a database is not original, and has been implemented several times before, e.g., in <a href="http://seek.ecoinformatics.org/Wiki.jsp%3Fpage=ConceptMapper.html">ConceptMapper</a>, <a href="https://www.jstor.org/stable/1224722">TaxLink</a>, and in the <a href="https://www.researchgate.net/publication/281269078">Berlin Model</a> that underlies <a href="https://cybertaxonomy.eu/">EDIT</a>, the European Distributed Institute of Taxonomy. However, I was not able to easily install or borrow code from these other initiatives, and so made a simple (single Awk script) web app and database for Kimberly to use when entering and editing TC data. The app (imaginatively called <code>tcm</code>!) has a <a href="https://github.com/akflora/akflora/tree/master/alaskaflora.org/tcm">homepage</a> on Github, with installation instructions; “some assembly is required”, but installation should only take a few minutes for someone with basic Unix and web development skills.</p>
+          <p>The ER diagram of the database is:</p>
+          <p><img src="../img/tcmschema.png" style="width:60%;margin-left: auto; 
+               margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/></p>
+          <p>The basic workflow is:</p>
+          <ol type="1">
+          <li>Enter publication details,</li>
+          <li>Enter a name, referencing its original publication,</li>
+          <li>Create a taxon concept, linking a name with the publication it is used in, <img src="../img/tcm1.png" style="width:80%;margin-left: auto; 
+          margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/></li>
+          <li>Create a relationship between two concepts, with a reference to the source publication in which the relationship was discussed. <img src="../img/tcm2.png" style="width:80%;margin-left: auto; 
+          margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/></li>
+          </ol>
+          <p>These relationships can be view a visual graph, which helps a lot in the development of chains of relationships. The app uses <a href="https://www.graphviz.org">graphviz</a> to generate an image file, which can be downloaded. <img src="../img/tcm3.png"
+          style="width:80%;margin-left: auto; margin-right: auto;
+          margin-top:20px;margin-bottom:20px;display:block;"/></p>
+          <p>The taxon concept relationships can also be exported as RDF, using the <a href="http://tdwg.github.io/ontology/ontology/voc/TaxonConcept.rdf">TDWG ontology</a>. The app is very much a work in progress, as Kimberly and I discover useful, new bells and whistles, but the first release works well, and may be of use to others.</p>
+          <hr />
+          <div id="disqus_thread">
+
+          </div>
+          <script>
+          var disqus_config = function () {
+          this.page.url = 'https://alaskaflora.org/pages/blog8.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog8';                  // Edit
+          };(function() {  var d = document, s = d.createElement('script');
+          s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })(); </script>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
