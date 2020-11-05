@@ -1055,8 +1055,8 @@ function exportRDF(   i, relcode, relcodes) {
   print "</head><body><pre>"
 
   print "@prefix : &lt;#&gt; ."
-  print "@prefix tc: &lt;http://rs.tdwg.org/ontology/voc/TaxonConcept#&gt;"
-  print "@prefix sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;"
+  print "@prefix tc: &lt;http://rs.tdwg.org/ontology/voc/TaxonConcept#&gt; ."
+  print "@prefix sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt; ."
   print "@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .\n"
   print "# Taxon Concepts\n"
 

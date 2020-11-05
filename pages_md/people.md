@@ -32,6 +32,14 @@ _Roles_: Software development, data wrangling, TCM<br/>
 _Website_: [camwebb.info](http://camwebb.info)
 
 <br/>
+<span style="font-size: 2.6rem; font-weight: 400;">Kimberly Cook</span><a name="kimberly"></a>
+
+<img src="../img/kimberly.jpg" alt="Kimberly" width="35%"/>
+
+_Roles_: Taxon concept mapping and documentation</br>
+_Website_: [ResearchGate](https://www.researchgate.net/profile/Kimberly_Cook5)
+
+<br/>
 <span style="font-size: 2.6rem; font-weight: 400;">Brian Heitz</span><a name="brian"></a>
 
 <img src="../img/brian.jpg" alt="Brian" width="35%"/>
