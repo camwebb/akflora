@@ -19,4 +19,5 @@ will “live-blog” the process to share the decisions, discoveries
  * [2019-03-08](blog5.html): 5. **Sharing phenotype data**
  * [2019-03-14](blog6.html): 6. **A tool for phenotype data entry**
  * [2019-05-01](blog7.html): 7. **A canonical names list**
+ * [2020-11-04](blog8.html): 8. **A taxon concept mapping tool**
 
