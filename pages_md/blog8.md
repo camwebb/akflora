@@ -2,7 +2,7 @@
 
 # Blog 8: A taxon concept mapping tool
 
-_Posted by [Cam](people.html#cam) on 2020-11-03_
+_Posted by [Cam](people.html#cam) on 2020-11-04_
 
 A central goal of this project is to confront the issue of _Taxon
 Concepts_, and develop solutions to manage taxon concepts for plants
