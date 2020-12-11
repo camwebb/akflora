@@ -700,8 +700,8 @@ function preaction(     sql, i, j, err, bcid) {
       db_clear()
       for (i = 1; i <= j ; i++)
         sql = sql                                                       \
-          "INSERT INTO tcm (tc1ID, relID, tc2ID, pubID, graph, notes, `show`)" \
-          " VALUES (" tc1[i] ", 2, " tc2[i] ", 46, 1, 'congruent batch', 1); "  
+          "INSERT INTO tcm (tc1ID, relID, tc2ID, pubID, graph, notes)" \
+          " VALUES (" tc1[i] ", 2, " tc2[i] ", 46, 1, 'congruent batch'); "  
 
       if (DEBUG)
         printdebug(sql)
@@ -1096,7 +1096,7 @@ function exportRDF(   i, relcode, relcodes) {
     print "  tc:relationshipCategory " relcode[DBQ[i, "relID"]] " ;"
     print "  tc:toTaxon              :TC" DBQ[i, "tc2ID"] " ;"
     if ((DBQ[i, "notes"]) && (DBQ[i, "notes"] != "congruent batch"))
-      print "  rdfs:comment            \"" gensub(/"/,"\\\"","G",       \
+      print "  rdfs:comment            \"" gensub(/"/,"'","G",       \
                                                   DBQ[i, "notes"]) "\" ;"
     print "  sem:accordingTo         \"" gensub(/"/,"\\\"","G", DBQ[i,"P"]) \
       "\" .\n"
