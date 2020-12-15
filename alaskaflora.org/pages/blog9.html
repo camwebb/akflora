@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Blog 9: A guide to name usages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <h1 id="blog-9-a-guide-to-name-usages">Blog 9: A guide to name usages</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2020-12-15</em></p>
+          <p>Following from the <a href="blog8.html">previous blog</a> in which I described (i) the basic issue of taxon concepts, (ii) our goal for generating taxon concept relationship information for the Alaska flora, and (iii) the web app we designed to facilitate the work, I want to share here some of our initial results. <a href="people.html#kimberly">Kimberly Cook</a> has now worked through Alaskan species of <a href="TCM_achillea.html"><em>Achillea</em></a>, <a href="TCM_erigeron.html"><em>Erigeron</em></a>, <a href="TCM_bromus.html"><em>Bromus</em></a>, <a href="TCM_eritrichium.html"><em>Eritrichium</em></a>, and <a href="TCM_rumex.html"><em>Rumex</em></a>.</p>
+          <p>The links above will show a page for each genus. The page is a graph of the relationships (lines, or ‘edges’) between different concepts (the boxes). Remember that a taxonomic concept is the way that a person or other agent (usually a taxonomist) conceives of the circumscription of a taxon with a particular name, at a particular time (i.e., in a particular publication). The maps above show primarily the relationships between the taxon concepts in the five major resources for Alaskan plants:</p>
+          <ul>
+          <li>Hultén’s 1968 <a href="https://www.sup.org/books/title/?id=2767">Alaska flora</a>,</li>
+          <li>Welsh’s 1974 <a href="http://www.worldcat.org/oclc/605923539">Alaska flora</a> (based on Anderson, 1943), and</li>
+          <li>Cody’s 2000 <a href="https://cdnsciencepub.com/doi/book/10.1139/9780660181103">Yukon flora</a>.</li>
+          <li>Various authors in the <a href="https://beta.floranorthamerica.org/Main_Page">Flora of North America</a> (various dates, mostly preceding 2011), and</li>
+          <li>The <a href="http://panarcticflora.org/">Panarctic Flora</a> (2011)</li>
+          </ul>
+          <p>The graphs are therefore guides to the common <em>usages</em> of names of Alaskan plants. The form of the edges (lines) indicates the kind of relationship between two name usages:</p>
+          <ul>
+          <li>Solid black: the usages are congruent with (the same as) each other (symbol: =)</li>
+          <li>Dashed black: the usages overlap each other, but each contains some plants not in the other (symbol: &gt;&lt;)</li>
+          <li>Dashed black with arrow: usage with an arrow <em>from</em> it is included in the usage with an arrow <em>to</em> it (&lt;)</li>
+          <li>Dotted black: the usages intersect each other, but the relationship cannot be specified in more detail (i.e., congruent, overlaps or includes); at least one plant is included in both usages (∩)</li>
+          <li>Solid red: the usages are disjunct from each other; no plant in common (|)</li>
+          </ul>
+          <p>If an edge is marked with a ‘<span style="color:red">*</span>’, you can hover the cursor over the line to see notes associated with the inference made about the relationship.</p>
+          <p>A complete download of the graphs is available as RDF in either <a href="../files/tcmap_2020-12-15.ttl">Turtle</a> or <a href="../files/tcmap_2020-12-15.rdf">RDF-XML</a> serializations.</p>
+          <p>Kimberly and I are still learning a lot about the process of making and recording these inferences, and we’ll share a ‘How To’ guide at some point. If you see any relationships that seem odd or incorrect, please do get in touch, but please also remember that most of these judgments about taxon concept relationship are complex logical inferences made from incomplete data and as such there is often no “right or wrong”. The notes hopefully make clear any reasons for a particular decision.</p>
+          <p>One thing that I had not anticipated was just how necessary a ‘Guide to the Usages of Names for Alaskan Plants’ (which is what these graphs are) is. Take for example the case of the <em>Erigeron acris</em> complex (which Carolyn Parker has checked for us):</p>
+          <p><img src="../img/tcm3.png" style="width:80%;margin-left: auto;
+          margin-right: auto;
+          margin-top:20px;margin-bottom:20px;display:block;"/></p>
+          <p>Without such a guide (or a careful reading of the sources) it is very hard to interpret what, e.g., Hultén’s <em>Erigeron acris</em> subsp. <em>politis</em> means today, given how many times the name has been changed since.</p>
+          <p>Many thanks, of course, to Kimberly for her impressive detective work on these names and usages.</p>
+          <hr />
+          <div id="disqus_thread">
+
+          </div>
+          <script>
+          var disqus_config = function () {
+          this.page.url = 'https://alaskaflora.org/pages/blog9.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog9';                  // Edit
+          };(function() {  var d = document, s = d.createElement('script');
+          s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })(); </script>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

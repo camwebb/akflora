@@ -1,0 +1,3312 @@
+@prefix : <https://alaskaflora.org/files/tcmap_2020-12-15.ttl#> .
+@prefix tc: <http://rs.tdwg.org/ontology/voc/TaxonConcept#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Taxon Concepts
+
+:TC41 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. borealis sec. Welsh" ;
+  tc:nameString        "Achillea millefolium ssp. borealis (Bong.) Breitung" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC44 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. borealis sec. Cody" ;
+  tc:nameString        "Achillea millefolium ssp. borealis (Bong.) Breitung" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC20 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. borealis sec Hulten" ;
+  tc:nameString        "Achillea millefolium ssp. borealis (Bong.) Breitung" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC55 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. borealis PAF" ;
+  tc:nameString        "Achillea millefolium ssp. borealis (Bong.) Breitung" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC27 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. lanulosa sec. Welsh" ;
+  tc:nameString        "Achillea millefolium ssp. lanulosa (Nutt.) Piper" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC45 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. lanulosa sec. Cody" ;
+  tc:nameString        "Achillea millefolium ssp. lanulosa (Nutt.) Piper" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC57 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. lanulosa PAF" ;
+  tc:nameString        "Achillea millefolium ssp. lanulosa (Nutt.) Piper" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC21 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. lanulosa sec. Piper" ;
+  tc:nameString        "Achillea millefolium ssp. lanulosa (Nutt.) Piper" ;
+  tc:accordingToString "Piper, C.V., 1901, (Achillea), Mazama: A Record of Mountaineering in the Pacific Northwest, 2, 97, The Mazamas" .
+
+:TC51 a tc:TaxonConcept ;
+  rdfs:label           "A. alpina ssp. multiflora sec. PAF" ;
+  tc:nameString        "Achillea alpina ssp. multiflora (Hook.) D.F. Murray & Elven" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC37 a tc:TaxonConcept ;
+  rdfs:label           "A. alpina ssp. multiflora sec. Elven & Murray" ;
+  tc:nameString        "Achillea alpina ssp. multiflora (Hook.) D.F. Murray & Elven" ;
+  tc:accordingToString "Reidar, E. and Murray, D.F., 2008, New Combinations in the Panarctic Vascular Plant Flora, Journal of the Botanical Research Institute of Texas, 2, 433-446, The Botanical Research Institute of Texas" .
+
+:TC40 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. millefolium sec. Welsh" ;
+  tc:nameString        "Achillea millefolium ssp. millefolium" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC54 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. ssp. mill PAF" ;
+  tc:nameString        "Achillea millefolium ssp. millefolium" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC181 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. kamtschaticus sec. Hulten" ;
+  tc:nameString        "Erigeron acris ssp. kamtschaticus Hara 1939" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC63 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. kamtschaticus sec. PAF" ;
+  tc:nameString        "Erigeron acris ssp. kamtschaticus Hara 1939" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC68 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. politus sec. Cody" ;
+  tc:nameString        "Erigeron acris ssp. politus (E. Fries) Schinz & Keller" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC66 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. politus sec. Hulten" ;
+  tc:nameString        "Erigeron acris ssp. politus (E. Fries) Schinz & Keller" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC70 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. politus sec. S. & K." ;
+  tc:nameString        "Erigeron acris ssp. politus (E. Fries) Schinz & Keller" ;
+  tc:accordingToString "Hans Schinz and Robert Keller, 1909, Erigeron Linnaeus, Flora der Schweiz, Teil: Exkursionsflora, 3, 577, Albert Raustein. Formerly Meyer & Zellers Verlag, Zurich" .
+
+:TC65 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. politus sec. PAF" ;
+  tc:nameString        "Erigeron acris ssp. politus (Fr.) H. Lindb." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC67 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. asteroides sec. Porsild" ;
+  tc:nameString        "Erigeron acris ssp. asteroides (Andrz.) DC." ;
+  tc:accordingToString "A. E. Porsild & William J. Cody, 1980, Vascular Plants of Continental Northwest Territories, Canada, National Museum of Natural Sciences, Natural Museums of Canada" .
+
+:TC71 a tc:TaxonConcept ;
+  rdfs:label           "E. acris ssp. debilis sec. Cody" ;
+  tc:nameString        "Erigeron acris ssp. Piper 1906" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC100 a tc:TaxonConcept ;
+  rdfs:label           "E. uniflorus var. eriocephalus sec. FNA" ;
+  tc:nameString        "Erigeron uniflorus ssp. eriocephalus (J. Vahl) Boivin" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC163 a tc:TaxonConcept ;
+  rdfs:label           "E. uniflorus var. eriocephalus sec. Parker" ;
+  tc:nameString        "Erigeron uniflorus ssp. eriocephalus (J. Vahl) Boivin" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC104 a tc:TaxonConcept ;
+  rdfs:label           "E. uniflorus ssp. eriocephalus sec. Welsh" ;
+  tc:nameString        "Erigeron uniflorus ssp. eriocephalus (Vahl) Cronquist" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC101 a tc:TaxonConcept ;
+  rdfs:label           "E. uniflorus ssp. eriocephalus sec. Cody" ;
+  tc:nameString        "Erigeron uniflorus ssp. eriocephalus (Vahl) Cronquist" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC103 a tc:TaxonConcept ;
+  rdfs:label           "E. uniflorus ssp. eriocephalus sec. Cronquist" ;
+  tc:nameString        "Erigeron uniflorus ssp. eriocephalus (Vahl) Cronquist" ;
+  tc:accordingToString "Arthur Cronquist, 1947, Revision of the north american species of erigeron, north of Mexico, Britonnia, 6, 121-300, The New York Botanical Garden Press, New York" .
+
+:TC108 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus ssp. pubescens sec. Cody" ;
+  tc:nameString        "Erigeron glabellus ssp. pubescens (Hook.) Cronquist" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC110 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus ssp. pubescens sec. Hulten" ;
+  tc:nameString        "Erigeron glabellus ssp. pubescens (Hook.) Cronquist" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC106 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus ssp. pubescens sec. PAF" ;
+  tc:nameString        "Erigeron glabellus ssp. pubescens (Hook.) Cronquist" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC117 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus ssp. callianthemus sec. Welsh" ;
+  tc:nameString        "Erigeron peregrinus ssp. callianthemus (Greene) Cronquist" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC114 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus ssp. callianthemus sec. Cody" ;
+  tc:nameString        "Erigeron peregrinus ssp. callianthemus (Greene) Cronquist" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC119 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus ssp. callianthemus sec. Hulten" ;
+  tc:nameString        "Erigeron peregrinus ssp. callianthemus (Greene) Cronquist" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC129 a tc:TaxonConcept ;
+  rdfs:label           "E. grandiflorus ssp. muirii sec. Hultén" ;
+  tc:nameString        "Erigeron grandiflorus ssp. muirii (Gray) Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC169 a tc:TaxonConcept ;
+  rdfs:label           "E. humilis sec. Parker" ;
+  tc:nameString        "Erigeron grandiflorus ssp. muirii (Gray) Hultén" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC148 a tc:TaxonConcept ;
+  rdfs:label           "E. grandiflorus ssp. arcticus sec. Cody" ;
+  tc:nameString        "Erigeron grandiflorus ssp. arcticus (Hook.) Porsild" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC193 a tc:TaxonConcept ;
+  rdfs:label           "E. villosum ssp. villosum sec. PAF" ;
+  tc:nameString        "Eritrichium villosum ssp. villosum" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC194 a tc:TaxonConcept ;
+  rdfs:label           "E. villosum ssp. pulvinatum sec. PAF" ;
+  tc:nameString        "Eritrichium villosum ssp. pulvinatum V.V. Petrovsky" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC208 a tc:TaxonConcept ;
+  rdfs:label           "Brps. pumpelliana ssp. arctica sec. PAF" ;
+  tc:nameString        "Bromopsis pumpelliana ssp. arctica (Shear) Á. Löve & D. Löve" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC234 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus ssp. pumpellianus sec. Welsh" ;
+  tc:nameString        "Bromus pumpellianus ssp. pumpellianus" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC237 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus ssp. pumpellianus sec. FNA" ;
+  tc:nameString        "Bromus pumpellianus ssp. pumpellianus" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC241 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus ssp. dicksonii sec. Welsh" ;
+  tc:nameString        "Bromus pumpellianus ssp. dicksonii Mitch. & Wilton" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC240 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus ssp. dicksonii sec. FNA" ;
+  tc:nameString        "Bromus pumpellianus ssp. dicksonii Mitch. & Wilton" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC242 a tc:TaxonConcept ;
+  rdfs:label           "Brps. pumpelliana ssp. dicksonii sec. PAF" ;
+  tc:nameString        "Bromopsis pumpelliana ssp. dicksonii Mitch. & Wilton" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC280 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa ssp. acetosa sec. Welsh" ;
+  tc:nameString        "Rumex acetosa ssp. acetosa" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC282 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa ssp. acetosa sec. Hulten" ;
+  tc:nameString        "Rumex acetosa ssp. acetosa" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC274 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa ssp. acetosa sec. PAF" ;
+  tc:nameString        "Rumex acetosa ssp. acetosa" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC278 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa ssp. alpestris sec. Welsh" ;
+  tc:nameString        "Rumex alpestris ssp. alpestris (Scop.) Á.Löve" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC277 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa ssp. alpestris sec. Cody" ;
+  tc:nameString        "Rumex alpestris ssp. alpestris (Scop.) Á.Löve" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC281 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa ssp. alpestris sec. Hulten" ;
+  tc:nameString        "Rumex alpestris ssp. alpestris (Scop.) Á.Löve" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC290 a tc:TaxonConcept ;
+  rdfs:label           "R. salicifolius ssp. triangulivalvis sec. Cody" ;
+  tc:nameString        "Rumex salicifolius ssp. triangulivalvis Danser" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC291 a tc:TaxonConcept ;
+  rdfs:label           "R. salicifolius ssp. salicifolius var. salicifoliu" ;
+  tc:nameString        "Rumex salicifolius ssp. salicifolius var. salicifolius" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC298 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus ssp. fueginus sec. Cody" ;
+  tc:nameString        "Rumex maritimus ssp. fueginus (Phil.) Hultén" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC302 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus ssp. fueginus sec. Hulten" ;
+  tc:nameString        "Rumex maritimus ssp. fueginus (Phil.) Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC303 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus ssp. maritimus sec. Hulten" ;
+  tc:nameString        "Rumex maritimus ssp. maritimus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC309 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosella ssp. acetosella sec. Hulten" ;
+  tc:nameString        "Rumex acetosella ssp. acetosella" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC305 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosella ssp. acetosella sec. PAF" ;
+  tc:nameString        "Rumex acetosella ssp. acetosella" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC308 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosella ssp. angiocarpus sec. Hulten" ;
+  tc:nameString        "Rumex acetosella ssp. angiocarpus Murb." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC317 a tc:TaxonConcept ;
+  rdfs:label           "R. obtusifolius ssp. agrestis sec. Welsh" ;
+  tc:nameString        "Rumex obtusifolius ssp. agrestis (Fries) Danser" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC324 a tc:TaxonConcept ;
+  rdfs:label           "P. macounii ssp. macounii sec. FNA" ;
+  tc:nameString        "Papaver macounii ssp. macounii" ;
+  tc:accordingToString "Flora of North America, 2" .
+
+:TC329 a tc:TaxonConcept ;
+  rdfs:label           "P. lapponicum ssp. lapponicum sec. PAF" ;
+  tc:nameString        "Papaver lapponicum ssp. lapponicum" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC330 a tc:TaxonConcept ;
+  rdfs:label           "P. lapponicum ssp. occidentale sec. PAF" ;
+  tc:nameString        "Papaver lapponicum ssp. occidentale (C.E. Lundstr.) Knaben" ;
+  tc:accordingToString "Thomas Nuttall, 1841, Descriptions of new Species and Genera of Plants in the natural Order of the Compositae, collected in a Tour across the Continent to the Pacific, a Residence in Oregon, and a Visit to the Sandwich Isl, Transactions of the American Philosophical Society, 7, 283-453, American Philosophical Society" .
+
+:TC333 a tc:TaxonConcept ;
+  rdfs:label           "P. macounii ssp. discolor sec. FNA" ;
+  tc:nameString        "Papaver macounii ssp. discolor (Hultén) Rändel ex D. F. Murray" ;
+  tc:accordingToString "Flora of North America, 2" .
+
+:TC334 a tc:TaxonConcept ;
+  rdfs:label           "P. macounii ssp. discolor sec. Cody" ;
+  tc:nameString        "Papaver macounii ssp. discolor (Hult.) Rändel" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC19 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. var. nigrescens sec. Hulten" ;
+  tc:nameString        "Achillea millefolium var. nigrescens E. Mey." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC48 a tc:TaxonConcept ;
+  rdfs:label           "A. mill. var. nigrescens sec. E. Mey." ;
+  tc:nameString        "Achillea millefolium var. nigrescens E. Mey." ;
+  tc:accordingToString "Meyer, E.H.F., 1830, Achillea millefolium var. nigrescens, De Plantis Labradoricis, libri tres, 65-65, Leopoldi Vossii" .
+
+:TC69 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. kamtschaticus sec. Welsh" ;
+  tc:nameString        "Erigeron acris var. kamtschaticus Herder" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC64 a tc:TaxonConcept ;
+  rdfs:label           "E. acris. var. kamtschaticus sec. FNA" ;
+  tc:nameString        "Erigeron acris var. kamtschaticus Herder" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC156 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. kamtschaticus sec. Parker" ;
+  tc:nameString        "Erigeron acris var. kamtschaticus Herder" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC74 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. debilis sec. Welsh" ;
+  tc:nameString        "Erigeron acris var. debilis Gray" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC75 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. debilis sec. Hulten" ;
+  tc:nameString        "Erigeron acris var. debilis Gray" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC72 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. debilis sec. Gray" ;
+  tc:nameString        "Erigeron acris var. debilis Gray" ;
+  tc:accordingToString "Asa Gray, 1884, Erigeron Linnaeus, Synoptical Flora of North America, 1, 207-221, Smithsonian Institution, Washington, D.C." .
+
+:TC79 a tc:TaxonConcept ;
+  rdfs:label           "E. acris var. elatus sec. Welsh" ;
+  tc:nameString        "Erigeron acris var. elatus (Hook.) Cronq." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC84 a tc:TaxonConcept ;
+  rdfs:label           "E. alpinus var. elatus sec. Hook" ;
+  tc:nameString        "Erigeron alpinus var. elatus Hook." ;
+  tc:accordingToString "William Jackson Hooker, 1840, Flora Boreali-Americana, or, the Botany of the northern parts of British America, 2, Henry G. Bohn" .
+
+:TC89 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus var. discoideus sec. Welsh" ;
+  tc:nameString        "Erigeron compositus var. discoideus Gray" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC88 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus var. glabratus sec. Welsh" ;
+  tc:nameString        "Erigeron compositus var. glabratus Macoun" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC109 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus var. pubescens sec. Welsh" ;
+  tc:nameString        "Erigeron glabellus var. pubescens Hook." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC107 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus var. pubescens sec. FNA" ;
+  tc:nameString        "Erigeron glabellus var. pubescens Hook." ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC168 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus var. pubescens sec. Parker" ;
+  tc:nameString        "Erigeron glabellus var. pubescens Hook." ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC124 a tc:TaxonConcept ;
+  rdfs:label           "E. glabellus var. yukonensis sec. Hultén" ;
+  tc:nameString        "Erigeron glabellus var. yukonensis Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC177 a tc:TaxonConcept ;
+  rdfs:label           "E. aretioides var. chamissonis sec. PAF" ;
+  tc:nameString        "Eritrichium aretioides var. chamissonis (DC.) V.V. Petrovsky" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC178 a tc:TaxonConcept ;
+  rdfs:label           "E. aretioides var. aretioides sec. PAF" ;
+  tc:nameString        "Eritrichium aretioides var. aretioides" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC183 a tc:TaxonConcept ;
+  rdfs:label           "E. nanum var. aretioides sec. Welsh" ;
+  tc:nameString        "Eritrichium nanum var. aretioides (Cham.) Herder" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC184 a tc:TaxonConcept ;
+  rdfs:label           "E. nanum var. chamissonis sec. Welsh" ;
+  tc:nameString        "Eritrichium nanum var. chamissonis (DC.) Herder" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC206 a tc:TaxonConcept ;
+  rdfs:label           "B. sitchensis var. aleutensis sec. Welsh" ;
+  tc:nameString        "Bromus sitchensis var. aleutensis (Trin.) Hultén" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC207 a tc:TaxonConcept ;
+  rdfs:label           "B. sitchensis var. aleutensis sec. Hultén" ;
+  tc:nameString        "Bromus sitchensis var. aleutensis (Trin.) Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC209 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus var. arcticus sec. Cody" ;
+  tc:nameString        "Bromus pumpellianus var. arcticus (Shear) Porsild" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC236 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus var. arcticus sec. Hulten" ;
+  tc:nameString        "Bromus pumpellianus var. arcticus (Shear) Porsild" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC215 a tc:TaxonConcept ;
+  rdfs:label           "B. carinatus var. marginatus sec. FNA" ;
+  tc:nameString        "Bromus carinatus var. marginatus Barkworth & Anderton" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC238 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus var. pumpellianus sec. Cody" ;
+  tc:nameString        "Bromus pumpellianus var. pumpellianus" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC235 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus var. pumpellianus sec. Hulten" ;
+  tc:nameString        "Bromus pumpellianus var. pumpellianus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC239 a tc:TaxonConcept ;
+  rdfs:label           "B. pumpellianus var. villossisimus sec. Hulten" ;
+  tc:nameString        "Bromus pumpellianus var. villossisimus Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC257 a tc:TaxonConcept ;
+  rdfs:label           "R. arcticus var. perlatus sec. Hulten" ;
+  tc:nameString        "Rumex arcticus var. perlatus Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC258 a tc:TaxonConcept ;
+  rdfs:label           "R. arcticus var. arcticus sec. Hulten" ;
+  tc:nameString        "Rumex arcticus var. arcticus Hulten" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC292 a tc:TaxonConcept ;
+  rdfs:label           "R. salicifolius ssp. triangulivalvis var. montigen" ;
+  tc:nameString        "Rumex salicifolius var. montigenitus Jeps." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC300 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus var. fuegina sec. Welsh" ;
+  tc:nameString        "Rumex maritimus var. fuegina Dusén" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC301 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus var. maritimus sec. Welsh" ;
+  tc:nameString        "Rumex maritimus var. maritimus" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC6 a tc:TaxonConcept ;
+  rdfs:label           "C. arctica sec Adams" ;
+  tc:nameString        "Claytonia arctica Adams" ;
+  tc:accordingToString "Adams, M. F., 1817, Descriptiones Plantarum minus cognitarum Sibiriae praesertim orientalis, quas in itinere Ann. 1805 et 1806, Mém. Soc. Imp. Naturalistes Moscou, 5, 89-116" .
+
+:TC7 a tc:TaxonConcept ;
+  rdfs:label           "C. arctica sec Porsild" ;
+  tc:nameString        "Claytonia arctica Adams" ;
+  tc:accordingToString "Porsild, A. E., 1974, Materials for a Flora of Central Yukon Territory, Canadian Museum of Nature, Ottawa" .
+
+:TC9 a tc:TaxonConcept ;
+  rdfs:label           "C. arctica sec. Welsh" ;
+  tc:nameString        "Claytonia arctica Adams" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC8 a tc:TaxonConcept ;
+  rdfs:label           "C. porsildii sec. Yurtsev" ;
+  tc:nameString        "Claytonia porsildii Jurtz." ;
+  tc:accordingToString "Yurtsev, B., 1981, Seven new taxa of flowering plants from the northeastern Asia and adjacent territories, Bot. Zhurn. (Moscow & Leningrad), 66, 1041-1046" .
+
+:TC11 a tc:TaxonConcept ;
+  rdfs:label           "M. scammaniana sec. Cody" ;
+  tc:nameString        "Montia scammaniana (Hultén) Welsh" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC13 a tc:TaxonConcept ;
+  rdfs:label           "Salix bebbiana Sarg. sec. Sargent 1895" ;
+  tc:nameString        "Salix bebbiana" ;
+  tc:accordingToString "Sargent, Charles S., 1895, The names of some North American tree willows, Garden and Forest; a Journal of Horticulture, Landscape Art and Forestry, 8, 463" .
+
+:TC14 a tc:TaxonConcept ;
+  rdfs:label           "Cornus suecica L. sec. Murrell 1994" ;
+  tc:nameString        "Cornus suecica L." ;
+  tc:accordingToString "Murrell, Z. E., 1994, Dwarf Dogwoods: Intermediacy and the Morphological Landscape, Systematic Botany, 19, 539-556" .
+
+:TC31 a tc:TaxonConcept ;
+  rdfs:label           "A. ptarmica sec. Welsh" ;
+  tc:nameString        "Achillea ptarmica L." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC29 a tc:TaxonConcept ;
+  rdfs:label           "A. ptarmica sec. Hulten" ;
+  tc:nameString        "Achillea ptarmica L." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC58 a tc:TaxonConcept ;
+  rdfs:label           "A. ptarmica sec PAF" ;
+  tc:nameString        "Achillea ptarmica L." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC30 a tc:TaxonConcept ;
+  rdfs:label           "A. ptarmica sec. FNA" ;
+  tc:nameString        "Achillea ptarmica L." ;
+  tc:accordingToString "Debra K. Trock, 2006, Achillea Linnaeus, Flora of North America, 19, 492" .
+
+:TC35 a tc:TaxonConcept ;
+  rdfs:label           "A. sibirica sec. Welsh" ;
+  tc:nameString        "Achillea sibirica Ledeb." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC46 a tc:TaxonConcept ;
+  rdfs:label           "A. sibirica sec. Cody" ;
+  tc:nameString        "Achillea sibirica Ledeb." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC15 a tc:TaxonConcept ;
+  rdfs:label           "A. sibirica sec. Hulten" ;
+  tc:nameString        "Achillea sibirica Ledeb." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC36 a tc:TaxonConcept ;
+  rdfs:label           "A. sibirica sec. Ledebour" ;
+  tc:nameString        "Achillea sibirica Ledeb." ;
+  tc:accordingToString "von Ledebour, C.F., 1811, Supplementum I. Enumerationis plantarum Horti botanici Dorpatensis" .
+
+:TC22 a tc:TaxonConcept ;
+  rdfs:label           "A. millefolium L. sec. Welsh" ;
+  tc:nameString        "Achillea millefolium L." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC25 a tc:TaxonConcept ;
+  rdfs:label           "A. millefolium sec. Hulten" ;
+  tc:nameString        "Achillea millefolium L." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC39 a tc:TaxonConcept ;
+  rdfs:label           "A. millefolium sec. L." ;
+  tc:nameString        "Achillea millefolium L." ;
+  tc:accordingToString "Linnaeus, C., 1753, Species Plantarum" .
+
+:TC28 a tc:TaxonConcept ;
+  rdfs:label           "A. millefolium sec. Af. & Botsch." ;
+  tc:nameString        "Achillea millefolium L." ;
+  tc:accordingToString "Afanasiev, K.S. and Botschantzev, V.P., 1968, Achillea, Flora of the U.S.S.R., 26, 64-119, Smithsonian Institution Libraries, Washington, DC" .
+
+:TC24 a tc:TaxonConcept ;
+  rdfs:label           "A. millefolium sec. FNA" ;
+  tc:nameString        "Achillea millefolium L." ;
+  tc:accordingToString "Debra K. Trock, 2006, Achillea Linnaeus, Flora of North America, 19, 492" .
+
+:TC18 a tc:TaxonConcept ;
+  rdfs:label           "A. borealis sec. Hulten" ;
+  tc:nameString        "Achillea borealis Bong." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC47 a tc:TaxonConcept ;
+  rdfs:label           "A. borealis sec. Bongard" ;
+  tc:nameString        "Achillea borealis Bong." ;
+  tc:accordingToString "M. Bongard, 1833, Observations Vegetation de l'Ile de Sitcha, Mémoires de l'Academie Imperiale des Sciences de St.-Petersbourg. Sixieme Serie. Sciences Mathematiques, Physiques et Naturelles, 2, 119-177" .
+
+:TC26 a tc:TaxonConcept ;
+  rdfs:label           "A. lanulosa sec. Hulten" ;
+  tc:nameString        "Achillea lanulosa Nutt." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC49 a tc:TaxonConcept ;
+  rdfs:label           "A. lanulosa sec. Nuttall" ;
+  tc:nameString        "Achillea lanulosa Nutt." ;
+  tc:accordingToString "Wyeth, N.B. and Nuttall, T., 1834, A Catalogue of a Collection of Plants made chiefly in the Valleys of the Rocky Mountains or Northern Andes, towards the sources of he Columbia River, Journal of the Academy of Natural Sciences of Philadelphia, 7, 5-60, Academy of Natural Sciences of Philadelphia" .
+
+:TC16 a tc:TaxonConcept ;
+  rdfs:label           "A. multiflora sec. Hulten" ;
+  tc:nameString        "Achillea multiflora Hook." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC23 a tc:TaxonConcept ;
+  rdfs:label           "A. multiflora Hooker sec Hooker" ;
+  tc:nameString        "Achillea multiflora Hook." ;
+  tc:accordingToString "William Jackson Hooker, 1833, Flora Boreali-Americana, or, the Botany of the northern parts of British America, 1, Henry G. Bohn" .
+
+:TC42 a tc:TaxonConcept ;
+  rdfs:label           "A. multiflora sec Gray" ;
+  tc:nameString        "Achillea multiflora Hook." ;
+  tc:accordingToString "Gray, A, 1878-1884, Synoptical flora of North America, Ivison, Blakeman, Taylor, and Co., New York" .
+
+:TC17 a tc:TaxonConcept ;
+  rdfs:label           "A. nigrescens sec. Rydberg" ;
+  tc:nameString        "Achillea nigrescens (E. Mey.) Rydb." ;
+  tc:accordingToString "Axel Rydberg, 1916, Cardulales, North American Flora, 34, 181-288, New York Botanical Garden" .
+
+:TC32 a tc:TaxonConcept ;
+  rdfs:label           "A. alpina sec. FNA 2006" ;
+  tc:nameString        "Achillea alpina L." ;
+  tc:accordingToString "Debra K. Trock, 2006, Achillea Linnaeus, Flora of North America, 19, 492" .
+
+:TC34 a tc:TaxonConcept ;
+  rdfs:label           "A. nobilis sec. Af. & Botsch." ;
+  tc:nameString        "Achillea nobilis L." ;
+  tc:accordingToString "Afanasiev, K.S. and Botschantzev, V.P., 1968, Achillea, Flora of the U.S.S.R., 26, 64-119, Smithsonian Institution Libraries, Washington, DC" .
+
+:TC33 a tc:TaxonConcept ;
+  rdfs:label           "A. nobilis sec. FNA" ;
+  tc:nameString        "Achillea nobilis L." ;
+  tc:accordingToString "Debra K. Trock, 2006, Achillea Linnaeus, Flora of North America, 19, 492" .
+
+:TC38 a tc:TaxonConcept ;
+  rdfs:label           "A. filipendulina sec. Lamarck" ;
+  tc:nameString        "Achillea filipendulina Lamarck 1783" ;
+  tc:accordingToString "Lamarck, J.-B. P.A.de M., 1783, Encyclopédie Méthodique Botanique, 27, Chez Panckouke, Paris" .
+
+:TC53 a tc:TaxonConcept ;
+  rdfs:label           "A. filipendulina sec ACCS" ;
+  tc:nameString        "Achillea filipendulina Lamarck 1783" ;
+  tc:accordingToString "ACCS, 2020, ACCS Flora of Alaska Checklist" .
+
+:TC50 a tc:TaxonConcept ;
+  rdfs:label           "A. occidentalis sec. Rydberg" ;
+  tc:nameString        "Achillea occidentalis (Raf.) Rydb." ;
+  tc:accordingToString "Axel Rydberg, 1910, Studies on the Rocky Mountain Flora, Bulletin of the Torrey Botanical Club, 37, 443-471, Torrey Botanical Club" .
+
+:TC60 a tc:TaxonConcept ;
+  rdfs:label           "E. caespitosus sec. Welsh" ;
+  tc:nameString        "Erigeron caespitosus Nuttall" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC61 a tc:TaxonConcept ;
+  rdfs:label           "E. caespitosus sec. Cody" ;
+  tc:nameString        "Erigeron caespitosus Nuttall" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC59 a tc:TaxonConcept ;
+  rdfs:label           "E. caespitosus sec. Hulten" ;
+  tc:nameString        "Erigeron caespitosus Nuttall" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC62 a tc:TaxonConcept ;
+  rdfs:label           "E. caespitosus sec. PAF" ;
+  tc:nameString        "Erigeron caespitosus Nuttall" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC153 a tc:TaxonConcept ;
+  rdfs:label           "E. caespitosus sec. FNA" ;
+  tc:nameString        "Erigeron caespitosus Nuttall" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC164 a tc:TaxonConcept ;
+  rdfs:label           "E. caespitosus sec. Parker" ;
+  tc:nameString        "Erigeron caespitosus Nuttall" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC73 a tc:TaxonConcept ;
+  rdfs:label           "E. nivalis sec. FNA" ;
+  tc:nameString        "Erigeron nivalis Nutt." ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC157 a tc:TaxonConcept ;
+  rdfs:label           "E. nivalis sec. Parker" ;
+  tc:nameString        "Erigeron nivalis Nutt." ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC78 a tc:TaxonConcept ;
+  rdfs:label           "E. elatus sec. Cody" ;
+  tc:nameString        "Erigeron elatus (Hook.) Greene" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC83 a tc:TaxonConcept ;
+  rdfs:label           "E. elatus sec. Hulten" ;
+  tc:nameString        "Erigeron elatus (Hook.) Greene" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC76 a tc:TaxonConcept ;
+  rdfs:label           "E. elatus sec. PAF" ;
+  tc:nameString        "Erigeron elatus (Hook.) Greene" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC77 a tc:TaxonConcept ;
+  rdfs:label           "E. elatus sec. FNA" ;
+  tc:nameString        "Erigeron elatus (Hook.) Greene" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC166 a tc:TaxonConcept ;
+  rdfs:label           "E. elatus sec. Parker" ;
+  tc:nameString        "Erigeron elatus (Hook.) Greene" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC87 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus sec. Cody" ;
+  tc:nameString        "Erigeron compositus Pursh" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC90 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus sec. Hulten" ;
+  tc:nameString        "Erigeron compositus Pursh" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC85 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus sec. PAF" ;
+  tc:nameString        "Erigeron compositus Pursh" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC86 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus sec. FNA" ;
+  tc:nameString        "Erigeron compositus Pursh" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC165 a tc:TaxonConcept ;
+  rdfs:label           "E. compositus sec. Parker" ;
+  tc:nameString        "Erigeron compositus Pursh" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC91 a tc:TaxonConcept ;
+  rdfs:label           "E. denalii sec. PAF" ;
+  tc:nameString        "Erigeron denalii Nelson" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC92 a tc:TaxonConcept ;
+  rdfs:label           "E. denalii sec. FNA" ;
+  tc:nameString        "Erigeron denalii Nelson" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC167 a tc:TaxonConcept ;
+  rdfs:label           "E. denalii sec. Parker" ;
+  tc:nameString        "Erigeron denalii Nelson" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC93 a tc:TaxonConcept ;
+  rdfs:label           "E. pallens sec. Cody" ;
+  tc:nameString        "Erigeron pallens Cronquist" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC95 a tc:TaxonConcept ;
+  rdfs:label           "E. purpuratus sec. Welsh" ;
+  tc:nameString        "Erigeron purpuratus Greene" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC96 a tc:TaxonConcept ;
+  rdfs:label           "E. purpuratus sec. Cody" ;
+  tc:nameString        "Erigeron purpuratus Greene" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC94 a tc:TaxonConcept ;
+  rdfs:label           "E. purpuratus sec. Hulten" ;
+  tc:nameString        "Erigeron purpuratus Greene" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC98 a tc:TaxonConcept ;
+  rdfs:label           "E. purpuratus sec. PAF" ;
+  tc:nameString        "Erigeron purpuratus Greene" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC97 a tc:TaxonConcept ;
+  rdfs:label           "E. purpuratus sec. FNA" ;
+  tc:nameString        "Erigeron purpuratus Greene" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC175 a tc:TaxonConcept ;
+  rdfs:label           "E. purpuratus sec. Parker" ;
+  tc:nameString        "Erigeron purpuratus Greene" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC105 a tc:TaxonConcept ;
+  rdfs:label           "E. eriocephalus sec. Hulten" ;
+  tc:nameString        "Erigeron eriocephalus Vahl" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC99 a tc:TaxonConcept ;
+  rdfs:label           "E. eriocephalus sec. PAF" ;
+  tc:nameString        "Erigeron eriocephalus Vahl" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC102 a tc:TaxonConcept ;
+  rdfs:label           "E. eriocephalus sec. Vahl" ;
+  tc:nameString        "Erigeron eriocephalus Vahl" ;
+  tc:accordingToString "Jens Vahl, 1840, Erigeron eriocephalus, Flora Danica, 13, 6, J. W. Hornemann" .
+
+:TC115 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus ssp. peregrinus sec. Cody" ;
+  tc:nameString        "Erigeron peregrinus (Pursh) Greene" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC118 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus ssp. peregrinus sec. Hulten" ;
+  tc:nameString        "Erigeron peregrinus (Pursh) Greene" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC111 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus sec. PAF" ;
+  tc:nameString        "Erigeron peregrinus (Pursh) Greene" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC112 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus var. peregrinus sec. FNA" ;
+  tc:nameString        "Erigeron peregrinus (Pursh) Greene" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC116 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus ssp. peregrinus sec. Welsh" ;
+  tc:nameString        "Erigeron peregrinus (Pursh) Greene" ;
+  tc:accordingToString "Edward Lee Greene, 1897, New or Noteworthy Species, Pittonia, 3, 154-172, Doxey & Co., San Francisco" .
+
+:TC154 a tc:TaxonConcept ;
+  rdfs:label           "E. peregrinus var. peregrinus sec. Parker" ;
+  tc:nameString        "Erigeron peregrinus (Pursh) Greene" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC113 a tc:TaxonConcept ;
+  rdfs:label           "E. glacialis var. glacialis sec. FNA" ;
+  tc:nameString        "Erigeron glacialis (Nutt.) Nelson" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC155 a tc:TaxonConcept ;
+  rdfs:label           "E. glacialis var. glacialis sec. Parker" ;
+  tc:nameString        "Erigeron glacialis (Nutt.) Nelson" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC123 a tc:TaxonConcept ;
+  rdfs:label           "E. yukonensis sec. Welsh" ;
+  tc:nameString        "Erigeron yukonensis Rydb." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC122 a tc:TaxonConcept ;
+  rdfs:label           "E. yukonensis sec. Cody" ;
+  tc:nameString        "Erigeron yukonensis Rydb." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC120 a tc:TaxonConcept ;
+  rdfs:label           "E. yukonensis sec. PAF" ;
+  tc:nameString        "Erigeron yukonensis Rydb." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC121 a tc:TaxonConcept ;
+  rdfs:label           "E. yukonensis sec. FNA" ;
+  tc:nameString        "Erigeron yukonensis Rydb." ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC176 a tc:TaxonConcept ;
+  rdfs:label           "E. yukonensis sec. Parker" ;
+  tc:nameString        "Erigeron yukonensis Rydb." ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC128 a tc:TaxonConcept ;
+  rdfs:label           "E. muirii sec. Welsh" ;
+  tc:nameString        "Erigeron muirii Gray" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC127 a tc:TaxonConcept ;
+  rdfs:label           "E. muirii sec. Cody" ;
+  tc:nameString        "Erigeron muirii Gray" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC125 a tc:TaxonConcept ;
+  rdfs:label           "E. muirii sec. PAF" ;
+  tc:nameString        "Erigeron muirii Gray" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC126 a tc:TaxonConcept ;
+  rdfs:label           "E. muirii sec. FNA" ;
+  tc:nameString        "Erigeron muirii Gray" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC172 a tc:TaxonConcept ;
+  rdfs:label           "E. muirii sec. Parker" ;
+  tc:nameString        "Erigeron muirii Gray" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC133 a tc:TaxonConcept ;
+  rdfs:label           "E. humilis sec. Welsh" ;
+  tc:nameString        "Erigeron humilis Graham" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC132 a tc:TaxonConcept ;
+  rdfs:label           "E. humilis sec. Cody" ;
+  tc:nameString        "Erigeron humilis Graham" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC134 a tc:TaxonConcept ;
+  rdfs:label           "E. humilis sec. Hulten" ;
+  tc:nameString        "Erigeron humilis Graham" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC130 a tc:TaxonConcept ;
+  rdfs:label           "E. humilis sec. PAF" ;
+  tc:nameString        "Erigeron humilis Graham" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC131 a tc:TaxonConcept ;
+  rdfs:label           "E. humilis sec. FNA" ;
+  tc:nameString        "Erigeron humilis Graham" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC138 a tc:TaxonConcept ;
+  rdfs:label           "E. hyperboreus sec. Welsh" ;
+  tc:nameString        "Erigeron hyperboreus Greene" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC137 a tc:TaxonConcept ;
+  rdfs:label           "E. hyperboreus sec. Cody" ;
+  tc:nameString        "Erigeron hyperboreus Greene" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC139 a tc:TaxonConcept ;
+  rdfs:label           "E. hyperboreus sec. Hulten" ;
+  tc:nameString        "Erigeron hyperboreus Greene" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC135 a tc:TaxonConcept ;
+  rdfs:label           "E. hyperboreus sec. PAF" ;
+  tc:nameString        "Erigeron hyperboreus Greene" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC136 a tc:TaxonConcept ;
+  rdfs:label           "E. hyperboreus sec. FNA" ;
+  tc:nameString        "Erigeron hyperboreus Greene" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC170 a tc:TaxonConcept ;
+  rdfs:label           "E. hyperboreus sec. Parker" ;
+  tc:nameString        "Erigeron hyperboreus Greene" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC143 a tc:TaxonConcept ;
+  rdfs:label           "E. lonchophyllus sec. Welsh" ;
+  tc:nameString        "Erigeron lonchophyllus Hooker" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC142 a tc:TaxonConcept ;
+  rdfs:label           "E. lonchophyllus sec. Cody" ;
+  tc:nameString        "Erigeron lonchophyllus Hooker" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC144 a tc:TaxonConcept ;
+  rdfs:label           "E. lonchophyllus sec. Hulten" ;
+  tc:nameString        "Erigeron lonchophyllus Hooker" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC140 a tc:TaxonConcept ;
+  rdfs:label           "E. lonchophyllus sec. PAF" ;
+  tc:nameString        "Erigeron lonchophyllus Hooker" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC141 a tc:TaxonConcept ;
+  rdfs:label           "E. lonchophyllus sec. FNA" ;
+  tc:nameString        "Erigeron lonchophyllus Hooker" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC171 a tc:TaxonConcept ;
+  rdfs:label           "E. lonchophyllus sec. Parker" ;
+  tc:nameString        "Erigeron lonchophyllus Hooker" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC147 a tc:TaxonConcept ;
+  rdfs:label           "E. porsildii sec. FNA" ;
+  tc:nameString        "Erigeron porsildii Nesom & Murray" ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC145 a tc:TaxonConcept ;
+  rdfs:label           "E. porsildii sec. PAF" ;
+  tc:nameString        "Erigeron porsildii Nesom & Murray" ;
+  tc:accordingToString "Guy L. Nesom and David F. Murray, SIDA, Contributions to Botany, 21, 41-57, The Botanical Research Institute of Texas, Inc., Fort Worth" .
+
+:TC174 a tc:TaxonConcept ;
+  rdfs:label           "E. porsildii sec. Parker" ;
+  tc:nameString        "Erigeron porsildii Nesom & Murray" ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC149 a tc:TaxonConcept ;
+  rdfs:label           "E. grandiflorus sec. Welsh" ;
+  tc:nameString        "Erigeron grandiflorus Hook." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC150 a tc:TaxonConcept ;
+  rdfs:label           "E. grandiflorus ssp. grandiflorus sec. Hulten" ;
+  tc:nameString        "Erigeron grandiflorus Hook." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC151 a tc:TaxonConcept ;
+  rdfs:label           "E. ochroleucus sec. PAF" ;
+  tc:nameString        "Erigeron ochroleucus Nutt." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC152 a tc:TaxonConcept ;
+  rdfs:label           "E. ochroleucus sec. FNA" ;
+  tc:nameString        "Erigeron ochroleucus Nutt." ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC173 a tc:TaxonConcept ;
+  rdfs:label           "E. ochroleucus sec. Parker" ;
+  tc:nameString        "Erigeron ochroleucus Nutt." ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC161 a tc:TaxonConcept ;
+  rdfs:label           "E. philadelphicus sec. Welsh" ;
+  tc:nameString        "Erigeron philadelphicus L." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC160 a tc:TaxonConcept ;
+  rdfs:label           "E. philadelphicus sec. Cody" ;
+  tc:nameString        "Erigeron philadelphicus L." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC162 a tc:TaxonConcept ;
+  rdfs:label           "E. philadelphicus sec. Hulten" ;
+  tc:nameString        "Erigeron philadelphicus L." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC159 a tc:TaxonConcept ;
+  rdfs:label           "E. philadelphicus var. philadelphicus sec. FNA" ;
+  tc:nameString        "Erigeron philadelphicus L." ;
+  tc:accordingToString "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TC158 a tc:TaxonConcept ;
+  rdfs:label           "E. philadelphicus var. philadelphicus sec. Parker" ;
+  tc:nameString        "Erigeron philadelphicus L." ;
+  tc:accordingToString "Carolyn Parker, 2020, Erigeron Linnaeus" .
+
+:TC179 a tc:TaxonConcept ;
+  rdfs:label           "E. chamissonis sec. Cody" ;
+  tc:nameString        "Eritrichium chamissonis DC." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC190 a tc:TaxonConcept ;
+  rdfs:label           "E. chamissonis sec. Hulten" ;
+  tc:nameString        "Eritrichium chamissonis DC." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC180 a tc:TaxonConcept ;
+  rdfs:label           "E. aretioides sec. Cody" ;
+  tc:nameString        "Eritrichium aretioides (Cham.) DC." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC191 a tc:TaxonConcept ;
+  rdfs:label           "E. aretioides sec. Hulten" ;
+  tc:nameString        "Eritrichium aretioides (Cham.) DC." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC182 a tc:TaxonConcept ;
+  rdfs:label           "E. politus sec. Fries" ;
+  tc:nameString        "Erigeron politus Fr." ;
+  tc:accordingToString "Fries, E. M., 1846, Summa vegetabilium Scandinaviae, 3" .
+
+:TC187 a tc:TaxonConcept ;
+  rdfs:label           "E. splendens sec. Welsh" ;
+  tc:nameString        "Eritrichium splendens Kearney ex. Wight" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC186 a tc:TaxonConcept ;
+  rdfs:label           "E. splendens sec. Cody" ;
+  tc:nameString        "Eritrichium splendens Kearney ex. Wight" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC188 a tc:TaxonConcept ;
+  rdfs:label           "E. splendens sec. Hulten" ;
+  tc:nameString        "Eritrichium splendens Kearney ex. Wight" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC185 a tc:TaxonConcept ;
+  rdfs:label           "E. splendens sec. PAF" ;
+  tc:nameString        "Eritrichium splendens Kearney ex. Wight" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC192 a tc:TaxonConcept ;
+  rdfs:label           "E. villosum sec. Hulten" ;
+  tc:nameString        "Eritrichium villosum (Ledeb.) Bunge" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC195 a tc:TaxonConcept ;
+  rdfs:label           "E. tschuktschorum sec. PAF" ;
+  tc:nameString        "Eritrichium tschuktschorum Jurtz. & V.V. Petrovsky" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC196 a tc:TaxonConcept ;
+  rdfs:label           "Brps. ciliata sec. PAF" ;
+  tc:nameString        "Bromopsis ciliata (L.) Holub" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC199 a tc:TaxonConcept ;
+  rdfs:label           "B. ciliatus sec. Welsh" ;
+  tc:nameString        "Bromus ciliatus Linnaeus" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC198 a tc:TaxonConcept ;
+  rdfs:label           "B. ciliatus sec. Cody" ;
+  tc:nameString        "Bromus ciliatus Linnaeus" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC200 a tc:TaxonConcept ;
+  rdfs:label           "B. ciliatus sec. Hulten" ;
+  tc:nameString        "Bromus ciliatus Linnaeus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC197 a tc:TaxonConcept ;
+  rdfs:label           "B. ciliatus sec. FNA" ;
+  tc:nameString        "Bromus ciliatus Linnaeus" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC201 a tc:TaxonConcept ;
+  rdfs:label           "Brps. inermis sec. PAF" ;
+  tc:nameString        "Bromopsis inermis (Leyss.) Holub" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC204 a tc:TaxonConcept ;
+  rdfs:label           "B. inermis sec. Welsh" ;
+  tc:nameString        "Bromus inermis Leyss." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC203 a tc:TaxonConcept ;
+  rdfs:label           "B. inermis sec. Cody" ;
+  tc:nameString        "Bromus inermis Leyss." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC205 a tc:TaxonConcept ;
+  rdfs:label           "B. inermis sec. Hulten" ;
+  tc:nameString        "Bromus inermis Leyss." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC202 a tc:TaxonConcept ;
+  rdfs:label           "B. inermis sec. FNA" ;
+  tc:nameString        "Bromus inermis Leyss." ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC211 a tc:TaxonConcept ;
+  rdfs:label           "B. brizaeformis sec. Welsh" ;
+  tc:nameString        "Bromus brizaeformis Fisch. & Mey." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC212 a tc:TaxonConcept ;
+  rdfs:label           "B. brizaeformis sec. Hulten" ;
+  tc:nameString        "Bromus brizaeformis Fisch. & Mey." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC210 a tc:TaxonConcept ;
+  rdfs:label           "B. briziformis sec. FNA" ;
+  tc:nameString        "Bromus brizaeformis Fisch. & Mey." ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC216 a tc:TaxonConcept ;
+  rdfs:label           "B. carinatus sec. Welsh" ;
+  tc:nameString        "Bromus carinatus Hook. & Arn." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC214 a tc:TaxonConcept ;
+  rdfs:label           "B. carinatus sec. Cody" ;
+  tc:nameString        "Bromus carinatus Hook. & Arn." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC218 a tc:TaxonConcept ;
+  rdfs:label           "B. commutatus sec. Welsh" ;
+  tc:nameString        "Bromus commutatus Schrader" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC219 a tc:TaxonConcept ;
+  rdfs:label           "B. commutatus sec. Hulten" ;
+  tc:nameString        "Bromus commutatus Schrader" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC217 a tc:TaxonConcept ;
+  rdfs:label           "B. commutatus sec. FNA" ;
+  tc:nameString        "Bromus commutatus Schrader" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC221 a tc:TaxonConcept ;
+  rdfs:label           "B. secalinus sec. Welsh" ;
+  tc:nameString        "Bromus secalinus Linnaeus" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC220 a tc:TaxonConcept ;
+  rdfs:label           "B. secalinus sec. Cody" ;
+  tc:nameString        "Bromus secalinus Linnaeus" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC222 a tc:TaxonConcept ;
+  rdfs:label           "B. secalinus sec. Hulten" ;
+  tc:nameString        "Bromus secalinus Linnaeus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC223 a tc:TaxonConcept ;
+  rdfs:label           "B. secalinus sec. FNA" ;
+  tc:nameString        "Bromus secalinus Linnaeus" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC224 a tc:TaxonConcept ;
+  rdfs:label           "B. hordeaceus sec. Cody" ;
+  tc:nameString        "Bromus hordeaceus Linnaeus" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC252 a tc:TaxonConcept ;
+  rdfs:label           "B. hordeaceus sec. Hulten" ;
+  tc:nameString        "Bromus hordeaceus Linnaeus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC250 a tc:TaxonConcept ;
+  rdfs:label           "B. hordeaceus sec. FNA" ;
+  tc:nameString        "Bromus hordeaceus Linnaeus" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC245 a tc:TaxonConcept ;
+  rdfs:label           "B. aleutensis sec. FNA" ;
+  tc:nameString        "Bromus aleutensis Trin. ex Griseb." ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC226 a tc:TaxonConcept ;
+  rdfs:label           "B. pacificus sec. Welsh" ;
+  tc:nameString        "Bromus pacificus Shear" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC227 a tc:TaxonConcept ;
+  rdfs:label           "B. pacificus sec. Hulten" ;
+  tc:nameString        "Bromus pacificus Shear" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC225 a tc:TaxonConcept ;
+  rdfs:label           "B. pacificus sec. FNA" ;
+  tc:nameString        "Bromus pacificus Shear" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC230 a tc:TaxonConcept ;
+  rdfs:label           "B. tectorum sec. Welsh" ;
+  tc:nameString        "Bromus tectorum Linnaeus" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC229 a tc:TaxonConcept ;
+  rdfs:label           "B. tectorum sec. Cody" ;
+  tc:nameString        "Bromus tectorum Linnaeus" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC231 a tc:TaxonConcept ;
+  rdfs:label           "B. tectorum sec. Hulten" ;
+  tc:nameString        "Bromus tectorum Linnaeus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC228 a tc:TaxonConcept ;
+  rdfs:label           "B. tectorum sec. FNA" ;
+  tc:nameString        "Bromus tectorum Linnaeus" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC233 a tc:TaxonConcept ;
+  rdfs:label           "B. richardsonii sec. Welsh" ;
+  tc:nameString        "Bromus richardsonii Link" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC244 a tc:TaxonConcept ;
+  rdfs:label           "B. richardsonii sec. Hulten" ;
+  tc:nameString        "Bromus richardsonii Link" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC232 a tc:TaxonConcept ;
+  rdfs:label           "B. richardsonii sec. FNA" ;
+  tc:nameString        "Bromus richardsonii Link" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC246 a tc:TaxonConcept ;
+  rdfs:label           "B. marginatus sec. Hulten" ;
+  tc:nameString        "Bromus marginatus Nees in Steud." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC248 a tc:TaxonConcept ;
+  rdfs:label           "B. racemosus sec. Hulten" ;
+  tc:nameString        "Bromus racemosus Linnaeus" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC251 a tc:TaxonConcept ;
+  rdfs:label           "B. racemosus sec. FNA" ;
+  tc:nameString        "Bromus racemosus Linnaeus" ;
+  tc:accordingToString "Leon E. Pavlickf, 2006, Bromus Linnaeus, Flora of North America, 24, 193" .
+
+:TC249 a tc:TaxonConcept ;
+  rdfs:label           "B. mollis sec. Welsh" ;
+  tc:nameString        "Bromus mollis Linnaeus" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC256 a tc:TaxonConcept ;
+  rdfs:label           "R. arcticus sec. Welsh" ;
+  tc:nameString        "Rumex arcticus Trautv. in Middend." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC255 a tc:TaxonConcept ;
+  rdfs:label           "R. arcticus sec. Cody" ;
+  tc:nameString        "Rumex arcticus Trautv. in Middend." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC253 a tc:TaxonConcept ;
+  rdfs:label           "R. arcticus sec. PAF" ;
+  tc:nameString        "Rumex arcticus Trautv. in Middend." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC254 a tc:TaxonConcept ;
+  rdfs:label           "R. arcticus sec. FNA" ;
+  tc:nameString        "Rumex arcticus Trautv. in Middend." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC262 a tc:TaxonConcept ;
+  rdfs:label           "R. crispus sec. Welsh" ;
+  tc:nameString        "Rumex crispus L." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC261 a tc:TaxonConcept ;
+  rdfs:label           "R. crispus sec. Cody" ;
+  tc:nameString        "Rumex crispus L." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC263 a tc:TaxonConcept ;
+  rdfs:label           "R. crispus sec. Hulten" ;
+  tc:nameString        "Rumex crispus L." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC259 a tc:TaxonConcept ;
+  rdfs:label           "R. crispus sec. PAF" ;
+  tc:nameString        "Rumex crispus L." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC260 a tc:TaxonConcept ;
+  rdfs:label           "R. crispus sec. FNA" ;
+  tc:nameString        "Rumex crispus L." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC267 a tc:TaxonConcept ;
+  rdfs:label           "R. longifolius sec. Welsh" ;
+  tc:nameString        "Rumex longifolius DC." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC266 a tc:TaxonConcept ;
+  rdfs:label           "R. longifolius sec. Cody" ;
+  tc:nameString        "Rumex longifolius DC." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC268 a tc:TaxonConcept ;
+  rdfs:label           "R. longifolius sec. Hulten" ;
+  tc:nameString        "Rumex longifolius DC." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC264 a tc:TaxonConcept ;
+  rdfs:label           "R. longifolius sec. PAF" ;
+  tc:nameString        "Rumex longifolius DC." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC265 a tc:TaxonConcept ;
+  rdfs:label           "R. longifolius sec. FNA" ;
+  tc:nameString        "Rumex longifolius DC." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC272 a tc:TaxonConcept ;
+  rdfs:label           "R. graminifolius sec. Welsh" ;
+  tc:nameString        "Rumex graminifolius Rudolph ex. Lamb." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC273 a tc:TaxonConcept ;
+  rdfs:label           "R. graminifolius sec. Hulten" ;
+  tc:nameString        "Rumex graminifolius Rudolph ex. Lamb." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC269 a tc:TaxonConcept ;
+  rdfs:label           "R. graminifolius sec. PAF" ;
+  tc:nameString        "Rumex graminifolius Rudolph ex. Lamb." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC271 a tc:TaxonConcept ;
+  rdfs:label           "R. graminifolius sec. FNA" ;
+  tc:nameString        "Rumex graminifolius Rudolph ex. Lamb." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC321 a tc:TaxonConcept ;
+  rdfs:label           "R. graminifolius sec. IGU" ;
+  tc:nameString        "Rumex graminifolius Rudolph ex. Lamb." ;
+  tc:accordingToString "" .
+
+:TC270 a tc:TaxonConcept ;
+  rdfs:label           "R. aureostigmaticus sec. PAF" ;
+  tc:nameString        "Rumex aureostigmaticus Komarov" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC275 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa sec. FNA" ;
+  tc:nameString        "Rumex acetosa L." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC322 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosa sec. IGU" ;
+  tc:nameString        "Rumex acetosa L." ;
+  tc:accordingToString "" .
+
+:TC307 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosella sec. Welsh" ;
+  tc:nameString        "Rumex acetosella L." ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC306 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosella sec. Cody" ;
+  tc:nameString        "Rumex acetosella L." ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC276 a tc:TaxonConcept ;
+  rdfs:label           "R. acetosella sec. FNA" ;
+  tc:nameString        "Rumex acetosella L." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC286 a tc:TaxonConcept ;
+  rdfs:label           "R. occidentalis sec. Welsh" ;
+  tc:nameString        "Rumex occidentalis Watson" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC285 a tc:TaxonConcept ;
+  rdfs:label           "R. occidentalis sec. Cody" ;
+  tc:nameString        "Rumex occidentalis Watson" ;
+  tc:accordingToString "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TC283 a tc:TaxonConcept ;
+  rdfs:label           "R. occidentalis sec. PAF" ;
+  tc:nameString        "Rumex occidentalis Watson" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC284 a tc:TaxonConcept ;
+  rdfs:label           "R. occidentalis sec. FNA" ;
+  tc:nameString        "Rumex occidentalis Watson" ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC287 a tc:TaxonConcept ;
+  rdfs:label           "R. fenestratus sec. Hulten" ;
+  tc:nameString        "Rumex fenestratus Greene" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC293 a tc:TaxonConcept ;
+  rdfs:label           "R. sibiricus sec. Hulten" ;
+  tc:nameString        "Rumex sibiricus Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC288 a tc:TaxonConcept ;
+  rdfs:label           "R. sibiricus sec. PAF" ;
+  tc:nameString        "Rumex sibiricus Hultén" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC289 a tc:TaxonConcept ;
+  rdfs:label           "R. sibiricus sec. FNA" ;
+  tc:nameString        "Rumex sibiricus Hultén" ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC294 a tc:TaxonConcept ;
+  rdfs:label           "R. mexicanus sec. Hulten" ;
+  tc:nameString        "Rumex mexicanus Meisn. in DC." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC295 a tc:TaxonConcept ;
+  rdfs:label           "R. mexicanus sec. FNA" ;
+  tc:nameString        "Rumex mexicanus Meisn. in DC." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC296 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus sec. PAF" ;
+  tc:nameString        "Rumex maritimus L." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC297 a tc:TaxonConcept ;
+  rdfs:label           "R. maritimus sec. FNA" ;
+  tc:nameString        "Rumex maritimus L." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC304 a tc:TaxonConcept ;
+  rdfs:label           "R. fueginus sec. PAF" ;
+  tc:nameString        "Rumex  fueginus Phil." ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC299 a tc:TaxonConcept ;
+  rdfs:label           "R. fueginus sec. FNA" ;
+  tc:nameString        "Rumex  fueginus Phil." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC310 a tc:TaxonConcept ;
+  rdfs:label           "R. beringensis sec. PAF" ;
+  tc:nameString        "Rumex beringensis Jurtz. & V.V. Petrovsky" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC311 a tc:TaxonConcept ;
+  rdfs:label           "R. beringensis sec. FNA" ;
+  tc:nameString        "Rumex beringensis Jurtz. & V.V. Petrovsky" ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC312 a tc:TaxonConcept ;
+  rdfs:label           "R. krausei sec. PAF" ;
+  tc:nameString        "Rumex krausei Jurtz. & V.V.Petrovsky" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC313 a tc:TaxonConcept ;
+  rdfs:label           "R. krausei sec. FNA" ;
+  tc:nameString        "Rumex krausei Jurtz. & V.V.Petrovsky" ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC314 a tc:TaxonConcept ;
+  rdfs:label           "R. lapponicus sec. PAF" ;
+  tc:nameString        "Rumex lapponicus (Hiitonen) Czernov" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC315 a tc:TaxonConcept ;
+  rdfs:label           "R. lapponicus sec. FNA" ;
+  tc:nameString        "Rumex lapponicus (Hiitonen) Czernov" ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC318 a tc:TaxonConcept ;
+  rdfs:label           "R. obtusifolius sec. Hulten" ;
+  tc:nameString        "Rumex obtusifolius L." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC316 a tc:TaxonConcept ;
+  rdfs:label           "R. obtusifolius sec. FNA" ;
+  tc:nameString        "Rumex obtusifolius L." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC320 a tc:TaxonConcept ;
+  rdfs:label           "R. transitorius sec. Hulten" ;
+  tc:nameString        "Rumex transitorius Rech." ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC319 a tc:TaxonConcept ;
+  rdfs:label           "R. transitorius sec. FNA" ;
+  tc:nameString        "Rumex transitorius Rech." ;
+  tc:accordingToString "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TC325 a tc:TaxonConcept ;
+  rdfs:label           "P. macounii sec. Welsh" ;
+  tc:nameString        "Papaver macounii Greene" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC326 a tc:TaxonConcept ;
+  rdfs:label           "P. macounii sec. Hulten" ;
+  tc:nameString        "Papaver macounii Greene" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC323 a tc:TaxonConcept ;
+  rdfs:label           "P. macounii sec. PAF" ;
+  tc:nameString        "Papaver macounii Greene" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC328 a tc:TaxonConcept ;
+  rdfs:label           "P. hultenii sec. Hulten" ;
+  tc:nameString        "Papaver hultenii Knaben" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TC327 a tc:TaxonConcept ;
+  rdfs:label           "P. hultenii sec. PAF" ;
+  tc:nameString        "Papaver hultenii Knaben" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC331 a tc:TaxonConcept ;
+  rdfs:label           "P. lapponicum sec. FNA" ;
+  tc:nameString        "Papaver lapponicum (Tolm.) Nordh." ;
+  tc:accordingToString "Flora of North America, 2" .
+
+:TC332 a tc:TaxonConcept ;
+  rdfs:label           "P. keelei sec. PAF" ;
+  tc:nameString        "Papaver keelei A. E. Porsild" ;
+  tc:accordingToString "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TC336 a tc:TaxonConcept ;
+  rdfs:label           "P. alaskanum sec. Welsh" ;
+  tc:nameString        "Papaver alaskanum Hultén" ;
+  tc:accordingToString "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TC337 a tc:TaxonConcept ;
+  rdfs:label           "P. alaskanum sec. Hulten" ;
+  tc:nameString        "Papaver alaskanum Hultén" ;
+  tc:accordingToString "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+# Taxon Concept Relationships
+
+:TCrel7 a tc:Relationship ;
+  tc:fromTaxon            :TC7 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC6 ;
+  sem:accordingTo         "Porsild, A. E., 1974, Materials for a Flora of Central Yukon Territory, Canadian Museum of Nature, Ottawa" .
+
+:TCrel8 a tc:Relationship ;
+  tc:fromTaxon            :TC7 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC8 ;
+  sem:accordingTo         "Yurtsev, B., 1981, Seven new taxa of flowering plants from the northeastern Asia and adjacent territories, Bot. Zhurn. (Moscow & Leningrad), 66, 1041-1046" .
+
+:TCrel9 a tc:Relationship ;
+  tc:fromTaxon            :TC8 ;
+  tc:relationshipCategory tc:Excludes ;
+  tc:toTaxon              :TC6 ;
+  sem:accordingTo         "Yurtsev, B., 1981, Seven new taxa of flowering plants from the northeastern Asia and adjacent territories, Bot. Zhurn. (Moscow & Leningrad), 66, 1041-1046" .
+
+:TCrel15 a tc:Relationship ;
+  tc:fromTaxon            :TC11 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC7 ;
+  sem:accordingTo         "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TCrel19 a tc:Relationship ;
+  tc:fromTaxon            :TC18 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC17 ;
+  sem:accordingTo         "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TCrel22 a tc:Relationship ;
+  tc:fromTaxon            :TC15 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC23 ;
+  sem:accordingTo         "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TCrel23 a tc:Relationship ;
+  tc:fromTaxon            :TC24 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC25 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel24 a tc:Relationship ;
+  tc:fromTaxon            :TC26 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC21 ;
+  sem:accordingTo         "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TCrel25 a tc:Relationship ;
+  tc:fromTaxon            :TC27 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC26 ;
+  rdfs:comment            "Both authors refer to pale or yellowish involucral bract margins." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel28 a tc:Relationship ;
+  tc:fromTaxon            :TC24 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC21 ;
+  sem:accordingTo         "Debra K. Trock, 2006, Achillea Linnaeus, Flora of North America, 19, 492" .
+
+:TCrel30 a tc:Relationship ;
+  tc:fromTaxon            :TC30 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC31 ;
+  rdfs:comment            "Descriptions are exceedingly similar." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel31 a tc:Relationship ;
+  tc:fromTaxon            :TC32 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC15 ;
+  rdfs:comment            "TC1 is listed under synonyms for TC2. Descriptions are similar." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel32 a tc:Relationship ;
+  tc:fromTaxon            :TC33 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC34 ;
+  rdfs:comment            "Descriptions are similar. Flora U.S.S.R., however, further divides TC1 into two more ssp.: nobilis (ligules white) and neilreichi (ligules pale yellow)." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel34 a tc:Relationship ;
+  tc:fromTaxon            :TC32 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC36 ;
+  sem:accordingTo         "Debra K. Trock, 2006, Achillea Linnaeus, Flora of North America, 19, 492" .
+
+:TCrel35 a tc:Relationship ;
+  tc:fromTaxon            :TC37 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC23 ;
+  rdfs:comment            "Copied from D.F. Murray & Elven: 'We hereby recombine A. multiflora as a subspecies of A. alpina.'" ;
+  sem:accordingTo         "Reidar, E. and Murray, D.F., 2008, New Combinations in the Panarctic Vascular Plant Flora, Journal of the Botanical Research Institute of Texas, 2, 433-446, The Botanical Research Institute of Texas" .
+
+:TCrel43 a tc:Relationship ;
+  tc:fromTaxon            :TC31 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC29 ;
+  rdfs:comment            "Descriptions are similar." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel45 a tc:Relationship ;
+  tc:fromTaxon            :TC42 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC36 ;
+  sem:accordingTo         "Fernald, M.L., 1929, Achillea siberica in eastern America, Rhodora, 31, 219-220" .
+
+:TCrel46 a tc:Relationship ;
+  tc:fromTaxon            :TC37 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC32 ;
+  rdfs:comment            "A.a. is not strictly a synonym of the new A.a.m." ;
+  sem:accordingTo         "Reidar, E. and Murray, D.F., 2008, New Combinations in the Panarctic Vascular Plant Flora, Journal of the Botanical Research Institute of Texas, 2, 433-446, The Botanical Research Institute of Texas" .
+
+:TCrel48 a tc:Relationship ;
+  tc:fromTaxon            :TC44 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC47 ;
+  sem:accordingTo         "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TCrel49 a tc:Relationship ;
+  tc:fromTaxon            :TC45 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC17 ;
+  sem:accordingTo         "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TCrel50 a tc:Relationship ;
+  tc:fromTaxon            :TC44 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC48 ;
+  sem:accordingTo         "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TCrel51 a tc:Relationship ;
+  tc:fromTaxon            :TC45 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC49 ;
+  sem:accordingTo         "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TCrel52 a tc:Relationship ;
+  tc:fromTaxon            :TC27 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC50 ;
+  sem:accordingTo         "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TCrel53 a tc:Relationship ;
+  tc:fromTaxon            :TC51 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC37 ;
+  rdfs:comment            "'The northwestern North American plant is visibly different from the northern and northeastern Asian ones but mainly in quantitative features: capitulae more numerous, ligules smaller, and leaves slightly more dissected. We include the Alaskan and Yukon Territory plants named A. sibirica by Hultén and others in A. multiflora but consider this North American plant a subspecies.'" ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel54 a tc:Relationship ;
+  tc:fromTaxon            :TC32 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC35 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel55 a tc:Relationship ;
+  tc:fromTaxon            :TC35 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC15 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel57 a tc:Relationship ;
+  tc:fromTaxon            :TC51 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC46 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel58 a tc:Relationship ;
+  tc:fromTaxon            :TC32 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC46 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel59 a tc:Relationship ;
+  tc:fromTaxon            :TC46 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC15 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel60 a tc:Relationship ;
+  tc:fromTaxon            :TC46 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC35 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel61 a tc:Relationship ;
+  tc:fromTaxon            :TC54 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC24 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel62 a tc:Relationship ;
+  tc:fromTaxon            :TC55 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC24 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel63 a tc:Relationship ;
+  tc:fromTaxon            :TC57 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC24 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel65 a tc:Relationship ;
+  tc:fromTaxon            :TC24 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC44 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel66 a tc:Relationship ;
+  tc:fromTaxon            :TC24 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC45 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel67 a tc:Relationship ;
+  tc:fromTaxon            :TC45 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC27 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel68 a tc:Relationship ;
+  tc:fromTaxon            :TC44 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC41 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel69 a tc:Relationship ;
+  tc:fromTaxon            :TC24 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC40 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel70 a tc:Relationship ;
+  tc:fromTaxon            :TC40 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC25 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel71 a tc:Relationship ;
+  tc:fromTaxon            :TC41 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC18 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel72 a tc:Relationship ;
+  tc:fromTaxon            :TC58 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC30 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel73 a tc:Relationship ;
+  tc:fromTaxon            :TC153 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC61 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel74 a tc:Relationship ;
+  tc:fromTaxon            :TC61 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC60 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel75 a tc:Relationship ;
+  tc:fromTaxon            :TC60 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC59 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel76 a tc:Relationship ;
+  tc:fromTaxon            :TC63 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC64 ;
+  rdfs:comment            "PAF differs from FNA. Only a very few specimens that PAF considers the Russian ssp. kam would be included in FNAs ssp. kam" ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel77 a tc:Relationship ;
+  tc:fromTaxon            :TC65 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC64 ;
+  rdfs:comment            "Pretty much all material in N America would be politus sec. PAF and kam sec FNA" ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel78 a tc:Relationship ;
+  tc:fromTaxon            :TC68 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC67 ;
+  sem:accordingTo         "Cody, W.J., 2000, Flora of the Yukon Territory, NRC Research Press, Ottawa" .
+
+:TCrel79 a tc:Relationship ;
+  tc:fromTaxon            :TC69 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC70 ;
+  sem:accordingTo         "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TCrel81 a tc:Relationship ;
+  tc:fromTaxon            :TC73 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC72 ;
+  sem:accordingTo         "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TCrel82 a tc:Relationship ;
+  tc:fromTaxon            :TC73 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC71 ;
+  sem:accordingTo         "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TCrel83 a tc:Relationship ;
+  tc:fromTaxon            :TC71 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC74 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel84 a tc:Relationship ;
+  tc:fromTaxon            :TC74 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC75 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel85 a tc:Relationship ;
+  tc:fromTaxon            :TC76 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC77 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel86 a tc:Relationship ;
+  tc:fromTaxon            :TC77 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC78 ;
+  rdfs:comment            "FNA includes more synonyms for this taxon than Cody. The rest of the descriptions appear to match up." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel87 a tc:Relationship ;
+  tc:fromTaxon            :TC78 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC79 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel88 a tc:Relationship ;
+  tc:fromTaxon            :TC79 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC83 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel89 a tc:Relationship ;
+  tc:fromTaxon            :TC79 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC84 ;
+  sem:accordingTo         "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TCrel90 a tc:Relationship ;
+  tc:fromTaxon            :TC69 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC66 ;
+  rdfs:comment            "'The name Erigeron acris var. kamtschaticus was reserved by Hultén (1968a, 1968b) for a single North American collection made at 'Junction Firth R. and Mancha Creek on the Alaska- Yukon boundary in August 1961;' he treated all others of the species in North America as E acris subsp. politus. Entire-leaved plants, however, apparently are the common form of the species even in the Kamchatka area.'" ;
+  sem:accordingTo         "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TCrel91 a tc:Relationship ;
+  tc:fromTaxon            :TC85 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC86 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel92 a tc:Relationship ;
+  tc:fromTaxon            :TC86 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC87 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel93 a tc:Relationship ;
+  tc:fromTaxon            :TC87 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC89 ;
+  rdfs:comment            "Cody: 'Basal leaves densely crowded, 1–8 cm long, once ternately divided (var. discoideus Gray) or 2- to 3-ternate (var. glabratus Macoun), pubescent and glandular to glabrous...'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel94 a tc:Relationship ;
+  tc:fromTaxon            :TC87 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC88 ;
+  rdfs:comment            "Cody: 'Basal leaves densely crowded, 1–8 cm long, once ternately divided (var. discoideus Gray) or 2- to 3-ternate (var. glabratus Macoun), pubescent and glandular to glabrous...'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel95 a tc:Relationship ;
+  tc:fromTaxon            :TC89 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC90 ;
+  rdfs:comment            "Hultén: 'In the typical plant the leaves are 3-4 times ternate, with long divisions; in var. glabratus Macoun, 2-3 times ternate, with shorter divisions; in var. discoideus Gray, once ternate, with almost pulvinate growth. All types occur in Alaska, only slightly separated geographically.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel96 a tc:Relationship ;
+  tc:fromTaxon            :TC88 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC90 ;
+  rdfs:comment            "Hultén: 'In the typical plant the leaves are 3-4 times ternate, with long divisions; in var. glabratus Macoun, 2-3 times ternate, with shorter divisions; in var. discoideus Gray, once ternate, with almost pulvinate growth. All types occur in Alaska, only slightly separated geographically.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel97 a tc:Relationship ;
+  tc:fromTaxon            :TC91 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC92 ;
+  rdfs:comment            "PAF recognizes two synonyms for this taxon: E. mexiae and E. pallens. FNA recognizes two synonyms for this taxon: E. mexiae and E. purpuratus var. dilatatus. There is no E. pallens sec. PAF. There is an E. pallens sec. FNA. 2020-10-19 cam switch from overlap to congruent." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel98 a tc:Relationship ;
+  tc:fromTaxon            :TC95 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC94 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel99 a tc:Relationship ;
+  tc:fromTaxon            :TC96 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC95 ;
+  rdfs:comment            "Although the two authors provide very similar descriptions, Cody makes no mention of E. denalii at all. Welsh considers E. denalii to be a synonym for E. purpuratus. 2020-10-19 Cam overlaps -> included in." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel100 a tc:Relationship ;
+  tc:fromTaxon            :TC97 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC96 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel101 a tc:Relationship ;
+  tc:fromTaxon            :TC98 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC97 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel102 a tc:Relationship ;
+  tc:fromTaxon            :TC92 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC93 ;
+  rdfs:comment            "FNA indicates two synonyms for this taxon: E. mexiae and E. purpuratus var. dilatatus. Both of these taxa are synonyms for E. pallens according to Cody, however Cody also lists E. purpuratus ssp. pallens, E. humilis, and E. lanatus as synonyms for his E. pallens. 2020-10-19 Cam switched from overlaps to congruent." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel103 a tc:Relationship ;
+  tc:fromTaxon            :TC93 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC95 ;
+  rdfs:comment            "According to FNA: 'Erigeron pallens is known only from southeastern British Columbia and southwestern Alberta. Arctic plants previously identified as E. pallens mostly are E. denalii.' E. denalii is a synonym for E. purpuratus according to Welsh. 2020-10-19 Cam intersects -> included in." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel104 a tc:Relationship ;
+  tc:fromTaxon            :TC99 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC100 ;
+  rdfs:comment            "'Nesom (2006b) considered E. eriocephalus a variety of E. uniflorus, probably due to previous American accounts (not least Aiken et al.) rather than to comparison with European specimens.'" ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel105 a tc:Relationship ;
+  tc:fromTaxon            :TC100 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC103 ;
+  sem:accordingTo         "Guy L. Nesom, 2006, Erigeron Linnaeus, Flora of North America, 20, 321" .
+
+:TCrel106 a tc:Relationship ;
+  tc:fromTaxon            :TC100 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC101 ;
+  rdfs:comment            "2020-10-19 switched by Cam from overlap to congruent" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel107 a tc:Relationship ;
+  tc:fromTaxon            :TC101 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC104 ;
+  rdfs:comment            "Descriptions are the same. Both state that E. eriocephalus is the synonym." ;
+  sem:accordingTo         "Augustin Pyramus de Candolle, 1836, Prodromus systematis naturalis regni vegetabilis, sive, Enumeratio contracta ordinum generum specierumque plantarum huc usque cognitarium, juxta methodi naturalis, normas digesta, 5, Sumptibus Sociorum Treuttel et Würtz, Paris" .
+
+:TCrel108 a tc:Relationship ;
+  tc:fromTaxon            :TC104 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC105 ;
+  rdfs:comment            "Descriptions, ranges, synonyms similar." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel109 a tc:Relationship ;
+  tc:fromTaxon            :TC106 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC107 ;
+  rdfs:comment            "PAF: 'Erigeron glabellus is recognized with two races: subsp./var. glabellus mainly in western U.S.A. and southwesternmost Canada and subsp./var. pubescens throughout in western North America and reaching the Arctic in Alaska and the Yukon Territory.' PAF appears to equate the ssp. and var. pubescens, and lists the latter as a synonym for the former." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel110 a tc:Relationship ;
+  tc:fromTaxon            :TC107 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC108 ;
+  rdfs:comment            "Cody describes this taxon's range as Western North America, while FNA indicates the range extends farther eastward toward Ontario" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel111 a tc:Relationship ;
+  tc:fromTaxon            :TC108 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC109 ;
+  rdfs:comment            "Descriptions are the same except for the geography. Welsh's taxon is found 'central and eastern Alaska and Yukon; south to Utah and east to Wisconsin.' while Cody's taxon is seemingly restricted to the western area of the continent." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel112 a tc:Relationship ;
+  tc:fromTaxon            :TC109 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC110 ;
+  rdfs:comment            "Descriptions similar except for geography. Welsh's taxon extends south and eastward. Hulten's taxon is geographically separated from E. glabellus ssp. glabellus, which occupies the southern region of Welsh's taxon." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel113 a tc:Relationship ;
+  tc:fromTaxon            :TC111 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC112 ;
+  rdfs:comment            "'Hultén (1968a) and Cody (1996) recognized a widely distributed Cordilleran Erigeron peregrinus with two races: the northern subsp. peregrinus and the more southern subsp. callianthemus (Greene) Cronquist (E. callianthemus Greene), both reported to reach non-arctic parts of Alaska and the Yukon Territory and subsp. peregrinus to reach the Borderline Arctic in the Goodnews Bay area in southwestern Alaska. Nesom (2006b) distinguished between two species: a northern Cordilleran E. peregrinus (with two varieties) and a more widely Cordilleran E. glacialis (Nutt.) A. Nelson (with two varieties). He synonymized E. callianthemus with E. glacialis var. glacialis.'" ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel114 a tc:Relationship ;
+  tc:fromTaxon            :TC111 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC113 ;
+  rdfs:comment            "'Hultén (1968a) and Cody (1996) recognized a widely distributed Cordilleran Erigeron peregrinus with two races: the northern subsp. peregrinus and the more southern subsp. callianthemus (Greene) Cronquist (E. callianthemus Greene), both reported to reach non-arctic parts of Alaska and the Yukon Territory and subsp. peregrinus to reach the Borderline Arctic in the Goodnews Bay area in southwestern Alaska. Nesom (2006b) distinguished between two species: a northern Cordilleran E. peregrinus (with two varieties) and a more widely Cordilleran E. glacialis (Nutt.) A. Nelson (with two varieties). He synonymized E. callianthemus with E. glacialis var. glacialis.'" ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel115 a tc:Relationship ;
+  tc:fromTaxon            :TC113 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC114 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel116 a tc:Relationship ;
+  tc:fromTaxon            :TC112 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC115 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel117 a tc:Relationship ;
+  tc:fromTaxon            :TC115 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC116 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel118 a tc:Relationship ;
+  tc:fromTaxon            :TC114 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC117 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel119 a tc:Relationship ;
+  tc:fromTaxon            :TC116 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC118 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel120 a tc:Relationship ;
+  tc:fromTaxon            :TC117 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC119 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel121 a tc:Relationship ;
+  tc:fromTaxon            :TC54 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC40 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel122 a tc:Relationship ;
+  tc:fromTaxon            :TC57 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC45 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel123 a tc:Relationship ;
+  tc:fromTaxon            :TC55 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC44 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel124 a tc:Relationship ;
+  tc:fromTaxon            :TC120 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC121 ;
+  rdfs:comment            "PAF: 'Nesom (2006b) mapped Erigeron yukonensis east to Nunavut.' This presumably means FNA's concept is more geographically inclusive than PAF's." ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel125 a tc:Relationship ;
+  tc:fromTaxon            :TC121 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC122 ;
+  rdfs:comment            "PAF: 'Nesom (2006b) mapped Erigeron yukonensis east to Nunavut.' Cody's TC is found '...east to Coronation Gulf and in Nahanni National Park,' not nearly as far east as FNA's TC." ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel126 a tc:Relationship ;
+  tc:fromTaxon            :TC122 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC123 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel128 a tc:Relationship ;
+  tc:fromTaxon            :TC123 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC124 ;
+  sem:accordingTo         "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TCrel130 a tc:Relationship ;
+  tc:fromTaxon            :TC125 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC126 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel131 a tc:Relationship ;
+  tc:fromTaxon            :TC126 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC127 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel132 a tc:Relationship ;
+  tc:fromTaxon            :TC127 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC128 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel133 a tc:Relationship ;
+  tc:fromTaxon            :TC128 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC129 ;
+  sem:accordingTo         "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TCrel134 a tc:Relationship ;
+  tc:fromTaxon            :TC130 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC131 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel135 a tc:Relationship ;
+  tc:fromTaxon            :TC131 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC132 ;
+  rdfs:comment            "Descriptions similar, however these two authors only agree on one synonym: E. unalaschkensis. FNA lists one additional synonym: E. uniflorus var. unalaschkensis. 2019-10-19 Cam switched to congruent with." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel136 a tc:Relationship ;
+  tc:fromTaxon            :TC132 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC133 ;
+  rdfs:comment            "Descriptions are similar, however the authors only agree on one synonym: E. unalaschkensis. Welsh lists an additional synonym: E. pulchellus var. unalaschkensis. 2019-10-19 Cam switched to congruent with." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel137 a tc:Relationship ;
+  tc:fromTaxon            :TC133 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC134 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel138 a tc:Relationship ;
+  tc:fromTaxon            :TC135 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC136 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel139 a tc:Relationship ;
+  tc:fromTaxon            :TC136 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC137 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel140 a tc:Relationship ;
+  tc:fromTaxon            :TC137 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC138 ;
+  rdfs:comment            "Descriptions are similar, however Welsh lists two synonyms in addition to E. alaskanus: E. alaskanus f. albiflorus and E. hyperboreus f. albiflorus. 2019-10-19 Cam switched to congruent with." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel141 a tc:Relationship ;
+  tc:fromTaxon            :TC138 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC139 ;
+  rdfs:comment            "Welsh lists two additional synonyms (see Welsh-Cody TCR). Hulten's TC appears to agree more with Cody's. 2019-10-19 Cam switched to congruent with." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel142 a tc:Relationship ;
+  tc:fromTaxon            :TC140 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC141 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel143 a tc:Relationship ;
+  tc:fromTaxon            :TC141 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC142 ;
+  rdfs:comment            "Descriptions similar, however FNA lists synonyms and Cody does not. 2019-10-19 Cam switched to congruent with." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel144 a tc:Relationship ;
+  tc:fromTaxon            :TC142 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC143 ;
+  rdfs:comment            "Cody states this taxon can be found in East Asia, while Welsh only describes a North American distribution." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel145 a tc:Relationship ;
+  tc:fromTaxon            :TC143 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC144 ;
+  rdfs:comment            "Descriptions similar, however Hultén lists E. ameriifolius as a synonym. 2019-10-19 Cam switched from overlaps to congruent with." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel146 a tc:Relationship ;
+  tc:fromTaxon            :TC145 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC147 ;
+  rdfs:comment            "'We provisionally follow Nesom and Murray (2005) and assign the proven arctic plants to three species: the northern and northeastern Asian E. koraginensis (by Nesom and Murray as E. komarovii), the narrowly American Beringian E. muirii, and the more broadly American Beringian E. porsildii.' This is presumably the publication Nesom & Murray 2004, in which the circumscription above was written. There is no Nesom & Murray 2005." ;
+  sem:accordingTo         "Elven, R. and Murray, D.F. and Razzhivin, V.Y. and Yurtsev, B.A. , 2020, Annotated Checklist of the Panarctic Flora (PAF) Vascular plants, Version 1.0" .
+
+:TCrel147 a tc:Relationship ;
+  tc:fromTaxon            :TC147 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC148 ;
+  rdfs:comment            "According to FNA, E. porsildii has synonym E. grandiflorus ssp. arcticus sec. Porsild, which is congruent to E. grandiflorus ssp. arcticus sec. Cody." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel148 a tc:Relationship ;
+  tc:fromTaxon            :TC148 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC149 ;
+  rdfs:comment            "(Kimberly: Geography corresponds closely to E. grandiflorus ssp. arcticus sec. Cody) 2019-10-19 switch from cong to incl_in by cam. Welsh's and Hulten's grandiflorus was much broader." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel149 a tc:Relationship ;
+  tc:fromTaxon            :TC149 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC150 ;
+  rdfs:comment            "'...the plant reported as E. grandiflorus from Alaska, the Yukon, the Arctic Coast of the Mackenzie District, and the western islands of the Canadian Arctic Archipelago differs consistently from E. grandiflorus Hook. of the Alberta Rocky Mountains.... The Rocky Mountain plant is well illustrated in Hulten (1968:865)...' 2019-10-19, switched from disjunct to congruent by Cam" ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel150 a tc:Relationship ;
+  tc:fromTaxon            :TC151 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC152 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel151 a tc:Relationship ;
+  tc:fromTaxon            :TC64 ;
+  tc:relationshipCategory tc:Excludes ;
+  tc:toTaxon              :TC71 ;
+  rdfs:comment            "Cook = 'is included in' 'Descriptions similar, but differ slightly in stature, number of heads, and habitat. Cody's TC is on the lower end of FNA's TC in the former two characteristics, and overlaps on the latter.' Webb: Seems that PAF did not assess these specimens, and than they belong to FNA's nivalis." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel152 a tc:Relationship ;
+  tc:fromTaxon            :TC64 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC68 ;
+  rdfs:comment            "'Nesom (2004, 2006b) rather assigned all North American plants to subsp. kamtschaticus and considered it different from European-Siberian subsp. politus.'" ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel153 a tc:Relationship ;
+  tc:fromTaxon            :TC68 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC69 ;
+  rdfs:comment            "Descriptions similar. Welsh lists E. acris ssp. politus and E. acris var. asteroides, the latter name of which is listed as a synonym for Cody's TC. However, it is difficult to say whether each author's var. asteroides is the same." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel154 a tc:Relationship ;
+  tc:fromTaxon            :TC62 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC153 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel156 a tc:Relationship ;
+  tc:fromTaxon            :TC154 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC111 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel157 a tc:Relationship ;
+  tc:fromTaxon            :TC155 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC111 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel160 a tc:Relationship ;
+  tc:fromTaxon            :TC158 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC111 ;
+  rdfs:comment            "Nesom (1982) writes that the E. philadelphicus group overlaps with E. peregrinus on a few characters, but is notably different on others. See discussion on pp. 467-468. In light of Nesom's discussion, inferences were made about Parker:PAF by K. Cook." ;
+  sem:accordingTo         "Guy L. Nesom, 1982, Systematics of the Erigeron rusbyi Group (Asteraceae) and Delimitation of sect. Peregrinus, Systematic Botany, 7, 457-470, American Society of Plant Taxonomists" .
+
+:TCrel161 a tc:Relationship ;
+  tc:fromTaxon            :TC159 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC160 ;
+  rdfs:comment            "Cody recognizes only one E. philadelphicus. FNA recognizes three subspecies." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel162 a tc:Relationship ;
+  tc:fromTaxon            :TC160 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC161 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel163 a tc:Relationship ;
+  tc:fromTaxon            :TC161 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC162 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel164 a tc:Relationship ;
+  tc:fromTaxon            :TC163 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC99 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel165 a tc:Relationship ;
+  tc:fromTaxon            :TC164 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC62 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel166 a tc:Relationship ;
+  tc:fromTaxon            :TC165 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC85 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel167 a tc:Relationship ;
+  tc:fromTaxon            :TC166 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC76 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel168 a tc:Relationship ;
+  tc:fromTaxon            :TC167 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC91 ;
+  rdfs:comment            "E. denalii sec. Parker follows the Erigeron treament outlined by FNA. E. denalii sec. FNA overlaps E. denalii sec. PAF." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel169 a tc:Relationship ;
+  tc:fromTaxon            :TC168 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC106 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel170 a tc:Relationship ;
+  tc:fromTaxon            :TC169 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC130 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel171 a tc:Relationship ;
+  tc:fromTaxon            :TC170 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC135 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel172 a tc:Relationship ;
+  tc:fromTaxon            :TC171 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC140 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel173 a tc:Relationship ;
+  tc:fromTaxon            :TC172 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC125 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel174 a tc:Relationship ;
+  tc:fromTaxon            :TC173 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC151 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel176 a tc:Relationship ;
+  tc:fromTaxon            :TC175 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC98 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel177 a tc:Relationship ;
+  tc:fromTaxon            :TC176 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC120 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel178 a tc:Relationship ;
+  tc:fromTaxon            :TC177 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC179 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel179 a tc:Relationship ;
+  tc:fromTaxon            :TC178 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC180 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel180 a tc:Relationship ;
+  tc:fromTaxon            :TC156 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC65 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel181 a tc:Relationship ;
+  tc:fromTaxon            :TC65 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC66 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel182 a tc:Relationship ;
+  tc:fromTaxon            :TC65 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC75 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel183 a tc:Relationship ;
+  tc:fromTaxon            :TC63 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC181 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel184 a tc:Relationship ;
+  tc:fromTaxon            :TC66 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC182 ;
+  sem:accordingTo         "Hultén, E., 1968, Flora of Alaska and Neighboring Territories: a Manual of the Vascular Plants, Stanford University Press, Stanford, CA" .
+
+:TCrel187 a tc:Relationship ;
+  tc:fromTaxon            :TC157 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC73 ;
+  sem:accordingTo         "Webb, C.O., 2020" .
+
+:TCrel188 a tc:Relationship ;
+  tc:fromTaxon            :TC185 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC186 ;
+  rdfs:comment            "PAF states there are two morphological varieties, one with few flowers and one with many flowers. Cody's TC has few flowers." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel189 a tc:Relationship ;
+  tc:fromTaxon            :TC186 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC187 ;
+  rdfs:comment            "Cody's TC has few flowers. Welsh's TC has few to many flowers. See also PAF's TC." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel190 a tc:Relationship ;
+  tc:fromTaxon            :TC187 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC188 ;
+  rdfs:comment            "Welsh's TC has few to many flowers. Hultén's TC has few flowers. Also, Hultén's specimens are restricted to Alaska, while Welsh's TC is known from farther east into Yukon." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel191 a tc:Relationship ;
+  tc:fromTaxon            :TC179 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC184 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel192 a tc:Relationship ;
+  tc:fromTaxon            :TC180 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC183 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel193 a tc:Relationship ;
+  tc:fromTaxon            :TC183 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC191 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel194 a tc:Relationship ;
+  tc:fromTaxon            :TC184 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC190 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel195 a tc:Relationship ;
+  tc:fromTaxon            :TC193 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC192 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel196 a tc:Relationship ;
+  tc:fromTaxon            :TC194 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC192 ;
+  rdfs:comment            "PAF's TC may be completely disjunct from Hultén's TC." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel197 a tc:Relationship ;
+  tc:fromTaxon            :TC195 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC191 ;
+  rdfs:comment            "From Murray (2013): '...Popov's (1953) illustration of 'aretioides' showed a densely pulvinate plant (Plate 25, fig. 1)...' 'Jurtzev and Petrovsky (1980) determined that Popov had unknowingly illustrated a distinct, densely pulvinate species, not Eritrichium aretioides, but one that had gone unrecognized until the publication of E. tschuktschorum Jurtzsev & V.V. Petrovsky, which on leaf morphology alone is readily separable from both E. aretioides or E. chamissonis.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel198 a tc:Relationship ;
+  tc:fromTaxon            :TC185 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC187 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel199 a tc:Relationship ;
+  tc:fromTaxon            :TC185 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC188 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel200 a tc:Relationship ;
+  tc:fromTaxon            :TC196 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC197 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel201 a tc:Relationship ;
+  tc:fromTaxon            :TC197 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC198 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel202 a tc:Relationship ;
+  tc:fromTaxon            :TC198 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC199 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel203 a tc:Relationship ;
+  tc:fromTaxon            :TC199 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC200 ;
+  rdfs:comment            "Hultén's TC geographic range does not extend to Texas/Mexico. Welsh's TC does. #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel204 a tc:Relationship ;
+  tc:fromTaxon            :TC201 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC202 ;
+  rdfs:comment            "PAF's TC does not appear to extend as far south into the U.S. as does FNA's. Also, PAF classifies its TC as adventive, implying a more recent spread to North America. FNA writes that more work needs to be done to separate Bromus inermis from Bromus riparius specimens, the latter of which has only recently spread into the U.S. according to FNA. #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel205 a tc:Relationship ;
+  tc:fromTaxon            :TC202 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC203 ;
+  rdfs:comment            "Cody's TC extends outside the lower constraints of the blade width, panicle length of FNA's TC. #morphology" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel206 a tc:Relationship ;
+  tc:fromTaxon            :TC203 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC204 ;
+  rdfs:comment            "Cody's TC has leaf blades up to 5 mm. Welsh's TC has leaf blades 2-10 mm wide. Welsh also mentions that B. inermis and B. pumpellianus hybrids may be found where their ranges overlap, which includes the Yukon. #morphology" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel207 a tc:Relationship ;
+  tc:fromTaxon            :TC204 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC205 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel208 a tc:Relationship ;
+  tc:fromTaxon            :TC206 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC207 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel209 a tc:Relationship ;
+  tc:fromTaxon            :TC210 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC211 ;
+  rdfs:comment            "FNA and Welsh seem to agree on this TC, however FNA's TC is native to Asia/Europe and adventive to North America. Welsh does not make a native or adventive statement. See also Welsh & Hultén TCR." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel210 a tc:Relationship ;
+  tc:fromTaxon            :TC211 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC212 ;
+  rdfs:comment            "Hultén's TC does not have a geographic range so broad as Welsh's TC. Hultén's TC is introduced in Europe, whereas Welsh does not explicitly state an introduction. See also Welsh & FNA TCR. #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel211 a tc:Relationship ;
+  tc:fromTaxon            :TC215 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC214 ;
+  rdfs:comment            "FNA and Cody both list B. marginatus as a synonym for their TCs, however FNA lists others not mentioned by Cody." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel212 a tc:Relationship ;
+  tc:fromTaxon            :TC214 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC216 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel213 a tc:Relationship ;
+  tc:fromTaxon            :TC218 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC219 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel214 a tc:Relationship ;
+  tc:fromTaxon            :TC220 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC221 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel215 a tc:Relationship ;
+  tc:fromTaxon            :TC221 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC222 ;
+  sem:accordingTo         "Welsh, S., 1974, Anderson's Flora of Alaska, BYU Press, Salt Lake City" .
+
+:TCrel216 a tc:Relationship ;
+  tc:fromTaxon            :TC223 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC220 ;
+  rdfs:comment            "FNA's TC has two synonyms (B. secalinus var. velutinus, B. grossus). Cody's TC has no synonyms. #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel217 a tc:Relationship ;
+  tc:fromTaxon            :TC217 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC220 ;
+  rdfs:comment            "FNA's TC has one synonym (B. secalinus ssp. decipiens). Cody lists no synonyms. #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel218 a tc:Relationship ;
+  tc:fromTaxon            :TC225 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC226 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel219 a tc:Relationship ;
+  tc:fromTaxon            :TC226 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC227 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel220 a tc:Relationship ;
+  tc:fromTaxon            :TC228 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC229 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel221 a tc:Relationship ;
+  tc:fromTaxon            :TC229 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC230 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel222 a tc:Relationship ;
+  tc:fromTaxon            :TC230 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC231 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel224 a tc:Relationship ;
+  tc:fromTaxon            :TC232 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC233 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel226 a tc:Relationship ;
+  tc:fromTaxon            :TC237 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC209 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel227 a tc:Relationship ;
+  tc:fromTaxon            :TC209 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC234 ;
+  rdfs:comment            "Welsh recognizes two subspecies of B. pumpellianus: B. pumpellianus s. str. and B. pumpellianus ssp. dicksonii. The latter is only found in one area of Alaska. The former has several synonyms, but its morphological description includes that of Cody's TC. #synonym #morphology" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel228 a tc:Relationship ;
+  tc:fromTaxon            :TC234 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC235 ;
+  rdfs:comment            "Welsh appears to lump all B. pumpellianus subspecies and varieties together into ssp. pumpellianus, except for ssp. dicksonii." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel229 a tc:Relationship ;
+  tc:fromTaxon            :TC234 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC236 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel230 a tc:Relationship ;
+  tc:fromTaxon            :TC234 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC239 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel231 a tc:Relationship ;
+  tc:fromTaxon            :TC240 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC241 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel232 a tc:Relationship ;
+  tc:fromTaxon            :TC242 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC240 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel233 a tc:Relationship ;
+  tc:fromTaxon            :TC208 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC239 ;
+  rdfs:comment            "According to PAF, B. pumpelliana ssp. arctica has synonym B. pumpelliana var. villisissimus." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel234 a tc:Relationship ;
+  tc:fromTaxon            :TC237 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC238 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel235 a tc:Relationship ;
+  tc:fromTaxon            :TC233 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC244 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel236 a tc:Relationship ;
+  tc:fromTaxon            :TC245 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC206 ;
+  rdfs:comment            "Some morphological measurements are a little off. Specifically culm height, panicle length. #morphology" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel237 a tc:Relationship ;
+  tc:fromTaxon            :TC216 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC246 ;
+  rdfs:comment            "Morphology and geography arguably the same. Welsh also lists B. marginatus Nees in Steud. as a synonym for B. carinatus sec. Welsh." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel238 a tc:Relationship ;
+  tc:fromTaxon            :TC220 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC218 ;
+  rdfs:comment            "Morphology similar. Geography questionable, Cody's TC 'not observed in the Yukon in recent years.' B. commutatus is widespread in North America, but its presence in the Yukon is questionable. #morphology #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel239 a tc:Relationship ;
+  tc:fromTaxon            :TC250 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC224 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel240 a tc:Relationship ;
+  tc:fromTaxon            :TC251 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC224 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel242 a tc:Relationship ;
+  tc:fromTaxon            :TC224 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC249 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel243 a tc:Relationship ;
+  tc:fromTaxon            :TC249 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC252 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel244 a tc:Relationship ;
+  tc:fromTaxon            :TC249 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC248 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel245 a tc:Relationship ;
+  tc:fromTaxon            :TC120 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC121 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel246 a tc:Relationship ;
+  tc:fromTaxon            :TC121 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC122 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel248 a tc:Relationship ;
+  tc:fromTaxon            :TC238 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC234 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel249 a tc:Relationship ;
+  tc:fromTaxon            :TC253 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC254 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel250 a tc:Relationship ;
+  tc:fromTaxon            :TC254 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC255 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel251 a tc:Relationship ;
+  tc:fromTaxon            :TC255 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC256 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel252 a tc:Relationship ;
+  tc:fromTaxon            :TC256 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC257 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel253 a tc:Relationship ;
+  tc:fromTaxon            :TC256 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC258 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel254 a tc:Relationship ;
+  tc:fromTaxon            :TC259 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC260 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel255 a tc:Relationship ;
+  tc:fromTaxon            :TC260 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC261 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel256 a tc:Relationship ;
+  tc:fromTaxon            :TC261 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC262 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel257 a tc:Relationship ;
+  tc:fromTaxon            :TC262 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC263 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel258 a tc:Relationship ;
+  tc:fromTaxon            :TC264 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC265 ;
+  rdfs:comment            "PAF's TC lists synonym R. domesticus. FNA lists synonyms R. domesticus and R. hippolapatham. #synonym " ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel259 a tc:Relationship ;
+  tc:fromTaxon            :TC265 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC266 ;
+  rdfs:comment            "FNA's TC has higher thresholds for the low end of stem height and leaf length. FNA also lists synonym R. hippolapatham in addition to R. domesticus. #morphology #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel260 a tc:Relationship ;
+  tc:fromTaxon            :TC266 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC267 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel261 a tc:Relationship ;
+  tc:fromTaxon            :TC267 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC268 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel262 a tc:Relationship ;
+  tc:fromTaxon            :TC270 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC271 ;
+  rdfs:comment            "According to PAF: 'Mosyakin (2005) indicated possible North American occurrence of R. aureostigmaticus. This is probably based on specimens from two localities on the Alaskan North Slope (along the Meade and Kaolak rivers) which we confirm as R. aureostigmaticus. Its rank, as species or as race of R. graminifolius, remains to be decided.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel263 a tc:Relationship ;
+  tc:fromTaxon            :TC269 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC271 ;
+  rdfs:comment            "According to PAF: '[R. graminifolius] [m]aterial from northern Alaska has been re-identified as R. aureostigmaticus.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel264 a tc:Relationship ;
+  tc:fromTaxon            :TC271 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC272 ;
+  rdfs:comment            "Some morphological description does not quite match up. See also R. beringensis. #morphology #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel265 a tc:Relationship ;
+  tc:fromTaxon            :TC272 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC273 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel266 a tc:Relationship ;
+  tc:fromTaxon            :TC274 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC275 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel268 a tc:Relationship ;
+  tc:fromTaxon            :TC315 ;
+  tc:relationshipCategory :Intersects ;
+  tc:toTaxon              :TC277 ;
+  rdfs:comment            "According to FNA: '[R. acetosa is] sometimes...misidentified as R. hastatulus or R. acetosella.' Also according to FNA, R. acetosa is not found in the Yukon. According to Cody, R. acetosa ssp. alpestris is very rare in the Yukon. #geography #morphology" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel270 a tc:Relationship ;
+  tc:fromTaxon            :TC277 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC278 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel271 a tc:Relationship ;
+  tc:fromTaxon            :TC275 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC280 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel272 a tc:Relationship ;
+  tc:fromTaxon            :TC278 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC281 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel273 a tc:Relationship ;
+  tc:fromTaxon            :TC280 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC282 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel274 a tc:Relationship ;
+  tc:fromTaxon            :TC283 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC284 ;
+  rdfs:comment            "According to PAF: 'This taxon does not reach the Arctic.' According to FNA, it does." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel275 a tc:Relationship ;
+  tc:fromTaxon            :TC284 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC285 ;
+  rdfs:comment            "According to Cody, leaf blades oblong-lanceolate. According to FNA, leaf blades can be oblong-lanceolate or a number of other shapes. According to Cody, geographic range extends to northwestern United States. According to FNA, geographic range extends to southwestern United States. According to Cody, has synonym R. fenestratus. According to FNA, has this synonym and several more. #morphology #geography #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel276 a tc:Relationship ;
+  tc:fromTaxon            :TC285 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC286 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel277 a tc:Relationship ;
+  tc:fromTaxon            :TC286 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC287 ;
+  rdfs:comment            "According to Hultén, Hultén's concept of R. fenestratus includes 'Rumex occidentalis of Fl. Alaska & Yukon.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel278 a tc:Relationship ;
+  tc:fromTaxon            :TC288 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC289 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel279 a tc:Relationship ;
+  tc:fromTaxon            :TC289 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC290 ;
+  rdfs:comment            "Cody's TC has synonym R. sibiricus. Cody's TC extends further south (Indiana, Ohio, New Mexico, California) than FNA's TC. #synonym #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel280 a tc:Relationship ;
+  tc:fromTaxon            :TC290 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC292 ;
+  rdfs:comment            "Welsh's TCs of ssp. of R. salicifolius are based on the presence or absence of tuberosities. Cody's TC can have them or lack them." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel281 a tc:Relationship ;
+  tc:fromTaxon            :TC290 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC291 ;
+  rdfs:comment            "Welsh's TCs of ssp. of R. salicifolius are based on the presence or absence of tuberosities. Cody's TC can have them or lack them." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel282 a tc:Relationship ;
+  tc:fromTaxon            :TC291 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC293 ;
+  rdfs:comment            "Welsh's TC has two synonyms: R. sibiricus and R. transitorius. The former is 'a phase from the interior with usually narrower leaves,' the latter 'a coastal phase with broader leaves.' Hulten's TC extends into Siberia and eastern Asia. #geography #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel283 a tc:Relationship ;
+  tc:fromTaxon            :TC292 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC294 ;
+  rdfs:comment            "According to Welsh, Welsh's TC has two synoynms: R. mexicanus and R. utahensis. #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel284 a tc:Relationship ;
+  tc:fromTaxon            :TC295 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC290 ;
+  rdfs:comment            "According to FNA: 'Some authors recognize Rumex mexicanus in the broad sense, including in it many other taxa treated here as separate entities. For consistency, the entities of the R. salicifolius aggregate that are recognized herein are kept separate pending additional taxonomic research.' Cody's TC has synonym R. mexicanus. #geography #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel285 a tc:Relationship ;
+  tc:fromTaxon            :TC296 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC297 ;
+  rdfs:comment            "PAF's TC does not occur in North America. #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel286 a tc:Relationship ;
+  tc:fromTaxon            :TC299 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC298 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel287 a tc:Relationship ;
+  tc:fromTaxon            :TC297 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC301 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel288 a tc:Relationship ;
+  tc:fromTaxon            :TC298 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC300 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel289 a tc:Relationship ;
+  tc:fromTaxon            :TC300 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC302 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel290 a tc:Relationship ;
+  tc:fromTaxon            :TC301 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC303 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel291 a tc:Relationship ;
+  tc:fromTaxon            :TC304 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC299 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel292 a tc:Relationship ;
+  tc:fromTaxon            :TC305 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC276 ;
+  rdfs:comment            "From PAF: 'We have considered [Rumex acetosella ssp. acetosella] to be the most frequent weed of the group in all temperate areas but may be wrong. Mosyakin (2005) rather considered subsp. pyrenaicus (Pourr. ex Lapeyr.) Akeroyd to be the most widespread (weedy) race in North America.' FNA equates subsp. pyrenaicus with R. acetosella ssp. angiocarpus." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel293 a tc:Relationship ;
+  tc:fromTaxon            :TC276 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC306 ;
+  rdfs:comment            "FNA's TC appears to have a broader geography and morphology. See also Cody:Welsh:Hultén relationship. #geography #morphology" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel294 a tc:Relationship ;
+  tc:fromTaxon            :TC306 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC307 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel295 a tc:Relationship ;
+  tc:fromTaxon            :TC307 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC308 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel296 a tc:Relationship ;
+  tc:fromTaxon            :TC276 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC309 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel297 a tc:Relationship ;
+  tc:fromTaxon            :TC310 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC311 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel298 a tc:Relationship ;
+  tc:fromTaxon            :TC311 ;
+  tc:relationshipCategory tc:Overlaps ;
+  tc:toTaxon              :TC272 ;
+  rdfs:comment            "According to FNA: 'Records of Rumex graminifolius from Alaska in most cases refer to R. beringensis and R. krausei. The occurrence of typical R. graminifolius in northwestern North America remains uncertain.' #geography" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel299 a tc:Relationship ;
+  tc:fromTaxon            :TC312 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC313 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel301 a tc:Relationship ;
+  tc:fromTaxon            :TC314 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC315 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel303 a tc:Relationship ;
+  tc:fromTaxon            :TC316 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC317 ;
+  rdfs:comment            "Copied from FNA: 'In Eurasia [R. obtusifolius] is differentiated into predominantly western subsp. obtusifolius [including R. obtusifolius subsp. agrestis (Fries) Danser]...'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel304 a tc:Relationship ;
+  tc:fromTaxon            :TC317 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC318 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel305 a tc:Relationship ;
+  tc:fromTaxon            :TC319 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC290 ;
+  rdfs:comment            "R. transitorius is a synonym for TC sec. Cody. #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel306 a tc:Relationship ;
+  tc:fromTaxon            :TC291 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC320 ;
+  rdfs:comment            "Welsh's TC has synonym R. transitorius." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel307 a tc:Relationship ;
+  tc:fromTaxon            :TC321 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC313 ;
+  rdfs:comment            "According to FNA: 'The name Rumex graminifolius was commonly misapplied to [Rumex krausei] in northwestern North America and northeastern Eurasia. #geography" ;
+  sem:accordingTo         "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TCrel308 a tc:Relationship ;
+  tc:fromTaxon            :TC322 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC315 ;
+  rdfs:comment            "According to FNA: 'The name Rumex acetosa has been commonly misapplied to R. lapponicus.'" ;
+  sem:accordingTo         "Sergei L. Mosyakin, 2019, Rumex Linnaeus, Flora of North America, 5, 518" .
+
+:TCrel309 a tc:Relationship ;
+  tc:fromTaxon            :TC323 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC324 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel310 a tc:Relationship ;
+  tc:fromTaxon            :TC325 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC326 ;
+  rdfs:comment            "Welsh's TC has synonym P. hultenii. Hultén considers P. hultenii as a separate species." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel313 a tc:Relationship ;
+  tc:fromTaxon            :TC325 ;
+  tc:relationshipCategory tc:Includes ;
+  tc:toTaxon              :TC328 ;
+  rdfs:comment            "Welsh's TC has synonym P. hultenii. #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel314 a tc:Relationship ;
+  tc:fromTaxon            :TC327 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC331 ;
+  rdfs:comment            "FNA's TC has synonym P. hultenii." ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel315 a tc:Relationship ;
+  tc:fromTaxon            :TC330 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC331 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel316 a tc:Relationship ;
+  tc:fromTaxon            :TC332 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC333 ;
+  rdfs:comment            "FNA's TC has synonym P. keelei. Also, according to PAF, 'Papaver keelei and P. macounii subsp. discolor should be synonymized and considered as one species.'" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel317 a tc:Relationship ;
+  tc:fromTaxon            :TC333 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC334 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel318 a tc:Relationship ;
+  tc:fromTaxon            :TC334 ;
+  tc:relationshipCategory tc:IsIncludedIn ;
+  tc:toTaxon              :TC325 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel320 a tc:Relationship ;
+  tc:fromTaxon            :TC336 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC337 ;
+  sem:accordingTo         "Cook, K., 2020" .
+
+:TCrel321 a tc:Relationship ;
+  tc:fromTaxon            :TC324 ;
+  tc:relationshipCategory tc:IsCongruentTo ;
+  tc:toTaxon              :TC336 ;
+  rdfs:comment            "FNA's TC and Welsh's TC have synonym P. alaskanum var. macranthum. #synonym" ;
+  sem:accordingTo         "Cook, K., 2020" .
+
