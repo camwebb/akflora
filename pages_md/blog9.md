@@ -52,7 +52,8 @@ inference made about the relationship.
 
 A complete download of the graphs is available as RDF in either
 [Turtle](../files/tcmap_2020-12-15.ttl) or
-[RDF-XML](../files/tcmap_2020-12-15.rdf) serializations.
+[RDF-XML](../files/tcmap_2020-12-15.rdf) serializations. You can see
+how the RDF works with this [cool RDF browser][6].
 
 Kimberly and I are still learning a lot about the process of making
 and recording these inferences, and we’ll share a ‘How To’ guide at
@@ -99,6 +100,7 @@ on these names and usages.
 [3]: https://cdnsciencepub.com/doi/book/10.1139/9780660181103
 [4]: https://beta.floranorthamerica.org/Main_Page
 [5]: http://panarcticflora.org/
+[6]: http://graphite.ecs.soton.ac.uk/browser/?uri=https://alaskaflora.org/files/tcmap_2020-12-15.rdf
 
 ----
 
