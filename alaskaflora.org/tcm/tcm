@@ -98,7 +98,6 @@ BEGIN{
     "  pubID  , Publication  , i , 1 , pub ;" \
     "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
-    "  foak  , Fl  , b, 1  ,               ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "rel , Relationship0 , id , label , SELECT+%2A+FROM+%60rel%60 ,  /" \
     "  id     , ID           , i , 0 ,     ;" \
@@ -958,8 +957,8 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
   elab[6] = "[color=red,dir=none,"    # disjunct
   
   db_query(DATABASE, "SELECT tcm.id AS ID, TC1.id AS TC1ID, TC1.code AS TC1, "\
-           "tcm.relID AS R, TC2.id AS TC2ID, TC2.code AS TC2, tcm.`graph` "\
-           "FROM tcm LEFT JOIN tc ON tc.id = tcm.tc1ID LEFT JOIN tc AS TC1 ON "\
+           "tcm.relID AS R, TC2.id AS TC2ID, TC2.code AS TC2, tcm.`graph`, "\
+           "tcm.notes AS N FROM tcm LEFT JOIN tc ON tc.id = tcm.tc1ID LEFT JOIN tc AS TC1 ON "\
            "TC1.id = tcm.tc1ID LEFT JOIN name AS N1 ON N1.id = TC1.nameID "\
            "LEFT JOIN tc AS TC2 ON TC2.id = tcm.tc2ID LEFT JOIN name AS N2 "\
            "ON N2.id = TC2.nameID WHERE tcm.`graph` = 1 AND (N1.genus REGEXP '"\
@@ -983,7 +982,7 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
   gv = "digraph structure { \n"                     \
     "  rankdir=\"TB\"; \n"                          \
     "  node [fontname=\"Helvetica\",shape=box]; \n"                 \
-    "  edge [fontname=\"Courier\", len=1.5, arrowhead=normal]; \n" \
+    "  edge [fontname=\"Courier\", len=1.5, arrowhead=normal, fontcolor=red]; \n" \
     "  newrank=true; \n\n"
 
   for (i = 1; i <= DBQr; i++) {
@@ -1003,8 +1002,12 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
         if (DBQ[i, "TC2"] ~ (" " flora[j]))                 \
           florarank[j][DBQ[i, "TC2ID"]]++
     }
+    if (DBQ[i,"N"])
+      notemark = "label=\"*\","
+    else
+      notemark = ""
     gv = gv "node" DBQ[i, "TC1ID"] " -> node" DBQ[i, "TC2ID"] " "       \
-      elab[DBQ[i, "R"]] "URL=\"" APPNAME \
+      elab[DBQ[i, "R"]] notemark "tooltip=\"" gensub(/"/,"\\\\\"","G",DBQ[i,"N"])  "\",URL=\"" APPNAME \
       "?action=showone&amp;table=tcm&amp;id=" DBQ[i, "ID"] "\"]; \n"
   }
   gv = gv "\n"
@@ -1031,7 +1034,7 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
   print "<div class=\"graph\">"
   print map
   print "<img src=\"tmp/graph.jpg\" usemap=\"#structure\"/>"
-  print "<p>Nodes and edges are clickable. Symbols:</p>"
+  print "<p>Nodes and edges are clickable. Hover over edges that are marked with <span style=\"color:red\">*</span> to see notes.<br/>Edge style key:</p>"
   print "<ul style=\"list-style-type:none\"><li>Solid black: <i>congruent with</i> (=)</li>"
   print "<li>Dashed black: <i>overlaps</i> (&gt;&lt;)</li>"
   print "<li>Dotted black: <i>intersects</i> (∩)</li>"
