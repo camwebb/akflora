@@ -55,14 +55,14 @@ A complete download of the graphs is available as RDF in either
 [RDF-XML](../files/tcmap_2020-12-15.rdf) serializations. You can see
 how the RDF works with this [cool RDF browser][6].
 
-Kimberly and I are still learning a lot about the process of making
-and recording these inferences, and we’ll share a ‘How To’ guide at
-some point.  If you see any relationships that seem odd or incorrect,
-please do get in touch, but please also remember that most of these
-judgments about taxon concept relationship are complex logical
-inferences made from incomplete data and as such there is often no
-“right or wrong”. The notes hopefully make clear any reasons for a
-particular decision.  
+Kimberly and Steffi and I are still learning a lot about the process
+of making and recording these inferences, and we’ll share a ‘How To’
+guide at some point.  If you see any relationships that seem odd or
+incorrect, please do get in touch, but please also remember that most
+of these judgments about taxon concept relationship are complex
+logical inferences made from incomplete data and as such there is
+often no “right or wrong”. The notes hopefully make clear any reasons
+for a particular decision.
 
 One thing that I had not anticipated was just how necessary a ‘Guide
 to the Usages of Names for Alaskan Plants’ (which is what these graphs
@@ -79,7 +79,7 @@ subsp. _politis_ means today, given how many times the name has been
 changed since.
 
 Many thanks, of course, to Kimberly for her impressive detective work
-on these names and usages.
+on these name usages.
 
 ----
  
