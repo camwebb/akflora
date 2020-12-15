@@ -80,6 +80,20 @@ changed since.
 Many thanks, of course, to Kimberly for her impressive detective work
 on these names and usages.
 
+## References
+
+ * Anderson, J. P. (1943(-52)) Flora of Alaska and Adjacent Parts of
+   Canada. Parts 1-9. Iowa State College Journal of Science, 18-26:
+   (18) 137-175, 381-446; (19) 133-205; (20) 213-257, 297-347; (21)
+   363-423; (23) 137-187; (24) 219-271; (26) 387-453.
+ * Cody, W. J. (2000) Flora of the Yukon Territory. NRC Research
+   Press, Ottawa.
+ * Hultén, E. (1968) Flora of Alaska and Neighboring Territories: a
+   Manual of the Vascular Plants. Stanford University Press, Stanford,
+   CA.
+ * Welsh, S. L. (1974) Anderson's Flora of Alaska and adjacent parts
+   of Canada. Brigham Young University Press, Salt Lake City.
+
 [1]: https://www.sup.org/books/title/?id=2767
 [2]: http://www.worldcat.org/oclc/605923539
 [3]: https://cdnsciencepub.com/doi/book/10.1139/9780660181103
