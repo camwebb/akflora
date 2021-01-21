@@ -41,6 +41,11 @@ BEGIN{
     exit 0
   }
 
+  else if (ARGV[1] == "--checkfields") {
+    checkfields()
+    exit 0
+  }
+
   else if (ARGV[1] != "--nop") {  # no page
     
     # extract the image from the PDF
@@ -304,6 +309,34 @@ function collect (     cmd, i, j, file) {
       gensub(/\n/," ","G",parts[5])
   }
 
+}
+
+function checkfields (     cmd, i, j, file) {
+
+  cmd = "find tiff -name '*txt' | sort"
+  while ((cmd | getline) > 0 )
+    file[++i] = $0
+  if (ARGV[2] !~ /[0-9]+/)
+    exit 1
+  
+  for (j = 1; j <= ARGV[2]; j++) {
+    RS = ""
+    rec = 0
+    edit = 0
+    while ((getline < file[j]) > 0) {
+      rec++
+      # format tests
+      if (((rec == 2) && ($0 ~ /\//)) ||        \
+          ((rec == 1) && ($0 ~ /[0-9]/)))
+        edit = 1
+    }
+    printf "%3d  %s  %d\n", j, file[j], rec
+    # rec number test
+    if (rec != 6)
+      edit = 1
+    if (edit)
+      system("emacs -nw -Q " file[j])
+  }
 }
 
 
