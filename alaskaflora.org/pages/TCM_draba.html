@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>TCM graph</title>
+<meta http-equiv="Content-Type" content="text/html;            charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat"            rel="stylesheet"/>
+<link href="../img/akflora.png" rel="shortcut icon"            type="image/x-icon"/>
+<style>
+body { font-size: 14px; font-family: 'Montserrat', Verdana, Arial, Helvetica, sans-serif; }
+.main {width: 1000px; padding-top: 30px; margin-left: auto;  margin-right: auto; }
+.info {max-width: 600px; }
+.navbar { float: right; }
+h1 { padding-top:20px; }
+select , option { font-size: 14px }
+table { border-collapse: collapse }
+td, th { border: 1px solid black; padding: 5px }
+a { color:#15358d; text-decoration:none; border-bottom-style:none }
+a:visited { color:#9f1dbc }
+a:hover {color:#15358d; border-bottom-style:solid; 	     border-bottom-width:thin }
+.graph { max-width: 100%; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="navbar"><a href="tcm">Home</a>&#160;&#160;|&#160;&#160;<a href="tcm?table=pub&amp;action=show">Publication</a> (<a href="tcm?table=pub&amp;action=add">+</a>)&#160;&#160;|&#160;&#160;<a href="tcm?table=name&amp;action=show">Name</a> (<a href="tcm?table=name&amp;action=add">+</a>)&#160;&#160;|&#160;&#160;<a href="tcm?table=tc&amp;action=show">Taxon Concept</a> (<a href="tcm?table=tc&amp;action=add">+</a>)&#160;&#160;|&#160;&#160;<a href="tcm?table=tcm&amp;action=show">TC Relationships</a> (<a href="tcm?table=tcm&amp;action=add">+</a>)&#160;&#160;|&#160;&#160;<a href="tcm?action=graph">Graph</a></div>
+<h1>TCM graph</h1>
+<div class="graph">
+<map id="structure" name="structure">
+<area shape="rect" id="node1" href="tcm?action=showone&amp;table=tc&amp;id=500" title="D. albertina sec. Cody" alt="" coords="411,237,611,285"/>
+<area shape="rect" id="node2" href="tcm?action=showone&amp;table=tc&amp;id=497" title="D. stenoloba var. nana sec. Welsh" alt="" coords="363,353,658,401"/>
+<area shape="poly" id="edge1" href="tcm?action=showone&amp;table=tcm&amp;id=477" title="Morphological descriptions similar. Also, Welsh&#39;s TC has synonym D. nitida, which is listed as a synonym for FNA&#39;s TC. Thus, since FNA and Cody are congruent, this relationship should be congruent. See also FNA&#39;s discussion of this taxon." alt="" coords="513,286,513,353,508,353,508,286"/>
+<area shape="rect" id="edge1-label" href="tcm?action=showone&amp;table=tcm&amp;id=477" title="*" alt="" coords="511,309,523,329"/>
+<area shape="rect" id="node121" href="tcm?action=showone&amp;table=tc&amp;id=499" title="D. stenoloba sec. Hulten" alt="" coords="309,469,528,517"/>
+<area shape="poly" id="edge99" href="tcm?action=showone&amp;table=tcm&amp;id=475" alt="" coords="494,403,448,460,444,457,490,400"/>
+<area shape="rect" id="node3" href="tcm?action=showone&amp;table=tc&amp;id=501" title="D. albertina sec. FNA" alt="" coords="413,121,608,169"/>
+<area shape="poly" id="edge2" href="tcm?action=showone&amp;table=tcm&amp;id=476" alt="" coords="513,170,513,237,508,237,508,170"/>
+<area shape="rect" id="node4" href="tcm?action=showone&amp;table=tc&amp;id=521" title="D. aleutica sec. FNA" alt="" coords="689,121,876,169"/>
+<area shape="rect" id="node5" href="tcm?action=showone&amp;table=tc&amp;id=522" title="D. aleutica sec. Welsh" alt="" coords="683,353,883,401"/>
+<area shape="poly" id="edge3" href="tcm?action=showone&amp;table=tcm&amp;id=495" alt="" coords="785,169,785,353,780,353,780,169"/>
+<area shape="rect" id="node6" href="tcm?action=showone&amp;table=tc&amp;id=523" title="D. aleutica sec. Hulten" alt="" coords="681,469,884,517"/>
+<area shape="poly" id="edge4" href="tcm?action=showone&amp;table=tcm&amp;id=496" alt="" coords="785,402,785,469,780,469,780,402"/>
+<area shape="rect" id="node7" href="tcm?action=showone&amp;table=tc&amp;id=427" title="D. alpina sec. Cody" alt="" coords="1345,237,1524,285"/>
+<area shape="rect" id="node8" href="tcm?action=showone&amp;table=tc&amp;id=429" title="D. alpina sec. Welsh" alt="" coords="1191,353,1377,401"/>
+<area shape="poly" id="edge5" href="tcm?action=showone&amp;table=tcm&amp;id=412" alt="" coords="1406,288,1327,347,1324,343,1403,283"/>
+<area shape="rect" id="node11" href="tcm?action=showone&amp;table=tc&amp;id=520" title="D. micropetala sec. Hulten" alt="" coords="908,469,1143,517"/>
+<area shape="poly" id="edge8" href="tcm?action=showone&amp;table=tcm&amp;id=494" title="Welsh&#39;s TC has synonym D. micropetala, among others. #synonym" alt="" coords="1220,410,1078,472,1076,467,1218,405"/>
+<area shape="rect" id="edge8-label" href="tcm?action=showone&amp;table=tcm&amp;id=494" title="*" alt="" coords="1171,425,1183,445"/>
+<area shape="rect" id="node12" href="tcm?action=showone&amp;table=tc&amp;id=515" title="D. macrocarpa sec. Hulten" alt="" coords="1166,469,1402,517"/>
+<area shape="poly" id="edge9" href="tcm?action=showone&amp;table=tcm&amp;id=488" title="Welsh&#39;s TC has synonym D. macrocarpa, among others. #synonym" alt="" coords="1287,415,1287,469,1281,469,1281,415"/>
+<area shape="rect" id="edge9-label" href="tcm?action=showone&amp;table=tcm&amp;id=488" title="*" alt="" coords="1284,425,1296,445"/>
+<area shape="rect" id="node13" href="tcm?action=showone&amp;table=tc&amp;id=430" title="D. alpina sec. Hulten" alt="" coords="1426,469,1614,517"/>
+<area shape="poly" id="edge10" href="tcm?action=showone&amp;table=tcm&amp;id=414" title="Hulten&#39;s TC &quot;hybridizes with several other species, such as D. macrocarpa, D. microcarpa, and D. pilosa.&quot; Welsh&#39;s TC includes these taxa as synonyms, in addition to D. micropetala. #synonym" alt="" coords="1345,405,1474,467,1472,472,1343,410"/>
+<area shape="rect" id="edge10-label" href="tcm?action=showone&amp;table=tcm&amp;id=414" title="*" alt="" coords="1417,425,1429,445"/>
+<area shape="rect" id="node9" href="tcm?action=showone&amp;table=tc&amp;id=426" title="D. alpina sec. FNA" alt="" coords="1418,121,1590,169"/>
+<area shape="poly" id="edge6" href="tcm?action=showone&amp;table=tcm&amp;id=411" title="FNA&#39;s TC is not found in NW Canada or Alaska. Cody&#39;s TC is found in these regions. #geography" alt="" coords="1492,171,1451,238,1446,236,1488,168"/>
+<area shape="rect" id="edge6-label" href="tcm?action=showone&amp;table=tcm&amp;id=411" title="*" alt="" coords="1475,193,1487,213"/>
+<area shape="rect" id="node10" href="tcm?action=showone&amp;table=tc&amp;id=425" title="D. alpina sec. PAF" alt="" coords="1419,5,1589,53"/>
+<area shape="poly" id="edge7" href="tcm?action=showone&amp;table=tcm&amp;id=410" title="Both PAF and FNA seem to agree that this species is not present in Alaska, nor anywhere in NW Canada." alt="" coords="1507,54,1507,121,1501,121,1501,54"/>
+<area shape="rect" id="edge7-label" href="tcm?action=showone&amp;table=tcm&amp;id=410" title="*" alt="" coords="1504,77,1516,97"/>
+<area shape="rect" id="node14" href="tcm?action=showone&amp;table=tc&amp;id=448" title="D. arctica sec. FNA" alt="" coords="1633,121,1810,169"/>
+<area shape="rect" id="node15" href="tcm?action=showone&amp;table=tc&amp;id=447" title="D. cinerea sec. Hulten" alt="" coords="1642,469,1841,517"/>
+<area shape="poly" id="edge11" href="tcm?action=showone&amp;table=tcm&amp;id=431" title="Hultén&#39;s TC has synonym D. arctica. Morphological descriptions also have some overlap. #synonym #morphology" alt="" coords="1725,170,1743,469,1737,469,1720,170"/>
+<area shape="rect" id="edge11-label" href="tcm?action=showone&amp;table=tcm&amp;id=431" title="*" alt="" coords="1732,309,1744,329"/>
+<area shape="rect" id="node16" href="tcm?action=showone&amp;table=tc&amp;id=433" title="D. aurea sec. Cody" alt="" coords="2125,237,2301,285"/>
+<area shape="rect" id="node17" href="tcm?action=showone&amp;table=tc&amp;id=434" title="D. aurea sec. Welsh" alt="" coords="2012,353,2196,401"/>
+<area shape="poly" id="edge12" href="tcm?action=showone&amp;table=tcm&amp;id=418" title="Cody&#39;s TC has name &quot;D. aurea Vahl.&quot; Welsh&#39;s TC has name &quot;D. aurea Vahl ex Hornem.&quot; There are also discrepancies within the morphological descriptions." alt="" coords="2193,287,2128,355,2124,351,2189,284"/>
+<area shape="rect" id="edge12-label" href="tcm?action=showone&amp;table=tcm&amp;id=418" title="*" alt="" coords="2165,309,2177,329"/>
+<area shape="rect" id="node21" href="tcm?action=showone&amp;table=tc&amp;id=435" title="D. aurea sec. Hulten" alt="" coords="2011,469,2197,517"/>
+<area shape="poly" id="edge17" href="tcm?action=showone&amp;table=tcm&amp;id=419" title="Welsh&#39;s TC has name &quot;D. aurea Vahl ex Hornem.&quot; Hultén&#39;s TC has name &quot;D. aurea Vahl.&quot;" alt="" coords="2107,402,2107,469,2101,469,2101,402"/>
+<area shape="rect" id="edge17-label" href="tcm?action=showone&amp;table=tcm&amp;id=419" title="*" alt="" coords="2104,425,2116,445"/>
+<area shape="rect" id="node18" href="tcm?action=showone&amp;table=tc&amp;id=432" title="D. aurea sec. FNA" alt="" coords="2128,121,2299,169"/>
+<area shape="poly" id="edge13" href="tcm?action=showone&amp;table=tcm&amp;id=416" alt="" coords="2216,170,2216,237,2211,237,2211,170"/>
+<area shape="rect" id="node19" href="tcm?action=showone&amp;table=tc&amp;id=438" title="D. borealis sec. Cody" alt="" coords="2326,237,2519,285"/>
+<area shape="poly" id="edge14" href="tcm?action=showone&amp;table=tcm&amp;id=422" title="One of Cody&#39;s TC&#39;s synonyms is D. luteola auct. non Greene. FNA&#39;s TC has several synonyms, a few of which are variations on the name D. luteola, but non are D. luteola Greene. #synonym" alt="" coords="2257,167,2382,235,2379,240,2254,172"/>
+<area shape="rect" id="edge14-label" href="tcm?action=showone&amp;table=tcm&amp;id=422" title="*" alt="" coords="2331,193,2343,213"/>
+<area shape="rect" id="node22" href="tcm?action=showone&amp;table=tc&amp;id=439" title="D. borealis var. borealis sec. Welsh" alt="" coords="2254,353,2557,401"/>
+<area shape="poly" id="edge18" href="tcm?action=showone&amp;table=tcm&amp;id=423" alt="" coords="2420,299,2411,354,2406,353,2414,299"/>
+<area shape="rect" id="node23" href="tcm?action=showone&amp;table=tc&amp;id=440" title="D. borealis var. maxima sec. Welsh" alt="" coords="2581,353,2888,401"/>
+<area shape="poly" id="edge19" href="tcm?action=showone&amp;table=tcm&amp;id=424" alt="" coords="2499,288,2673,351,2671,356,2497,293"/>
+<area shape="rect" id="node20" href="tcm?action=showone&amp;table=tc&amp;id=431" title="D. aurea sec. PAF" alt="" coords="2076,5,2244,53"/>
+<area shape="poly" id="edge16" href="tcm?action=showone&amp;table=tcm&amp;id=417" title="PAF&#39;s and Welsh&#39;s TC each have one synonym: D. luteola." alt="" coords="2148,55,2132,86,2119,122,2107,187,2103,252,2105,353,2099,353,2097,251,2102,186,2113,121,2127,84,2143,52"/>
+<area shape="rect" id="edge16-label" href="tcm?action=showone&amp;table=tcm&amp;id=417" title="*" alt="" coords="2104,193,2116,213"/>
+<area shape="poly" id="edge15" href="tcm?action=showone&amp;table=tcm&amp;id=415" title="PAF&#39;s TC has synonym D. luteola. FNA&#39;s TC has synonym D. luteola and 13 others. #synonym" alt="" coords="2173,52,2199,108,2194,110,2168,55"/>
+<area shape="rect" id="edge15-label" href="tcm?action=showone&amp;table=tcm&amp;id=415" title="*" alt="" coords="2191,77,2203,97"/>
+<area shape="rect" id="node26" href="tcm?action=showone&amp;table=tc&amp;id=441" title="D. borealis sec. Hulten" alt="" coords="2304,469,2507,517"/>
+<area shape="poly" id="edge22" href="tcm?action=showone&amp;table=tcm&amp;id=426" alt="" coords="2408,402,2408,469,2403,469,2403,402"/>
+<area shape="rect" id="node27" href="tcm?action=showone&amp;table=tc&amp;id=442" title="D. maxima sec. Hulten" alt="" coords="2631,469,2838,517"/>
+<area shape="poly" id="edge23" href="tcm?action=showone&amp;table=tcm&amp;id=425" alt="" coords="2737,402,2737,469,2732,469,2732,402"/>
+<area shape="rect" id="node24" href="tcm?action=showone&amp;table=tc&amp;id=437" title="D. borealis sec. FNA" alt="" coords="2329,121,2516,169"/>
+<area shape="poly" id="edge20" href="tcm?action=showone&amp;table=tcm&amp;id=421" title="Cody&#39;s TC has synonyms D. luteola auct. non Greene and D. maxima Hultén. One of FNA&#39;s TC&#39;s synonyms is D. maxima de Candolle. Cody also makes no mention of twisted fruits, which according to PAF is one of the typical, gradient traits of D. borealis. #synonym #morphology" alt="" coords="2425,170,2425,237,2420,237,2420,170"/>
+<area shape="rect" id="edge20-label" href="tcm?action=showone&amp;table=tcm&amp;id=421" title="*" alt="" coords="2423,193,2435,213"/>
+<area shape="rect" id="node25" href="tcm?action=showone&amp;table=tc&amp;id=436" title="D. borealis sec. PAF" alt="" coords="2330,5,2515,53"/>
+<area shape="poly" id="edge21" href="tcm?action=showone&amp;table=tcm&amp;id=420" alt="" coords="2425,54,2425,121,2420,121,2420,54"/>
+<area shape="rect" id="node28" href="tcm?action=showone&amp;table=tc&amp;id=524" title="D. caesia sec. Welsh" alt="" coords="3106,353,3297,401"/>
+<area shape="rect" id="node29" href="tcm?action=showone&amp;table=tc&amp;id=531" title="D. chamissonis sec. Hulten" alt="" coords="2863,469,3103,517"/>
+<area shape="poly" id="edge24" href="tcm?action=showone&amp;table=tcm&amp;id=503" title="Welsh&#39;s TC has synonyms D. chamissonis and D. palanderiana." alt="" coords="3146,410,3028,472,3025,467,3144,405"/>
+<area shape="rect" id="edge24-label" href="tcm?action=showone&amp;table=tcm&amp;id=503" title="*" alt="" coords="3105,425,3117,445"/>
+<area shape="rect" id="node30" href="tcm?action=showone&amp;table=tc&amp;id=525" title="D. caesia sec. Hulten" alt="" coords="3127,469,3319,517"/>
+<area shape="poly" id="edge25" href="tcm?action=showone&amp;table=tcm&amp;id=497" title="Welsh&#39;s TC has synonyms D. palanderiana and D. chamissonis. Hulten&#39;s TC has synonym D. palanderiana. #synonym" alt="" coords="3211,415,3221,469,3216,470,3206,416"/>
+<area shape="rect" id="edge25-label" href="tcm?action=showone&amp;table=tcm&amp;id=497" title="*" alt="" coords="3213,425,3225,445"/>
+<area shape="rect" id="node31" href="tcm?action=showone&amp;table=tc&amp;id=527" title="D. cana sec. FNA" alt="" coords="3671,121,3833,169"/>
+<area shape="rect" id="node32" href="tcm?action=showone&amp;table=tc&amp;id=579" title="D. lanceolata sec. Welsh" alt="" coords="3623,353,3843,401"/>
+<area shape="poly" id="edge26" href="tcm?action=showone&amp;table=tcm&amp;id=535" title="According to FNA: &quot;...The limits of Draba cana have long been confused, and the species was treated as a synonym of the Himalayan D. lanceolata Royle...&quot;" alt="" coords="3753,170,3738,353,3733,353,3747,169"/>
+<area shape="rect" id="edge26-label" href="tcm?action=showone&amp;table=tcm&amp;id=535" title="*" alt="" coords="3745,251,3757,271"/>
+<area shape="rect" id="node33" href="tcm?action=showone&amp;table=tc&amp;id=528" title="D. cana sec. Cody" alt="" coords="3770,237,3939,285"/>
+<area shape="poly" id="edge27" href="tcm?action=showone&amp;table=tcm&amp;id=500" alt="" coords="3775,168,3836,235,3832,239,3771,171"/>
+<area shape="rect" id="node34" href="tcm?action=showone&amp;table=tc&amp;id=526" title="D. cana sec. PAF" alt="" coords="3671,5,3833,53"/>
+<area shape="poly" id="edge28" href="tcm?action=showone&amp;table=tcm&amp;id=499" alt="" coords="3755,54,3755,121,3749,121,3749,54"/>
+<area shape="rect" id="node35" href="tcm?action=showone&amp;table=tc&amp;id=530" title="D. chamissonis sec. FNA" alt="" coords="3089,121,3313,169"/>
+<area shape="poly" id="edge29" href="tcm?action=showone&amp;table=tcm&amp;id=502" title="Welsh&#39;s TC has synonym D. chamissonis, among others." alt="" coords="3204,169,3204,340,3199,340,3199,169"/>
+<area shape="rect" id="edge29-label" href="tcm?action=showone&amp;table=tcm&amp;id=502" title="*" alt="" coords="3201,251,3213,271"/>
+<area shape="rect" id="node36" href="tcm?action=showone&amp;table=tc&amp;id=529" title="D. chamissonis sec. PAF" alt="" coords="3090,5,3313,53"/>
+<area shape="poly" id="edge30" href="tcm?action=showone&amp;table=tcm&amp;id=501" alt="" coords="3204,54,3204,121,3199,121,3199,54"/>
+<area shape="rect" id="node37" href="tcm?action=showone&amp;table=tc&amp;id=445" title="D. cinerea sec. Cody" alt="" coords="1803,237,1992,285"/>
+<area shape="rect" id="node38" href="tcm?action=showone&amp;table=tc&amp;id=446" title="D. cinerea sec. Welsh" alt="" coords="1780,353,1977,401"/>
+<area shape="poly" id="edge31" href="tcm?action=showone&amp;table=tcm&amp;id=429" alt="" coords="1896,286,1885,354,1880,353,1891,285"/>
+<area shape="poly" id="edge34" href="tcm?action=showone&amp;table=tcm&amp;id=430" title="Hultén&#39;s TC has synonym D. arctica. Welsh makes no mention of this relationship. #synonym" alt="" coords="1853,404,1781,462,1778,458,1849,400"/>
+<area shape="rect" id="edge34-label" href="tcm?action=showone&amp;table=tcm&amp;id=430" title="*" alt="" coords="1819,425,1831,445"/>
+<area shape="rect" id="node39" href="tcm?action=showone&amp;table=tc&amp;id=444" title="D. cinerea sec. FNA" alt="" coords="1834,121,2017,169"/>
+<area shape="poly" id="edge32" href="tcm?action=showone&amp;table=tcm&amp;id=428" alt="" coords="1922,170,1906,238,1900,236,1917,169"/>
+<area shape="rect" id="node40" href="tcm?action=showone&amp;table=tc&amp;id=443" title="D. cinerea sec. PAF" alt="" coords="1835,5,2016,53"/>
+<area shape="poly" id="edge33" href="tcm?action=showone&amp;table=tcm&amp;id=427" alt="" coords="1928,54,1928,121,1923,121,1923,54"/>
+<area shape="rect" id="node41" href="tcm?action=showone&amp;table=tc&amp;id=519" title="D. corymbosa sec. Cody" alt="" coords="974,237,1194,285"/>
+<area shape="poly" id="edge35" href="tcm?action=showone&amp;table=tcm&amp;id=491" title="Welsh&#39;s TC has synonym D. macrocarpa, among others. Cody&#39;s TC has synonyms D. macrocarpa and D. bellii. #synonym" alt="" coords="1126,283,1245,351,1243,356,1123,288"/>
+<area shape="rect" id="edge35-label" href="tcm?action=showone&amp;table=tcm&amp;id=491" title="*" alt="" coords="1196,309,1208,329"/>
+<area shape="rect" id="node42" href="tcm?action=showone&amp;table=tc&amp;id=518" title="D. corymbosa sec. FNA" alt="" coords="935,121,1150,169"/>
+<area shape="poly" id="edge36" href="tcm?action=showone&amp;table=tcm&amp;id=490" alt="" coords="1054,169,1078,236,1073,238,1049,171"/>
+<area shape="rect" id="node43" href="tcm?action=showone&amp;table=tc&amp;id=517" title="D. corymbosa sec. PAF" alt="" coords="937,5,1149,53"/>
+<area shape="poly" id="edge37" href="tcm?action=showone&amp;table=tcm&amp;id=489" alt="" coords="1045,54,1045,121,1040,121,1040,54"/>
+<area shape="rect" id="node44" href="tcm?action=showone&amp;table=tc&amp;id=532" title="D. densifolia sec. FNA" alt="" coords="3877,121,4077,169"/>
+<area shape="rect" id="node45" href="tcm?action=showone&amp;table=tc&amp;id=533" title="D. densifolia sec. Welsh" alt="" coords="3870,353,4085,401"/>
+<area shape="poly" id="edge38" href="tcm?action=showone&amp;table=tcm&amp;id=504" alt="" coords="3980,169,3980,353,3975,353,3975,169"/>
+<area shape="rect" id="node46" href="tcm?action=showone&amp;table=tc&amp;id=534" title="D. densifolia sec. Hulten" alt="" coords="3869,469,4085,517"/>
+<area shape="poly" id="edge39" href="tcm?action=showone&amp;table=tcm&amp;id=505" alt="" coords="3980,402,3980,469,3975,469,3975,402"/>
+<area shape="rect" id="node47" href="tcm?action=showone&amp;table=tc&amp;id=576" title="D. eschscholtzii sec. PAF" alt="" coords="4119,5,4343,53"/>
+<area shape="rect" id="node48" href="tcm?action=showone&amp;table=tc&amp;id=577" title="D. eschscholtzii sec. Welsh" alt="" coords="4111,353,4351,401"/>
+<area shape="poly" id="edge40" href="tcm?action=showone&amp;table=tcm&amp;id=533" title="Welsh&#39;s TC extends into Alaska. PAF&#39;s TC&#39;s presence in Alaska is questionable. #geography" alt="" coords="4233,54,4233,339,4228,339,4228,54"/>
+<area shape="rect" id="edge40-label" href="tcm?action=showone&amp;table=tcm&amp;id=533" title="*" alt="" coords="4231,193,4243,213"/>
+<area shape="rect" id="node49" href="tcm?action=showone&amp;table=tc&amp;id=578" title="D. eschscholtzii sec. Hulten" alt="" coords="4109,469,4352,517"/>
+<area shape="poly" id="edge41" href="tcm?action=showone&amp;table=tcm&amp;id=534" alt="" coords="4233,402,4233,469,4228,469,4228,402"/>
+<area shape="rect" id="node50" href="tcm?action=showone&amp;table=tc&amp;id=535" title="D. exalata sec. Welsh" alt="" coords="4609,353,4805,401"/>
+<area shape="rect" id="node51" href="tcm?action=showone&amp;table=tc&amp;id=536" title="D. exalata sec. Hulten" alt="" coords="4607,469,4806,517"/>
+<area shape="poly" id="edge42" href="tcm?action=showone&amp;table=tcm&amp;id=506" alt="" coords="4709,402,4709,469,4704,469,4704,402"/>
+<area shape="rect" id="node52" href="tcm?action=showone&amp;table=tc&amp;id=457" title="D. fladnizensis sec. Cody" alt="" coords="4884,237,5108,285"/>
+<area shape="rect" id="node53" href="tcm?action=showone&amp;table=tc&amp;id=458" title="D. fladnizensis sec. Welsh" alt="" coords="4983,353,5215,401"/>
+<area shape="poly" id="edge43" href="tcm?action=showone&amp;table=tcm&amp;id=438" title="Welsh&#39;s TC is located in Utah, Colorado. Cody&#39;s TC does not extend further south than British Columbia. #geography" alt="" coords="5019,284,5071,341,5067,345,5015,287"/>
+<area shape="rect" id="edge43-label" href="tcm?action=showone&amp;table=tcm&amp;id=438" title="*" alt="" coords="5055,309,5067,329"/>
+<area shape="rect" id="node56" href="tcm?action=showone&amp;table=tc&amp;id=459" title="D. fladnizensis sec. Hulten" alt="" coords="4981,469,5216,517"/>
+<area shape="poly" id="edge47" href="tcm?action=showone&amp;table=tcm&amp;id=440" alt="" coords="5101,402,5101,469,5096,469,5096,402"/>
+<area shape="rect" id="node54" href="tcm?action=showone&amp;table=tc&amp;id=456" title="D. fladnizensis sec. FNA" alt="" coords="4973,121,5192,169"/>
+<area shape="poly" id="edge44" href="tcm?action=showone&amp;table=tcm&amp;id=437" title="FNA&#39;s TC is located in Utah, Colorado, and Wyoming. Cody&#39;s TC does not extend further sound than British Columbia. #geography" alt="" coords="5059,182,5016,239,5011,235,5055,179"/>
+<area shape="rect" id="edge44-label" href="tcm?action=showone&amp;table=tcm&amp;id=437" title="*" alt="" coords="5045,193,5057,213"/>
+<area shape="poly" id="edge45" href="tcm?action=showone&amp;table=tcm&amp;id=439" alt="" coords="5097,168,5112,200,5123,237,5125,269,5123,301,5110,354,5104,353,5117,300,5120,269,5117,238,5107,202,5092,170"/>
+<area shape="rect" id="node55" href="tcm?action=showone&amp;table=tc&amp;id=455" title="D. fladnizensis sec. PAF" alt="" coords="4975,5,5191,53"/>
+<area shape="poly" id="edge46" href="tcm?action=showone&amp;table=tcm&amp;id=436" alt="" coords="5085,54,5085,121,5080,121,5080,54"/>
+<area shape="rect" id="node57" href="tcm?action=showone&amp;table=tc&amp;id=505" title="D. glabella sec. Welsh" alt="" coords="5575,353,5775,401"/>
+<area shape="rect" id="node58" href="tcm?action=showone&amp;table=tc&amp;id=506" title="D. hirta sec. Hulten" alt="" coords="5587,469,5763,517"/>
+<area shape="poly" id="edge48" href="tcm?action=showone&amp;table=tcm&amp;id=481" title="Hulten&#39;s TC has synonyms D. glabella and D. daurica, including D. juvenilis. Welsh&#39;s TC has synonym D. hirta sec. Welsh (not Linnaeus). See also discussions by FNA and PAF. #synonym" alt="" coords="5677,402,5677,469,5672,469,5672,402"/>
+<area shape="rect" id="edge48-label" href="tcm?action=showone&amp;table=tcm&amp;id=481" title="*" alt="" coords="5675,425,5687,445"/>
+<area shape="rect" id="node59" href="tcm?action=showone&amp;table=tc&amp;id=541" title="D. grandis sec. FNA" alt="" coords="5822,121,6005,169"/>
+<area shape="rect" id="node60" href="tcm?action=showone&amp;table=tc&amp;id=542" title="D. hyperborea sec. Welsh" alt="" coords="5799,353,6028,401"/>
+<area shape="poly" id="edge49" href="tcm?action=showone&amp;table=tcm&amp;id=512" title="FNA&#39;s TC has various synonyms containing the name D. hyperborea. Descriptions also similar. #morphology #synonym" alt="" coords="5916,183,5916,353,5911,353,5911,183"/>
+<area shape="rect" id="edge49-label" href="tcm?action=showone&amp;table=tcm&amp;id=512" title="*" alt="" coords="5913,251,5925,271"/>
+<area shape="rect" id="node62" href="tcm?action=showone&amp;table=tc&amp;id=543" title="D. hyperborea sec. Hulten" alt="" coords="5798,469,6029,517"/>
+<area shape="poly" id="edge51" href="tcm?action=showone&amp;table=tcm&amp;id=511" alt="" coords="5916,402,5916,469,5911,469,5911,402"/>
+<area shape="rect" id="node61" href="tcm?action=showone&amp;table=tc&amp;id=540" title="D. grandis sec. PAF" alt="" coords="5823,5,6004,53"/>
+<area shape="poly" id="edge50" href="tcm?action=showone&amp;table=tcm&amp;id=510" alt="" coords="5916,54,5916,121,5911,121,5911,54"/>
+<area shape="rect" id="node63" href="tcm?action=showone&amp;table=tc&amp;id=462" title="D. incerta sec. Cody" alt="" coords="4457,237,4642,285"/>
+<area shape="poly" id="edge53" href="tcm?action=showone&amp;table=tcm&amp;id=507" alt="" coords="4583,283,4676,351,4673,355,4580,288"/>
+<area shape="rect" id="node64" href="tcm?action=showone&amp;table=tc&amp;id=464" title="D. incerta sec. Welsh" alt="" coords="4377,353,4570,401"/>
+<area shape="poly" id="edge52" href="tcm?action=showone&amp;table=tcm&amp;id=443" title="Welsh&#39;s TC extends south to Idaho and Wyoming. Cody&#39;s TC does not extend further south than British Columbia. #geography" alt="" coords="4536,287,4498,343,4494,340,4532,284"/>
+<area shape="rect" id="edge52-label" href="tcm?action=showone&amp;table=tcm&amp;id=443" title="*" alt="" coords="4516,309,4528,329"/>
+<area shape="rect" id="node67" href="tcm?action=showone&amp;table=tc&amp;id=463" title="D. incerta sec. Hulten" alt="" coords="4376,469,4571,517"/>
+<area shape="poly" id="edge57" href="tcm?action=showone&amp;table=tcm&amp;id=445" alt="" coords="4476,402,4476,469,4471,469,4471,402"/>
+<area shape="rect" id="node65" href="tcm?action=showone&amp;table=tc&amp;id=461" title="D. incerta sec. FNA" alt="" coords="4432,121,4611,169"/>
+<area shape="poly" id="edge54" href="tcm?action=showone&amp;table=tcm&amp;id=442" title="FNA&#39;s TC extends south to Nevada, Utah, and Colorado. Cody&#39;s TC does not extend further south than British Columbia. #geography" alt="" coords="4533,182,4546,236,4541,238,4528,184"/>
+<area shape="rect" id="edge54-label" href="tcm?action=showone&amp;table=tcm&amp;id=442" title="*" alt="" coords="4537,193,4549,213"/>
+<area shape="poly" id="edge55" href="tcm?action=showone&amp;table=tcm&amp;id=444" alt="" coords="4495,171,4468,201,4447,238,4441,268,4444,299,4453,328,4463,352,4458,354,4448,329,4439,300,4436,268,4441,236,4464,198,4492,168"/>
+<area shape="rect" id="node66" href="tcm?action=showone&amp;table=tc&amp;id=460" title="D. incerta sec. PAF" alt="" coords="4433,5,4610,53"/>
+<area shape="poly" id="edge56" href="tcm?action=showone&amp;table=tcm&amp;id=441" alt="" coords="4524,54,4524,121,4519,121,4519,54"/>
+<area shape="rect" id="node68" href="tcm?action=showone&amp;table=tc&amp;id=545" title="D. juvenilis sec. FNA" alt="" coords="6062,121,6250,169"/>
+<area shape="rect" id="node69" href="tcm?action=showone&amp;table=tc&amp;id=546" title="D. longipes sec. Cody" alt="" coords="6057,237,6255,285"/>
+<area shape="poly" id="edge58" href="tcm?action=showone&amp;table=tcm&amp;id=516" title="According to FNA, &quot;...D. longipes [has] often been treated as distinct species, we find no basis for maintaining [it].&quot; FNA&#39;s TC also has synonym D. longipes, among others. #synonym" alt="" coords="6159,183,6159,237,6153,237,6153,183"/>
+<area shape="rect" id="edge58-label" href="tcm?action=showone&amp;table=tcm&amp;id=516" title="*" alt="" coords="6156,193,6168,213"/>
+<area shape="rect" id="node80" href="tcm?action=showone&amp;table=tc&amp;id=547" title="D. longipes sec. Welsh" alt="" coords="6053,353,6259,401"/>
+<area shape="poly" id="edge68" href="tcm?action=showone&amp;table=tcm&amp;id=514" alt="" coords="6159,286,6159,353,6153,353,6153,286"/>
+<area shape="rect" id="node70" href="tcm?action=showone&amp;table=tc&amp;id=544" title="D. juvenilis sec. PAF" alt="" coords="6063,5,6249,53"/>
+<area shape="poly" id="edge59" href="tcm?action=showone&amp;table=tcm&amp;id=513" alt="" coords="6159,54,6159,121,6153,121,6153,54"/>
+<area shape="rect" id="node71" href="tcm?action=showone&amp;table=tc&amp;id=466" title="D. lactea sec. FNA" alt="" coords="5217,121,5389,169"/>
+<area shape="rect" id="node72" href="tcm?action=showone&amp;table=tc&amp;id=467" title="D. lactea sec. Cody" alt="" coords="5212,237,5391,285"/>
+<area shape="poly" id="edge60" href="tcm?action=showone&amp;table=tcm&amp;id=448" alt="" coords="5305,170,5304,237,5299,237,5300,170"/>
+<area shape="rect" id="node73" href="tcm?action=showone&amp;table=tc&amp;id=465" title="D. lactea sec. PAF" alt="" coords="5217,5,5388,53"/>
+<area shape="poly" id="edge63" href="tcm?action=showone&amp;table=tcm&amp;id=446" title="These TCs share the synonym D. wahlbergii. #synonym" alt="" coords="5259,56,5128,124,5126,119,5257,51"/>
+<area shape="rect" id="edge63-label" href="tcm?action=showone&amp;table=tcm&amp;id=446" title="*" alt="" coords="5207,77,5219,97"/>
+<area shape="poly" id="edge61" href="tcm?action=showone&amp;table=tcm&amp;id=447" title="PAF&#39;s TC has four synonyms, two of which are D. pseudopilosa and D. wahlbergii. The other two are shared with FNA&#39;s TC. FNA also has synonym D. fernaldiana, which PAF does not mention. #synonym" alt="" coords="5305,54,5305,121,5300,121,5300,54"/>
+<area shape="rect" id="edge61-label" href="tcm?action=showone&amp;table=tcm&amp;id=447" title="*" alt="" coords="5303,77,5315,97"/>
+<area shape="rect" id="node74" href="tcm?action=showone&amp;table=tc&amp;id=568" title="D. pseudopilosa sec. Welsh" alt="" coords="5306,353,5550,401"/>
+<area shape="poly" id="edge62" href="tcm?action=showone&amp;table=tcm&amp;id=530" title="PAF has synonym D. pseudopilosa, among others. Welsh also discusses potential as a subspecies of D. lactea. #synonym" alt="" coords="5351,60,5379,87,5402,120,5415,151,5424,183,5434,249,5436,308,5433,353,5428,353,5430,308,5429,249,5419,184,5410,153,5398,123,5375,91,5347,64"/>
+<area shape="rect" id="edge62-label" href="tcm?action=showone&amp;table=tcm&amp;id=530" title="*" alt="" coords="5428,193,5440,213"/>
+<area shape="rect" id="node116" href="tcm?action=showone&amp;table=tc&amp;id=569" title="D. pseudopilosa sec. Hulten" alt="" coords="5305,469,5551,517"/>
+<area shape="poly" id="edge95" href="tcm?action=showone&amp;table=tcm&amp;id=531" alt="" coords="5431,402,5431,469,5425,469,5425,402"/>
+<area shape="rect" id="node75" href="tcm?action=showone&amp;table=tc&amp;id=488" title="D. lonchocarpa sec. Cody" alt="" coords="6485,237,6713,285"/>
+<area shape="rect" id="node76" href="tcm?action=showone&amp;table=tc&amp;id=485" title="D. nivalis var. denudata sec. Welsh" alt="" coords="6283,353,6586,401"/>
+<area shape="poly" id="edge64" href="tcm?action=showone&amp;table=tcm&amp;id=464" title="Welsh states that his TC may not be too different from D. nivalis var. elongata." alt="" coords="6556,296,6469,355,6466,351,6553,291"/>
+<area shape="rect" id="edge64-label" href="tcm?action=showone&amp;table=tcm&amp;id=464" title="*" alt="" coords="6527,309,6539,329"/>
+<area shape="rect" id="node77" href="tcm?action=showone&amp;table=tc&amp;id=486" title="D. nivalis var. elongata sec. Welsh" alt="" coords="6611,353,6907,401"/>
+<area shape="poly" id="edge65" href="tcm?action=showone&amp;table=tcm&amp;id=461" title="Welsh&#39;s TC has synonym D. lonchocarpa. Also, the original description of D. nivalis var. elongata has synonym D. lonchocarpa." alt="" coords="6644,291,6728,351,6725,355,6640,296"/>
+<area shape="rect" id="edge65-label" href="tcm?action=showone&amp;table=tcm&amp;id=461" title="*" alt="" coords="6689,309,6701,329"/>
+<area shape="rect" id="node90" href="tcm?action=showone&amp;table=tc&amp;id=491" title="D. lonchocarpa sec. Hulten" alt="" coords="6442,469,6681,517"/>
+<area shape="poly" id="edge77" href="tcm?action=showone&amp;table=tcm&amp;id=466" title="Welsh states that his TC may not be too different from D. nivalis var. elongata." alt="" coords="6462,400,6527,458,6524,462,6459,404"/>
+<area shape="rect" id="edge77-label" href="tcm?action=showone&amp;table=tcm&amp;id=466" title="*" alt="" coords="6507,425,6519,445"/>
+<area shape="poly" id="edge78" href="tcm?action=showone&amp;table=tcm&amp;id=463" title="Welsh&#39;s TC has synonym D. lonchocarpa. Also, the original description of D. nivalis var. elongata has synonym D. lonchocarpa." alt="" coords="6720,404,6614,465,6611,460,6717,399"/>
+<area shape="rect" id="edge78-label" href="tcm?action=showone&amp;table=tcm&amp;id=463" title="*" alt="" coords="6672,425,6684,445"/>
+<area shape="rect" id="node78" href="tcm?action=showone&amp;table=tc&amp;id=493" title="D. lonchocarpa sec. FNA" alt="" coords="6487,121,6710,169"/>
+<area shape="poly" id="edge66" href="tcm?action=showone&amp;table=tcm&amp;id=470" alt="" coords="6601,170,6601,237,6596,237,6596,170"/>
+<area shape="rect" id="node79" href="tcm?action=showone&amp;table=tc&amp;id=492" title="D. lonchocarpa var. lonchocarpa sec. PAF" alt="" coords="6420,5,6777,53"/>
+<area shape="poly" id="edge67" href="tcm?action=showone&amp;table=tcm&amp;id=469" title="PAF notes that FNA mentions individual races of D. lonchocarpa, but not does explicitly say whether they themselves recognize individual races." alt="" coords="6601,54,6601,121,6596,121,6596,54"/>
+<area shape="rect" id="edge67-label" href="tcm?action=showone&amp;table=tcm&amp;id=469" title="*" alt="" coords="6599,77,6611,97"/>
+<area shape="rect" id="node81" href="tcm?action=showone&amp;table=tc&amp;id=548" title="D. longipes sec. Hulten" alt="" coords="6053,469,6259,517"/>
+<area shape="poly" id="edge69" href="tcm?action=showone&amp;table=tcm&amp;id=515" alt="" coords="6159,402,6159,469,6153,469,6153,402"/>
+<area shape="rect" id="node82" href="tcm?action=showone&amp;table=tc&amp;id=516" title="D. micropetala sec. FNA" alt="" coords="1175,121,1393,169"/>
+<area shape="poly" id="edge70" href="tcm?action=showone&amp;table=tcm&amp;id=493" title="Welsh&#39;s TC has synonym D. micropetala, among others. #synonym" alt="" coords="1287,169,1287,340,1281,340,1281,169"/>
+<area shape="rect" id="edge70-label" href="tcm?action=showone&amp;table=tcm&amp;id=493" title="*" alt="" coords="1284,251,1296,271"/>
+<area shape="rect" id="node83" href="tcm?action=showone&amp;table=tc&amp;id=428" title="D. micropetala sec. PAF" alt="" coords="1176,5,1392,53"/>
+<area shape="poly" id="edge71" href="tcm?action=showone&amp;table=tcm&amp;id=492" alt="" coords="1287,54,1287,121,1281,121,1281,54"/>
+<area shape="rect" id="node84" href="tcm?action=showone&amp;table=tc&amp;id=551" title="D. nemorosa var. leiocarpa sec. Cody" alt="" coords="6883,237,7205,285"/>
+<area shape="rect" id="node85" href="tcm?action=showone&amp;table=tc&amp;id=552" title="D. nemorosa sec. Welsh" alt="" coords="6935,353,7153,401"/>
+<area shape="poly" id="edge72" href="tcm?action=showone&amp;table=tcm&amp;id=519" alt="" coords="7047,286,7047,340,7041,340,7041,286"/>
+<area shape="rect" id="node86" href="tcm?action=showone&amp;table=tc&amp;id=483" title="D. nivalis sec. Cody" alt="" coords="3363,237,3543,285"/>
+<area shape="rect" id="node87" href="tcm?action=showone&amp;table=tc&amp;id=487" title="D. nivalis var. nivalis sec. Welsh" alt="" coords="3321,353,3599,401"/>
+<area shape="poly" id="edge73" href="tcm?action=showone&amp;table=tcm&amp;id=460" alt="" coords="3457,285,3461,353,3456,353,3452,286"/>
+<area shape="rect" id="node93" href="tcm?action=showone&amp;table=tc&amp;id=490" title="D. nivalis sec. Hulten" alt="" coords="3365,469,3555,517"/>
+<area shape="poly" id="edge80" href="tcm?action=showone&amp;table=tcm&amp;id=467" alt="" coords="3463,402,3463,469,3457,469,3457,402"/>
+<area shape="rect" id="node88" href="tcm?action=showone&amp;table=tc&amp;id=482" title="D. nivalis sec. FNA" alt="" coords="3341,121,3515,169"/>
+<area shape="poly" id="edge75" href="tcm?action=showone&amp;table=tcm&amp;id=498" title="FNA&#39;s TC has synonym D. caesia. #synonym" alt="" coords="3407,171,3236,345,3232,341,3404,168"/>
+<area shape="rect" id="edge75-label" href="tcm?action=showone&amp;table=tcm&amp;id=498" title="*" alt="" coords="3337,251,3349,271"/>
+<area shape="poly" id="edge74" href="tcm?action=showone&amp;table=tcm&amp;id=468" alt="" coords="3436,169,3451,237,3446,238,3431,170"/>
+<area shape="rect" id="node89" href="tcm?action=showone&amp;table=tc&amp;id=481" title="D. nivalis sec. PAF" alt="" coords="3342,5,3514,53"/>
+<area shape="poly" id="edge76" href="tcm?action=showone&amp;table=tcm&amp;id=457" alt="" coords="3431,54,3431,121,3425,121,3425,54"/>
+<area shape="rect" id="node91" href="tcm?action=showone&amp;table=tc&amp;id=484" title="D. nivalis var. kamtschatica sec. Welsh" alt="" coords="7177,353,7511,401"/>
+<area shape="rect" id="node92" href="tcm?action=showone&amp;table=tc&amp;id=489" title="D. kamtschatica sec. Hulten" alt="" coords="7221,469,7467,517"/>
+<area shape="poly" id="edge79" href="tcm?action=showone&amp;table=tcm&amp;id=462" alt="" coords="7347,402,7347,469,7341,469,7341,402"/>
+<area shape="rect" id="node94" href="tcm?action=showone&amp;table=tc&amp;id=508" title="D. ogilviensis sec. Cody" alt="" coords="7539,237,7752,285"/>
+<area shape="rect" id="node95" href="tcm?action=showone&amp;table=tc&amp;id=509" title="D. ogilviensis sec. Welsh" alt="" coords="7535,353,7756,401"/>
+<area shape="poly" id="edge81" href="tcm?action=showone&amp;table=tcm&amp;id=483" alt="" coords="7648,286,7648,353,7643,353,7643,286"/>
+<area shape="rect" id="node97" href="tcm?action=showone&amp;table=tc&amp;id=510" title="D. ogilviensis sec. Hulten" alt="" coords="7534,469,7757,517"/>
+<area shape="poly" id="edge83" href="tcm?action=showone&amp;table=tcm&amp;id=484" alt="" coords="7648,402,7648,469,7643,469,7643,402"/>
+<area shape="rect" id="node96" href="tcm?action=showone&amp;table=tc&amp;id=507" title="D. ogilviensis sec. FNA" alt="" coords="7542,121,7749,169"/>
+<area shape="poly" id="edge82" href="tcm?action=showone&amp;table=tcm&amp;id=482" alt="" coords="7648,170,7648,237,7643,237,7643,170"/>
+<area shape="rect" id="node98" href="tcm?action=showone&amp;table=tc&amp;id=582" title="D. palanderiana sec. FNA" alt="" coords="7779,121,8007,169"/>
+<area shape="rect" id="node99" href="tcm?action=showone&amp;table=tc&amp;id=583" title="D. palanderiana sec. Cody" alt="" coords="7776,237,8011,285"/>
+<area shape="poly" id="edge84" href="tcm?action=showone&amp;table=tcm&amp;id=537" title="FNA&#39;s TC tentatively includes specimens that are collected in the Russian Far East. It is not clear whether Cody considers those other specimens at all." alt="" coords="7896,183,7896,237,7891,237,7891,183"/>
+<area shape="rect" id="edge84-label" href="tcm?action=showone&amp;table=tcm&amp;id=537" title="*" alt="" coords="7893,193,7905,213"/>
+<area shape="rect" id="node100" href="tcm?action=showone&amp;table=tc&amp;id=581" title="D. palanderiana sec. PAF" alt="" coords="7780,5,8007,53"/>
+<area shape="poly" id="edge85" href="tcm?action=showone&amp;table=tcm&amp;id=536" title="Both speculate on the possibility of two different morphs, and whether they are actually two different species." alt="" coords="7896,54,7896,121,7891,121,7891,54"/>
+<area shape="rect" id="edge85-label" href="tcm?action=showone&amp;table=tcm&amp;id=536" title="*" alt="" coords="7893,77,7905,97"/>
+<area shape="rect" id="node101" href="tcm?action=showone&amp;table=tc&amp;id=557" title="D. pauciflora sec. PAF" alt="" coords="8033,5,8233,53"/>
+<area shape="rect" id="node102" href="tcm?action=showone&amp;table=tc&amp;id=556" title="D. pauciflora sec. FNA" alt="" coords="8032,121,8235,169"/>
+<area shape="poly" id="edge86" href="tcm?action=showone&amp;table=tcm&amp;id=523" alt="" coords="8136,54,8136,121,8131,121,8131,54"/>
+<area shape="rect" id="node103" href="tcm?action=showone&amp;table=tc&amp;id=558" title="D. paysonii sec. FNA" alt="" coords="8259,121,8450,169"/>
+<area shape="rect" id="node104" href="tcm?action=showone&amp;table=tc&amp;id=559" title="D. paysonii sec. Cody" alt="" coords="8257,237,8453,285"/>
+<area shape="poly" id="edge87" href="tcm?action=showone&amp;table=tcm&amp;id=524" title="Cody&#39;s TC has a broader geographic range, including through Canada and Alaska, through California. FNA&#39;s TC is located only in Montana and Wyoming. See also D. novolympica. #geography" alt="" coords="8357,170,8357,224,8352,224,8352,170"/>
+<area shape="rect" id="edge87-label" href="tcm?action=showone&amp;table=tcm&amp;id=524" title="*" alt="" coords="8355,193,8367,213"/>
+<area shape="rect" id="node105" href="tcm?action=showone&amp;table=tc&amp;id=564" title="D. pilosa sec. FNA" alt="" coords="8475,121,8645,169"/>
+<area shape="rect" id="node106" href="tcm?action=showone&amp;table=tc&amp;id=565" title="D. pilosa sec. Hulten" alt="" coords="8467,469,8653,517"/>
+<area shape="poly" id="edge88" href="tcm?action=showone&amp;table=tcm&amp;id=528" alt="" coords="8563,170,8563,469,8557,469,8557,170"/>
+<area shape="rect" id="node107" href="tcm?action=showone&amp;table=tc&amp;id=563" title="D. pilosa sec. PAF" alt="" coords="8475,5,8645,53"/>
+<area shape="poly" id="edge89" href="tcm?action=showone&amp;table=tcm&amp;id=527" alt="" coords="8563,54,8563,121,8557,121,8557,54"/>
+<area shape="rect" id="node108" href="tcm?action=showone&amp;table=tc&amp;id=566" title="D. porsildii sec. FNA" alt="" coords="8670,121,8855,169"/>
+<area shape="rect" id="node109" href="tcm?action=showone&amp;table=tc&amp;id=567" title="D. porsildii sec. Cody" alt="" coords="8667,237,8858,285"/>
+<area shape="poly" id="edge90" href="tcm?action=showone&amp;table=tcm&amp;id=529" alt="" coords="8765,170,8765,237,8760,237,8760,170"/>
+<area shape="rect" id="node110" href="tcm?action=showone&amp;table=tc&amp;id=512" title="D. praealta sec. Cody" alt="" coords="8883,237,9077,285"/>
+<area shape="rect" id="node111" href="tcm?action=showone&amp;table=tc&amp;id=513" title="D. praealta sec. Welsh" alt="" coords="8879,353,9081,401"/>
+<area shape="poly" id="edge91" href="tcm?action=showone&amp;table=tcm&amp;id=486" alt="" coords="8983,286,8983,353,8977,353,8977,286"/>
+<area shape="rect" id="node113" href="tcm?action=showone&amp;table=tc&amp;id=514" title="D. praealta sec. Hulten" alt="" coords="8877,469,9083,517"/>
+<area shape="poly" id="edge93" href="tcm?action=showone&amp;table=tcm&amp;id=487" alt="" coords="8983,402,8983,469,8977,469,8977,402"/>
+<area shape="rect" id="node112" href="tcm?action=showone&amp;table=tc&amp;id=511" title="D. praealta sec. FNA" alt="" coords="8885,121,9075,169"/>
+<area shape="poly" id="edge92" href="tcm?action=showone&amp;table=tcm&amp;id=485" title="FNA&#39;s TC does not extend into Alaska. Otherwise, descriptions similar. #geography" alt="" coords="8983,170,8983,224,8977,224,8977,170"/>
+<area shape="rect" id="edge92-label" href="tcm?action=showone&amp;table=tcm&amp;id=485" title="*" alt="" coords="8980,193,8992,213"/>
+<area shape="rect" id="node114" href="tcm?action=showone&amp;table=tc&amp;id=561" title="D. pseudo&#45;oxycarpa sec. PAF" alt="" coords="9068,5,9329,53"/>
+<area shape="rect" id="node115" href="tcm?action=showone&amp;table=tc&amp;id=562" title="D. oxycarpa sec. FNA" alt="" coords="9099,121,9298,169"/>
+<area shape="poly" id="edge94" href="tcm?action=showone&amp;table=tcm&amp;id=526" title="According to PAF, &quot;We tentatively enter Draba &quot;pseudo&#45;oxycarpa&quot; as a Beringian species but alternatives are as a subspecies or as a part of a yet unknown wider range of D. oxycarpa.&quot;" alt="" coords="9201,54,9201,121,9196,121,9196,54"/>
+<area shape="rect" id="edge94-label" href="tcm?action=showone&amp;table=tcm&amp;id=526" title="*" alt="" coords="9199,77,9211,97"/>
+<area shape="rect" id="node117" href="tcm?action=showone&amp;table=tc&amp;id=496" title="D. stenoloba sec. Cody" alt="" coords="68,237,276,285"/>
+<area shape="rect" id="node118" href="tcm?action=showone&amp;table=tc&amp;id=498" title="D. stenoloba var. stenoloba sec. Welsh" alt="" coords="5,353,339,401"/>
+<area shape="poly" id="edge96" href="tcm?action=showone&amp;table=tcm&amp;id=473" alt="" coords="175,286,175,353,169,353,169,286"/>
+<area shape="poly" id="edge100" href="tcm?action=showone&amp;table=tcm&amp;id=474" alt="" coords="223,399,358,461,356,466,221,404"/>
+<area shape="rect" id="node119" href="tcm?action=showone&amp;table=tc&amp;id=495" title="D. stenoloba sec. FNA" alt="" coords="71,121,273,169"/>
+<area shape="poly" id="edge97" href="tcm?action=showone&amp;table=tcm&amp;id=472" alt="" coords="175,170,175,237,169,237,169,170"/>
+<area shape="rect" id="node120" href="tcm?action=showone&amp;table=tc&amp;id=494" title="D. stenoloba sec. PAF" alt="" coords="72,5,272,53"/>
+<area shape="poly" id="edge98" href="tcm?action=showone&amp;table=tcm&amp;id=471" alt="" coords="175,54,175,121,169,121,169,54"/>
+<area shape="rect" id="node122" href="tcm?action=showone&amp;table=tc&amp;id=478" title="D. stenopetala sec. Cody" alt="" coords="9350,237,9573,285"/>
+<area shape="rect" id="node123" href="tcm?action=showone&amp;table=tc&amp;id=479" title="D. stenopetala sec. Welsh" alt="" coords="9346,353,9577,401"/>
+<area shape="poly" id="edge101" href="tcm?action=showone&amp;table=tcm&amp;id=455" alt="" coords="9464,286,9464,353,9459,353,9459,286"/>
+<area shape="rect" id="node126" href="tcm?action=showone&amp;table=tc&amp;id=480" title="D. stenopetala sec. Hulten" alt="" coords="9345,469,9578,517"/>
+<area shape="poly" id="edge104" href="tcm?action=showone&amp;table=tcm&amp;id=456" alt="" coords="9464,402,9464,469,9459,469,9459,402"/>
+<area shape="rect" id="node124" href="tcm?action=showone&amp;table=tc&amp;id=477" title="D. stenopetala sec. FNA" alt="" coords="9353,121,9570,169"/>
+<area shape="poly" id="edge102" href="tcm?action=showone&amp;table=tcm&amp;id=454" alt="" coords="9464,170,9464,237,9459,237,9459,170"/>
+<area shape="rect" id="node125" href="tcm?action=showone&amp;table=tc&amp;id=476" title="D. stenopetala sec. PAF" alt="" coords="9354,5,9569,53"/>
+<area shape="poly" id="edge103" href="tcm?action=showone&amp;table=tcm&amp;id=453" alt="" coords="9464,54,9464,121,9459,121,9459,54"/>
+<area shape="rect" id="node127" href="tcm?action=showone&amp;table=tc&amp;id=572" title="D. subcapitata sec. PAF" alt="" coords="9595,5,9810,53"/>
+<area shape="rect" id="node128" href="tcm?action=showone&amp;table=tc&amp;id=573" title="D. subcapitata sec. FNA" alt="" coords="9595,121,9811,169"/>
+<area shape="poly" id="edge105" href="tcm?action=showone&amp;table=tcm&amp;id=532" alt="" coords="9705,54,9705,121,9700,121,9700,54"/>
+<area shape="rect" id="node129" href="tcm?action=showone&amp;table=tc&amp;id=538" title="D. ventosa sec. Cody" alt="" coords="4666,237,4859,285"/>
+<area shape="poly" id="edge106" href="tcm?action=showone&amp;table=tcm&amp;id=508" title="According to Welsh, &quot;some of [their] materials have been ascribed tentatively to D. ventosa.&quot;" alt="" coords="4754,287,4720,354,4716,352,4749,284"/>
+<area shape="rect" id="edge106-label" href="tcm?action=showone&amp;table=tcm&amp;id=508" title="*" alt="" coords="4739,309,4751,329"/>
+<area shape="rect" id="node130" href="tcm?action=showone&amp;table=tc&amp;id=537" title="D. ventosa sec. FNA" alt="" coords="4669,121,4856,169"/>
+<area shape="poly" id="edge107" href="tcm?action=showone&amp;table=tcm&amp;id=509" alt="" coords="4765,170,4765,237,4760,237,4760,170"/>
+<area shape="rect" id="node131" href="tcm?action=showone&amp;table=tc&amp;id=554" title="Draba oblongata sec. PAF" alt="" coords="9835,5,10067,53"/>
+<area shape="rect" id="node132" href="tcm?action=showone&amp;table=tc&amp;id=555" title="D. oblongata sec. FNA" alt="" coords="9849,121,10052,169"/>
+<area shape="poly" id="edge108" href="tcm?action=showone&amp;table=tcm&amp;id=522" alt="" coords="9953,54,9953,121,9948,121,9948,54"/>
+</map>
+
+<img src="../img/TCM_draba.jpg" usemap="#structure"/>
+<p>Nodes and edges are clickable. Hover over edges that are marked with <span style="color:red">*</span> to see notes.<br/>Edge style key:</p>
+<ul style="list-style-type:none"><li>Solid black: <i>congruent with</i> (=)</li>
+<li>Dashed black: <i>overlaps</i> (&gt;&lt;)</li>
+<li>Dotted black: <i>intersects</i> (∩)</li>
+<li>Dashed black with arrow: &lt;arrow from&gt; <i>is included in</i> &lt;arrow to&gt; (&lt;)</li>
+<li>Solid red: <i>is disjunct from</i> (|)</li></ul>
+</div>
+</div>
+</body>
+</html>
