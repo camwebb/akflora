@@ -26,11 +26,12 @@ BEGIN{
       system("tesseract " $1 " "  \
              gensub(/\.tiff$/,"","G", $1)       \
              " --user-words gen+sp_list ; "\
-             "sed -i -E 's/[|^\f]//g' " gensub(/\.tiff$/,".txt","G", $1))
+             "sed -i -E -e 's/[|^\\f]//g' -e '1{s/^[0-9]*\\.? +//g}' " \
+             gensub(/\.tiff$/,".txt","G", $1))
       print "---------------------------------------------------------------"
       system("cat " gensub(/\.tiff$/,".txt","G", $1))
       print "---------------------------------------------------------------"
-      system("emacs " gensub(/\.tiff$/,".txt","G", $1) " >& /dev/null &")
+      system("emacs -nw -Q " gensub(/\.tiff$/,".txt","G", $1))
     }
     exit 0
   }

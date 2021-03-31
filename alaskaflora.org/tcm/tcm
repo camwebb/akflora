@@ -965,7 +965,7 @@ function graph(   floras, flora, i, gv, node, j, florarank, map) {
            urldecode(COOKIE["genregex"]) "' OR N2.genus REGEXP '"\
            urldecode(COOKIE["genregex"]) "') ORDER BY tc.code LIMIT 110;")
   
-  if (DBQr > 100) {
+  if (DBQr > 120) {
     print "<p>Sorry, cannot display a graph of more than 100 taxonomic" \
       " concepts.<br/>Suggest un-showing some of the completed concept chains;"\
       "<br/>the graph choices will not be lost.</p>"
