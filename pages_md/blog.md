@@ -21,4 +21,5 @@ will “live-blog” the process to share the decisions, discoveries
  * [2019-05-01](blog7.html): 7. **A canonical names list**
  * [2020-11-04](blog8.html): 8. **A taxon concept mapping tool**
  * [2020-12-15](blog9.html): 9. **A guide to name usages**
+ * [2021-04-01](blog10.html): 10. **Digitizing specimen maps**
 

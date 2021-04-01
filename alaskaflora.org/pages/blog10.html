@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Blog 10: Digitizing specimen maps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <h1 id="blog-10-digitizing-specimen-maps">Blog 10: Digitizing specimen maps</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2021-04-01</em></p>
+          <p>The New Flora of Alaska project is partly an update of Eric Hultén’s <a href="https://www.sup.org/books/title/?id=2767">1968 Flora of Alaska</a>. Much of Hultén’s book is still valuable and we’d like to incorporate the book’s content into our new digital presentation. At the beginning of the project we were given permission from Stanford University Press to digitize Hultén’s book and mash it up, as long as we do not share the full-page images. In other posts I hope to relate how I have been able to break down each page into maps, illustrations and text, but first I’d like to share how I have converted the specimen ‘dot-map’ for each taxon into a list of longitudes and latitudes. This feels like quite a triumph and I’ll share the method here in case others might be trying to do something similar.</p>
+          <h2 id="step-1-image-to-points">Step 1: Image to points</h2>
+          <p>As an example, here on the left is the specimen map for <em>Dryopteris dilatata</em> subsp. <em>americana</em> (Fisch.) Hult., from page 55:</p>
+          <p><img src="../img/055-3-1.png" style="width:90%;margin-left: auto;
+          margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/></p>
+          <p>The software tool I’ve been using for digitizing is the amazing and comprehensive <a href="https://imagemagick.org/">ImageMagick</a>. I looked at various ways to use the <a href="https://legacy.imagemagick.org/Usage/morphology/"><code>-morphology</code></a> tool in <code>convert</code> to recognize the dots on the map, but was unsuccessful, so I converted the dark pixels on the map to plain data, for subsequent external processing:</p>
+          <pre><code>convert map.tiff -resize 500x500 -threshold 35% txt: | grep 000000 | sed &#39;s/:.*$//g&#39; &gt; map</code></pre>
+          <p>I then wrote a <a href="https://github.com/akflora/akflora/blob/master/dataflow/Hulten/map2points/map2points">simple program</a> that:</p>
+          <ol type="1">
+          <li>For each pixel, sums all the pixels within a box of 7×7 pixels around the focal pixel,</li>
+          <li>Discards all pixels with summed values less than 44. This successfully isolates the dark, circular points on the map. However several adjacent pixels will all be indicating the same point. So…</li>
+          <li>Spread outward from active pixels, into other active pixels but not into the inactive pixels, marking each cluster of pixels with a different value.</li>
+          <li>Return just one pixel from each cluster.</li>
+          </ol>
+          <p>Converting these <code>x,y</code> values back into an image (again with <code>ImageMagick</code>), the map now looks like the above image on the right. You can see that the capture is almost perfect, except for a missing point on the far left, which was a smaller than standard dot (Hultén or his assistant drew on the points by hand).</p>
+          <h2 id="step-2-image-x-y-into-longitude-latitude">Step 2: image x &amp; y into longitude &amp; latitude</h2>
+          <p>This step turned out to be harder than the first to crack. The general problem is warping one coordinate system into another, via control points. I was able to get 36 points from the Hultén map for which I could read or estimate the longitude and latitude, giving four values for each: <code>imgx</code>, <code>imgy</code>, <code>longitude</code> and <code>latitude</code>. I first looked into various GIS orthorectification tools (e.g., <a href="https://gdal.org/programs/gdalwarp.html"><code>gdalwarp</code></a>), but no easy solution leapt out.</p>
+          <p>I then realized that two polynomial regressions of the form (in <code>R</code> notation) <code>longitude ~ poly(imgx, n) + ploy(imgy)</code> might work. However, the accuracy of squares, cubes and quadratics was too low, and for higher degrees, while the accuracy of the control point mappings was good, the interpolated values were way off.</p>
+          <p>What I really needed was a model-free way to interpolate values between control points. I finally discovered the <a href="https://cran.r-project.org/web/packages/interp/"><code>interp</code></a> package, which does just that. It creates a landscape of interpolated values between control points:</p>
+          <p><img src="../img/interp.jpg" style="width:90%;margin-left: auto;
+          margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/></p>
+          <p>Longitude on in the left, latitude on the right. Note that, compared to the maps, the surfaces appear flipped in a horizontal axis; this is because the ImageMagick coordinate system has <code>0,0</code> in the top left, while <code>R</code> is plotting <code>0,0</code> in the usual bottom-left.</p>
+          <p>The final accuracy of the conversion from map location to longitude-latitude data is about 1-2 degrees, and depends particularly on accuracy of image cropping of each map (done in a prior, not yet documented step). This level of accuracy is obviously too low for many uses, but it does give a good Alaska-wide sense of the plant’s distribution.</p>
+          <p>Here’s the <code>R</code> script that interpolates and outputs a pixel mapping:</p>
+          <pre>
+          a <- read.table("controlpoints",header=T,sep="|")
+          library(interp)
+          lon.i <- interp(a$imgx, a$imgy, a$lon, nx=500,ny=500)
+          ## image(lon.i)
+          lat.i <- interp(a$imgx, a$imgy, a$lat, nx=500,ny=500)
+          ## image(lat.i)
+          lon.t <- as.table(lon.i$z)
+          colnames(lon.t) <- seq(0,499)
+          rownames(lon.t) <- seq(0,499)
+          lat.t <- as.table(lat.i$z)
+          out <- data.frame(as.data.frame(lon.t),as.data.frame(lat.t)$Freq)
+          ## colnames(out) <- c("x","y","lon","lat")
+          write.table(out, file="predict", quote = F, sep=",", 
+            na = "", col.names = F, row.names=F)
+          </pre>
+          <p>The conversion program (above) then reads this <code>imgx,imgy</code>-to-<code>lon,lat</code> mapping and outputs the longitudes and latitudes or the points. (There is an additional step of identifying if the <code>imgx,imgy</code> is in the inset box for the western Aleutian islands, which are converted in a different way.) These decimal degree coordinates can then be mapped and mashed up in any way needed. Here are the points displayed on Open Street Map, via the super <a href="https://umap.osm.ch/en/map/dryopteris-dilatata-subsp-americana_3453#4/63.94/-139.22">uMap</a> tool:</p>
+          <p><img src="../img/055-3-1b.png" style="width:90%;margin-left: auto;
+          margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/></p>
+          <p>Putting all these parts together in a Bash script, I can thus convert all the 1,735 dot maps in Hultén into lists of specimen coordinates. We will then map these, along with Arctos, GBIF and iNat occurrences, in the upcoming API and web view of the new flora.</p>
+          <hr />
+          <div id="disqus_thread">
+
+          </div>
+          <script>
+          var disqus_config = function () {
+          this.page.url = 'https://alaskaflora.org/pages/blog10.html';  // Edit
+          this.page.identifier = 'alaskaflora_blog10';                  // Edit
+          };(function() {  var d = document, s = d.createElement('script');
+          s.src = 'https://alaskaflora-org.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })(); </script>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
