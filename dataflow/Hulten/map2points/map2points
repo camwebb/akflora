@@ -1,0 +1,214 @@
+#!/usr/bin/gawk -f
+
+# convert 025-1-1.tiff -resize 500x500 -threshold 35% txt: | grep 000000 | sed 's/:.*$//g' > map
+
+BEGIN{
+  # image dimensions
+  X = 500
+  Y = 382
+  # radius to accumulate:
+  rad = 3
+  # threshold:
+  thresh = (((2*rad)+1) * ((2*rad)+1) ) - 5
+
+  # read predictions
+  print "reading 'predict'" > "/dev/stderr"
+  read_pred()
+  # sanity()
+
+  # Read data
+  FS=","
+  print "reading 'map'" > "/dev/stderr"
+  while ((getline < "map") > 0)
+  b[$1][$2] = 1
+
+  print "computing..." > "/dev/stderr"
+
+  # sum from the (1+rad*2) box around the pixel
+  for (i = 0 ; i < X ; i++)
+    for (j = 0; j < Y ; j++)
+      for (x = (0 - rad); x <= rad; x++)
+        for (y = (0 - rad); y <= rad; y++)
+          s[i][j] += b[i+x][j+y]
+  
+  # threshold
+  for (i = 0 ; i < X ; i++)
+    for (j = 0; j < Y ; j++) 
+      if (s[i][j] >= thresh)
+        a[i][j] = 1
+
+  # spread from a point to gather all points into a cluster
+  for (i = 0 ; i < X  ; i++)
+    for (j = 0; j < Y ; j++) 
+      if (a[i][j] && !C[i][j]) {
+        Cluster++
+        spread(i,j,Cluster)
+      }
+
+  # output all points, for ImageMagick
+  # print "# ImageMagick pixel enumeration: 500,382,255,gray"
+  # for (i = 0 ; i <= 499 ; i++)
+  #   for (j = 0; j <= 381; j++) 
+  #     if (s[i][j] >= thresh)
+  #       print i "," j ": (" C[i][j] ")"
+
+  # output single points, for ImageMagick
+  # print "# ImageMagick pixel enumeration: 500,382,255,gray"
+  # for (i = 0 ; i <= 499 ; i++)
+  #   for (j = 0; j <= 381; j++) 
+  #     if (C[i][j])
+  #       if (!printed[C[i][j]]) {
+  #         print i "," j ": (0)"
+  #         printed[C[i][j]] = 1
+  #       }
+
+  # output converted data
+  print "x,y"
+  im = "convert -size " X "x" Y" canvas:white -draw \"fill black stroke black "
+  for (i = 0; i < X ; i++)
+    for (j = 0; j < Y ; j++) 
+      if (C[i][j])
+        if (!printed[C[i][j]]) {
+          im = im "circle " i "," j " " i "," j+5 " "
+
+          # rescue points in box
+          if ((i > 227) && (i < 408) && (j > 326))
+            print box(i,j)
+
+          # use polynomial conversion:
+          # print xy2ll(i,j)
+
+          # use interpolation mapping:
+          else if (XY2LON[i][j] != "NA")
+            printf "%.1f,%.1f\n" , XY2LON[i][j] , XY2LAT[i][j]
+          
+          printed[C[i][j]] = 1
+        }
+
+  im = im "\" map.png"
+  # print im > "/dev/stderr"
+  print "making image" > "/dev/stderr"
+  system(im)
+
+  # convert to KML with:
+  #   ogr2ogr -f KML test.kml out.csv -oo X_POSSIBLE_NAMES=x \
+  #     -oo Y_POSSIBLE_NAMES=y -oo KEEP_GEOM_COLUMNS=NO
+  
+}
+
+function spread(i,j,cluster   ) {
+  # print "spreading cluster " cluster " from " i "," j > "/dev/stderr"
+  C[i][j] = cluster
+  
+  if (a[i-1][j-1] && !C[i-1][j-1])
+    spread(i-1, j-1, cluster)
+  if (a[i][j-1] && !C[i][j-1])
+    spread(i, j-1, cluster)
+  if (a[i+1][j-1] && !C[i+1][j-1])
+    spread(i+1, j-1, cluster)
+
+  
+  if (a[i-1][j] && !C[i-1][j])
+    spread(i-1, j, cluster)
+  if (a[i+1][j] && !C[i+1][j])
+    spread(i+1, j, cluster)
+
+  if (a[i-1][j+1] && !C[i-1][j+1])
+    spread(i-1, j+1, cluster)
+  if (a[i][j+1] && !C[i][j+1])
+    spread(i, j+1, cluster)
+  if (a[i+1][j+1] && !C[i+1][j+1])
+    spread(i+1, j+1, cluster)
+
+}
+
+function sanity() {
+  
+  FS="|"
+  while ((getline < "transpose") > 0) {
+    print $1 "," $2 " should be " $3 "," $4 " fit: "  \
+      sprintf("%6.0f" , XY2LON[$1][$2]) ","           \
+      sprintf("%4.0f", XY2LAT[$1][$2])
+  }
+}
+
+function xy2ll(i, j,   lat, long) {
+
+  # From R:
+  # > model <- lm(lat ~ poly(imgx,6,raw=T) +  poly(imgy,6,raw=T))
+  # > cbind(model$coefficients)
+  # (Intercept)              6.898639e+01
+  # poly(imgx, 6, raw = T)1  1.312557e-02
+  # ...
+  
+  # regex:
+  # ^poly(imgy, 6, raw = T)\([0-9]\) +\([0-9-.]+\)e\([0-9+-]+\)$ →+ \2 * 10^\3 * i^\1  \\
+  
+  lat = 71.14546 \
++ -2.589119 * 10^-02 * i^1  \
++ 7.260763 * 10^-03 * i^2  \
++ -1.913746 * 10^-04 * i^3  \
++ 2.331827 * 10^-06 * i^4  \
++ -1.626909 * 10^-08 * i^5  \
++ 7.003300 * 10^-11 * i^6  \
++ -1.894682 * 10^-13 * i^7  \
++ 3.140442 * 10^-16 * i^8  \
++ -2.914542 * 10^-19 * i^9  \
++ 1.159753 * 10^-22 * i^10  \
++ -7.122065 * 10^-01 * j^1  \
++ 4.185259 * 10^-02 * j^2  \
++ -1.083960 * 10^-03 * j^3  \
++ 1.414871 * 10^-05 * j^4  \
++ -1.036321 * 10^-07 * j^5  \
++ 4.456007 * 10^-10 * j^6  \
++ -1.116844 * 10^-12 * j^7  \
++ 1.510404 * 10^-15 * j^8  \
++ -8.517688 * 10^-19 * j^9
+
+long = -202.6123 \
++ -6.666461 * 10^-01 * i^1  \
++ 5.823995 * 10^-02 * i^2  \
++ -1.291892 * 10^-03 * i^3  \
++ 1.455903 * 10^-05 * i^4  \
++ -9.994306 * 10^-08 * i^5  \
++ 4.428272 * 10^-10 * i^6  \
++ -1.267552 * 10^-12 * i^7  \
++ 2.252203 * 10^-15 * i^8  \
++ -2.248272 * 10^-18 * i^9  \
++ 9.601558 * 10^-22 * i^10  \
++ 2.807703 * 10^-01 * j^1  \
++ 1.624065 * 10^-01 * j^2  \
++ -6.766693 * 10^-03 * j^3  \
++ 1.083176 * 10^-04 * j^4  \
++ -8.910185 * 10^-07 * j^5  \
++ 4.137759 * 10^-09 * j^6  \
++ -1.097170 * 10^-11 * j^7  \
++ 1.550669 * 10^-14 * j^8  \
++ -9.066689 * 10^-18 * j^9 
+
+  return(long "," lat)
+}
+
+function read_pred() {
+  FS=","
+  while ((getline < "predict") > 0) {
+    XY2LON[$2][int($3*(381/500))] = $4
+    XY2LAT[$2][int($3*(381/500))] = $5
+  }
+}
+
+function box(i, j   , lon, lat) {
+  lon = - 169 - ( ( (408 - i) / 181 ) * 19 )
+  if (lon < -180)
+    lon = 180 + (lon + 180)
+   
+  if ((lon > 170) && (lon < 175)) 
+    lat = 53
+  else if (lon > 175)
+    lat = 52
+  else if (lon < -175)
+    lat = 51.6
+  else
+    lat = 52
+  return sprintf("%.1f", lon) "," lat
+}
