@@ -72,15 +72,10 @@ off.
 What I really needed was a model-free way to interpolate values
 between control points.  I finally discovered the [`interp`][6]
 package, which does just that. It creates a landscape of interpolated
-values between control points:
+values between control points (L: longitude, R: latitude): 
 
 <img src="../img/interp.jpg" style="width:90%;margin-left: auto;
 margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/>
-
-Longitude on the left, latitude on the right. Note that, compared
-to the maps, the surfaces appear flipped in a horizontal axis; this is
-because the ImageMagick coordinate system has `0,0` in the top left,
-while `R` is plotting `0,0` in the usual bottom-left.
 
 The final accuracy of the conversion from map location to
 longitude-latitude data is about 1-2 degrees, and depends particularly
