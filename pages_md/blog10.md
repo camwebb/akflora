@@ -49,7 +49,7 @@ I then wrote a [simple program][4] that:
 Converting these `x,y` values back into an image (again with
 `ImageMagick`), the map now looks like the above image on the
 right. You can see that the capture is almost perfect, except for a
-missing point on the far left, which was a smaller than standard dot
+missing point on the far left, which was a smaller than the standard dot
 (Hultén or his assistant drew on the points by hand).
 
 ## Step 2: image x & y into longitude & latitude
@@ -77,7 +77,7 @@ values between control points:
 <img src="../img/interp.jpg" style="width:90%;margin-left: auto;
 margin-right: auto; margin-top:20px;margin-bottom:20px;display:block;"/>
 
-Longitude on in the left, latitude on the right. Note that, compared
+Longitude on the left, latitude on the right. Note that, compared
 to the maps, the surfaces appear flipped in a horizontal axis; this is
 because the ImageMagick coordinate system has `0,0` in the top left,
 while `R` is plotting `0,0` in the usual bottom-left.
@@ -108,9 +108,9 @@ write.table(out, file="predict", quote = F, sep=",",
   na = "", col.names = F, row.names=F)
 </pre>
 
-The conversion program (above) then reads this
+The conversion [program][4] then reads this
 `imgx,imgy`-to-`lon,lat` mapping and outputs the longitudes and
-latitudes or the points. (There is an additional step of identifying
+latitudes of the points. (There is an additional step of identifying
 if the `imgx,imgy` is in the inset box for the western Aleutian
 islands, which are converted in a different way.)  These decimal
 degree coordinates can then be mapped and mashed up in any way
