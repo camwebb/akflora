@@ -2,6 +2,8 @@
 
 # Images in hulten are 4510 wide x 6590 high
 
+@include "/home/cam/desk/projects/taxon-tools/share/taxon-tools.awk"
+
 BEGIN{
   
   DEBUG = 0
@@ -285,6 +287,9 @@ function collect (     cmd, i, j, file) {
   while ((cmd | getline) > 0 )
     file[++i] = $0
 
+  if (ARGV[2] == "xml")
+    print "<hulten>"
+  
   OFS="|"
   for (j = 2; j <= i; j++) {
     # split filename from data
@@ -293,23 +298,108 @@ function collect (     cmd, i, j, file) {
     id = part[1] ; gsub(/tiff\/[0-9]+\//,"",id); gsub(/\-t\.txt/,"",id)
 
     # split into (5) fields
-    split(part[2],parts,/\n *\n/)
+    split(part[2],parts,/(\n *)(\n *)+/)
+    # clean
     for (k in parts) gsub(/^\- *\n*$/,"", parts[k])
 
     # names - get common name
     cn = split(parts[1],cname, "|")
     if (cn == 2) commonname = cname[2]
-    gsub(/ *$/,"",commonname);     gsub(/^ */,"",commonname); 
-
+    gsub(/ *$/,"",commonname);     gsub(/^ */,"",commonname);
+    
     # scientific name
     split(cname[1],sname, "/")
-    gsub(/ *$/,"",sname[1]);  gsub(/^ */,"",sname[1]); 
+    sname[1] = cleanname(sname[1])
     
-    print id , lowersecondword(sname[1]), commonname, gensub(/\n/,"^","G",parts[2]), \
-      gensub(/\n/," ","G",parts[3]),  gensub(/\n/," ","G",parts[4]), \
-      gensub(/\n/," ","G",parts[5])
+    # print id ,                                                       \
+    #   lowersecondword(sname[1]),                                     \
+    #   commonname,                                                    \
+    #   gensub(/\n/,"^","G",parts[2]),                                 \
+    #   gensub(/\n/," ","G",parts[3]),                                 \
+    #   gensub(/\n/," ","G",parts[4]),                                 \
+    #   gensub(/\n/," ","G",parts[5]),                                 \
+    #   gensub(/\n/," ","G",parts[6])
+
+    for (k = 3; k <= 6; k++) {
+      gsub(/\n/," ",parts[k])
+      gsub(/  +/," ",parts[k])
+      gsub(/^ +/,"",parts[k])
+      gsub(/ +$/,"",parts[k])
+    }
+
+    if (ARGV[2] == "data") {
+      print id ,  lowersecondword(sname[1]),    \
+        parts[3],parts[4],parts[5],parts[6]
+      continue
+    }
+
+    # process syns
+    s = 0
+    synprint = ""
+    synxml = "    <syns>\n"
+    
+    nsyn = split(parts[2], syn, "\n")
+    for (k = 1; k <= nsyn; k++) {
+      gsub(/ *;.*$/,"", syn[k])
+      gsub(/^ +/,"", syn[k])
+      if (!length(syn[k]))
+        continue
+      s++
+      if (syn[k] !~ /^[A-Z]\./) {
+        abbrev[substr(syn[k],1,1)] = syn[k]
+        gsub(/ .*$/,"",abbrev[substr(syn[k],1,1)])
+      }
+      else {
+        regex = "^" substr(syn[k],1,1) "\\."
+        if (!abbrev[substr(syn[k],1,1)])
+          gsub(regex, ("FAIL " substr(syn[k],1,1) "."), syn[k])
+          # Find with hulten2info --col | grep FAIL
+        else
+          gsub(regex, ("" abbrev[substr(syn[k],1,1)]), syn[k])
+      }
+      
+      synprint = synprint id "-s" s "|"                                 \
+        parse_taxon_name(lowersecondword(cleanname(syn[k])),0) "|" id "\n"
+      
+      synxml = synxml "      <syn id=\"" id "-s" s "\">"        \
+        xmlclean(lowersecondword(cleanname(syn[k]))) "</syn>\n"
+    }
+    delete abbrev
+    synxml = synxml "    </syns>\n"
+
+    if (ARGV[2] == "xml") {
+      print "  <taxon id=\"" id "\">"
+      print "    <name>" xmlclean(lowersecondword(sname[1])) "</name>"
+      if (length(synxml) > 23)
+        printf "%s", synxml
+      if (commonname)
+        print "    <common>" xmlclean(tolower(commonname)) "</common>"
+      if (parts[3])
+        print "    <desc>" xmlclean(parts[3]) "</desc>"
+      if (parts[4])
+        print "    <ecol>" xmlclean(parts[4]) "</ecol>"
+      if (parts[5])
+        print "    <tax>" xmlclean(parts[5]) "</tax>"
+      if (parts[6])
+        print "    <use>" xmlclean(parts[6]) "</use>"
+
+      print "  </taxon>"
+    }
+    else {
+      print id , parse_taxon_name(lowersecondword(sname[1]),0), "accepted"
+      printf "%s", synprint
+    }
+    
   }
 
+  if (ARGV[2] == "xml")
+    print "</hulten>"
+
+  
+  # test with : hulten2info --col > hulten.tmp
+  # grep "|subsp.||" hulten.tmp
+  # and for var. , f.
+  # summarize_field 2 hulten.tmp
 }
 
 function checkfields (     cmd, i, j, file) {
@@ -327,9 +417,31 @@ function checkfields (     cmd, i, j, file) {
     while ((getline < file[j]) > 0) {
       rec++
       # format tests
-      if (((rec == 2) && ($0 ~ /\//)) ||        \
+      if (((rec > 1) && ($0 ~ /[/^|]/)) ||        \
           ((rec == 1) && ($0 ~ /[0-9]/)))
         edit = 1
+      if (rec == 1) {
+        gsub(/[/|].*$/,"",$0)
+        if ($0 ~ /^[^ ]+ [^ ]+ .+(subsp\.|var\.| f\..)/)
+          edit = 1
+      }
+
+      # check synonyms
+      if (rec == 2) {
+        split($0, line, "\n")
+        for (k in line) {
+          gsub(/;.*$/,"",line[k])
+          # print line[k]
+          # picks up subsp. ... var. ... too
+          if ((line[k] ~ /^[^ ]+ [^ ]+ .+(subsp\.|var\.| f\..)/) ||   \
+              (line[k] ~ /(in part|not |Alaska|respect|authors|auct\.|ined\.|comb\. nov\.|sensu)/))
+            edit = 1
+        }
+      }
+      # forma - makes a lot
+      # if (rec < 3)
+      #  if ($0 ~ / f. /)
+      #    edit = 1
     }
     printf "%3d  %s  %d\n", j, file[j], rec
     # rec number test
@@ -344,7 +456,11 @@ function checkfields (     cmd, i, j, file) {
 function lowersecondword(x,    n, y, out, i) {
   n = split(x, y, / +/)
   out = y[1] " " tolower(y[2])
-  for (i = 3; i <=n; i++) out = out " " y[i]
+  for (i = 3; i <=n; i++) {
+    if (y[i] ~ /(var\.|subsp\.)/)
+      y[i+1] = tolower(y[i+1])
+    out = out " " y[i]
+  }
   return out
 }
 
@@ -381,3 +497,21 @@ function lowersecondword(x,    n, y, out, i) {
 # convert out.tif -crop 4510x$SPLIT+0+0 top.tif
 # convert out.tif -crop 4510x$H2+0+$SPLIT bot.tif
 
+function cleanname(name) {
+  gsub(/ *$/,"",name)
+  gsub(/^ */,"",name)
+
+  # grep --color='auto' -P -n "[^\x00-\x7F]"
+  # almost all é were in names, not in authors, so use this: 
+  gsub(/[éè]/,"e",name)
+  gsub(/\( +/,"(",name)
+
+  return name
+}
+
+function xmlclean(x) {
+  gsub(/</,"&lt;",x)
+  gsub(/>/,"&gt;",x)
+  gsub(/&/,"&amp;",x)
+  return x
+}
