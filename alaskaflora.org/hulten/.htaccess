@@ -1,0 +1,12 @@
+Options +ExecCGI -Indexes
+
+<Files "do">
+  SetHandler cgi-script
+</Files>
+
+DirectoryIndex do
+
+<FilesMatch "^hulten\.xml$">
+  Deny from all
+</FilesMatch>
+
