@@ -38,6 +38,8 @@ BEGIN{
         name = cdata
       else if (XMLENDELEM == "fam")
         fam = cdata
+      else if (XMLENDELEM == "xy")
+        outc++
       # end of record
       else if (XMLENDELEM == "taxon") {
         # test
@@ -45,7 +47,9 @@ BEGIN{
           out[name] = id
           # for (i in syn)
           #   print "  " i
+          outnc[name] = outc
         }
+        outc = 0
         delete syn
       }
     }
@@ -53,12 +57,14 @@ BEGIN{
 
     if (length(out)) {
       print "<table>"
+      print "<tr><th>Name</th><th>Collections</th><tr>"
       for (i in out)
-        print "<tr><td><a href=\"do?method=detail&amp;id=" out[i] "\">" i "</a></td></tr>"
+        print "<tr><td><a href=\"do?method=detail&amp;id=" out[i] "\">" i "</a></td><td>" outnc[i] "</td></tr>"
       print "</table>"
     }
     else
       print "<p>No results</p>"
+
     footer()
   }
 
