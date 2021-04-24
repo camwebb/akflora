@@ -129,6 +129,15 @@ BEGIN{
 
     print "<table>"
     print "<tr><td>&#160;</td><td style=\"font-weight:bold; font-size: 1.2em;\">" outname "</td></tr>"
+
+    print "<tr><td>&#160;</td><td>"
+    print "<table style=\"margin-bottom: 0px;\"><tr><td>"
+    print "<div style=\"padding-left: 10px; height: 270px; width:190px;border: 1px solid #BBB; border-radius: 4px;\"><a href=\"https://alaskaflora.org/img/hulten/" f["id"] ".jpg\" target=\"_blank\"><img src=\"https://alaskaflora.org/img/hulten/" f["id"] ".jpg\" style=\"display: block; margin-left: auto; margin-right: auto; max-height: 95%; max-width: 95%;\"/></a></div>"
+    print "</td><td>"
+    print "<div style=\"border: 1px solid #BBB; border-radius: 4px; margin-left: 10px; padding: 10px;\"><div id=\"map\" style=\"height: 250px; width: 250px;\"></div></div>"
+    print "</td></tr></table>"
+    print "</td></tr>"
+    
     if (outfam)
       print "<tr><td><i>Family</i></td><td>" outfam "</td></tr>"
     if (outsyn)
@@ -144,13 +153,7 @@ BEGIN{
     if (outuse)
       print "<tr><td style=\"vertical-align: top;\"><i>Uses</i></td><td>" outuse "</td></tr>"
     
-    print "<tr><td>&#160;</td><td>"
-    print "<table><tr><td>"
-    print "<div style=\"padding-left: 10px; height: 270px; width:190px;border: 1px solid #BBB; border-radius: 4px;\"><a href=\"https://alaskaflora.org/img/hulten/" f["id"] ".jpg\" target=\"_blank\"><img src=\"https://alaskaflora.org/img/hulten/" f["id"] ".jpg\" style=\"display: block; margin-left: auto; margin-right: auto; max-height: 95%; max-width: 95%;\"/></a></div>"
-    print "</td><td>"
-    print "<div style=\"border: 1px solid #BBB; border-radius: 4px; margin-left: 10px; padding: 10px;\"><div id=\"map\" style=\"height: 250px; width: 250px;\"></div></div>"
-    print "</td></tr></table>"
-    print "</td></tr></table>"
+    print"</table>"
     
     print "<script type=\"text/javascript\">"
     print "  var map = L.map('map', { zoomControl: false }).setView([63, -150], 3);"
