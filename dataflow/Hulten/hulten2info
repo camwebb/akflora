@@ -281,14 +281,36 @@ function paperpage(page    , p1, p2, i) {
 
 function collect (     cmd, i, j, file) {
 
+  FS="|"
+  while ((getline < "../G2F/g2f") > 0)
+    g2f[$1] = $2
+
   cmd = "for i in `find tiff -name '*txt' | sort`; do echo '===='; "    \
     "echo $i; echo '----'; cat $i ; done"
   RS = "====\n"
   while ((cmd | getline) > 0 )
     file[++i] = $0
 
-  if (ARGV[2] == "xml")
+  if (ARGV[2] == "xml") {
     print "<hulten>"
+    print "  <!-- DO NOT REMOVE THIS METADATA SECTION FROM THE XML FILE -->"
+    print "  <metadata><![CDATA[\n"
+    print "    Eric Hultén (1968) 'Flora of Alaska and Neighboring Territories:"
+    print "    A Manual of the Vascular Plants'\n"
+    print "    (c) 1968 Board of Trustees of the Leland Stanford Jr. Univ.\n"
+    print "    Digitized by Cam Webb <https://camwebb.info> during 2019-2021"
+    print "    as part of work on a new Flora of Alaska <https://alaskaflora.org>,"
+    print "    funded by the US National Science Foundation (Grant 1759964).\n"
+    print "    Permission for digitization given by Stanford University Press"
+    print "    in letter SUPP04133 (of 2017-04-20).\n"
+    print "    Data shared under Creative Commons license BY-NC-SA 4.0 Intl."
+    print "    <https://creativecommons.org/licenses/by-nc-sa/4.0/>"
+    print "    Any commercial use, including reprint in other publications,"
+    print "    will require prior permission from the publisher.\n"
+    print "    ]]>"
+    print "  </metadata>"
+    print "  <date>" strftime("%Y-%m-%d") "</date>\n"
+  }
   
   OFS="|"
   for (j = 2; j <= i; j++) {
@@ -368,10 +390,13 @@ function collect (     cmd, i, j, file) {
     synxml = synxml "    </syns>\n"
 
     if (ARGV[2] == "xml") {
+      
       print "  <taxon id=\"" id "\">"
       print "    <name>" xmlclean(lowersecondword(sname[1])) "</name>"
       if (length(synxml) > 23)
         printf "%s", synxml
+      if (g2f[gensub(/ .*$/,"","G",sname[1])])
+        print "    <fam>" g2f[gensub(/ .*$/,"","G",sname[1])] "</fam>"
       if (commonname)
         print "    <common>" xmlclean(tolower(commonname)) "</common>"
       if (parts[3])
@@ -382,6 +407,22 @@ function collect (     cmd, i, j, file) {
         print "    <tax>" xmlclean(parts[5]) "</tax>"
       if (parts[6])
         print "    <use>" xmlclean(parts[6]) "</use>"
+
+      # get longlat
+      cmd = "if [ -f tiff/" gensub(/-.*$/,"","G",id) "/" id             \
+        "-1.csv ] ; then cat tiff/" gensub(/-.*$/,"","G",id) "/" id     \
+        "-1.csv | tr '\n' ';' ; fi;"
+      longlats = ""
+      cmd | getline longlats
+      if (longlats) {
+        printf "    <specimens>\n      "
+        gsub(/^x,y;/,"",longlats)
+        nll = split(longlats,longlat,";")
+        for (k = 1; k < nll; k++)
+          printf "<xy>%s</xy>", longlat[k]
+        print "\n    </specimens>"
+      }
+      close(cmd)
 
       print "  </taxon>"
     }

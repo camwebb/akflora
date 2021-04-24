@@ -71,6 +71,8 @@ BEGIN{
         if (!printed[C[i][j]]) {
           im = im "circle " i "," j " " i "," j+5 " "
 
+          # print ">> " i "," j
+
           # rescue points in box
           if ((i > 227) && (i < 408) && (j > 326))
             print box(i,j)
@@ -79,7 +81,7 @@ BEGIN{
           # print xy2ll(i,j)
 
           # use interpolation mapping:
-          else if (XY2LON[i][j] != "NA")
+          else if (XY2LON[i][j])
             printf "%.1f,%.1f\n" , XY2LON[i][j] , XY2LAT[i][j]
           
           printed[C[i][j]] = 1
@@ -192,8 +194,10 @@ long = -202.6123 \
 function read_pred() {
   FS=","
   while ((getline < "predict") > 0) {
-    XY2LON[$2][int($3*(381/500))] = $4
-    XY2LAT[$2][int($3*(381/500))] = $5
+    if ($3) {
+      XY2LON[$1][int($2*(381/500))] = $3
+      XY2LAT[$1][int($2*(381/500))] = $4
+    }
   }
 }
 
