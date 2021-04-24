@@ -43,7 +43,8 @@ BEGIN{
       # end of record
       else if (XMLENDELEM == "taxon") {
         # test
-        if ((name ~ f["q"]) || (fam ~ f["q"])) {
+        if ((tolower(name) ~ tolower(f["q"]) ) || \
+            (tolower(fam) ~ tolower(f["q"]) ) ) {
           out[name] = id
           # for (i in syn)
           #   print "  " i
@@ -187,7 +188,7 @@ BEGIN{
     print "<form action=\"do\">"
     print "<input type=\"hidden\" name=\"method\" value=\"search\"/>"
     print "<table>"
-    print "<tr><td>Search names:<br/>(case-sensitive<br/>regex)</td><td>" \
+    print "<tr><td>Search names:</td><td>" \
       "<input type=\"text\" name=\"q\"/>&#160;<input type=\"submit\" value=\"Submit\"/></td></tr>"
     print "</table>"
     #  print "<p>Search terms: plain text, or <a href=\"https://www.gnu.org/software/gawk/manual/gawk.html#Regexp\">regular expression</a>.<br/>Entering both Description and Material terms implies AND.</p><br/>"
