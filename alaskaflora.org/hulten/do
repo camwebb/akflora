@@ -168,6 +168,27 @@ BEGIN{
     
   }
 
+  else if (f["method"] == "about") {
+    
+    header("Flora of Alaska")
+
+    print "<h1>Digitizing Hultén’s Flora</h1>"
+
+    print "<div style=\"text-align: center; margin-bottom: 2em;\"><img src=\"../img/hultenpage.png\" alt=\"Hulten example\" style=\"margin-left: auto; margin-right: auto; display:block; width:80%;\"/><i style=\"line-height: 1em;\">The standardized layout of a taxon account</i></div>"
+    
+    print "<p>The digitization steps were:</p>"
+    print "<ol>"
+    print "<li>Scanning. We used <a href=\"https://datelinedigitalprinting.com/\">Dateline Printing</a> in Fairbanks, who have a Xerox Color 550. A copy of the book was sacrificed (the covers and spine were removed), and the pages were fed into the sheet feeder. The positioning of each page was quite consistent, which helped greatly with sectioning the page elements (below).</li>"
+    print "<li>Sectioning. Using a combination of <a href=\"https://imagemagick.org/\">Imagemagick</a> tools and <a href=\"https://github.com/akflora/akflora/blob/master/dataflow/Hulten/hulten2info\">scripted algorithms</a>, each page image was divided into subimages: one or two taxon accounts and/or identification keys, then each account into illustration, text, and two maps (see image above). About 25% of pages required some manual intervention.</li>"
+    print "<li>OCR. Each text block was processed with <a href=\"https://github.com/tesseract-ocr/tesseract\">tesseract</a> to extract text, using a comprehensive <a href=\"../pages/blog7.html\">list</a> of expected genus and species names as input to increase spelling accuracy of scientific names.</li><li>Text sectioning. In a text editor, the raw OCR text was manually divided into six paragraphs: taxon names, synonyms, description, ecology, taxonomy notes, and uses.</li>"
+    print "<li>Specimen point extraction.  The image of the Alaska specimen distribution map was processed (<a href=\"../pages/blog10.html\">see details</a>) to extract coordinates for each specimen dot.</li><li>Collection. Scripts then scanned appropriate directories and files to check for a known set of likely errors, and then assembled the text elements and point locations into a single XML file.</li>"
+    print "</ol>"
+
+    print "<p>Steps 2-4 required manual input, and were executed page-by-page, working through the book. Overall the quality of the OCR has been good, but some spelling errors remain. Misspelled taxonomic names will be reconciled to our <a href=\"../pages/blog7.html\">canonical list</a> of name before Hultén’s data is incorporated into the new online flora.</p>"
+
+    footer()
+  }
+
   else {
 
     header("Flora of Alaska")
@@ -264,8 +285,10 @@ function header(title) {
 
 function footer() {
   print "</div><div class=\"four columns\">"
-  print "<a class=\"button\" style=\"width:100%\" href=\"do\">Home</a><br/>"
-  print "<p style=\"border: 1px solid #BBB; border-radius: 4px; padding: 20px; background-color: #dbffa3;\">This is a digital representation of <b>Eric Hultén’s ‘Flora of Alaska and Neighboring Territories: A Manual of the Vascular Plants’</b>, which was <a href=\"https://www.sup.org/books/title/?id=2767\">published</a> by Stanford University Press in 1968. The book was digitized by <a href=\"https://camwebb.info/\">C. Webb</a> (at <a href=\"https://uaf.edu/museum/\">UAMN</a>) as <a href=\"https://alaskaflora.org/\">part</a> of the <a href=\"https://floraofalaska.org/\">Flora of Alaska</a> project, with funding by the US NSF (<a href=\"https://alaskaflora.org/pages/project.html\">Grant 1759964</a> to Ickert-Bond &amp; Webb), and with permission of Stanford University Press. Data and images © 1968 Board of Trustees of the Leland Stanford Jr. Univ. Usage licence: <a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons BY-NC-SA 4.0</a>. <i>Please note: You may find OCR errors; please refer to the hard-copy if in doubt.</i></p>"
+  print "<div style=\"display: flex; justify-content: space-between;\">"
+  print "<a class=\"button\" style=\"width:55%;\" href=\"do\">Hultén's Flora</a>"
+  print "<a class=\"button\" style=\"width:40%;\" href=\"do?method=about\">About</a></div>"
+  print "<p style=\"border: 1px solid #BBB; border-radius: 4px; padding: 20px; background-color: #dbffa3;\">This is a digital representation of <b>Eric Hultén’s ‘Flora of Alaska and Neighboring Territories: A Manual of the Vascular Plants’</b>, which was <a href=\"https://www.sup.org/books/title/?id=2767\">published</a> by Stanford University Press in 1968. The book was digitized by <a href=\"https://camwebb.info/\">C. Webb</a> (at <a href=\"https://uaf.edu/museum/\">UAMN</a>) as <a href=\"https://alaskaflora.org/\">part</a> of the <a href=\"https://floraofalaska.org/\">Flora of Alaska</a> project, with funding by the US NSF (<a href=\"https://alaskaflora.org/pages/project.html\">Grant 1759964</a> to Ickert-Bond &amp; Webb), and with permission of Stanford University Press. Data and images © 1968 Board of Trustees of the Leland Stanford Jr. Univ. Usage licence: <a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons BY-NC-SA 4.0</a>. <i>NB: You may find OCR errors; please refer to the hard-copy if in doubt.</i></p>"
   print "</div></div></div>"
   
   # print "</div>"
