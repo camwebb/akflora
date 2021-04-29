@@ -258,7 +258,8 @@ function header(title) {
   
   print "Content-type: text/html\n\n"                                   \
     "<!DOCTYPE html>"                                                   \
-    "<html xmlns=\"http://www.w3.org/1999/xhtml\">"                     \
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\" "                     \
+    "      prefix=\"og: https://ogp.me/ns#\">"                          \
     "<head><title>" title "</title>"                                    \
     "<meta http-equiv=\"Content-Type\" content=\"text/html;"            \
     "charset=utf-8\" />"                                                \
@@ -394,7 +395,7 @@ function microdata () {
   \"genre\": \"Botanical flora\", \
   \"spatialCoverage\": \"Alaska, USA\", \
   \"inLanguage\": \"en-US\", \
-  \"description\": \"Digital representation of Hultén's Flora of Alaska. 1,736 taxon decriptions, illustrations, and digitized distribution maps. Circumpolar maps, keys, color photographs, front material and index are not included. Book digitized in 2019-21 by Cam Webb, with permission from Stanford University Press.\", \
+  \"description\": \"Digital representation of Hultén's Flora of Alaska. 1,736 taxon decriptions, illustrations, digitized distribution maps, and some keys. Circumpolar maps, color photographs, front material and index are not included. Book digitized in 2019-21 by Cam Webb, with permission from Stanford University Press.\", \
   \"translator\": { \
     \"@type\": \"Person\", \
     \"name\": \"Campbell O. Webb\", \
@@ -404,6 +405,14 @@ function microdata () {
 } \
 </script>"
 
+  print "<meta property=\"og:title\" content=\"Flora of Alaska and Neighboring Territories: A Manual of the Vascular Plants (digitizal version)\"/>"
+  print "<meta property=\"og:type\" content=\"book\" />"
+  print "<meta property=\"book:author\" content=\"Eric Hultén\" />"
+  print "<meta property=\"book:release_date\" content=\"1968\" />"
+  print "<meta property=\"og:description\" content=\"Digital representation of Hultén's Flora of Alaska. 1,736 taxon decriptions, illustrations, digitized distribution maps, and some keys. Book digitized in 2019-21 by Cam Webb, with permission from Stanford University Press.\" />"
+  print "<meta property=\"og:url\" content=\"https://alaskaflora.org/hulten/\" />"
+  print "<meta property=\"og:image\" content=\"https://alaskaflora.org/img/ehulten.png\" />"
+  
 }
 
 function key () {
