@@ -6,7 +6,7 @@ Options +ExecCGI -Indexes
 
 DirectoryIndex do
 
-<FilesMatch "^hulten\.xml$">
-  Deny from all
-</FilesMatch>
+#<FilesMatch "^hulten\.xml$">
+#  Deny from all
+#</FilesMatch>
 
