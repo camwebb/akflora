@@ -12,6 +12,7 @@
    lists (ALA Checklist, the Panarctic Flora, Flora of North America,
    The Kew World Checklist of Selected Plant Families, and the UAA
    Checklist for the Flora of Alaska).
+ * Hultén’s Flora of Alaska [digitized](../hulten/)
 
 ## Other resources
 

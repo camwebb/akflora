@@ -24,7 +24,10 @@ BEGIN{
   if (ARGV[1] == "--tes") {
 
     while (("ls tiff/" Page3 "/*t.tiff" | getline) > 0) {
-      print "OCRing " $1 
+      print "OCRing " $1
+      # ah... 2021-05-03, shame. I should have used -l eng+deu+fra and
+      #  maybe some more, so as to recognize the o diacritics that were all 
+      #  wrongly mapped to é :-(  Too late now.
       system("tesseract " $1 " "  \
              gensub(/\.tiff$/,"","G", $1)       \
              " --user-words gen+sp_list ; "\
@@ -282,9 +285,11 @@ function paperpage(page    , p1, p2, i) {
 function collect (     cmd, i, j, file) {
 
   FS="|"
-  while ((getline < "../G2F/g2f") > 0)
-    g2f[$1] = $2
-
+  while ((getline < "g2f_hulten") > 0) {
+    g2f[$3] = $1
+    g2f_apg[$3] = $2
+  }
+  
   cmd = "for i in `find tiff -name '*txt' | sort`; do echo '===='; "    \
     "echo $i; echo '----'; cat $i ; done"
   RS = "====\n"
@@ -395,8 +400,10 @@ function collect (     cmd, i, j, file) {
       print "    <name>" xmlclean(lowersecondword(sname[1])) "</name>"
       if (length(synxml) > 23)
         printf "%s", synxml
-      if (g2f[gensub(/ .*$/,"","G",sname[1])])
+      if (g2f[gensub(/ .*$/,"","G",sname[1])]) {
         print "    <fam>" g2f[gensub(/ .*$/,"","G",sname[1])] "</fam>"
+        print "    <fam_apg>" g2f_apg[gensub(/ .*$/,"","G",sname[1])] "</fam_apg>"
+      }
       if (commonname)
         print "    <common>" xmlclean(tolower(commonname)) "</common>"
       if (parts[3])
