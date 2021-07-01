@@ -18,4 +18,6 @@
    its own site (since 2017). Data format not conducive to re-use.
  * [Forest Service: Books Our Botanists Use](https://www.fs.fed.us/wildflowers/features/books/akbooks.shtml)
  * [ANPS Bibliography](https://aknps.org/bibliography/)
+ * [Hultén’s 1941-1950 Flora of Alaska](https://archive.org/details/floraofalaskayuk0000unse/)
+ 
  
