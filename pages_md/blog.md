@@ -23,3 +23,6 @@ will “live-blog” the process to share the decisions, discoveries
  * [2020-12-15](blog9.html): 9. **A guide to name usages**
  * [2021-04-01](blog10.html): 10. **Digitizing specimen maps**
 
+## Guest blogs
+
+ * [2021-07-14](blogK.html): **Kimberly Cook: Confessions of a taxon concept mapper**
