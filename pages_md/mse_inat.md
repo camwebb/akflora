@@ -54,5 +54,3 @@ Please:
 
 ## 3. Upload your photos
 
-
-
