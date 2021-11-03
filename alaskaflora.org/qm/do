@@ -28,7 +28,7 @@ BEGIN{
           num[$3]++
         }
         else if ($6 == "h")
-          numh[$3] = "yes"
+          numh[$3] = "<a href=\"https://alaskaflora.org/hulten/do?method=search&q=" $3 "\" target=\"_blank\">yes</a>"
       }
     }
     if (length(fam)) {
@@ -58,22 +58,27 @@ BEGIN{
             "p" $1 ".bindPopup('"                                       \
             "<a href=\"https://arctos.database.museum/guid/UAM:Herb:"   \
             $1 "\" target=\"_blank\">UAM:Herb:" $1 "</a>'); "
-        else
+        else {
+          hulten = 1
           outxy = outxy "L.circle([" $5 ", " $4 "], attr2).addTo(map); "
+        }
       }
     
     header("Arctos quick map: " f["taxon"])
     print "<p><b>" f["taxon"] "</b></p>"
     print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
 
-    print "<p style=\"font-size: 10px;\">(blue points: Arctos collections, red points: dots on Hultén maps)</p>"
+    if (hulten) 
+      print "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable]; Blue points: dots on <a href=\"https://alaskaflora.org/hulten/do?method=search&q=" f["taxon"] "\" target=\"_blank\">Hultén maps</a>)</p>"
+    else 
+      print "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable])</p>"
     print "<p>[ <a href=\"do\">Home</a> ]</p>"
     
     print "<script type=\"text/javascript\">"
     print "  var map = L.map('map', { zoomControl: false }).setView([63, -150], 3);"
     print "  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: '<a href=\"https://www.openstreetmap.org/copyright\">OSM</a>, <a href=\"http://viewfinderpanoramas.org\">SRTM</a>, <a href=\"https://opentopomap.org\">OTM</a>' }).addTo(map);"
-    print "  var attr = { color: 'blue', radius: 10000 };"
-    print "  var attr2 = { color: 'red', radius: 5000 };"
+    print "  var attr = { color: 'red', radius: 10000 };"
+    print "  var attr2 = { color: 'blue', radius: 5000 };"
     if (outxy)
       print outxy
     print "</script>"
