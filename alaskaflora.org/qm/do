@@ -20,18 +20,22 @@ BEGIN{
     PROCINFO["sorted_in"] = "@ind_str_asc"
 
     FS="|"
-    while ((getline < "data") > 0)
+    while ((getline < "data") > 0) {
       if ((tolower($2) ~ tolower(f["q"]) ) ||   \
-          (tolower($3) ~ tolower(f["q"]) )) {
-        fam[$3] = $2
-        num[$3]++
+          (tolower($3) ~ tolower(f["q"]) )) {   \
+        if ($6 == "a") {
+          fam[$3] = $2
+          num[$3]++
+        }
+        else if ($6 == "h")
+          numh[$3] = "yes"
       }
-    
+    }
     if (length(fam)) {
       print "<table>"
-      print "<tr><th>Name</th><th>Family</th><th>Records</th></tr>"
+      print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th><th>In Hultén</th></tr>"
       for (i in fam)
-        print "<tr><td><a href=\"do?method=detail&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td></tr>"
+        print "<tr><td><a href=\"do?method=detail&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td><td>" numh[i] "</td></tr>"
       print "</table>"
     }
     else
@@ -47,29 +51,33 @@ BEGIN{
     FS="|"
     while ((getline < "data") > 0)
       if ($3 == f["taxon"]) {
-        fam[$1] = $2
-        taxon[$1] = $3
         gsub(/UAM:Herb:/,"",$1)
-        outxy = outxy "var p" $1 \
-          " = L.circle([" $5 ", " $4 "], attr).addTo(map); " \
-          "p" $1 ".bindPopup('" \
-          "<a href=\"https://arctos.database.museum/guid/UAM:Herb:" \
-          $1 "\" target=\"_blank\">UAM:Herb:" $1 "</a>'); "
+        if ($6 == "a") 
+          outxy = outxy "var p" $1                                  \
+            " = L.circle([" $5 ", " $4 "], attr).addTo(map); "      \
+            "p" $1 ".bindPopup('"                                       \
+            "<a href=\"https://arctos.database.museum/guid/UAM:Herb:"   \
+            $1 "\" target=\"_blank\">UAM:Herb:" $1 "</a>'); "
+        else
+          outxy = outxy "L.circle([" $5 ", " $4 "], attr2).addTo(map); "
       }
     
     header("Arctos quick map: " f["taxon"])
     print "<p><b>" f["taxon"] "</b></p>"
     print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
 
+    print "<p style=\"font-size: 10px;\">(blue points: Arctos collections, red points: dots on Hultén maps)</p>"
+    print "<p>[ <a href=\"do\">Home</a> ]</p>"
+    
     print "<script type=\"text/javascript\">"
     print "  var map = L.map('map', { zoomControl: false }).setView([63, -150], 3);"
     print "  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: '<a href=\"https://www.openstreetmap.org/copyright\">OSM</a>, <a href=\"http://viewfinderpanoramas.org\">SRTM</a>, <a href=\"https://opentopomap.org\">OTM</a>' }).addTo(map);"
     print "  var attr = { color: 'blue', radius: 10000 };"
+    print "  var attr2 = { color: 'red', radius: 5000 };"
     if (outxy)
       print outxy
     print "</script>"
 
-    print "<p>[ <a href=\"do\">Home</a> ]</p>"
     footer()
     
   }
