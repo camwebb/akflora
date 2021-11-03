@@ -1,0 +1,12 @@
+Options +ExecCGI -Indexes
+
+<Files "do">
+  SetHandler cgi-script
+</Files>
+
+DirectoryIndex do
+
+<FilesMatch "^data$">
+  Deny from all
+</FilesMatch>
+
