@@ -32,11 +32,20 @@ BEGIN{
       }
     }
     if (length(fam)) {
-      print "<table>"
-      print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th><th>In Hultén</th></tr>"
-      for (i in fam)
-        print "<tr><td><a href=\"do?method=detail&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td><td>" numh[i] "</td></tr>"
-      print "</table>"
+      if (f["hulten"] == "y") {
+        print "<table>"
+        print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th><th>In Hultén</th></tr>"
+        for (i in fam)
+          print "<tr><td><a href=\"do?method=detail&amp;hulten=y&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td><td>" numh[i] "</td></tr>"
+        print "</table>"
+      }
+      else {
+        print "<table>"
+        print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th></tr>"
+        for (i in fam)
+          print "<tr><td><a href=\"do?method=detail&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td></tr>"
+        print "</table>"
+      }
     }
     else
       print "<p>No results</p>"
@@ -60,7 +69,7 @@ BEGIN{
             $1 "\" target=\"_blank\">UAM:Herb:" $1 "</a>'); "
         else {
           hulten = 1
-          outxy = outxy "L.circle([" $5 ", " $4 "], attr2).addTo(map); "
+          outxyh = outxyh "L.circle([" $5 ", " $4 "], attr2).addTo(map); "
         }
       }
     
@@ -68,7 +77,7 @@ BEGIN{
     print "<p><b>" f["taxon"] "</b></p>"
     print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
 
-    if (hulten) 
+    if ((f["hulten"] == "y") && hulten) 
       print "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable]; Blue points: dots on <a href=\"https://alaskaflora.org/hulten/do?method=search&q=" f["taxon"] "\" target=\"_blank\">Hultén maps</a>)</p>"
     else 
       print "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable])</p>"
@@ -81,6 +90,8 @@ BEGIN{
     print "  var attr2 = { color: 'blue', radius: 5000 };"
     if (outxy)
       print outxy
+    if (outxyh && (f["hulten"] == "y"))
+      print outxyh
     print "</script>"
 
     footer()
@@ -92,10 +103,16 @@ BEGIN{
     header("Arctos quick map")
     
     print "<h1>Arctos quick maps</h1>"
-    print "<p style=\"margin-bottom:0.5rem;\">Search scientific name, family:</p>"
     print "<form action=\"do\">"
-    print "<input type=\"hidden\" name=\"method\" value=\"search\"/>"   \
-      "<input type=\"text\" name=\"q\" style=\"width:40%;\"/>&#160;<input type=\"submit\" value=\"Submit\"/>"
+    print "<table>"
+    print "<tr><td>Search scientific name, family:</td>"    \
+      "<td>Show Hultén points</td><td></td></tr>"
+    print "<tr><td><input type=\"hidden\" name=\"method\" value=\"search\"/>" \
+      "<input type=\"text\" name=\"q\"/></td>"    \
+      "<td><select name=\"hulten\"/>"             \
+      "<option value=\"n\" selected=\"selected\">No</option>"           \
+      "<option value=\"y\">Yes</option></select></td><td>"              \
+      "<input type=\"submit\" value=\"Submit\"/></td></tr></table>"
     print "</form>"
 
     footer()
