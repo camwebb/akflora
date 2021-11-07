@@ -29,14 +29,31 @@ BEGIN{
         }
         else if ($6 == "h")
           numh[$3] = "<a href=\"https://alaskaflora.org/hulten/do?method=search&q=" $3 "\" target=\"_blank\">yes</a>"
+        else if ($6 == "i")
+          numi[$3] = "yes"
       }
     }
+    
     if (length(fam)) {
-      if (f["hulten"] == "y") {
+      if ((f["hulten"] == "y") && (f["inat"] != "y")) {
         print "<table>"
         print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th><th>In Hultén</th></tr>"
         for (i in fam)
           print "<tr><td><a href=\"do?method=detail&amp;hulten=y&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td><td>" numh[i] "</td></tr>"
+        print "</table>"
+      }
+      if ((f["inat"] == "y") && (f["hulten"] != "y")) {
+        print "<table>"
+        print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th><th>In iNat</th></tr>"
+        for (i in fam)
+          print "<tr><td><a href=\"do?method=detail&amp;inat=y&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td><td>" numi[i] "</td></tr>"
+        print "</table>"
+      }
+      if ((f["inat"] == "y") && (f["hulten"] == "y")) {
+        print "<table>"
+        print "<tr><th>Name</th><th>Family</th><th>Arctos<br/>records</th><th>In Hultén</th><th>In iNat</th></tr>"
+        for (i in fam)
+          print "<tr><td><a href=\"do?method=detail&amp;hulten=y&amp;inat=y&amp;taxon=" i "\">" i "</a></td><td>" fam[i] "</td><td>" num[i] "</td><td>" numh[i] "</td><td>" numi[i] "</td></tr>"
         print "</table>"
       }
       else {
@@ -61,13 +78,22 @@ BEGIN{
     while ((getline < "data") > 0)
       if ($3 == f["taxon"]) {
         gsub(/UAM:Herb:/,"",$1)
+        gsub(/^i/,"",$1)
         if ($6 == "a") 
-          outxy = outxy "var p" $1                                  \
-            " = L.circle([" $5 ", " $4 "], attr).addTo(map); "      \
+          outxy = outxy "var p" $1                                      \
+            " = L.circle([" $5 ", " $4 "], attr).addTo(map); "          \
             "p" $1 ".bindPopup('"                                       \
             "<a href=\"https://arctos.database.museum/guid/UAM:Herb:"   \
             $1 "\" target=\"_blank\">UAM:Herb:" $1 "</a>'); "
-        else {
+        if ($6 == "i") {
+          inaty = 1
+          outxyi = outxyi "var i" $1                                 \
+            " = L.circle([" $5 ", " $4 "], attr3).addTo(map); i"      \
+            $1 ".bindPopup('"                                        \
+            "<a href=\"https://www.inaturalist.org/observations/"   \
+            $1 "\" target=\"_blank\">Obs:" $1 "</a>'); "
+        }
+        else if ($6 == "h") {
           hulten = 1
           outxyh = outxyh "L.circle([" $5 ", " $4 "], attr2).addTo(map); "
         }
@@ -77,10 +103,12 @@ BEGIN{
     print "<p><b>" f["taxon"] "</b></p>"
     print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
 
+    printf "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable]"
     if ((f["hulten"] == "y") && hulten) 
-      print "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable]; Blue points: dots on <a href=\"https://alaskaflora.org/hulten/do?method=search&q=" f["taxon"] "\" target=\"_blank\">Hultén maps</a>)</p>"
-    else 
-      print "<p style=\"font-size: 10px;\">(Red points: Arctos collections [clickable])</p>"
+      printf "; Blue points: dots on <a href=\"https://alaskaflora.org/hulten/do?method=search&q=" f["taxon"] "\" target=\"_blank\">Hultén maps</a>"
+    if ((f["inat"] == "y") && inaty) 
+      printf "; Yellow points: iNaturalist observations"
+    printf ")</p>"
     print "<p>[ <a href=\"do\">Home</a> ]</p>"
     
     print "<script type=\"text/javascript\">"
@@ -88,8 +116,11 @@ BEGIN{
     print "  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: '<a href=\"https://www.openstreetmap.org/copyright\">OSM</a>, <a href=\"http://viewfinderpanoramas.org\">SRTM</a>, <a href=\"https://opentopomap.org\">OTM</a>' }).addTo(map);"
     print "  var attr = { color: 'red', radius: 10000 };"
     print "  var attr2 = { color: 'blue', radius: 5000 };"
+    print "  var attr3 = { color: 'yellow', radius: 5000 };"
     if (outxy)
       print outxy
+    if (outxyi && (f["inat"] == "y"))
+      print outxyi
     if (outxyh && (f["hulten"] == "y"))
       print outxyh
     print "</script>"
@@ -106,13 +137,16 @@ BEGIN{
     print "<form action=\"do\">"
     print "<table>"
     print "<tr><td>Search scientific name, family:</td>"    \
-      "<td>Show Hultén points</td><td></td></tr>"
+      "<td>Show<br/>Hultén<br/>points</td><td>Show<br/>iNat<br/>points</td><td></td></tr>"
     print "<tr><td><input type=\"hidden\" name=\"method\" value=\"search\"/>" \
       "<input type=\"text\" name=\"q\"/></td>"    \
       "<td><select name=\"hulten\"/>"             \
       "<option value=\"n\" selected=\"selected\">No</option>"           \
-      "<option value=\"y\">Yes</option></select></td><td>"              \
-      "<input type=\"submit\" value=\"Submit\"/></td></tr></table>"
+      "<option value=\"y\">Yes</option></select></td>"              \
+      "<td><select name=\"inat\"/>"             \
+      "<option value=\"n\" selected=\"selected\">No</option>"           \
+      "<option value=\"y\">Yes</option></select></td>"              \
+      "<td><input type=\"submit\" value=\"Submit\"/></td></tr></table>"
     print "</form>"
 
     footer()
