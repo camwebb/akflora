@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Alaska Flora : Arctos Webinar Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/skeleton.css"/>
+    <link rel="stylesheet" href="../css/override.css"/>
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="Alaksa Flora Development Blog" href="blogrss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="nine columns" style="margin-top: 5%">
+          <h1 id="arctos-webinar-notes">Arctos Webinar Notes</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2021-11-09</em></p>
+          <p><em>(Cam’s part of a Webinar about Arctos, with <a href="people.html#steffi">Steffi</a> and Steph)</em></p>
+          <h2 id="taxonomic-concepts-in-arctos">1. Taxonomic Concepts in Arctos</h2>
+          <p>During taxonomic revisionary work, often a name is preserved, but its meaning - that is its circumscription or <em>taxonomic concept</em> - changes, making data integration by name alone inaccurate. This is a perennial problem in biology. One solution is to record the particular taxonomic usage of a name, referencing Name <em>plus</em> publication whenever a scientific name is used. The terms <em>sensu</em> or <em>sec.</em> are often used for this.</p>
+          <p>Aligning (or “mapping”) related taxonomic concepts then provides taxonomy users with a guide for better understanding the meaning of names. For instance, one author may use a taxonomic concept that is broader than the concept used by another author - that is the first author’s circumscription contains more specimens than the second author. We’d then say that the former concept ‘includes’ the latter. Other terms for possible concept relationships are ‘overlap’, ‘be congruent with’ or even ‘be disjunct with’.</p>
+          <p>Over the last year, we’ve been aligning taxonomic concepts in five key resources for the Alaskan flora: Hultén’s Flora, Welsh’s Flora, Cody’s Flora of the Yukon, the Flora of North America and the Panarctic Flora. This work was mainly done by <a href="people.html#kimberly">Kimberly Cook</a>. Part of the taxonomic alignment map for <em>Papaver</em>:</p>
+          <p><img src="../img/papaver.jpg" alt="overview diagram" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
+          <p>I demonstrate to incorporate taxonomic concepts and taxonomic concept alignments into Arctos, using examples from this map of <em>Papaver</em>:</p>
+          <ol type="1">
+          <li><p>Add taxonomic concept <code>Papaver lapponicum subsp. occidentale (Lundstr.) Knaben sec. Hultén 1968</code> to determination of <a href="https://arctos.database.museum/guid/UAM:Herb:244428">UAM:Herb:244428</a></p></li>
+          <li><p>Add new concept <code>sec. PAF 2011</code> for <a href="https://arctos.database.museum/name/Papaver%20hultenii">Papaver hultenii</a> Knaben</p></li>
+          <li><p>Add concept relationship: <code>Papaver hultenii Knaben sec. PAF 2011</code> overlaps <code>Papaver lapponicum subsp. occidentale (Lundstr.) Knaben sec. Hultén 1968</code> according to <code>Cook 2021</code>.</p></li>
+          </ol>
+          <!-- Not shown. SELECT * from taxon_concept as A, taxon_concept_rel as B, taxon_concept as C where B.from_taxon_concept_id = A.taxon_concept_id and B.to_taxon_concept_id = C.taxon_concept_id; -->
+          <p>For more information, see <a href="https://handbook.arctosdb.org/how_to/How-To-Manage-Taxon-Concepts.html">How To Manage Taxon Concepts in Arctos</a> in the Handbook.</p>
+          <h2 id="the-arctos-api">2. The Arctos API</h2>
+          <p>Data in Arctos can be used for research projects, or integrated into other downstream digital resources. Other than accessing the data via the main search interface (and the SQL interface), one can use the public API (Application Programming Interface). The API can either be queried ‘live’ by an external program requesting information from Arctos, or can be used to pre-download data for caching in another program.</p>
+          <p>The endpoint and method for searching specimens is: <a href="https://arctos.database.museum/component/api/v1/catalog.cfc?method=getCatalogData" class="uri">https://arctos.database.museum/component/api/v1/catalog.cfc?method=getCatalogData</a></p>
+          <p>To form the HTTP GET request:</p>
+          <ul>
+          <li>API key: <code>api_key=...</code></li>
+          <li>Search keys, e.g.: <code>genus=Papaver&amp;species=hultenii</code></li>
+          <li>Extra columns to be displayed, e.g.: <code>cols=partdetail,family</code></li>
+          <li>(Page size and page number)</li>
+          </ul>
+          <p>The result is in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>.</p>
+          <p>See <a href="https://handbook.arctosdb.org/documentation/api.html">The Arctos API</a> in the Handbook.</p>
+          <p>A more efficient way to get large data downloads from Arctos is via the GBIF IPT dumps from <a href="http://ipt.vertnet.org:8080/ipt/resource?r=uam_herb_vascular">Vertnet</a>. However, only a selection number of fields are in each record (94): <code>id</code>, <code>type</code>, <code>modified</code>, <code>language</code>, <code>license</code>, <code>accessRights</code>, <code>references</code>, <code>institutionID</code>, <code>collectionID</code>, <code>institutionCode</code>, <code>collectionCode</code>, <code>basisOfRecord</code>, <code>informationWithheld</code>, <code>dynamicProperties</code>, <code>occurrenceID</code>, <code>catalogNumber</code>, <code>occurrenceRemarks</code>, <code>recordNumber</code>, <code>recordedBy</code>, <code>individualCount</code>, <code>sex</code>, <code>lifeStage</code>, <code>establishmentMeans</code>, <code>preparations</code>, <code>otherCatalogNumbers</code>, <code>associatedMedia</code>, <code>associatedSequences</code>, <code>associatedTaxa</code>, <code>organismID</code>, <code>associatedOccurrences</code>, <code>previousIdentifications</code>, <code>samplingProtocol</code>, <code>eventDate</code>, <code>eventTime</code>, <code>endDayOfYear</code>, <code>year</code>, <code>month</code>, <code>day</code>, <code>verbatimEventDate</code>, <code>habitat</code>, <code>fieldNumber</code>, <code>eventRemarks</code>, <code>higherGeography</code>, <code>continent</code>, <code>waterBody</code>, <code>islandGroup</code>, <code>island</code>, <code>country</code>, <code>stateProvince</code>, <code>county</code>, <code>locality</code>, <code>verbatimLocality</code>, <code>minimumElevationInMeters</code>, <code>maximumElevationInMeters</code>, <code>minimumDepthInMeters</code>, <code>maximumDepthInMeters</code>, <code>locationAccordingTo</code>, <code>locationRemarks</code>, <code>verbatimCoordinates</code>, <code>verbatimCoordinateSystem</code>, <code>decimalLatitude</code>, <code>decimalLongitude</code>, <code>geodeticDatum</code>, <code>coordinateUncertaintyInMeters</code>, <code>footprintWKT</code>, <code>georeferencedBy</code>, <code>georeferencedDate</code>, <code>georeferenceProtocol</code>, <code>georeferenceSources</code>, <code>georeferenceVerificationStatus</code>, <code>earliestEonOrLowestEonothem</code>, <code>earliestEraOrLowestErathem</code>, <code>earliestPeriodOrLowestSystem</code>, <code>earliestEpochOrLowestSeries</code>, <code>earliestAgeOrLowestStage</code>, <code>group</code>, <code>formation</code>, <code>member</code>, <code>identifiedBy</code>, <code>dateIdentified</code>, <code>identificationReferences</code>, <code>identificationRemarks</code>, <code>identificationQualifier</code>, <code>identificationVerificationStatus</code>, <code>typeStatus</code>, <code>scientificName</code>, <code>higherClassification</code>, <code>kingdom</code>, <code>phylum</code>, <code>class</code>, <code>order</code>, <code>family</code>, <code>genus</code>, <code>specificEpithet</code>, <code>infraspecificEpithet</code>, <code>taxonRank</code>, <code>nomenclaturalCode</code></p>
+          <p><strong>Note</strong>. Before using API output and data dumps, check the Data Use <strong>License</strong>. Arctos ALA data is <a href="https://arctos.database.museum/collection/UAM:Herb">shared</a> using <code>CC BY-NC 4.0</code>. <em>Attribution must be made</em>.</p>
+        </div>
+        <div class="three columns" style="margin-top: 5%">
+          <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
+          <a class="button" style="width:100%" href="blog.html">Dev Blog</a><br/>
+          <a class="button" style="width:100%" href="products.html">Products</a><br/>
+          <a class="button" style="width:100%" href="people.html">People</a>
+          <a class="button" style="width:100%" href="../index.html">Home</a><br/>
+          <img src="../img/menupic.jpg" alt="menu picture" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
