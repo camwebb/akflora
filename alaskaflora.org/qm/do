@@ -88,7 +88,7 @@ BEGIN{
     print "<p><b>" f["taxon"] "</b></p>"
     print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
 
-    print "<p style=\"font-size: 10px;\">Data licences: <a href=\"https://arctos.database.museum/collection/UAM:Herb\">Arctos ALA collections</a>, <a href=\"https://alaskaflora.org/hulten/\">Hultén's Flora</a>, <a href=\"https://www.inaturalist.org/pages/help#GBIFdata\">iNat</a></p>"
+    print "<p style=\"font-size: 10px;\">Data usage licenses: <a href=\"https://arctos.database.museum/collection/UAM:Herb\">Arctos ALA collections</a>, <a href=\"https://alaskaflora.org/hulten/\">Hultén's Flora</a>, <a href=\"https://www.inaturalist.org/pages/help#GBIFdata\">iNat</a></p>"
     
     print "<p>[ <a href=\"do\">Home</a> ]</p>"
 
