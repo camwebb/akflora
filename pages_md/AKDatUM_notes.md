@@ -88,3 +88,9 @@ Information about the API is [here](https://www.inaturalist.org/pages/api%252Bre
 
 Information about the API is [here](https://www.gbif.org/developer/summary)
 
+## Data integration
+
+The freedom of the data in Arctos and iNat permits data integration in
+third party applications. A simple demonstration using data extracted
+via the APIs can be seen [here](https://alaskaflora.org/qm/).
+
