@@ -1,6 +1,6 @@
-% AKDatUM: Arctos & iNat
+% AKDatUM: Arctos, iNat, GBIF
 
-# AKDatUM: Arctos & iNat
+# AKDatUM: Arctos, iNat, GBIF
 
 _Posted by [Cam](people.html#cam) on 2022-01-20 for AKDatUM workshop_
 
@@ -41,7 +41,7 @@ the data in Arctos and iNaturalist and many other sources, is
 Each of these sites allows:
 
  * Queries via their web pages and downloads of queried data, via a **browser**
- * More comprehensive access to their data via an API (Application
+ * More comprehensive access to their data via an **API** (Application
    Programming Interface)
    
 ### Arctos
@@ -62,7 +62,7 @@ Arctos API can be found
 
 An efficient way to get large data downloads from Arctos is via the
 [**IPT dumps**](http://ipt.vertnet.org:8080/ipt/resource?r=uam_herb_vascular)
-(from Vertnet) prepared for inporting the data into GBIF.
+(from Vertnet) prepared for importing the data into GBIF.
 
 ### iNaturalist
 
@@ -74,4 +74,17 @@ An efficient way to get large data downloads from Arctos is via the
    to ‘4. Export’
 
 Information about the API is [here](https://www.inaturalist.org/pages/api%252Breference)
+
+### GBIF
+
+ * Make a user account and log in
+ * Type a species name into the search bar
+ * Select the taxonomic name alternative you want
+ * A general page for that taxon will appear, with many kinds of data
+   (images, map, etc.)
+ * Click on the green ‘OCCURRENCES’ box on the right, near the top
+ * Now click on DOWNLOAD
+ * Select the kind of data package you want (‘Simple’ should be fine)
+
+Information about the API is [here](https://www.gbif.org/developer/summary)
 

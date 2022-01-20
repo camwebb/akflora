@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Alaska Flora : AKDatUM: Arctos &amp; iNat</title>
+    <title>Alaska Flora : AKDatUM: Arctos, iNat, GBIF</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../css/normalize.css"/>
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="nine columns" style="margin-top: 5%">
-          <h1 id="akdatum-arctos-inat">AKDatUM: Arctos &amp; iNat</h1>
+          <h1 id="akdatum-arctos-inat-gbif">AKDatUM: Arctos, iNat, GBIF</h1>
           <p><em>Posted by <a href="people.html#cam">Cam</a> on 2022-01-20 for AKDatUM workshop</em></p>
           <p><strong>Short URL to here: <a href="https://is.gd/akdcam">is.gd/akdcam</a></strong></p>
           <p><img src="../img/arcinat.jpg" alt="Arctos and iNat data diagram" style="width:80%; margin-right: auto; display:block;"/></p>
@@ -40,7 +40,7 @@
           <p>Each of these sites allows:</p>
           <ul>
           <li>Queries via their web pages and downloads of queried data, via a <strong>browser</strong></li>
-          <li>More comprehensive access to their data via an API (Application Programming Interface)</li>
+          <li>More comprehensive access to their data via an <strong>API</strong> (Application Programming Interface)</li>
           </ul>
           <h3 id="arctos">Arctos</h3>
           <p>To download data from Arctos:</p>
@@ -50,7 +50,7 @@
           <li>On the results page, find the drop-down named “Tools: Map, Customize or Download” and select Download</li>
           </ul>
           <p>The Arctos API <em>endpoint</em> can be seen <a href="https://arctos.database.museum/component/api/v1/catalog.cfc?method=about">here</a>; the results are in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Information about the Arctos API can be found <a href="https://alaskaflora.org/pages/arctos_webinar.html#the-arctos-api">here</a>.</p>
-          <p>An efficient way to get large data downloads from Arctos is via the <a href="http://ipt.vertnet.org:8080/ipt/resource?r=uam_herb_vascular"><strong>IPT dumps</strong></a> (from Vertnet) prepared for inporting the data into GBIF.</p>
+          <p>An efficient way to get large data downloads from Arctos is via the <a href="http://ipt.vertnet.org:8080/ipt/resource?r=uam_herb_vascular"><strong>IPT dumps</strong></a> (from Vertnet) prepared for importing the data into GBIF.</p>
           <h3 id="inaturalist">iNaturalist</h3>
           <ul>
           <li>Make a user account and log in</li>
@@ -59,6 +59,17 @@
           <li>Adjust your search details and the fields you want returned and go to ‘4. Export’</li>
           </ul>
           <p>Information about the API is <a href="https://www.inaturalist.org/pages/api%252Breference">here</a></p>
+          <h3 id="gbif">GBIF</h3>
+          <ul>
+          <li>Make a user account and log in</li>
+          <li>Type a species name into the search bar</li>
+          <li>Select the taxonomic name alternative you want</li>
+          <li>A general page for that taxon will appear, with many kinds of data (images, map, etc.)</li>
+          <li>Click on the green ‘OCCURRENCES’ box on the right, near the top</li>
+          <li>Now click on DOWNLOAD</li>
+          <li>Select the kind of data package you want (‘Simple’ should be fine)</li>
+          </ul>
+          <p>Information about the API is <a href="https://www.gbif.org/developer/summary">here</a></p>
         </div>
         <div class="three columns" style="margin-top: 5%">
           <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
