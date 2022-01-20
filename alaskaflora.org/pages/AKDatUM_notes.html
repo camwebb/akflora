@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Alaska Flora : AKDatUM Notes (2022-01-20)</title>
+    <title>Alaska Flora : AKDatUM: Arctos &amp; iNat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300,600" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../css/normalize.css"/>
@@ -15,11 +15,50 @@
     <div class="container">
       <div class="row">
         <div class="nine columns" style="margin-top: 5%">
-          <h1 id="akdatum-notes-2022-01-20">AKDatUM Notes (2022-01-20)</h1>
-          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2022-01-20</em></p>
+          <h1 id="akdatum-arctos-inat">AKDatUM: Arctos &amp; iNat</h1>
+          <p><em>Posted by <a href="people.html#cam">Cam</a> on 2022-01-20 for AKDatUM workshop</em></p>
           <p><strong>Short URL to here: <a href="https://is.gd/akdcam">is.gd/akdcam</a></strong></p>
-          <h2 id="data-flowchart">Data flowchart</h2>
-          <p><img src="../img/arcinat.jpg" alt="Arctos and iNat data diagram" style="width:80%;margin-left: auto; margin-right: auto; display:block;"/></p>
+          <p><img src="../img/arcinat.jpg" alt="Arctos and iNat data diagram" style="width:80%; margin-right: auto; display:block;"/></p>
+          <h2 id="data">Data</h2>
+          <p>Evidence of the occurrence of an organism at a place and time:</p>
+          <ul>
+          <li>Physical collections (specimens)</li>
+          <li>Observations (without or with photographs)</li>
+          </ul>
+          <p>Key data:</p>
+          <ul>
+          <li>Where? (long/lat)</li>
+          <li>When?</li>
+          <li>What species?</li>
+          <li>Recorded by who?</li>
+          </ul>
+          <h2 id="data-stores">Data stores</h2>
+          <p>Specimen information is stored in a museum collections database. At UAF, for Alaska, we use <strong>Arctos</strong>: <a href="https://arctos.database.museum">arctos.database.museum</a></p>
+          <p>The largest open repository of human observation data is <strong>iNaturalist</strong>: <a href="https://inaturalist.org">inaturalist.org</a></p>
+          <p>The largest global biodiversity occurrence data store, which contains the data in Arctos and iNaturalist and many other sources, is <strong>GBIF</strong>, the Global Biodiversity Information Facility: <a href="https://gbif.org">gbif.org</a></p>
+          <h2 id="obtaining-the-data">Obtaining the data</h2>
+          <p>Each of these sites allows:</p>
+          <ul>
+          <li>Queries via their web pages and downloads of queried data, via a <strong>browser</strong></li>
+          <li>More comprehensive access to their data via an API (Application Programming Interface)</li>
+          </ul>
+          <h3 id="arctos">Arctos</h3>
+          <p>To download data from Arctos:</p>
+          <ul>
+          <li>Make a user account and log in</li>
+          <li>Query the database using the search boxes at <a href="https://arctos.database.museum">arctos.database.museum</a></li>
+          <li>On the results page, find the drop-down named “Tools: Map, Customize or Download” and select Download</li>
+          </ul>
+          <p>The Arctos API <em>endpoint</em> can be seen <a href="https://arctos.database.museum/component/api/v1/catalog.cfc?method=about">here</a>; the results are in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Information about the Arctos API can be found <a href="https://alaskaflora.org/pages/arctos_webinar.html#the-arctos-api">here</a>.</p>
+          <p>An efficient way to get large data downloads from Arctos is via the <a href="http://ipt.vertnet.org:8080/ipt/resource?r=uam_herb_vascular"><strong>IPT dumps</strong></a> (from Vertnet) prepared for inporting the data into GBIF.</p>
+          <h3 id="inaturalist">iNaturalist</h3>
+          <ul>
+          <li>Make a user account and log in</li>
+          <li>Go to ‘Explore’ and enter a taxon and a place</li>
+          <li>Click the ‘Filters’ box and the advanced search options will appear. At the bottom left is a link for Download.</li>
+          <li>Adjust your search details and the fields you want returned and go to ‘4. Export’</li>
+          </ul>
+          <p>Information about the API is <a href="https://www.inaturalist.org/pages/api%252Breference">here</a></p>
         </div>
         <div class="three columns" style="margin-top: 5%">
           <a class="button" style="width:100%" href="project.html">Project Info</a><br/>
