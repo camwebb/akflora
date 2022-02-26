@@ -41,7 +41,7 @@ BEGIN{
   DATABASE = "tcm"
   APPNAME = "tcm"
   # DEBUG = 1
-  LIMIT = 100  # max number of rows to show
+  LIMIT = 200  # max number of rows to show
   
   # Database config:
   #  * table/field definitions - keep same as DB structure
@@ -56,18 +56,18 @@ BEGIN{
   Config = \
     "pub , Publication , code , code , SELECT+%2A+FROM+%60pub%60,   /" \
     "  id     , ID           , i , 0 ,     ;" \
-    "  code   , Code         , c , 1 ,     ;" \
-    "  pubtypeID , Pub+type  , i , 0 , pubtype;" \
+    "  code   , Code*        , c , 1 ,     ;" \
+    "  pubtypeID , Pub+type , i , 0 , pubtype;" \
     "  author , Authors      , c , 0 ,     ;" \
     "  year   , Year         , c , 1 ,     ;" \
-    "  title  , Title        , c , 1 ,     ;" \
+    "  title  , Title^       , c , 1 ,     ;" \
     "  journal, Journal+or+Book , c , 0 ,  ;" \
     "  volume , Volume       , c , 0 ,     ;" \
     "  pages  , Pages        , c , 0 ,     ;" \
     "  publisher, Publisher  , c , 0 ,     ;" \
     "  address, Address      , c , 0 ,     ;" \
-    "  doi    , DOI          , c , 1 ,     ;" \
-    "  url    , URL          , c , 1 ,     ;" \
+    "  doi    , DOI^         , c , 1 ,     ;" \
+    "  url    , URL^         , c , 1 ,     ;" \
     "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
@@ -77,13 +77,13 @@ BEGIN{
     "name , Name , code , code, SELECT+%2A+FROM+%60name%60 , genus+REGEXP+%27" \
       COOKIE["genregex"] "%27 /" \
     "  id     , ID           , i , 0 ,     ;" \
-    "  code   , Code         , c , 1 ,     ;" \
-    "  genus  , Genus        , c , 1 ,     ;" \
-    "  species, species      , c , 1 ,     ;" \
-    "  irankID, rank         , i , 1 ,irank ;" \
-    "  infrasp, infrasp      , c , 1 ,     ;" \
+    "  code   , Code*         , c , 1 ,     ;" \
+    "  genus  , Genus*        , c , 1 ,     ;" \
+    "  species, Species*      , c , 1 ,     ;" \
+    "  irankID, Rank         , i , 1 ,irank ;" \
+    "  infrasp, Infrasp      , c , 1 ,     ;" \
     "  author , Author       , c , 1 ,     ;" \
-    "  pubID  , Orig.+Publ.  , i , 1 , pub ;" \
+    "  pubID  , Orig.+Publ.*  , i , 1 , pub ;" \
     "  url    , URL          , c , 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
     "irank , Infra+rank0 , id , label, SELECT+%2A+FROM+irank, /" \
@@ -93,9 +93,9 @@ BEGIN{
        "tc.nameID+%3D+name.id+AND+name.genus+REGEXP+%27" \
        COOKIE["genregex"] "%27 /"                           \
     "  id     , ID           , i , 0 ,     ;" \
-    "  code   , Code         , c , 1 ,     ;" \
-    "  nameID , Name         , i , 1 , name;" \
-    "  pubID  , Publication  , i , 1 , pub ;" \
+    "  code   , Code*         , c , 1 ,     ;" \
+    "  nameID , Name*         , i , 1 , name;" \
+    "  pubID  , Publication*  , i , 1 , pub ;" \
     "  bhlPf  ,BHL+pg1+ID    , i , 1 ,     ;" \
     "  bhlPl  ,BHL+last+page+ID,i, 0 ,     ;" \
     "  notes  , Notes        , n , 0 ,     |" \
@@ -109,12 +109,12 @@ BEGIN{
       "%28N1.genus+REGEXP+%27" COOKIE["genregex"] "%27+OR+N2.genus+REGEXP+%27" \
       COOKIE["genregex"] "%27%29   /"                             \
     "  id     , ID           , i , 0 ,     ;" \
-    "  tc1ID  , TC1+newer     , i , 1 , tc ;" \
-    "  relID  , Relation     , i , 1 , rel ;" \
+    "  tc1ID  , TC1+newer*     , i , 1 , tc ;" \
+    "  relID  , Relation*     , i , 1 , rel ;" \
     "  uncertain  , Uncertain , b , 0 ,    ;" \
     "  synID  , Synonymy     , i , 1 , syn ;" \
-    "  tc2ID  , TC2+older    , i , 1 , tc  ;" \
-    "  pubID  ,  Publication , i , 1 , pub ;" \
+    "  tc2ID  , TC2+older*    , i , 1 , tc  ;" \
+    "  pubID  ,  Publication* , i , 1 , pub ;" \
     "  graph  , Graph        , b , 1 ,     ;" \
     "  notes  , Notes        , n , 0 ,      "
   config()
@@ -314,7 +314,10 @@ function show(      x, n, i, j, k, sql, where) {
   # Table header
   print "<tr>"
   for (i = 1; i <= length(Fgorder[f["table"]]); i++)
-    print "<th>" Flabel[f["table"]][Fgorder[f["table"]][i]] "</th>"
+    # remove any * or ^ that indicate NOT NULL
+    print "<th>" \
+      gensub(/[*^]/,"","G", Flabel[f["table"]][Fgorder[f["table"]][i]]) \
+      "</th>"
   print "<th style=\"border:none;\"></th><th style=\"border:none;\"></th>"\
     "<th style=\"border:none;\"></th>"
 
@@ -441,7 +444,8 @@ function showone(      x, n, i, j, sel, sql) {
   print "<table>"
   for (i = 1; i <= length(Forder[f["table"]]); i++) {
     print "<tr>"
-    print "<td align=\"right\">" Flabel[f["table"]][Forder[f["table"]][i]] \
+    print "<td align=\"right\">" \
+      gensub(/[*^]/,"","G", Flabel[f["table"]][Forder[f["table"]][i]])  \
       "</td>"
     if (Fforid[f["table"]][Forder[f["table"]][i]])
       print "<td><a href=\"" APPNAME "?table="                          \
@@ -604,6 +608,8 @@ function addedit(      x, n, i, j, sel, sql, schema) {
     print "</tr>"
   }
   print "</table>"
+  print "<p style=\"font-size: 10px;\">(* = required, ^ = one of these is "\
+    "required)</p>"
   print "<p><input type=\"submit\" value=\"GO\"/></p>"
   print "</form>"
 
