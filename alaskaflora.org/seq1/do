@@ -102,7 +102,7 @@ function seeall(       error, actiontext, i, ts, taxsum) {
     "<option value=\"NULL\" selected=\"1\"></option>"\
     "<option value=\"M\">M</option>"\
     "<option value=\"F\">F</option>"\
-    "<option value=\"F\">ST</option>"\
+    "<option value=\"ST\">ST</option>"\
     "</select>"
   print "&#160;&#160;Notes: <input type=\"text\" name=\"notes\" "\
     "style=\"width:300px;\"/>"
