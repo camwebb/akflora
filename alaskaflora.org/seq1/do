@@ -116,7 +116,7 @@ function seeall(       error, actiontext, i, ts, taxsum) {
 
   # Main query
   db_query("seq1", "SELECT sample_no, barcode, notes, taxon, alaac, sex, guid " \
-           "FROM sample, ala WHERE sample.alaID = ala.id ORDER BY sample_no;")
+           "FROM sample, ala WHERE sample.alaID = ala.id ORDER BY sample_no DESC;")
 
   # Block 4: taxon summary
 
