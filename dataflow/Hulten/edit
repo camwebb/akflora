@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $# -eq 2 ]
+then
+    FILE=tiff/${1}/${1}-${2}-t.txt
+elif [ $# -eq 1 ]
+then
+    FILE=tiff/${1/-*/}/${1}-t.txt
+fi
+
+if [ -f $FILE ]
+then
+    emacs -nw -Q $FILE 
+else
+    echo $FILE "does not exist"
+fi

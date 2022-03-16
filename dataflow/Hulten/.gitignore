@@ -1,0 +1,25 @@
+# the main PDF
+hulten.pdf
+
+# 936 directories, one for each page, with images, OCR, point data
+tiff*
+
+# A rough hack of the family keys OCR to assemble a family key for the webapp
+keys*
+
+# the converted illustrations
+illust/*
+
+# various temp files in the map conversion dir
+map2points/*
+!map2points/map2points
+!map2points/run.sh
+!map2points/predict.R
+!map2points/controlpoints
+!map2points/predict
+
+# these are the full data and should not be in github
+hulten_data
+hulten.xml
+
+

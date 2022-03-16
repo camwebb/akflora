@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# s3cmd sync -vr --no-check-md5 -c ~/.s3cfg-akflora /home/cam/dataflow/Hulten/tiff s3://hulten/
+
+s3cmd sync -vr --check-md5 -c ~/.s3cfg-akflora /home/cam/dataflow/Hulten/tiff s3://hulten/
+
+# do one --check-md5 at the end to be sure
