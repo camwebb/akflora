@@ -7,6 +7,7 @@ alaskaflora.org/tcm/tmp*
 alaskaflora.org/tcm/TAGS
 alaskaflora.org/tcm/.htaccess
 alaskaflora.org/tcm/pw.awk
+alaskaflora.org/phyedit*
 bin/gawk
 bin/json.so
 dataflow/ALA/ala.*
@@ -20,6 +21,7 @@ dataflow/DB/bu*
 dataflow/ENV.sh
 dataflow/FNA/coarse_grained_fna_xml*
 dataflow/FNA/fna_all.gz
+dataflow/GBIF/AK-VTWG*
 dataflow/ING/ING_genus*
 dataflow/PAF/paf.1
 dataflow/PAF/paf.2
