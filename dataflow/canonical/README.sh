@@ -10,52 +10,40 @@
 # See http://alaskaflora.org/pages/blog5.html
 
 
-# 1. Assemble rough lists: ACCS + ALA + PAF + FNA (should add Hulten
-# at some point)
+# 1. Assemble rough lists: ACCS + ALA + PAF + FNA + Hulten + GBIF for
+# Yukon extension + reviewed taxa. First column should be unique
 
-# 1a. ACCS
-gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../ACCS/accs > accs
-# tidy up (GNR chokes on ×)
-sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
-    -e 's/×/x/g' accs
+cat ../ACCS/accs ../ALA/ala ../PAF/paf ../FNA/fna ../Hulten/hulten \
+    ../taxon_review/all_reviewed_2022-03-16 | \
+    gawk 'BEGIN{FS="|"}{print $2, $3, $4, $5, $6, $7, $8}' | \
+    sed -E -e 's/^ *//g' -e 's/ *$//g' -e 's/  +/ /g' -e 's/×/x/g' | \
+    gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} \
+          {n[$1]++}END{for (i in n) print i}' > all_rough
 
-# 1b. ALA
-gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../ALA/ala > ala
-sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
-    -e 's/×/x/g' ala
+# these names choke GNR, remove first:
+sed -i -e '/Alnus x purpusii Callier/d' all_rough
 
-# 1c. PAF
-gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../PAF/paf > paf
-sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
-    -e 's/×/x/g' paf
-
-# 1d. FNA
-gawk 'BEGIN{FS="|"}{print $1 "|" $2, $3, $4, $5, $6, $7, $8}' \
-     ../FNA/fna > fna
-sed -i -e 's/| */|/g' -e 's/ *$//g' -e 's/  */ /g' \
-    -e 's/×/x/g' fna
-
-# remove duplicates
-cat accs ala paf fna | gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] \
-   = "@ind_str_asc"}{n[$2]=$1}END{for (i in n) print n[i] "|" i}' > all_rough
-
-rm -f accs fna
+rm -f names4gnr-* gnr.out
 
 # split into batches of 1,000 for GNR
-gawk 'BEGIN{FS="|"}{print $1 "|" $2 > "names4gnr-"  int(++i/995)+1 }' all_rough
+gawk '{print $0 > "names4gnr-" int(++i/995)+1 }' all_rough
 
 echo "Size of rough list = " `wc all_rough | gawk '{print $1}'`
 
 # 2. Run through GNR
-rm -f gnr.out
-for infile in names4gnr*
+for infile in names4gnr-*
 do
-     echo "Running GNA on " $infile
-     gawk -v INFILE=$infile -f gnr.awk >> gnr.out
+    echo "Running GNA on " $infile
+    # gawk -v INFILE=$infile -f gnr.awk >> gnr.out
+    gawk -v INFILE=$infile -f gnv.awk >> gnv.out
+    if [ $? -eq 1 ]
+    then
+        echo "GNR failed on file $infile Exiting"
+        exit 1
+    fi
 done
+
+exit
 
 # parse
 

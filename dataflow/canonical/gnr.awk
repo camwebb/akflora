@@ -6,16 +6,20 @@ BEGIN {
 
   RS="\x04";
   OFS="|";
-  system("rm -f to_check.csv");
 
   cmd = "curl -s -X POST --data-urlencode 'data_source_ids=165|167' --data-urlencode data@" INFILE " 'http://resolver.globalnames.org/name_resolvers.json'";
   
   # print cmd > "/dev/stderr"
   cmd | getline json;
-  # print json >> "gnr.json";
+  # print json > "gnr.json";
   # close("gnr.json");
 
-  if (! json_fromJSON(json, data)) {
+  if (json ~ /something went wrong/) {
+    print "GNR failed!" > "/dev/stderr"
+    exit 1
+  }
+  
+  if (! json::from_json(json, data)) {
     print "JSON import failed!" > "/dev/stderr"
     exit 1
   }
@@ -34,17 +38,15 @@ BEGIN {
 }
 
 function print_out(i,j,     uid) {
-  
+
   if (data["data"][i]["results"][j]["data_source_id"] == 167)
-    uid = "ipni-" data["data"][i]["results"][j]["taxon_id"];
+    uid = "ipni-" data["data"][i]["results"][j]["taxon_id"]
   else if (data["data"][i]["results"][j]["data_source_id"] == 165)
-    uid = "trop-" gensub(/http\:\/\/www\.tropicos\.org\/Name\//,"","G", \
-                         data["data"][i]["results"][j]["url"])
+    uid = "trop-" data["data"][i]["results"][j]["taxon_id"]
   
-  print data["data"][i]["supplied_id"] ,     \
-    data["data"][i]["supplied_name_string"], \
+  print data["data"][i]["supplied_name_string"],    \
     uid, 
-    data["data"][i]["results"][j]["name_string"], \
+    data["data"][i]["results"][j]["name_string"],           \
     "GNR" data["data"][i]["results"][j]["match_type"],      \
     "GNR: " data["data"][i]["results"][j]["match_value"] ;
   
