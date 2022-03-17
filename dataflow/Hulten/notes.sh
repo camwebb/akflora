@@ -68,4 +68,6 @@ convert p50.sm.tif p50.sm.jpg
 multicrop -f 30 p50.sm.jpg test.jpg
 
 
+# * 45: white out illustr in 045.tiff, run --mod -> OK, run --extract,
+#   manually select image
 
