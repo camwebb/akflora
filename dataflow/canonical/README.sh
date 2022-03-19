@@ -72,7 +72,7 @@ then
     # ** Fail: 'Sphagnum riparium var. > *fallax Sanio' does not match:
     #          Sphagnum riparium var. > *fallax Sanio  <- parsed
 
-    rm -f names4gnr-* gnr.out
+    rm -f names4gnr-* # gnr.out gnv.out
     
 elif [ $1 = "wscp" ]
 then
@@ -183,7 +183,7 @@ then
           }
           (keep[$1]) {print $0}' ipni_base > ipni_base.2
     
-    rm ipni_list* ipni2ipni_match ipni_base
+    rm ipni_list* ipni2ipni_match # ipni_base
 
     # wc -l ipni_base*
     # 16386 ipni_base
@@ -229,7 +229,9 @@ then
 
     # tidy
 
-    # rm -f trop_base.2 wcsp_base.2 ipni_base ipni+trop_base trop_base wcsp_base     wcsp2i+t_match trop2ipni_match
+    rm -f trop_base.2 wcsp_base.2 ipni_base.2 ipni+trop_base \
+       wcsp2i+t_match trop2ipni_match wcsp_listA ipni+trop_listB
+    # rm trop_base wcsp_base 
 
     # Summarize
 
