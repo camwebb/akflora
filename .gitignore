@@ -8,8 +8,10 @@ alaskaflora.org/tcm/TAGS
 alaskaflora.org/tcm/.htaccess
 alaskaflora.org/tcm/pw.awk
 alaskaflora.org/phyedit*
+alaskaflora.org/tmp*
 bin/gawk
 bin/json.so
+dataflow/ACCS/v2/raw/*
 dataflow/ALA/ala.*
 dataflow/authors*
 dataflow/canonical/*_base

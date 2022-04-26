@@ -239,24 +239,31 @@ then
     echo "TROP names in canon list: " `grep -c "trop-" canon`
     echo "WCSP names in canon list: " `grep -c "kew-" canon`
 
+elif [ $1 = ala2canon ]
+then
+
+    # 6. Reconcile ALA to Canon list
+    rm ala2canon_match
+    
+    gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
+         ../ALA/ala > ala.1
+
+    matchnames -a ala.1 -b canon -o ala2canon_match -f -q \
+               -m ala2canon_match_manual
+
+    echo "ALA names: " `wc ala.1 | gawk '{print $1}'`
+    echo "Reconciling ALA to Canon. Matching: " \
+         `grep -vc no_match ala2canon_match`
+    echo "Reconciling ALA to Canon. No match: " \
+         `grep -c no_match ala2canon_match` 
+
+    rm -f ala.1 
+
 fi
 
 exit
 
-# 6. Reconcile ALA to Canon list
 
-gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' \
-     ../ALA/ala > ala.1
-
-# echo "Skipping manual stage (matchnames -a ala -b canon)"
-matchnames -a ala.1 -b canon -o ala2canon_match -f -q
-echo "ALA names: " `wc ala | gawk '{print $1}'`
-echo "Reconciling ALA to Canon. Matching: " \
-  `grep -vc no_match ala2canon_match`
-echo "Reconciling ALA to Canon. No match: " \
-  `grep -c no_match ala2canon_match` 
-
-rm -f ala.1 
 
 # 7. Reconcile PAF to Canon list
 

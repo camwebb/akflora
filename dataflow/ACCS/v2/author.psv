@@ -1,0 +1,7410 @@
+author_id|author
+1|(A. Berger) B. Boivin
+2|(A. Braun) A.A. Eaton
+3|(A. Braun) Husn.
+4|(A. Braun) Rodway
+5|(A. Braun) Schinz & R. Keller
+6|(A. Evans) A. Evans
+7|(A. Evans) D.H. Wagner
+8|(A. Evans) Frye & L. Clark
+9|(A. Evans) Grolle
+10|(A. Evans) Inoue
+11|(A. Evans) Jørg.
+12|(A. Evans) Loeske
+13|(A. Evans) R.M. Schust.
+14|(A. Evans) S. Hatt.
+15|(A. Evans) Steph.
+16|(A. Funk) Tønsberg & Vezda
+17|(A. Gray) A. Gray
+18|(A. Gray) Á. Löve & D. Löve
+19|(A. Gray) A. Nelson
+20|(A. Gray) A.R. Mast & Reveal
+21|(A. Gray) Achey
+22|(A. Gray) B. Boivin
+23|(A. Gray) B.L. Robinson
+24|(A. Gray) Breitung
+25|(A. Gray) C.W. Greene
+26|(A. Gray) Calder & Roy L. Taylor
+27|(A. Gray) Cody
+28|(A. Gray) Craven
+29|(A. Gray) Cronq.
+30|(A. Gray) Davis
+31|(A. Gray) F. Morris & Eames
+32|(A. Gray) Fernald
+33|(A. Gray) G.L. Nesom
+34|(A. Gray) Greene
+35|(A. Gray) H. Hara
+36|(A. Gray) Howell
+37|(A. Gray) Hultén
+38|(A. Gray) Kuntze
+39|(A. Gray) Lunell
+40|(A. Gray) M. Peck
+41|(A. Gray) Merriam
+42|(A. Gray) Nied.
+43|(A. Gray) Piper
+44|(A. Gray) Reveal
+45|(A. Gray) Roy L. Taylor & MacBryde
+46|(A. Gray) Rydb.
+47|(A. Gray) S.F. Blake
+48|(A. Gray) Tzvelev
+49|(A. Gray) W. Wight ex J.P. Anderson
+50|(A. Gray) W.A. Weber
+51|(A. Gray) Wiegand
+52|(A. Gray) Woot. & Standl.
+53|(A. Ham.) Jordal
+54|(A. Heller) Fernald
+55|(A. Heller) Hultén
+56|(A. Heller) I.M. Johnst.
+57|(A. Heller) T.I. Chuang & Heckard
+58|(Á. Löve & D. Löve) Böcher et al.
+59|(Á. Löve & D. Löve) Elven
+60|(Á. Löve & D. Löve) Tzvelev
+61|(A. Massal. & De Not.) Jatta
+62|(A. Massal.) A. Massal.
+63|(A. Massal.) D. Hawksw.
+64|(A. Massal.) Du Rietz
+65|(A. Massal.) Froberg
+66|(A. Massal.) Gyeln.
+67|(A. Massal.) Hafellner & V. Wirth
+68|(A. Massal.) Jatta
+69|(A. Massal.) Knoph & Leuckert
+70|(A. Massal.) Lettau ex Vezda
+71|(A. Massal.) Nyl.
+72|(A. Massal.) Otálora, P.M. Jørg. & Wedin
+73|(A. Massal.) Rambold, Triebel & Coppins
+74|(A. Massal.) Schuler
+75|(A. Massal.) Th. Fr.
+76|(A. Massal.) Zahlbr.
+77|(A. Massal.) Zschacke
+78|(A. Murray bis) Carrière
+79|(A. Murray bis) Lemmon
+80|(A. Murray bis) McNab
+81|(A. Murray bis) Parl.
+82|(A. Murray bis) Van Campo & Gaussen
+83|(A. Nelson) A. Heller
+84|(A. Nelson) Á. Löve & D. Löve
+85|(A. Nelson) A. Nelson
+86|(A. Nelson) Dorn
+87|(A. Nelson) Kük.
+88|(A. Nelson) O.E. Schulz
+89|(A. Nelson) Rydb.
+90|(A. Nelson) Soják
+91|(A. Nelson) Soó
+92|(A. Nelson) Th. Wolf
+93|(A. Nelson) Thell.
+94|(A. Schneider) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+95|(A.A. Eaton) Hultén
+96|(A.A. Eaton) N.E. Pfeiffer
+97|(A.E. Porsild & Senn) Á. Löve
+98|(A.E. Porsild & Senn) Melderis
+99|(A.E. Porsild) Á. Löve
+100|(A.E. Porsild) Á. Löve & D. Löve
+101|(A.E. Porsild) B. Boivin
+102|(A.E. Porsild) Brunton
+103|(A.E. Porsild) Cody
+104|(A.E. Porsild) comb. nov.
+105|(A.E. Porsild) Holub
+106|(A.E. Porsild) Hultén
+107|(A.E. Porsild) J.K. Morton
+108|(A.E. Porsild) J.P. Anderson
+109|(A.E. Porsild) Jurtz.
+110|(A.E. Porsild) Jurtz. & Kozh.
+111|(A.E. Porsild) Ö. Nilsson
+112|(A.E. Porsild) R.J. Bayer & Stebbins
+113|(A.E. Porsild) S.L. Welsh
+114|(A.E. Porsild) Soják
+115|(A.E. Porsild) Tolm. & Kozhanch.
+116|(A.E. Porsild) V.V. Petrovsky
+117|(A.E. Porsild) V.V. Petrovsky, D.F. Murray & Elven
+118|(A.L. Sm.) F. Mohr
+119|(A.P. Khokhr.) A.P. Khokhr. & V.N. Pavlov
+120|(Abbayes) Ahti
+121|(Abbayes) Hale & W.L. Culb.
+122|(Abbayes) Stuckenb.
+123|(Abrom.) Elven & D.F. Murray
+124|(Abrom.) Fernald
+125|(Ach. ex Fr.) Behlen & Desberg
+126|(Ach. ex Lilj.) Ach.
+127|(Ach. ex Lilj.) Hook.
+128|(Ach. ex Lilj.) M. Choisy
+129|(Ach. ex Schaer.) D. Hawksw.
+130|(Ach.) A. Gray
+131|(Ach.) A. Massal.
+132|(Ach.) A. Thell
+133|(Ach.) A.F.W. Schmidt
+134|(Ach.) A.L. Sm.
+135|(Ach.) Ach.
+136|(Ach.) Ahti
+137|(Ach.) Ahti & D. Hawksw
+138|(Ach.) Ahti & P. James
+139|(Ach.) Almq.
+140|(Ach.) Anzi
+141|(Ach.) Arnold
+142|(Ach.) Articus
+143|(Ach.) Arup, Frödén & Søchting
+144|(Ach.) Asahina
+145|(Ach.) B. de Lesd.
+146|(Ach.) Bory
+147|(Ach.) Brand & Diederich
+148|(Ach.) Branth & Rostr.
+149|(Ach.) Breuss
+150|(Ach.) Brodo & D. Hawksw.
+151|(Ach.) Choisy
+152|(Ach.) Clauzade & Cl. Roux
+153|(Ach.) Clem. ex Hafellner
+154|(Ach.) Coppins & P. James
+155|(Ach.) Cromb.
+156|(Ach.) DC.
+157|(Ach.) De Not.
+158|(Ach.) Degel.
+159|(Ach.) Delise
+160|(Ach.) Divakar, A. Crespo, Wedin & Essl.
+161|(Ach.) Du Rietz
+162|(Ach.) Eckfeldt
+163|(Ach.) Elenkin
+164|(Ach.) Essl.
+165|(Ach.) Flot.
+166|(Ach.) Fr.
+167|(Ach.) Funck
+168|(Ach.) Gaern., G. Mey. & Scherb.
+169|(Ach.) Gowan
+170|(Ach.) Goward & Ahti
+171|(Ach.) Gray
+172|(Ach.) Grognot
+173|(Ach.) Gyeln.
+174|(Ach.) Hafellner
+175|(Ach.) Hafellner & Bellem.
+176|(Ach.) Hafellner & Cl. Roux
+177|(Ach.) Hafellner & Kalb
+178|(Ach.) Hafellner & V. Wirth
+179|(Ach.) Hazsl.
+180|(Ach.) Hedl.
+181|(Ach.) Henssen
+182|(Ach.) Hepp
+183|(Ach.) Hertel
+184|(Ach.) Hertel & Brodo
+185|(Ach.) Hertel & Knoph
+186|(Ach.) Hertel & Leuckert
+187|(Ach.) Hoffm.
+188|(Ach.) Hook.
+189|(Ach.) Horwood
+190|(Ach.) Hue
+191|(Ach.) J.-E. Mattsson & M.J. Lai
+192|(Ach.) J. Steiner
+193|(Ach.) J.E. Mattson & Middelborg
+194|(Ach.) J.R. Laundon
+195|(Ach.) Kärnefelt
+196|(Ach.) Kärnefelt & Thell
+197|(Ach.) Keiffer
+198|(Ach.) Körb.
+199|(Ach.) Kremp.
+200|(Ach.) Krog
+201|(Ach.) Laurer
+202|(Ach.) Lettau
+203|(Ach.) Lücking & Lumbsch
+204|(Ach.) Lumbsch
+205|(Ach.) Lutzoni
+206|(Ach.) Lynge
+207|(Ach.) M.Choisy
+208|(Ach.) Malme
+209|(Ach.) Moberg
+210|(Ach.) Mot.
+211|(Ach.) Mudd
+212|(Ach.) Müll. Arg.
+213|(Ach.) Nadv.
+214|(Ach.) Nimis & Cl. Roux
+215|(Ach.) Norman
+216|(Ach.) Norrl.
+217|(Ach.) Nyl.
+218|(Ach.) P. Halonen, L. Myllys, S. Velmala & H. Hyvarinen
+219|(Ach.) P. James & Gotth.
+220|(Ach.) Parrique
+221|(Ach.) Pers.
+222|(Ach.) Poelt
+223|(Ach.) R. Howe
+224|(Ach.) R. Sant.
+225|(Ach.) R.C. Harris
+226|(Ach.) Rabenh.
+227|(Ach.) Rambold & Pietschmann
+228|(Ach.) Räsänen
+229|(Ach.) Rass.
+230|(Ach.) Redhead & Kuyper
+231|(Ach.) Röhl.
+232|(Ach.) S.L.F. Mey.
+233|(Ach.) Schaer.
+234|(Ach.) Schrad.
+235|(Ach.) Sheard
+236|(Ach.) Sliwa, Zhao Xin & Lumbsch
+237|(Ach.) Spreng.
+238|(Ach.) Stein
+239|(Ach.) T. Sprib. & McCune
+240|(Ach.) Th. Fr.
+241|(Ach.) Tibell
+242|(Ach.) Timdal
+243|(Ach.) Trevis.
+244|(Ach.) Tuck.
+245|(Ach.) V. Wirth & Vezda
+246|(Ach.) Vain.
+247|(Ach.) W.L. Culb. & C.F. Culb.
+248|(Ach.) Wahlenb.
+249|(Ach.) Wallr.
+250|(Adams ex DC.) O.E. Schulz
+251|(Adams ex Fisch.) A.P. Khokhr.
+252|(Adams ex Fisch.) F. Bolle
+253|(Adams ex Fisch.) Spreng.
+254|(Adams) Ekman
+255|(Adams) Herder
+256|(Adams) Malyschev
+257|(Aellen) Hultén
+258|(Aellen) Rouleau
+259|(Ahti) Ahti
+260|(Ahti) Ahti & Lai
+261|(Ahti) Hale & W.L. Culb.
+262|(Ahti) O. Blanco
+263|(Ahti) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+264|(Ahti) Tzvelev
+265|(Aiton) A. Gray
+266|(Aiton) Alph. Wood
+267|(Aiton) C.L. Hitchc.
+268|(Aiton) Cody
+269|(Aiton) Cronq.
+270|(Aiton) Elven & D.F. Murray
+271|(Aiton) F. Seym.
+272|(Aiton) Fernald
+273|(Aiton) G. Don
+274|(Aiton) Hook.
+275|(Aiton) House
+276|(Aiton) Hultén
+277|(Aiton) Kuntze
+278|(Aiton) Link
+279|(Aiton) Lodd. ex Steud.
+280|(Aiton) R.T. Clausen
+281|(Aiton) Rehder
+282|(Aiton) Reveal
+283|(Aiton) Seland.
+284|(Aiton) Stout
+285|(Aiton) Willd.
+286|(Albert & Jahandiez) Prain
+287|(Albert & Jahandiez) Soó
+288|(All.) C. Koch
+289|(All.) Dalla Torre
+290|(All.) Degl. ex Loisel.
+291|(All.) F.W. Schultz & Sch. Bip.
+292|(All.) H.P. Fuchs
+293|(All.) Holub
+294|(All.) P. Fourn.
+295|(All.) Schur
+296|(Almb.) Essl.
+297|(Almq.) Elfstr.
+298|(Almq.) Zahn
+299|(Alph. Wood) A. Nelson & J.F. Macbr.
+300|(Alph. Wood) Greene
+301|(Alph. Wood) N.H. Holmgren & P.K. Holmgren
+302|(Alph. Wood) Nutt. ex Baker
+303|(Alstrup & Zhurb.) Hafellner
+304|(Alstrup) Coppins & Aptroot
+305|(Andersson) Andersson
+306|(Andersson) Argus
+307|(Andersson) B. Boivin
+308|(Andersson) Bebb
+309|(Andersson) C.K. Schneid.
+310|(Andersson) C.R. Ball
+311|(Andersson) C.R. Ball ex Hultén
+312|(Andersson) Coville
+313|(Andersson) Cronq.
+314|(Andersson) Dorn
+315|(Andersson) Flod.
+316|(Andersson) Hyl.
+317|(Andersson) Jurtz. & V.V. Petrovsky
+318|(Andersson) Kom.
+319|(Andersson) Kurtz
+320|(Andersson) Lange
+321|(Andersson) Little
+322|(Ando & Higuchi) Ignatov
+323|(Andrejev) Tzvelev
+324|(Andres) A.E. Porsild
+325|(Andrz. ex Besser) Britton
+326|(Andrz. ex DC.) B.L. Rob.
+327|(Andrz.) Bab.
+328|(Andrz.) Hultén
+329|(Andrz.) J. Weiss
+330|(Andrz.) N. Busch
+331|(Andrz.) Rollins
+332|(Ångstr. ex C. Hartm.) Lindb.
+333|(Ångstr.) Jáv.
+334|(Anzi ex Arnold) Arnold
+335|(Anzi) A. Nordin & Tibell
+336|(Anzi) Aptroot & Lücking
+337|(Anzi) Arnold
+338|(Anzi) Cl. Roux
+339|(Anzi) Coppins & R. Sant.
+340|(Anzi) Diederich & Sérus.
+341|(Anzi) Hafellner
+342|(Anzi) Hue
+343|(Anzi) Jatta
+344|(Anzi) Knoph & Hertel
+345|(Anzi) Lynge
+346|(Anzi) M. Westb. & M. Svenss.
+347|(Anzi) Matzer & Hafellner
+348|(Anzi) Nyl.
+349|(Anzi) Printzen, T. Sprib. & Tønsberg
+350|(Anzi) Rabenh.
+351|(Anzi) Scheid.
+352|(Anzi) Th. Fr.
+353|(Arnell & C.E.O. Jensen) H. Möller
+354|(Arnell & C.E.O. Jensen) Schiffn.
+355|(Arnell & H. Buch) Macvicar
+356|(Arnell & J. Perss.) Müll. Frib.
+357|(Arnell & J. Perss.) Warnst. & Loeske
+358|(Arnell) Broth.
+359|(Arnell) Crundw. & Nyholm
+360|(Arnell) Damsh.
+361|(Arnell) Grout
+362|(Arnell) H. Buch
+363|(Arnell) Hedenäs
+364|(Arnell) Loeske
+365|(Arnell) P. Wilson & Norris
+366|(Arnell) Potemkin
+367|(Arnell) Stotler & Crand.-Stotl.
+368|(Arnell) Warnst.
+369|(Arnell) Wijk & Marg.
+370|(Arnold) Arnold
+371|(Arnold) Bitter
+372|(Arnold) Broth.
+373|(Arnold) Dalla Torre & Sarnth.
+374|(Arnold) Du Rietz
+375|(Arnold) Giralt, van den Boom & Elix
+376|(Arnold) Grube & Triebel
+377|(Arnold) J. Stein
+378|(Arnold) Jatta
+379|(Arnold) Knoph & Hertel
+380|(Arnold) Lettau
+381|(Arnold) Lücking & Sérus.
+382|(Arnold) Lynge
+383|(Arnold) Mig.
+384|(Arnold) Otálora, P.M. Jørg. & Wedin
+385|(Arnold) Poelt & Vezda
+386|(Arnold) Sérus.
+387|(Arnold) Triebel
+388|(Arnold) Vezda
+389|(Arnold) Zahlbr.
+390|(Arup) Arup, Frödén & Søchting
+391|(Asahina) Ahti
+392|(Asahina) Kärnefelt
+393|(Asahina) Rass.
+394|(Asch. & Magnus) M.E. Jones
+395|(Asch. & Magnus) P.H. Raven
+396|(Asch.) Palla
+397|(Auersw.) Degel.
+398|(Auersw.) Henssen
+399|(Austin ex Grout) H.A. Crum, Steere & L.E. Anderson
+400|(Austin ex Underw.) A. Evans
+401|(Austin) Austin
+402|(Austin) Broth.
+403|(Austin) Cardot
+404|(Austin) D.G. Horton
+405|(Austin) E. Lawton
+406|(Austin) E. Lawton & Vitt
+407|(Austin) Evans
+408|(Austin) Frye
+409|(Austin) Grout
+410|(Austin) H. Buch
+411|(Austin) H.A. Crum & L.E. Anderson
+412|(Austin) Konstant., Vilnet & A.V. Troitsky
+413|(Austin) L. Söderstr. & Vána
+414|(Austin) Lesq. & James
+415|(Austin) Lindb.
+416|(Austin) Lindb. ex Kaal.
+417|(Austin) Paris
+418|(Austin) Pearson
+419|(Austin) R.M. Schust.
+420|(Austin) Rau & Hervey
+421|(Austin) Schornherst
+422|(Austin) Underw.
+423|(Austin) Vána & L. Söderstr.
+424|(Austin) Wijk & Margad.
+425|(B. Boivin) B. Boivin
+426|(B. Boivin) W.A. Weber
+427|(B. de Lesd.) J.R. Laundon
+428|(B. de Lesd.) R.C. Harris
+429|(B. de Lesd.) Tønsberg
+430|(B. de Lesd.) Tretiach & Baruffo
+431|(B.L. Rob. & Schrenk) Fernald & B.G. Schub.
+432|(B.L. Rob.) Á. Löve & D. Löve
+433|(B.L. Rob.) Costea & Tardif
+434|(B.L. Rob.) E.P. Bicknell
+435|(B.L. Rob.) Hultén
+436|(B.L. Rob.) J.P. Anderson
+437|(B.L. Rob.) Maguire
+438|(B.L. Rob.) Tolm.
+439|(B.M. Murray) H.A. Crum & L.E. Anderson
+440|(Bab.) Timdal
+441|(Babc.) K.L. Chambers & S.C. Meyers
+442|(Bagl. & Carestia) Hafellner
+443|(Bagl. & Carestia) Hertel
+444|(Bagl.) Otálora, P.M. Jørg. & Wedin
+445|(Bagl.) Zahlbr.
+446|(Baker) Calder & Roy L. Taylor
+447|(Baker) Fassett
+448|(Banks ex Pursh) A. Gray
+449|(Banks ex Pursh) Cherniawsky
+450|(Banks ex Pursh) Greene
+451|(Banks ex Pursh) Hook.
+452|(Banks ex Pursh) Hultén
+453|(Banks ex Pursh) Lindl.
+454|(Banks ex Pursh) R.M. Bateman
+455|(Banks ex Pursh) Richardson
+456|(Banks ex Pursh) Rydb.
+457|(Banks ex Pursh) Soó
+458|(Barnéoud) Fernald
+459|(Barnes) J.R. Spence
+460|(Barratt ex Hook.) Andersson
+461|(Barratt ex Hook.) Bebb
+462|(Batsch) Zahlbr.
+463|(Beal) C.L. Hitchc.
+464|(Beal) Pilg.
+465|(Beal) Roy L. Taylor & MacBryde
+466|(Bebb) C.K. Schneid.
+467|(Bebb) Flod.
+468|(Bebb) Jeps.
+469|(Bebb) L. Kelso
+470|(Bednarek-Ochyra) Bednarek-Ochyra & Ochyra
+471|(Bednarek-Ochyra) Larraín & J. Muñoz
+472|(Bellardi) Ach.
+473|(Bellardi) Divakar, A. Crespo & Lumbsch
+474|(Bellardi) Kärnefelt & A. Thell
+475|(Bellardi) Körb.
+476|(Bellardi) Trevis.
+477|(Benedix) Kis & Pócs
+478|(Benn.) Hultén
+479|(Benn.) Rydb.
+480|(Benth.) A. Gray
+481|(Benth.) Á. Löve & D. Löve
+482|(Benth.) A.E. Murray
+483|(Benth.) Andersson
+484|(Benth.) Benth.
+485|(Benth.) Briq.
+486|(Benth.) Greene
+487|(Benth.) Heyn
+488|(Benth.) Kuntze
+489|(Benth.) Piper
+490|(Benth.) S.R. Stewart
+491|(Benth.) Shinners
+492|(Berggr.) Berggr.
+493|(Berggr.) Bryhn & Kaal.
+494|(Berggr.) C.E.O. Jensen
+495|(Berggr.) Flatberg
+496|(Berggr.) Flatberg & Frisvoll
+497|(Berggr.) G. Roth
+498|(Berggr.) Hedenäs & L. Soderström
+499|(Berggr.) I. Hagen
+500|(Berggr.) Jørg.
+501|(Berggr.) Kaal.
+502|(Berggr.) Kindb.
+503|(Berggr.) Mönk.
+504|(Berggr.) S.W. Arnell
+505|(Berggr.) Sharp
+506|(Berggr.) Warnst.
+507|(Berk. & Broome) Zhurb.
+508|(Berlin) Á. Löve & D. Löve
+509|(Berlin) T.J. Sørensen
+510|(Berlin) Tzvelev
+511|(Bernh. ex Fisch. & C.A. Mey.) Dorn
+512|(Bernh.) Ach.
+513|(Bernh.) Körb.
+514|(Bernh.) Malme
+515|(Besch.) Dixon
+516|(Besch.) E.B. Bartram
+517|(Besch.) Ingh.
+518|(Besch.) J.P. Frahm
+519|(Besch.) Müll. Hal.
+520|(Besser) B. Boivin
+521|(Besser) Besser
+522|(Besser) H.M. Hall & Clem.
+523|(Besser) Hultén
+524|(Besser) Jeps.
+525|(Besser) K. Koch
+526|(Besser) Koch
+527|(Besser) Korobkov
+528|(Besser) Poljakov
+529|(Besser) Rupr.
+530|(Besser) Trautv. & C.A. Mey.
+531|(Best & Grout) E. Lawton
+532|(Best) Paris
+533|(Bigelow) Á. Löve & D. Löve
+534|(Bigelow) Britton
+535|(Bigelow) Hook.
+536|(Bigelow) S.B. Young
+537|(Bigelow) Torr. & A. Gray
+538|(Bigelow) Veldkamp
+539|(Bitter) Edmonds
+540|(Björnstr.) Fernald
+541|(Blanch.) Fernald
+542|(Blandow ex Schwägr.) J.R. Spence
+543|(Blank.) Á. Löve & D. Löve
+544|(Blank.) R.T. Clausen
+545|(Blomgr. ex Holmb.) Hultén
+546|(Blytt ex Fries) Fries
+547|(Blytt) Coville
+548|(Blytt) Dorn
+549|(Blytt) Haynes
+550|(Böcher) Á. Löve & D. Löve
+551|(Böcher) B. Boivin
+552|(Böcher) Rollins
+553|(Boeckeler) Böcher
+554|(Boeckeler) Crantz
+555|(Boeckeler) Raymond
+556|(Boenn.) Celak.
+557|(Boenn.) Lej. & Court.
+558|(Boenn.) Mert. & W.D.J. Koch
+559|(Boenn.) Nyman
+560|(Boiss. & Heldr.) Velen.
+561|(Bolton) Gray
+562|(Bolton) Watt
+563|(Bong.) B. Boivin
+564|(Bong.) Breitung
+565|(Bong.) C.K. Scheid.
+566|(Bong.) Calder & Roy L. Taylor
+567|(Bong.) Carrière
+568|(Bong.) Dippel
+569|(Bong.) Farw.
+570|(Bong.) G. Don
+571|(Bong.) Greene
+572|(Bong.) L.H. Bailey
+573|(Bong.) M. Roem.
+574|(Bong.) Pennell
+575|(Bong.) Rupr.
+576|(Bong.) Rydb.
+577|(Bong.) S.W. Brim & P.F. Stevens
+578|(Bong.) Sch. Bip.
+579|(Bong.) Torr. & A. Gray
+580|(Boott) Á. Löve, D. Löve & Kapoor
+581|(Boott) B. Boivin
+582|(Boott) Druce
+583|(Boott) Kük.
+584|(Boott) L.H. Bailey
+585|(Boriss.) Á. Löve & D. Löve
+586|(Boriss.) Holub
+587|(Borrer ex Sm.) Nyl.
+588|(Borrer) A. Massal.
+589|(Borrer) Nyl.
+590|(Bory ex Schaer.) Kärnefelt & Thell
+591|(Bory) Nees
+592|(Bory) Th. Fr.
+593|(Bory) Trevis.
+594|(Bosch) Copeland
+595|(Boul.) Husn.
+596|(Bowden) Á. Löve & D. Löve
+597|(Bowden) Tzvelev
+598|(Brack.) Herter
+599|(Brack.) Holub
+600|(Brack.) Hook.
+601|(Brack.) Lellinger
+602|(Braithw.) Cardot
+603|(Braithw.) H.A. Crum & L.E. Anderson
+604|(Breidl.) Culm.
+605|(Breidl.) Jaap
+606|(Breidl.) K. Mull.
+607|(Breidl.) Schiffn. ex Loeske
+608|(Breidl.) Warnst.
+609|(Brenckle) Hultén
+610|(Breuss) Breuss
+611|(Brid. ex Schrad.) Brid.
+612|(Brid.) A.J. Shaw
+613|(Brid.) Arnell & C.E.O. Jensen
+614|(Brid.) Bednarek-Ochyra & Ochyra
+615|(Brid.) Bland.
+616|(Brid.) Bory
+617|(Brid.) Braithw.
+618|(Brid.) Brid.
+619|(Brid.) Broth.
+620|(Brid.) Bruch & Schimp.
+621|(Brid.) Bryhn
+622|(Brid.) C. Jens.
+623|(Brid.) De Not.
+624|(Brid.) De Sloover
+625|(Brid.) Dicks.
+626|(Brid.) E. Britton
+627|(Brid.) F. Lara, Garilleti & Goffinet
+628|(Brid.) G. Roth
+629|(Brid.) G.L. Sm.
+630|(Brid.) Giac.
+631|(Brid.) Grout
+632|(Brid.) H.A. Crum
+633|(Brid.) H.A. Crum & L.E. Anderson
+634|(Brid.) Hampe
+635|(Brid.) Hartm.
+636|(Brid.) Hedenäs
+637|(Brid.) Hilpert
+638|(Brid.) Holmen & Warncke
+639|(Brid.) Husn.
+640|(Brid.) J. Lange
+641|(Brid.) J.R. Spence
+642|(Brid.) Jur.
+643|(Brid.) K. Saito
+644|(Brid.) Kanda
+645|(Brid.) Kindb.
+646|(Brid.) Lesq.
+647|(Brid.) Lesq. & James
+648|(Brid.) Lilj.
+649|(Brid.) Limpr.
+650|(Brid.) Lindb.
+651|(Brid.) Loeske
+652|(Brid.) Mitt.
+653|(Brid.) Mönk.
+654|(Brid.) Müll. Hal.
+655|(Brid.) Myr.
+656|(Brid.) Nyholm
+657|(Brid.) Plášek, Sawicki & Ochyra
+658|(Brid.) Podp.
+659|(Brid.) Poelt
+660|(Brid.) R.H. Zander
+661|(Brid.) R.S. Chopra
+662|(Brid.) Schimp.
+663|(Brid.) Sull.
+664|(Brid.) T.J. Kop.
+665|(Brid.) Wahlenb.
+666|(Brid.) Wijk & Margad.
+667|(Brid.) Z. Iwats.
+668|(Briq.) Kudô
+669|(Britton) Á. Löve & D. Löve
+670|(Britton) B. Boivin
+671|(Britton) Fernald
+672|(Britton) G.W. Douglas & G. Ruyle-Douglas
+673|(Britton) House
+674|(Britton) Hultén
+675|(Britton) Kük.
+676|(Britton) L.O. Williams
+677|(Britton) Maguire
+678|(Britton) Rydb.
+679|(Britton) Scoggan
+680|(Britton) T.M. Barkley
+681|(Brodo & Ahti) T. Sprib. & McCune
+682|(Brond. ex Duby) Alb. Schmidt
+683|(Broth. & Paris ex Cardot) Grout
+684|(Broth. & Paris) H. Robinson
+685|(Broth. & Paris) Ochyra & Zarnowiec
+686|(Broth. ex Paris) Grout
+687|(Broth.) Andrews ex H.A. Crum
+688|(Broth.) Arnell & C.E.O. Jensen
+689|(Broth.) Broth.
+690|(Broth.) M. Fleisch.
+691|(Broth.) Ochyra
+692|(Broth.) Paris
+693|(Broth.) T.J. Kop.
+694|(Bruch & Schimp.) Åong.
+695|(Bruch & Schimp.) Braithw.
+696|(Bruch & Schimp.) Broth.
+697|(Bruch & Schimp.) Holmen
+698|(Bruch & Schimp.) I. Hagen
+699|(Bruch & Schimp.) J.J. Amann
+700|(Bruch & Schimp.) J.R. Spence
+701|(Bruch & Schimp.) Limpr.
+702|(Bruch & Schimp.) Lindb.
+703|(Bruch & Schimp.) Lindb. & Arnell
+704|(Bruch & Schimp.) Loeske
+705|(Bruch & Schimp.) Margad.
+706|(Bruch & Schimp.) Podp.
+707|(Bruch & Schimp.) R.H. Zander
+708|(Bruch & Schimp.) Schimp.
+709|(Bruch & Schimp.) T.J. Kop.
+710|(Bruch & Schimp.) Wilson
+711|(Bruch) Loeske
+712|(Bruch) Müll. Hal.
+713|(Bryhn & Douin ex Müll. Frib.) Damsh
+714|(Bryhn & Kaal.) Frye & L. Clark
+715|(Bryhn & Kaal.) L. Söderstr. & Vána
+716|(Bryhn & Kaal.) R.M. Schust.
+717|(Bryhn & Kaal.) R.M. Schust. ex S.W. Arnell
+718|(Bryhn et Kaal.) Arnell
+719|(Bryhn) Broth.
+720|(Bryhn) D.G. Long
+721|(Bryhn) Fife
+722|(Bryhn) H.A. Crum
+723|(Bryhn) Nyholm
+724|(Bryhn) Potemkin
+725|(Buchenau) Fernald
+726|(Buchenau) Hultén
+727|(Buchenau) Sam.
+728|(Buchenau) Satake
+729|(Buchenau) Schljakov
+730|(Buchenau) V.I. Krecz.
+731|(Buckley) Beal
+732|(Buckley) C.L. Hitchc.
+733|(Buckley) Calder & Roy L. Taylor
+734|(Buckley) Roy L. Taylor & MacBryde
+735|(Buckley) Thell.
+736|(Bunge) Fernald
+737|(Bunge) Lindm.
+738|(Burnet) Fernald & Knowlt.
+739|(Burtt Davy ex Jeps.) Gould
+740|(Buser) B. Boivin
+741|(Buser) Rothm.
+742|(Butters & Abbe) Hultén
+743|(Butters & Abbe) Jonsell
+744|(Butters & Abbe) Stuckey
+745|(Butters) B. Boivin
+746|(Butters) Hultén
+747|(Butters) Lellinger
+748|(Butters) Maxon
+749|(C. Björk, G. Thor & T.B. Wheeler) Schmitt, T. Sprib. & Lumbsch
+750|(C. DC.) Asch. & Graebn.
+751|(C. DC.) E. Murray
+752|(C. Hartm.) C. Hartm.
+753|(C. Massal. & Carestia) Müll. Frib.
+754|(C. Massal.) R.M. Schust.
+755|(C. Presl) C. Presl
+756|(C. Presl) Calder & Roy L. Taylor
+757|(C. Presl) Fraser-Jenkins & Jermy
+758|(C. Tav.) P.M. Jørg.
+759|(C.A. Mey. ex Iljin) Maguire
+760|(C.A. Mey. ex Iljin) S.J. Wolf
+761|(C.A. Mey. ex Iljin) S.L. Welsh
+762|(C.A. Mey.) B.L. Rob.
+763|(C.A. Mey.) Hedge & J. Léonard
+764|(C.A. Mey.) Hultén
+765|(C.A. Mey.) Koidz.
+766|(C.A. Mey.) Kom.
+767|(C.A. Mey.) O.E. Schulz
+768|(C.A. Mey.) Turcz.
+769|(C.C. Gmel.) Á. Löve & D. Löve
+770|(C.C. Gmel.) Döll
+771|(C.C. Gmel.) Palla
+772|(C.C. Gmel.) Syme
+773|(C.E.O. Jensen ex Russow) C.E.O. Jensen
+774|(C.E.O. Jensen ex Russow) Nyholm
+775|(C.E.O. Jensen ex Warnst.) Russow & Warnst.
+776|(C.E.O. Jensen) Douin
+777|(C.E.O. Jensen) Frisvoll
+778|(C.E.O. Jensen) G.L. Sm.
+779|(C.E.O. Jensen) H. Buch
+780|(C.E.O. Jensen) Podp.
+781|(C.E.O. Jensen) Schljakov
+782|(C.E.O. Jensen) Steph.
+783|(C.F. Culb. & W.L. Culb.) W.L. Culb. & C.F. Culb.
+784|(C.K. Schneid.) Á. Löve & D. Löve
+785|(C.K. Schneid.) Argus
+786|(C.K. Schneid.) Fernald
+787|(C.K. Schneid.) Polunin
+788|(C.K. Schneid.) Raup
+789|(C.K. Schneid.) Rydb.
+790|(C.L. Hitchc. & Maguire) C.L. Hitchc.
+791|(C.L. Hitchc.) C.L. Hitchc.
+792|(C.L. Hitchc.) Packer
+793|(C.L. Hitchc.) R.J. Davis
+794|(C.L. Hitchc.) Rollins
+795|(C.R. Ball) Cronq.
+796|(C.R. Ball) Hultén
+797|(C.R. Ball) L. Kelso
+798|(Calder & Roy L. Taylor) B. Boivin
+799|(Calder & Roy L. Taylor) C.C. Freeman
+800|(Calder & Roy L. Taylor) G.W. Douglas & G. Ruyle-Dougl.
+801|(Calder & Roy L. Taylor) J.F. Bain
+802|(Calder & Roy L. Taylor) Trock
+803|(Calder & Savile) B. Boivin
+804|(Calder & Savile) Calder & Roy L. Taylor
+805|(Calder & Savile) comb. nov.
+806|(Calder & Savile) Elven & D.F. Murray
+807|(Calder & Savile) Gornall & H. Ohba
+808|(Calder & Savile) H. Ohba
+809|(Calder & Savile) Hultén
+810|(Calder & Savile) Jurtz. & V.V. Petrovsky
+811|(Calder) A.E. Porsild
+812|(Camb.) Raf.
+813|(Camp) Hultén
+814|(Canby ex Rydb.) Cronq.
+815|(Card. & Thér.) Grout
+816|(Cardot & Thér. ex Holz.) Broth.
+817|(Cardot & Thér.) Broth.
+818|(Cardot & Thér.) F. Lara, Garilleti & Goffinet
+819|(Cardot & Thér.) Frye
+820|(Cardot & Thér.) Grout
+821|(Cardot & Thér.) Hedenäs
+822|(Cardot & Thér.) Perss.
+823|(Cardot & Thér.) Tuom. & T.J. Kop.
+824|(Cardot & Thér.) Z. Iwats.
+825|(Cardot) Bednarek-Ochyra & Ochyra
+826|(Cardot) Cardot
+827|(Cardot) K. Saito
+828|(Carrington & Spruce) Müll. Frib.
+829|(Carrington) Lindb. & Kaal. ex Pearson
+830|(Cass.) Cass.
+831|(Cassidy) Beetle
+832|(Cassidy) C.L. Hitchc.
+833|(Cassidy) Malte
+834|(Chaix) A. Gray
+835|(Chaix) DC.
+836|(Chaix) F.W. Schultz
+837|(Chaix) Opiz
+838|(Chaix) Spach
+839|(Cham. & Schltdl.) Á. Löve & D. Löve
+840|(Cham. & Schltdl.) A.R. Mast & Reveal
+841|(Cham. & Schltdl.) Bocquet
+842|(Cham. & Schltdl.) Calder & Roy L. Taylor
+843|(Cham. & Schltdl.) comb. nov.
+844|(Cham. & Schltdl.) Dillenb. & Kadereit
+845|(Cham. & Schltdl.) Fedtsch.
+846|(Cham. & Schltdl.) Fenzl
+847|(Cham. & Schltdl.) Fenzl ex Torr. & A. Gray
+848|(Cham. & Schltdl.) Fernald
+849|(Cham. & Schltdl.) Greene
+850|(Cham. & Schltdl.) Holub
+851|(Cham. & Schltdl.) Holz.
+852|(Cham. & Schltdl.) Hultén
+853|(Cham. & Schltdl.) J.M. Gillett
+854|(Cham. & Schltdl.) Kuntze
+855|(Cham. & Schltdl.) M. Roem.
+856|(Cham. & Schltdl.) Maguire
+857|(Cham. & Schltdl.) Malte
+858|(Cham. & Schltdl.) Rebr.
+859|(Cham. & Schltdl.) Rupr.
+860|(Cham. & Schltdl.) S.-P. Hong
+861|(Cham. & Schltdl.) S.L. Welsh
+862|(Cham. & Schltdl.) Schischk.
+863|(Cham. & Schltdl.) Steud.
+864|(Cham. ex Spreng.) Ivanina
+865|(Cham. ex Steud.) Hultén
+866|(Cham. ex Steud.) Kük.
+867|(Cham. ex Steud.) L.H. Bailey
+868|(Cham.) A. DC.
+869|(Cham.) Á. Löve & Simon
+870|(Cham.) Argus
+871|(Cham.) Casper
+872|(Cham.) Correll
+873|(Cham.) Coville
+874|(Cham.) Fenzl
+875|(Cham.) Garcke
+876|(Cham.) H.M. Hall & Clem.
+877|(Cham.) Herder
+878|(Cham.) Hultén
+879|(Cham.) I.M. Johnst.
+880|(Cham.) J.P. Anderson
+881|(Cham.) Ledeb.
+882|(Cham.) Luer
+883|(Cham.) M. Peck
+884|(Cham.) Nevski
+885|(Cham.) Rchb.
+886|(Cham.) Rydb.
+887|(Cham.) S.L. Welsh
+888|(Cham.) Vorosch.
+889|(Cham.) Wallr.
+890|(Christ) Ching
+891|(Christ) Holub
+892|(Christ) Matsum.
+893|(Chrtek & Chrtková) J.P. Bailey
+894|(Chrtek & Chrtková) Zika & Jacobson
+895|(Clauzade & Cl. Roux) Hafellner
+896|(Clauzade & Cl. Roux) Hafellner & V. Wirth
+897|(Clerc ex Trautv.) V.I. Krecz.
+898|(Clokey ex Mack.) Harrington
+899|(Clute) Kartesz & Gandhi
+900|(Clute) L.R. Wilson
+901|(Cockerell) O.E. Schulz
+902|(Constance) B. Boivin
+903|(Cooke & Ellis) Sacc.
+904|(Coppins & P. James) Tønsberg
+905|(Corda ex Nees) Lindb. ex Arnell
+906|(Correns ex Limpr.) Broth.
+907|(Coss. & Germ.) Fernald
+908|(Coville & C.R. Ball) C.R. Ball
+909|(Coville & Standl. ex Hultén) S. Kelso
+910|(Coville) Hultén
+911|(Coville) M.E. Jones
+912|(Crép.) Crép.
+913|(Crép.) Rydb.
+914|(Cronq.) G.L. Nesom
+915|(Cronq.) Reveal & Keener
+916|(Crouan) Matzer & Hafellner
+917|(Culm. ex Meyl.) Bakalin
+918|(Culm. ex Meyl.) Konstant.
+919|(Culm. ex Meyl.) R.M. Schust. & Damsh.
+920|(D. Don) A. Gray
+921|(D. Don) Engl.
+922|(D. Don) Gornall & H. Ohba
+923|(D. Don) Greene
+924|(D. Don) Hultén
+925|(D. Don) Macoun
+926|(D. Don) Oerst. ex D.P. Little
+927|(D. Don) R. Br. ex Ser.
+928|(D. Don) Small
+929|(D. Don) Spach
+930|(D. Hawksw.) M.E. Barr
+931|(D. Hawksw.) R. Sant.
+932|(D. Löve) D.F. Murray
+933|(D.Don) Farjon & D.K. Harder
+934|(Daniels) Á. Löve & D. Löve
+935|(Daniels) Fernald
+936|(Darb.) M.S. Christ. ex Poelt
+937|(Darbish.) Paulson
+938|(Davies) Beltr.
+939|(Davies) Branth & Rostr.
+940|(Davies) Nyl.
+941|(Davies) Vezda
+942|(DC.) A. Gray
+943|(DC.) Á. Löve & D. Löve
+944|(DC.) Al-Shehbaz & O'Kane
+945|(DC.) Alefeld
+946|(DC.) B. Boivin
+947|(DC.) Bercht. & J. Presl
+948|(DC.) Besser
+949|(DC.) Botsch. & Karav.
+950|(DC.) Cockerell
+951|(DC.) Cronq.
+952|(DC.) D.A. German & A.L. Ebel
+953|(DC.) De Not.
+954|(DC.) Degel.
+955|(DC.) Domin
+956|(DC.) Farw.
+957|(DC.) Fernald
+958|(DC.) Fr.
+959|(DC.) G. Lawson
+960|(DC.) G.L. Nesom
+961|(DC.) Gren. & Godr.
+962|(DC.) Grey-Wilson
+963|(DC.) Gueidan & Cl. Roux
+964|(DC.) H. Hara
+965|(DC.) H. Rob. & Brettell
+966|(DC.) Haber & Hir. Takah.
+967|(DC.) Hafellner
+968|(DC.) Herder
+969|(DC.) Hertel & A.J. Schwab
+970|(DC.) Hertel & Rambold
+971|(DC.) Heynh.
+972|(DC.) Holub
+973|(DC.) Hultén
+974|(DC.) Huth
+975|(DC.) Hyl.
+976|(DC.) J. Steiner
+977|(DC.) J.M. Coult. & Rose
+978|(DC.) J.R. Grant
+979|(DC.) Jeps.
+980|(DC.) Juz.
+981|(DC.) K. Feldberg, Vána, Hentschel & Heinrichs
+982|(DC.) Kitagawa
+983|(DC.) Koch
+984|(DC.) Korobkov & Elven
+985|(DC.) Kuntze
+986|(DC.) L.C. Wheeler
+987|(DC.) L.D. Benson
+988|(DC.) Ledeb.
+989|(DC.) Leuckert & Poelt
+990|(DC.) M. Choisy
+991|(DC.) Ostenf.
+992|(DC.) P.G. Sm.
+993|(DC.) Pimenov
+994|(DC.) R.A. Price, Al-Shehbaz & O'Kane
+995|(DC.) Raf. ex Rydb.
+996|(DC.) Ramond
+997|(DC.) Rchb.
+998|(DC.) Richardson
+999|(DC.) Rothr.
+1000|(DC.) Rydb.
+1001|(DC.) S.L. Welsh
+1002|(DC.) Schljakov
+1003|(DC.) Small
+1004|(DC.) Steph.
+1005|(DC.) Steud.
+1006|(DC.) Torr. & A. Gray
+1007|(DC.) Trock & T.M. Barkley
+1008|(DC.) Turcz. ex Fisch. & C.A. Mey.
+1009|(DC.) V.V. Petrovsky
+1010|(DC.) Vierh.
+1011|(DC.) W. Wight ex P.S. Smith
+1012|(DC.) W.A. Weber
+1013|(DC.) Willd.
+1014|(de Lesd.) Hale & W.L. Culb.
+1015|(de Lesd.) W.A. Weber ex R. Anderson
+1016|(De Not.) Coppins
+1017|(De Not.) De Not.
+1018|(De Not.) E. Lawton
+1019|(De Not.) H. Rob.
+1020|(De Not.) Ignatov & Ignatova
+1021|(De Not.) J.R. Spence
+1022|(De Not.) Jamieson
+1023|(De Not.) Keissl.
+1024|(De Not.) Latz.
+1025|(De Not.) Lindb.
+1026|(De Not.) Loeske
+1027|(De Not.) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+1028|(De Not.) Paris
+1029|(De Not.) W. Brunnbauer
+1030|(Decne.) Tzvelev
+1031|(Degel.) E. Dahl
+1032|(Degel.) Fryday
+1033|(Degel.) Hafellner & T. Sprib.
+1034|(Degel.) Krog
+1035|(Degel.) M. Schultz & McCune
+1036|(Delise ex Duby) Zahlbr.
+1037|(Delise ex Nyl.) Kärnefelt
+1038|(Delise ex Nyl.) Kärnefelt & A. Thell
+1039|(Delise ex Nyl.) Nyl.
+1040|(Delise) Hav.
+1041|(Delise) Nyl.
+1042|(Delise) Vain.
+1043|(Desf.) Torr. & A. Gray
+1044|(Desmaz.) M. Choisy
+1045|(Desmaz.) Zahlbr.
+1046|(Despr.) Nyl.
+1047|(Desv. ex Spring) Hultén
+1048|(Desv. ex Spring) Iljin
+1049|(Desv.) A. Gray
+1050|(Desv.) A. Nelson
+1051|(Desv.) B.L. Robinson
+1052|(Desv.) Britton
+1053|(Desv.) Butters & Abbe
+1054|(Desv.) DC.
+1055|(Desv.) Fisch. & C.A. Mey.
+1056|(Desv.) Fisch. & C.A. Mey. ex O.E. Schulz
+1057|(Desv.) Jonsell
+1058|(Desv.) Jurtz.
+1059|(Desv.) Poir.
+1060|(Desv.) Rydb.
+1061|(Desv.) S. Watson
+1062|(Dewey) Fernald
+1063|(Dewey) Holub
+1064|(Dewey) L.H. Bailey
+1065|(Dibben) Lendemer & R.C. Harris
+1066|(Dicks. ex Hook.) Dumort.
+1067|(Dicks. ex Hook.) Hübener
+1068|(Dicks. ex Hook.) Lindb.
+1069|(Dicks. ex Hook.) Trevis.
+1070|(Dicks. ex With.) Lindb.
+1071|(Dicks.) Ach.
+1072|(Dicks.) Andrews
+1073|(Dicks.) Anzi
+1074|(Dicks.) Borrer
+1075|(Dicks.) Brid.
+1076|(Dicks.) Bruch & Schimp.
+1077|(Dicks.) Crundw. ex Warb.
+1078|(Dicks.) Duby
+1079|(Dicks.) Dumort.
+1080|(Dicks.) Gray
+1081|(Dicks.) Grev.
+1082|(Dicks.) Grolle
+1083|(Dicks.) H. Buch
+1084|(Dicks.) J. Steiner
+1085|(Dicks.) J.R. Spence
+1086|(Dicks.) Kalb & Lücking
+1087|(Dicks.) Konstant. & Vilnet
+1088|(Dicks.) Körb.
+1089|(Dicks.) Lindb.
+1090|(Dicks.) Mudd
+1091|(Dicks.) Müll. Hal.
+1092|(Dicks.) Nyl.
+1093|(Dicks.) Otálora, P.M. Jørg., & Wedin
+1094|(Dicks.) R. Sant.
+1095|(Dicks.) R.H. Zander
+1096|(Dicks.) Schiffn.
+1097|(Dicks.) Schljakov
+1098|(Dicks.) Schwägr.
+1099|(Dicks.) Sm.
+1100|(Dicks.) Solms
+1101|(Dicks.) Stein
+1102|(Dicks.) Syme
+1103|(Dicks.) Th. Fr.
+1104|(Dicks.) Vahl
+1105|(Dicks.) Vána & L. Söderstr.
+1106|(Dicks.) W.A. Weber
+1107|(Dicks.) Zahlbr.
+1108|(Dickson) Körber
+1109|(Dieck) Focke
+1110|(Dieck) R.J. Davis
+1111|(Diederich) D. Hawksw. & M.S. Cole
+1112|(Dill. ex With.) Fr.
+1113|(Dillwyn) Thwaites
+1114|(Dippel) C.L. Hitchc.
+1115|(Dippel) Rehder
+1116|(Dism.) Flow.
+1117|(Dixon) Dixon
+1118|(Donn ex Sims) L. Phillips
+1119|(Doppelb. & Poelt) Hafellner & Türk
+1120|(Douglas ex D. Don) Carrière
+1121|(Douglas ex D. Don) Lindl.
+1122|(Douglas ex Hook.) Greene
+1123|(Douglas ex Hook.) Tidestr.
+1124|(Douglas ex Hook.) Torr. & A. Gray
+1125|(Douglas ex Lindl.) Cockerell
+1126|(Douglas ex Lindl.) Steyerm.
+1127|(Douglas ex Loudon) Douglas ex Forbes
+1128|(Douglas ex Torr. & A. Gray) Focke
+1129|(Douglas) Jancz.
+1130|(Douin) R.M. Schust.
+1131|(Douin) Schiffn.
+1132|(Drabble) Elven
+1133|(Drabble) S.M. Coles
+1134|(Drejer ex Lange) Böcher
+1135|(Drejer) Böcher
+1136|(Drejer) Boott
+1137|(Drejer) Hultén
+1138|(Drejer) L.H. Bailey
+1139|(Drew) W.B. Drew
+1140|(Dryl. ex Aiton) Pursh
+1141|(Dryl. ex Aiton) Turrill
+1142|(Du Rietz & H. Magn.) V. Wirth & Vezda
+1143|(Du Rietz) Frey
+1144|(Du Rietz) Hale
+1145|(Du Rietz) Llano
+1146|(Du Rietz) Thell & Goward
+1147|(Du Roi) K. Koch
+1148|(Dufour) Coem.
+1149|(Dufour) Follman
+1150|(Duman) B. Boivin
+1151|(Dumort. ex Cogn.) Schiffn.
+1152|(Dumort.) Damsh.
+1153|(Dumort.) Dumort.
+1154|(Dumort.) Fourr.
+1155|(Dumort.) Grolle
+1156|(Dumort.) Konstant., Vilnet & A.V. Troitsky
+1157|(Dumort.) Moris
+1158|(Dumort.) Müll. Frib.
+1159|(Dumort.) P.D. Sell & C. West
+1160|(Dumort.) Steph.
+1161|(Dumort.) Trevis.
+1162|(Dumort.) Vána
+1163|(Dumort.) Vána & L. Söderstr.
+1164|(Dumort.) Warnst.
+1165|(Durand) Rollins
+1166|(Durieu & Mont.) R.C. Harris
+1167|(Durieu) Á. Löve & D. Löve
+1168|(Durieu) C.F. Reed
+1169|(Durieu) Engelm.
+1170|(Durieu) Holub
+1171|(E. Britton & R.S. Williams) T.J. Kop.
+1172|(E. Britton) C. Chr.
+1173|(E. Britton) T.T. McIntosh & J.R. Spence
+1174|(E. Busch) Hultén
+1175|(E. Dahl) Ahti
+1176|(E. Dahl) Brodo & D. Hawksw.
+1177|(E. Dahl) Common & Brodo
+1178|(E. Dahl) Kristinsson
+1179|(E. Dahl) Lamb
+1180|(E. Fourn.) Kuntze
+1181|(E. Lawton) Bednarek-Ochyra & Ochyra
+1182|(E. Lawton) Frisvoll
+1183|(E. Mey.) Buchenau
+1184|(E. Mey.) C.L. Hitchc.
+1185|(E. Mey.) Coville
+1186|(E. Mey.) Fernald & Wiegand
+1187|(E. Mey.) Hämet-Ahti
+1188|(E. Mey.) Hultén
+1189|(E. Mey.) Rydb.
+1190|(E. Sheld.) B. Boivin
+1191|(E. Sheld.) Farw.
+1192|(E. Sheld.) Greene
+1193|(E. Sheld.) Rydb.
+1194|(E.A. Busch) T. Yamazaki
+1195|(E.B. Bartram) H. Rob.
+1196|(E.E. Nelson) Chmielewski
+1197|(E.E. Nelson) E.E. Nelson
+1198|(E.E. Nelson) R.J. Bayer
+1199|(E.E. Nelson) Rydb.
+1200|(E.E. Nelson) Small
+1201|(E.P. Perrier & Songeon) Janch.
+1202|(E.P. Perrier & Songeon) Vierh.
+1203|(E.S. Anderson) Czerep.
+1204|(E.S. Anderson) Hultén
+1205|(Eastw.) B. Boivin
+1206|(Eastw.) D.F. Murray & S. Kelso
+1207|(Eastw.) J.L. Gentry
+1208|(Eastw.) Khatri
+1209|(Ehrh. ex Hedw.) Loeske
+1210|(Ehrh. ex Hedw.) Th. Fr.
+1211|(Ehrh. ex Hoffm.) Dumort.
+1212|(Ehrh. ex Hoffm.) Rebent.
+1213|(Ehrh. ex Humb.) Furnr.
+1214|(Ehrh.) Ach.
+1215|(Ehrh.) Britton
+1216|(Ehrh.) Brodo & D. Hawksw.
+1217|(Ehrh.) Coville
+1218|(Ehrh.) Desv.
+1219|(Ehrh.) Dumort.
+1220|(Ehrh.) E. Schulze
+1221|(Ehrh.) Ehrh.
+1222|(Ehrh.) G. Gaertn., B. Mey. & Scherb.
+1223|(Ehrh.) Hale
+1224|(Ehrh.) Hedw.
+1225|(Ehrh.) Hoffm.
+1226|(Ehrh.) K. Koch
+1227|(Ehrh.) L.M. Dufour
+1228|(Ehrh.) Lej.
+1229|(Ehrh.) Lindb.
+1230|(Ehrh.) M. Howe
+1231|(Ehrh.) Nyl.
+1232|(Ehrh.) Schiffn.
+1233|(Ehrh.) Schljakov
+1234|(Ehrh.) W.L. Culb.
+1235|(Eitner) R. Sant.
+1236|(Ekman) Böcher
+1237|(Elenkin & Savicz) Ahti, Poryadina & Zhurb.
+1238|(Elenkin & Savicz) McCune
+1239|(Elliott) Small
+1240|(Engelm. ex A. Gray) Á. Löve, D. Löve & Kapoor
+1241|(Engelm. ex A. Gray) Dorn
+1242|(Engelm. ex Durand) E.O. Beal
+1243|(Engelm. ex Durand) Engelm.
+1244|(Engelm. ex Durand) R.T. Clausen
+1245|(Engelm. ex S. Watson) Critchf.
+1246|(Engelm.) A.A. Eaton
+1247|(Engelm.) B. Boivin
+1248|(Engelm.) C.L. Hitchc.
+1249|(Engelm.) Calder & Roy L. Taylor
+1250|(Engelm.) E.O. Beal
+1251|(Engelm.) Fernald
+1252|(Engelm.) Greene
+1253|(Engelm.) Hegelm.
+1254|(Engelm.) Hultén
+1255|(Engelm.) J. Feilberg
+1256|(Engelm.) Kuntze
+1257|(Engelm.) W.A. Weber
+1258|(Engl. & Irmsch.) Á. Löve & D. Löve
+1259|(Engl. & Irmsch.) B. Boivin
+1260|(Engl. & Irmsch.) Elven & D.F. Murray
+1261|(Engl. & Irmsch.) Hultén
+1262|(Engl. & Irmsch.) Jurtz. & V.V. Petrovsky
+1263|(Engl.) Small
+1264|(Erichsen) Almb.
+1265|(Erichsen) Brodo
+1266|(Erichsen) Divakar, A. Crespo, Wedin & Essl.
+1267|(Erichsen) Essl.
+1268|(Erichsen) I. Schmitt, Hodkinson & Lumbsch
+1269|(Erichsen) K. Schmitz & Lumbsch
+1270|(Erichsen) Moberg
+1271|(Erichsen) Nádv.
+1272|(Essl.) Hale & M. J. Lai
+1273|(Ewan) F.J. Herm.
+1274|(F. Nyl.) Fernald
+1275|(F. Nyl.) Mela & A. Caj.
+1276|(F. Schmidt ex Maxim.) Janchen
+1277|(F. Schmidt ex Maxim.) Nakai
+1278|(F. Schmidt ex Maxim.) Ronse Decr.
+1279|(F. Schmidt) Hultén
+1280|(F. Schmidt) Nakai
+1281|(F. Weber & D. Mohr) Andrews
+1282|(F. Weber & D. Mohr) Bednarek-Ochyra & Ochyra
+1283|(F. Weber & D. Mohr) Bland.
+1284|(F. Weber & D. Mohr) Broth. ex Paris
+1285|(F. Weber & D. Mohr) Eckel
+1286|(F. Weber & D. Mohr) Giacomini
+1287|(F. Weber & D. Mohr) H. Buch
+1288|(F. Weber & D. Mohr) H.K.G. Paul
+1289|(F. Weber & D. Mohr) I. Hagen
+1290|(F. Weber & D. Mohr) J.J. Amann
+1291|(F. Weber & D. Mohr) Jenn.
+1292|(F. Weber & D. Mohr) Kindb.
+1293|(F. Weber & D. Mohr) L. Söderstr., De Roo & Hedd.
+1294|(F. Weber & D. Mohr) Limpr.
+1295|(F. Weber & D. Mohr) Lindb.
+1296|(F. Weber & D. Mohr) Loeske
+1297|(F. Weber & D. Mohr) Lorentz
+1298|(F. Weber & D. Mohr) Mitt.
+1299|(F. Weber & D. Mohr) Schiffn.
+1300|(F. Weber & D. Mohr) Schimp.
+1301|(F. Weber & D. Mohr) Spruce
+1302|(F. Weber & D. Mohr) Warnst.
+1303|(F. Weber ex Brid.) Brid.
+1304|(F. Weber ex Brid.) Mönk.
+1305|(F. Weber) D.B. Schill & D.G. Long
+1306|(F. Weber) Dumort.
+1307|(F. Weber) H. Buch
+1308|(F. Weber) Hübener
+1309|(F. Weber) Nees
+1310|(F. Weber) Underw.
+1311|(F. Weber) Wahlenb. ex Lindb.
+1312|(F.N. Williams) Fernald & H. St. John
+1313|(F.N. Williams) Hultén
+1314|(F.W. Schmidt) Opiz
+1315|(Farr) Calder & Roy L. Taylor
+1316|(Farr) Fernald
+1317|(Farr) L.O. Williams
+1318|(Farr) Rydb.
+1319|(Farw.) Dorn
+1320|(Farw.) Hämet-Ahti
+1321|(Farw.) Morton
+1322|(Farw.) Sheviak
+1323|(Fenzl) Á. Löve & D. Löve
+1324|(Fenzl) Hultén
+1325|(Fenzl) Rchb.
+1326|(Fernald & Bissell) Selin
+1327|(Fernald & J.F. Macbr.) Á. Löve, D. Löve & B.M. Kapoor
+1328|(Fernald & J.F. Macbr.) Calder & Roy L. Taylor
+1329|(Fernald & Knowlt.) B. Boivin
+1330|(Fernald & Knowlt.) Fernald
+1331|(Fernald & Knowlt.) G.A. Mulligan
+1332|(Fernald & Wiegand) Fernald
+1333|(Fernald) Á. Löve & D. Löve
+1334|(Fernald) Á. Löve & Simon
+1335|(Fernald) B. Boivin
+1336|(Fernald) Beetle
+1337|(Fernald) C.F. Reed
+1338|(Fernald) C.K. Schneid.
+1339|(Fernald) Calder & Roy L. Taylor
+1340|(Fernald) Catling
+1341|(Fernald) Chmielewski
+1342|(Fernald) Cronq.
+1343|(Fernald) Davidson & Moxley
+1344|(Fernald) Fassett
+1345|(Fernald) Fernald
+1346|(Fernald) G.N. Jones
+1347|(Fernald) Holub
+1348|(Fernald) House
+1349|(Fernald) Hultén
+1350|(Fernald) Jeps.
+1351|(Fernald) Kapoor & Á. Löve & D. Löve
+1352|(Fernald) Love & Bernard
+1353|(Fernald) M.E. Jones
+1354|(Fernald) Mack.
+1355|(Fernald) Maguire
+1356|(Fernald) Malte
+1357|(Fernald) Morris & Eames
+1358|(Fernald) Pennell
+1359|(Fernald) Pilg.
+1360|(Fernald) Piper & Beattie
+1361|(Fernald) Polunin
+1362|(Fernald) Raymond
+1363|(Fernald) Reveal
+1364|(Fernald) Rollins
+1365|(Fernald) Rossbach
+1366|(Fernald) Roy L. Taylor & MacBryde
+1367|(Fernald) Rydb.
+1368|(Fernald) S.F. Blake
+1369|(Fernald) S.L. Welsh
+1370|(Fernald) Sarg.
+1371|(Fernald) Soják
+1372|(Fernald) T. Koyama
+1373|(Fernald) Vict.
+1374|(Fernald) Vict. & J. Rousseau
+1375|(Fink) Degel.
+1376|(Fink) Otálora, P.M. Jørg. & Wedin
+1377|(Fisch. ex Cham. & Schltdl.) A.P. Khokhr.
+1378|(Fisch. ex DC.) Hultén
+1379|(Fisch. ex DC.) K. Shimizu & Kudoh
+1380|(Fisch. ex DC.) Ledeb.
+1381|(Fisch. ex DC.) O'Kane & Al-Shehbaz
+1382|(Fisch. ex DC.) O.E. Schulz
+1383|(Fisch. ex DC.) Pall. ex Ledeb.
+1384|(Fisch. ex E. Mey.) B. Boivin
+1385|(Fisch. ex Hook.) comb. nov.
+1386|(Fisch. ex Hook.) Hultén
+1387|(Fisch. ex Hook.) Ledeb.
+1388|(Fisch. ex Hook.) O.E. Schulz
+1389|(Fisch. ex Hornem.) S.L. Welsh
+1390|(Fisch. ex Lindl.) Lindl.
+1391|(Fisch. ex Lindl.) Rydb.
+1392|(Fisch. ex Lindl.) Soó
+1393|(Fisch. ex Link) Á. Löve
+1394|(Fisch. ex Link) J.A. Schult.
+1395|(Fisch. ex Ser.) Cham. & Schltdl.
+1396|(Fisch. ex Ser.) McNeill
+1397|(Fisch. ex Sternb.) Á. Löve & D. Löve
+1398|(Fisch.) A. Heller
+1399|(Fisch.) Bunge
+1400|(Fisch.) E. Wiebe
+1401|(Fisch.) Hultén
+1402|(Fisch.) Konechn.
+1403|(Fisch.) Lindl.
+1404|(Fisch.) Nevski
+1405|(Flod. ex Häyrén) Hiitonen
+1406|(Flod.) A.K. Skvortsov
+1407|(Flod.) Flod.
+1408|(Flod.) Hultén
+1409|(Flörke ex Flot.) Arnold
+1410|(Flörke ex Rabenh.) Hertel & Rambold
+1411|(Flörke ex Rabenh.) Nyl.
+1412|(Flörke ex Sommerf.) Fr.
+1413|(Flörke ex Sommerf.) Lynge
+1414|(Flörke ex Sommerf.) Spreng.
+1415|(Flörke ex Sommerf.) Zopf
+1416|(Flörke ex Spreng.) Körb.
+1417|(Flörke ex Spreng.) Th. Fr.
+1418|(Flörke) Coppins & P. James
+1419|(Flörke) Fr.
+1420|(Flörke) H. Mayrh. & Poelt
+1421|(Flörke) Hertel
+1422|(Flörke) Hertel & Gotth. Schneider
+1423|(Flörke) Körb.
+1424|(Flörke) Nyl.
+1425|(Flörke) Sandst.
+1426|(Flörke) Schaer.
+1427|(Flörke) Spreng.
+1428|(Flörke) Zahlbr.
+1429|(Flörke) Zopf
+1430|(Flot.) Arnold
+1431|(Flot.) Ertz & Tehler
+1432|(Flot.) Hertel & Poelt
+1433|(Flot.) Hillmann
+1434|(Flot.) Körb.
+1435|(Flot.) Kullh.
+1436|(Flot.) Nyl.
+1437|(Flot.) S. Ekman & M. Svensson
+1438|(Flot.) Vain.
+1439|(Flotow) Hertel & Rambold
+1440|(Follmann) Fryday
+1441|(Forbes) Hultén ex R.T. Clausen
+1442|(Forbes) Rehder
+1443|(Fourn.) Hultén
+1444|(Fr. ex Blytt) Hiitonen
+1445|(Fr. ex Duby) Essl.
+1446|(Fr. ex Duby) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw., & Lumbsch
+1447|(Fr.) Ahti
+1448|(Fr.) Almq.
+1449|(Fr.) Arnold
+1450|(Fr.) Brodo & D. Hawksw.
+1451|(Fr.) Coppins & P. James
+1452|(Fr.) Fr.
+1453|(Fr.) H. Mayrh. & Poelt
+1454|(Fr.) H. Olivier
+1455|(Fr.) Hafellner
+1456|(Fr.) Haszl.
+1457|(Fr.) Hedl.
+1458|(Fr.) Hultén
+1459|(Fr.) Kernst.
+1460|(Fr.) M. Svensson & T. Sprib.
+1461|(Fr.) Mudd
+1462|(Fr.) Nyl.
+1463|(Fr.) Poetsch & Schiedem.
+1464|(Fr.) R. Sant. & V. Wirth
+1465|(Fr.) Rikli
+1466|(Fr.) Ruoss
+1467|(Fr.) Schinz & R. Keller
+1468|(Fr.) Th. Fr.
+1469|(Fr.) Th. Fr. ex Stein
+1470|(Fr.) Tuck.
+1471|(Fr.) Wetm.
+1472|(Fr.) Zahn
+1473|(Frey) I.M. Lamb
+1474|(Frisvoll) Bednarek-Ochyra & Ochyra
+1475|(Fröd.) H. Ohba
+1476|(Froel.) Bercht. & J. Presl
+1477|(Froel.) Ma
+1478|(Fryday & P.M. Jørg.) P.M. Jørg.
+1479|(Funck ex Brid.) I. Hagen
+1480|(Funck ex Brid.) Ignatov & Huttunen
+1481|(Funck ex Brid.) Kindb.
+1482|(Funck ex Brid.) Lindb.
+1483|(Funck ex Brid.) Schimp.
+1484|(Funck) Bauer
+1485|(Funck) Bednarek-Ochyra & Ochyra
+1486|(Funck) Boul.
+1487|(Funck) Brid.
+1488|(Funck) Bruch & Schimp.
+1489|(Funck) Fürnrohr
+1490|(Funck) H. Möller
+1491|(Funck) Hampe
+1492|(Funck) Jur.
+1493|(Funck) Limpr.
+1494|(Funck) Schwägr.
+1495|(Funck) Spreng.
+1496|(G. Lawson) Á. Löve & D. Löve
+1497|(G. Lawson) A.E. Porsild
+1498|(G. Lawson) G. Lawson
+1499|(G. Merr.) Brodo
+1500|(G. Merr.) Brodo & D. Hawksw.
+1501|(G. Merr.) Howard
+1502|(G. Merr.) Lamb
+1503|(G. Roth & Bock) Karcz.
+1504|(G. Weber) Ach.
+1505|(G.A. Mulligan & A.E. Porsild) Hultén
+1506|(G.A. Mulligan & A.E. Porsild) O'Kane & Al-Shehbaz
+1507|(G.A. Mulligan & A.E. Porsild) S.L. Welsh
+1508|(G.A. Mulligan & Calder) B. Boivin
+1509|(G.A. Mulligan) Windham & Al-Shehbaz
+1510|(G.G. Borshch.) Steere & W.B. Schofield
+1511|(G.L. Sm.) G.L. Sm.
+1512|(G.L. Sm.) L.E. Anderson, H.A. Crum & W.R. Buck
+1513|(G.N. Jones) C.L. Hitchc.
+1514|(G.S. Mill. & Standl.) Standl.
+1515|(Gaertn.) Vahl
+1516|(Gand.) Fernald
+1517|(Gand.) Tzvelev
+1518|(Gaud.) Farw.
+1519|(Gaud.) Griseb.
+1520|(Gaud.) Hayek
+1521|(Gaud.) Lindm.
+1522|(Gaud.) Malag.
+1523|(Gaud.) W.D.J. Koch
+1524|(Geh.) Paris
+1525|(Genth) Schaer.
+1526|(Georgi ex Lamb.) Á. Löve
+1527|(Georgi) G. Lawson
+1528|(Gieseke ex Lindenb.) Dumort.
+1529|(Glehn) A.P. Khokhr.
+1530|(Goldie) Coville
+1531|(Gombócz) W.H. Drury & Rollins
+1532|(Goodding) J.M. Coult. & A. Nelson
+1533|(Gorodkov) T.V. Egorova
+1534|(Gorodkov) V.I. Krecz.
+1535|(Gorodkov) Vorosch
+1536|(Gottsche & Rabenh.) Lindb.
+1537|(Gottsche ex Husn.) Bernet
+1538|(Gottsche ex Husn.) Schiffn.
+1539|(Gottsche ex Lindb.) Jørg.
+1540|(Gottsche ex Lindb.) R.M. Schust.
+1541|(Gottsche ex Rabenh.) Jørg.
+1542|(Gottsche ex Rabenh.) L. Söderstr. & Vána
+1543|(Gottsche ex Rabenh.) Schiffn.
+1544|(Gottsche ex Underw.) A. Evans
+1545|(Gottsche ex Underw.) R.M. Schust.
+1546|(Gottsche) H. Bern.
+1547|(Gottsche) Konstant. & Vilnet
+1548|(Gottsche) Limpr.
+1549|(Gottsche) Lindb.
+1550|(Gottsche) S. Hatt.
+1551|(Gottsche) Steph.
+1552|(Gottsche, Lindenb. & Nees) Müll. Frib.
+1553|(Goward & Goffinet) Goward & Goffinet
+1554|(Graewe) S. Ekman & Printzen
+1555|(Graham) A. Gray
+1556|(Graham) Á. Löve & D. Löve
+1557|(Graham) Al-Shehbaz
+1558|(Graham) Brouillet & Gornall
+1559|(Graham) Dorn
+1560|(Graham) Rydb.
+1561|(Graham) Small
+1562|(Grav.) Wijk & Margad.
+1563|(Gray) Philipson
+1564|(Greene ex Rydb.) A.L. Grant
+1565|(Greene) A. Heller
+1566|(Greene) Á. Löve & D. Löve
+1567|(Greene) Á. Löve & Simon
+1568|(Greene) A.E. Porsild
+1569|(Greene) A.P. Khokhr.
+1570|(Greene) A.R. Mast & Reveal
+1571|(Greene) Abrams
+1572|(Greene) B. Boivin
+1573|(Greene) Bég. & Beloserky
+1574|(Greene) Breitung
+1575|(Greene) C.L. Hitchc.
+1576|(Greene) C.L. Hitchc. & Maguire
+1577|(Greene) Chern.
+1578|(Greene) Cherniawsky & R.J. Bayer
+1579|(Greene) Cody
+1580|(Greene) Cronq.
+1581|(Greene) Detling
+1582|(Greene) Dorn
+1583|(Greene) Ediger & T.M. Barkley
+1584|(Greene) Engl. & Irmsch.
+1585|(Greene) Fedde
+1586|(Greene) Fernald
+1587|(Greene) G.N. Jones
+1588|(Greene) G.W. Douglas & Ruyle-Douglas
+1589|(Greene) Greene
+1590|(Greene) Hultén
+1591|(Greene) I.M. Johnst.
+1592|(Greene) Jelen. & Derv.-Sok.
+1593|(Greene) Jeps.
+1594|(Greene) Jurtsev
+1595|(Greene) Kartesz & Gandhi
+1596|(Greene) Kearney & Peebles
+1597|(Greene) L.D. Benson
+1598|(Greene) L.H. Bailey
+1599|(Greene) Lepage
+1600|(Greene) LePage
+1601|(Greene) Lunell
+1602|(Greene) M. Hopkins
+1603|(Greene) Maguire
+1604|(Greene) O.E. Schulz
+1605|(Greene) Pobed.
+1606|(Greene) Polunin
+1607|(Greene) R.J. Bayer
+1608|(Greene) R.R. Gates
+1609|(Greene) Rollins
+1610|(Greene) Roy L. Taylor & MacBryde
+1611|(Greene) Rydb.
+1612|(Greene) S.L. Welsh
+1613|(Greene) Sam.
+1614|(Greene) Smiley
+1615|(Greene) Standl.
+1616|(Greene) Stanford
+1617|(Greene) Stuckey
+1618|(Greene) Thorne
+1619|(Greene) Vict.
+1620|(Greene) Vincent
+1621|(Greene) W.C. Martin & C.R. Hutchins
+1622|(Greene) W.H. Drury & Rollins
+1623|(Greene) Windham & Al-Shehbaz
+1624|(Greene) Wynd
+1625|(Greenm.) Á. Löve & D. Löve
+1626|(Greenm.) B. Boivin
+1627|(Greenm.) Barkalov
+1628|(Greenm.) Cronq.
+1629|(Greenm.) Fernald
+1630|(Greenm.) Greenm.
+1631|(Greenm.) J.F. Bain
+1632|(Greenm.) R.R. Gates
+1633|(Gren. & Godr.) Shinners
+1634|(Grev. & Arn.) Broth.
+1635|(Grev. & Arn.) Schimp.
+1636|(Griseb.) A.E. Porsild
+1637|(Griseb.) Farw.
+1638|(Griseb.) Hultén
+1639|(Griseb.) Ostenf.
+1640|(Griseb.) Prob.
+1641|(Griseb.) Scribn.
+1642|(Griseb.) Scribn. & Merr.
+1643|(Griseb.) Tzvelev
+1644|(Grolle) Nebel & D. Quandt
+1645|(Grossh. ex Tolm.) Á. Löve & D. Löve
+1646|(Grossh. ex Tolm.) Sipliv.
+1647|(Grout) Fl.
+1648|(Grout) Grout
+1649|(Grout) H. Rob.
+1650|(Grout) H.A. Crum & L.E. Anderson
+1651|(Grout) H.A. Crum, Steere & L.E. Anderson
+1652|(Grout) Ochyra
+1653|(Grout) Ochyra & Zarnowiec
+1654|(Grout) Tuom.
+1655|(Grout) Wijk & Margad.
+1656|(Grumm.) Döbbeler
+1657|(Gugler) Hayek
+1658|(Gunnerus) Du Rietz
+1659|(Guss.) Boiss.
+1660|(Guss.) Ikonn.
+1661|(Gyeln.) Brodo & D. Hawksw.
+1662|(Gyeln.) Gyeln.
+1663|(Gyeln.) Hale
+1664|(Gyeln.) Holt.-Hartw. & Tonsb.
+1665|(Gyeln.) Lücking, Moncada & S. Stenroos
+1666|(Gyeln.) Mot.
+1667|(Gyeln.) P.M. Jørg. & S. Ekman
+1668|(Gyeln.) Räsänen
+1669|(H. Buch & S.W. Arnell) Konstant. & Vilnet
+1670|(H. Buch & S.W. Arnell) L. Söderstr., De Roo & Hedd.
+1671|(H. Buch & S.W. Arnell) Lammes
+1672|(H. Buch & S.W. Arnell) Müll. Frib.
+1673|(H. Buch & S.W. Arnell) R.M. Schust.
+1674|(H. Buch & S.W. Arnell) R.M. Schust. & Damsh.
+1675|(H. Buch & S.W. Arnell) Stotler & Stotl.-Crand.
+1676|(H. Buch) E.W. Jones ex R.M. Schust.
+1677|(H. Christ ex Scheutz) Fernald
+1678|(H. Lindb.) H. Lindb.
+1679|(H. Lindb.) Podp.
+1680|(H. Magn.) Clauzade & Rondon
+1681|(H. Magn.) Frey
+1682|(H. Magn.) G. Salisb.
+1683|(H. Magn.) H. Magn.
+1684|(H. Magn.) Hafellner
+1685|(H. Magn.) Hertel
+1686|(H. Magn.) Hertel & Brodo
+1687|(H. Magn.) J.W. Thompson
+1688|(H. Magn.) Oksner
+1689|(H. Magn.) Owe-Larss. & A. Nordin
+1690|(H. Magn.) R. Anderson & Hertel
+1691|(H. Magn.) Räsänen
+1692|(H. Magn.) S. Ekman
+1693|(H. Magn.) Sliwa, Zhao Xin & Lumbsch
+1694|(H. Philibert) J.J. Amann
+1695|(H. Philibert) Mönk.
+1696|(H. Rob.) H.A. Crum
+1697|(H.A. Mill. & E.B. Scott) H.A. Mill
+1698|(H.M. Hall) H.J. Thompson
+1699|(H.P. Fuchs) Á. Löve & D. Löve
+1700|(H.S. Jenn.) H.E. Bigelow
+1701|(H.S. Jenn.) Redhead, Lutzoni, Moncalvo & Vilgalys
+1702|(Habeeb) H.A. Crum
+1703|(Hack.) Druce
+1704|(Hack.) Govor.
+1705|(Hack.) Patzke ex Pils
+1706|(Hack.) Piper
+1707|(Hack.) R.P. Murray
+1708|(Hadac & Á. Löve) Á. Löve & D. Löve
+1709|(Hadac & Á. Löve) Elven
+1710|(Hadac) Rønning
+1711|(Haenke) Á. Löve & D. Löve
+1712|(Haenke) J.P. Anderson
+1713|(Hagstr.) Tzvelev
+1714|(Hampe) Grout
+1715|(Hampe) Hampe
+1716|(Hampe) Loeske
+1717|(Hampe) Mitt.
+1718|(Hampe) Paris
+1719|(Harm.) Kuan
+1720|(Harmaja) G.D. Wallace
+1721|(Harshb.) S.B. Young
+1722|(Hartm.) Á. Löve & D. Löve
+1723|(Hartm.) G. Roth
+1724|(Hartm.) Greuter & Burdet
+1725|(Hartm.) H. Rob.
+1726|(Hartm.) Holmb.
+1727|(Hartm.) Hyl.
+1728|(Hartm.) Isov.
+1729|(Hartm.) Kindb.
+1730|(Hartm.) Lindb.
+1731|(Hartm.) Liro
+1732|(Hartm.) Nyholm
+1733|(Hartm.) Paul
+1734|(Hartm.) Regel
+1735|(Hartm.) Schimp.
+1736|(Hartm.) Tzvelev
+1737|(Hartm.) Uotila
+1738|(Hartm.) Wahlenb.
+1739|(Hartmann) O. Schwarz
+1740|(Harv.) A. Jaeger
+1741|(Haugan & Timdal) M.P. Andreev
+1742|(Haugan & Timdal) R. Sant.
+1743|(Hausskn.) C.L. Hitchc.
+1744|(Hausskn.) Czerep.
+1745|(Hausskn.) D. Löve
+1746|(Hausskn.) Fernald
+1747|(Hausskn.) Hoch & P.H. Raven
+1748|(Hausskn.) Hultén
+1749|(Hausskn.) S.L. Welsh
+1750|(Hayata) T.S. Liu & S.S. Ying
+1751|(Hedenäs) Hedenäs & C. Rosborg
+1752|(Hedl. ex H. Magn.) K. Knudsen & L. Arcadia
+1753|(Hedl.) Räsänen
+1754|(Hedw.) A. Jaeger
+1755|(Hedw.) A. Jaeger & Sauerbeck
+1756|(Hedw.) Ach.
+1757|(Hedw.) Bednarek-Ochyra & Ochyra
+1758|(Hedw.) Boul.
+1759|(Hedw.) Brid.
+1760|(Hedw.) Broth.
+1761|(Hedw.) Bruch & Schimp.
+1762|(Hedw.) Bruch, Schimp. & W. Gümbel
+1763|(Hedw.) C.E.O. Jensen
+1764|(Hedw.) Carruth.
+1765|(Hedw.) Chen
+1766|(Hedw.) Corda
+1767|(Hedw.) D. Mohr
+1768|(Hedw.) De Not.
+1769|(Hedw.) Dicks.
+1770|(Hedw.) Dixon
+1771|(Hedw.) Dumort.
+1772|(Hedw.) E. Britton
+1773|(Hedw.) E. Lawton
+1774|(Hedw.) F. Lara, Garilleti & Goffinet
+1775|(Hedw.) F. Weber & D. Mohr
+1776|(Hedw.) F. Weber & D. Mohr.
+1777|(Hedw.) Fleisch.
+1778|(Hedw.) Fr.
+1779|(Hedw.) G. Gaertn., B. Mey. & Scherb.
+1780|(Hedw.) G.L. Sm.
+1781|(Hedw.) Grout
+1782|(Hedw.) H. Rob.
+1783|(Hedw.) Hampe
+1784|(Hedw.) Hartm.
+1785|(Hedw.) Hilf. ex H.A. Crum & L.E. Anderson
+1786|(Hedw.) Hoffm.
+1787|(Hedw.) Hook. & Taylor
+1788|(Hedw.) Hornsch.
+1789|(Hedw.) Hübener
+1790|(Hedw.) I. Hagen
+1791|(Hedw.) Ignatov
+1792|(Hedw.) Ignatov & Huttunen
+1793|(Hedw.) Ignatov & Ignatova
+1794|(Hedw.) Irel.
+1795|(Hedw.) J. R. Spence
+1796|(Hedw.) J.R. Spence
+1797|(Hedw.) J.R. Spence & H.P. Ramsay
+1798|(Hedw.) J.R. Spence & H.P. Ramsay ex Holyoak & N. Pedersen
+1799|(Hedw.) Jenn.
+1800|(Hedw.) Kanda
+1801|(Hedw.) Kindb.
+1802|(Hedw.) Lam. & DC.
+1803|(Hedw.) Limpr.
+1804|(Hedw.) Lindb.
+1805|(Hedw.) Lindb. ex Milde
+1806|(Hedw.) Loeske
+1807|(Hedw.) M. Fleisch.
+1808|(Hedw.) Mitt.
+1809|(Hedw.) Mitt. ex Broth.
+1810|(Hedw.) Mönk.
+1811|(Hedw.) Muhlenberg
+1812|(Hedw.) Müll. Hal.
+1813|(Hedw.) Myr.
+1814|(Hedw.) Ochyra
+1815|(Hedw.) Ochyra & Stebel
+1816|(Hedw.) P. Beauv.
+1817|(Hedw.) P. Rich. & Wallace
+1818|(Hedw.) R.H. Zander
+1819|(Hedw.) R.H. Zander & Hedd.
+1820|(Hedw.) Rabenh.
+1821|(Hedw.) Raddi
+1822|(Hedw.) Röhl.
+1823|(Hedw.) Scherb. ex G. Gaertn., B. Mey & Scherb.
+1824|(Hedw.) Schimp.
+1825|(Hedw.) Schwägr.
+1826|(Hedw.) Sm.
+1827|(Hedw.) Spruce
+1828|(Hedw.) Steere
+1829|(Hedw.) T.J. Kop.
+1830|(Hedw.) Turner
+1831|(Hedw.) Warnst.
+1832|(Hedw.) Wilson
+1833|(Hedw.) With.
+1834|(Hedw.) Z. Iwats.
+1835|(Heeg) R.M. Schust.
+1836|(Heeg) Schiffn.
+1837|(Hegelm.) Calder & Roy L. Taylor
+1838|(Hegelm.) Fassett
+1839|(Hegelm.) Jeps.
+1840|(Hegelm.) Lansdown
+1841|(Heiser) Heiser
+1842|(Heiser) Shinners
+1843|(Hellbom) Th. Fr.
+1844|(Henssen & Tønsberg) T.Sprib., Muggia & Tønsberg
+1845|(Hepp ex Arn.) Søchting, Kärnefelt & S.Y. Kondr.
+1846|(Hepp ex Arnold) Kremp
+1847|(Hepp ex Arnold) Nyl.
+1848|(Hepp ex Arnold) Zwackh.
+1849|(Hepp ex Körb.) Poelt
+1850|(Hepp ex Stizenb.) Mig.
+1851|(Hepp ex Th. Fr.) Stizenb.
+1852|(Hepp) A. Massal.
+1853|(Hepp) Arnold
+1854|(Hepp) Diederich & van den Boom
+1855|(Hepp) Hafellner
+1856|(Hepp) Hertel & Hafellner
+1857|(Hepp) Hue
+1858|(Hepp) Körb.
+1859|(Hepp) Mudd
+1860|(Hepp) Poelt
+1861|(Hepp) Rehm
+1862|(Hepp) Th. Fr.
+1863|(Hepp) Trevis.
+1864|(Hepp) Vain.
+1865|(Hepp.) Th. Fr.
+1866|(Herre) Herre
+1867|(Herre) K. Knudsen & L. Arcadia
+1868|(Herre) Tibell
+1869|(Hertel) Hertel
+1870|(Herz.) Hatt.
+1871|(Hessl.) Brassard
+1872|(Hessl.) Brid.
+1873|(Heufl. ex Frauenf.) R. Sant.
+1874|(Hiitonen) Á. Löve
+1875|(Hiitonen) Czern.
+1876|(Hiitonen) Holub
+1877|(Hiitonen) J. Jalas
+1878|(Hillmann) Grummann
+1879|(Hitchc.) B. Boivin
+1880|(Hitchc.) Hultén
+1881|(Hochst. ex Schaer.) Hue
+1882|(Hoffm. ex Ach.) M. Wade
+1883|(Hoffm.) A. Gray
+1884|(Hoffm.) A. Massal.
+1885|(Hoffm.) A. Nordin, S. Savic & Tibell
+1886|(Hoffm.) A. Nordin, Savic & Tibell
+1887|(Hoffm.) Ach.
+1888|(Hoffm.) Ahti
+1889|(Hoffm.) Anzi
+1890|(Hoffm.) Arnold
+1891|(Hoffm.) Arup, Frödén & Søchting
+1892|(Hoffm.) Brodo & D. Hawksw.
+1893|(Hoffm.) C. Chr.
+1894|(Hoffm.) Coppins & Scheid.
+1895|(Hoffm.) Dalla Torre & Sarnth.
+1896|(Hoffm.) Flot.
+1897|(Hoffm.) Frödén, Arup, & Søchting
+1898|(Hoffm.) Furnr.
+1899|(Hoffm.) Gray
+1900|(Hoffm.) Hafellner
+1901|(Hoffm.) Hoffm.
+1902|(Hoffm.) Jatta
+1903|(Hoffm.) Kremp.
+1904|(Hoffm.) Lettau
+1905|(Hoffm.) Llano
+1906|(Hoffm.) Lumbsch
+1907|(Hoffm.) Minks
+1908|(Hoffm.) Moberg
+1909|(Hoffm.) Müll. Arg.
+1910|(Hoffm.) Newman
+1911|(Hoffm.) Nordin
+1912|(Hoffm.) Nyl.
+1913|(Hoffm.) Otálora, P.M. Jørg. & Wedin
+1914|(Hoffm.) Poelt & Petutschnig
+1915|(Hoffm.) Rabenh.
+1916|(Hoffm.) Räsänen
+1917|(Hoffm.) Rieber
+1918|(Hoffm.) S.Y. Kondr. & Kärnefelt
+1919|(Hoffm.) S.Y. Kondr., Fedorenko, S. Stenroos, Kärnefelt, Elix, Hur, & A. Thell
+1920|(Hoffm.) Schaer.
+1921|(Hoffm.) Søchting, Kärnefelt, & S.Y. Kondr.
+1922|(Hoffm.) Th. Fr.
+1923|(Hoffm.) Tuck.
+1924|(Hoffm.) Zahlbr.
+1925|(Höhn.) Broth.
+1926|(Holm) Á. Löve & D. Löve
+1927|(Holm) B.L. Wilson & R.E. Brainerd
+1928|(Holm) Böcher
+1929|(Holm) Cronq.
+1930|(Holm) D.F. Murray
+1931|(Holm) Kük.
+1932|(Holm) L.A. Standl.
+1933|(Holm) Mack.
+1934|(Holm) O.E. Schulz
+1935|(Holm) T.V. Egorova
+1936|(Holmb.) Tzvelev
+1937|(Holmen) B.M. Murray
+1938|(Holmen) S.L. Welsh
+1939|(Holz.) B. Boivin
+1940|(Holz.) Calder & Roy L. Taylor
+1941|(Holz.) Grout
+1942|(Holz.) Holz.
+1943|(Honda) Ohwi
+1944|(Honda) Tzvelev
+1945|(Hook. & Arn.) Greene
+1946|(Hook. & Grev.) Brid.
+1947|(Hook. & Grev.) Kindb.
+1948|(Hook. & Grev.) Selander
+1949|(Hook. & Taylor) A.J.E. Sm.
+1950|(Hook. & Taylor) Lindb.
+1951|(Hook. & Taylor) Plášek, Sawicki & Ochyra
+1952|(Hook. & Wilson) Limpr.
+1953|(Hook.) A. Gray
+1954|(Hook.) A. Heller
+1955|(Hook.) Á. Löve & D. Löve
+1956|(Hook.) A.E. Murray
+1957|(Hook.) A.E. Porsild
+1958|(Hook.) Abrams
+1959|(Hook.) Aellen
+1960|(Hook.) Austin
+1961|(Hook.) B. Boivin
+1962|(Hook.) Barneby
+1963|(Hook.) Barratt ex Andersson
+1964|(Hook.) Bessey ex Britton
+1965|(Hook.) Breitung
+1966|(Hook.) Brid.
+1967|(Hook.) Britton
+1968|(Hook.) Broich
+1969|(Hook.) Broth.
+1970|(Hook.) Bruch & Schimp. ex A. Jaeger
+1971|(Hook.) C. Presl
+1972|(Hook.) C.K. Schneid.
+1973|(Hook.) C.L. Hitchc.
+1974|(Hook.) Calder & Roy L. Taylor
+1975|(Hook.) Cody
+1976|(Hook.) Corda
+1977|(Hook.) Coville
+1978|(Hook.) Cronq.
+1979|(Hook.) D. Dietr.
+1980|(Hook.) D.F. Murray & Elven
+1981|(Hook.) DC.
+1982|(Hook.) Dippel
+1983|(Hook.) Dorn
+1984|(Hook.) Dumort.
+1985|(Hook.) E. Lawton
+1986|(Hook.) E. Sheld.
+1987|(Hook.) F.T. Hubbard
+1988|(Hook.) F.W. Schultz & Sch. Bip.
+1989|(Hook.) Fernald
+1990|(Hook.) Fernald & Weath.
+1991|(Hook.) G.L. Nesom
+1992|(Hook.) Gottsche
+1993|(Hook.) Gray
+1994|(Hook.) Greene
+1995|(Hook.) Grolle
+1996|(Hook.) H. Rob.
+1997|(Hook.) H.M. Hall & Clements
+1998|(Hook.) Haber
+1999|(Hook.) Hoppe & Hornsch.
+2000|(Hook.) Hultén
+2001|(Hook.) J.J. Engel & Braggins
+2002|(Hook.) J.R. Spence
+2003|(Hook.) Jeps.
+2004|(Hook.) Jørg.
+2005|(Hook.) K. Schum.
+2006|(Hook.) Kärnefelt
+2007|(Hook.) Kern
+2008|(Hook.) Kuntze
+2009|(Hook.) Kurtz
+2010|(Hook.) L. Söderstr. & Vána
+2011|(Hook.) Lassetter & C.R. Gunn.
+2012|(Hook.) Limpr.
+2013|(Hook.) Lindb.
+2014|(Hook.) Lindb. ex Limpr.
+2015|(Hook.) M.E. Jones
+2016|(Hook.) Maxon
+2017|(Hook.) Meisn.
+2018|(Hook.) Mitt.
+2019|(Hook.) Moq.
+2020|(Hook.) Mosyakin
+2021|(Hook.) Muenscher
+2022|(Hook.) Müll. Hal.
+2023|(Hook.) Munro
+2024|(Hook.) Nees
+2025|(Hook.) Nutt.
+2026|(Hook.) Nutt. ex Torr. & A. Gray
+2027|(Hook.) O.E. Schulz
+2028|(Hook.) Piper
+2029|(Hook.) Porter
+2030|(Hook.) R.S. Williams
+2031|(Hook.) Raf.
+2032|(Hook.) Rehder
+2033|(Hook.) Renauld & Cardot
+2034|(Hook.) Rollins
+2035|(Hook.) Rothr.
+2036|(Hook.) Rydb.
+2037|(Hook.) Rydb. ex Small
+2038|(Hook.) S. Watson
+2039|(Hook.) S.L. Welsh
+2040|(Hook.) Sarg.
+2041|(Hook.) Schiffn.
+2042|(Hook.) Scribn. & J.G. Sm.
+2043|(Hook.) Scribn. ex Macoun
+2044|(Hook.) Skvort.
+2045|(Hook.) Small
+2046|(Hook.) Spreng.
+2047|(Hook.) Spruce
+2048|(Hook.) Starod.
+2049|(Hook.) Steere
+2050|(Hook.) Steph.
+2051|(Hook.) Tuck.
+2052|(Hook.) Tuck. ex M.A. Curtis
+2053|(Hook.) Vána & L. Söderstr.
+2054|(Hook.) Vasey
+2055|(Hook.) W.A. Weber
+2056|(Hook.) Wesmael
+2057|(Hook.) Wheelock
+2058|(Hopkins) Calder & Roy L. Taylor
+2059|(Hoppe & Hornsch. ex Hook.) Nees & Hornsch.
+2060|(Hoppe & Hornsch. ex Hook.) Wijk & Margad.
+2061|(Hoppe & Hornsch.) Brid.
+2062|(Hoppe ex Brid.) Brid.
+2063|(Hoppe ex Brid.) Hartm.
+2064|(Hoppe) Milde
+2065|(Hoppe) Röhling
+2066|(Horik.) T.J. Kop.
+2067|(Hornem.) Á. Löve & D. Löve
+2068|(Hornem.) Böcher ex J. Feilberg
+2069|(Hornem.) Elven
+2070|(Hornem.) Fernald
+2071|(Hornem.) Fr.
+2072|(Hornem.) Frye & L. Clark
+2073|(Hornem.) Hertel
+2074|(Hornem.) Hertel & A.J. Schwab
+2075|(Hornem.) Hultén ex V.V. Petrovsky
+2076|(Hornem.) Kindb.
+2077|(Hornem.) Lange
+2078|(Hornem.) Lindb.
+2079|(Hornem.) Melderis
+2080|(Hornem.) Ostenf.
+2081|(Hornem.) P.D. Sell
+2082|(Hornem.) R. Br.
+2083|(Hornem.) Rchb.
+2084|(Hornem.) Wormsk.
+2085|(Hornsch.) A. Br.
+2086|(Hornsch.) Broth.
+2087|(Hornsch.) Hübener
+2088|(Hornsch.) J.J. Amann
+2089|(Hornsch.) Kindb.
+2090|(Hornsch.) Müll. Hal.
+2091|(Houtt.) Ronse Decr.
+2092|(Howell) B.L. Rob.
+2093|(Howell) C.L. Hitchc.
+2094|(Howell) Dorn
+2095|(Howell) Fernald
+2096|(Howell) G.N. Jones
+2097|(Howell) Greene
+2098|(Howell) Jeps.
+2099|(Howell) L.A. Sergienko
+2100|(Howell) Piper
+2101|(Howell) Rousi
+2102|(Howell) Rydb.
+2103|(Hübener & Genth ex Lindb.) Husn.
+2104|(Hübener) A. Evans
+2105|(Hübener) Braithw.
+2106|(Hübener) Bruch & Schimp.
+2107|(Hübener) Dumort.
+2108|(Hübener) H. Buch
+2109|(Hübener) Hartm.
+2110|(Hübener) Konstant. & Vilnet
+2111|(Hübener) Lindb.
+2112|(Hübener) M.C. Bowers
+2113|(Hübener) Moore
+2114|(Hübener) Müll. Frib.
+2115|(Hübener) R.M. Schust.
+2116|(Hübener) Spruce ex Pearson
+2117|(Hübener) T.J. Kop.
+2118|(Hübener) Vána & L. Söderstr.
+2119|(Huds. ex With.) N. Pedersen
+2120|(Huds.) A. Gray
+2121|(Huds.) A. Massal.
+2122|(Huds.) Ach.
+2123|(Huds.) Bakalin
+2124|(Huds.) Baumg.
+2125|(Huds.) Dumort.
+2126|(Huds.) Farw.
+2127|(Huds.) Fink
+2128|(Huds.) Gray
+2129|(Huds.) H. Buch
+2130|(Huds.) Hafellner
+2131|(Huds.) Hoffm.
+2132|(Huds.) Link
+2133|(Huds.) Mont.
+2134|(Huds.) Otálora, P.M. Jørg. & Wedin
+2135|(Huds.) Oteng-Yeboah
+2136|(Huds.) P. Beauv.
+2137|(Huds.) Pers.
+2138|(Huds.) Pursh
+2139|(Huds.) Rebent.
+2140|(Huds.) S.J. Darbyshire
+2141|(Huds.) Schrad.
+2142|(Huds.) Th. Fr.
+2143|(Huds.) Vain.
+2144|(Huds.) Weber ex F.H. Wigg.
+2145|(Hudson) DC.
+2146|(Hue) Canals, Hern.-Mar., Gómez-Bolea & Llimona
+2147|(Hue) P.M. Jørg.
+2148|(Hue) R.C. Harris
+2149|(Hultén) Á. Löve & D. Löve
+2150|(Hultén) A.E. Porsild
+2151|(Hultén) A.J. Moore & Dillenb.
+2152|(Hultén) Argus
+2153|(Hultén) B. Boivin
+2154|(Hultén) Barneby
+2155|(Hultén) Barneby & S.L. Welsh
+2156|(Hultén) C.L. Hitchc.
+2157|(Hultén) comb. nov.
+2158|(Hultén) D.F. Murray & Elven
+2159|(Hultén) Elven & D.F. Murray
+2160|(Hultén) Gornall & H. Ohba
+2161|(Hultén) H. Ohba
+2162|(Hultén) H.R. Hinds
+2163|(Hultén) Heywood
+2164|(Hultén) Hultén
+2165|(Hultén) J.P. Anderson
+2166|(Hultén) Kozh.
+2167|(Hultén) L.D. Benson
+2168|(Hultén) Molau & D.F. Murray
+2169|(Hultén) Rändel ex D.F. Murray
+2170|(Hultén) Raup
+2171|(Hultén) Reveal
+2172|(Hultén) S.L. Welsh
+2173|(Hultén) Soják
+2174|(Hultén) Soják ex Elven & D.F. Murray
+2175|(Hultén) T.V. Egorova
+2176|(Hultén) Tolm.
+2177|(Hultén) Tzvelev
+2178|(Hultén) W.A. Weber
+2179|(Hultén) W.E. Lawrence
+2180|(Hultén) Zhmylev & V.V. Petrovsky
+2181|(Hulting) S. Stenroos & Huhtinen
+2182|(Huth) Abrams
+2183|(Huth) C.L. Hitchc.
+2184|(Huth) P.G. Sm.
+2185|(I. Hagen & C.E.O. Jensen) Frye
+2186|(I. Hagen ex Limpr.) J.R. Spence
+2187|(I. Hagen) B. Bremer.
+2188|(I. Hagen) Broth.
+2189|(I. Hagen) C.J. Cox & Hedderson
+2190|(I. Hagen) J.J. Amann
+2191|(I. Hagen) Kindb.
+2192|(I. Hagen) Loeske
+2193|(I. Hagen) Long
+2194|(I. Hagen) Mönk.
+2195|(I. M. Lamb) Lendemer & Hodk.
+2196|(I.V. Kusn.) Hultén
+2197|(I.V. Kusn.) Koyama & Kawano
+2198|(Imshaug) Culb. & C. Culb.
+2199|(Imshaug) Kärnefelt
+2200|(Inoue & Steere) Konstant.
+2201|(Inoue & Steere) L. Söderstr. & Vána
+2202|(Inoue & Steere) Schljakov
+2203|(Inoue) Inoue
+2204|(Irel.) Bednarek-Ochyra & Ochyra
+2205|(Issler) Ludwig
+2206|(Itzigsohn) J.R. Spence
+2207|(J. Lahm ex Arnold) Hafellner
+2208|(J. Lahm) Nyl.
+2209|(J. Lange) G. Roth
+2210|(J. Presl) Á. Löve
+2211|(J. Presl) Á. Löve & D. Löve
+2212|(J. Presl) Church
+2213|(J. Presl) Fernald & Weath.
+2214|(J. Presl) G. Tucker
+2215|(J. Presl) G. Weim.
+2216|(J. Presl) Hitchc.
+2217|(J. Presl) J.I. Davis
+2218|(J. Presl) Munz
+2219|(J. Presl) Pavlick
+2220|(J. Presl) Prob.
+2221|(J. Presl) Steud.
+2222|(J. Presl) Tzvelev
+2223|(J. Vahl ex Fr.) J. Vahl
+2224|(J. Vahl) A.E. Porsild
+2225|(J. Vahl) B. Boivin
+2226|(J. Vahl) Cronq.
+2227|(J.B. Jack ex Gottsche & Rabenh.) Lacout.
+2228|(J.D. Godfrey & G. Godfrey) Bakalin
+2229|(J.D. Godfrey & G. Godfrey) Vána, Hentschel & Heinrichs
+2230|(J.E. Zetterst.) Bremer
+2231|(J.E. Zetterst.) F. Lara, Garilleti & Goffinet
+2232|(J.E. Zetterst.) Flow.
+2233|(J.E. Zetterst.) H. Möller
+2234|(J.E. Zetterst.) H.A. Crum & L.E. Anderson
+2235|(J.E. Zetterst.) Hasselrot
+2236|(J.E. Zetterst.) Limpr.
+2237|(J.E. Zetterst.) Nyholm
+2238|(J.E. Zetterst.) Wijk & Margad.
+2239|(J.E. Zetterstedt) H.H. Blom
+2240|(J.F. Gmel. ex Cham.) A.E. Murray
+2241|(J.F. Gmel.) Gorman
+2242|(J.F. Gmel.) Jeps.
+2243|(J.F. Gmel.) Ledeb.
+2244|(J.F. Gmel.) Nakai
+2245|(J.F. Gmel.) Piper
+2246|(J.F. Macbr. & Payson) O.E. Schulz
+2247|(J.F. Macbr.) Hultén
+2248|(J.F. Macbr.) S.L. Welsh
+2249|(J.M. Coult. & Evans) B. Boivin
+2250|(J.M. Coult. & Evans) Drescher
+2251|(J.M. Coult. & Evans) Wangerin
+2252|(J.M. Coult. & Rose) B. Boivin
+2253|(J.M. Coult. & Rose) Blank.
+2254|(J.M. Coult. & Rose) Fernald
+2255|(J.M. Coult. & Rose) Krasnob.
+2256|(J.M. Coult. & Rose) Mathias & Constance
+2257|(J.M. Coult. & Rose) Suksd.
+2258|(J.M. Gillett & H. Senn) Á. Löve
+2259|(J.M. Gillett & H. Senn) E.G. Voss
+2260|(J.M. Gillett) comb. nov.
+2261|(J.M. Gillett) J.M. Gillett
+2262|(J.R. Laundon) Clauzade & Cl. Roux
+2263|(J.R. Laundon) Coppins & P. James
+2264|(J.R. Laundon) Kukwa
+2265|(J.W. Bailey) Irel.
+2266|(J.W. Moore) B. Boivin
+2267|(J.W. Robbins) D.H. Les & Haynes
+2268|(J.W. Robbins) Dorn
+2269|(J.W. Robbins) Haynes, D.H. Les & M. Kral
+2270|(J.W. Robbins) Morong
+2271|(J.W. Thomson) Esnault & Cl. Roux
+2272|(J.W. Thomson) J.W. Thomson
+2273|(Jaap) D. Hawksw.
+2274|(Jacq. ex Duby) Kuntze
+2275|(Jacq.) Á. Löve & D. Löve
+2276|(Jacq.) Parl.
+2277|(Jacq.) Vain.
+2278|(James) Kindb.
+2279|(James) Salm.
+2280|(Jatta) Lamb
+2281|(Jeps.) Jeps.
+2282|(Jeps.) McDermott
+2283|(Jord.) Nyman
+2284|(Jordal) Á. Löve & D. Löve
+2285|(Jordal) B. Boivin
+2286|(Jordal) Wherry
+2287|(Jørg.) Inoue
+2288|(Jørg.) Lammes
+2289|(Jur. & Milde) Limpr.
+2290|(Jur.) G. Roth
+2291|(Jur.) Limpr.
+2292|(Jur.) Mönk.
+2293|(Jurtz. & Tzvelev) Prob.
+2294|(Jurtz. & V.V. Petrovsky) Á. Löve & D. Löve
+2295|(Jurtz. & V.V. Petrovsky) M.H. Jørg. & Elven
+2296|(Jurtz.) Czerep.
+2297|(Jurtz.) Jurtz.
+2298|(Jurtz.) Malyschev
+2299|(Jurtz.) Soják
+2300|(Jurtz.) Tzvelev
+2301|(Juz.) Breitung
+2302|(Juz.) Hultén
+2303|(Juz.) J. Kozhevn
+2304|(Juz.) Mayschev
+2305|(Juz.) Soják
+2306|(K. Hagen) Sandst.
+2307|(K. Hagen) Willd.
+2308|(K. Koch) Meikle
+2309|(Kaal.) A. Evans
+2310|(Kaal.) Arnell
+2311|(Kaal.) Broth.
+2312|(Kaal.) H. Buch
+2313|(Kaal.) Kaal.
+2314|(Kaal.) Konstant., Vilnet & A.V. Troitsky
+2315|(Kaal.) L. Söderstr., De Roo & Hedd.
+2316|(Kaal.) Loeske
+2317|(Kaal.) Müll. Frib.
+2318|(Kaal.) S. Arnell
+2319|(Kaal.) Schiffn.
+2320|(Kashiw.) Essl.
+2321|(Kaulf.) C. Presl
+2322|(Kearney) C.W. Greene
+2323|(Kearney) Hitchc.
+2324|(Kearney) Nash
+2325|(Keissl.) D. Hawksw.
+2326|(Kellogg) C.L. Hitchc. & Maguire
+2327|(Kellogg) Greene
+2328|(Kellogg) H. Christ
+2329|(Kellogg) Rydb.
+2330|(Kenn.) Laz.
+2331|(Kenn.) R.H. Zander
+2332|(Kindb. ex Breidl.) Kuc
+2333|(Kindb. ex Breidl.) Lindb. ex Arnell
+2334|(Kindb.) A.L. Andrews
+2335|(Kindb.) Bednarek-Ochyra & Ochyra
+2336|(Kindb.) Broth.
+2337|(Kindb.) Cardot & Thér.
+2338|(Kindb.) E. Lawton
+2339|(Kindb.) Frisvoll
+2340|(Kindb.) G. Jones
+2341|(Kindb.) Grout
+2342|(Kindb.) H.A. Crum
+2343|(Kindb.) H.A. Crum, Steere & L.E. Anderson
+2344|(Kindb.) Ignatov & Huttunen
+2345|(Kindb.) J.R. Spence
+2346|(Kindb.) Karcz.
+2347|(Kindb.) Kindb.
+2348|(Kindb.) Kindb. & Macoun
+2349|(Kindb.) Macoun & Kindb.
+2350|(Kindb.) Paris
+2351|(Kindb.) Perss.
+2352|(Kindb.) R.H. Zander
+2353|(Kindb.) R.S. Chopra
+2354|(Kindb.) T.J. Kop.
+2355|(Kindb.) Warnst.
+2356|(Kindb.) Wijk & Margad.
+2357|(Kindb.)(Bednarek-Ochyra) Bednarek-Ochyra & Ochyra
+2358|(Kitag.) Á. Löve & D. Löve
+2359|(Kjellm.) Á. Löve & D. Löve
+2360|(Kjellm.) A.E. Porsild
+2361|(Kjellm.) B. Boivin
+2362|(Kjellm.) Cufod.
+2363|(Kjellm.) Hultén
+2364|(Kjellm.) Sam.
+2365|(Klinge) Verm.
+2366|(Klinggr.) G. Roth
+2367|(Klinggr.) Pilous
+2368|(Koch ex Spruce) Loeske
+2369|(Koch ex Spruce) Warnst.
+2370|(Koidzumi) Á. Löve & D. Löve
+2371|(Koidzumi) Fernald
+2372|(Koidzumi) Koidzumi
+2373|(Kom.) Alsos & Elven
+2374|(Kom.) Holub
+2375|(Kom.) Hultén
+2376|(Kom.) Jurtz.
+2377|(Kom.) Kitagawa
+2378|(Kom.) Rech. f. ex Tolm.
+2379|(Kom.) T.V. Egorova
+2380|(Kom.) Tzvelev
+2381|(Körb.) A. Massal.
+2382|(Körb.) A. Nordin
+2383|(Körb.) Blomb. & Forss.
+2384|(Körb.) D. Hawksw.
+2385|(Körb.) Gams ex Coppins
+2386|(Körb.) Gowan & Ahti
+2387|(Körb.) Hafellner & Türk
+2388|(Körb.) Hasse
+2389|(Körb.) Hepp
+2390|(Körb.) Hertel
+2391|(Körb.) Hertel & Knoph
+2392|(Körb.) Kallsten
+2393|(Körb.) Körb.
+2394|(Körb.) Lettau
+2395|(Körb.) Moberg
+2396|(Körb.) Mudd
+2397|(Körb.) Nyl.
+2398|(Körb.) P. James
+2399|(Körb.) R. Sant.
+2400|(Körb.) Stein
+2401|(Körb.) Stizenb.
+2402|(Körb.) Szat.
+2403|(Körb.) Th. Fr.
+2404|(Körb.) Tibell & K. Ryman
+2405|(Körb.) Trevis.
+2406|(Körb.) Triebel & Rambold
+2407|(Körb.) Tuck.
+2408|(Körb.) V. Wirth. & Vezda
+2409|(Körb.) Vain.
+2410|(Krasch.) Poljakov
+2411|(Krecz. & Bobr.) Á. Löve & D. Löve
+2412|(Krecz. & Bobr.) Hultén
+2413|(Krecz.) Á. Löve & D. Löve
+2414|(Kremp. ex Nyl.) Hellbom
+2415|(Kremp.) Anzi
+2416|(Kremp.) Arnold
+2417|(Kremp.) Hale
+2418|(Kremp.) Körb.
+2419|(Kremp.) Lutzoni
+2420|(Kremp.) Nyl.
+2421|(Kremp.) Stein
+2422|(Kreyer) Almb.
+2423|(Krog) Essl.
+2424|(Krog) Goward
+2425|(Krog) McCune
+2426|(Krog) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+2427|(Krog) Ohlsson
+2428|(Krylov) Serg.
+2429|(Krylov) V.I. Krecz.
+2430|(Kudô) Elven
+2431|(Kudo) Hultén
+2432|(Kudô) Roshev.
+2433|(Kük.) Gleason
+2434|(Kukkonen) Kukkonen
+2435|(Kullh.) H. Magn.
+2436|(Kullh.) Zahlbr.
+2437|(Kunth) Á. Löve & D. Löve
+2438|(Kunth) Beal
+2439|(Kunth) Hultén
+2440|(Kunth) Pennell
+2441|(Kunth) Small
+2442|(Kurok.) Skult
+2443|(Kuzen.) Jurtz.
+2444|(Kuzen.) McNeill
+2445|(Kuzen.) Ö. Nilsson
+2446|(L. ex Fr.) Quelet
+2447|(L. ex Fr.) Redhead, Lutzoni, Moncalvo, & Vilgalys
+2448|(L. ex Jolycl.) Ångstr.
+2449|(L. f.) Rambold & Hertel
+2450|(L.) A. Braun
+2451|(L.) A. Dietr.
+2452|(L.) A. Gray
+2453|(L.) A. Haines
+2454|(L.) A. Heller
+2455|(L.) Á. Löve
+2456|(L.) Á. Löve & D. Löve
+2457|(L.) A. Massal.
+2458|(L.) A. Nelson
+2459|(L.) A.E. Porsild
+2460|(L.) A.J. Moore & Dillenb.
+2461|(L.) A.J. Scott
+2462|(L.) Ach.
+2463|(L.) Adans.
+2464|(L.) All.
+2465|(L.) Alph. Wood
+2466|(L.) Ambrosi
+2467|(L.) Appleq.
+2468|(L.) Arcang.
+2469|(L.) Arnold
+2470|(L.) Asch. & Graebn.
+2471|(L.) Avrorin
+2472|(L.) Bab.
+2473|(L.) Baumg.
+2474|(L.) Benth.
+2475|(L.) Benth. & Hook. f.
+2476|(L.) Bernh.
+2477|(L.) Bernh. ex Schrank & Mart.
+2478|(L.) Besser
+2479|(L.) Biroli
+2480|(L.) Boiss.
+2481|(L.) Borbás
+2482|(L.) Borkh.
+2483|(L.) Börner
+2484|(L.) Bory
+2485|(L.) Britton
+2486|(L.) Britton, Sterns & Poggenb.
+2487|(L.) Brodo & D. Hawksw.
+2488|(L.) Bruhin
+2489|(L.) Bunge
+2490|(L.) C. Borner
+2491|(L.) C. Chr.
+2492|(L.) C.A. Mey.
+2493|(L.) Celak.
+2494|(L.) Clairville
+2495|(L.) Clapham
+2496|(L.) Corda
+2497|(L.) Cosson & Germain
+2498|(L.) Crantz
+2499|(L.) Cronq.
+2500|(L.) Czern.
+2501|(L.) D. Don
+2502|(L.) D.C.
+2503|(L.) D.H. Les & Haynes
+2504|(L.) DC.
+2505|(L.) Delarbre
+2506|(L.) Delise ex Duby
+2507|(L.) Desf.
+2508|(L.) Desv.
+2509|(L.) Desv. ex Nevski
+2510|(L.) Divakar, A. Crespo & Lumbsch
+2511|(L.) Doellinger
+2512|(L.) Druce
+2513|(L.) Dubois
+2514|(L.) Duby
+2515|(L.) Dulac
+2516|(L.) Dumort.
+2517|(L.) E.H.L. Krause
+2518|(L.) Eassl.
+2519|(L.) Egor.
+2520|(L.) Ehrh.
+2521|(L.) Endl.
+2522|(L.) Engelm.
+2523|(L.) Essl.
+2524|(L.) F.H. Wigg.
+2525|(L.) F.W. Schmidt
+2526|(L.) F.W. Schultz & Sch. Bip.
+2527|(L.) Farw.
+2528|(L.) Fée
+2529|(L.) Fenley ex Jeps.
+2530|(L.) Fenzl
+2531|(L.) Fink
+2532|(L.) Fourr.
+2533|(L.) Fr.
+2534|(L.) Fr. ex Fernald
+2535|(L.) Fresen.
+2536|(L.) Frödén, Arup, & Søchting
+2537|(L.) G. Beck
+2538|(L.) G. Gaertn., B. Mey. & Scherb.
+2539|(L.) G.L. Nesom
+2540|(L.) Gaertn.
+2541|(L.) Galasso, Banfi & Soldano
+2542|(L.) Gand.
+2543|(L.) Garcke
+2544|(L.) Gift, Kron & P.F. Stevens ex Galasso, Banfi & F. Conti
+2545|(L.) Gilbert
+2546|(L.) Gould
+2547|(L.) Gray
+2548|(L.) Greene
+2549|(L.) Griseb.
+2550|(L.) H. Karst.
+2551|(L.) Hack.
+2552|(L.) Hale
+2553|(L.) Hampe
+2554|(L.) Hanelt
+2555|(L.) Hanks
+2556|(L.) Hartm.
+2557|(L.) Hausskn.
+2558|(L.) Haw.
+2559|(L.) Hayek
+2560|(L.) Hiitonen
+2561|(L.) Hill
+2562|(L.) Hitchc.
+2563|(L.) Hoffm.
+2564|(L.) Holub
+2565|(L.) Hook.
+2566|(L.) Host
+2567|(L.) House
+2568|(L.) Howell
+2569|(L.) Hübener
+2570|(L.) Huds.
+2571|(L.) Hue
+2572|(L.) Hultén
+2573|(L.) Hyl.
+2574|(L.) I. Schmitt & Lumbsch
+2575|(L.) I.M. Johnst.
+2576|(L.) J.-E. Mattsson & M.J. Lai
+2577|(L.) J. Gay
+2578|(L.) J. Presl & C. Presl
+2579|(L.) J.F. Macbr.
+2580|(L.) J.H. Schaffner
+2581|(L.) J.R. Laundon
+2582|(L.) Jacq.
+2583|(L.) K. Koch
+2584|(L.) K. Richt.
+2585|(L.) Kärnefelt & A. Thell
+2586|(L.) Kartesz & Gandhi
+2587|(L.) Ker Gawl.
+2588|(L.) Körb.
+2589|(L.) Körn
+2590|(L.) Kuhn
+2591|(L.) Kuntze
+2592|(L.) L'Hér. ex Aiton
+2593|(L.) L.
+2594|(L.) Lam.
+2595|(L.) Lange
+2596|(L.) Lassen
+2597|(L.) Less.
+2598|(L.) Lindb.
+2599|(L.) Lindl.
+2600|(L.) Lindsay
+2601|(L.) Link
+2602|(L.) Lunell
+2603|(L.) Lye
+2604|(L.) M. Choisy
+2605|(L.) Makino
+2606|(L.) Medik.
+2607|(L.) Michx.
+2608|(L.) Mill.
+2609|(L.) Miller
+2610|(L.) Mitt.
+2611|(L.) Moench
+2612|(L.) Morong
+2613|(L.) Nakai
+2614|(L.) Nash
+2615|(L.) Neck.
+2616|(L.) Neck. ex Baker
+2617|(L.) Nevski
+2618|(L.) Newman
+2619|(L.) Nied.
+2620|(L.) Nieuwl.
+2621|(L.) Nieuwl. & Lunell
+2622|(L.) Norman
+2623|(L.) Nutt.
+2624|(L.) Nyl.
+2625|(L.) O'Kane & Al-Shehbaz
+2626|(L.) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+2627|(L.) O. Schwarz
+2628|(L.) Oakes
+2629|(L.) Opiz
+2630|(L.) Otálora, P.M. Jørg. & Wedin
+2631|(L.) P. Beauv.
+2632|(L.) P. Beauv. ex J. Presl & C. Presl
+2633|(L.) P. Beauv. ex Mart. & Schrank
+2634|(L.) P. Beauv. ex Roem. & Schult.
+2635|(L.) P.W. Ball
+2636|(L.) Palla
+2637|(L.) Pers.
+2638|(L.) Pfeiff.
+2639|(L.) Piper & Beattie
+2640|(L.) Pohl
+2641|(L.) Poljakov
+2642|(L.) R. Br.
+2643|(L.) R. Br. ex Hook.
+2644|(L.) R. Howe
+2645|(L.) R.J. Davis
+2646|(L.) R.M. Bateman, A.M. Pridgeon & M.W. Chase
+2647|(L.) R.M. Schust.
+2648|(L.) Rabenh.
+2649|(L.) Raddi
+2650|(L.) Raeusch.
+2651|(L.) Raf.
+2652|(L.) Rchb.
+2653|(L.) Redh. & Kuyper
+2654|(L.) Regel
+2655|(L.) Rich.
+2656|(L.) Robson
+2657|(L.) Roem. & Schult.
+2658|(L.) Ronse Decr.
+2659|(L.) Roth
+2660|(L.) Rothm.
+2661|(L.) Roxb.
+2662|(L.) Rydb.
+2663|(L.) S. Fuentes, Uotila & Borsch
+2664|(L.) S. Pons
+2665|(L.) S.F. Blake
+2666|(L.) Salisb.
+2667|(L.) Salisb. ex Rchb.
+2668|(L.) Sch. Bip.
+2669|(L.) Schinz & Thell.
+2670|(L.) Schljakov
+2671|(L.) Schltdl. ex E. Mey.
+2672|(L.) Schoenl.
+2673|(L.) Schott
+2674|(L.) Schrad.
+2675|(L.) Schreb.
+2676|(L.) Schur
+2677|(L.) Scop.
+2678|(L.) Scribn.
+2679|(L.) Semple
+2680|(L.) Shinners
+2681|(L.) Simonkai
+2682|(L.) Slosson
+2683|(L.) Sm.
+2684|(L.) Small
+2685|(L.) Small ex Rydb.
+2686|(L.) Smyth
+2687|(L.) Soják
+2688|(L.) Sommerf.
+2689|(L.) Spach
+2690|(L.) Spenner
+2691|(L.) Spreng.
+2692|(L.) Sw.
+2693|(L.) Sweet
+2694|(L.) T. Nees
+2695|(L.) Tamura
+2696|(L.) Th. Fr.
+2697|(L.) Tibell
+2698|(L.) Todaro
+2699|(L.) Torr. & A. Gray
+2700|(L.) Torss.
+2701|(L.) Trautv.
+2702|(L.) Trevis.
+2703|(L.) Tzvelev
+2704|(L.) U. Manns & Anderb.
+2705|(L.) Ugborogho
+2706|(L.) Underw.
+2707|(L.) V.I. Dorof.
+2708|(L.) Vahl
+2709|(L.) Vain.
+2710|(L.) Vill.
+2711|(L.) W. Mann
+2712|(L.) W.A. Weber
+2713|(L.) W.D.J. Koch
+2714|(L.) W.L. Culb. & C.F. Culb.
+2715|(L.) W.P.C. Barton
+2716|(L.) W.T. Aiton
+2717|(L.) Wahlenb.
+2718|(L.) Wallr.
+2719|(L.) Webb & Moq.
+2720|(L.) Webb ex Prantl
+2721|(L.) Weber ex F.H. Wigg.
+2722|(L.) Weiss
+2723|(L.) Wiggers
+2724|(L.) Willd.
+2725|(L.) Zahlbr.
+2726|(L.C. Higgins) R.B. Kelley
+2727|(L.D. Benson) Hultén
+2728|(L.H. Bailey) Breitung
+2729|(L.H. Bailey) Hultén
+2730|(L.H. Bailey) Kük.
+2731|(L.H. Bailey) L.A. Standl.
+2732|(Laest. ex Almq.) Almq. ex Omang
+2733|(Laest. ex C. Hartm.) Zinserl. ex Kuzen
+2734|(Laest. ex Hartm.) Hartm.
+2735|(Laest.) Beurling
+2736|(Laest.) Bickn.
+2737|(Laest.) C.D.K. Cook
+2738|(Laest.) F. Johansen
+2739|(Laest.) Fr.
+2740|(Laest.) Hartm.
+2741|(Laest.) Holmb.
+2742|(Laest.) Kearney
+2743|(Laest.) Neuman
+2744|(Laest.) Seland.
+2745|(Laharpe) Farw.
+2746|(Laharpe) Fernald & Wiegand
+2747|(Lam. & DC.) Margad.
+2748|(Lam. & DC.) Wijk & Margad.
+2749|(Lam.) A.P. Khokhr.
+2750|(Lam.) Bernh. ex Desv.
+2751|(Lam.) Hitchc.
+2752|(Lam.) Husn.
+2753|(Lam.) Parnell
+2754|(Lam.) Søchting, Frödén & Arup
+2755|(Lam.) Standl.
+2756|(Lam.) Underw.
+2757|(Lamb) Lamb & Ward
+2758|(Lamy ex Nyl.) J.R. Laundon
+2759|(Lamy) Essl.
+2760|(Lamy) Nyl.
+2761|(Lange & C.E.O. Jensen) G. Roth
+2762|(Lange ex Hagerup) Böcher
+2763|(Lange ex Hagerup) D. Löve
+2764|(Lange ex Hagerup) T.J. Sørensen
+2765|(Lange) Á. Löve & D. Löve
+2766|(Lange) A.E. Porsild
+2767|(Lange) B. Boivin
+2768|(Lange) Blytt & O.C. Dahl
+2769|(Lange) Chmiel.
+2770|(Lange) Fernald
+2771|(Lange) Fernald & Weath.
+2772|(Lange) Holmb.
+2773|(Lange) Holmb. ex A.E. Porsild
+2774|(Lange) Hultén
+2775|(Lange) Louis-Marie
+2776|(Lange) Malte
+2777|(Lange) T.J. Sørensen
+2778|(Langsd. ex DC.) Greene
+2779|(Laurer ex Flot.) Otálora, P.M. Jørg. & Wedin
+2780|(Laurer) Bruch & Schimp.
+2781|(Laurer) T.J. Kop.
+2782|(Leconte) R.T. Clausen
+2783|(Lecoq & Lamotte) Moldenke
+2784|(Ledeb. ex Spreng.) Greene
+2785|(Ledeb. ex Spreng.) Rydb.
+2786|(Ledeb.) A. Heller
+2787|(Ledeb.) B. Fedtsch.
+2788|(Ledeb.) B. Nord.
+2789|(Ledeb.) Bong.
+2790|(Ledeb.) Bunge
+2791|(Ledeb.) C.K. Schneid.
+2792|(Ledeb.) Calder & Roy L. Taylor
+2793|(Ledeb.) DC.
+2794|(Ledeb.) Fernald
+2795|(Ledeb.) Frye & Rigg
+2796|(Ledeb.) G.L. Nesom
+2797|(Ledeb.) H.M. Hall & Clements
+2798|(Ledeb.) Holub
+2799|(Ledeb.) Hultén
+2800|(Ledeb.) Kearney
+2801|(Ledeb.) Krylov
+2802|(Ledeb.) Ledeb.
+2803|(Ledeb.) Ledeb. ex Griseb.
+2804|(Ledeb.) M.E. Jones
+2805|(Ledeb.) N. Busch
+2806|(Ledeb.) Nakai
+2807|(Ledeb.) O.E. Schulz
+2808|(Ledeb.) Pax
+2809|(Ledeb.) Pohle
+2810|(Ledeb.) Poljakov
+2811|(Ledeb.) Rydb.
+2812|(Ledeb.) S.L. Welsh
+2813|(Ledeb.) Schinz ex Thell.
+2814|(Ledeb.) Schult.
+2815|(Ledeb.) Sennikov
+2816|(Ledeb.) Thell.
+2817|(Ledeb.) Tzvelev
+2818|(Ledeb.) Vierh.
+2819|(Ledeb.) Wettst.
+2820|(Lehm. & Lindenb.) Gottsche, Lindenb. & Nees
+2821|(Lehm. & Lindenb.) Lindenb.
+2822|(Lehm. & Lindenb.) Nees
+2823|(Lehm. & Lindenb.) Pfeiff.
+2824|(Lehm.) A. Nelson & J.F. Macbr.
+2825|(Lehm.) B. Boivin
+2826|(Lehm.) C.L. Hitchc.
+2827|(Lehm.) D.D. Keck
+2828|(Lehm.) Dorn
+2829|(Lehm.) Fernald
+2830|(Lehm.) G. Don
+2831|(Lehm.) Hiitonen
+2832|(Lehm.) Hoch & P.H. Raven
+2833|(Lehm.) Lehm.
+2834|(Lehm.) Lindl. ex Druce
+2835|(Lehm.) Pax & R. Knuth
+2836|(Lehm.) Rydb.
+2837|(Lehm.) S. Watson
+2838|(Lehm.) Sheldon
+2839|(Lehm.) W.W. Sm. & G. Forrest
+2840|(Lehm.) Windham & Al-Shehbaz
+2841|(Leight. ex Nyl.) G. Salisb.
+2842|(Leight.) Fryday & Coppins
+2843|(Leight.) Grube & B.D. Ryan
+2844|(Lepage) Hultén
+2845|(Lesq. & James) Austin
+2846|(Lesq. & James) Crum, Steere & L.E. Anderson
+2847|(Lesq. & James) Grout
+2848|(Lesq. & James) Limpr.
+2849|(Lesq. & James) Macoun & Kindb.
+2850|(Lesq. & James) Renauld & Cardot
+2851|(Lesq.) Boulay
+2852|(Lesq.) Broth.
+2853|(Lesq.) D. Ríos, M.T. Gallego & J. Guerra
+2854|(Lesq.) G. Roth
+2855|(Lesq.) Grout
+2856|(Lesq.) Lindb.
+2857|(Lesq.) Lindb. & Arnell
+2858|(Lesq.) Lindb. ex Broth.
+2859|(Lesq.) Schimp.
+2860|(Less.) Á. Löve & D. Löve
+2861|(Less.) E. Wiebe
+2862|(Less.) Greene
+2863|(Less.) Hultén
+2864|(Less.) J.T. Howell
+2865|(Less.) Krylov
+2866|(Less.) Porter
+2867|(Less.) Wiggins & Stockw.
+2868|(Lettau) Matzer & Hafellner
+2869|(Lettau) P.P. Moreno & Egea
+2870|(Leyss.) Holub
+2871|(Leyss.) Lindm.
+2872|(Lib.) Fryday, Printzen & S. Ekman
+2873|(Lib.) Kalb. & Hafellner
+2874|(Liebm.) Á. Löve & D. Löve
+2875|(Liebm.) Nevski
+2876|(Liebm.) Scribn. & Merr.
+2877|(Lightf.) Corda
+2878|(Lightf.) Schrad.
+2879|(Lightf.) Th. Fr.
+2880|(Lilj.) Ach.
+2881|(Lilj.) R. Br.
+2882|(Limpr.) Amann
+2883|(Limpr.) Bernet
+2884|(Limpr.) C.E.O. Jensen
+2885|(Limpr.) Damsh
+2886|(Limpr.) Dixon
+2887|(Limpr.) G. Roth
+2888|(Limpr.) H. Lindb.
+2889|(Limpr.) Hilp.
+2890|(Limpr.) J.R. Spence
+2891|(Limpr.) K. Muell.
+2892|(Limpr.) L. Söderstr. & Vána
+2893|(Limpr.) Limpr.
+2894|(Limpr.) Lindb.
+2895|(Limpr.) Loeske
+2896|(Limpr.) M. Howe
+2897|(Limpr.) Mönk.
+2898|(Limpr.) Paris
+2899|(Limpr.) R.M. Schust.
+2900|(Limpr.) Schiffn.
+2901|(Limpr.) Schultze-Motel
+2902|(Limpr.) Steph.
+2903|(Limpr.) Trevis.
+2904|(Lindb. & Arnell) A. Evans
+2905|(Lindb. & Arnell) Broth.
+2906|(Lindb. & Arnell) Broth. emend. Karcz.
+2907|(Lindb. & Arnell) C.E.O. Jensen ex Weinm.
+2908|(Lindb. & Arnell) H.A. Crum
+2909|(Lindb. & Arnell) Kindb.
+2910|(Lindb. & Arnell) Paris
+2911|(Lindb. & Arnell) Paul
+2912|(Lindb. & Arnell) Roth
+2913|(Lindb. & Arnell) Schljakov
+2914|(Lindb. & Arnell) Warnst.
+2915|(Lindb. ex Berggr.) Kuntze
+2916|(Lindb. ex Braithw.) Warnst.
+2917|(Lindb. ex Heeg) Evans
+2918|(Lindb. ex Heeg) Levier
+2919|(Lindb. ex Heeg) R.M. Schust.
+2920|(Lindb. ex Kaal.) Konstant.
+2921|(Lindb. ex Kaal.) Schiffn.
+2922|(Lindb. ex Limpr.) Warnst.
+2923|(Lindb. ex Spruce) Müll. Frib.
+2924|(Lindb.) A. Evans
+2925|(Lindb.) A. Jaeger
+2926|(Lindb.) Åberg
+2927|(Lindb.) Arnell
+2928|(Lindb.) Arnell & C.E.O. Jensen
+2929|(Lindb.) B.C. Tan, R.H. Zander & T.T. Taylor
+2930|(Lindb.) Berggr.
+2931|(Lindb.) Broth.
+2932|(Lindb.) Buch
+2933|(Lindb.) C.H. Gao & K.C. Chang
+2934|(Lindb.) Damsh.
+2935|(Lindb.) Dumort.
+2936|(Lindb.) Evans
+2937|(Lindb.) G. Roth
+2938|(Lindb.) G.N. Jones
+2939|(Lindb.) Grout
+2940|(Lindb.) H. Buch
+2941|(Lindb.) H.A. Crum
+2942|(Lindb.) H.A. Crum & L.E. Anderson
+2943|(Lindb.) H.A. Crum, Steere & L.E. Anderson
+2944|(Lindb.) Hedenäs
+2945|(Lindb.) Ignatov & Ignatova
+2946|(Lindb.) J.R. Spence
+2947|(Lindb.) Jur.
+2948|(Lindb.) Kindb.
+2949|(Lindb.) Konstant. & Vilnet
+2950|(Lindb.) L.R. Wilson
+2951|(Lindb.) Limpr.
+2952|(Lindb.) Lindb.
+2953|(Lindb.) Loeske
+2954|(Lindb.) Mönk.
+2955|(Lindb.) Müll. Frib.
+2956|(Lindb.) Nyholm
+2957|(Lindb.) Perss.
+2958|(Lindb.) Podp.
+2959|(Lindb.) Potemkin
+2960|(Lindb.) R.H. Zander
+2961|(Lindb.) Röll
+2962|(Lindb.) S.W. Arnell
+2963|(Lindb.) Schiffn.
+2964|(Lindb.) Schljakov
+2965|(Lindb.) Steph.
+2966|(Lindb.) T.J. Kop.
+2967|(Lindb.) T.J. O'Brien
+2968|(Lindb.) Warnst.
+2969|(Lindb.) Weim.
+2970|(Lindb.) Wijk. & Margad.
+2971|(Lindb.) Z. Iwats. & Schof.
+2972|(Lindbl.) Fr.
+2973|(Lindenb.) A. Blytt & O.C. Dahl
+2974|(Lindenb.) Crand.-Stotl. & D.G. Long
+2975|(Lindenb.) Dumort.
+2976|(Lindenb.) Konstant., Vilnet & A.V. Troitsky
+2977|(Lindenb.) Schiffn.
+2978|(Lindenb.) Steph.
+2979|(Lindenb.) Trevis
+2980|(Lindl. ex DC.) G.L. Nesom
+2981|(Lindl.) Á. Löve & D. Löve
+2982|(Lindl.) A.G. Jones
+2983|(Lindl.) Ames
+2984|(Lindl.) Britton
+2985|(Lindl.) Brouillet & S. Selliah
+2986|(Lindl.) Efimov
+2987|(Lindl.) Fernald
+2988|(Lindl.) G.L. Nesom
+2989|(Lindl.) Luer
+2990|(Lindl.) Reveal & Keener
+2991|(Lindl.) Rydb.
+2992|(Lindl.) S. Watson
+2993|(Lindl.) Semple & L. Brouillet
+2994|(Lindl.) W.J. Cody
+2995|(Lindm.) Asch. & Graebn.
+2996|(Lindm.) H. Lindb.
+2997|(Linds.) D. Hawksw.
+2998|(Linds.) D. Hawksw. & R. Sant.
+2999|(Linds.) O.E. Erikss. & R. Sant.
+3000|(Link) Á. Löve & D. Löve
+3001|(Link) Arcang.
+3002|(Link) Calder & Roy L. Taylor
+3003|(Link) Gould ex Shinners
+3004|(Link) Herder
+3005|(Link) Hitchc.
+3006|(Link) Holub
+3007|(Link) Hultén
+3008|(Link) Inman
+3009|(Link) Jalas
+3010|(Link) Malte ex H.F. Lewis
+3011|(Link) Nevski
+3012|(Link) S.Y. Kondr. & Kärnefelt
+3013|(Link) Th. Fr.
+3014|(Link) Trin.
+3015|(Link) Tzvelev
+3016|(Link) W.D.J. Koch
+3017|(Llano) Krog
+3018|(Llano) W.L. Culb. & C.F. Culb.
+3019|(Lodd.) A.P. Khokhr.
+3020|(Lodd.) Avrorin
+3021|(Lodd.) Bean
+3022|(Lodd.) E. Busch
+3023|(Lodd.) Hultén
+3024|(Loeske) Kuc
+3025|(Loeske) Loeske
+3026|(Loeske) Nyholm
+3027|(Loeske) R.M. Schust.
+3028|(Loeske) Warnst.
+3029|(Lor.) G. Roth
+3030|(Lor.) Grout
+3031|(Lorentz & Molendo) Crundw. & Nyholm
+3032|(Lorentz & Molendo) Limpr.
+3033|(Lour.) Hanelt
+3034|(Lour.) Rupr.
+3035|(Ludwig) Aellen
+3036|(Lund ex Malmgr.) Hultén
+3037|(Lund ex Malmgr.) Th. Fr.
+3038|(Lunell) Breitung
+3039|(Lunell) Butters & Abbe
+3040|(Lunell) Munz
+3041|(Lunell) Vict.
+3042|(Lyell ex Sm.) Corda
+3043|(Lyell ex Sm.) Dumort.
+3044|(Lyell ex Sm.) Gray
+3045|(Lyell ex Sm.) Nees
+3046|(Lyell ex Sm.) Spreng.
+3047|(Lyell) Mitt.
+3048|(Lynge) Ahti
+3049|(Lynge) Culb. & C. Culb.
+3050|(Lynge) Essl.
+3051|(Lynge) H. Magn.
+3052|(Lynge) Hertel & Leuckert
+3053|(Lynge) J.W. Thomson
+3054|(Lynge) Lutzoni
+3055|(Lynge) Lynge
+3056|(Lynge) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+3057|(Lynge) R. Sant.
+3058|(Lynge) Sheard
+3059|(Lynge) Søchting, Frödén & Arup
+3060|(Lynge) Timdal
+3061|(M. Bieb.) Cavara & Grande
+3062|(M. Bieb.) Nyman
+3063|(M. Bieb.) P. Beauv.
+3064|(M. Bieb.) Poljakov
+3065|(M. Bieb.) Tzvelev
+3066|(M. Hopkins) Hultén
+3067|(M. Hopkins) Rollins
+3068|(M. Howe) Haynes
+3069|(M. Howe) Konstant. & Vilnet
+3070|(M. Howe) L. Clark & Frye
+3071|(M. Howe) Müll. Frib.
+3072|(M. Howe) Perss.
+3073|(M. Howe) R.M. Schust.
+3074|(M. Roem.) Piper
+3075|(M. Sato) Kalb
+3076|(M. Sato) Swinscow & Krog
+3077|(M.E. Jones) Á. Löve & D. Löve
+3078|(M.E. Jones) B. Boivin
+3079|(M.E. Jones) Fernald
+3080|(M.E. Jones) J.T. Howell
+3081|(M.E. Jones) L.A. Standl.
+3082|(M.E. Jones) W.W. Sm. & Forrest
+3083|(M.M. Maximova) V.G. Sergienko
+3084|(Mack.) A.E. Porsild
+3085|(Mack.) B. Boivin
+3086|(Mack.) Calder & Roy L. Taylor
+3087|(Mack.) Cronq.
+3088|(Mack.) H. Hara
+3089|(Mack.) Hultén
+3090|(Mack.) O'Neill & Duman
+3091|(Macoun & Kindb.)Grout
+3092|(Macoun) Halliday & Chater
+3093|(Macoun) Kük.
+3094|(Maguire) B. Boivin
+3095|(Maguire) Maguire
+3096|(Maguire) Reveal
+3097|(Maguire) Strother & S.J. Wolf
+3098|(Makino) Calder & Roy L. Taylor
+3099|(Makino) Ching
+3100|(Makino) Hultén
+3101|(Makino) Pfitzer
+3102|(Makino) Tzvelev
+3103|(Malme) Malme
+3104|(Malmgr.) B. Boivin
+3105|(Malte) B. Boivin
+3106|(Malte) Chmiel.
+3107|(Malte) D. Löve
+3108|(Malte) Hultén
+3109|(Malte) Pennell
+3110|(Malte) S.L. Welsh
+3111|(Markl.) Ericsson
+3112|(Marshall) Spach
+3113|(Mart.) Dumort.
+3114|(Mart.) Evans
+3115|(Mart.) Kartt.
+3116|(Mart.) L. Söderstr., De Roo & Hedd.
+3117|(Mart.) Lindenb.
+3118|(Mart.) Loeske
+3119|(Mart.) Nees
+3120|(Mart.) Schiffn.
+3121|(Mart.) Spruce
+3122|(Mart.) Trevis.
+3123|(Mårtensson) J.R. Spence
+3124|(Martyn) Arcang.
+3125|(Mathias) B. Boivin
+3126|(Mathias) Hultén
+3127|(Maxim.) Bywater & Wickens
+3128|(Maxim.) C.K. Schneid.
+3129|(Maxim.) Korsh.
+3130|(Maxon & R.T. Clausen) M. Broun
+3131|(Maxon & R.T. Clausen) W.H. Wagner & Lellinger
+3132|(Maxon) C.F. Reed
+3133|(Maxon) Calder & Roy L. Taylor
+3134|(Maxon) Hultén
+3135|(Maxon) R. Tryon
+3136|(McGregor) Brand
+3137|(Meisn.) Fourr.
+3138|(Meisn.) Rchb.
+3139|(Menzies ex Hook.) Gilg
+3140|(Menzies ex Hook.) Makino
+3141|(Menzies ex Schult.) Hook.
+3142|(Menzies ex Schult.) Kunth
+3143|(Menzies ex Sm.) D. Don ex Torr.
+3144|(Menzies ex Sm.) F. Bolle
+3145|(Menzies ex Sm.) Nakai & H. Hara
+3146|(Menzies) G.L. Sm.
+3147|(Menzies) Lindb.
+3148|(Mérat) M. Lainz
+3149|(Mereschk.) Essl.
+3150|(Merr.) Briq.
+3151|(Merr.) Dorn
+3152|(Mert. & W.D.J. Koch) Fernald
+3153|(Mert. & W.D.J. Koch) Haynes & C.B. Hellquist
+3154|(Metzger) Sinsk.
+3155|(Meyl.) R.M. Schust.
+3156|(Mich.) Brid.
+3157|(Michx.) A. Haines
+3158|(Michx.) Á. Löve & D. Löve
+3159|(Michx.) B. Boivin
+3160|(Michx.) Baker
+3161|(Michx.) Brid.
+3162|(Michx.) Britton
+3163|(Michx.) Brodo & D. Hawksw.
+3164|(Michx.) D.C. Eaton
+3165|(Michx.) DC.
+3166|(Michx.) Dorn
+3167|(Michx.) Dumort.
+3168|(Michx.) E. Mey.
+3169|(Michx.) E. Murray
+3170|(Michx.) Farw.
+3171|(Michx.) Fedtsch.
+3172|(Michx.) Fernald
+3173|(Michx.) Focke
+3174|(Michx.) Fosberg
+3175|(Michx.) Fr.
+3176|(Michx.) Guppy
+3177|(Michx.) H. Hara
+3178|(Michx.) H.E. Ahles
+3179|(Michx.) Hampe
+3180|(Michx.) Herder
+3181|(Michx.) Hiitonen
+3182|(Michx.) Holub
+3183|(Michx.) Hook.
+3184|(Michx.) House
+3185|(Michx.) Hultén
+3186|(Michx.) Hyl.
+3187|(Michx.) J.M. Gillett
+3188|(Michx.) Kük.
+3189|(Michx.) Lehm.
+3190|(Michx.) Maxim.
+3191|(Michx.) Nutt.
+3192|(Michx.) P. Beauv.
+3193|(Michx.) Pax
+3194|(Michx.) Pax & R. Knuth
+3195|(Michx.) Pers.
+3196|(Michx.) Philipson
+3197|(Michx.) Planch.
+3198|(Michx.) Raf.
+3199|(Michx.) Reveal
+3200|(Michx.) Roy L. Taylor & MacBryde
+3201|(Michx.) Rydb.
+3202|(Michx.) Small
+3203|(Michx.) Torr.
+3204|(Michx.) Tzvelev
+3205|(Michx.) Vain.
+3206|(Michx.) W.A. Weber
+3207|(Michx.) Wangerin
+3208|(Michx.) Watt
+3209|(Mik.) Karcz.
+3210|(Milde) Amann
+3211|(Milde) Brockm.
+3212|(Milde) G. Roth
+3213|(Milde) Hieron.
+3214|(Milde) Husn.
+3215|(Milde) I. Hagen
+3216|(Milde) Loeske
+3217|(Milde) Milde
+3218|(Mill.) A. Blytt & O.C. Dahl
+3219|(Mill.) A.J. Scott
+3220|(Mill.) Britton
+3221|(Mill.) Britton, Sterns & Poggenb.
+3222|(Mill.) Garcke
+3223|(Mill.) Greuter & Burdet
+3224|(Mill.) Krause
+3225|(Mill.) Raus.
+3226|(Mill.) Schreb.
+3227|(Mill.) Vorosch.
+3228|(Mill.) Willd.
+3229|(Miller) D. Löve
+3230|(Miq.) Franch. & Sav.
+3231|(Miq.) H. Hara
+3232|(Miq.) Kom.
+3233|(Miq.) Maxim.
+3234|(Miq.) Nakai
+3235|(Miq.) O.E. Schulz
+3236|(Mitt. ex Müll. Hal.) A. Jaeger
+3237|(Mitt. ex Müll. Hal.) Heike Hofmann
+3238|(Mitt. ex Müll. Hal.) Paris
+3239|(Mitt. ex Müll. Hal.) Perss.
+3240|(Mitt. ex Müll. Hal.) Sull.
+3241|(Mitt.) A. Jaeger
+3242|(Mitt.) Austin
+3243|(Mitt.) Besch.
+3244|(Mitt.) Best
+3245|(Mitt.) Broth.
+3246|(Mitt.) E. Lawton
+3247|(Mitt.) G.L. Sm.
+3248|(Mitt.) Grolle
+3249|(Mitt.) Grout
+3250|(Mitt.) H. Buch
+3251|(Mitt.) H.A. Crum, Steere & L.E. Anderson
+3252|(Mitt.) Hedenäs
+3253|(Mitt.) Heike Hofmann
+3254|(Mitt.) Ignatov & Fedosov
+3255|(Mitt.) Ignatov & Huttunen
+3256|(Mitt.) K. Saito
+3257|(Mitt.) Kindb.
+3258|(Mitt.) Kuntze
+3259|(Mitt.) Lesq. & James
+3260|(Mitt.) Lindb.
+3261|(Mitt.) Loeske
+3262|(Mitt.) Macoun & Kindb.
+3263|(Mitt.) Mitt.
+3264|(Mitt.) Mönk.
+3265|(Mitt.) Müll. Frib.
+3266|(Mitt.) P.E.A.S. Câmara & M. Carvalho-Silva
+3267|(Mitt.) Perss.
+3268|(Mitt.) R.D. Williams & W.B. Schofield
+3269|(Mitt.) Renauld & Cardot
+3270|(Mitt.) Schiffn.
+3271|(Mitt.) Steph.
+3272|(Mitt.) Sull.
+3273|(Mitt.) T.J. Kop.
+3274|(Mitt.) Tuom.
+3275|(Mitt.) W.R. Buck & H.A. Crum
+3276|(Mitt.) Warnst.
+3277|(Miyabe & Kudô) Tolm.
+3278|(Moc. ex DC.) Greene
+3279|(Moench) Fernald
+3280|(Moench) Garcke
+3281|(Moench) Rydb.
+3282|(Moench) Sudw.
+3283|(Moench) Voss
+3284|(Molendo) H.A. Crum, Steere & L.E. Anderson
+3285|(Molendo) Hedenäs, Schlesak & D. Quandt
+3286|(Molendo) Ignatov & Huttunen
+3287|(Molendo) Loeske
+3288|(Molendo) Lorentz
+3289|(Molendo) M. Fleisch.
+3290|(Molendo) Venturi & Bottini
+3291|(Mont.) Fink
+3292|(Mont.) Timdal
+3293|(Mont.) Tuck.
+3294|(Moq.) Mack. & Bush
+3295|(Moq.) Nutt. ex S. Watson
+3296|(Mørch) Brockm.
+3297|(Mørch) C. Hartm.
+3298|(Mørch) Corda
+3299|(Mørch) Dumort.
+3300|(Mørch) Hübener
+3301|(Mørch) Lindb.
+3302|(Mørch) Nees
+3303|(Morong) Brayshaw
+3304|(Morong) Reveal
+3305|(Morong) Rydb.
+3306|(Morong) Szlach.
+3307|(Mosquin) Hoch
+3308|(Mosquin) Moldenke
+3309|(Mot.) Brodo & D. Hawksw.
+3310|(Mot.) Holien
+3311|(Moug. & Mont.) Fink
+3312|(Moug. & Mont.) Nyl.
+3313|(Mudd) A.L. Sm.
+3314|(Mudd) Arnold
+3315|(Mudd) D. Hawksw.
+3316|(Mudd) Poelt
+3317|(Mudd) Triebel
+3318|(Muhl. ex Bigelow) Á. Löve & D. Löve
+3319|(Muhl. ex Willd.) Britton
+3320|(Muhl. ex Willd.) Fernald
+3321|(Muhl. ex Willd.) Hultén
+3322|(Muhl. ex Willd.) K. Richt.
+3323|(Muhl. ex Willd.) Nieuwl.
+3324|(Muhl. ex Willd.) O.E. Schulz
+3325|(Muhl. ex Willd.) P.W. Graff
+3326|(Muhl. ex Willd.) Parl.
+3327|(Muhl. ex Willd.) R. Br.
+3328|(Muhl. ex Willd.) R.T. Clausen
+3329|(Muhl. ex Willd.) Weddell
+3330|(Muhr & Tønsberg) M. Westb. & Resl
+3331|(Müll. Arg.) Arup, Frödén & Søchting
+3332|(Müll. Arg.) Hertel
+3333|(Müll. Arg.) M. Choisy
+3334|(Müll. Arg.) P.M. Jørg.
+3335|(Müll. Arg.) S. Ekman
+3336|(Müll. Arg.) S. Ekman & Printzen
+3337|(Müll. Arg.) Vain.
+3338|(Müll. Arg.) Zahlbr.
+3339|(Müll. Frib.) Frye & L. Clark
+3340|(Müll. Frib.) H. Buch
+3341|(Müll. Frib.) Müll. Frib.
+3342|(Müll. Hal. & Kindb.) Britt
+3343|(Müll. Hal. & Kindb.) Flow.
+3344|(Müll. Hal. & Kindb.) Grout
+3345|(Müll. Hal. & Kindb.) Kindb.
+3346|(Müll. Hal. & Kindb.) Thér.
+3347|(Müll. Hal. & Kindb.) W.A. Weber
+3348|(Müll. Hal.) Ando
+3349|(Müll. Hal.) Andrews
+3350|(Müll. Hal.) Bednarek-Ochyra & Ochyra
+3351|(Müll. Hal.) Besch.
+3352|(Müll. Hal.) Broth.
+3353|(Müll. Hal.) D.T. Holyoak & N. Pedersen
+3354|(Müll. Hal.) G. Roth
+3355|(Müll. Hal.) Grout
+3356|(Müll. Hal.) Hedenäs
+3357|(Müll. Hal.) J.R. Spence
+3358|(Müll. Hal.) K. Saito
+3359|(Müll. Hal.) Kindb.
+3360|(Müll. Hal.) L.F. Koch
+3361|(Müll. Hal.) Lindb.
+3362|(Müll. Hal.) Loeske
+3363|(Müll. Hal.) Macoun & Kindb.
+3364|(Müll. Hal.) Nyholm
+3365|(Müll. Hal.) Paris
+3366|(Müll. Hal.) Reim.
+3367|(Müll. Hal.) S. Watson
+3368|(Müll. Hal.) Schimp.
+3369|(Müll. Hal.) T.J. Kop.
+3370|(Müll. Hal.) Tuom. & T.J. Kop.
+3371|(Müll. Hal.) Vent.
+3372|(Murr) Aellen
+3373|(Murr) Murr ex Asch.
+3374|(Murr) Murr ex Graebn.
+3375|(Murr) Wahl
+3376|(Murr) Zobel
+3377|(Myr.) Hedenäs
+3378|(Myr.) J. Lange
+3379|(Myr.) Lindb.
+3380|(N. Busch) O.E. Schulz
+3381|(N. Coleman) H. Hara
+3382|(N. Kitag.) Konstant.
+3383|(N.L. Higinb. & B.L. Higinb.) Ignatov & Huttunen
+3384|(Nageli ex Hepp) Nageli ex Körb.
+3385|(Nägeli ex Hepp) Th. Fr.
+3386|(Nägeli ex Körb.) K. Knudsen & L. Arcadia
+3387|(Nägeli) Kalb
+3388|(Nash ex Rydb.) B. Boivin
+3389|(Nash ex Rydb.) W.A. Weber
+3390|(Nash) Batchelder
+3391|(Nash) Hultén
+3392|(Nash) K. Schum.
+3393|(Nash) Malte ex Louis-Marie
+3394|(Navas) Sandst.
+3395|(Neck.) Hoffm.
+3396|(Neck.) J.R. Laundon
+3397|(Neck.) Moberg
+3398|(Neck.) Poetsch
+3399|(Necker) Hoffm.
+3400|(Nees & Hornsch.) Hampe
+3401|(Nees ex Flot.) Frye & L. Clark
+3402|(Nees ex Flot.) Müll. Frib.
+3403|(Nees ex Hübener) Grolle
+3404|(Nees ex Hübener) Konstant. & Vilnet
+3405|(Nees ex Hübener) L. Söderstr., De Roo & Hedd.
+3406|(Nees ex Lindenb.) Buch
+3407|(Nees ex Lindenb.) Dumort.
+3408|(Nees ex Lindenb.) Meyl.
+3409|(Nees ex Lindenb.) R.M. Schust.
+3410|(Nees ex Lindenb.) Steph.
+3411|(Nees) A. Evans
+3412|(Nees) B. Boivin
+3413|(Nees) Bakalin
+3414|(Nees) Burgeff
+3415|(Nees) C. Massal.
+3416|(Nees) Debat
+3417|(Nees) Dorn
+3418|(Nees) Dumort.
+3419|(Nees) F. Lara, Garilleti & Goffinet
+3420|(Nees) G.L. Nesom
+3421|(Nees) Gottsche, Lindenb. & Nees
+3422|(Nees) H. Buch
+3423|(Nees) H. Philib.
+3424|(Nees) J.J. Engel & R.M. Schust.
+3425|(Nees) Jørg.
+3426|(Nees) L. Söderstr. & Vána
+3427|(Nees) Limpr.
+3428|(Nees) Lindb.
+3429|(Nees) Macoun
+3430|(Nees) Mitt.
+3431|(Nees) Müll. Frib.
+3432|(Nees) Nees
+3433|(Nees) Ochyra
+3434|(Nees) Pearson
+3435|(Nees) R.M. Schust.
+3436|(Nees) S.W. Arnell
+3437|(Nees) Schiffn.
+3438|(Nees) Schiffn. ex Loeske
+3439|(Nees) Schljakov
+3440|(Nees) Steph.
+3441|(Nees) Trevis.
+3442|(Nees) Warnst.
+3443|(Neilson) C.W. Riggins
+3444|(Nessel) A. Haines
+3445|(Neum.) Á. Löve & D. Löve
+3446|(Neum.) Tzvelev
+3447|(Nevski) Á. Löve
+3448|(Nevski) Barkworth & D.R. Dewey
+3449|(Nevski) Melderis
+3450|(Nevski) Tzvelev
+3451|(Neygenf.) O. Bolòs & Vigo
+3452|(Nilson) Knoph & Hertel
+3453|(Nilsson) Svenson
+3454|(Nitschke) R.C. Harris
+3455|(Norman ex Th. Fr.) Hedl.
+3456|(Norman) Aptroot
+3457|(Norman) Erichsen
+3458|(Norman) Fernald
+3459|(Norman) J. Mattsson & Middelb.
+3460|(Norman) Norman
+3461|(Norman) R. Anderson
+3462|(Norman) R. Sant.
+3463|(Norman) Schmull
+3464|(Norman) Th. Fr.
+3465|(Norman) Vouaux
+3466|(Norrl. & Nyl.) Moberg
+3467|(Norrl.) Hedenäs
+3468|(Norrl.) Smirnova
+3469|(Nutt. ex Baker) G. Hend.
+3470|(Nutt. ex Baker) Greene
+3471|(Nutt. ex Hook.) Copel.
+3472|(Nutt. ex Torr. & Gray) A. Gray
+3473|(Nutt.) A. Gray
+3474|(Nutt.) A. Heller
+3475|(Nutt.) Á. Löve & D. Löve
+3476|(Nutt.) A. Nelson
+3477|(Nutt.) A.E. Murray
+3478|(Nutt.) Abrams
+3479|(Nutt.) B. Boivin
+3480|(Nutt.) Baker
+3481|(Nutt.) Breitung
+3482|(Nutt.) Britton
+3483|(Nutt.) C.K. Schneid.
+3484|(Nutt.) C.L. Hitchc.
+3485|(Nutt.) Calder & Roy L. Taylor
+3486|(Nutt.) Cronq.
+3487|(Nutt.) DC.
+3488|(Nutt.) Dorn
+3489|(Nutt.) Eaton
+3490|(Nutt.) Epling
+3491|(Nutt.) Farw.
+3492|(Nutt.) Fernald
+3493|(Nutt.) G. Don
+3494|(Nutt.) G. Lawson
+3495|(Nutt.) Garrett
+3496|(Nutt.) Greene
+3497|(Nutt.) Gruezo
+3498|(Nutt.) H. Hara
+3499|(Nutt.) Holub
+3500|(Nutt.) Howell
+3501|(Nutt.) Hultén
+3502|(Nutt.) Koehne
+3503|(Nutt.) Kunth
+3504|(Nutt.) Kuntze
+3505|(Nutt.) LaFrankie
+3506|(Nutt.) Lindl.
+3507|(Nutt.) Luer
+3508|(Nutt.) Maguire
+3509|(Nutt.) McNeill
+3510|(Nutt.) Nutt.
+3511|(Nutt.) Nutt. ex M. Roem.
+3512|(Nutt.) Pilg.
+3513|(Nutt.) Piper
+3514|(Nutt.) Preece ex Cronq.
+3515|(Nutt.) Rydb.
+3516|(Nutt.) S. Watson
+3517|(Nutt.) S. Watson & J.M. Coult.
+3518|(Nutt.) S.F. Blake
+3519|(Nutt.) S.L. Welsh
+3520|(Nutt.) S.L. Welsh & Reveal
+3521|(Nutt.) Spreng.
+3522|(Nutt.) Stuckey
+3523|(Nutt.) Sudw.
+3524|(Nutt.) Torr.
+3525|(Nutt.) Torr. & A. Gray
+3526|(Nutt.) W.A. Weber
+3527|(Nutt.) Walp.
+3528|(Nyl. ex Arnold) Brodo & D. Hawksw.
+3529|(Nyl. ex Arnold) Degel.
+3530|(Nyl. ex Cromb.) Degel.
+3531|(Nyl. ex Cromb.) Elix
+3532|(Nyl. ex Cromb.) Nyl.
+3533|(Nyl. ex Hasse) Schmull & T. Sprib.
+3534|(Nyl. ex Malbr.) A. Nordin, Savic & Tibell
+3535|(Nyl. ex Malbr.) Arnold
+3536|(Nyl. ex Mudd) M. Westb. & Resl
+3537|(Nyl. ex Stizenb.) Brodo & D. Hawksw.
+3538|(Nyl. ex Stizenb.) Gyeln.
+3539|(Nyl. ex Szatala) A.F.W. Schmidt
+3540|(Nyl. ex Vain) Goffinet & Hastings
+3541|(Nyl. ex Vain.) Lojka
+3542|(Nyl. ex Vain.) Malme
+3543|(Nyl. ex Vain.) Vain.
+3544|(Nyl.) A. Thell
+3545|(Nyl.) A. Thell & Kärnefelt
+3546|(Nyl.) A.L. Sm.
+3547|(Nyl.) Alb. Schmidt
+3548|(Nyl.) Almq.
+3549|(Nyl.) Alstrup
+3550|(Nyl.) Anzi
+3551|(Nyl.) Arnold
+3552|(Nyl.) Arup, Frödén & Søchting
+3553|(Nyl.) Bagl. & Carestia
+3554|(Nyl.) Bendiksby & Timdal
+3555|(Nyl.) Blomb. & Forss.
+3556|(Nyl.) Boistel
+3557|(Nyl.) Brodo
+3558|(Nyl.) Clauzade & Cl. Roux
+3559|(Nyl.) comb. nov.
+3560|(Nyl.) Coppins
+3561|(Nyl.) D. Hawksw.
+3562|(Nyl.) Dalla Torre & Sarnth.
+3563|(Nyl.) Darb.
+3564|(Nyl.) Divakar, A. Crespo & Lumbsch
+3565|(Nyl.) Divakar, A. Crespo, Wedin & Essl.
+3566|(Nyl.) Elenkin
+3567|(Nyl.) Erichsen
+3568|(Nyl.) Essl.
+3569|(Nyl.) Fink
+3570|(Nyl.) Forss.
+3571|(Nyl.) G. Salisb.
+3572|(Nyl.) Gluck
+3573|(Nyl.) Grube & B.D. Ryan
+3574|(Nyl.) Grummann
+3575|(Nyl.) Gyeln.
+3576|(Nyl.) H. Magn.
+3577|(Nyl.) H. Mayrh. & Poelt
+3578|(Nyl.) H. Olivier
+3579|(Nyl.) Hafellner
+3580|(Nyl.) Hale
+3581|(Nyl.) Hedl.
+3582|(Nyl.) Hellb.
+3583|(Nyl.) Henssen
+3584|(Nyl.) Hertel
+3585|(Nyl.) Hertel & Rambold
+3586|(Nyl.) Hertel, Brodo & Mas. Inoue
+3587|(Nyl.) Houmeau & Cl. Roux
+3588|(Nyl.) Howard
+3589|(Nyl.) Hue
+3590|(Nyl.) J. Steiner
+3591|(Nyl.) Jatta
+3592|(Nyl.) Kärnefelt
+3593|(Nyl.) Kärnefelt & A. Thell
+3594|(Nyl.) Kistenich, Timdal, Bendiksby & S. Ekman
+3595|(Nyl.) Körb.
+3596|(Nyl.) Krog
+3597|(Nyl.) Leight.
+3598|(Nyl.) Lendemer & R.C.Harris
+3599|(Nyl.) Lindsay
+3600|(Nyl.) Lonnr.
+3601|(Nyl.) Lumbsch
+3602|(Nyl.) Lumbsch, M. Nelsen & A. Thell
+3603|(Nyl.) Lynge
+3604|(Nyl.) M. Prieto & Wedin
+3605|(Nyl.) M.J. Lai
+3606|(Nyl.) Mas. Inoue & Brodo
+3607|(Nyl.) Nyl.
+3608|(Nyl.) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+3609|(Nyl.) Otálora, P.M. Jørg. & Wedin
+3610|(Nyl.) P. James
+3611|(Nyl.) P.M. Jørg.
+3612|(Nyl.) P.M. Jørg., Rambold & Hertel
+3613|(Nyl.) Poelt
+3614|(Nyl.) Printzen
+3615|(Nyl.) R. Sant.
+3616|(Nyl.) Räsänen
+3617|(Nyl.) S. Ekman
+3618|(Nyl.) Samp.
+3619|(Nyl.) Sliwa
+3620|(Nyl.) Sliwa, Zhao Xin & Lumbsch
+3621|(Nyl.) Søchting, Frödén & Arup
+3622|(Nyl.) Stizenb.
+3623|(Nyl.) Th. Fr.
+3624|(Nyl.) Timdal
+3625|(Nyl.) Timdal, Hertel & Rambold
+3626|(Nyl.) Tønsberg
+3627|(Nyl.) Trevis.
+3628|(Nyl.) Vain.
+3629|(Nyl.) Vezda
+3630|(Nyl.) Vitik. et al.
+3631|(Nyl.) Vouaux
+3632|(Nyl.) Zahlbr.
+3633|(Nyl.) Zschacke
+3634|(Nyman) Tzvelev
+3635|(O.E. Schulz) C.L. Hitchc.
+3636|(O.E. Schulz) Dorn
+3637|(O.E. Schulz) Pobed.
+3638|(O.E. Schulz) Rollins
+3639|(O.E. Schulz) Roy L. Taylor & MacBryde
+3640|(O.E. Schulz) Rydb.
+3641|(O.E. Schulz) S.L. Welsh & Reveal
+3642|(O.E. Schulz) Stuckey
+3643|(O.F. Müll.) Fiori
+3644|(O.F. Müll.) Watt
+3645|(Oakes) A. Gray
+3646|(Oeder) Fassett
+3647|(Oeder) Fernald
+3648|(Oeder) Hultén
+3649|(Oeder) K.A. Kron & W.S. Judd
+3650|(Ohlsson) P.M. Jørg.
+3651|(Oksner) Essl.
+3652|(Oksner) Hale
+3653|(Oksner) Kärnefelt & A. Thell
+3654|(Onno) Cronq.
+3655|(Onno) Semple
+3656|(Opiz) Brodo
+3657|(Opiz) Pouzar & Vezda
+3658|(Ostenf.) Á. Löve & D. Löve
+3659|(Ostenf.) A.E. Porsild
+3660|(Ostenf.) Cody
+3661|(Ostenf.) E. Wiebe
+3662|(Ostenf.) Korobkov
+3663|(Ostenf.) S.L. Welsh
+3664|(Ostenf.) V. Yu.
+3665|(Osterhout) Rollins
+3666|(Oudem.) Petr. & Syd.
+3667|(Oxner) Divakar, A. Crespo & Lumbsch
+3668|(Oxner) Divakar, A. Crespo, Wedin & Essl.
+3669|(P. Beauv.) Brid.
+3670|(P. Beauv.) Broth.
+3671|(P. Beauv.) Hampe
+3672|(P. Beauv.) Hultén
+3673|(P. Beauv.) J.T. Howell
+3674|(P. James & Vezda) Lücking, Sérus. & Vezda
+3675|(P. James) P. James & J.R. Laundon
+3676|(P. Karst.) D. Hawksw.
+3677|(P.M. Jørg. & Tønsberg) Otálora, P.M. Jørg. & Wedin
+3678|(P.M. Jørg.) Otálora, P.M. Jørg. & Wedin
+3679|(P.M. Jørg.) P.M. Jørg.
+3680|(Packer & Denford) Dorn
+3681|(Packer) Á. Löve & D. Löve
+3682|(Packer) B. Boivin
+3683|(Pall. ex Georgi) Deyl & Soják
+3684|(Pall. ex Pursh) Regel & Tiling
+3685|(Pall. ex Schrad. & Link) S.L. Welsh
+3686|(Pall. ex Schult.) B. Boivin
+3687|(Pall. ex Willd.) Á. Löve & D. Löve
+3688|(Pall. ex Willd.) Besser
+3689|(Pall. ex Willd.) H.M. Hall & Clem.
+3690|(Pall.) Á. Löve & D. Löve
+3691|(Pall.) Besser
+3692|(Pall.) Borkh.
+3693|(Pall.) C.A. Mey.
+3694|(Pall.) Coville
+3695|(Pall.) D. Don
+3696|(Pall.) DC.
+3697|(Pall.) Fernald
+3698|(Pall.) Fisch. ex DC.
+3699|(Pall.) H.M. Hall & Clem.
+3700|(Pall.) Hultén
+3701|(Pall.) J.M. Gillett
+3702|(Pall.) M. Peck
+3703|(Pall.) Poljakov
+3704|(Pall.) Rydb.
+3705|(Pall.) Small
+3706|(Pall.) W.A. Weber
+3707|(Palla) Asch. & Graebn.
+3708|(Paris) Wijk & Margad.
+3709|(Parl.) A.E. Murray
+3710|(Parl.) Critchf.
+3711|(Parnell) Druce
+3712|(Parrique) Essl.
+3713|(Payson & H. St. John) C.L. Hitchc.
+3714|(Payson) H. St. John
+3715|(Payson) Payson & H. St. John
+3716|(Pearson) A. Evans
+3717|(Pearson) Vána
+3718|(Pease & A.H. Moore) Cody
+3719|(Pease & A.H. Moore) Malte
+3720|(Pease & A.H. Moore) Taylor
+3721|(Peck) House
+3722|(Peck) Rehder
+3723|(Pennell & Stair) Hultén
+3724|(Pennell) B. Boivin
+3725|(Pennell) Hultén
+3726|(Pennell) J.M. Egger
+3727|(Pennell) Rebr.
+3728|(Pérez-Ortega, T. Sprib. & Printzen) Rodr. Flakus & Printzen
+3729|(Pers. ex Fr.) De Not.
+3730|(Pers. ex Fr.) M.T. Lange
+3731|(Pers.) A. Massal.
+3732|(Pers.) A.L. Sm.
+3733|(Pers.) Ach.
+3734|(Pers.) Asch. & Graebn.
+3735|(Pers.) B. Boivin
+3736|(Pers.) Börner
+3737|(Pers.) Clem.
+3738|(Pers.) D.H. Les & Haynes
+3739|(Pers.) Ertz & Tehler
+3740|(Pers.) Fernald
+3741|(Pers.) Fr.
+3742|(Pers.) G. Don
+3743|(Pers.) Hale
+3744|(Pers.) J. Presl & C. Presl
+3745|(Pers.) Körb.
+3746|(Pers.) Lehm.
+3747|(Pers.) Müll. Arg.
+3748|(Pers.) Poir.
+3749|(Pers.) Redh. & Kuyper
+3750|(Pers.) Rydb.
+3751|(Pers.) Sliwa, Zhao Xin & Lumbsch
+3752|(Pers.) Small
+3753|(Pers.) Sommerf.
+3754|(Pers.) Szat.
+3755|(Pers.) Th. Fr.
+3756|(Pers.) Tibell
+3757|(Pers.) Volkart ex Schinz & R. Keller
+3758|(Pers.) W.D.J. Koch
+3759|(Pers.) Wallr.
+3760|(Pers.) Zahlbr.
+3761|(Perss.) Grolle & Ando
+3762|(Perss.) R.M. Schust.
+3763|(Petagna) Grande
+3764|(Peterm.) Peterm.
+3765|(Petrov) Pojark.
+3766|(Petrov) Tzvelev
+3767|(Phil.) Dusén
+3768|(Phil.) Hultén
+3769|(Pickering ex Rydb.) Hultén
+3770|(Piper) Bowden
+3771|(Piper) Detling
+3772|(Piper) Gould
+3773|(Piper) I.M. Johnst.
+3774|(Piper) I.M. Johnst. ex M. Peck
+3775|(Piper) M. Peck
+3776|(Piper) M.E. Jones
+3777|(Piper) Rydb.
+3778|(Piper) Semple
+3779|(Piper) Szlach.
+3780|(Planch.) H. St. John
+3781|(Poelt) comb. nov.
+3782|(Poelt) Vondrák
+3783|(Poir.) Fenzl
+3784|(Poir.) Fourr.
+3785|(Poir.) Thell.
+3786|(Pollard) D.D. Keck
+3787|(Pollard) Jeps.
+3788|(Pollard) Nobs
+3789|(Polunin) Á. Löve & D. Löve
+3790|(Polunin) Á. Löve, D. Löve & Raymond
+3791|(Polunin) A.E. Porsild
+3792|(Polunin) Böcher
+3793|(Polunin) Melderis
+3794|(Polunin) Tzvelev
+3795|(Popl.) Roshev.
+3796|(Prescott ex Bong.) L. Kelso
+3797|(Printzen & Tønsberg) Printzen & Tønsberg
+3798|(Pritz.) Aichele & Schwegler
+3799|(Pritz.) L.
+3800|(Pritz.) S.H. Li & Y.H. Huang
+3801|(Pritz.) Zämelis
+3802|(Prodan) O. Schwarz & Klink.
+3803|(Prov.) G.S. Mill. & Standl.
+3804|(Prtiz.) Juz.
+3805|(Pursh) Á. Löve
+3806|(Pursh) Á. Löve & D. Löve
+3807|(Pursh) B. Boivin
+3808|(Pursh) Beetle
+3809|(Pursh) Breitung
+3810|(Pursh) Britton
+3811|(Pursh) Buchenau
+3812|(Pursh) D.R. Dewey
+3813|(Pursh) DC.
+3814|(Pursh) Dillenb. & Kadereit
+3815|(Pursh) Douglas ex Lindl.
+3816|(Pursh) Eaton & J. Wright
+3817|(Pursh) Elkington
+3818|(Pursh) Fernald
+3819|(Pursh) Franco
+3820|(Pursh) G. Don
+3821|(Pursh) G.L. Nesom & N.S. Fraga
+3822|(Pursh) Gould
+3823|(Pursh) Greene
+3824|(Pursh) Hiitonen
+3825|(Pursh) Hook.
+3826|(Pursh) Hultén
+3827|(Pursh) Kartesz
+3828|(Pursh) Kuntze
+3829|(Pursh) Laínz
+3830|(Pursh) Lepage
+3831|(Pursh) Lindl.
+3832|(Pursh) Lindl. ex Beck
+3833|(Pursh) M. Peck
+3834|(Pursh) MacMill.
+3835|(Pursh) Nutt.
+3836|(Pursh) Ostenf.
+3837|(Pursh) Raf.
+3838|(Pursh) Rydb.
+3839|(Pursh) Small
+3840|(Pursh) Stebbins
+3841|(Pursh) Szlach. & Rutk.
+3842|(Pursh) Tolm.
+3843|(Pursh) Torr.
+3844|(Pursh) Torr. & A. Gray
+3845|(Pursh) W.A. Weber
+3846|(Pursh) Zämelis
+3847|(R. Br. ex Dewey) B. Boivin
+3848|(R. Br. ex Richardson) Á. Löve & D. Löve
+3849|(R. Br. ex Richardson) D.C. Eaton
+3850|(R. Br. ex Richardson) Dillenb. & Kadereit
+3851|(R. Br. ex Richardson) Gelert
+3852|(R. Br. ex Richardson) Graebn.
+3853|(R. Br. ex Richardson) Rydb.
+3854|(R. Br. ex Richardson) Watt
+3855|(R. Br.) A. Gray
+3856|(R. Br.) Á. Löve & D. Löve
+3857|(R. Br.) A.E. Porsild
+3858|(R. Br.) Ångstrom
+3859|(R. Br.) Berggr.
+3860|(R. Br.) Brassard
+3861|(R. Br.) Brid.
+3862|(R. Br.) Bruch & Schimp.
+3863|(R. Br.) Bunge
+3864|(R. Br.) C.E.O. Jensen
+3865|(R. Br.) Cody
+3866|(R. Br.) Cronq.
+3867|(R. Br.) DC.
+3868|(R. Br.) Dorn
+3869|(R. Br.) Durand
+3870|(R. Br.) Gornall
+3871|(R. Br.) Greene
+3872|(R. Br.) Griseb.
+3873|(R. Br.) Haw.
+3874|(R. Br.) Holub
+3875|(R. Br.) Hook. & Grev.
+3876|(R. Br.) Hultén
+3877|(R. Br.) Huth
+3878|(R. Br.) I. Hagen
+3879|(R. Br.) J.R. Spence
+3880|(R. Br.) K. Richt.
+3881|(R. Br.) Kuc
+3882|(R. Br.) L.D. Benson
+3883|(R. Br.) Luer
+3884|(R. Br.) Müll. Hal.
+3885|(R. Br.) Nyman
+3886|(R. Br.) O.E. Schulz
+3887|(R. Br.) Pennell
+3888|(R. Br.) Polunin
+3889|(R. Br.) Rand & Redf.
+3890|(R. Br.) Rydb.
+3891|(R. Br.) Scribn. & Merr.
+3892|(R. Br.) Ser.
+3893|(R. Br.) Simmons
+3894|(R. Br.) Small
+3895|(R. Br.) Turcz.
+3896|(R. Br.) Tzvelev
+3897|(R. Hedw.) Limpr.
+3898|(R. Hedw.) Schwägr.
+3899|(R. Morgan & Ackerman) R.M. Bateman
+3900|(R. Sant. & Poelt) Søchting, Kärnefelt & S.Y. Kondr.
+3901|(R. Sant.) Grube & B.D. Ryan
+3902|(R. Sant.) R. Sant.
+3903|(R. Sim) Hyl.
+3904|(R. Sim) T. Moore
+3905|(R.M. Schust. & Damsh.) Konstant.
+3906|(R.M. Schust. & Damsh.) Konstant. & Vilnet
+3907|(R.M. Schust. & Damsh.) Stotler & Crand.-Stotl.
+3908|(R.M. Schust. & Steere) Inoue & Steere
+3909|(R.M. Schust.) Bakalin
+3910|(R.M. Schust.) Konstant.
+3911|(R.M. Schust.) Konstant. & Vilnet
+3912|(R.M. Schust.) L. Söderstr. & Vána
+3913|(R.M. Schust.) L. Söderstr., De Roo & Hedd.
+3914|(R.M. Schust.) R.M. Schust.
+3915|(R.M. Schust.) R.M. Schust. & Damsh.
+3916|(R.M. Schust.) Schljakov
+3917|(R.M. Schust.) Stotler & Crand.-Stotl.
+3918|(R.M. Schust.) Vána & L. Söderstr.
+3919|(R.M.Schust.) Konstant.
+3920|(R.S. Williams) Broth.
+3921|(R.S. Williams) Grout
+3922|(R.S. Williams) H.A. Crum
+3923|(R.S. Williams) Hedenäs
+3924|(R.S. Williams) Sav.-Ljub.
+3925|(R.S. Williams) Wijk & Margad.
+3926|(R.T. Clausen) Á. Löve & D. Löve
+3927|(Rabenh.) Körb.
+3928|(Raddi) Frisvol, Elvebakk, Flatberg & Økland
+3929|(Radian) D.G. Long
+3930|(Raf.) A. Berger
+3931|(Raf.) Á. Löve & D. Löve
+3932|(Raf.) A. Nelson
+3933|(Raf.) Bacig.
+3934|(Raf.) Breitung
+3935|(Raf.) C.K. Schneid.
+3936|(Raf.) Fernald
+3937|(Raf.) Fernald & Long
+3938|(Raf.) Gren. & Godr.
+3939|(Raf.) H. Hara
+3940|(Raf.) H. St. John
+3941|(Raf.) H.D. Wulff.
+3942|(Raf.) Hadac
+3943|(Raf.) Hultén
+3944|(Raf.) Jeps.
+3945|(Raf.) Merr.
+3946|(Raf.) Ogden
+3947|(Raf.) Raf.
+3948|(Raf.) Raf. ex DC.
+3949|(Raf.) Sarg.
+3950|(Raf.) Suringar
+3951|(Raf.) Tzvelev
+3952|(Raf.) Tzvelev & Elven
+3953|(Raf.) V.V. Petrovsky & Elven
+3954|(Ramond) Arup, Zhao Xin & Lumbsch
+3955|(Ramond) DC.
+3956|(Ramond) Flagey
+3957|(Ramond) Leuckert & Poelt
+3958|(Ramond) Steud.
+3959|(Räsänen) D. Hawksw., Boluda & H. Lindgr.
+3960|(Räsänen) Essl.
+3961|(Räsänen) Hafellner & R.W. Rogers
+3962|(Räsänen) Hakul.
+3963|(Räsänen) Hertel
+3964|(Räsänen) Holien & Tønsberg
+3965|(Räsänen) Kärnefelt
+3966|(Räsänen) Moberg & R. Sant.
+3967|(Räsänen) Poelt
+3968|(Räsänen) Räsänen
+3969|(Räsänen) Søchting, Frödén & Arup
+3970|(Räsänen) Søchting, Kärnefelt & S.Y. Kondr.
+3971|(Räsänen) T. Sprib.
+3972|(Räsänen) Tibell
+3973|(Rau) Wareham
+3974|(Raup) B. Boivin
+3975|(Raup) Maguire
+3976|(Raymond ex Lam. & DC.) Schaer.
+3977|(Rchb.) Hartm.
+3978|(Rchb.) Hultén
+3979|(Rchb.) Les & Haynes
+3980|(Rchb.) Palla
+3981|(Rchb.) Rchb.
+3982|(Rech. f.) B. Boivin
+3983|(Rech. f.) J.C. Hickman
+3984|(Regel & Herder) W.H. Drury & Rollins
+3985|(Regel & Tiling) Drude
+3986|(Regel) Á. Löve & D. Löve
+3987|(Regel) Bocquet
+3988|(Regel) Callier
+3989|(Regel) Cody
+3990|(Regel) comb. nov.
+3991|(Regel) Czerep.
+3992|(Regel) Detling
+3993|(Regel) Fernald
+3994|(Regel) Fernald & Raup
+3995|(Regel) H. St. John
+3996|(Regel) Hultén
+3997|(Regel) Kom.
+3998|(Regel) Kozhevn.
+3999|(Regel) Krasnob.
+4000|(Regel) Krasnob. & T. Yamaz.
+4001|(Regel) O.E. Schulz
+4002|(Regel) Piper
+4003|(Regel) Pouzar
+4004|(Regel) Raus.
+4005|(Regel) Rydb.
+4006|(Regel) Sarg.
+4007|(Rehder & Wilson) Bean
+4008|(Rehder & Wilson) Fernald
+4009|(Rehder & Wilson) Hultén
+4010|(Rehder & Wilson) Nakai
+4011|(Rehm ex Arnold) Triebel
+4012|(Rehm) Arnold
+4013|(Rehm) D. Hawksw. & R. Sant.
+4014|(Reichen.) Fürnrohr
+4015|(Reim.) T.J. Kop.
+4016|(Renauld & Bryhn) Broth.
+4017|(Renauld & Bryhn) Habeeb
+4018|(Renauld & Bryhn) Holz.
+4019|(Renauld & Cardot) Broth.
+4020|(Renauld & Cardot) E. Lawton
+4021|(Renauld & Cardot) Grout
+4022|(Renauld & Cardot) H.A. Crum
+4023|(Renauld & Cardot) Ignatov
+4024|(Renauld & Cardot) Kindb.
+4025|(Renauld & Cardot) Renauld & Cardot
+4026|(Renauld & Cardot) Whitehouse
+4027|(Renauld & Cardot) Wijk & Margad.
+4028|(Renauld & Geh.) Flow.
+4029|(Renauld) Broth.
+4030|(Renauld) G. Roth
+4031|(Renauld) Grout
+4032|(Renauld) Mönk.
+4033|(Retz.) Braun-Blanq.
+4034|(Retz.) Britton
+4035|(Retz.) Degel.
+4036|(Retz.) Dumort.
+4037|(Retz.) R. Howe
+4038|(Retz.) Rydb.
+4039|(Retz.) Vain.
+4040|(Richardson ex Hook.) S. Watson
+4041|(Richardson) Á. Löve & D. Löve
+4042|(Richardson) Andersson
+4043|(Richardson) Andersson ex Hultén
+4044|(Richardson) B. Boivin
+4045|(Richardson) Banks ex Spreng.
+4046|(Richardson) C.L. Hitchc.
+4047|(Richardson) Cockerell
+4048|(Richardson) DC.
+4049|(Richardson) Dippel
+4050|(Richardson) Fernald
+4051|(Richardson) Hiitonen
+4052|(Richardson) Holub
+4053|(Richardson) House
+4054|(Richardson) Hultén
+4055|(Richardson) J.M. Gillett
+4056|(Richardson) Less.
+4057|(Richardson) Nyl.
+4058|(Richardson) Rydb.
+4059|(Richardson) S. Watson
+4060|(Richardson) S.L. Welsh
+4061|(Richardson) Tzvelev
+4062|(Richardson) W.A. Weber
+4063|(Riddell ex Small) J.S. Wilson
+4064|(Riddell ex Small) Riddell ex W. Stone
+4065|(Riddell ex Small) Small
+4066|(Robbins) Ahti
+4067|(Roem. & Schult.) Breitung
+4068|(Roem. & Schult.) Elenevsky
+4069|(Roem. & Schult.) H. Hara
+4070|(Roem. & Schult.) Hook.
+4071|(Rollins) Rollins
+4072|(Rollins) S.L. Welsh
+4073|(Rollins) W.A. Weber
+4074|(Rose) A. Berger
+4075|(Rose) H. Hara
+4076|(Rose) Rose ex Hutch.
+4077|(Rosend.) G.N. Jones
+4078|(Rosend.) Nickrent
+4079|(Roth) Dumort.
+4080|(Roth) Müll. Frib.
+4081|(Roth) Schiffn.
+4082|(Roth) Schübl. & G. Martens
+4083|(Roth) Warnst.
+4084|(Rottb.) Börner
+4085|(Rottb.) Britton
+4086|(Rottb.) G. Don
+4087|(Rottb.) Haw.
+4088|(Rottb.) Ma
+4089|(Rottb.) Toyok.
+4090|(Rowlee) C.K. Schneid.
+4091|(Rowlee) Cronq.
+4092|(Rowlee) M.E. Jones
+4093|(Rowlee) Rydb.
+4094|(Rudolph ex Georgi) Brand
+4095|(Rupr. ex Roshev.) Czern.
+4096|(Rupr.) Á. Löve & D. Löve
+4097|(Rupr.) Avrorin
+4098|(Rupr.) Bocquet
+4099|(Rupr.) Broun
+4100|(Rupr.) C. Chr.
+4101|(Rupr.) Calder & Roy L. Taylor
+4102|(Rupr.) Ching
+4103|(Rupr.) D.A. Webb
+4104|(Rupr.) Fernald
+4105|(Rupr.) Griseb.
+4106|(Rupr.) Hämet-Ahti
+4107|(Rupr.) Holub
+4108|(Rupr.) Hultén
+4109|(Rupr.) Ledeb.
+4110|(Rupr.) Morton
+4111|(Rupr.) Nyman
+4112|(Rupr.) Ohwi
+4113|(Rupr.) Paris
+4114|(Rupr.) Perfil.
+4115|(Rupr.) Pobed.
+4116|(Rupr.) Pouzar
+4117|(Rupr.) R.T. Clausen
+4118|(Rupr.) Raus.
+4119|(Rupr.) Regel
+4120|(Rupr.) Sarvela
+4121|(Rupr.) T. Moore
+4122|(Rupr.) Tzvelev
+4123|(Rupr.) Walp.
+4124|(Russow) C.E.O. Jensen
+4125|(Russow) M.O. Hill
+4126|(Rutstr.) Ach.
+4127|(Rutstr.) Gotth. Schneid. & Hertel
+4128|(Rutstr.) Hepp
+4129|(Rutstr.) M. Choisy
+4130|(Rydb.) Á. Löve
+4131|(Rydb.) Á. Löve & D. Löve
+4132|(Rydb.) A. Nelson
+4133|(Rydb.) A.E. Murray
+4134|(Rydb.) A.E. Porsild
+4135|(Rydb.) A.J. Moore & Dillenb.
+4136|(Rydb.) Abrams
+4137|(Rydb.) Ames
+4138|(Rydb.) Argus
+4139|(Rydb.) B. Boivin
+4140|(Rydb.) Barneby
+4141|(Rydb.) Britton & Rose
+4142|(Rydb.) Butters & Abbe
+4143|(Rydb.) C.K. Schneid.
+4144|(Rydb.) C.L. Hitchc.
+4145|(Rydb.) C.R. Ball
+4146|(Rydb.) Cody
+4147|(Rydb.) Coville & Standl. ex Hultén
+4148|(Rydb.) Cronq.
+4149|(Rydb.) D.D. Keck
+4150|(Rydb.) D.F. Murray & Elven
+4151|(Rydb.) E.E. Nelson
+4152|(Rydb.) Farw.
+4153|(Rydb.) Fernald
+4154|(Rydb.) G.L. Wittr.
+4155|(Rydb.) G.N. Jones
+4156|(Rydb.) Garrett
+4157|(Rydb.) Gleason
+4158|(Rydb.) Gould
+4159|(Rydb.) H. St. John
+4160|(Rydb.) House
+4161|(Rydb.) Hultén
+4162|(Rydb.) J.F. Macbr. & Payson
+4163|(Rydb.) J.T. Howell
+4164|(Rydb.) Jeps.
+4165|(Rydb.) Jurtz. & V.V. Petrovsky
+4166|(Rydb.) K. Schum.
+4167|(Rydb.) Kearney & Peebles
+4168|(Rydb.) Lepage
+4169|(Rydb.) Luer
+4170|(Rydb.) M. Hopkins
+4171|(Rydb.) M. Peck
+4172|(Rydb.) Maguire
+4173|(Rydb.) N. Petersen
+4174|(Rydb.) Nevski
+4175|(Rydb.) Niles
+4176|(Rydb.) Nobs
+4177|(Rydb.) O.E. Schulz
+4178|(Rydb.) Ostenf.
+4179|(Rydb.) Raup
+4180|(Rydb.) Rollins
+4181|(Rydb.) Rosend.
+4182|(Rydb.) Rydb.
+4183|(Rydb.) Rydb. ex H. Hara
+4184|(Rydb.) S.F. Blake
+4185|(Rydb.) S.L. Welsh
+4186|(Rydb.) Sarg.
+4187|(Rydb.) Snogerup
+4188|(Rydb.) Soják
+4189|(Rydb.) Szlach.
+4190|(Rydb.) Th. Wolf
+4191|(Rydb.) Thell.
+4192|(Rydb.) Tidestr.
+4193|(Rydb.) W.A. Weber
+4194|(Rydb.) Wiggins
+4195|(S. Br.) P.A. Schmidt
+4196|(S. Br.) Sarg.
+4197|(S. Brown) Beissn.
+4198|(S. Hatt. & Inoue) S. Hatt. & Mizut.
+4199|(S. Hatt. & Mizut.) R.M. Schust.
+4200|(S. Hatt.) Kuwah.
+4201|(S. Watson ex B.L. Rob.) Howell
+4202|(S. Watson) A. Gray
+4203|(S. Watson) Á. Löve & D. Löve
+4204|(S. Watson) A. Nelson
+4205|(S. Watson) A.E. Murray
+4206|(S. Watson) A.E. Porsild
+4207|(S. Watson) Abrams
+4208|(S. Watson) B. Boivin
+4209|(S. Watson) Britton
+4210|(S. Watson) Buchenau
+4211|(S. Watson) Butters & Abbe
+4212|(S. Watson) C.L. Hitchc.
+4213|(S. Watson) Crow
+4214|(S. Watson) Fernald
+4215|(S. Watson) Fernald & Wiegand
+4216|(S. Watson) Gates
+4217|(S. Watson) Gelert
+4218|(S. Watson) Graebn.
+4219|(S. Watson) Greene
+4220|(S. Watson) H.M. Hall & Clements
+4221|(S. Watson) Hack.
+4222|(S. Watson) Hultén
+4223|(S. Watson) J.M. Coult. & Rose
+4224|(S. Watson) Jeps.
+4225|(S. Watson) L. Phillips
+4226|(S. Watson) MacMill.
+4227|(S. Watson) Nash
+4228|(S. Watson) O.E. Schulz
+4229|(S. Watson) Piper
+4230|(S. Watson) Rollins
+4231|(S. Watson) Rydb.
+4232|(S. Watson) S.L. Welsh
+4233|(S. Watson) Small
+4234|(S. Watson) Staudt
+4235|(S. Watson) Stuckey
+4236|(S. Watson) W.A. Weber
+4237|(S.F. Blake) Á. Löve & D. Löve
+4238|(S.F. Blake) Farw.
+4239|(S.F. Blake) Hultén
+4240|(S.G. Gmel.) Ångstr.
+4241|(S.G. Gmel.) Fisch. ex M. Bieb.
+4242|(S.G. Gmel.) M. Nishida
+4243|(S.G. Gmel.) Prantl
+4244|(S.G. Gmel.) Trevis.
+4245|(S.L. Welsh) Jurtz.
+4246|(S.W. Arnell) L. Söderstr. & Vána
+4247|(S.W. Arnell) Mårtensson
+4248|(S.W. Arnell) R.M. Schust. & Damsh
+4249|(S.W. Greene) H. Rob.
+4250|(S.Y. Kondr., A. Thell, Kärnefelt & Elix) Fröden, Arup & Søchting
+4251|(Sacc.) Vain.
+4252|(Saelan) Warnst.
+4253|(Salisb.) C.F. Reed
+4254|(Salisb.) Hultén
+4255|(Salisb.) Meisn.
+4256|(Sam.) Gorodkov ex Krylov
+4257|(Sam.) P.H. Raven
+4258|(Sam.) Polunin
+4259|(Sam.) Tolm.
+4260|(Sandst.) Hustich
+4261|(Sandst.) Ruoss
+4262|(Sanio ex C.E.O. Jensen) G. Roth
+4263|(Sanio ex C.E.O. Jensen) H.A. Crum & L.E. Anderson
+4264|(Sanio) Glowacki
+4265|(Sarg.) A. Heller
+4266|(Sarg.) E. Murray
+4267|(Sarg.) Kruschke
+4268|(Sarg.) Raup
+4269|(Sarg.) Youngberg
+4270|(Satake) Hultén
+4271|(Satake) Sam.
+4272|(Saut.) Müll. Frib.
+4273|(Saut.) Podp.
+4274|(Savi) Asch. & Graebn.
+4275|(Savi) Boiss.
+4276|(Savi) Ten.
+4277|(Savicz) H. Magn.
+4278|(Savicz) Lamb
+4279|(Savicz) Lamb ex Krog
+4280|(Savicz) Schol.
+4281|(Savicz) Zahlbr.
+4282|(Sch. Bip.) Hutch.
+4283|(Schaer.) Anzi
+4284|(Schaer.) Frey
+4285|(Schaer.) H. Magn.
+4286|(Schaer.) Hav.
+4287|(Schaer.) Hedl.
+4288|(Schaer.) Hertel
+4289|(Schaer.) Hertel & Rambold
+4290|(Schaer.) Kalb
+4291|(Schaer.) Körb.
+4292|(Schaer.) R. Sant.
+4293|(Schaer.) Schauer
+4294|(Schaer.) Schol.
+4295|(Schaer.) Stenh.
+4296|(Schaer.) Th. Fr.
+4297|(Schaer.) Timdal
+4298|(Schaer.) Vain.
+4299|(Schaer.) Vezda & Poelt
+4300|(Scheich. ex Schwägr.) J.R. Spence
+4301|(Scheutz) Rydb.
+4302|(Schiffn.) Frye & L. Clark
+4303|(Schiffn.) Müll. Frib.
+4304|(Schiffn.) R.M. Schust. & Damsh. ex L. Söderstr.& Vána
+4305|(Schiffn.) Schiffn.
+4306|(Schimp. ex Besch.) M.O. Hill
+4307|(Schimp. ex H. Müll) Warnst.
+4308|(Schimp. ex Müll. Hal.) Amann
+4309|(Schimp. ex Müll. Hal.) H.A. Crum
+4310|(Schimp. ex Müll. Hal.) K. Saito
+4311|(Schimp. ex Müll. Hal.) R.H. Zander
+4312|(Schimp. in B.S.G) Podp.
+4313|(Schimp.)
+4314|(Schimp.) A. Jaeger
+4315|(Schimp.) Amann
+4316|(Schimp.) Andrews
+4317|(Schimp.) Ångstr.
+4318|(Schimp.) C.E.O. Jensen
+4319|(Schimp.) Demeter
+4320|(Schimp.) Dus.
+4321|(Schimp.) E. Britton
+4322|(Schimp.) G. Roth
+4323|(Schimp.) Grout
+4324|(Schimp.) H. Rob.
+4325|(Schimp.) H.A. Crum
+4326|(Schimp.) H.A. Crum & L.E. Anderson
+4327|(Schimp.) H.A. Crum, Steere & L.E. Anderson
+4328|(Schimp.) Hampe
+4329|(Schimp.) Hedenäs
+4330|(Schimp.) Herzog
+4331|(Schimp.) I. Hagen
+4332|(Schimp.) Ignatov & Ignatova
+4333|(Schimp.) Jenn.
+4334|(Schimp.) Kanda
+4335|(Schimp.) Kindb.
+4336|(Schimp.) Klinggr.
+4337|(Schimp.) L.E. Anderson, H.A. Crum & W.R. Buck
+4338|(Schimp.) Latz.
+4339|(Schimp.) Limpr.
+4340|(Schimp.) Lindb.
+4341|(Schimp.) Loeske
+4342|(Schimp.) M. Fleisch.
+4343|(Schimp.) Macoun
+4344|(Schimp.) Mårtenssen
+4345|(Schimp.) Mårtensson
+4346|(Schimp.) Milde
+4347|(Schimp.) Mitt.
+4348|(Schimp.) Mönk.
+4349|(Schimp.) Pfeff.
+4350|(Schimp.) R.S. Williams
+4351|(Schimp.) Rau & Herv.
+4352|(Schimp.) Rau & Hervey
+4353|(Schimp.) Schimp. ex Milde
+4354|(Schimp.) Sharp
+4355|(Schimp.) Steere
+4356|(Schimp.) Stirt.
+4357|(Schimp.) T.J. Kop.
+4358|(Schimp.) Tuom. & T.J. Kop.
+4359|(Schimp.) Warnst.
+4360|(Schimp.) Wijk & Margad.
+4361|(Schimp.) Z. Iwats.
+4362|(Schischk.) Á. Löve & D. Löve
+4363|(Schischk.) Bocquet
+4364|(Schischk.) Hultén
+4365|(Schischk.) Tolm. & Kozhanch.
+4366|(Schkuhr ex Wahlenb.) Polunin
+4367|(Schkuhr.) E. Pons
+4368|(Schleich. ex Brid.) Loeske
+4369|(Schleich. ex Bruch & Schimp.) Loeske
+4370|(Schleich. ex F. Weber & D. Mohr) Bruhin
+4371|(Schleich. ex F. Weber & D. Mohr) Lesq.
+4372|(Schleich. ex F. Weber & D. Mohr) Lindb.
+4373|(Schleich. ex F. Weber) A. Evans
+4374|(Schleich. ex Hook. & Grev.) R.H. Zander
+4375|(Schleich. ex Lam. & DC.) B. Boivin
+4376|(Schleich. ex Schwägr.) F. Lara, Garilleti & Goffinet
+4377|(Schleich. ex Schwägr.) Hook.
+4378|(Schleich. ex Schwägr.) Lindb.
+4379|(Schleich.) Buch
+4380|(Schleich.) K. Muell.
+4381|(Schleich.) Lindb.
+4382|(Schleich.) Steph.
+4383|(Schlieph. & Warnst.) Maass & Isov.
+4384|(Schljakov) Á. Löve & D. Löve
+4385|(Schljakov) Schljakov
+4386|(Schltdl. ex DC.) A. Gray ex S. Watson
+4387|(Schltdl. ex DC.) Greene
+4388|(Schltdl. ex DC.) Spreng.
+4389|(Schltdl.) Á. Löve & D. Löve
+4390|(Schltdl.) Alef.
+4391|(Schltdl.) Flot.
+4392|(Schltdl.) Gelert
+4393|(Schltdl.) Hultén
+4394|(Schltdl.) L.D. Benson
+4395|(Schltdl.) S. Watson
+4396|(Schltdl.) Tolm.
+4397|(Schltdl.) Tzvelev
+4398|(Schmid. ex Schreb.) Dumort.
+4399|(Schmid. ex Schreb.) Loeske
+4400|(Schmidel ex Hoffm.) Dumort.
+4401|(Schmidel ex Hoffm.) H. Buch
+4402|(Schmidel) Schiffn. ex Loeske
+4403|(Schol.) Llano
+4404|(Schrad. ex G. Gaertn., B. Mey. & Scherb.) Schimp.
+4405|(Schrad. ex Hedw.) Schimp.
+4406|(Schrad.) Ach.
+4407|(Schrad.) Arnold
+4408|(Schrad.) Boistel
+4409|(Schrad.) Coppins & P. James
+4410|(Schrad.) Dumort.
+4411|(Schrad.) Gray
+4412|(Schrad.) Greene
+4413|(Schrad.) Hafellner
+4414|(Schrad.) Hazsl.
+4415|(Schrad.) Hoffm.
+4416|(Schrad.) Konstant.
+4417|(Schrad.) Nees
+4418|(Schrad.) Nyl.
+4419|(Schrad.) Otálora, P.M. Jørg. & Wedin
+4420|(Schrad.) Piper
+4421|(Schrad.) R.M. Schust.
+4422|(Schrad.) Schimp.
+4423|(Schrad.) Steph.
+4424|(Schrad.) T.J. Kop.
+4425|(Schrad.) Torss.
+4426|(Schrad.) Tuck.
+4427|(Schrad.) Zahlbr.
+4428|(Schrader ex Ach.) Vezda
+4429|(Schrank) Á. Löve
+4430|(Schrank) Borbás
+4431|(Schrank) Corda
+4432|(Schrank) Dans.
+4433|(Schrank) Dumort.
+4434|(Schrank) E.P. Bicknell
+4435|(Schrank) Gray
+4436|(Schrank) Hübener
+4437|(Schrank) Kunth
+4438|(Schrank) Kuwah.
+4439|(Schrank) Matuszk.
+4440|(Schrank) R.C. Harris
+4441|(Schrank) Raddi
+4442|(Schrank) Schur
+4443|(Schrank) Y. Schouten & Veldkamp
+4444|(Schreb.) Ach.
+4445|(Schreb.) Arnold
+4446|(Schreb.) Berggr.
+4447|(Schreb.) Dumort.
+4448|(Schreb.) Fr.
+4449|(Schreb.) Hack.
+4450|(Schreb.) Hafellner
+4451|(Schreb.) Hoffm.
+4452|(Schreb.) J.R. Spence
+4453|(Schreb.) Lettau
+4454|(Schreb.) Link
+4455|(Schreb.) M. Choisy
+4456|(Schreb.) Michx.
+4457|(Schreb.) Muhl.
+4458|(Schreb.) Nash
+4459|(Schreb.) Norman
+4460|(Schreb.) R.M. Schust.
+4461|(Schreb.) Rabenh.
+4462|(Schreb.) Roem. & Schult.
+4463|(Schreb.) S.J. Darbyshire
+4464|(Schreb.) Turner
+4465|(Schreb.) Wimm.
+4466|(Schult. ex Schult. & Schult. f.) Piper ex Hitchc.
+4467|(Schult.) Á. Löve & D. Löve
+4468|(Schult.) Greene
+4469|(Schult.) Hitchc.
+4470|(Schultz) Bruch & Schimp.
+4471|(Schultz) Hartm.
+4472|(Schultz) Lindb.
+4473|(Schultz) Ochyra
+4474|(Schultz) Schimp.
+4475|(Schultz) Warnst.
+4476|(Schur) Asch. & Graebn.
+4477|(Schwägr. ex Hook. & Grev.) F. Lara, Garilleti & Goffinet
+4478|(Schwägr. ex Hook. & Grev.) Lindb.
+4479|(Schwägr. ex Hook. & Grev.) Warnst.
+4480|(Schwägr.) Bruch & Schimp.
+4481|(Schwägr.) Bruch ex Hochstetter
+4482|(Schwägr.) E. Lawton
+4483|(Schwägr.) Grout
+4484|(Schwägr.) Hampe
+4485|(Schwägr.) Ignatov & Fedosov
+4486|(Schwägr.) J.R. Spence
+4487|(Schwägr.) Lindb.
+4488|(Schwägr.) Mathieu
+4489|(Schwägr.) Mitt.
+4490|(Schwägr.) Müll. Hal.
+4491|(Schwägr.) Schimp.
+4492|(Schwägr.) Vent. ex Broth.
+4493|(Schwein.) Farw.
+4494|(Schwein.) Gould
+4495|(Schwein.) Hitchc. ex Silveus
+4496|(Schwein.) Hyl.
+4497|(Schwein.) J.-E. Mattsson & M.J. Lai
+4498|(Schwein.) Lepage
+4499|(Schwein.) Lindb.
+4500|(Schwein.) R. Petersen
+4501|(Schwein.) W.H. Lewis
+4502|(Schwien.) Hitchc. ex Silveus
+4503|(Scop.) A. Gray
+4504|(Scop.) DC.
+4505|(Scop.) De Not.
+4506|(Scop.) Hale
+4507|(Scop.) Hoffm.
+4508|(Scop.) Holub
+4509|(Scop.) J.-E. Mattsson & M.J. Lai
+4510|(Scop.) J. Steiner
+4511|(Scop.) Kistenich, Timdal, Bendiksby & S. Ekman
+4512|(Scop.) Nees
+4513|(Scop.) Nyl.
+4514|(Scop.) R. Sant
+4515|(Scop.) R. Sant.
+4516|(Scop.) Timdal
+4517|(Scribn. & J.G. Sm.) A. Heller
+4518|(Scribn. & J.G. Sm.) Á. Löve
+4519|(Scribn. & J.G. Sm.) B. Boivin
+4520|(Scribn. & J.G. Sm.) Barkworth & D.R. Dewey
+4521|(Scribn. & J.G. Sm.) Beetle
+4522|(Scribn. & J.G. Sm.) C.L. Hitchc.
+4523|(Scribn. & J.G. Sm.) Gould
+4524|(Scribn. & J.G. Sm.) Hitchc.
+4525|(Scribn. & J.G. Sm.) Hoover
+4526|(Scribn. & J.G. Sm.) M.E. Jones
+4527|(Scribn. & J.G. Sm.) Rydb.
+4528|(Scribn. & J.G. Sm.) Tzvelev
+4529|(Scribn. & Merr.) Á. Löve
+4530|(Scribn. & Merr.) Á. Löve & D. Löve
+4531|(Scribn. & Merr.) B. Boivin
+4532|(Scribn. & Merr.) C.L. Hitchc.
+4533|(Scribn. & Merr.) Fernald & Weath.
+4534|(Scribn. & Merr.) Melderis
+4535|(Scribn. & Merr.) S.L. Welsh
+4536|(Scribn. & Merr.) Soreng
+4537|(Scribn. & Merr.) T.J. Sørensen
+4538|(Scribn. & Merr.) Tzvelev
+4539|(Scribn. & T.A. Williams) Beetle
+4540|(Scribn. ex A. Gray) B. Boivin
+4541|(Scribn.) Á. Löve
+4542|(Scribn.) C.L. Hitchc.
+4543|(Scribn.) Fernald
+4544|(Scribn.) Henrard
+4545|(Scribn.) Holub
+4546|(Scribn.) Howell
+4547|(Scribn.) Hultén
+4548|(Scribn.) Polunin
+4549|(Scribn.) Potztal
+4550|(Scribn.) Soreng
+4551|(Scribn.) Tzvelev
+4552|(Scribn.) W.A. Weber
+4553|(Scribn.) Wagnon
+4554|(Seem.) Hultén
+4555|(Seem.) Rollins
+4556|(Sendtn. ex Warnst.) Warnst.
+4557|(Sendtn.) Warnst.
+4558|(Ser. ex DC.) A. Braun
+4559|(Ser.) B. Boivin
+4560|(Ser.) Eames
+4561|(Ser.) Engl.
+4562|(Ser.) Fernald
+4563|(Ser.) Rydb.
+4564|(Ser.) Shinners
+4565|(Ser.) Torr. & A. Gray
+4566|(Sharp & Z. Iwats.) R.H. Zander
+4567|(Shear) Á. Löve & D. Löve
+4568|(Shear) A.E. Porsild
+4569|(Shear) Holub
+4570|(Shear) Tzvelev
+4571|(Shear) Wagnon
+4572|(Sheldon) Rydb. ex Small
+4573|(Sheviak) Rebrist. & Elven
+4574|(Shuttlw.) G.N. Jones
+4575|(Sierk) Otálora, P.M. Jørg. & Wedin
+4576|(Simmons) Á. Löve & D. Löve
+4577|(Simmons) Avrorin ex Geltman
+4578|(Simmons) Hyl.
+4579|(Simmons) Irmsch.
+4580|(Sims) DC.
+4581|(Sims) Nyar
+4582|(Sm. & Sow.) Erichsen
+4583|(Sm.) A. Gray
+4584|(Sm.) A. Massal.
+4585|(Sm.) A.L. Sm.
+4586|(Sm.) Ach.
+4587|(Sm.) Almb.
+4588|(Sm.) Anzi
+4589|(Sm.) B. Boivin
+4590|(Sm.) Benth. & Hook. f. ex W.H. Brewer & S. Watson
+4591|(Sm.) Coppins
+4592|(Sm.) D. Don
+4593|(Sm.) Decne. & Planch. ex Harms
+4594|(Sm.) Gray
+4595|(Sm.) Hammar
+4596|(Sm.) Hertel & Knoph
+4597|(Sm.) Hiitonen
+4598|(Sm.) M. Choisy
+4599|(Sm.) Miq.
+4600|(Sm.) Niewl. & Lunell
+4601|(Sm.) Nyl.
+4602|(Sm.) Otálora, P.M. Jørg. & Wedin
+4603|(Sm.) P. James
+4604|(Sm.) Poelt
+4605|(Sm.) Schiffn.
+4606|(Sm.) Trevis.
+4607|(Sm.) Turner & Borrer
+4608|(Sm.) Zopf
+4609|(Small ex Macoun) Hultén
+4610|(Small) Á. Löve & D. Löve
+4611|(Small) A.E. Porsild
+4612|(Small) Abrams
+4613|(Small) B. Boivin
+4614|(Small) C.L. Hitchc.
+4615|(Small) Ebinger
+4616|(Small) Engl. & Irmsch.
+4617|(Small) Fedde
+4618|(Small) Fedde ex Just
+4619|(Small) Greene
+4620|(Small) H. Hara
+4621|(Small) Hultén
+4622|(Small) M.M. Ivanova
+4623|(Small) Roy L. Taylor & MacBryde
+4624|(Small) W.A. Weber
+4625|(Soják) Soják
+4626|(Sol.) R. Br.
+4627|(Sol.) Wahlenb.
+4628|(Sol.) Y. Kadota
+4629|(Sommerf. ex Th. Fr.) Th. Fr.
+4630|(Sommerf.) A.J. Schwab & Rambold
+4631|(Sommerf.) Arnold
+4632|(Sommerf.) Bruch & Schimp.
+4633|(Sommerf.) Clauzade & Cl. Roux
+4634|(Sommerf.) D. Hawksw.
+4635|(Sommerf.) Fink
+4636|(Sommerf.) Flörke
+4637|(Sommerf.) Fr.
+4638|(Sommerf.) Hafellner
+4639|(Sommerf.) Hafellner & Coppins
+4640|(Sommerf.) Henssen
+4641|(Sommerf.) Hertel & Rambold
+4642|(Sommerf.) K. Schmitz & Lumbsch
+4643|(Sommerf.) Kalb
+4644|(Sommerf.) Kalb, Lumbsch & Elix
+4645|(Sommerf.) Kindb.
+4646|(Sommerf.) Lindb.
+4647|(Sommerf.) Lutzoni
+4648|(Sommerf.) Lynge
+4649|(Sommerf.) M. Choisy
+4650|(Sommerf.) McCune
+4651|(Sommerf.) Nyl.
+4652|(Sommerf.) Poelt
+4653|(Sommerf.) R. Sant.
+4654|(Sommerf.) R.A. Anderson
+4655|(Sommerf.) Räsänen
+4656|(Sommerf.) Rehm
+4657|(Sommerf.) S. Hatt.
+4658|(Sommerf.) Th. Fr.
+4659|(Sommerf.) Tuck.
+4660|(Sommerf.) Vain.
+4661|(Sommerf.) Zahlbr.
+4662|(Sommerf.: Fr.) D. Hawksw.
+4663|(Sondén) Lindm.
+4664|(Songeon & E.P. Perrier) Farw.
+4665|(Songeon & E.P. Perrier) Hiitonen
+4666|(Soreng) Tzvelev
+4667|(Spenner) Fée
+4668|(Spreng. ex Schwägr.) Broth.
+4669|(Spreng.) A. Heller
+4670|(Spreng.) Á. Löve & D. Löve
+4671|(Spreng.) Divakar, A. Crespo & Lumbsch
+4672|(Spreng.) Flot.
+4673|(Spreng.) G.L. Nesom
+4674|(Spreng.) Hale
+4675|(Spreng.) Hultén
+4676|(Spreng.) J.R. Spence
+4677|(Spreng.) Kurtz
+4678|(Spreng.) Merr.
+4679|(Spreng.) Rchb. f.
+4680|(Spreng.) Rydb.
+4681|(Spreng.) S. Watson
+4682|(Spreng.) Scoggan
+4683|(Spreng.) Sull.
+4684|(Spreng.) Swinscow & Krog
+4685|(Spreng.) Tuck.
+4686|(Spreng.) Zahlbr.
+4687|(Spruce) A. Evans
+4688|(Spruce) Damsh.
+4689|(Spruce) F. Lees
+4690|(Spruce) Fleisch.
+4691|(Spruce) Grout
+4692|(Spruce) J.E. Zetterstatt
+4693|(Spruce) Konstant., Vilnet & A.V. Troitsky
+4694|(Spruce) Lindb.
+4695|(Spruce) Schiffn.
+4696|(Spruce) Steph.
+4697|(Spruce) Vána & L. Söderstr.
+4698|(St.-Yves) Cronq.
+4699|(St.-Yves) Fred. & Pavlick
+4700|(St.-Yves) Tzvelev
+4701|(Stacey) F.J. Herm.
+4702|(Standl. ex Small) B. Boivin
+4703|(Standl. ex Small) Hultén
+4704|(Standl. ex Small) Millais
+4705|(Standl.) Aellen
+4706|(Standl.) B. Boivin
+4707|(Standl.) Mosyakin
+4708|(Standl.) Uotila
+4709|(Standl.) Verloove
+4710|(Stanford) C.F. Reed
+4711|(Stanford) Gleason
+4712|(Stanford) Small
+4713|(Stapf) L.H. Bailey
+4714|(Starke) Hübener
+4715|(Starke) Ignatov & Huttunen
+4716|(Starke) Schimp.
+4717|(Steere) H.A. Crum, Steere & L.E. Anderson
+4718|(Steere) T.J. Kop.
+4719|(Steffen) A.E. Porsild
+4720|(Stein) Kotte
+4721|(Stein) Orange
+4722|(Stenh.) Vezda
+4723|(Stenham.) Hertel & Rambold
+4724|(Steph.) Grolle
+4725|(Steph.) Hatt.
+4726|(Steph.) Herzog
+4727|(Steph.) M. Yasuda
+4728|(Steph.) R.M. Schust.
+4729|(Steph.) S. Hatt.
+4730|(Steph.) Schiffn.
+4731|(Steph.) Steph.
+4732|(Steph.) Urmi
+4733|(Steph.) Zodda
+4734|(Stephan) Pers.
+4735|(Stephani) M. Hara
+4736|(Sternb. ex Cham.) Hultén
+4737|(Sternb. ex Cham.) Small
+4738|(Sternb.) Engl. & Irmsch.
+4739|(Sternb.) Gjaerev.
+4740|(Sternb.) Gornall & H. Ohba
+4741|(Sterneck) Á. Löve
+4742|(Sterneck) Druce
+4743|(Steud.) Abbe
+4744|(Steud.) B. Boivin
+4745|(Steud.) Fernald
+4746|(Steud.) Hultén
+4747|(Steud.) J. Cay & Darbyshire
+4748|(Steud.) Piper
+4749|(Steud.) Soreng & L.J. Gillespie
+4750|(Stev. ex Ser.) Á. Löve & D. Löve
+4751|(Stev. ex Ser.) A.J. Moore & Dillenb.
+4752|(Stev. ex Ser.) Fenzl
+4753|(Stev. ex Ser.) Graebn.
+4754|(Stev.) Á. Löve, D. Löve & Raymond
+4755|(Stirt.) Elix & Palice
+4756|(Stirt.) Giac.
+4757|(Stirt.) H. Olivier
+4758|(Stirt.) Hertel & Gotth. Schneider
+4759|(Stirt.) Rodr. Flakus & Printzen
+4760|(Stirt.) T. Sprib.
+4761|(Stirt.) Tønsberg
+4762|(Stirt.) Trass
+4763|(Stirt.) Zahlbr.
+4764|(Stizenb.) Nyl.
+4765|(Stizenb.) P. James
+4766|(Stizenb.) Vain.
+4767|(Sukaczev) Hultén
+4768|(Suksd.) Cronq.
+4769|(Sull. & Lesq.) A. Jaeger & Sauer.
+4770|(Sull. & Lesq.) Broth.
+4771|(Sull. & Lesq.) F. Lara, Garilleti & Goffinet
+4772|(Sull. & Lesq.) Fl.
+4773|(Sull. & Lesq.) Frye
+4774|(Sull. & Lesq.) Grout
+4775|(Sull. & Lesq.) Holz.
+4776|(Sull. & Lesq.) Lindb.
+4777|(Sull. & Lesq.) Mitt.
+4778|(Sull. & Lesq.) Rau & Herv.
+4779|(Sull. & Lesq.) Vanderpoorten & Hedenäs
+4780|(Sull. & Lesq.) Warnst.
+4781|(Sull. ex Lesq.) Braithw.
+4782|(Sull. ex Lesq.) Kindb.
+4783|(Sull.) A. Jaeger
+4784|(Sull.) Austin
+4785|(Sull.) Broth.
+4786|(Sull.) Cardot
+4787|(Sull.) E. Lawton
+4788|(Sull.) Flatberg
+4789|(Sull.) J.R. Spence
+4790|(Sull.) Kindb.
+4791|(Sull.) Mitt.
+4792|(Sull.) Ochyra
+4793|(Sull.) R.H. Zander
+4794|(Sull.) S. Hatt.
+4795|(Sull.) Spruce
+4796|(Sull.) Warnst.
+4797|(Suter) Zahn
+4798|(Svenson) Hultén
+4799|(Sw. ex Anonymous) Schimp.
+4800|(Sw. ex Brid.) Brid.
+4801|(Sw. ex Brid.) J.R. Spence
+4802|(Sw. ex Westr.) Hoffm.
+4803|(Sw. ex Willd.) Roem. & Schult.
+4804|(Sw. ex Willd.) Scribn.
+4805|(Sw. ex Willd.) Soreng
+4806|(Sw.) A. Gray
+4807|(Sw.) Ach.
+4808|(Sw.) Ach. ex Schaer.
+4809|(Sw.) Broth.
+4810|(Sw.) DC.
+4811|(Sw.) Dillenb. & Kadereit
+4812|(Sw.) Gray
+4813|(Sw.) H.A. Crum & L.E. Anderson
+4814|(Sw.) Hedenäs
+4815|(Sw.) Hiern.
+4816|(Sw.) Ignatov & Ignatova
+4817|(Sw.) J.J. Engel & R.M. Schust.
+4818|(Sw.) J.R. Spence
+4819|(Sw.) Kuntze
+4820|(Sw.) Loeske
+4821|(Sw.) Lynge
+4822|(Sw.) Michx.
+4823|(Sw.) Mont.
+4824|(Sw.) Mudd
+4825|(Sw.) Nieuwl.
+4826|(Sw.) Nutt. ex Elliott
+4827|(Sw.) Nyl.
+4828|(Sw.) Podp.
+4829|(Sw.) Rchb.
+4830|(Sw.) Rich.
+4831|(Sw.) Schimp.
+4832|(Sw.) Trevis.
+4833|(Sw.) W. Wight
+4834|(Sw.) Wahlenb.
+4835|(Sw.) Warnst.
+4836|(Sw.) Wedin
+4837|(Swallen) Á. Löve & D. Löve
+4838|(Syed & Crundw.) M.O. Hill
+4839|(Syed) Ochyra
+4840|(T. Jensen) Broth.
+4841|(T. Jensen) Kindb.
+4842|(T. Jensen) Loeske
+4843|(T. Sprib. & M. Hauck) Kalb, Lumbsch & Elix
+4844|(T.F. Forst.) Beck
+4845|(T.F. Forst.) Hook.
+4846|(T.J. Kop.) H.A. Crum & L.E. Anderson
+4847|(T.J. Sørensen) Á. Löve & D. Löve
+4848|(T.J. Sørensen) G. Weim.
+4849|(T.J. Sørensen) Hultén
+4850|(T.V. Egorova) A.E. Kozhevn.
+4851|(T.V. Egorova) T.V. Egorova
+4852|(T.V. Egorova, Jurtz. & V.V. Petrovsky) A.E. Kozhevn.
+4853|(T.V. Egorova, Jurtz. & V.V. Petrovsky) T.V. Egorova
+4854|(Takeda) S.L. Welsh
+4855|(Tamamsch.) Á. Löve & D. Löve
+4856|(Tatew.) H. Hara
+4857|(Tausch) F.W. Schultz & Sch. Bip.
+4858|(Taylor ex Gottsche, Lindenb. & Nees) Trevis
+4859|(Taylor) Coppins & Fryday
+4860|(Taylor) Coppins & Rambold
+4861|(Taylor) Damsh.
+4862|(Taylor) Hertel & Leuckert
+4863|(Taylor) J.R. Spence & H.P. Ramsay
+4864|(Taylor) Jørg.
+4865|(Taylor) Kremp.
+4866|(Taylor) Lindb.
+4867|(Taylor) Long
+4868|(Taylor) Nees
+4869|(Taylor) Nyl.
+4870|(Taylor) R.H. Zander
+4871|(Taylor) Reinke
+4872|(Taylor) Schimp.
+4873|(Taylor) Zwackh
+4874|(Terry) Clute
+4875|(Th. Fr. & Almq.) Fryday
+4876|(Th. Fr.) Á. Löve & D. Löve
+4877|(Th. Fr.) Alstrup & D. Hawksw.
+4878|(Th. Fr.) Arnold
+4879|(Th. Fr.) Bocquet
+4880|(Th. Fr.) Brodo
+4881|(Th. Fr.) Brodo & D. Hawksw.
+4882|(Th. Fr.) C. Knight ex Brodo
+4883|(Th. Fr.) Cody
+4884|(Th. Fr.) Coppins
+4885|(Th. Fr.) Coppins & P. James
+4886|(Th. Fr.) D. Löve
+4887|(Th. Fr.) Degel.
+4888|(Th. Fr.) Elven & Skarpaas
+4889|(Th. Fr.) Essl.
+4890|(Th. Fr.) Fryday, Printzen & S. Ekman
+4891|(Th. Fr.) H. Lindb. ex Lindm.
+4892|(Th. Fr.) H. Magn.
+4893|(Th. Fr.) H. Mayrh. & Sheard
+4894|(Th. Fr.) H. Olivier
+4895|(Th. Fr.) Hadac & Á. Löve
+4896|(Th. Fr.) Hale
+4897|(Th. Fr.) Hellb.
+4898|(Th. Fr.) Henssen
+4899|(Th. Fr.) Hultén
+4900|(Th. Fr.) Jurtz. & V.V. Petrovsky
+4901|(Th. Fr.) Lettau
+4902|(Th. Fr.) Lynge
+4903|(Th. Fr.) M. Mayrh.
+4904|(Th. Fr.) Malme
+4905|(Th. Fr.) Minks ex Redinger
+4906|(Th. Fr.) Nyl.
+4907|(Th. Fr.) Perlmutter & Rivas Plata
+4908|(Th. Fr.) Poelt
+4909|(Th. Fr.) Räsänen
+4910|(Th. Fr.) Savic & Tibell
+4911|(Th. Fr.) Schol.
+4912|(Th. Fr.) Sliwa, Zhao Xin & Lumbsch
+4913|(Th. Fr.) Soreng
+4914|(Th. Fr.) Th. Fr.
+4915|(TH. Fr.) Timdal
+4916|(Th. Fr.) Triebel
+4917|(Th. Fr.) Triebel & R. Sant.
+4918|(Th. Fr.) Tzvelev
+4919|(Th. Fr.) Vain.
+4920|(Th. Fr.) Vezda & Poelt
+4921|(Th. Fr.) W. Brunnbauer
+4922|(Th. Fr.) Zahlbr.
+4923|(Thed. ex Hartm.) H. Buch
+4924|(Thed. ex Hartm.) L. Söderstr. & Vána
+4925|(Thed. ex Hartm.) M. Howe
+4926|(Thed.) Asch. & Graebn.
+4927|(Thed.) Loeske
+4928|(Thed.) Schimp.
+4929|(Thed.) Sharp
+4930|(Thell.) C.L. Hitchc.
+4931|(Thell.) Rollins
+4932|(Thiéb.-Bern. ex Pers.) Asch.
+4933|(Thuill.) Hyl.
+4934|(Thuill.) S. Watson
+4935|(Thunb.) L.H. Bailey
+4936|(Thurb.) Benth. ex Vasey
+4937|(Tibell) Tibell
+4938|(Tidestr.) B. Boivin
+4939|(Tidestr.) C.L. Hitchc.
+4940|(Tidestr.) Daniels
+4941|(Tidestr.) H.J. Thomp.
+4942|(Timdal) Bendiksby & Timdal
+4943|(Timm) Koeler
+4944|(Timm) Tzvelev
+4945|(Tolm.) Á. Löve & D. Löve
+4946|(Tolm.) A.P. Khokhr.
+4947|(Tolm.) Bocquet
+4948|(Tolm.) Chater
+4949|(Tolm.) Czerep.
+4950|(Tolm.) Holub
+4951|(Tolm.) Nordh.
+4952|(Tolm.) Novikov
+4953|(Tolm.) Polunin
+4954|(Tolm.) Tzvelev
+4955|(Tønsberg) Hinteregger & Printzen
+4956|(Tønsberg) Kalb, Lumbsch & Elix
+4957|(Tønsberg) Printzen
+4958|(Tønsberg) Tønsberg
+4959|(Torr. & A. Gray ex Hook.) Brayshaw
+4960|(Torr. & A. Gray) A. Gray
+4961|(Torr. & A. Gray) Á. Löve & D. Löve
+4962|(Torr. & A. Gray) B.L. Robinson
+4963|(Torr. & A. Gray) Britton
+4964|(Torr. & A. Gray) Brouillet & Gornall
+4965|(Torr. & A. Gray) Cody
+4966|(Torr. & A. Gray) Dorn
+4967|(Torr. & A. Gray) Farw.
+4968|(Torr. & A. Gray) Greene
+4969|(Torr. & A. Gray) Hultén
+4970|(Torr. & A. Gray) J.T. Howell
+4971|(Torr. & A. Gray) Jeps.
+4972|(Torr. & A. Gray) M. Hopkins
+4973|(Torr. & A. Gray) Miq.
+4974|(Torr. & A. Gray) Nutt. ex Pritz.
+4975|(Torr. & A. Gray) Prov.
+4976|(Torr. & A. Gray) Rydb.
+4977|(Torr. & A. Gray) S. Watson
+4978|(Torr. & A. Gray) S. Watson & J.M. Coult.
+4979|(Torr. & A. Gray) S.L. Welsh
+4980|(Torr. & A. Gray) Torr. & A. Gray
+4981|(Torr. ex Dewey) Steud.
+4982|(Torr. ex Gottsche, Lindenb. & Nees) Trevis
+4983|(Torr. ex Nees) Lindb. ex Kaal.
+4984|(Torr. ex Nees) Lindenb.
+4985|(Torr.) Á. Löve & D. Löve
+4986|(Torr.) B. Boivin
+4987|(Torr.) Beetle
+4988|(Torr.) Church
+4989|(Torr.) Greene
+4990|(Torr.) Hitchc.
+4991|(Torr.) Howell
+4992|(Torr.) Hultén
+4993|(Torr.) K.S. Erdman
+4994|(Torr.) L.D. Benson
+4995|(Torr.) Raf.
+4996|(Torr.) S. Fuentes, Uotila & Borsch
+4997|(Torr.) Soják
+4998|(Torr.) Swallen
+4999|(Torr.) Thorne
+5000|(Tratt.) Á. Löve
+5001|(Tratt.) Polunin
+5002|(Trautv.) Á. Löve & D. Löve
+5003|(Trautv.) A.E. Porsild
+5004|(Trautv.) Andersson
+5005|(Trautv.) E. Ekman
+5006|(Trautv.) Fernald
+5007|(Trautv.) Hiitonen
+5008|(Trautv.) Hultén
+5009|(Trautv.) Jurtz.
+5010|(Trautv.) Jurtz. & V.V. Petrovsky
+5011|(Trautv.) Kalela
+5012|(Trautv.) Kamelin & Tichom.
+5013|(Trautv.) N. Busch
+5014|(Trautv.) O.E. Schulz
+5015|(Trautv.) Ohwi
+5016|(Trautv.) Raup
+5017|(Trautv.) Skvort.
+5018|(Trautv.) Tolm.
+5019|(Trautv.) Tzvelev
+5020|(Trautv.) W.A. Weber
+5021|(Trel.) C.L. Hitchc.
+5022|(Trel.) Sarg.
+5023|(Trevir. ex Göpp.) Griseb.
+5024|(Trevis.) Anzi
+5025|(Triebel & Rambold) Pérez-Ortega
+5026|(Trin. ex Griseb.) comb. nov.
+5027|(Trin. ex Griseb.) Hultén
+5028|(Trin. ex V.I. Krecz.) Á. Löve & D. Löve
+5029|(Trin. ex V.I. Krecz.) Kitagawa
+5030|(Trin. ex V.I. Krecz.) W.E. Hughes
+5031|(Trin.) Á. Löve & D. Löve
+5032|(Trin.) Andersson
+5033|(Trin.) Beal
+5034|(Trin.) Cope & Ryves
+5035|(Trin.) Griseb.
+5036|(Trin.) Hitchc.
+5037|(Trin.) Hultén
+5038|(Trin.) Jurtz.
+5039|(Trin.) Munro
+5040|(Trin.) Pilg.
+5041|(Trin.) R. Br.
+5042|(Trin.) Rupr. ex Andersson
+5043|(Trin.) Scribn. & Merr.
+5044|(Trin.) Swallen
+5045|(Trin.) Trin.
+5046|(Trin.) Tzvelev
+5047|(Tuck. ex Riddle) Goward & Thell
+5048|(Tuck.) B. Moncada & Lücking
+5049|(Tuck.) Brodo
+5050|(Tuck.) Brodo & D. Hawksw.
+5051|(Tuck.) Culb.
+5052|(Tuck.) Davydov, Peršoh & Rambold
+5053|(Tuck.) Egea & Torrente
+5054|(Tuck.) Essl.
+5055|(Tuck.) Fink
+5056|(Tuck.) Follmann & Huneck
+5057|(Tuck.) Gleason
+5058|(Tuck.) Gotth. Schneider
+5059|(Tuck.) H. Magn.
+5060|(Tuck.) H. Magnusson
+5061|(Tuck.) Hale
+5062|(Tuck.) J.W. Thomson
+5063|(Tuck.) Lamb
+5064|(Tuck.) M. Choisy
+5065|(Tuck.) Müll. Arg.
+5066|(Tuck.) Nyl.
+5067|(Tuck.) Otálora, P.M. Jørg. & Wedin
+5068|(Tuck.) Rundel & Bowler
+5069|(Tuck.) Spjut & Hale
+5070|(Tuck.) T. Sprib.
+5071|(Tuck.) Thell & Goward
+5072|(Tuck.) Tuck.
+5073|(Tuck.) W.L. Culb. & C.F. Culb.
+5074|(Tuck.) Zahlbr.
+5075|(Tul.) A. Massal.
+5076|(Tul.) R. Sant.
+5077|(Turcz. ex Boiss.) G.H.M. Lawrence
+5078|(Turcz. ex Boiss.) Hyl.
+5079|(Turcz. ex Boiss.) Nyman
+5080|(Turcz. ex Gorodkov) Holub.
+5081|(Turcz. ex Ledeb.) Boeckeler
+5082|(Turcz. ex Ledeb.) Gorodkov
+5083|(Turcz. ex Rupr.) Schmalh.
+5084|(Turcz. ex Steud.) Elven & D.F. Murray
+5085|(Turcz. ex Steud.) Peschkova
+5086|(Turcz. ex Steud.) Tolm.
+5087|(Turcz. ex Trautv. & C.A. Mey.) Becker
+5088|(Turcz. ex V.I. Krecz.) comb. nov.
+5089|(Turcz.) Á. Löve & D. Löve
+5090|(Turcz.) A.E. Porsild
+5091|(Turcz.) B. Boivin
+5092|(Turcz.) Böcher
+5093|(Turcz.) Botsch.
+5094|(Turcz.) D.F. Cui
+5095|(Turcz.) D.H. Les & Haynes
+5096|(Turcz.) Drobow
+5097|(Turcz.) Drobow ex Polunin
+5098|(Turcz.) H. Hara
+5099|(Turcz.) Holub
+5100|(Turcz.) House
+5101|(Turcz.) Hultén
+5102|(Turcz.) Juz.
+5103|(Turcz.) Nevski
+5104|(Turcz.) Schischk.
+5105|(Turcz.) Tzvelev
+5106|(Turn.) Grout
+5107|(Turner ex Ach.) Th. Fr.
+5108|(Turner ex Ach.) Zahlbr.
+5109|(Turner ex Wilson) Ignatov & Ignatova
+5110|(Turner ex Wilson) Kindb.
+5111|(Turner ex Wilson) Loeske
+5112|(Turner) Brid.
+5113|(Turner) Bruch & Schimp.
+5114|(Turner) Dixon
+5115|(Turner) Gueidan & Cl. Roux
+5116|(Turner) H. Rob.
+5117|(Turner) H.A. Crum
+5118|(Turner) Hook. & Taylor
+5119|(Turner) Moore
+5120|(Turner) Ochyra
+5121|(Turner) Paris
+5122|(Turner) Podp.
+5123|(Turner) Schimp.
+5124|(Turner) Schmitt & Lumbsch
+5125|(Turner) T.J. Kop. & Isov.
+5126|(Turner) Th. Fr.
+5127|(Tzvelev) Prob.
+5128|(Tzvelev) Soreng & L.J. Gillespie
+5129|(Tzvelev) Tzvelev
+5130|(Uline & Bray) Fernald
+5131|(Uline & Bray) Rydb.
+5132|(Underw.) Á. Löve
+5133|(Underw.) A.A. Eaton
+5134|(Underw.) House
+5135|(Underw.) Hultén
+5136|(Urb.) Shinners
+5137|(V.I. Krecz.) Á. Löve & D. Löve
+5138|(V.I. Krecz.) T.J. Sørensen
+5139|(V.I. Krecz.) Tzvelev
+5140|(V.N. Vassil) Á. Löve & D. Löve
+5141|(V.N. Vassil.) Á. Löve & D. Löve
+5142|(V.N. Vassil.) Hultén ex Kartesz & S.K. Gandhi
+5143|(V.N. Vassil.) Kuvaev
+5144|(V.N. Vassil.) M.S. Novos.
+5145|(V.N. Vassil.) V.N. Vassil.
+5146|(V.V. Petrovsky) A.P. Khokhr.
+5147|(V.V. Petrovsky) Prob.
+5148|(Vahl) A. Gray
+5149|(Vahl) Á. Löve & D. Löve
+5150|(Vahl) Fernald
+5151|(Vahl) Hook. f.
+5152|(Vahl) Körb.
+5153|(Vahl) Lynge
+5154|(Vahl) Maguire
+5155|(Vahl) Palla
+5156|(Vahl) Roem. & Schult.
+5157|(Vahl) Schinz & Thell.
+5158|(Vahl) Søchting, Frödén & Arup
+5159|(Vahl) T. Koyama
+5160|(Vahl) Th. Fr.
+5161|(Vail) Fassett
+5162|(Vail) Hultén
+5163|(Vail) Reveal
+5164|(Vain.) A. Evans
+5165|(Vain.) Ahti
+5166|(Vain.) Arup, Frödén & Søchting
+5167|(Vain.) Bitter
+5168|(Vain.) Bowler & Rundel
+5169|(Vain.) Brodo & D. Hawksw.
+5170|(Vain.) Brodo & R. Sant.
+5171|(Vain.) Degel.
+5172|(Vain.) Diederich & Etayo
+5173|(Vain.) Du Rietz
+5174|(Vain.) Essl.
+5175|(Vain.) H. Magn.
+5176|(Vain.) Hafellner
+5177|(Vain.) Hale
+5178|(Vain.) Hertel
+5179|(Vain.) Hertel & Rambold
+5180|(Vain.) Kernst.
+5181|(Vain.) Loht., Moberg, Myllys & Tehler
+5182|(Vain.) Lynge
+5183|(Vain.) Moberg
+5184|(Vain.) Poelt
+5185|(Vain.) Printzen & Holien
+5186|(Vain.) Räsänen
+5187|(Vain.) S.Y. Kondr. & Kärnefelt
+5188|(Vain.) S.Y. Kondr., Kärnefelt, Elix, A. Thell, Jung Kim, M.H. Jeong, N.N. Yu, A.S. Kondr. & Hur
+5189|(Vain.) Tibell
+5190|(Vain.) Timdal
+5191|(Vain.) Vain.
+5192|(Vain.) Zahlbr.
+5193|(Vainio) Sliwa, Zhao Xin & Lumbsch
+5194|(Van Houtte) A.R. Mast & Reveal
+5195|(Vasey & Rose) Greene
+5196|(Vasey & Scribn.) Stebbins
+5197|(Vasey) Á. Löve, D. Löve & Kapoor
+5198|(Vasey) B. Boivin
+5199|(Vasey) Beetle
+5200|(Vasey) Björkman
+5201|(Vasey) C.L. Hitchc.
+5202|(Vasey) D.D. Keck
+5203|(Vasey) Dorn
+5204|(Vasey) Fernald
+5205|(Vasey) Hitchc.
+5206|(Vasey) Hultén
+5207|(Vasey) Kearney
+5208|(Vasey) Melderis
+5209|(Vasey) Stebbins
+5210|(Vasey) Tzvelev
+5211|(Vent.) Chen
+5212|(Vent.) Farw.
+5213|(Vent.) Kindb.
+5214|(Venturi) Broth.
+5215|(Venturi) Ignatov & Ignatova
+5216|(Verseghy) Kukwa
+5217|(Vest) Fiori
+5218|(Vesterg.) Schischk. & Serg.
+5219|(Vezda) Keller, Gueidan & Thüs
+5220|(Vict.) Calder & Roy L. Taylor
+5221|(Vict.) Dole
+5222|(Vict.) Fernald
+5223|(Vill. ex Brid.) L.F. Koch
+5224|(Vill.) Ach.
+5225|(Vill.) Fiori
+5226|(Vill.) H.P. Fuchs
+5227|(Vill.) Schinz & Thell.
+5228|(Vill.) Schol.
+5229|(Vill.) Schrad. ex Gaud.
+5230|(Vill.) Soják
+5231|(Vill.) Timdal
+5232|(Vill.) Zahlbr.
+5233|(Voit) G. Roth
+5234|(Voit) Schwägr.
+5235|(Volkova) Hultén
+5236|(Volkova) J.M. Mill. & K.L. Chambers
+5237|(W. Bartram) Fernald
+5238|(W. Boott) B. Boivin
+5239|(W. Boott) Reznicek
+5240|(W. Curtis) Holmb.
+5241|(W. Wight ex Harshb.) Soják
+5242|(W. Wight) Raup
+5243|(W. Wight) Silba
+5244|(W.B. Drew) Á. Löve & D. Löve
+5245|(W.B. Drew) Breitung
+5246|(W.B. Drew) L.D. Benson
+5247|(W.B. Drew) Ritchie
+5248|(W.D.J. Koch) Burnat
+5249|(W.D.J. Koch) Fourr.
+5250|(W.D.J. Koch) Opiz
+5251|(W.D.J. Koch) Pease & A.H. Moore
+5252|(W.H. Brewer) Greene
+5253|(W.H. Brewer) Roy L. Taylor & MacBryde
+5254|(W.H. Drury & Rollins) Cody
+5255|(W.H. Drury & Rollins) G.A. Mulligan
+5256|(W.H. Drury & Rollins) Jurtz.
+5257|(W.H. Evans) A. Henry
+5258|(W.H. Evans) B. Boivin
+5259|(W.H. Evans) C.A. Jansson
+5260|(W.H. Wagner) Farrar
+5261|(W.H. Wagner) Lellinger
+5262|(W.J. Rob. ex A. Gray) S.F. Blake
+5263|(W.L. Culb. & C.F. Culb.) Ahti
+5264|(W.L. Culb. & C.F. Culb.) M.J. Lai
+5265|(W.P.C. Barton) Fernald
+5266|(W.P.C. Barton) Hultén
+5267|(W.W. Mitch. & Wilton) Á. Löve & D. Löve
+5268|(W.W. Mitch. & Wilton) comb. nov.
+5269|(Wahlenb. ex Ach.) Hafellner & T. Sprib.
+5270|(Wahlenb. ex Ach.) Nägeli ex Uloth
+5271|(Wahlenb.)
+5272|(Wahlenb.) A. Evans
+5273|(Wahlenb.) A. Massal.
+5274|(Wahlenb.) A. Nordin, Savic & Tibell
+5275|(Wahlenb.) Ach.
+5276|(Wahlenb.) Arup, Søchting & Frödén
+5277|(Wahlenb.) B. Boivin
+5278|(Wahlenb.) Britton, Sterns & Poggenb.
+5279|(Wahlenb.) Bruch & Schimp.
+5280|(Wahlenb.) Dillenb. & Kadereit
+5281|(Wahlenb.) Dumort.
+5282|(Wahlenb.) Fernald
+5283|(Wahlenb.) Fr.
+5284|(Wahlenb.) Fr. ex Hartm.
+5285|(Wahlenb.) G. Roth
+5286|(Wahlenb.) Gueidan & Thüs
+5287|(Wahlenb.) Gyeln.
+5288|(Wahlenb.) H. Lindb.
+5289|(Wahlenb.) H. Olivier
+5290|(Wahlenb.) Hafellner
+5291|(Wahlenb.) Hämet-Ahti
+5292|(Wahlenb.) Harry Sm. ex Lindm.
+5293|(Wahlenb.) Hartm.
+5294|(Wahlenb.) Hiern.
+5295|(Wahlenb.) Hultén
+5296|(Wahlenb.) J.W. Thomson
+5297|(Wahlenb.) Keller, Gueidan & Thüs
+5298|(Wahlenb.) Kindb.
+5299|(Wahlenb.) Körb.
+5300|(Wahlenb.) Leight.
+5301|(Wahlenb.) Lilj.
+5302|(Wahlenb.) Limpr.
+5303|(Wahlenb.) Lindb.
+5304|(Wahlenb.) Mack.
+5305|(Wahlenb.) Milde
+5306|(Wahlenb.) Norman
+5307|(Wahlenb.) Nyholm ex Mog.
+5308|(Wahlenb.) Nyl.
+5309|(Wahlenb.) P.M. Jørg. & Henssen
+5310|(Wahlenb.) Poelt & Lauckert
+5311|(Wahlenb.) Rchb.
+5312|(Wahlenb.) Renauld & Cardot
+5313|(Wahlenb.) S. Watson
+5314|(Wahlenb.) Scheele
+5315|(Wahlenb.) Scheid. & H. Mayrh.
+5316|(Wahlenb.) Schimp.
+5317|(Wahlenb.) Schwägr.
+5318|(Wahlenb.) Sm.
+5319|(Wahlenb.) Sm. ex Hoppe
+5320|(Wahlenb.) Small
+5321|(Wahlenb.) Sommerf.
+5322|(Wahlenb.) Sw.
+5323|(Wahlenb.) Th. Fr.
+5324|(Wahlenb.) Tuck.
+5325|(Wahlenb.) Tuom. & T.J. Kop.
+5326|(Wahlenb.) V. Wirth & Vezda
+5327|(Wahlenb.) Wahlenb.
+5328|(Wahlenb.) Willd.
+5329|(Wahlenb.) Zahlbr.
+5330|(Wahlenb.) Zopf
+5331|(Wahlenberg) Hedenäs
+5332|(Waldst. & Kit. ex Willd.) Haw.
+5333|(Wall. ex Meisn.) M. Král
+5334|(Wall. ex Meisn.) Moldenke
+5335|(Wall. ex Meisn.) Munshi & G.N. Javied
+5336|(Wallr.) Arnold
+5337|(Wallr.) Beck
+5338|(Wallr.) Cogn.
+5339|(Wallr.) Farw.
+5340|(Wallr.) Flot.
+5341|(Wallr.) G.H.M. Lawrence
+5342|(Wallr.) Hale & W.L. Culb.
+5343|(Wallr.) Hayek
+5344|(Wallr.) Hultén
+5345|(Wallr.) Loeske
+5346|(Wallr.) Otálora, P.M. Jørg. & Wedin
+5347|(Wallr.) Rehm
+5348|(Wallr.) Trevis.
+5349|(Walter) Fernald
+5350|(Warming) W.W. Sm. & G. Forrest
+5351|(Warnst.) H.A. Crum
+5352|(Warnst.) Hedenäs
+5353|(Warnst.) Podp.
+5354|(Warnst.) Riehm.
+5355|(Warnst.) Röll
+5356|(Warnst.) S. Hatt.
+5357|(Warnst.) Tuom. & T.J. Kop.
+5358|(Warnst.) Warnst.
+5359|(Webb & Moq.) C.F. Reed
+5360|(Weber) Ach.
+5361|(Weber) Körb.
+5362|(Weber) P.M Jørg. & S. Ekman
+5363|(Weber) Poelt
+5364|(Weber) Riddle
+5365|(Weber) Trevis.
+5366|(Weber) Vain.
+5367|(Weber) Y. Schouten & Veldkamp
+5368|(Wedd.) Arup, Frödén & Søchting
+5369|(Wedd.) Du Rietz
+5370|(Wedd.) Oxner
+5371|(Wedd.) Zahlbr.
+5372|(Wedd.) Zahlbr. ex Ginzb.
+5373|(Weigel) D. Löve
+5374|(Weinm.) Kindb.
+5375|(Weinm.) Kindb. ex E. Britton
+5376|(Weiss) Humb.
+5377|(Wenzig) C.L. Hitchc.
+5378|(Wenzig) Calder & Roy L. Taylor
+5379|(Westr.) Ach.
+5380|(Wettst.) Toyok.
+5381|(Wherry) B. Boivin
+5382|(Wherry) J.P. Anderson
+5383|(Wherry) Shetler
+5384|(Wherry) V.E. Grant
+5385|(Wich.) Grout
+5386|(Wiegand) Piper
+5387|(Willd. ex Brid.) Mitt.
+5388|(Willd. ex Roem. & Schult.) Á. Löve & D. Löve
+5389|(Willd. ex Roem. & Schult.) Hultén
+5390|(Willd. ex Schltdl.) Hultén
+5391|(Willd. ex Spreng.) Á. Löve & D. Löve
+5392|(Willd. ex Spreng.) F.W. Schultz & Sch. Bip.
+5393|(Willd. ex Spreng.) Schljakov
+5394|(Willd.) Á. Löve & D. Löve
+5395|(Willd.) B. Boivin
+5396|(Willd.) Besser ex M. Bieb.
+5397|(Willd.) Blomquist
+5398|(Willd.) Correll
+5399|(Willd.) DC.
+5400|(Willd.) Divakar, A. Crespo & Lumbsch
+5401|(Willd.) Fernald
+5402|(Willd.) Hale
+5403|(Willd.) Hitchc.
+5404|(Willd.) Hyl.
+5405|(Willd.) Knight
+5406|(Willd.) Kuntze
+5407|(Willd.) Link
+5408|(Willd.) Mérat
+5409|(Willd.) Morton
+5410|(Willd.) O.E. Schulz
+5411|(Willd.) Pers.
+5412|(Willd.) Raymond
+5413|(Willd.) Rostk. & Schmidt
+5414|(Willd.) Trautv.
+5415|(Willd.) Trin.
+5416|(Willd.) Urb.
+5417|(Willd.) Vain.
+5418|(Willey ex Rothr.) Zahlbr.
+5419|(Willey) E. Lay & P. May
+5420|(Willey) Fink
+5421|(Willey) R.C. Harris
+5422|(Willey) Vain.
+5423|(Williams) B. Boivin
+5424|(Wilson ex Mitt.) Broth. ex Paris
+5425|(Wilson ex Mitt.) Osada & K. Yano
+5426|(Wilson ex Mitt.) Z. Iwats. & Nog.
+5427|(Wilson) A. Jaeger
+5428|(Wilson) Besch.
+5429|(Wilson) Frye
+5430|(Wilson) Grout
+5431|(Wilson) I. Hagen
+5432|(Wilson) Kindb.
+5433|(Wilson) Lindb.
+5434|(Wilson) Loeske
+5435|(Wilson) Pursell
+5436|(With.) Arup, Søchting & Frödén
+5437|(With.) Brid. ex P. Beauv.
+5438|(With.) Bruch & Schimp.
+5439|(With.) Grolle
+5440|(With.) J.R. Laundon
+5441|(With.) Lindb.
+5442|(With.) Loeske
+5443|(With.) Lutzoni
+5444|(With.) M. Choisy
+5445|(With.) Moore
+5446|(With.) Müll. Frib.
+5447|(With.) Nyl.
+5448|(With.) Otálora, P.M. Jørg. & Wedin
+5449|(With.) R.H. Zander
+5450|(With.) Schimp.
+5451|(With.) Th. Fr.
+5452|(With.) Waddell
+5453|(Wohlleben) House
+5454|(Woot. & Standl.) W.C. Martin & C.R. Hutchins
+5455|(Wormsk. ex Drejer) Hultén
+5456|(Wormsk. ex Drejer) Ostenf.
+5457|(Wormsk. ex Hornem.) Á. Löve & Ritchie
+5458|(Wormsk. ex Hornem.) Hiitonen
+5459|(Wormsk. ex Hornem.) O'Kane & Al-Shehbaz
+5460|(Wormsk. ex Hornem.) Richardson
+5461|(Wormsk. ex Hornem.) Rydb.
+5462|(Wormsk. ex Hornem.) S. Watson
+5463|(Wormsk. ex Hornem.) Torr. & A. Gray
+5464|(Wormsk. ex Hornem.) Tuck.
+5465|(Wormsk.) Á. Löve & D. Löve
+5466|(Wulfen & Schreb.) Beetle
+5467|(Wulfen & Schreb.) Prokudin
+5468|(Wulfen) Dalla Torre & Sarnth.
+5469|(Wulfen) Hertel & Knoph
+5470|(Wulfen) Körb.
+5471|(Wulfen) Nyl.
+5472|(Wulfen) Poetsch
+5473|(Wulfen) S.L.F. Mey.
+5474|(Wulfen) Søchting, Frödén & Arup
+5475|(Wulfen) Trevisan
+5476|(Y. Ohmura) Articus
+5477|(Zahlbr.) Arup, Søchting & Frödén
+5478|(Zahlbr.) Essl.
+5479|(Zahlbr.) Gotth. Schneid.
+5480|(Zahlbr.) H. Magn.
+5481|(Zahlbr.) J. Steiner
+5482|(Zahlbr.) O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw. & Lumbsch
+5483|(Zahlbr.) Oksner
+5484|(Zahlbr.) Printzen
+5485|(Zahlbr.) Räsänen
+5486|(Zahlbr.) Szat.
+5487|(Zahlbr.) Wetmore
+5488|(Zahn) Cronq.
+5489|(Zertová) Á. Löve & D. Löve
+5490|(Zetterstedt) Sharp
+5491|(Zhmylev) Brouillet & Gornall
+5492|(Zhmylev) Cody
+5493|(Zing. ex Krecz.) Hultén
+5494|(Zopf) D. Hawksw.
+5495|(Zopf) Theiss. & Syd.
+5496|(Zschacke) Keller, Gueidan & Thüs
+5497|(Zschacke) Tomas. & Cif.
+5498|A. Bennett
+5499|A. Berger
+5500|A. Bertoloni
+5501|A. Blytt
+5502|A. Br. ex Milde
+5503|A. Braun
+5504|A. Chev.
+5505|A. DC.
+5506|A. Dietr.
+5507|A. Evans
+5508|A. Funk
+5509|A. Gray
+5510|A. Haines
+5511|A. Ham.
+5512|A. Heller
+5513|Á. Löve
+5514|Á. Löve & D. Löve
+5515|Á. Löve, D. Löve & Raymond
+5516|A. Massal.
+5517|A. Massal. & De Not.
+5518|A. Murray bis
+5519|A. Nelson
+5520|A. Nelson ex Rydb.
+5521|A. Thell & Goward
+5522|A. Wilson
+5523|A.A. Eaton
+5524|A.E. Bobrov
+5525|A.E. Porsild
+5526|A.E. Porsild & Senn
+5527|A.F.W. Schmidt
+5528|A.J. Scott
+5529|A.J. Shaw
+5530|A.J. Shaw, R.E. Andrus & B. Shaw
+5531|A.K. Skvortsov
+5532|A.K. Skvortsov ex V.V. Petrovsky
+5533|A.P. Khokhr.
+5534|A.P. Khokhr. & Kuvaev
+5535|Abbayes
+5536|Abedin & Zamarrud
+5537|Abrom.
+5538|Ach.
+5539|Ach. ex Schaer.
+5540|Achey
+5541|Adams
+5542|Adams ex DC.
+5543|Adams ex Fisch.
+5544|Adams ex Hoffm.
+5545|Adans.
+5546|Aellen
+5547|Ahlner
+5548|Ahti
+5549|Ahti & E.S. Hansen
+5550|Aiton
+5551|Al-Shehbaz
+5552|Al-Shehbaz & O'Kane
+5553|Al-Shehbaz, J.R. Grant, R. Lipkin, D.F. Murray & C.L. Parker
+5554|Al-Shehbaz, O'Kane & Price
+5555|Albert & Jahandiez
+5556|All.
+5557|Almb.
+5558|Almq.
+5559|Alph. Wood
+5560|Alstrup
+5561|Alstrup & D. Hawksw.
+5562|Amann
+5563|Andersson
+5564|Ando & Higuchi
+5565|Andrejev
+5566|Andres
+5567|Andrz.
+5568|Andrz. ex Besser
+5569|Andrz. ex DC.
+5570|Andrz. ex Ledeb.
+5571|Andrz. ex M. Bieb.
+5572|Ångstr.
+5573|Anzi
+5574|Arcang.
+5575|Argus
+5576|Arnell
+5577|Arnell & C.E.O. Jensen
+5578|Arnell & H. Buch
+5579|Arnell & J. Perss.
+5580|Arnold
+5581|Arup
+5582|Arup, Fröden, & Søchting
+5583|Arup, Halici & Vondrák
+5584|Arup, Søchting, & Fröden
+5585|Arv.-Touv.
+5586|Asahina
+5587|Asahina ex M. Sat.
+5588|Asch.
+5589|Asch. & Graebn.
+5590|Asch. & Magnus
+5591|Austin
+5592|Austin ex A. Gray
+5593|Austin ex Grout
+5594|Austin ex Underw.
+5595|Aziz & Vohra
+5596|B. Boivin
+5597|B. de Lesd.
+5598|B. Moncada & Lücking
+5599|B. Sutton
+5600|B.L. Rob.
+5601|B.L. Turner & M. Whalen
+5602|B.M. Murray
+5603|Babc.
+5604|Bagl.
+5605|Bailey
+5606|Bakalin
+5607|Bakalin & Vilnet
+5608|Baker
+5609|Balbis
+5610|Balbis ex Willd.
+5611|Banks ex Lowe
+5612|Banks ex Pursh
+5613|Barkman
+5614|Barkworth
+5615|Barnéoud
+5616|Barnes
+5617|Barratt ex Hook.
+5618|Bartl.
+5619|Basil.
+5620|Bates
+5621|Baum & Findlay
+5622|Baumg.
+5623|Beal
+5624|Beaman
+5625|Bebb
+5626|Beck
+5627|Bednarek-Ochyra
+5628|Beissn.
+5629|Bellardi ex All.
+5630|Beltr.
+5631|Bendiksby & Timdal
+5632|Benn.
+5633|Benth.
+5634|Berggr.
+5635|Berk.
+5636|Berlin
+5637|Bernard
+5638|Bernh.
+5639|Bernh. ex Fisch. & C.A. Mey.
+5640|Bernh. ex Rydb.
+5641|Besch.
+5642|Besch. & Cardot
+5643|Besser
+5644|Besser ex Hook.
+5645|Best
+5646|Best & Grout
+5647|Beurling ex Laest.
+5648|Bigelow
+5649|Biroli ex Colla
+5650|Bischl. & Boisselier
+5651|Björk
+5652|Björk, T. Sprib. & T.B. Wheeler
+5653|Björnstr.
+5654|Bland.
+5655|Blandow ex Schwägr.
+5656|Blank.
+5657|Blytt
+5658|Blytt ex Bruch & Schimp.
+5659|Böcher
+5660|Bocquet
+5661|Boeckeler
+5662|Boehmer
+5663|Boenn.
+5664|Boiss.
+5665|Boiss. & Heldr.
+5666|Bolton
+5667|Bong.
+5668|Bong. ex Ledeb.
+5669|Bonord.
+5670|Boott
+5671|Boreau
+5672|Boriss.
+5673|Boriss. & Schischk.
+5674|Börner
+5675|Bornet
+5676|Bory
+5677|Bosch
+5678|Boud.
+5679|Boul.
+5680|Bowden
+5681|Brack.
+5682|Braithw.
+5683|Brassard
+5684|Bréb.
+5685|Breidl.
+5686|Brenckle
+5687|Breuss
+5688|Brid.
+5689|Brinkm.
+5690|Briq.
+5691|Britton
+5692|Brodo
+5693|Brodo & Ahti
+5694|Brodo & D. Hawksw.
+5695|Brodo & Dibben
+5696|Brodo & Hertel
+5697|Brodo & V. Wirth
+5698|Brodo & Vitik.
+5699|Brodo, Henssen & Imahsug
+5700|Broth.
+5701|Broth. & Müll. Hal.
+5702|Broth. & Paris
+5703|Bruch
+5704|Bruch & Schimp.
+5705|Bruch & Schimp. ex Schimp.
+5706|Brunt.
+5707|Bryhn
+5708|Bryhn & Douin ex Müll. Frib.
+5709|Bryhn & Kaal.
+5710|Bubani
+5711|Buchenau
+5712|Buckley
+5713|Buek
+5714|Bunge
+5715|Burtt Davy
+5716|Buser
+5717|Butters
+5718|Butters & Abbe
+5719|C. Chr.
+5720|C. DC.
+5721|C. Hartm.
+5722|C. Hartman
+5723|C. Knight & Mitten
+5724|C. Massal.
+5725|C. Massal. & Carestia
+5726|C. Merck ex K. Koch
+5727|C. Presl
+5728|C. Presl ex DC.
+5729|C. Presl ex Sternb.
+5730|C.A. Mey.
+5731|C.A. Mey. ex Bong.
+5732|C.A. Mey. ex Iljin
+5733|C.B. Clarke
+5734|C.C. Gmel.
+5735|C.D. Bird & J.W. Thomson
+5736|C.E.O. Jensen
+5737|C.E.O. Jensen & Medelius
+5738|C.E.O. Jensen ex Russow
+5739|C.E.O. Jensen ex Warnst.
+5740|C.F. Culb. & W.L. Culb.
+5741|C.K. Schneid.
+5742|C.L. Hitchc.
+5743|C.L. Hitchc. & Maguire
+5744|C.L. Hitchc. & Ownbey
+5745|C.P. Sm.
+5746|C.R. Ball
+5747|C.R. Björk, Goward & T. Sprib.
+5748|C.W. Dodge
+5749|C.W. Dodge & Baker
+5750|Calder
+5751|Calder & Roy L. Taylor
+5752|Calder & Savile
+5753|Callen
+5754|Camp
+5755|Canals, Hern.-Mar., Gómez-Bolea & Llimona
+5756|Canby
+5757|Canby & Rose
+5758|Cardot
+5759|Cardot & Thér.
+5760|Cardot & Thér. ex Holz.
+5761|Cardot ex W.H. Welch
+5762|Carey
+5763|Carrière
+5764|Carrington
+5765|Carrington & Spruce
+5766|Cass.
+5767|Cav.
+5768|Celak.
+5769|Chaix
+5770|Cham.
+5771|Cham. & Schltdl.
+5772|Cham. ex Besser
+5773|Cham. ex Botsch.
+5774|Cham. ex C.A. Mey.
+5775|Cham. ex Spreng.
+5776|Cham. ex Steud.
+5777|Chase
+5778|Châtel.
+5779|Chen
+5780|Chevall.
+5781|Christ
+5782|Chrtek & Chrtková
+5783|Chrtek & Soják
+5784|Church
+5785|Cl. Roux
+5786|Cl. Roux & Triebel
+5787|Clairv.
+5788|Clem.
+5789|Clerc ex Trautv.
+5790|Clokey
+5791|Clokey ex Mack.
+5792|Cockerell
+5793|Cockerell ex A. Heller
+5794|Cody
+5795|Coe
+5796|Coleman
+5797|Common & Brodo
+5798|Consaul
+5799|Constance
+5800|Cooke & Ellis
+5801|Coppins
+5802|Coppins & P. James
+5803|Coppins & Tønsberg
+5804|Corda
+5805|Corda ex Nees
+5806|Coss.
+5807|Coville
+5808|Coville & C.R. Ball
+5809|Coville & Standl. ex Hultén
+5810|Crantz
+5811|Craven
+5812|Crép.
+5813|Creveld
+5814|Crome
+5815|Cronq.
+5816|Csongor
+5817|Culm.
+5818|Culm. ex Meyl.
+5819|Culmann
+5820|Cusson ex Juss.
+5821|Czern.
+5822|d'Urv.
+5823|D. Don
+5824|D. Don ex G. Don
+5825|D. Hawksw.
+5826|D. Hawksw. & Hafellner
+5827|D. Hawksw. & M.S. Cole
+5828|D. Hawksw. & Poelt
+5829|D. Hawksw. & R. Sant.
+5830|D. Hawksw. & Sivan.
+5831|D. Hawksw., Boluda & H. Lindgr.
+5832|D. Löve
+5833|D. Mohr
+5834|D. Ríos, M.T. Gallego & J. Guerra
+5835|D.C. Eaton
+5836|D.C. Zhang
+5837|D.D. Awasthi
+5838|D.D. Keck
+5839|D.E. Mey.
+5840|D.F. Murray
+5841|D.F. Stone & Lendemer
+5842|D.F. Stone, F.L. Anderson & J.W. Hinds
+5843|D.G. Horton
+5844|D.H. Wagner
+5845|D.J. Galloway & P.M. Jørg.
+5846|D.K. Trock & T.M. Barkley
+5847|Dahlst.
+5848|Damsh. & Vána
+5849|Daniels
+5850|Darbish.
+5851|Davy
+5852|DC.
+5853|DC. & P. Beauv.
+5854|de Lesd.
+5855|De Not.
+5856|Decne.
+5857|Degel.
+5858|Delise
+5859|Desf.
+5860|Desf. ex DC. & A. Camus
+5861|Desmaz.
+5862|Desv.
+5863|Desv. ex Spring
+5864|Dewey
+5865|Dewey ex Spreng.
+5866|Dibben
+5867|Dicks.
+5868|Dicks. ex Hook.
+5869|Dicks. ex With.
+5870|Dieck
+5871|Diederich
+5872|Diederich & Coppins
+5873|Diederich & Etayo
+5874|Diederich & M.S. Christ.
+5875|Dill. ex Adans.
+5876|Dillenb. & Kadereit
+5877|Dism.
+5878|Divakar, A. Crespo, Wedin & Essl.
+5879|Dixon
+5880|Dixon & Grout
+5881|Domin
+5882|Donn ex D. Don
+5883|Donn ex Sims
+5884|Dore
+5885|Dorn
+5886|Douglas
+5887|Douglas ex Benth.
+5888|Douglas ex D. Don
+5889|Douglas ex G. Don
+5890|Douglas ex Hook.
+5891|Douglas ex Lindl.
+5892|Douglas ex Loudon
+5893|Douglas ex Torr. & A. Gray
+5894|Douglass, M. Hend. & R.K. Moseley
+5895|Douin
+5896|Douin & R.C.V. Douin
+5897|Douin & Schiffn.
+5898|Drabble
+5899|Drejer
+5900|Drejer ex Lange
+5901|Drew
+5902|Drobow
+5903|Drummond
+5904|Du Rietz
+5905|Du Roi
+5906|Duby
+5907|Duchesne
+5908|Dufour
+5909|Duham.
+5910|Dulac
+5911|Duman
+5912|Dumort.
+5913|Durand
+5914|Durieu
+5915|Durland
+5916|E. Britton
+5917|E. Britton & R.S. Williams
+5918|E. Busch
+5919|E. Dahl
+5920|E. Ekman
+5921|E. Fourn.
+5922|E. Lawton
+5923|E. Lawton & F.J. Herm.
+5924|E. Mey.
+5925|E. Reiner
+5926|E. Sheld.
+5927|E.A. Busch
+5928|E.B. Bartram
+5929|E.E. Nelson
+5930|E.J. Palmer
+5931|E.L. Greene
+5932|E.P. Bicknell
+5933|E.P. Perrier & Songeon
+5934|E.S. Anderson
+5935|E.S. Hansen & Alstrup
+5936|E.W. Davies
+5937|Eastw.
+5938|Eaton
+5939|Eckfeldt
+5940|Egea & Torrente
+5941|Ehrenb.
+5942|Ehrh.
+5943|Ehrh. ex Hedw.
+5944|Ehrh. ex Hoffm.
+5945|Ehrh. ex L. f.
+5946|Ehrh. ex Nobs
+5947|Ehrhart
+5948|Eitner
+5949|Ekman
+5950|Ekman ex Hultén
+5951|Elenkin
+5952|Elenkin & Savicz
+5953|Elix
+5954|Elix & Hale
+5955|Elix & J. Johnst.
+5956|Elliott
+5957|Elmer
+5958|Engelm.
+5959|Engelm. & Hedenäs
+5960|Engelm. ex A. Gray
+5961|Engelm. ex Durand
+5962|Engelm. ex S. Watson
+5963|Engl.
+5964|Engl. & Irmsch.
+5965|Erichsen
+5966|Erlanson
+5967|Ertz & Tehler
+5968|Eschw.
+5969|Essl.
+5970|Essl., McCune & Haughland
+5971|Etayo
+5972|Ewan
+5973|F. Anderson & Lendemer
+5974|F. Bolle
+5975|F. Lara, Garilleti & Goffinet
+5976|F. Nyl.
+5977|F. Schmidt
+5978|F. Schmidt ex Maxim.
+5979|F. Schmidt ex Miq.
+5980|F. Weber
+5981|F. Weber & D. Mohr
+5982|F. Weber & D. Mohr ex Mohr
+5983|F.H. Wigg
+5984|F.H. Wigg.
+5985|F.J. Herm.
+5986|F.N. Williams
+5987|F.W. Schmidt
+5988|F.W. Schultz & Sch. Bip.
+5989|Fabr.
+5990|Farr
+5991|Farw.
+5992|Fassett
+5993|Fed.
+5994|Fée
+5995|Fenzl
+5996|Fernald
+5997|Fernald & Bissell
+5998|Fernald & Brack.
+5999|Fernald & H. St. John
+6000|Fernald & J.F. Macbr.
+6001|Fernald & Knowlt.
+6002|Fernald & Rydb.
+6003|Fernald & Weath.
+6004|Fernald & Wiegand
+6005|Fieber
+6006|Fife
+6007|Fink
+6008|Fink ex H. Magn.
+6009|Fisch.
+6010|Fisch. & C.A. Mey.
+6011|Fisch. ex Cham. & Schltdl.
+6012|Fisch. ex DC.
+6013|Fisch. ex E. Mey.
+6014|Fisch. ex Ging.
+6015|Fisch. ex Hook.
+6016|Fisch. ex Hornem.
+6017|Fisch. ex Kunze
+6018|Fisch. ex Lindl.
+6019|Fisch. ex Ser.
+6020|Fisch. ex Sternb.
+6021|Fisch. ex Stev.
+6022|Fisch., C.A. Mey. & Avé-Lall.
+6023|Flatberg
+6024|Flatberg & Frisvoll
+6025|Flatberg & Thingsgaard
+6026|Fleisch.
+6027|Flod.
+6028|Flod. ex Häyrén
+6029|Flörke
+6030|Flörke ex Schaer.
+6031|Flörke ex Sommerf.
+6032|Flörke ex Wallr.
+6033|Flot.
+6034|Flotow ex Körb.
+6035|Flous
+6036|Flueggé ex Willd.
+6037|Focke
+6038|Follmann
+6039|Forbes
+6040|Forrsk.
+6041|Forssk. ex J.F. Gmel.
+6042|Foug.
+6043|Fourr.
+6044|Fourr. ex Rydb.
+6045|Fr.
+6046|Fr. & Broberg
+6047|Fr. ex Blytt
+6048|Fr. ex Hartm.
+6049|Franch.
+6050|Franch. & Savigny
+6051|Fred.
+6052|Frey
+6053|Fries
+6054|Frisvoll
+6055|Fritsch
+6056|Fröberg
+6057|Froel.
+6058|Fryday
+6059|Fryday & Coppins
+6060|Fryday, Printzen & S. Ekman
+6061|Fulford
+6062|Fulford & J. Taylor
+6063|Funck
+6064|Funck ex Brid.
+6065|Fürnr.
+6066|G. Don
+6067|G. Gaertn., B. Mey. & Scherb.
+6068|G. Lawson
+6069|G. Lodd
+6070|G. Martens
+6071|G. Merr.
+6072|G. Merr. ex Sandst.
+6073|G. Rossb.
+6074|G. Roth
+6075|G. Roth & Bock
+6076|G.A. Mulligan
+6077|G.A. Mulligan & A.E. Porsild
+6078|G.A. Mulligan & Al-Shehbaz
+6079|G.A. Mulligan & Calder
+6080|G.E. Haglund
+6081|G.G. Borshch.
+6082|G.L. Nesom
+6083|G.L. Nesom & D.F. Murray
+6084|G.L. Sm.
+6085|G.N. Jones
+6086|G.S. Mill. & Standl.
+6087|G.W. Douglas & Ruyle-Dougl.
+6088|G.W. Martin
+6089|Gaertn.
+6090|Gagnebin
+6091|Gand.
+6092|Garcke ex Asch.
+6093|Gaud.
+6094|Genth
+6095|Georgi
+6096|Georgi ex Lamb.
+6097|Gervais
+6098|Gervais & Blondeau
+6099|Geyer ex Hook. f.
+6100|Gieseke ex Lindenb.
+6101|Gilg
+6102|Gilib.
+6103|Girg. ex Milde
+6104|Gjaerev.
+6105|Gjaerev. & Ryvarden
+6106|Gleditsch ex Scop.
+6107|Glehn
+6108|Goldie
+6109|Gombócz
+6110|Goodding
+6111|Gooden.
+6112|Goodman
+6113|Gorodkov
+6114|Gotth. Schneid.
+6115|Gotth. Schneid. & Hertel
+6116|Gottsche
+6117|Gottsche & Rabenh.
+6118|Gottsche ex Husn.
+6119|Gottsche ex Lindb.
+6120|Gottsche ex Rabenh.
+6121|Gottsche ex Underw.
+6122|Gottsche, Lindenb. & Nees
+6123|Gowan
+6124|Goward
+6125|Goward & Ahti
+6126|Goward & Goffinet
+6127|Goward & McCune
+6128|Goward & Tønsberg
+6129|Goward & W. Noble
+6130|Goward, Goffinet & Miadl.
+6131|Goward, T. Sprib. & Ahti
+6132|Gradst. & E. Reiner
+6133|Graham
+6134|Grauer
+6135|Gray
+6136|Green
+6137|Greene
+6138|Greene ex C.F. Baker
+6139|Greene ex Rydb.
+6140|Greenm.
+6141|Gremli
+6142|Gren.
+6143|Greuter & Burdet
+6144|Grev. & Arn.
+6145|Griseb.
+6146|Grolle
+6147|Grossh. ex Tolm.
+6148|Grout
+6149|Grout & Fl.
+6150|Grube & Hafellner
+6151|Grube & Matzer
+6152|Gueldenst.
+6153|Guidan & Thüs
+6154|Gunnerus
+6155|Günth., Grab. & Wimm.
+6156|Guss.
+6157|Gyeln.
+6158|H. Boissieu
+6159|H. Buch
+6160|H. Buch & S.W. Arnell
+6161|H. Hara
+6162|H. Léveillé
+6163|H. Lindb.
+6164|H. Magn.
+6165|H. Mayrh. & Poelt
+6166|H. Philibert
+6167|H. Rob.
+6168|H. Robinson
+6169|H. St. John
+6170|H. St. John & Warren
+6171|H.A. Crum
+6172|H.A. Crum, Steere & L.E. Anderson
+6173|H.A. Mill & E.B. Scott
+6174|H.H. Blom
+6175|Hack.
+6176|Hadac
+6177|Hadac & Á. Löve
+6178|Haenke
+6179|Hafellner
+6180|Hafellner & Bellem.
+6181|Hafellner & Calatayud
+6182|Hafellner & Cl. Roux
+6183|Hafellner & Türk
+6184|Hagstr.
+6185|Hakul.
+6186|Hale
+6187|Hale & Fletcher
+6188|Hale & M.J. Lai
+6189|Hale ex Sipman
+6190|Haller
+6191|Haller f.
+6192|Halonen
+6193|Halonen, Myllys, Velmala, & Hyvärinen
+6194|Hampe
+6195|Hampe & Müll. Hal.
+6196|Harm.
+6197|Harmaja
+6198|Harshb.
+6199|Hartm.
+6200|Harv.
+6201|Hasse
+6202|Hässel
+6203|Hastings
+6204|Hatt.
+6205|Haugan & Timdall
+6206|Hausskn.
+6207|Hav.
+6208|Hav. ex Lynge
+6209|Haw.
+6210|Hawksw. & Nickrent
+6211|Hayata
+6212|Hayek
+6213|Hayne
+6214|Hedenäs
+6215|Hedenäs, Schlesak & D. Quandt
+6216|Hedl.
+6217|Hedl. ex H. Magn.
+6218|Hedw.
+6219|Hedw. ex Brid.
+6220|Heeg
+6221|Hegelm.
+6222|Heiser
+6223|Heist. ex Fabr.
+6224|Hellm. & K. Hellm.
+6225|Henry
+6226|Henssen
+6227|Henssen & Tønsberg
+6228|Hepp
+6229|Hepp ex Ahles
+6230|Hepp ex Müll. Arg.
+6231|Hepp ex Th. Fr.
+6232|Herre
+6233|Hertel
+6234|Hertel & Gotth. Schneid.
+6235|Hertel & Hafellner
+6236|Hertel & Rambold
+6237|Hertel & V. Wirth
+6238|Herzog
+6239|Hesselbo
+6240|Hessl.
+6241|Hieron.
+6242|Hiitonen
+6243|Hill
+6244|Hitchc.
+6245|Hochst.
+6246|Hoffm.
+6247|Höhn.
+6248|Holien & Ihlen
+6249|Holien & Palice
+6250|Holien & Printzen
+6251|Holien & Tønsberg
+6252|Holm
+6253|Holmb.
+6254|Holmen
+6255|Holmen & Warncke
+6256|Holt.-Hartw.
+6257|Holub
+6258|Holz.
+6259|Honck.
+6260|Honda
+6261|Hook
+6262|Hook.
+6263|Hook. & Arn.
+6264|Hook. & Grev.
+6265|Hook. & Taylor
+6266|Hook. & Thomson
+6267|Hook. & Wilson
+6268|Hook. ex A. DC.
+6269|Hook. f.
+6270|Hook. f. & Harv.
+6271|Hook. f. & Thompson ex Miq.
+6272|Hook. f. & Thomson
+6273|Hopkins
+6274|Hoppe
+6275|Hoppe & Hornsch.
+6276|Hoppe & Hornsch. ex Hornsch.
+6277|Hoppe ex Brid.
+6278|Horik.
+6279|Hornem.
+6280|Hornsch.
+6281|hort.
+6282|Host
+6283|Houmeau & Cl. Roux
+6284|House
+6285|Houtt.
+6286|Howard
+6287|Howe
+6288|Howell
+6289|Hübener
+6290|Hübener & Genth
+6291|Hübener & Genth ex Lindb.
+6292|Huds.
+6293|Huds. ex With.
+6294|Hue
+6295|Huhtinen & R. Sant.
+6296|Hultén
+6297|Hultén & H. St. John
+6298|Hultén & Maguire
+6299|Husn.
+6300|Huth
+6301|Hybrid
+6302|Hyl.
+6303|I. Hagen
+6304|I. Hagen & C.E.O. Jensen
+6305|I. Hagen ex Limpr.
+6306|I.M. Johnst.
+6307|I.M. Lamb
+6308|I.V. Kusn.
+6309|Ignatov
+6310|Ignatov & Fedosov
+6311|Ignatov & Huttanen
+6312|Ignatov & Huttunen
+6313|Ignatova, H.H. Blom, Goryunov & Milyutina
+6314|Imshaug
+6315|Inoue
+6316|Inoue & Steere
+6317|Irel.
+6318|Irel. & H.A. Crum
+6319|Isbrand & Alstrup
+6320|Itzigsohn
+6321|J.-E. Mattsson & M.J. Lai
+6322|J.-P. Frahm
+6323|J. Agardh
+6324|J. Cay
+6325|J. Cay. & S.J. Darbyshire
+6326|J. Gay
+6327|J. Gay ex Gussone
+6328|J. Guerra & M.J. Cano
+6329|J. Hedw.
+6330|J. Presl
+6331|J. Presl & C. Presl
+6332|J. R. Laundon
+6333|J. Rousseau & Raymond
+6334|J. Steiner
+6335|J. Vahl
+6336|J.B. Jack ex Gottsche & Rabenh.
+6337|J.B. Jack ex Lindb.
+6338|J.B. Roof
+6339|J.B.S. Norton
+6340|J.C. David & D. Hawksw.
+6341|J.C. Myers
+6342|J.D. Godfrey
+6343|J.D. Godfrey & G. Godfrey
+6344|J.E. Zetterst.
+6345|J.F. Gmel.
+6346|J.F. Macbr.
+6347|J.F. Macbr. & Payson
+6348|J.J. Engel & Braggins
+6349|J.K. Henry
+6350|J.K. Henry ex C.K. Schneid.
+6351|J.L. Russell
+6352|J.M. Coult. & Evans
+6353|J.M. Coult. & Rose
+6354|J.M. Gillett
+6355|J.M. Gillett & H. Senn
+6356|J.R. Laundon
+6357|J.R. Spence
+6358|J.T. Howell
+6359|J.W. Bailey
+6360|J.W. Moore
+6361|J.W. Robbins
+6362|J.W. Thomson
+6363|J.W. Thomson & B.M. Murray
+6364|Jacq.
+6365|James
+6366|Janchen
+6367|Janssens
+6368|Jatta
+6369|Jennings
+6370|Jeps.
+6371|Jord.
+6372|Jordal
+6373|Jørg.
+6374|Jovet-Ast
+6375|Jur.
+6376|Jur. ex De Not.
+6377|Jurtz.
+6378|Jurtz. & Prob.
+6379|Jurtz. & Tzvelev
+6380|Jurtz. & V.V. Petrovsky
+6381|Jurtz., D.F. Murray & S. Kelso
+6382|Juss.
+6383|Juz.
+6384|K. Becker
+6385|K. Knudsen & L. Arcadia
+6386|K. Koch
+6387|K. Saito
+6388|K. Schum.
+6389|K.D. Koenig
+6390|K.I. Goebel
+6391|K.O. Hedb.
+6392|Kaal.
+6393|Kalb
+6394|Kalela
+6395|Kanitz
+6396|Kantvilas
+6397|Kantvilas & Elix
+6398|Kar. & Kir.
+6399|Karcz.
+6400|Kärnefelt
+6401|Kärnefelt & A. Thell
+6402|Kashiw. & Poelt
+6403|Kaulf.
+6404|Kaur.
+6405|Kearney
+6406|Keller, Guidan, & Thüs
+6407|Kellogg
+6408|Kelso
+6409|Kenn.
+6410|Kindb.
+6411|Kindb. ex E. Britton
+6412|Kindb. ex Grout
+6413|Kitag.
+6414|Kitt.
+6415|Kjellm.
+6416|Klatt
+6417|Klett & Richt.
+6418|Klinggr.
+6419|Knaben
+6420|Koch ex Spruce
+6421|Koidzumi
+6422|Kom.
+6423|Konstant. & L. Söderstr.
+6424|Konstant. & Vilnet
+6425|Konstant., Vilnet & A.V. Troitsky
+6426|Körb.
+6427|Körb. ex Hellb.
+6428|Körb. ex Körb.
+6429|Körb. ex Nyl.
+6430|Korobkov
+6431|Kostel. ex Maxim.
+6432|Kozhevn.
+6433|Kraenzl.
+6434|Krajina
+6435|Krajina ex Pavlick
+6436|Krasch.
+6437|Krecz.
+6438|Krecz. & Bobr.
+6439|Kremp.
+6440|Krísa
+6441|Kristinsson & Ahti
+6442|Krog
+6443|Krylov
+6444|Krylov & Sergievskaja
+6445|Kuc
+6446|Kudo
+6447|Kük.
+6448|Kukkonen
+6449|Kukwa
+6450|Kunth
+6451|Kuntze
+6452|Kurok.
+6453|Kurok. & Lai
+6454|Kuvaev
+6455|Kuwah.
+6456|Kuzen.
+6457|L'Hér.
+6458|L'Hér. ex Aiton
+6459|L.
+6460|L. 1762, non 1755
+6461|L. Clark
+6462|L. emend. Prosk.
+6463|L. ex Jolycl.
+6464|L. f.
+6465|L. Pike
+6466|L. Söderstr., De Roo & Hedd.
+6467|L.C. Higgins
+6468|L.D. Benson
+6469|L.F. Hend.
+6470|L.H. Bailey
+6471|L.I. Savicz
+6472|L.O. Williams
+6473|La Pylaie ex Torr. & A. Gray
+6474|Laest.
+6475|Laest. ex C. Hartm.
+6476|Laest. ex Hartm.
+6477|Laest. ex Lange
+6478|Laharpe
+6479|Lam.
+6480|Lam. & DC.
+6481|Lamb
+6482|Lamotte
+6483|Landolt
+6484|Landry
+6485|Lange
+6486|Lange ex Hagerup
+6487|Langsd. ex DC.
+6488|Lansdown
+6489|Laurer
+6490|Laurer ex Flot.
+6491|Laurer ex Funck
+6492|Leconte
+6493|Lecoq & Lamotte
+6494|Ledeb.
+6495|Ledeb. ex DC.
+6496|Ledeb. ex Spreng.
+6497|Lehm.
+6498|Lehm. & Lindenb.
+6499|Lehm. ex G. Don
+6500|Lehmann
+6501|Leight.
+6502|Lendemer & H. O'Brien
+6503|Lepage
+6504|Lepechin
+6505|Lesica
+6506|Lesq.
+6507|Lesq. & James
+6508|Less.
+6509|Less. ex Bongard
+6510|Lettau ex Vezda
+6511|Leyss.
+6512|Lib.
+6513|Lid ex Ekman
+6514|Liebm.
+6515|Lightf.
+6516|Lilj.
+6517|Limpr.
+6518|Lindb.
+6519|Lindb. & Arnell
+6520|Lindb. & Kaal. ex Pearson
+6521|Lindb. ex Berggr.
+6522|Lindb. ex Braithw.
+6523|Lindb. ex Heeg
+6524|Lindb. ex Kaal.
+6525|Lindb. ex Lesq. & James
+6526|Lindb. ex Milde
+6527|Lindb. ex Spruce
+6528|Lindbl.
+6529|Lindblom
+6530|Lindenb.
+6531|Lindenb. & Gottsche
+6532|Lindl.
+6533|Lindl. ex DC.
+6534|Lindm.
+6535|Link
+6536|Little
+6537|Llano
+6538|Lodd.
+6539|Loeske
+6540|Loeske & Müll. Frib.
+6541|Loeske ex Fleisch.
+6542|Loja.
+6543|Long
+6544|Lonnr.
+6545|Lor.
+6546|Lorb.
+6547|Lorentz & Molendo
+6548|Loudon
+6549|Louis-Marie
+6550|Lour.
+6551|Lücking, Sérus. & Vezda
+6552|Luer & Luer f.
+6553|Lumbsch
+6554|Lund ex Malmgr.
+6555|Lunell
+6556|Lyell
+6557|Lyell ex Sm.
+6558|Lynge
+6559|Lyon
+6560|M. Bieb.
+6561|M. Choisy
+6562|M. Hopkins
+6563|M. Howe
+6564|M. Mayrh.
+6565|M. Peck
+6566|M. Prieto & Wedin
+6567|M. Roem.
+6568|M. Westb.
+6569|M. Westb. & Arup
+6570|M.E. Barr
+6571|M.E. Jones
+6572|M.M. Mart.Ort & Albach
+6573|M.M. Maximova
+6574|M.P. Andreev
+6575|M.S. Baker
+6576|M.S. Christ. & D. Hawksw.
+6577|M.S. Novos.
+6578|Ma
+6579|Maass
+6580|Mack.
+6581|Macoun
+6582|Macoun & Kindb.
+6583|Macvicar
+6584|Maguire
+6585|Makino
+6586|Malme
+6587|Malta
+6588|Malte
+6589|Marbach
+6590|Marcussen, H.E. Ballard & Blaxland
+6591|Marshall
+6592|Mart.
+6593|Mårtensson
+6594|Martyn
+6595|Mathias
+6596|Mathias & Constance
+6597|Mathiasen & C.M. Daugherty
+6598|Matsumura
+6599|Maxim.
+6600|Maxim. ex Makino
+6601|Maxon
+6602|Maxon & R.T. Clausen
+6603|McCune
+6604|McCune & Krog
+6605|McCune & Miadlikowska
+6606|McCune, E. Di Meglio & Tønsberg
+6607|McCune, Lücking & Moncada
+6608|McCune, Timdal & Bendiksby
+6609|Medik.
+6610|Meinsh.
+6611|Meisn.
+6612|Menzies
+6613|Menzies ex Schult.
+6614|Menzies ex Sm.
+6615|Mérat
+6616|Mereschk.
+6617|Merr.
+6618|Mert.
+6619|Mert. & W.D.J. Koch
+6620|Metzger
+6621|Meyen
+6622|Meyl.
+6623|Miadl. & Lutzoni
+6624|Michx.
+6625|Mielichhofer
+6626|Mikut.
+6627|Milde
+6628|Mill.
+6629|Miq.
+6630|Mitchell
+6631|Mitt.
+6632|Mitt. ex Müll. Hal.
+6633|Mitt. ex Steph.
+6634|Miyabe & Kudô
+6635|Moberg
+6636|Moc. ex DC.
+6637|Moench
+6638|Mogensen & H.H. Blom
+6639|Molendo
+6640|Molina
+6641|Mönk.
+6642|Monnier
+6643|Mont.
+6644|Mont. ex Tul.
+6645|Moore
+6646|Moq.
+6647|Mørch
+6648|Moriya, Nakayama, & Inouye
+6649|Morong
+6650|Morris ex Rydb.
+6651|Mosquin
+6652|Mosyakin
+6653|Mot.
+6654|Mot. ex Brodo & D. Hawksw.
+6655|Mot. ex Räsänen
+6656|Motyka
+6657|Muhl.
+6658|Muhl. ex Bigelow
+6659|Muhl. ex Elliott
+6660|Muhl. ex Willd.
+6661|Muhr & Tønsberg
+6662|Müll Hal. & Kindb.
+6663|Müll. Arg.
+6664|Müll. Frib.
+6665|Müll. Hal.
+6666|Müll. Hal. & Kindb.
+6667|Murb.
+6668|Murray
+6669|Muschl.
+6670|Mutel
+6671|Mutis ex L. f.
+6672|Myr.
+6673|N. Busch
+6674|N. Kitag.
+6675|N. Pedersen
+6676|N.A. Ivanova
+6677|N.I. Orlova
+6678|N.L. Higinb. & B.L. Higinb.
+6679|N.M. Wolf
+6680|Nádv.
+6681|Nageli
+6682|Nägeli ex Hue
+6683|Nakai
+6684|Nannf.
+6685|Nash
+6686|Nash ex Rydb.
+6687|Nathorst
+6688|Neck. ex Nevski
+6689|Nees
+6690|Nees & Hornsch.
+6691|Nees ex Flot.
+6692|Nees ex Hübener
+6693|Nees ex Lindenb.
+6694|Neilr.
+6695|Neilson
+6696|Nessel
+6697|Nevski
+6698|Newman
+6699|Neygenf.
+6700|Nieuwl.
+6701|Nieuwl. & Lunell
+6702|Niewl. & Kaczm.
+6703|Nish.
+6704|Nitschke
+6705|Nitschke ex Arnold
+6706|nom. nov.
+6707|none
+6708|Nordh.
+6709|Norman
+6710|Norrl.
+6711|Norrl. & Nyl.
+6712|Novikov
+6713|Novoselova
+6714|Nutt.
+6715|Nutt. ex Baker
+6716|Nutt. ex J.G. Sm.
+6717|Nutt. ex Torr. & A. Gray
+6718|Nyárády
+6719|Nyl.
+6720|Nyl. apud Leight.
+6721|Nyl. ex Cromb.
+6722|Nyl. ex Malbr.
+6723|Nyl. ex Rothr.
+6724|O. Blanco, A. Crespo, Divakar, Essl., D. Hawksw., & Lumbsch
+6725|O. Loes.
+6726|Ö. Nilsson
+6727|O. Schwarz
+6728|O.D. Nikif.
+6729|O.E. Schulz
+6730|O.F. Lang
+6731|O.F. Müll.
+6732|Oakes
+6733|Ochyra
+6734|Ochyra & Afonina
+6735|Ochyra & Stebel
+6736|Oeder
+6737|Oerst.
+6738|Ohlert
+6739|Ohwi
+6740|Oksner
+6741|Oksner & Volkova
+6742|Olney
+6743|Olney ex A. Gray
+6744|Olney ex Fernald
+6745|Omang
+6746|Onno
+6747|Opiz
+6748|Opiz ex Hegi
+6749|Ostenf.
+6750|Ostenf. ex Malte
+6751|Osterhout
+6752|Otálora & Wedin
+6753|Oteng-Yeboah
+6754|Otnyukova
+6755|Ovcz.
+6756|Owe-Larss. & A. Nordin
+6757|P. Beauv.
+6758|P. Beauv. ex T. Lestib.
+6759|P. Browne
+6760|P. Candargy
+6761|P. Clerc
+6762|P. James
+6763|P.A. Duvign.
+6764|P.E.A.S. Câmara & M. Carvalho-Silva
+6765|P.M. Brown
+6766|P.M. Jørg.
+6767|P.M. Jørg. & Henssen
+6768|P.M. Jørg. & Sipman
+6769|P.M. Jørg. & Tønsberg
+6770|P.M. Jørg. & Zhurb.
+6771|P.Y. Fu
+6772|Packer
+6773|Packer & Denford
+6774|Paine
+6775|Pall.
+6776|Pall. ex DC.
+6777|Pall. ex Georgi
+6778|Pall. ex Link
+6779|Pall. ex Pursh
+6780|Pall. ex Schltdl.
+6781|Pall. ex Schrad. & Link
+6782|Pall. ex Schult.
+6783|Pall. ex Willd.
+6784|Palla
+6785|Pallas ex Ledeb.
+6786|Pampanini
+6787|Panzer ex Schult.
+6788|Paris
+6789|Parl.
+6790|Parn.
+6791|Patrin ex Pers.
+6792|Paul
+6793|Pavlick
+6794|Pax
+6795|Payson
+6796|Payson & H. St. John
+6797|Pearson
+6798|Pease & A.H. Moore
+6799|Peck
+6800|Pennell
+6801|Pérez-Ortega
+6802|Pérez-Ortega & T. Sprib.
+6803|Pérez-Ortega, T. Sprib. & Printzen
+6804|Pers.
+6805|Pers. ex B.D. Jacks.
+6806|Perss.
+6807|Petagna
+6808|Peterm.
+6809|Peters.
+6810|Petr. & Syd.
+6811|Petrov
+6812|Phil.
+6813|Philib. ex Cardot & Thér.
+6814|Philippi
+6815|Pickering ex Rydb.
+6816|Pilg.
+6817|Piper
+6818|Planch.
+6819|Plášek, Sawicki & Ochyra
+6820|Pobed.
+6821|Poelt
+6822|Poelt & M. Steiner
+6823|Poelt & T.H. Nash
+6824|Pohle
+6825|Pohle ex N. Busch
+6826|Poir.
+6827|Pollard
+6828|Pollard & Cockerell
+6829|Pollich
+6830|Polunin
+6831|Ponzetti & McCune
+6832|Popl.
+6833|Popov
+6834|Porsild
+6835|Porter
+6836|Porter ex Fernald
+6837|Potemkin
+6838|Prescott ex Bong.
+6839|Printzen
+6840|Printzen & Tønsberg
+6841|Printzen, T. Sprib. & Tønsberg
+6842|Pritz.
+6843|Pritz. ex Walp.
+6844|Prob.
+6845|Prov.
+6846|Pursh
+6847|Pursh ex Goldie
+6848|R. Anderson & W.A. Weber
+6849|R. Anderson ex Timdal
+6850|R. Br.
+6851|R. Br. ex DC.
+6852|R. Br. ex Dewey
+6853|R. Br. ex Hook.
+6854|R. Br. ex Richardson
+6855|R. Hedw.
+6856|R. Knuth
+6857|R. Morgan & Ackerman
+6858|R. Petersen
+6859|R. Sant.
+6860|R. Sant. & Poelt
+6861|R. Sant. & Tønsberg
+6862|R. Sant., Alstrup & D. Hawksw.
+6863|R. Sant., Etayo & Diederich
+6864|R. Sim
+6865|R. Tryon
+6866|R.A. Price, Al-Shehbaz & O'Kane
+6867|R.C. Harris
+6868|R.C. Harris & W.R. Buck
+6869|R.E. Andrus
+6870|R.E. Andrus & Janssens
+6871|R.H. Zander
+6872|R.H. Zander & Hedd.
+6873|R.M. Bateman
+6874|R.M. Schust.
+6875|R.M. Schust. & Damsh.
+6876|R.M. Schust. & Konstant.
+6877|R.M. Schust. & Steere
+6878|R.M.Schust.
+6879|R.P. Rossb.
+6880|R.S. Williams
+6881|R.T. Clausen
+6882|R.W. Hartm.
+6883|Rabenh.
+6884|Raddi
+6885|Radian
+6886|Radius
+6887|Raf.
+6888|Raf. ex Holub
+6889|Rambold & Pietschmann
+6890|Rambold & Triebel
+6891|Ramond
+6892|Ramond ex DC.
+6893|Rananen
+6894|Rändel ex D.F. Murray
+6895|Räsänen
+6896|Rass.
+6897|Raup
+6898|Raymond
+6899|Rchb.
+6900|Rchb. ex Ledeb.
+6901|Rech. f.
+6902|Redhead, Lutzoni, Moncalvo, & Vilgalys
+6903|Regel
+6904|Regel & Tiling
+6905|Rehder & Wilson
+6906|Rehm
+6907|Rehmann
+6908|Reim.
+6909|Renauld
+6910|Renauld & Bryhn
+6911|Renauld & Cardot
+6912|Retz.
+6913|Reveal
+6914|Reverd.
+6915|Rich.
+6916|Richardson
+6917|Richardson ex Hook.
+6918|Richter
+6919|Riddell ex Small
+6920|Robbins
+6921|Rodr. Flakus & Printzen
+6922|Roem & Schult.
+6923|Roem. & Schult.
+6924|Röhl.
+6925|Roivainen
+6926|Röll
+6927|Rollins
+6928|Rose
+6929|Rosend.
+6930|Roshev.
+6931|Roth
+6932|Rottb.
+6933|Rouss.
+6934|Rouy
+6935|Rowlee
+6936|Roy L. Taylor & MacBryde
+6937|Royle
+6938|Rudge
+6939|Rudolph ex Georgi
+6940|Ruiz & Pav.
+6941|Rundel & Bowler
+6942|Runem.
+6943|Ruppius ex Gagnebin
+6944|Rupr.
+6945|Rupr. ex Andersson
+6946|Rupr. ex Asch.
+6947|Rupr. ex Nyman
+6948|Rupr. ex Roshev.
+6949|Rusby
+6950|Russow
+6951|Russow & Warnst.
+6952|Ruthe ex Karcz.
+6953|Ryan
+6954|Rydb.
+6955|Rydb. ex A. Heller
+6956|S. Aiken, Consaul & Lefkovitch
+6957|S. Ekman
+6958|S. Ekman & M. Svensson
+6959|S. Ekman & T. Sprib.
+6960|S. Fuentes, Uotila & Borsch
+6961|S. Hammer
+6962|S. Hatt.
+6963|S. Hatt. & Amakawa
+6964|S. Hatt. & Inoue
+6965|S. Hatt. & Kamim.
+6966|S. Hatt. & Mizut.
+6967|S. Hatt., Sharp & Mizut.
+6968|S. Hattori & Inoue
+6969|S. Hughes
+6970|S. Kelso
+6971|S. Stenroos
+6972|S. Stenroos & Huhtinen
+6973|S. Walker
+6974|S. Watson
+6975|S. Watson ex B.L. Rob.
+6976|S.B. Young
+6977|S.F. Blake
+6978|S.G. Gmel.
+6979|S.G. Gmel. ex Gugler
+6980|S.G. Sm.
+6981|S.L. Welsh
+6982|S.L. Welsh & Goodrich
+6983|S.L.F. Mey.
+6984|S.R. Zhang
+6985|S.W. Arnell
+6986|S.Y. Kondr. & Bielczyk
+6987|S.Y. Kondr. & Kärnefelt
+6988|Sacc.
+6989|Salisb.
+6990|Salisb. ex Gray
+6991|Salisb. ex Rchb.
+6992|Salisb. ex Torr.
+6993|Sam.
+6994|Sam. ex Kartesz & S.K. Gandhi
+6995|Sandst.
+6996|Sanio ex Warnst.
+6997|Sanson ex Bong.
+6998|Sapeh.
+6999|Sarg.
+7000|Sarkar
+7001|Sarvela
+7002|Satake
+7003|Sato
+7004|Saut.
+7005|Savi
+7006|Savicz
+7007|Sch. Bip.
+7008|Schaer.
+7009|Schatz
+7010|Scheid.
+7011|Scheid. & H. Mayrh.
+7012|Scheutz
+7013|Schiffn.
+7014|Schiffn. ex Loeske
+7015|Schiffn. ex Müll. Frib.
+7016|Schimp.
+7017|Schimp. & Spenn.
+7018|Schimp. ex Besch.
+7019|Schimp. ex Müll. Hal.
+7020|Schimp. ex Sull.
+7021|Schischk.
+7022|Schisck. & Serg.
+7023|Schkuhr
+7024|Schkuhr ex Wahlenb.
+7025|Schkuhr ex Willd.
+7026|Schkuhr.
+7027|Schleich. ex F. Weber
+7028|Schleich. ex F. Weber & D. Mohr
+7029|Schleich. ex Gaud.
+7030|Schleich. ex Lam. & DC.
+7031|Schleich. ex Mohr
+7032|Schleich. ex Schwägr.
+7033|Schleiph. ex Limpr.
+7034|Schlieph. & Warnst.
+7035|Schljakov
+7036|Schltdl.
+7037|Schltdl. ex DC.
+7038|Schltr.
+7039|Schmid. ex Schreb.
+7040|Schmidel
+7041|Schmitt, T. Sprib. & Lumbsch
+7042|Schnizl.
+7043|Schol.
+7044|Schott
+7045|Schrad.
+7046|Schrad. ex Brid.
+7047|Schrad. ex G. Gaertn., B. Mey. & Scherb.
+7048|Schrad. ex Gaud.
+7049|Schrad. ex Hedw.
+7050|Schrank
+7051|Schreb.
+7052|Schrenk
+7053|Schult.
+7054|Schult. ex Schult. & Schult. f.
+7055|Schultz
+7056|Schumach.
+7057|Schur
+7058|Schwägr.
+7059|Schwägr. ex Hook. & Grev.
+7060|Schwein.
+7061|Schwein. ex Benth.
+7062|Scop.
+7063|Scribn.
+7064|Scribn. & J.G. Sm.
+7065|Scribn. & Merr.
+7066|Scribn. & T.A. Williams
+7067|Scribn. ex A. Gray
+7068|Seem.
+7069|Ség.
+7070|Sendtn. ex Müll. Hal.
+7071|Sendtn. ex Warnst.
+7072|Ser.
+7073|Servít
+7074|Sharp
+7075|Sharp & Z. Iwats.
+7076|Shaw
+7077|Shear
+7078|Sheard
+7079|Sheard & Giralt
+7080|Sheard & J. Walton
+7081|Sheard & Tønsberg
+7082|Sheldon
+7083|Sherff
+7084|Sherwood, D. Hawksw. & Coppins
+7085|Shetler
+7086|Sheviak
+7087|Sibth.
+7088|Siebold & Zucc.
+7089|Sierk
+7090|Simmons
+7091|Simon & Goward
+7092|Sims
+7093|Sipl.
+7094|Sjörs
+7095|Sm.
+7096|Sm. ex Rees
+7097|Small
+7098|Small ex Macoun
+7099|Small ex Rydb.
+7100|Smiley
+7101|Sobol.
+7102|Søchting
+7103|Søchting, Arup, & Frøden
+7104|Søchting, Fröden, & Arup
+7105|Soják
+7106|Sol.
+7107|Sol. ex C.J. Phipps
+7108|Sol. ex Sw.
+7109|Sommerf.
+7110|Sommier
+7111|Sommier & Levier
+7112|Sondén
+7113|Songeon & E.P. Perrier
+7114|Soreng
+7115|Soreng & L.J. Gillespie
+7116|Sosnowsky & Takhtajan
+7117|Spach
+7118|Spenner
+7119|Spjut & Hale
+7120|Spreng.
+7121|Spreng. ex Schwägr.
+7122|Spring
+7123|Spruce
+7124|St.-Yves
+7125|Stacey
+7126|Standl.
+7127|Standl. ex Small
+7128|Stanford
+7129|Stapf
+7130|Starke
+7131|Starker
+7132|Staudt
+7133|Stebbins
+7134|Steere
+7135|Steere & B.M. Murray
+7136|Steere & Inoue
+7137|Steere & R.M. Schust.
+7138|Stein
+7139|Steller ex J.G. Gmelin
+7140|Steller ex Roem. & Schult.
+7141|Stensvold & Farrar
+7142|Steph.
+7143|Steph. ex Broth.
+7144|Stephan
+7145|Stephan ex Spreng.
+7146|Stephan ex Willd.
+7147|Sternb.
+7148|Sternb. & Hoppe
+7149|Sternb. ex Cham.
+7150|Sterneck
+7151|Steud.
+7152|Stev.
+7153|Stev. ex Ser.
+7154|Stirt.
+7155|Stizenb.
+7156|Stokes
+7157|Stotler & Crotz
+7158|Stuckey
+7159|Sukaczev
+7160|Suksd.
+7161|Sull & Lesq.
+7162|Sull.
+7163|Sull. & Lesq.
+7164|Suter
+7165|Svenson
+7166|Sw.
+7167|Sw. ex Brid.
+7168|Sw. ex Willd.
+7169|Swallen
+7170|Sweet
+7171|Sweet ex O.E. Schulz
+7172|Syed
+7173|Syed & Crundw.
+7174|Szweyk., Buczk. & Odrzyk.
+7175|T. Jensen
+7176|T. Kop
+7177|T. Sprib.
+7178|T. Sprib. & Muggia
+7179|T. Sprib. & Printzen
+7180|T. Sprib. & Tønsberg
+7181|T.A. Williams
+7182|T.F. Forst.
+7183|T.J. Kop.
+7184|T.J. O'Brien
+7185|T.J. Sørensen
+7186|T.V. Egorova
+7187|T.V. Egorova, Jurtz. & V.V. Petrovsky
+7188|T.Y. Cheo & R.C. Fang
+7189|Takeda
+7190|Tamamsch.
+7191|Tausch
+7192|Tausch ex Opiz
+7193|Taylor
+7194|Taylor ex Gottsche, Lindenb. & Nees
+7195|Testo, A. Haines & A.V. Gilman
+7196|Th. Fr.
+7197|Th. Fr. & Almq.
+7198|Th. Wolf
+7199|Thed.
+7200|Thed. ex Hartm.
+7201|Theiss. & Syd.
+7202|Thell.
+7203|Thiéb.-Bern. ex Pers.
+7204|Thor
+7205|Thuill.
+7206|Thunb.
+7207|Thurb.
+7208|Thwaites
+7209|Tibell
+7210|Tidestr.
+7211|Timdal
+7212|Timm
+7213|Todaro
+7214|Tolm.
+7215|Tolm. & Posl.
+7216|Tolm. & V.V. Petrovsky
+7217|Tønsberg
+7218|Tønsberg & Ahti
+7219|Tønsberg & Holien
+7220|Tønsberg, Timdal & McCune
+7221|Torr.
+7222|Torr. & A. Gray
+7223|Torr. & A. Gray ex Hook.
+7224|Torr. & A. Gray ex Torr.
+7225|Torr. ex Dewey
+7226|Torr. ex Gottsche, Lindenb. & Nees
+7227|Torr. ex Nees
+7228|Torr. ex Schwein.
+7229|Townsend
+7230|Toyokumi & Nosaka
+7231|Tracey
+7232|Tratt.
+7233|Trautv.
+7234|Trautv. & C.A. Mey.
+7235|Trel.
+7236|Trevir. ex Göpp.
+7237|Trevis.
+7238|Tricker
+7239|Triebel
+7240|Triebel & Rambold
+7241|Trin.
+7242|Trin. ex Griseb.
+7243|Trin. ex V.I. Krecz.
+7244|Tuck & Fr.
+7245|Tuck.
+7246|Tul.
+7247|Tuom. & T.J. Kop.
+7248|Turcz.
+7249|Turcz. ex Benth.
+7250|Turcz. ex C.A. Mey.
+7251|Turcz. ex DC.
+7252|Turcz. ex Fisch. & C.A. Mey.
+7253|Turcz. ex Kar. & Kir.
+7254|Turcz. ex Kunth
+7255|Turcz. ex Ledeb.
+7256|Turcz. ex Lehm.
+7257|Turcz. ex Rupr.
+7258|Turcz. ex Trautv. & C.A. Mey.
+7259|Turcz. ex V.I. Krecz.
+7260|Turner
+7261|Turner ex Wilson
+7262|Tzvelev
+7263|Ucria ex Roem.
+7264|Ulbr.
+7265|Uline & Bray
+7266|Underw.
+7267|Unknown
+7268|V. Wirth & Vezda
+7269|V.I. Krecz.
+7270|V.I. Krecz. & Bobrov
+7271|V.I. Krecz. & Gontsch.
+7272|V.I. Krecz. ex T.V. Egorova
+7273|V.J. Zinger ex V.I. Krecz.
+7274|V.M. Vinogr.
+7275|V.N. Vassil.
+7276|V.V. Petrovsky
+7277|Vahl
+7278|Vahl ex Hornem.
+7279|Vail
+7280|Vain.
+7281|Vain. ex Räsänen
+7282|van den Boom & Vezda
+7283|Van Houtte
+7284|Vána
+7285|Vána & L. Söderstr.
+7286|Vaniot
+7287|Vasey
+7288|Vasey & Rose
+7289|Vasey ex Burtt Davy
+7290|Vasey ex Jeps.
+7291|Vasey ex Rydb.
+7292|Vasey ex Shear & Rydb.
+7293|Veldkamp
+7294|Velichkin
+7295|Vent.
+7296|Venturi
+7297|Vers.
+7298|Verseghy
+7299|Vesterg.
+7300|Vezda
+7301|Vict.
+7302|Vill.
+7303|Vill. ex Brid.
+7304|Vitik.
+7305|Vitt
+7306|Voit
+7307|Volkova
+7308|von Wolf
+7309|Vved.
+7310|W. Bartram
+7311|W. Boott
+7312|W. Gams
+7313|W. Knight
+7314|W. Wight
+7315|W. Wight ex Hultén
+7316|W.A. Weber
+7317|W.B. Drew
+7318|W.B. Schofield
+7319|W.B. Schofield & W.S. Hong
+7320|W.D.J. Koch
+7321|W.D.J. Koch ex DC.
+7322|W.E. Nicholson
+7323|W.H. Brewer
+7324|W.H. Drury & Rollins
+7325|W.H. Evans
+7326|W.H. Wagner
+7327|W.H. Wagner & Farrar
+7328|W.H. Wagner & J.R. Grant
+7329|W.J. Noble & Vezda
+7330|W.J. Rob. ex A. Gray
+7331|W.L. Culb. & C.F. Culb.
+7332|W.P.C. Barton
+7333|W.R. Buck & H.A. Crum
+7334|W.T. Aiton
+7335|W.W. Mitch & Wilton
+7336|W.W. Mitch. & Wilton
+7337|W.W. Sm. & Small
+7338|Wahlenb.
+7339|Waldst. & Kit.
+7340|Waldst. & Kit. ex Willd.
+7341|Wall. ex Meisn.
+7342|Wallr.
+7343|Walter
+7344|Ward
+7345|Warming
+7346|Warnst.
+7347|Wass & Mathiasen
+7348|Weath.
+7349|Webb & Berthel.
+7350|Webb & Moq.
+7351|Weber
+7352|Wedd.
+7353|Wedin & R. Sant.
+7354|Wedin, Högnabba & Goward
+7355|Weigel
+7356|Weihe & Nees
+7357|Weinm.
+7358|Wender.
+7359|Wenzig
+7360|Werner
+7361|Westend.
+7362|Wetmore
+7363|Wheldon & A. Wilson
+7364|Wherry
+7365|Wibel
+7366|Wich.
+7367|Wiegand
+7368|Wikstr.
+7369|Willd.
+7370|Willd. ex Brid.
+7371|Willd. ex DC.
+7372|Willd. ex Kunth
+7373|Willd. ex Roem. & Schult.
+7374|Willd. ex Schkuhr
+7375|Willd. ex Schltdl.
+7376|Willd. ex Spreng.
+7377|Willd. ex Wahlenb.
+7378|Willey ex Rothr.
+7379|Willk.
+7380|Wilson
+7381|Wilson ex Mitt.
+7382|Wimm. & Grab.
+7383|Wirsing
+7384|With.
+7385|Wolf
+7386|Woodson
+7387|Woot. & Standl.
+7388|Wormsk.
+7389|Wormsk. ex Drejer
+7390|Wormsk. ex Hornem.
+7391|Wulfen
+7392|Wulfen & Schreb.
+7393|Yoshim.
+7394|Yurtzev
+7395|Z. Iwats.
+7396|Zahlbr.
+7397|Zahn
+7398|Zapalowicz
+7399|Zarnowiec
+7400|Zertová
+7401|Zhmylev
+7402|Zhurb. et al.
+7403|Zinn
+7404|Zittel
+7405|Zopf
+7406|Zschacke
+7407|Zucc.
+7408|Zukal
+7409|Zwickel
