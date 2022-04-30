@@ -6,7 +6,7 @@
 //   WHERE (partdetail::json->>0)::json->>'bc' IS NOT NULL AND
 //   (guid_prefix = 'UAM:Herb' OR guid_prefix = 'UAMb:Herb');
 
-
+// sounds from mixkit.co
 var audio_noguid = new Audio('fail.wav');
 var audio_noimg  = new Audio('bleep.wav');
 var audio_img    = new Audio('double.wav');
