@@ -31,8 +31,8 @@ function clickPress(event) {
             if (img[found] == 1) {
                 imagetext = "<br/> IMAGED 🙂";
             }
-            document.getElementById("out").innerHTML = "Barcode: " +
-                document.getElementById("box").value + "<br/>GUID → " +
+            document.getElementById("out").innerHTML = 
+                document.getElementById("box").value + " → " +
                 fullguid +
                 imagetext;
             if (img[found] == 1) {
