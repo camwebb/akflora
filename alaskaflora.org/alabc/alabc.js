@@ -14,7 +14,7 @@ var audio_img    = new Audio('double.wav');
 function clickPress(event) {
     var found = -1;
     var imagetext = "<br/> NO IMAGE 😐";
-    var fullguid = "";
+    var c = "";
     if (event.keyCode == 13) {
         for (i = 0 ; i < bc.length; i++) {
             if (document.getElementById("box").value == bc[i]) {
@@ -22,18 +22,16 @@ function clickPress(event) {
             }
         }
         if (found >= 0) {
-            if (coll[found] == "c") {
-                fullguid = "UAMb:Herb:" + guid[found];
-            }
-            else {
-                fullguid = "UAM:Herb:" + guid[found];
-            }
+            if (coll[found] == "c") { c = "b" }
             if (img[found] == 1) {
                 imagetext = "<br/> IMAGED 🙂";
             }
             document.getElementById("out").innerHTML = 
                 document.getElementById("box").value + " → " +
-                fullguid +
+                "<a target=\"_blank\" " +
+                "href=\"https://arctos.database.museum/guid/UAM" +
+                c + ":Herb:" + guid[found] + "\">" +
+                "UAM" + c + ":Herb:" + guid[found] + "</a>" + 
                 imagetext;
             if (img[found] == 1) {
                 audio_img.play();
