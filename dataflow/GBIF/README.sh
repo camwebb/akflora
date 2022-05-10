@@ -34,8 +34,9 @@ rm block*
 
 gawk 'BEGIN{FS=OFS="|"}{t[$4]++}END{PROCINFO["sorted_in"]="@ind_str_asc"; for (i in t) print i,t[i]}' yt_extension_gbif_colls > yt_extension_gbif_taxa
 
-# just the names, with a dummy first column
-gawk 'BEGIN{FS=OFS="|"}{t[$4]++}END{PROCINFO["sorted_in"]="@ind_str_asc"; for (i in t) print ++n, i}' yt_extension_gbif_colls > names
+# just the names, with a dummy first column, and drop the families and genera
+gawk 'BEGIN{FS=OFS="|"}{t[$4]++}END{PROCINFO["sorted_in"]="@ind_str_asc"; for (i in t) print "yt-tmp-" ++n, i}' yt_extension_gbif_colls | \
+    grep -E 'yt-tmp-[0-9]+\|[^ ]+ [a-z]' > names
 
 # remove the dates at the end of names (parsenames does not accept)
 sed -i -E 's/, [0-9]{4}//g' names
@@ -44,6 +45,5 @@ sed -i -E 's/, [0-9]{4}//g' names
 parsenames names > yt_names
 rm names
 
-# drop the lines for just genera, which did not match:
-sed -i -E '/^[0-9]+\|$/d' yt_names
+
 

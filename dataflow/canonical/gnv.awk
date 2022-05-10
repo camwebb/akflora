@@ -4,11 +4,11 @@
 
 BEGIN {
   # 2022-03-17 switch to GNV - seems GNR is no longer actively developed
-
+  
   # make JSON payload  
   load = "{\"nameStrings\": ["
   while ((getline < INFILE)>0)
-    load = load "\"" $0 "\","
+    load = load "\"" gensub(/"/,"","G",$0) "\","
   gsub(/,$/,"",load)
   load = load "],\"preferredSources\":[165,167],\"withAllMatches\": true}"
   print load > (INFILE ".json" )
@@ -29,7 +29,7 @@ BEGIN {
     print "JSON import failed!" > "/dev/stderr"
     exit 1
   }
-  
+
   for (i in data["names"])
     if (isarray(data["names"][i]["results"]))
       for (j in data["names"][i]["results"])    

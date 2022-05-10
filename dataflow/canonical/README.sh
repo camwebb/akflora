@@ -22,7 +22,7 @@ then
     # Yukon extension + reviewed taxa. First column should be unique
 
     cat ../ACCS/accs ../ALA/ala ../PAF/paf ../FNA/fna ../Hulten/hulten \
-        ../taxon_review/all_reviewed_2022-03-16 | \
+        ../GBIF/yt_names | \
         gawk 'BEGIN{FS="|"}{print $2, $3, $4, $5, $6, $7, $8}' | \
         sed -E -e 's/^ *//g' -e 's/ *$//g' -e 's/  +/ /g' -e 's/×/x/g' | \
         gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} \
@@ -102,6 +102,8 @@ then
     # 'ThelIdium methorium (Nyl.) Hellb.'
     # etc.
 
+    exit
+    
     function alphaloop() {
         for i in A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
         do
@@ -112,6 +114,8 @@ then
              "@ind_str_asc"} $3 ~ letter {code[$2 "|" $3 "|" $4 "|" $5 \
              "|" $6 "|" $7 "|" $8]=$1} END{for (i in code) \
              print code[i] "|" i}' wcsp > listB_$i
+            # note: auto_fuzzy may produce several matches in B for each A
+            #   so the final matchfile may have more lines than the A file
             matchnames -a listA_$i -b listB_$i -o all2wcsp_match_$i -F -e 5 -q
         done
     }
