@@ -1722,124 +1722,124 @@ ala-171|ipni-215171-1|exact||Hieracium||aurantiacum|||L.||Hieracium||aurantiacum
 ala-3581|ipni-218052-1|exact||Hieracium||gracile|||Hook.||Hieracium||gracile|||Hook.
 ala-2971|ipni-290159-2|exact||Hieracium||gracile|var.|alaskanum|Zahn||Hieracium||gracile|var.|alaskanum|Zahn
 ala-2210|ipni-122281-2|exact||Hieracium||gracile|var.|yukonense|A.E.Porsild||Hieracium||gracile|var.|yukonense|A.E.Porsild
-ala-3428||no_match||Hieracium||scabriusculum|||Schwein.|||||||
+ala-3428|ipni-296803-2|exact||Hieracium||scabriusculum|||Schwein.||Hieracium||scabriusculum|||Schwein.
 ala-344||no_match||Hieracium||triste × gracile|||Hook.|||||||
-ala-1020||no_match||Hieracium||triste|||Willd. ex Sprengel|||||||
-ala-1143||no_match||Hieracium||triste|var.|fulvum|Hultén|||||||
-ala-433||no_match||Hieracium||triste|var.|triste||||||||
-ala-26||no_match||Hieracium||triste|var.|tritiforme|Zahn|||||||
-ala-1146||no_match||Hieracium||umbellatum|||L.|||||||
+ala-1020|ipni-224355-1|auto_basexin||Hieracium||triste|||Willd. ex Sprengel||Hieracium||triste|||Willd. ex Spreng.
+ala-1143|ipni-122489-2|exact||Hieracium||triste|var.|fulvum|Hultén||Hieracium||triste|var.|fulvum|Hultén
+ala-433|trop-2724794|exact||Hieracium||triste|var.|triste|||Hieracium||triste|var.|triste|
+ala-26|ipni-122493-2|manual||Hieracium||triste|var.|tritiforme|Zahn||Hieracium||triste|var.|tristiforme|Zahn
+ala-1146|ipni-224435-1|exact||Hieracium||umbellatum|||L.||Hieracium||umbellatum|||L.
 ala-3329|kew-418805|exact||Hierochloe||alpina|||(Sw.) Roem. & Schult.||Hierochloe||alpina|||(Sw.) Roem. & Schult.
-ala-2910|kew-418857|auto_punct||Hierochloe||hirta|||(Schrank) Borbás||Hierochloe||hirta|||(Schrank.) Borbás
-ala-2896|kew-418858|auto_basexin||Hierochloe||hirta|subsp.|arctica|(C.Presl) G.Weim.||Hierochloe||hirta|subsp.|arctica|(J.Presl) G.Weim.
-ala-1853|kew-418883|exact||Hierochloe||odorata|||(L.) P.Beauv.||Hierochloe||odorata|||(L.) P.Beauv.
-ala-574|kew-418908|exact||Hierochloe||pauciflora|||R.Br.||Hierochloe||pauciflora|||R.Br.
-ala-1484||no_match||Hippuris||lanceolata|||Retz.|||||||
-ala-2879||no_match||Hippuris||montana|||Ledeb. ex Rchb.|||||||
-ala-632|kew-2851594|exact||Hippuris||tetraphylla|||L.f.||Hippuris||tetraphylla|||L.f.
-ala-1442|kew-2851597|exact||Hippuris||vulgaris|||L.||Hippuris||vulgaris|||L.
-ala-2431|kew-419046|exact||Holcus||lanatus|||L.||Holcus||lanatus|||L.
-ala-1617|kew-2853020|exact||Honckenya||peploides|||(L.) Ehrh.||Honckenya||peploides|||(L.) Ehrh.
-ala-1700|kew-2869907|auto_exin-||Honckenya||peploides|subsp.|diffusa|(Hornem.) Hultén||Honckenya||peploides|subsp.|diffusa|(Hornem.) Hultén ex V.V.Petrovsky
-ala-3613||no_match||Honckenya||peploides|subsp.|major|(Hook.) Hultén|||||||
-ala-2316||no_match||Honckenya||peploides|subsp.|peploides||||||||
-ala-3021||no_match||Honckenya||peploides|var.|diffusa|(Hornem.) Ostenf.|||||||
-ala-3521|kew-419216|exact||Hordeum||brachyantherum|||Nevski||Hordeum||brachyantherum|||Nevski
-ala-3294|kew-419358|exact||Hordeum||jubatum|||L.||Hordeum||jubatum|||L.
-ala-2895|kew-419563|exact||Hordeum||vulgare|||L.||Hordeum||vulgare|||L.
-ala-691||no_match||Hulteniella||integrifolia|||(Richardson) Tzvelev|||||||
-ala-1636||no_match||Huperzia||appressa|||(Bach.Pyl. ex Desv.) A.Love & D.Love|||||||
-ala-2621||no_match||Huperzia||chinensis|subsp.|miyoshiana|(Makino) Tzvelev|||||||
-ala-2438||no_match||Huperzia||haleakalae|||(Brack.) Holub|||||||
-ala-3587||no_match||Huperzia||miyoshiana|||(Makino) Ching|||||||
-ala-2641||no_match||Huperzia||occidentalis|||(Clute) Kartesz & Gandhi|||||||
-ala-2996||no_match||Huperzia||selago|||(L.) Bernh. ex Schrank & Mart.|||||||
-ala-38||no_match||Huperzia||selago|subsp.|appressa|(Desv.) D.Love|||||||
-ala-1389||no_match||Huperzia||selago|subsp.|chinense|(C.Chr.) A.Love & D.Love|||||||
-ala-1962||no_match||Huperzia||selago|subsp.|selago||||||||
-ala-3737||no_match||Hymenophyllum||wrightii|||Bosch|||||||
-ala-3002||no_match||Hypochoeris||radicata|||L.|||||||
-ala-2678|kew-2859697|exact||Iberis||amara|||L.||Iberis||amara|||L.
-ala-2538|kew-2859940|exact||Iberis||umbellata|||L.||Iberis||umbellata|||L.
-ala-835|kew-2862919|exact||Impatiens||noli-tangere|||L.||Impatiens||noli-tangere|||L.
-ala-1157||no_match||Iris||setosa|||Pall.|||||||
-ala-2465||no_match||Iris||setosa|subsp.|interior|(E.S.Anderson) Hultén|||||||
-ala-1510||no_match||Iris||setosa|subsp.|setosa||||||||
-ala-685||no_match||Isoetes||beringensis|||Kom.|||||||
-ala-2477||no_match||Isoetes||braunii|||Durieu|||||||
-ala-2059||no_match||Isoetes||echinospora|||Durieu|||||||
-ala-928||no_match||Isoetes||echinospora|subsp.|maritima|(Underw.) A.Love|||||||
-ala-1383||no_match||Isoetes||echinospora|subsp.|muricata|(Durieu) A.Love & D.Love|||||||
-ala-3342||no_match||Isoetes||echinospora|var.|braunii|(Durieu) Engelm.|||||||
-ala-225||no_match||Isoetes||echinospora|var.|maritima|(Underw.) A.A.Eaton|||||||
-ala-453||no_match||Isoetes||macounii|||A.A.Eaton|||||||
-ala-1597||no_match||Isoetes||maritima|||Underw.|||||||
-ala-3383||no_match||Isoetes||muricata|||Durieu|||||||
-ala-3680||no_match||Isoetes||muricata|subsp.|maritima|(Underw.) Hultén|||||||
-ala-1457||no_match||Isoetes||muricata|var.|braunii|(Durieu) C.F.Reed|||||||
-ala-3393||no_match||Isoetes||occidentalis|||L.F.Hend.|||||||
-ala-1998||no_match||Isoetes|×|truncata|||(A.A.Eaton) Clute|||||||
-ala-90||no_match||Juncus||albescens|||(Lange) Fernald|||||||
-ala-2445||no_match||Juncus||alpinoarticulatus|||Chaix|||||||
-ala-2359||no_match||Juncus||alpinus|||Vill.|||||||
-ala-1082||no_match||Juncus||alpinus|subsp.|alpinus||||||||
-ala-706||no_match||Juncus||alpinus|subsp.|nodulosus|(Wahlenb.) Lindm.|||||||
-ala-676||no_match||Juncus||arcticus|||Willd.|||||||
-ala-2018||no_match||Juncus||arcticus|subsp.|alaskanus|Hultén|||||||
-ala-2467||no_match||Juncus||arcticus|subsp.|ater|(Rydb.) Hultén|||||||
-ala-3356||no_match||Juncus||arcticus|subsp.|sitchensis|Engelm.|||||||
-ala-1065||no_match||Juncus||arcticus|var.|alaskanus|(Hultén) S.L.Welsh|||||||
-ala-343||no_match||Juncus||articulatus|||L.|||||||
-ala-2301||no_match||Juncus||balticus|subsp.|sitchensis|(Engelm.) Hultén|||||||
-ala-2218||no_match||Juncus||balticus|var.|alaskanus|(Hultén) A.E.Porsild|||||||
-ala-777||no_match||Juncus||balticus|var.|haenkei|(E.Mey.) Buchenau|||||||
-ala-3230||no_match||Juncus||biglumis|||L.|||||||
-ala-306||no_match||Juncus||bufonius|||L.|||||||
-ala-454||no_match||Juncus||bufonius|subsp.|ranarius|(E.P.Perrier & Songeon) Hiitonen|||||||
-ala-3666||no_match||Juncus||castaneus|||Sm.|||||||
-ala-507||no_match||Juncus||castaneus|subsp.|castaneus||||||||
-ala-229||no_match||Juncus||castaneus|subsp.|leucochlamys|(V.J. Zinger ex V.I.Krecz.) Hultén|||||||
-ala-1783||no_match||Juncus||drummondii|||E.Mey.|||||||
-ala-3095||no_match||Juncus||effusus|||L.|||||||
-ala-3281||no_match||Juncus||effusus|subsp.|effusus||||||||
-ala-2282||no_match||Juncus||ensifolius|||Wikstr.|||||||
-ala-1387||no_match||Juncus||falcatus|||E.Mey.|||||||
-ala-1626||no_match||Juncus||falcatus|subsp.|sitchensis|(Buchenau) Hultén|||||||
-ala-657||no_match||Juncus||falcatus|var.|sitchensis|Buchenau|||||||
-ala-1180||no_match||Juncus||filiformis|||L.|||||||
-ala-2747||no_match||Juncus||haenkei|||E.Mey.|||||||
-ala-2949||no_match||Juncus||leschenaultii|||Gay|||||||
-ala-207||no_match||Juncus||leucochlamys|||V.J. Zinger ex V.I.Krecz.|||||||
-ala-200||no_match||Juncus||leucochlamys|subsp.|borealis|(Tolm.) Novikov|||||||
+ala-2910|trop-25511154|exact||Hierochloe||hirta|||(Schrank) Borbás||Hierochloe||hirta|||(Schrank) Borbás
+ala-2896|trop-25511155|auto_basexin||Hierochloe||hirta|subsp.|arctica|(C.Presl) G.Weim.||Hierochloe||hirta|subsp.|arctica|(J. Presl) G. Weim.
+ala-1853|ipni-404911-1|auto_punct||Hierochloe||odorata|||(L.) P.Beauv.||Hierochloë||odorata|||(L.) P.Beauv.
+ala-574|ipni-404918-1|auto_punct||Hierochloe||pauciflora|||R.Br.||Hierochloë||pauciflora|||R.Br.
+ala-1484|ipni-430345-1|exact||Hippuris||lanceolata|||Retz.||Hippuris||lanceolata|||Retz.
+ala-2879|ipni-430347-1|exact||Hippuris||montana|||Ledeb. ex Rchb.||Hippuris||montana|||Ledeb. ex Rchb.
+ala-632|ipni-430350-1|exact||Hippuris||tetraphylla|||L.f.||Hippuris||tetraphylla|||L.f.
+ala-1442|ipni-430352-1|exact||Hippuris||vulgaris|||L.||Hippuris||vulgaris|||L.
+ala-2431|ipni-405034-1|exact||Holcus||lanatus|||L.||Holcus||lanatus|||L.
+ala-1617|ipni-154821-1|exact||Honckenya||peploides|||(L.) Ehrh.||Honckenya||peploides|||(L.) Ehrh.
+ala-1700|trop-6300112|auto_exin-||Honckenya||peploides|subsp.|diffusa|(Hornem.) Hultén||Honckenya||peploides|subsp.|diffusa|(Hornem.) Hultén ex V.V. Petrovsky
+ala-3613|ipni-123779-2|exact||Honckenya||peploides|subsp.|major|(Hook.) Hultén||Honckenya||peploides|subsp.|major|(Hook.) Hultén
+ala-2316|ipni-77231306-1|exact||Honckenya||peploides|subsp.|peploides|||Honckenya||peploides|subsp.|peploides|
+ala-3021|ipni-123777-2|exact||Honckenya||peploides|var.|diffusa|(Hornem.) Ostenf.||Honckenya||peploides|var.|diffusa|(Hornem.) Ostenf.
+ala-3521|ipni-405163-1|exact||Hordeum||brachyantherum|||Nevski||Hordeum||brachyantherum|||Nevski
+ala-3294|ipni-405267-1|exact||Hordeum||jubatum|||L.||Hordeum||jubatum|||L.
+ala-2895|ipni-77099-3|exact||Hordeum||vulgare|||L.||Hordeum||vulgare|||L.
+ala-691|ipni-944880-1|exact||Hulteniella||integrifolia|||(Richardson) Tzvelev||Hulteniella||integrifolia|||(Richardson) Tzvelev
+ala-1636|ipni-17440620-1|auto_basexin||Huperzia||appressa|||(Bach.Pyl. ex Desv.) A.Love & D.Love||Huperzia||appressa|||(Desv.) Á.Löve & D.Löve
+ala-2621|ipni-17572850-1|exact||Huperzia||chinensis|subsp.|miyoshiana|(Makino) Tzvelev||Huperzia||chinensis|subsp.|miyoshiana|(Makino) Tzvelev
+ala-2438|ipni-17517420-1|exact||Huperzia||haleakalae|||(Brack.) Holub||Huperzia||haleakalae|||(Brack.) Holub
+ala-3587|ipni-17512230-1|exact||Huperzia||miyoshiana|||(Makino) Ching||Huperzia||miyoshiana|||(Makino) Ching
+ala-2641|ipni-278409-2|exact||Huperzia||occidentalis|||(Clute) Kartesz & Gandhi||Huperzia||occidentalis|||(Clute) Kartesz & Gandhi
+ala-2996|ipni-1140250-2|exact||Huperzia||selago|||(L.) Bernh. ex Schrank & Mart.||Huperzia||selago|||(L.) Bernh. ex Schrank & Mart.
+ala-38|ipni-124866-2|auto_punct||Huperzia||selago|subsp.|appressa|(Desv.) D.Love||Huperzia||selago|subsp.|appressa|(Desv.) D.Löve
+ala-1389|trop-26604835|auto_basio+||Huperzia||selago|subsp.|chinense|(C.Chr.) A.Love & D.Love||Huperzia||selago|subsp.|chinense|Á. Löve & D. Löve
+ala-1962|trop-50176321|auto_irank||Huperzia||selago|subsp.|selago|||Huperzia||selago|var.|selago|
+ala-3737|ipni-17125890-1|exact||Hymenophyllum||wrightii|||Bosch||Hymenophyllum||wrightii|||Bosch
+ala-3002|trop-2742503|exact||Hypochoeris||radicata|||L.||Hypochoeris||radicata|||L.
+ala-2678|ipni-324660-2|exact||Iberis||amara|||L.||Iberis||amara|||L.
+ala-2538|ipni-324671-2|exact||Iberis||umbellata|||L.||Iberis||umbellata|||L.
+ala-835|ipni-374246-1|exact||Impatiens||noli-tangere|||L.||Impatiens||noli-tangere|||L.
+ala-1157|ipni-439084-1|auto_exin-||Iris||setosa|||Pall.||Iris||setosa|||Pall. ex Link
+ala-2465|ipni-130143-2|exact||Iris||setosa|subsp.|interior|(E.S.Anderson) Hultén||Iris||setosa|subsp.|interior|(E.S.Anderson) Hultén
+ala-1510|trop-16600263|exact||Iris||setosa|subsp.|setosa|||Iris||setosa|subsp.|setosa|
+ala-685|trop-26604847|exact||Isoetes||beringensis|||Kom.||Isoetes||beringensis|||Kom.
+ala-2477|ipni-130490-2|exact||Isoetes||braunii|||Durieu||Isoetes||braunii|||Durieu
+ala-2059|ipni-30014870-2|exact||Isoetes||echinospora|||Durieu||Isoetes||echinospora|||Durieu
+ala-928|ipni-130510-2|auto_punct||Isoetes||echinospora|subsp.|maritima|(Underw.) A.Love||Isoetes||echinospora|subsp.|maritima|(Underw.) Á.Löve
+ala-1383|ipni-130512-2|auto_punct||Isoetes||echinospora|subsp.|muricata|(Durieu) A.Love & D.Love||Isoetes||echinospora|subsp.|muricata|(Durieu) Á.Löve & D.Löve
+ala-3342|trop-26602940|exact||Isoetes||echinospora|var.|braunii|(Durieu) Engelm.||Isoetes||echinospora|var.|braunii|(Durieu) Engelm.
+ala-225|ipni-1066333-2|exact||Isoetes||echinospora|var.|maritima|(Underw.) A.A.Eaton||Isoetes||echinospora|var.|maritima|(Underw.) A.A.Eaton
+ala-453|ipni-130557-2|exact||Isoetes||macounii|||A.A.Eaton||Isoetes||macounii|||A.A.Eaton
+ala-1597|ipni-130560-2|exact||Isoetes||maritima|||Underw.||Isoetes||maritima|||Underw.
+ala-3383|ipni-130573-2|exact||Isoetes||muricata|||Durieu||Isoetes||muricata|||Durieu
+ala-3680|ipni-130575-2|exact||Isoetes||muricata|subsp.|maritima|(Underw.) Hultén||Isoetes||muricata|subsp.|maritima|(Underw.) Hultén
+ala-1457|ipni-130574-2|auto_basexin||Isoetes||muricata|var.|braunii|(Durieu) C.F.Reed||Isoetes||muricata|var.|braunii|(Engelm.) C.F.Reed
+ala-3393|ipni-130580-2|exact||Isoetes||occidentalis|||L.F.Hend.||Isoetes||occidentalis|||L.F.Hend.
+ala-1998|trop-26604564|manual||Isoetes|×|truncata|||(A.A.Eaton) Clute||Isoetes||truncata|||(A.A. Eaton) Clute
+ala-90|ipni-1136118-2|exact||Juncus||albescens|||(Lange) Fernald||Juncus||albescens|||(Lange) Fernald
+ala-2445|ipni-77177309-1|exact||Juncus||alpinoarticulatus|||Chaix||Juncus||alpinoarticulatus|||Chaix
+ala-2359|ipni-442660-1|exact||Juncus||alpinus|||Vill.||Juncus||alpinus|||Vill.
+ala-1082|trop-16900622|auto_irank||Juncus||alpinus|subsp.|alpinus|||Juncus||alpinus|fo.|alpinus|
+ala-706|trop-16900697|exact||Juncus||alpinus|subsp.|nodulosus|(Wahlenb.) Lindm.||Juncus||alpinus|subsp.|nodulosus|(Wahlenb.) Lindm.
+ala-676|ipni-442684-1|exact||Juncus||arcticus|||Willd.||Juncus||arcticus|||Willd.
+ala-2018|ipni-131982-2|exact||Juncus||arcticus|subsp.|alaskanus|Hultén||Juncus||arcticus|subsp.|alaskanus|Hultén
+ala-2467|ipni-131984-2|exact||Juncus||arcticus|subsp.|ater|(Rydb.) Hultén||Juncus||arcticus|subsp.|ater|(Rydb.) Hultén
+ala-3356|ipni-131990-2|exact||Juncus||arcticus|subsp.|sitchensis|Engelm.||Juncus||arcticus|subsp.|sitchensis|Engelm.
+ala-1065|trop-16900520|auto_punct||Juncus||arcticus|var.|alaskanus|(Hultén) S.L.Welsh||Juncus||arcticus|var.|alaskanus|(Hultén) S.L. Welsh
+ala-343|ipni-442698-1|exact||Juncus||articulatus|||L.||Juncus||articulatus|||L.
+ala-2301|ipni-132023-2|exact||Juncus||balticus|subsp.|sitchensis|(Engelm.) Hultén||Juncus||balticus|subsp.|sitchensis|(Engelm.) Hultén
+ala-2218|ipni-132007-2|exact||Juncus||balticus|var.|alaskanus|(Hultén) A.E.Porsild||Juncus||balticus|var.|alaskanus|(Hultén) A.E.Porsild
+ala-777|trop-100210000|auto_punct||Juncus||balticus|var.|haenkei|(E.Mey.) Buchenau||Juncus||balticus|var.|haenkei|(E. Mey.) Buchenau
+ala-3230|ipni-442732-1|exact||Juncus||biglumis|||L.||Juncus||biglumis|||L.
+ala-306|ipni-442769-1|exact||Juncus||bufonius|||L.||Juncus||bufonius|||L.
+ala-454|trop-16900005|auto_basexin||Juncus||bufonius|subsp.|ranarius|(E.P.Perrier & Songeon) Hiitonen||Juncus||bufonius|subsp.|ranarius|(Songeon & E.P. Perrier) Hiitonen
+ala-3666|ipni-442797-1|exact||Juncus||castaneus|||Sm.||Juncus||castaneus|||Sm.
+ala-507|trop-16900528|exact||Juncus||castaneus|subsp.|castaneus|||Juncus||castaneus|subsp.|castaneus|
+ala-229|trop-16900529|auto_basexin||Juncus||castaneus|subsp.|leucochlamys|(V.J. Zinger ex V.I.Krecz.) Hultén||Juncus||castaneus|subsp.|leucochlamys|(N.W. Zinger ex V.I. Krecz.) Hultén
+ala-1783|ipni-442901-1|exact||Juncus||drummondii|||E.Mey.||Juncus||drummondii|||E.Mey.
+ala-3095|ipni-442917-1|exact||Juncus||effusus|||L.||Juncus||effusus|||L.
+ala-3281|trop-50230031|exact||Juncus||effusus|subsp.|effusus|||Juncus||effusus|subsp.|effusus|
+ala-2282|ipni-442931-1|exact||Juncus||ensifolius|||Wikstr.||Juncus||ensifolius|||Wikstr.
+ala-1387|ipni-442946-1|exact||Juncus||falcatus|||E.Mey.||Juncus||falcatus|||E.Mey.
+ala-1626|ipni-132138-2|exact||Juncus||falcatus|subsp.|sitchensis|(Buchenau) Hultén||Juncus||falcatus|subsp.|sitchensis|(Buchenau) Hultén
+ala-657|ipni-132139-2|exact||Juncus||falcatus|var.|sitchensis|Buchenau||Juncus||falcatus|var.|sitchensis|Buchenau
+ala-1180|ipni-51655-3|exact||Juncus||filiformis|||L.||Juncus||filiformis|||L.
+ala-2747|ipni-443032-1|exact||Juncus||haenkei|||E.Mey.||Juncus||haenkei|||E.Mey.
+ala-2949|ipni-324773-2|auto_exin-||Juncus||leschenaultii|||Gay||Juncus||leschenaultii|||Gay ex Laharpe
+ala-207|ipni-443131-1|manual||Juncus||leucochlamys|||V.J. Zinger ex V.I.Krecz.||Juncus||leucochlamys|||W.J.Zinger ex V.I.Krecz.
+ala-200|ipni-952226-1|exact||Juncus||leucochlamys|subsp.|borealis|(Tolm.) Novikov||Juncus||leucochlamys|subsp.|borealis|(Tolm.) Novikov
 ala-2999||no_match||Juncus||leucochlamys|subsp.|leucochlamys||||||||
-ala-114||no_match||Juncus||leucochlamys|var.|borealis|Tolm.|||||||
-ala-2370||no_match||Juncus||macrandrus|||Coville|||||||
-ala-1228||no_match||Juncus||mertensianus|||Bong.|||||||
-ala-1045||no_match||Juncus||nodosus|||L.|||||||
-ala-2483||no_match||Juncus||oreganus|||S.Watson|||||||
-ala-3649||no_match||Juncus||ranarius|||Nees ex Songeon & E.P.Perrier|||||||
-ala-2594||no_match||Juncus||slwookoorum|||S.B.Young|||||||
-ala-3116||no_match||Juncus||stygius|||L.|||||||
-ala-3035||no_match||Juncus||stygius|subsp.|americanus|(Buchenau) Hultén|||||||
-ala-771||no_match||Juncus||supiniformis|||Engelm.|||||||
-ala-2662||no_match||Juncus||tenuis|||Willd.|||||||
-ala-3326||no_match||Juncus||triglumis|||L.|||||||
-ala-3067||no_match||Juncus||triglumis|subsp.|albescens|(Lange) Hultén|||||||
-ala-2673||no_match||Juncus||triglumis|subsp.|triglumis||||||||
-ala-1088|kew-2332579|exact||Juniperus||communis|||L.||Juniperus||communis|||L.
-ala-2253|kew-2871054|auto_basexin||Juniperus||communis|subsp.|alpina|(Neilr.) Celak.||Juniperus||communis|subsp.|alpina|(Suter) Celak.
-ala-2610|kew-2871047|exact||Juniperus||communis|subsp.|depressa|(Pursh) Franco||Juniperus||communis|subsp.|depressa|(Pursh) Franco
-ala-1473|kew-2871055|auto_basio+||Juniperus||communis|subsp.|nana|(Willd.) Syme||Juniperus||communis|subsp.|nana|Syme
-ala-1922|kew-2333004|exact||Juniperus||communis|var.|depressa|Pursh||Juniperus||communis|var.|depressa|Pursh
-ala-1380|kew-2607604|exact||Juniperus||communis|var.|montana|Aiton||Juniperus||communis|var.|montana|Aiton
-ala-998|kew-2332743|exact||Juniperus||horizontalis|||Moench||Juniperus||horizontalis|||Moench
-ala-2429|kew-2331690|exact||Juniperus||sibirica|||Burgsd.||Juniperus||sibirica|||Burgsd.
-ala-3553||no_match||Kalmia||microphylla|||(Hook.) A.Heller|||||||
-ala-3113||no_match||Kalmia||microphylla|subsp.|occidentalis|(Small) R.L.Taylor & MacBryde|||||||
+ala-114|trop-16900062|exact||Juncus||leucochlamys|var.|borealis|Tolm.||Juncus||leucochlamys|var.|borealis|Tolm.
+ala-2370|trop-16900154|exact||Juncus||macrandrus|||Coville||Juncus||macrandrus|||Coville
+ala-1228|ipni-443207-1|exact||Juncus||mertensianus|||Bong.||Juncus||mertensianus|||Bong.
+ala-1045|ipni-443278-1|exact||Juncus||nodosus|||L.||Juncus||nodosus|||L.
+ala-2483|ipni-443300-1|exact||Juncus||oreganus|||S.Watson||Juncus||oreganus|||S.Watson
+ala-3649|trop-50142503|auto_exin+||Juncus||ranarius|||Nees ex Songeon & E.P.Perrier||Juncus||ranarius|||Nees
+ala-2594|ipni-443485-1|exact||Juncus||slwookoorum|||S.B.Young||Juncus||slwookoorum|||S.B.Young
+ala-3116|ipni-443526-1|exact||Juncus||stygius|||L.||Juncus||stygius|||L.
+ala-3035|ipni-132313-2|exact||Juncus||stygius|subsp.|americanus|(Buchenau) Hultén||Juncus||stygius|subsp.|americanus|(Buchenau) Hultén
+ala-771|ipni-443551-1|exact||Juncus||supiniformis|||Engelm.||Juncus||supiniformis|||Engelm.
+ala-2662|ipni-52990-3|exact||Juncus||tenuis|||Willd.||Juncus||tenuis|||Willd.
+ala-3326|ipni-443609-1|exact||Juncus||triglumis|||L.||Juncus||triglumis|||L.
+ala-3067|ipni-132354-2|exact||Juncus||triglumis|subsp.|albescens|(Lange) Hultén||Juncus||triglumis|subsp.|albescens|(Lange) Hultén
+ala-2673|trop-16900530|exact||Juncus||triglumis|subsp.|triglumis|||Juncus||triglumis|subsp.|triglumis|
+ala-1088|ipni-30088655-2|exact||Juniperus||communis|||L.||Juniperus||communis|||L.
+ala-2253|trop-9400140|manual?||Juniperus||communis|subsp.|alpina|(Neilr.) Celak.||Juniperus||communis|subsp.|alpina|(Suter) Čelak.
+ala-2610|ipni-60443334-2|exact||Juniperus||communis|subsp.|depressa|(Pursh) Franco||Juniperus||communis|subsp.|depressa|(Pursh) Franco
+ala-1473|trop-9400332|exact||Juniperus||communis|subsp.|nana|(Willd.) Syme||Juniperus||communis|subsp.|nana|(Willd.) Syme
+ala-1922|ipni-132467-2|exact||Juniperus||communis|var.|depressa|Pursh||Juniperus||communis|var.|depressa|Pursh
+ala-1380|ipni-60446919-2|exact||Juniperus||communis|var.|montana|Aiton||Juniperus||communis|var.|montana|Aiton
+ala-998|ipni-262244-1|exact||Juniperus||horizontalis|||Moench||Juniperus||horizontalis|||Moench
+ala-2429|ipni-262354-1|exact||Juniperus||sibirica|||Burgsd.||Juniperus||sibirica|||Burgsd.
+ala-3553|ipni-133234-2|exact||Kalmia||microphylla|||(Hook.) A.Heller||Kalmia||microphylla|||(Hook.) A.Heller
+ala-3113|ipni-880094-1|manual||Kalmia||microphylla|subsp.|occidentalis|(Small) R.L.Taylor & MacBryde||Kalmia||microphylla|subsp.|occidentalis|(Small) Roy L.Taylor & MacBryde
 ala-3579||no_match||Kalmia||polifolia|||auct.|||||||
-ala-1128||no_match||Kalmia||polifolia|subsp.|microphylla|(Hook.) Calder & R.L.Taylor|||||||
-ala-492||no_match||Kalmia||polifolia|subsp.|polifolia||||||||
-ala-89|kew-421133|exact||Kengyilia||thoroldiana|||(Oliv.) J.L.Yang, C.Yen & B.R.Baum||Kengyilia||thoroldiana|||(Oliv.) J.L.Yang, C.Yen & B.R.Baum
+ala-1128|trop-12302490|manual||Kalmia||polifolia|subsp.|microphylla|(Hook.) Calder & R.L.Taylor||Kalmia||polifolia|subsp.|microphylla|(Hook.) Calder & Roy L. Taylor
+ala-492|trop-12302489|exact||Kalmia||polifolia|subsp.|polifolia|||Kalmia||polifolia|subsp.|polifolia|
+ala-89|ipni-963820-1|exact||Kengyilia||thoroldiana|||(Oliv.) J.L.Yang, C.Yen & B.R.Baum||Kengyilia||thoroldiana|||(Oliv.) J.L.Yang, C.Yen & B.R.Baum
 ala-476|ipni-309662-1|exact||Kobresia||arctica|||A.E.Porsild||Kobresia||arctica|||A.E.Porsild
 ala-2424|ipni-916412-1|exact||Kobresia||filifolia|subsp.|subfilifolia|T.V.Egorova, Jurtzev & V.V.Petrovsky||Kobresia||filifolia|subsp.|subfilifolia|T.V.Egorova, Jurtzev & V.V.Petrovsky
 ala-1333|ipni-309703-1|exact||Kobresia||humilis|||(C.A.Mey. ex Trautv.) Serg.||Kobresia||humilis|||(C.A.Mey. ex Trautv.) Serg.
@@ -2173,7 +2173,7 @@ ala-2412|ipni-291009-2|exact||Ophioglossum||pusillum|||Raf.||Ophioglossum||pusil
 ala-3211|ipni-304390-2|exact||Ophioglossum||vulgatum|||L.||Ophioglossum||vulgatum|||L.
 ala-2404|trop-26604855|auto_punct||Ophioglossum||vulgatum|var.|alaskanum|(E.Britton) C.Chr.||Ophioglossum||vulgatum|var.|alaskanum|(E. Britton) C. Chr.
 ala-377|ipni-91131-1|exact||Oplopanax||horridus|||(Sm.) Miq.||Oplopanax||horridus|||(Sm.) Miq.
-ala-3196|trop-50035675|exact||Orchis||convallariaefolia|||Fisch. ex Lindl.||Orchis||convallariaefolia|||Fisch. ex Lindl.
+ala-3196|ipni-648512-1|manual||Orchis||convallariaefolia|||Fisch. ex Lindl.||Orchis||convallariifolia|||Fisch. ex Lindl.
 ala-233|ipni-648925-1|exact||Orchis||obtusata|||Banks ex Pursh||Orchis||obtusata|||Banks ex Pursh
 ala-540|ipni-649075-1|exact||Orchis||rotundifolia|||Banks ex Pursh||Orchis||rotundifolia|||Banks ex Pursh
 ala-1485|ipni-662331-1|exact||Orobanche||fasciculata|||Nutt.||Orobanche||fasciculata|||Nutt.
@@ -2360,9 +2360,9 @@ ala-421|ipni-807253-1|exact||Pedicularis||langsdorffii|||Fisch. ex Steven||Pedic
 ala-1112|ipni-186429-2|auto_exin-||Pedicularis||langsdorffii|subsp.|arctica|(R.Br.) Pennell||Pedicularis||langsdorffii|subsp.|arctica|(R.Br.) Pennell ex Hultén
 ala-3163|ipni-77226148-1|exact||Pedicularis||langsdorffii|subsp.|langsdorffii|||Pedicularis||langsdorffii|subsp.|langsdorffii|
 ala-3016|ipni-807256-1|exact||Pedicularis||lapponica|||L.||Pedicularis||lapponica|||L.
-ala-3208||no_match||Pedicularis||macrodonta|||Richardson|||||||
+ala-3208|ipni-807316-1|manual||Pedicularis||macrodonta|||Richardson||Pedicularis||macrodontis|||Richardson
 ala-392|kew-2542509|exact||Pedicularis||oederi|||Vahl||Pedicularis||oederi|||Vahl
-ala-1974||no_match||Pedicularis||ornithorhyncha|||Benth.|||||||
+ala-1974|ipni-807427-1|manual||Pedicularis||ornithorhyncha|||Benth.||Pedicularis||ornithorhynchos|||Benth.
 ala-3740|ipni-186445-2|exact||Pedicularis||pacifica|||(Hultén) Kozhevn.||Pedicularis||pacifica|||(Hultén) Kozhevn.
 ala-2027|ipni-807444-1|exact||Pedicularis||parviflora|||Sm.||Pedicularis||parviflora|||Sm.
 ala-1881|trop-29203802|exact||Pedicularis||parviflora|subsp.|parviflora|||Pedicularis||parviflora|subsp.|parviflora|
@@ -2693,8 +2693,8 @@ ala-2067|ipni-209125-2|auto_basio-||Potentilla||diversifolia|var.|glaucophylla|L
 ala-13|ipni-728011-1|exact||Potentilla||drummondii|||Lehm.||Potentilla||drummondii|||Lehm.
 ala-1871||no_match||Potentilla||egedii|||Wormsk.|||||||
 ala-2839||no_match||Potentilla||egedii|subsp.|egedii||||||||
-ala-1173||no_match||Potentilla||egedii|subsp.|grandis|(Torr. & A.Gray) Hultén|||||||
-ala-1274||no_match||Potentilla||egedii|subsp.|pacifica|(Howell) L. A. Sergienko|||||||
+ala-1173|ipni-209155-2|manual||Potentilla||egedii|subsp.|grandis|(Torr. & A.Gray) Hultén||Potentilla||egedei|subsp.|grandis|(Torr. & A.Gray) Hultén
+ala-1274|ipni-921351-1|manual||Potentilla||egedii|subsp.|pacifica|(Howell) L. A. Sergienko||Potentilla||egedei|subsp.|pacifica|(Howell) L.A.Sergienko
 ala-1472|ipni-728028-1|exact||Potentilla||elegans|||Cham. & Schltdl.||Potentilla||elegans|||Cham. & Schltdl.
 ala-70|ipni-728034-1|exact||Potentilla||emarginata|||Pursh||Potentilla||emarginata|||Pursh
 ala-641|ipni-728084-1|exact||Potentilla||flabelliformis|||Lehm.||Potentilla||flabelliformis|||Lehm.
@@ -2860,7 +2860,7 @@ ala-2010|ipni-713356-1|exact||Ranunculus||occidentalis|||Nutt.||Ranunculus||occi
 ala-960|ipni-217482-2|exact||Ranunculus||occidentalis|subsp.|insularis|Hultén||Ranunculus||occidentalis|subsp.|insularis|Hultén
 ala-1407|ipni-217486-2|exact||Ranunculus||occidentalis|subsp.|nelsonii|(DC.) Hultén||Ranunculus||occidentalis|subsp.|nelsonii|(DC.) Hultén
 ala-877|ipni-77226525-1|auto_irank||Ranunculus||occidentalis|subsp.|occidentalis|||Ranunculus||occidentalis|var.|occidentalis|
-ala-268||no_match||Ranunculus||occidentalis|var.|brevistylis|Greene|||||||
+ala-268|ipni-217476-2|manual||Ranunculus||occidentalis|var.|brevistylis|Greene||Ranunculus||occidentalis|var.|brevistylus|Greene
 ala-822|ipni-713390-1|exact||Ranunculus||orthorhynchus|||Hook.||Ranunculus||orthorhynchus|||Hook.
 ala-2256|ipni-217503-2|auto_basexin||Ranunculus||orthorhynchus|subsp.|alaschensis|(L.Benson) Hultén||Ranunculus||orthorhynchus|subsp.|alaschensis|(L.D.Benson) Hultén
 ala-3145|ipni-713406-1|manual||Ranunculus||pacificus|||(Hultén) L.Benson||Ranunculus||pacificus|||(Hultén) L.D.Benson

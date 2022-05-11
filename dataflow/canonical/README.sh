@@ -227,6 +227,7 @@ then
     matchnames -a wcsp_listA -b ipni+trop_listB -o wcsp2i+t_match -f -q \
                -m wcsp2i+t_match_manual
 
+    # exit
     sed -E '/(\|manual|\|auto_punct|\|exact|\|auto_in)/ d' wcsp2i+t_match | gawk 'BEGIN{FS=OFS="|"}{print $1, $4, $5, $6, $7, $8, $9, $10}' > wcsp_base.2
 
     cat ipni_base.2 trop_base.2 wcsp_base.2 | sort > canon
