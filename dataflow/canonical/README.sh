@@ -303,7 +303,6 @@ then
     echo "Reconciling Hulten to Canon. No match: " \
          `grep -c no_match hulten2canon_match` 
 
-    rm -f hulten.1 
 
     #    -------------------------------------------- hulten-131-2
     #    Poa eminens Presl
@@ -312,10 +311,24 @@ then
     #  > c
     #            hulten-131-2 vs. ipni-1015491-2      
     #                         vs. ipni-416981-1       
-    # Note: check in IPNI https://www.ipni.org/n/204206-2
+    # Note: **check** in IPNI ; https://www.ipni.org/n/204206-2
     #   "Same citation as Poa eminens C.Presl"
+    # https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:17728-2
+
+    # add the duplicates back in:
+    gawk 'BEGIN{FS=OFS="|"
+          while ((getline < "hulten2canon_match")>0) {
+            method[$4 $5 $6 $7 $8 $9 $10] = $3
+            target[$4 $5 $6 $7 $8 $9 $10] = $2
+          }} { print $1, target[$2 $3 $4 $5 $6 $7 $8], \
+          method[$2 $3 $4 $5 $6 $7 $8], "||||||", "||||||"}' hulten_dup2 >> \
+          hulten2canon_match
+
+    wc -l hulten.1
+    wc -l hulten2canon_match
     
-    
+    rm -f hulten.1 
+
 fi
 exit
 
