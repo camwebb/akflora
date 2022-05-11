@@ -264,27 +264,60 @@ then
 
     rm -f ala.1 
 
+elif [ $1 = paf2canon ]
+then
+
+    # 7. Reconcile PAF to Canon list
+    rm paf2canon_match
+    
+    gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}'  \
+         ../PAF/paf > paf.1
+
+    # echo "Skipping manual stage (matchnames -a paf -b canon)"
+    matchnames -a paf.1 -b canon -o paf2canon_match -f -q \
+               -m paf2canon_match_manual
+
+    echo "PAF names: " `wc paf.1 | gawk '{print $1}'`
+    echo "Reconciling PAF to Canon. Matching: " \
+         `grep -vc no_match paf2canon_match` 
+    echo "Reconciling PAF to Canon. No match: " \
+         `grep -c no_match paf2canon_match` 
+
+    rm -f paf.1 
+
+elif [ $1 = hulten2canon ]
+then
+
+    # 8. Reconcile Hulten to Canon list
+    rm hulten2canon_match
+    # NB need to remove duplicates. A few cases of Y in part is syn of X and
+    #   Z in part is syn of X
+    gawk 'BEGIN{FS=OFS="|"}{if (++u[$2 $3 $4 $5 $6 $7 $8]==1) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten.1"} else if (u[$2 $3 $4 $5 $6 $7 $8]==2) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten_dup2"} else if (u[$2 $3 $4 $5 $6 $7 $8]==3) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten_dup3"}}'  ../Hulten/hulten
+
+    matchnames -a hulten.1 -b canon -o hulten2canon_match -f -q \
+               -m hulten2canon_match_manual
+
+    echo "Hulten names: " `wc hulten.1 | gawk '{print $1}'`
+    echo "Reconciling Hulten to Canon. Matching: " \
+         `grep -vc no_match hulten2canon_match` 
+    echo "Reconciling Hulten to Canon. No match: " \
+         `grep -c no_match hulten2canon_match` 
+
+    rm -f hulten.1 
+
+    #    -------------------------------------------- hulten-131-2
+    #    Poa eminens Presl
+    # 1: Poa eminens C.Presl
+    # 2: Poa eminens J.Presl
+    #  > c
+    #            hulten-131-2 vs. ipni-1015491-2      
+    #                         vs. ipni-416981-1       
+    # Note: check in IPNI https://www.ipni.org/n/204206-2
+    #   "Same citation as Poa eminens C.Presl"
+    
+    
 fi
-
 exit
-
-
-
-# 7. Reconcile PAF to Canon list
-
-gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}'  \
-     ../PAF/paf > paf.1
-
-echo "Skipping manual stage (matchnames -a paf -b canon)"
-matchnames -a paf.1 -b canon -o paf2canon_match -f -q
-
-echo "PAF names: " `wc paf | gawk '{print $1}'`
-echo "Reconciling PAF to Canon. Matching: " \
-  `grep -vc no_match paf2canon_match` 
-echo "Reconciling PAF to Canon. No match: " \
-  `grep -c no_match paf2canon_match` 
-
-rm -f paf.1 
 
 
 # 7. Reconcile WCSP to Canon list
