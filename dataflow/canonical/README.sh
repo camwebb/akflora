@@ -329,52 +329,73 @@ then
     
     rm -f hulten.1 
 
+elif [ $1 = wcsp2canon ]
+then
+
+    # Reconcile WCSP to Canon list
+
+    # ** Perviously, I started from the full wcsp list, meaning 163492
+    #    names need to be matched.
+    
+    # gunzip -k -c ../WCSP/wcsp.gz > wcsp
+    # gawk 'BEGIN{FS="|"}{g[$3]++}END{for (i in g) print i}' \
+    #      canon | sort > canon_gen
+    # # only load genera in canon list, and the syns
+    # gawk 'BEGIN{
+    #         FS=OFS="|"
+    #         while ((getline < "canon_gen") > 0) g[$0]++
+    #         while((getline < "wcsp")>0)
+    #           if (g[$3]) {
+    #             w[$1]++
+    #             if ($10) w[$10]++
+    #         } 
+    #         close("wcsp")
+    #         while((getline < "wcsp")>0) 
+    #           if (w[$1]) print $0
+    #       }' > wcsp.1
+
+    # Surely we want to start just with wcsp_base?
+    cp wcsp_base wcsp.1
+    
+    # Or... do we need to check we have all synonyms too?
+    # gunzip -k -c ../WCSP/wcsp.gz > wcsp
+    # gawk 'BEGIN{
+    #         FS=OFS="|"
+    #         while((getline < "wcsp_base")>0)
+    #           b[$1]++
+    #         close("wcsp")
+    #         while((getline < "wcsp")>0)
+    #           if (b[$1] || b[$10])
+    #             print $0
+    #       }' > wcsp.1
+
+    # reformat and change names from canon
+    gawk 'BEGIN{FS=OFS="|"}{print "_" $1, $2, $3, $4, $5, $6, $7, $8}' \
+         wcsp.1 > wcsp.2
+
+    matchnames -a wcsp.2 -b canon -o wcsp2canon_match -f -e 2 -q \
+               -m wcsp2canon_match_manual
+
+    # There were identifiers that were some exactly the same in canon
+    # and wcsp, so we added '_' to wcsp. Now remove:
+    sed -i 's/^_//g' wcsp2canon_match
+
+    echo "WCSP names: " `wc wcsp.2 | gawk '{print $1}'`
+    echo "Reconciling WCSP to Canon. Matching: " \
+         `grep -vc no_match wcsp2canon_match` 
+    echo "Reconciling WCSP to Canon. No match: " \
+         `grep -c no_match wcsp2canon_match`
+
+    # Note some taxa in wcsp_base are not in canon; on manual
+    # auto_punct exact and auto_in were included.
+
+    mv -f wcsp.1 ../WCSP/wcsp_ak
+    # rm -f wcsp wcsp.2 canon_gen
+
+    # leave wcsp.1 for the DB
 fi
+
 exit
-
-
-# 7. Reconcile WCSP to Canon list
-
-gunzip -k -c ../WCSP/wcsp.gz > wcsp
-gawk 'BEGIN{FS="|"}{g[$3]++}END{for (i in g) print i}' \
-     canon | sort > canon_gen
-# only load genera in canon list, and the syns
-
-gawk 'BEGIN{
-        FS=OFS="|"
-        while ((getline < "canon_gen") > 0) g[$0]++
-        while((getline < "wcsp")>0)
-          if (g[$3]) {
-            w[$1]++
-            if ($10) w[$10]++
-          } 
-        close("wcsp")
-        while((getline < "wcsp")>0) 
-          if (w[$1]) print $0
-      }' > wcsp.1
-
-# reformat and change names from canon
-gawk 'BEGIN{FS=OFS="|"}{print "_" $1, $2, $3, $4, $5, $6, $7, $8}' wcsp.1 > wcsp.2
-
-# echo "Skipping manual stage (matchnames -a paf -b canon)"
-matchnames -a wcsp.2 -b canon -o wcsp2canon_match -f -e 2 -q
-
-# There were identifiers that were some exactly the same in canon and wcsp, so
-# we added '_' to wcsp. Now remove:
-
-sed -i 's/^_//g' wcsp2canon_match
-
-echo "WCSP names: " `wc wcsp.2 | gawk '{print $1}'`
-echo "Reconciling WCSP to Canon. Matching: " \
-  `grep -vc no_match wcsp2canon_match` 
-echo "Reconciling WCSP to Canon. No match: " \
-  `grep -c no_match wcsp2canon_match` 
-
-mv -f wcsp.1 ../WCSP/wcsp_ak
-rm -f wcsp wcsp.2 canon_gen
-
-# leave wcsp.1 for the DB
-
 
 # 7. Reconcile ACCS to Canon list
 
