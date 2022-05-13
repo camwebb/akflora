@@ -8,7 +8,7 @@ Abromeit|Abrom.
 # Aiton|Ait.
 Allioni|All.
 Almquist|Almq.
-Andersson|Anderss.
+# Andersson|Anderss.
 Andrzejowski|Andrz.
 Applequist|Appleq.
 Arcangeli|Arcang.
@@ -32,12 +32,12 @@ Bertrand|Bert.
 Bescherelle|Besch.
 Bessey|Bessey.
 Beurling|Beurl.
-Bigelow|Bigel.
+# Bigelow|Bigel.
 Björnström|Björnstr.
 Blankenship|Blank.
 Blomgren|Blomgr.
 Boeckeler|Boeck.
-Boeckler|Boeck.
+#Boeckler|Boeck.
 Boenninghausen|Boenn.
 Boissier|Boiss.
 # Bolton|Bol.
@@ -55,7 +55,7 @@ Bridel|Brid.
 # Britton|Britt.
 Brotherus|Broth.
 Brown|Br.
-Buchenau|Buch.
+# Buchenau|Buch.
 C\. ?A\. ?Meyer|C.A.Mey.
 C\. ?C\. ?Gmelin|C.C.Gmel.
 C\. ?C\. ?Gmelin|Gmel.
@@ -72,9 +72,9 @@ Châtelain|Châtel.
 Clements|Clem.
 Copeland|Copel.
 Coulter|Coult.
-Coville|Cov.
+# Coville|Cov.
 Critchfield|Critchf.
-Cronquist|Cronq.
+# Cronquist|Cronq.
 Crundwell|Crundw.
 Cufodontis|Cufod.
 Culmann|Culm.
@@ -141,7 +141,7 @@ Graebner|Graebn.
 Greenman|Greenm.
 Grenier|Gren.
 Greville|Grev.
-Gunnerus|Gunn.
+# Gunnerus|Gunn.
 Gussone|Guss.
 H\. ?Karsten|H.Karst.
 H\. ?Klinggraff|H.Klinggr.
@@ -164,6 +164,7 @@ Hieronymus|Hieron.
 Hilferty|Hilf.
 Hitchcock|Hitchc.
 Hochstetter|Hochst.
+T\.? ?Holm|Holm
 Holub|Holub.
 Holzinger|Holz.
 Hooker|Hook.
@@ -319,7 +320,7 @@ Rabenhorst|Rabenh.
 Rafinesque|Raf.
 Rebristaya|Rebrist.
 Rechinger|Rech.
-Regel|Reg.
+# Regel|Reg.
 Reichenbach|Rchb.
 Retzius|Retz.
 Richardson|Richards.
@@ -346,7 +347,7 @@ Sauerbeck|Sauerb.
 Savatier|Sav.
 Schimper|Schimp.
 Schischkin|Schischk.
-Schkuhr|Schk.
+# Schkuhr|Schk.
 Schlech?tendah?l|Schltdl.
 Schleicher|Schleich.
 Schliephacke|Schlieph.
@@ -408,6 +409,7 @@ Ulbrich|Ulbr.
 Underwood|Underw.
 V\. ?I\. ?Krecze?towicz|V.I.Krecz.
 Ventenat|Vent.
+Venturi|Vent.
 Victorin|Vict.
 Vierhapper|Vierh.
 Villars|Vill.
@@ -436,4 +438,9 @@ Wulfen|Wulf.
 Z\. ?Iwatsuki|Z.Iwats.
 Zetterstedt|Zetterst.
 Zuccarini|Zucc.
-[AÅ]ngstrom|Ångstr.
+[AÅ]ngstr[oö]m|Ångstr.
+Swartz|Sw.
+Koponen|Kop.
+Głowacki|Głow.
+Hofmann|Hofm.
+Borshchow|Borshch.

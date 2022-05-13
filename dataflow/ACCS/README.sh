@@ -63,13 +63,21 @@ gawk '
     gsub(/( *$|^ *)/, "", $2)
     # some rank label fixing:
     gsub(/ ssp\. /, " subsp. ", $2)
-    print $1, parse_taxon_name(($2 " " $3), 1)
-  }' accs.1 > accs
+    print $1, parse_taxon_name(($2 " " $3), 1), $4, $5, $6
+  }' accs.1 > accs.2
 
 # Unfix
-sed -i -E -e 's/Uvaursi\|\|uvaursi/Uva-ursi||uva-ursi/g' accs
+sed -i -E -e 's/Uvaursi\|\|uvaursi/Uva-ursi||uva-ursi/g' accs.2
 
-gawk 'BEGIN{FS=OFS="|"}{print $1, $5, $4, $6}' accs.1 > accs_rel
+# remove a few that fail
+# sed -i -E '/.*\|$/d' accs
+gawk 'BEGIN{FS="|"} $3 !~ /(accepted|synonym)/ {print $0}' accs.2 > accs.3
 
-rm accs.1
+# remove duplicates
+sed -i -E '/^(arnchavcha2|artcamvbor2|petfrisvit|petfrivvit|porfla3)/d' accs.3
+
+gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' accs.3 > accs
+gawk 'BEGIN{FS=OFS="|"}{print $1, $9, $10, $11}' accs.3 > accs_rel
+
+rm accs.*
 

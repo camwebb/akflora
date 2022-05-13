@@ -96,9 +96,12 @@ mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
 
 rm -rf names rel ortho ak
 
-# } # skip()
 
 # 4. WCSP -------------------------------------------------------------------
+
+if [ 0 -eq 1 ]
+then
+
 
 echo
 echo "** 4. Loading WCSP **"
@@ -185,6 +188,8 @@ mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
 
 rm -rf names rel ortho ak
 
+fi
+
 # 6. FNA ---------------------------------------------------------------
 
 echo
@@ -220,6 +225,8 @@ mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      -e "set @in_src='FNA'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
+
+exit
 
 # Finally
 

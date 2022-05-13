@@ -1103,7 +1103,6 @@ arabry||Aragallus||bryophilus|||Greene
 araspl||Aragallus||splendens|||(Douglas ex Hook.) Greene
 aravis||Aragallus||viscidulus|||Rydb.
 aravisvdep||Aragallus||viscidulus|var.|depressus|Rydb.
-fglicarb|
 arbalp||Arbutus||alpina|||L.
 arbuva||Arbutus||uva-ursi|||L.
 arccam||Arceuthobium||campylopodum|||Engelm.
@@ -1155,9 +1154,7 @@ arcsub||Arctoparmelia||subcentrifuga|||(Oksner) Hale
 arcful||Arctophila||fulva|||(Trin.) Rupr. ex Andersson
 arcfulssim||Arctophila||fulva|subsp.|similis|(Rupr.) Tzvelev
 arcfulvpen||Arctophila||fulva|var.|pendulina|(Laest.) Holmb.
-arc×dup|
 arcemi||Arctopoa||eminens|||(J. Presl) Prob.
-arce×d|
 arcade||Arctostaphylos||adenotricha|||(Fernald & J.F. Macbr.) Á. Löve, D. Löve & B.M. Kapoor
 arcalp2||Arctostaphylos||alpina|||(L.) Spreng.
 arcalpsrub||Arctostaphylos||alpina|subsp.|rubra|(Rehder & Wilson) Hultén
@@ -1278,7 +1275,6 @@ arncha||Arnica||chamissonis|||Less.
 arnchascha||Arnica||chamissonis|subsp.|chamissonis|Less.
 arnchasfol||Arnica||chamissonis|subsp.|foliolosa|(Nutt.) Maguire
 arnchavcha1||Arnica||chamissonis|var.|chamissonis|Less.
-arnchavcha2||Arnica||chamissonis|var.|chamissonis|Less.
 arncor||Arnica||cordifolia|||Hook.
 arncorvpum||Arnica||cordifolia|var.|pumila|(Rydb.) Maguire
 arncorvwhi||Arnica||cordifolia|var.|whitneyi|(Fernald) Maguire
@@ -1334,7 +1330,6 @@ artborsric||Artemisia||borealis|subsp.|richardsoniana|(Besser) Korobkov
 artborvpur||Artemisia||borealis|var.|purshii|Hook.
 artcamsbor||Artemisia||campestris|subsp.|borealis|(Pall.) H.M. Hall & Clem.
 artcamvbor1||Artemisia||campestris|var.|borealis|(Pall.) M. Peck
-artcamvbor2||Artemisia||campestris|var.|borealis|(Pall.) M. Peck
 artcamvpur||Artemisia||campestris|var.|purshii|(Hook.) Cronq.
 artcamvspi||Artemisia||campestris|var.|spithamaea|(Pursh) M. Peck
 artcamvstr||Artemisia||campestris|var.|strutziae|S.L. Welsh
@@ -1887,7 +1882,6 @@ betnansexi||Betula||nana|subsp.|exilis|(Sukaczev) Hultén
 betnansper||Betula||nana|subsp.|periljevii|(V.N. Vassil) Á. Löve & D. Löve
 betnanvsib||Betula||nana|var.|sibirica|Ledeb.
 betneo||Betula||neoalaskana|||Sarg.
-betn×g|
 betneovken||Betula||neoalaskana|var.|kenaica|(W.H. Evans) B. Boivin
 betpap2||Betula||papyracea|||Aiton
 betpap||Betula||papyrifera|||Marshall
@@ -1973,7 +1967,6 @@ billob||Bilimbia||lobulata|||(Sommerf.) Hafellner & Coppins
 bilmic||Bilimbia||microcarpa|||(Th. Fr.) Th. Fr.
 bilpin||Bilimbia||pineti|||(Ach.) Branth & Rostr.
 bilsab||Bilimbia||sabuletorum|||(Schreb.) Arnold
-fgbiocru|
 bismajsplu||Bistorta||major|subsp.|plumosa|(Small) H. Hara
 bisplu||Bistorta||plumosa|||(Small) Greene
 bisviv||Bistorta||vivipara|||(L.) Delarbre
@@ -3694,8 +3687,6 @@ chaangvpla||Chamaenerion||angustifolium|var.|platyphyllum|Daniels
 chalat||Chamaenerion||latifolium|||(L.) Sweet
 chasub1||Chamaenerion||subdentatum|||Rydb.
 chacan||Chamaepericlymenum||canadense|||(L.) Asch. & Graebn.
-chac×s|
-chac×s2|
 chasue||Chamaepericlymenum||suecicum|||(L.) Asch. & Graebn.
 chauna||Chamaepericlymenum||unalaschkense|||(Ledeb.) Rydb.
 chaere||Chamaerhodos||erecta|||(L.) Bunge
@@ -4254,7 +4245,6 @@ coralbvint||Cornus||alba|var.|interior|(Rydb.) B. Boivin
 corbai||Cornus||baileyi|||J.M. Coult. & Evans
 corbir||Cornus||biramis|||Stokes
 corcan2||Cornus||canadensis|||L.
-corc×s|
 corcanspri||Cornus||canadensis|subsp.|pristina|Gervais & Blondeau
 corcanvint||Cornus||canadensis|var.|intermedia|Farr
 corcya||Cornus||cyananthus|||Raf.
@@ -4271,7 +4261,6 @@ corstovbai||Cornus||stolonifera|var.|baileyi|(J.M. Coult. & Evans) Drescher
 corstovint||Cornus||stolonifera|var.|interior|(Rydb.) H. St. John
 corstovsto||Cornus||stolonifera|var.|stolonifera|Michx.
 corsue2||Cornus||suecica|||L.
-cors×c|
 coruna2||Cornus||unalaschkensis|||Ledeb.
 corvar||Coronilla||varia|||L.
 corinnvvir||Corralorhiza||innata|var.|virescens|Farr
@@ -4331,8 +4320,6 @@ croaut||Crossogyna||autumnalis|||(DC.) Schljakov
 crubur||Crucihimalaya||bursifolia|||(DC.) D.A. German & A.L. Ebel
 crudec||Crumia||deciduidentata|||Sharp & Z. Iwats.
 crucha||Crunocallis||chamissoi|||(Ledeb. ex Spreng.) Rydb.
-fgliccru|
-fgliccro|
 crycal2||Cryphaea||californica|||(Sull. ex Lesq.) Kindb.
 crycal1||Cryptantha||calycosa|||(A. Gray) Rydb.
 cryeas||Cryptantha||eastwoodiae|||H. St. John
@@ -4389,7 +4376,6 @@ cypcalvpla||Cypripedium||calceolus|var.|planipetalum|(Fernald) Vict. & J. Rousse
 cypcalvpub||Cypripedium||calceolus|var.|pubescens|(Willd.) Correll
 cypfla||Cypripedium||flavescens|||Cockerell
 cypgut||Cypripedium||guttatum|||Sw.
-cypg×y|
 cypgutsyat||Cypripedium||guttatum|subsp.|yatabeanum|(Makino) Hultén
 cypgutvyat||Cypripedium||guttatum|var.|yatabeanum|(Makino) Pfitzer
 cypmon||Cypripedium||montanum|||Douglas ex Lindl.
@@ -5517,9 +5503,7 @@ eripol2||Eriophorum||polystachion|||L.
 eripolskom||Eriophorum||polystachion|subsp.|komarovii|(V.N. Vassil.) M.S. Novos.
 eriruf||Eriophorum||rufescens|||Andersson
 erirus||Eriophorum||russeolum|||Fr. ex Hartm.
-erir×s|
 erirusslei||Eriophorum||russeolum|subsp.|leiocarpum|M.S. Novos.
-erirusslei2|
 erirussruf||Eriophorum||russeolum|subsp.|rufescens|(Andersson) Hyl.
 erirusvalb||Eriophorum||russeolum|var.|albidum|F. Nyl.
 erirusvleu||Eriophorum||russeolum|var.|leucothrix|(Blomgr. ex Holmb.) Hultén
@@ -5640,8 +5624,6 @@ faspub||Fasciola||pubescens|||(Schrank) Dumort.
 fathor||Fatsia||horrida|||(Sm.) Benth. & Hook. f. ex W.H. Brewer & S. Watson
 faucri1||Fauria||crista-galli|||(Menzies ex Hook.) Makino
 faucri2||Fauria||crista-gallii|||(Menzies ex Hook.) Makino
-fgmosfen|
-fgmosfea|
 fesalt||Festuca||altaica|||Trin.
 fesaru||Festuca||arundinacea|||Schreb.
 fesauc||Festuca||aucta|||Krecz. & Bobr.
@@ -5744,8 +5726,6 @@ flamar||Flavoplaca||marina|||(Wedd.) Arup, Frödén & Søchting
 flefle||Flexitrichum||flexicaule|||(Schwägr.) Ignatov & Fedosov
 flegra||Flexitrichum||gracile|||(Mitt.) Ignatov & Fedosov
 flufes||Fluminia||festucacea|||(Willd.) Hitchc.
-fglicfon|
-fglicfol|
 fonall||Fontinalis||allenii|||Cardot
 fonant||Fontinalis||antipyretica|||Hedw.
 fonantvore||Fontinalis||antipyretica|var.|oregonensis|Renauld & Cardot
@@ -5771,7 +5751,6 @@ fonsub||Fontinalis||subcarinata|||Cardot
 fonten||Fontinalis||tenella|||(Cardot) Cardot
 fonumb||Fontinalis||umbachii|||Cardot
 fonuta||Fontinalis||utahensis|||Cardot & Thér.
-fglicfor|
 foramb||Foraminella||ambigua|||(Wulfen) S.L.F. Mey.
 forhyp||Foraminella||hyperopta|||(Ach.) S.L.F. Mey.
 fosala||Fossombronia||alaskana|||Steere & Inoue
@@ -5806,8 +5785,6 @@ frujac||Frullania||jackii|||Gottsche
 frunis||Frullania||nisquallensis|||Sull.
 frupar||Frullania||parvistipula|||Steph.
 frutamsnis||Frullania||tamarisci|subsp.|nisquallensis|(Sull.) S. Hatt.
-fglicfrn|
-fglicfru|
 frucae||Frutidella||caesioatra|||(Schaer.) Kalb
 frufur||Frutidella||furfuracea|||(Anzi) M. Westb. & M. Svenss.
 frupul||Frutidella||pullata|||(Norman) Schmull
@@ -6064,7 +6041,6 @@ gorore||Gormania||oregana|||(Nutt.) Britton
 gownig||Gowardia||nigricans|||(Ach.) P. Halonen, L. Myllys, S. Velmala & H. Hyvarinen
 grascr||Graphis||scripta|||(L.) Ach.
 graaph||Graphium||aphthosae|||Alstrup & D. Hawksw.
-ugrapoa|
 gripilvsib||Grimaldia||pilosa|var.|sibirica|Müll. Frib.
 griaci||Grimmia||acicularis|||(Hedw.) Müll. Hal.
 griaff||Grimmia||affinis|||Hornsch.
@@ -7913,7 +7889,6 @@ licpar||Lichen||parallelus|||Ach.
 licsin||Lichen||sinapispermus|||Lam.
 licsub||Lichen||subtilis|||Schrad.
 lictra||Lichen||trabinellus|||Sm.
-ulicfun|
 licero||Lichenoconium||erodens|||M.S. Christ. & D. Hawksw.
 liclec||Lichenoconium||lecanorae|||(Jaap) D. Hawksw.
 licpyx||Lichenoconium||pyxidatae|||(Oudem.) Petr. & Syd.
@@ -8547,7 +8522,6 @@ melleu||Melilotus||leucanthus|||W.D.J. Koch ex DC.
 mellut||Melilotus||lutea|||Gueldenst.
 meloff||Melilotus||officinalis|||(L.) Lam.
 meloffvmic||Melilotus||officinalis|var.|micranthus|O.E. Schulz
-mena×s|
 menaquvcri||Mentha||aquatica|var.|crispa|(L.) Benth.
 menarvsbor||Mentha||arvensis|subsp.|borealis|(Michx.) Roy L. Taylor & MacBryde
 menarvvcan||Mentha||arvensis|var.|canadensis|(L.) Kuntze
@@ -9029,7 +9003,6 @@ nippan||Niphotrichum||panschii|||(Müll. Hal.) Bednarek-Ochyra & Ochyra
 nocarc||Noccaea||arctica|||(A.E. Porsild) Holub
 nocmonsarc||Noccaea||montana|subsp.|arctica|(A.E. Porsild) Á. Löve & D. Löve
 nodsub||Nodobryoria||subdivergens|||(E. Dahl) Common & Brodo
-fgliver|
 noracr||Normandina||acroglypta|||(Norman) Aptroot
 norpul||Normandina||pulchella|||(Borrer) Nyl.
 noralt||Norta||altissima|||(L.) Britton
@@ -9774,7 +9747,6 @@ petfris×vi||Petasites||frigidus|subsp.|vitifolius|(Greene) Chern.
 petfrisfri||Petasites||frigidus|subsp.|frigidus|(L.) Fr.
 petfrisniv||Petasites||frigidus|subsp.|nivalis|(Greene) Cody
 petfrispal||Petasites||frigidus|subsp.|palmatus|(Aiton) Cody
-petfrisvit||Petasites||frigidus|subsp.|vitifolius|(Greene) Chern.
 petfriv×vi||Petasites||frigidus|var.|vitifolius|(Greene) Cherniawsky & R.J. Bayer
 petfrivcor||Petasites||frigidus|var.|corymbosus|(R. Br.) Cronq.
 petfrivfri||Petasites||frigidus|var.|frigidus|(L.) Fr.
@@ -9782,7 +9754,6 @@ petfrivhyp||Petasites||frigidus|var.|hyperboreoides|Hultén
 petfrivniv||Petasites||frigidus|var.|nivalis|(Greene) Cronq.
 petfrivpal||Petasites||frigidus|var.|palmatus|(Aiton) Cronq.
 petfrivsag||Petasites||frigidus|var.|sagittatus|(Banks ex Pursh) Cherniawsky
-petfrivvit||Petasites||frigidus|var.|vitifolius|(Greene) Cherniawsky & R.J. Bayer
 petgra||Petasites||gracilis|||Britton
 pethyp1||Petasites||hyperborea|||Rydb.
 pethyp2||Petasites||hyperboreus|||Rydb.
@@ -9965,7 +9936,6 @@ piccan||Picea||canadensis|||(Mill.) Britton, Sterns & Poggenb.
 piccanvgla||Picea||canadensis|var.|glauca|(Moench) Sudw.
 picfal||Picea||falcata|||(Raf.) Suringar
 picgla||Picea||glauca|||(Moench) Voss
-picg×s|
 picglasalb||Picea||glauca|subsp.|albertiana|(S. Br.) P.A. Schmidt
 picglavalb||Picea||glauca|var.|albertiana|(S. Br.) Sarg.
 picglavden||Picea||glauca|var.|densata|Bailey
@@ -10723,7 +10693,6 @@ porcin||Porpidia||cinereoatra|||(Ach.) Hertel & Knoph
 porcon||Porpidia||contraponenda|||(Arnold) Knoph & Hertel
 porcru||Porpidia||crustulata|||(Ach.) Hertel & Knoph
 porflaa||Porpidia||flavicunda|||(Ach.) Gowan
-porfla3||Porpidia||flavicunda|||(Ach.) Gowan
 porflas||Porpidia||flavocaerulescens|||(Hornem.) Hertel & A.J. Schwab
 porgla||Porpidia||glaucophaea|||(Körb.) Hertel & Knoph
 porgri||Porpidia||grisea|||Gowan
@@ -11998,7 +11967,6 @@ rupocc||Ruppia||occidentalis|||S. Watson
 rupspi||Ruppia||spiralis|||Dumort.
 rusele||Rusavskia||elegans|||(Link) S.Y. Kondr. & Kärnefelt
 russor||Rusavskia||sorediata|||(Vain.) S.Y. Kondr. & Kärnefelt
-ugrajun|
 sabhor||Sabina||horizontalis|||(Moench) Rydb.
 sabdaw||Sabulina||dawsonensis|||(Britton) Rydb.
 sabele||Sabulina||elegans|||(Cham. & Schltdl.) Dillenb. & Kadereit
@@ -12710,7 +12678,6 @@ scyten||Scytinium||tenuissimum|||(Dicks.) Otálora, P.M. Jørg., & Wedin
 scyter||Scytinium||teretiusculum|||(Wallr.) Otálora, P.M. Jørg. & Wedin
 seccer||Secale||cereale|||L.
 secvar||Securigera||varia|||(L.) Lassen
-ugracyp|
 sedala||Sedum||alaskanum|||(Rose) Rose ex Hutch.
 sedatr||Sedum||atropurpureum|||Turcz.
 seddiv||Sedum||divergens|||S. Watson
@@ -12851,9 +12818,6 @@ setvir||Setaria||viridis|||(L.) P. Beauv.
 setvirvvir||Setaria||viridis|var.|viridis|(L.) P. Beauv.
 shastr||Sharpiella||striatella|||(Brid.) Z. Iwats.
 shecan||Shepherdia||canadensis|||(L.) Nutt.
-ushrdec|
-ushrdwa|
-ushreve|
 sibere||Sibbaldia||erecta|||L.
 sibpro||Sibbaldia||procumbens|||L.
 sidhen||Sidalcea||hendersonii|||S. Watson
@@ -13741,7 +13705,6 @@ tharic||Thalictrum||richardsonii|||A. Gray
 thaspa||Thalictrum||sparsiflorum|||Turcz. ex Fisch. & C.A. Mey.
 thaspasric||Thalictrum||sparsiflorum|subsp.|richardsonii|(A. Gray) Cody
 thaspavric||Thalictrum||sparsiflorum|var.|richardsonii|(A. Gray) B. Boivin
-fglivtha|
 thased||Thalloidima||sedifolium|||(Scop.) Kistenich, Timdal, Bendiksby & S. Ekman
 thanec||Thamnobryum||neckeroides|||(Hook.) E. Lawton
 thasub||Thamnolia||subuliformis|||(Ehrh.) W.L. Culb.
@@ -13949,8 +13912,6 @@ tragel||Trapeliopsis||gelatinosa|||(Flörke) Coppins & P. James
 tragra||Trapeliopsis||granulosa|||(Hoffm.) Lumbsch
 trapse||Trapeliopsis||pseudogranulosa|||Coppins & P. James
 trawal||Trapeliopsis||wallrothii|||(Flörke) Hertel & Gotth. Schneider
-utrebro|
-utrenee|
 treaci||Trematodon||acicularis|||Kindb.
 treamb||Trematodon||ambiguus|||(Hedw.) Hornsch.
 trebre||Trematodon||brevicollis|||Hoppe & Hornsch. ex Hornsch.
@@ -14133,7 +14094,6 @@ tucorb||Tuckermanopsis||orbata|||(Nyl.) M.J. Lai
 tucpla||Tuckermanopsis||platyphylla|||(Tuck.) Hale
 tucsep||Tuckermanopsis||sepincola|||(Ehrh.) Hale
 tucsub||Tuckermanopsis||subalpina|||(Imshaug) Kärnefelt
-fgmostur|
 turbra||Turritis||brachycarpa|||Torr. & A. Gray
 turdru||Turritis||drummondii|||(A. Gray) Lunell
 turgla||Turritis||glabra|||L.

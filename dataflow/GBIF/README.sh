@@ -43,6 +43,10 @@ sed -i -E 's/, [0-9]{4}//g' names
 
 # parse the name parts
 parsenames names > yt_names
+
+# remove a few that fail
+sed -i -E '/.*\|$/d' yt_names
+
 rm names
 
 
