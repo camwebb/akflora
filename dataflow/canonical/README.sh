@@ -292,7 +292,7 @@ then
     rm hulten2canon_match
     # NB need to remove duplicates. A few cases of Y in part is syn of X and
     #   Z in part is syn of X
-    gawk 'BEGIN{FS=OFS="|"}{if (++u[$2 $3 $4 $5 $6 $7 $8]==1) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten.1"} else if (u[$2 $3 $4 $5 $6 $7 $8]==2) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten_dup2"} else if (u[$2 $3 $4 $5 $6 $7 $8]==3) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten_dup3"}}'  ../Hulten/hulten
+    gawk 'BEGIN{FS=OFS="|"}{if (++u[$2 $3 $4 $5 $6 $7 $8]==1) { print "hulten-" $1, $2, $3, $4, $5, $6, $7, $8 > "hulten.1"} else if (u[$2 $3 $4 $5 $6 $7 $8]==2) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten_dup2"} else if (u[$2 $3 $4 $5 $6 $7 $8]==3) { print $1, $2, $3, $4, $5, $6, $7, $8 > "hulten_dup3"}}'  ../Hulten/hulten
 
     matchnames -a hulten.1 -b canon -o hulten2canon_match -f -q \
                -m hulten2canon_match_manual
@@ -315,19 +315,20 @@ then
     #   "Same citation as Poa eminens C.Presl"
     # https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:17728-2
 
-    # add the duplicates back in:
-    gawk 'BEGIN{FS=OFS="|"
-          while ((getline < "hulten2canon_match")>0) {
-            method[$4 $5 $6 $7 $8 $9 $10] = $3
-            target[$4 $5 $6 $7 $8 $9 $10] = $2
-          }} { print $1, target[$2 $3 $4 $5 $6 $7 $8], \
-          method[$2 $3 $4 $5 $6 $7 $8], "||||||", "||||||"}' hulten_dup2 >> \
-          hulten2canon_match
+    # ** Does not work with DB. 
+    # # add the duplicates back in:
+    # gawk 'BEGIN{FS=OFS="|"
+    #       while ((getline < "hulten2canon_match")>0) {
+    #         method[$4 $5 $6 $7 $8 $9 $10] = $3
+    #         target[$4 $5 $6 $7 $8 $9 $10] = $2
+    #       }} { print $1, target[$2 $3 $4 $5 $6 $7 $8], \
+    #       method[$2 $3 $4 $5 $6 $7 $8], "||||||", "||||||"}' hulten_dup2 >> \
+    #       hulten2canon_match
 
     wc -l hulten.1
     wc -l hulten2canon_match
     
-    rm -f hulten.1 
+    rm -f hulten.1 hulten_dup2
 
 elif [ $1 = wcsp2canon ]
 then
@@ -439,5 +440,17 @@ matchnames -a fna -b canon -o fna2canon_match -f -e 4 -q \
                -m fna2canon_match_manual
 
 rm -f fna
+
+elif [ $1 = foak2canon ]
+then
+
+# 8. FoAK
+
+    gawk 'BEGIN{FS=OFS="|"}{if (++u[$2 $3 $4 $5 $6 $7 $8]==1) print $1, $2, $3, $4, $5, $6, $7, $8 }' ../taxon_review/accepted_2022-05-10 > foak
+
+matchnames -a foak -b canon -o foak2canon_match -f -q \
+               -m foak2canon_match_manual
+
+rm -f foak
 
 fi

@@ -78,12 +78,9 @@ SELECT
     ) AS S1 ON N1.id = S1.orthoID
   -- join the statements about synonyms, where they exist
   LEFT JOIN
-    ( SELECT orthoID, GROUP_CONCAT(X1.syn SEPARATOR '\n') AS synStmt
+    ( SELECT orthoID, GROUP_CONCAT(X1.syn SEPARATOR '; ') AS synStmt
       FROM names, (
-        SELECT fromID, CONCAT_WS('', '**', name, '** ',
-          CONCAT('according to **', source, '** ',
-          CONCAT_WS('', '; Comments: ',
-          REPLACE(REPLACE(refs, '\n',' '), '\t',' ')))) AS syn
+        SELECT fromID, CONCAT_WS('', '{#bf ', source, '}:',name) AS syn
         FROM rel, names WHERE rel.toID = names.id AND rel.status = 'synonym'
       ) AS X1
       WHERE X1.fromID = names.id

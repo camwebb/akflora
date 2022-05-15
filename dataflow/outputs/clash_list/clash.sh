@@ -2,7 +2,7 @@ source ../ENV.sh
 
 rm out
 # if needed:
-mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD -e "ALTER TABLE names DROP COLUMN name; ALTER TABLE names ADD COLUMN name VARCHAR(200); UPDATE names SET name = CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author);" akflora
+# mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD -e "ALTER TABLE names DROP COLUMN name; ALTER TABLE names ADD COLUMN name VARCHAR(200); UPDATE names SET name = CONCAT_WS(' ',genhyb,genus,sphyb,species,ssptype,ssp,author);" akflora
 
 #       ALA  PAF  WCSP  ACCS  FNA
 #  ALA        1     2    3     4

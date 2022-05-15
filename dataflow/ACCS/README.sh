@@ -77,7 +77,7 @@ gawk 'BEGIN{FS="|"} $3 !~ /(accepted|synonym)/ {print $0}' accs.2 > accs.3
 sed -i -E '/^(arnchavcha2|artcamvbor2|petfrisvit|petfrivvit|porfla3)/d' accs.3
 
 gawk 'BEGIN{FS=OFS="|"}{print $1, $2, $3, $4, $5, $6, $7, $8}' accs.3 > accs
-gawk 'BEGIN{FS=OFS="|"}{print $1, $9, $10, $11}' accs.3 > accs_rel
+gawk 'BEGIN{FS=OFS="|"}{print $1, $10, $9, $11}' accs.3 > accs_rel
 
 rm accs.*
 

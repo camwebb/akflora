@@ -21,6 +21,8 @@ source ../ENV.sh
 #          UPDATE g2f SET class = 'B' WHERE gen = 'Lobaria';" \
 #       akflora
 
+
+
 mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
      akflora < listall.sql > list.csv
 
@@ -30,7 +32,7 @@ gawk '
     ORS = ""
     print "---\n"
     print "title: \\bf List of Alaskan Seed Plant and Fern names\n"
-    print "subtitle: Compiled from ALA, ACCS, PAF, WCSP, FNA\n"
+    print "subtitle: Compiled from ALA, ACCS, PAF, GBIF, FNA, FoAK\n" # WCSP
     print "author: (Questions to cowebb@alaska.edu)\n"
     print "date: \\today\n---\n\n"
     print "\\raggedright\n\n"
@@ -42,7 +44,7 @@ gawk '
       fam = $1
     }
     n[$2]++
-    print "**" $2 "** (GUID: " $3 "). In Alaska according to **" \
+    print "**" $2 "** (GUID: " $3 "). In region according to **" \
       gensub(/,/,"**, **","G",$4) "**" \
       ". An _accepted name_ according to **" gensub(/,/,"**, **","G",$5) "**."
     if ($6 != "NULL") 
