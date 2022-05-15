@@ -63,7 +63,7 @@ checklines
 # test input files
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='ALA'; source 2_load_other.sql;" akflora
+     -e "set @in_src='A'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
 
@@ -92,7 +92,7 @@ checklines
 # test input files
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='PAF'; source 2_load_other.sql;" akflora
+     -e "set @in_src='P'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
 
@@ -152,7 +152,7 @@ sqlnulls rel
 sqlnulls ortho
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='WCSP'; source 2_load_other.sql;" akflora
+     -e "set @in_src='K'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
 
@@ -186,7 +186,7 @@ sqlnulls rel
 sqlnulls ortho
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='ACCS'; source 2_load_other.sql;" akflora
+     -e "set @in_src='C'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
 
@@ -222,7 +222,7 @@ sqlnulls rel
 sqlnulls ortho
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='FNA'; source 2_load_other.sql;" akflora
+     -e "set @in_src='N'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
 
@@ -272,7 +272,7 @@ gawk 'BEGIN{ FS=OFS="|" }{
 
 gawk 'BEGIN{ FS=OFS="|" }{
         if (++i[$2 $3 $4 $5 $6 $7 $8] == 1) {
-          if ($9 != "accepted")
+          if ($9 == "accepted")
             print "hulten-" $1, "hulten-" $1, "accepted", "Hulten"
           else
             print "hulten-" $1, "hulten-" $9, "synonym", "Hulten"
@@ -304,7 +304,7 @@ sqlnulls ortho
 checklines
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='Hulten'; source 2_load_other.sql;" akflora
+     -e "set @in_src='H'; source 2_load_other.sql;" akflora
 
 rm -rf names rel ortho ak
 
@@ -333,7 +333,7 @@ sqlnulls ortho
 checklines
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='GBIF'; source 2_load_other.sql;" akflora
+     -e "set @in_src='G'; source 2_load_other.sql;" akflora
 
 # the rel was dummy, delete
 mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
@@ -364,9 +364,9 @@ sqlnulls ortho
 checklines
 
 mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='FoAK'; source 2_load_other.sql;" akflora
+     -e "set @in_src='R'; source 2_load_other.sql;" akflora
 
-# rm -rf names rel ortho ak
+rm -rf names rel ortho ak
 
 # Finally
 
