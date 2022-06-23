@@ -1,0 +1,44 @@
+PREFIX : <x:>
+CONSTRUCT {
+  ?x :syn ?BN .
+  ?BN :accto ?at .
+  ?BN :of ?y .
+  ?BN a :Syndet .
+  # yay! https://stackoverflow.com/a/54775590/563709
+
+  ?x :name ?xn        .
+  # ?x :synaccto ?at    .
+  # ?x :synof ?y        .
+  ?x :acceptedby ?acc . 
+  ?x :inakby ?ak      . 
+}
+
+# SELECT ?x ?xn ?at ?y ?yn ?a ?acc ?ak
+
+WHERE {
+
+  ?x :canon 1   .
+  ?x :name  ?xn .
+  ?a :ortho ?x  .
+  
+  OPTIONAL {
+    ?a :syn   ?s  .
+    ?s :of    ?b  .
+    ?s :accto ?at .
+    ?b :ortho ?y  .
+    ?y :name ?yn  .
+    ?y :canon 1   .
+    BIND(BNODE()AS ?BN)
+  }
+  OPTIONAL {
+    ?a :accepted ?s2  .
+    ?s2 :accto ?acc .
+  }
+  OPTIONAL {
+    ?a :inak ?s3   .
+    ?s3 :accto ?ak .
+  }
+  FILTER ( bound(?y) || bound(?acc) )
+}
+ORDER BY ?xn
+# LIMIT 5

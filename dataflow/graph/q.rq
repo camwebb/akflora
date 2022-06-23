@@ -1,0 +1,17 @@
+PREFIX : <x:>
+# CONSTRUCT { ?x :syn ?y . }
+SELECT ?x ?xn ?at ?y ?yn
+WHERE {
+
+  ?a :ortho ?x  .
+  ?a :syn   ?s  .
+  ?s :of    ?b  .
+  ?s :accto ?at .
+  ?b :ortho ?y  .
+  
+  ?x :name  ?xn .
+  ?y :name ?yn  .
+  
+  ?x :canon 1   .
+  ?y :canon 1   .
+}  

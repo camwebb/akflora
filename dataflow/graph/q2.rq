@@ -1,0 +1,31 @@
+PREFIX : <x:>
+CONSTRUCT {
+  ?x :syn _:s .
+  _:s :accto ?at .
+  _:s :of ?y .
+  # note: if ?at and ?y not bound, the previous line will still create
+  # # an empty node _:s  . See q3.rq for solution
+  ?x :acceptedby ?acc . 
+}
+# SELECT ?x ?xn ?at ?y ?yn ?a ?acc
+WHERE {
+
+  ?x :canon 1   .
+  ?x :name  ?xn .
+  ?a :ortho ?x  .
+  
+  OPTIONAL {
+    ?a :syn   ?s  .
+    ?s :of    ?b  .
+    ?s :accto ?at .
+    ?b :ortho ?y  .
+    ?y :name ?yn  .
+    ?y :canon 1   .
+  }
+  OPTIONAL {
+    ?a :accepted ?s2  .
+    ?s2 :accto ?acc .
+  }
+  FILTER ( bound(?y) || bound(?acc) )
+}  
+# LIMIT 5
