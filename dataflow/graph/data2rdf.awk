@@ -3,103 +3,99 @@ BEGIN{
   PROCINFO["sorted_in"] = "@ind_str_asc"
 
   #          what      NROA
-  read_data("canon",  "1000")
-  read_data("paf",    "1111")
-  read_data("ala",    "1111")
-  read_data("accs",   "1111")
-  read_data("fna",    "1111")
-  read_data("hulten", "1111")
+  read_data("canon")
+  read_data("paf")
+  read_data("ala")
+  read_data("accs")
+  read_data("fna")
+  read_data("hulten")
+  read_data("gbif")
 
-  write_names()
-  # query()
+  # write_names()
+  query()
 }
 
-function read_data(what, switches,
+function read_data(what, 
                    ni, nn, name, ln, lo, n_Syn_r, n_Ortho_r) {
-  if (substr(switches,1,1) == "1") {
-    printf "reading %-8s names\n", what > "/dev/stderr"
-    while ((getline < ("infiles/" what "_names")) > 0) {
-      ln++
-      name = clean($2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8)
-      # tests
-      if (++ni[$1] > 1) 
-        fail("id '" $1 "' in " what " names not unique")
-      if (++nn[name] > 1)
-        fail("name '" name "' in " what " names not unique")
-      # Names[name] = 1
-      Name[$1] = name
-      if (what == "canon") {
-        Canon[$1] = 1
-        Ortho[$1] = $1
-        Ortho_r[$1][++n_Ortho_r[$1]] = $1
-      }
+
+  printf "reading %-8s names\n", what > "/dev/stderr"
+  while ((getline < ("infiles/" what "_names")) > 0) {
+    ln++
+    name = clean($2 " " $3 " " $4 " " $5 " " $6 " " $7 " " $8)
+    # tests
+    if (++ni[$1] > 1) 
+      fail("id '" $1 "' in " what " names not unique")
+    if (++nn[name] > 1)
+      fail("name '" name "' in " what " names not unique")
+    # Names[name] = 1
+    Name[$1] = name
+    if (what == "canon") {
+      Canon[$1] = 1
+      Ortho[$1] = $1
+      Ortho_r[$1][++n_Ortho_r[$1]] = $1
     }
   }
-
+  if (what == "canon")
+    return
+  
   delete ni ; delete nn ; lo = 0
 
-  if (substr(switches,2,1) == "1") {
-    printf "reading %-8s rel\n", what > "/dev/stderr"
-    while ((getline < ("infiles/" what "_rel")) > 0) {
-      lo++
-      # tests
-      if (++ni[$1] > 1) 
-        fail("id '" $1 "' in " what " names not unique")
-      if ($3 != "accepted") {
-        Syn[$1]  = $2
-        Syn_r[$2][++n_Syn_r[$2]] = $1
-      }
-      else if ($3 == "accepted")
-        Accepted[$1]  = 1
+  printf "reading %-8s rel\n", what > "/dev/stderr"
+  while ((getline < ("infiles/" what "_rel")) > 0) {
+    lo++
+    # tests
+    if (++ni[$1] > 1) 
+      fail("id '" $1 "' in " what " names not unique")
+    if ($3 != "accepted") {
+      Syn[$1]  = $2
+      Syn_r[$2][++n_Syn_r[$2]] = $1
     }
-    if (ln != lo)
-      fail("lines (" lo ") not equal to names lines (" ln ")")
+    else if ($3 == "accepted")
+      Accepted[$1]  = 1
   }
+  if (ln != lo)
+    fail("lines (" lo ") not equal to names lines (" ln ")")
 
   delete ni ; lo = 0
 
-  if (substr(switches,3,1) == "1") {
-    printf "reading %-8s ortho\n", what > "/dev/stderr"
-    while ((getline < ("infiles/" what "_ortho")) > 0) {
-      lo++
-      # tests
-      if (++ni[$1] > 1) 
-        fail("id '" $1 "' in " what " ortho not unique")
-
-      if ($1 == $2) {
-        Canon[$1] = 1
-        Ortho[$1] = $1
-        Ortho_r[$1][++n_Ortho_r[$1]] = $1
-      }
-      else if (Name[$2]) {
-        Ortho[$1] = $2
-        Ortho_r[$2][++n_Ortho_r[$2]] = $1
-      }
-      else {
-        delete Name[$2]
-        fail("ortho id '" $2 "' in " what " ortho does not exist")
-      }
+  printf "reading %-8s ortho\n", what > "/dev/stderr"
+  while ((getline < ("infiles/" what "_ortho")) > 0) {
+    lo++
+    # tests
+    if (++ni[$1] > 1) 
+      fail("id '" $1 "' in " what " ortho not unique")
+    
+    if ($1 == $2) {
+      Canon[$1] = 1
+      Ortho[$1] = $1
+      Ortho_r[$1][++n_Ortho_r[$1]] = $1
     }
-    if (ln != lo)
-      fail("lines (" lo ") not equal to names lines (" ln ")")
+    else if (Name[$2]) {
+      Ortho[$1] = $2
+      Ortho_r[$2][++n_Ortho_r[$2]] = $1
+    }
+    else {
+      delete Name[$2]
+      fail("ortho id '" $2 "' in " what " ortho does not exist")
+    }
   }
-
+  if (ln != lo)
+    fail("lines (" lo ") not equal to names lines (" ln ")")
+  
   delete ni ; lo = 0
 
-  if (substr(switches,4,1) == "1") {
-    printf "reading %-8s ak\n", what > "/dev/stderr"
-    while ((getline < ("infiles/" what "_ak")) > 0) {
-      lo++
-      # tests
-      if (++ni[$1] > 1) 
-        fail("id '" $1 "' in " what " ak not unique")
+  printf "reading %-8s ak\n", what > "/dev/stderr"
+  while ((getline < ("infiles/" what "_ak")) > 0) {
+    lo++
+    # tests
+    if (++ni[$1] > 1) 
+      fail("id '" $1 "' in " what " ak not unique")
       
-      if ($2)
-        Inak[$1] = 1
-    }
-    if (ln != lo)
-      fail("lines (" lo ") not equal to names lines (" ln ")")
+    if ($2)
+      Inak[$1] = 1
   }
+  if (ln != lo)
+    fail("lines (" lo ") not equal to names lines (" ln ")")
   
 }
 
@@ -163,7 +159,7 @@ function query(  i, j) {
     if (Canon[i])
       # <subset> to those ortho-to names
       if (isarray(Ortho_r[i]))
-        for (j in Ortho_r[i]) {
+        for (j in Ortho_r[i]) 
           # <subset> to those which have synonyms, and ortho to IDs
           # <filter> which are Canon
           if (Canon[Ortho[Syn[Ortho_r[i][j]]]])
@@ -171,7 +167,8 @@ function query(  i, j) {
             print i, j,
               Ortho_r[i][j],
               Syn[Ortho_r[i][j]],
+              toupper(gensub(/-.*$/,"","G",Ortho_r[i][j])),
               Ortho[Syn[Ortho_r[i][j]]]
   
 }
-
+  

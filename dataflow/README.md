@@ -46,3 +46,12 @@ required,
  * Executable programs must be findable via `$PATH`
  * Gawk binary libraries must be findable via `$AWKLIBPATH`
  * Gawk scripts libraries must be findable via `$AWKPATH`
+
+2022-06-23: 
+
+Still many non-matching that should
+
+infiles/accs_names:
+accs-bucaff||Bucklandiella||affinis|||(F. Weber & D. Mohr) Bednarek-Ochyra & Ochyra
+infiles/canon_names:
+trop-35214880||Bucklandiella||affinis|||(Schleich. ex F. Weber & D. Mohr) Bedn.-Ochyra & Ochyra

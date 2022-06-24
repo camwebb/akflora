@@ -23,7 +23,8 @@ dataflow/DB/bu*
 dataflow/ENV.sh
 dataflow/FNA/coarse_grained_fna_xml*
 dataflow/FNA/fna_all.gz
-dataflow/GBIF/AK-VTWG*
+dataflow/GBIF/yt_extension/AK-VTWG*
+dataflow/GBIF/ak/raw*
 dataflow/ING/ING_genus*
 dataflow/PAF/paf.1
 dataflow/PAF/paf.2
