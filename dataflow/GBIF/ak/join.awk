@@ -2,7 +2,7 @@ BEGIN{
   FS = "\t"
   OFS= "|"
 
-  while ((getline < "multimedia.txt")>0)
+  while ((getline < "raw/multimedia.txt")>0)
     if ($3 == "image/jpeg")
       img[$1] = img[$1] "," $4
 }
@@ -10,7 +10,7 @@ BEGIN{
 {
   gsub(/\|/,"{PIPE}",$0)
   print $1, $64, $68, $60, $61, $69, $91, $71, $230, $189, $214, $231,
-    $241, $120, $129, $138, $139, $103, gensub(/^,/,"","G",img[$1])
+    $241, $120, $129, $138, $139, gensub(/T[0-9:]+$/,"","G",$103), gensub(/^,/,"","G",img[$1])
 }
 
 # 0   gbifID

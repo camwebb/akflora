@@ -14,7 +14,7 @@ function qgbif() {
         curl -s 'https://api.gbif.org/v1/occurrence/search?limit=300&offset='$i'&taxonKey=7707728&geometry=POLYGON(('$POLY'))'\
             | gawk '
   @load "json";
-  BEGIN {RS="\x04";OFS="|"}
+  BEGIN {RS="\x04";OFS=SUBSEP}
   {json = $0}
   END{
     json::from_json(json, data)
@@ -55,8 +55,9 @@ qgbif 5
 # block4 5123
 # block5 1639
 
-cat block* > yt_extension_gbif_colls
-rm block*
+# clean the pipe symbols
+cat block* | gawk '{gsub(/\|/,"{PIPE}",$0); gsub(/\034/,"|",$0); print $0}' > yt_extension_gbif_colls
+# rm block*
 
 # gawk 'BEGIN{FS=OFS="|"}{t[$4]++}END{PROCINFO["sorted_in"]="@ind_str_asc"; for (i in t) print i,t[i]}' yt_extension_gbif_colls > yt_extension_gbif_taxa
 
