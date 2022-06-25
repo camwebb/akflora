@@ -1,0 +1,40 @@
+# show synonyms for Hulten
+
+# PREFIX : <x:>
+PREFIX :  <http://alaskaflora.org/sw/tmp.rdf#> 
+
+SELECT ?x ?xn ?status ?y ?yn 
+
+WHERE {
+
+  # for all canonical names x
+  ?x :canon 1   .
+  ?x :name  ?xn .
+  # search the mapped names a
+  ?a :ortho ?x  .
+  
+  OPTIONAL {
+    # either they are accepted
+    ?a :accepted ?s2  .
+    # according to Hulten
+    ?s2 :accto :HULTEN .
+    BIND( "accepted" AS ?status )
+  }
+  OPTIONAL {
+    # or they are a synonym
+    ?a   :syn   ?s3     .
+    # according to Hulten
+    ?s3  :accto :HULTEN .
+    # of name ?acc
+    ?s3  :of    ?acc    .
+    # which maps to y
+    ?acc :ortho ?y      .
+    # which must be a canonical name
+    ?y  :canon 1       .
+    ?y :name  ?yn      .
+    BIND( "synonym" AS ?status )
+  }
+  FILTER ( bound(?status) )
+}
+ORDER BY ?xn
+

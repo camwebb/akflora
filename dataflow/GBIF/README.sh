@@ -21,8 +21,21 @@ rm names
 matchnames -a names.2 -b ../canonical/canon -o gbif2canon_match -f -q -m gbif2canon_match_manual
 
 # rel
-gawk 'BEGIN{PROCINFO["sorted_in"] = "@ind_str_asc"; FS=OFS="|"}{syn[$9] = $12}END{for(i in syn) if (i == syn[i]) {print "gbif-" i, "gbif-" i, "accepted" } else print "gbif-" i, "gbif-" syn[i], "synonym"}' colls.2 > rel
+gawk 'BEGIN{PROCINFO["sorted_in"] = "@ind_str_asc"; FS=OFS="|"; while ((getline < "colls.2")>0) {syn["gbif-" $9] = "gbif-" $12; syn["gbif-" $12] = "gbif-" $12}} {if ($1 == syn[$1]) {print $1,  $1, "accepted" } else print $1, syn[$1], "synonym"}' names.2 > rel
 
-
+# occurences, if there is a long lat and a det to sp
+gawk '
+  BEGIN{PROCINFO["sorted_in"] = "@ind_str_asc"
+  FS=OFS="|"}
+  $16 && $10 ~ /^[^ ]+ [a-z]/ {
+    if ($4 == "iNaturalist") { type = "iNat" ; guid = $6 }
+      else if ($4 == "UAM")    { type = "UAM" ; guid = $6 }
+      else                     { type = "Other" ; guid = "" }
+    print "gbo-" $1,
+      type,
+      guid,
+      "gbif-" $9,
+      (($17 ~ /^-/) ? ($17 "," $16) : ($16 "," $17))
+  }' colls.2 > occ
 
 

@@ -1,6 +1,7 @@
 BEGIN{
   FS="|"
   PROCINFO["sorted_in"] = "@ind_str_asc"
+  URI = 1
 
   #          what      NROA
   read_data("canon")
@@ -11,8 +12,10 @@ BEGIN{
   read_data("hulten")
   read_data("gbif")
 
-  # write_names()
-  query()
+  write_names()
+  # write_names_cypher()
+  write_occ()
+  # query()
 }
 
 function read_data(what, 
@@ -96,6 +99,22 @@ function read_data(what,
   }
   if (ln != lo)
     fail("lines (" lo ") not equal to names lines (" ln ")")
+
+  delete ni
+
+  if (what == "gbif") {
+    printf "reading %-8s occ\n", what > "/dev/stderr"
+    while ((getline < ("infiles/" what "_occ")) > 0) {
+      # tests
+      if (++ni[$1] > 1) 
+        fail("id '" $1 "' in " what " ak not unique")
+      OccType[$1] = $2
+      OccGUID[$1] = $3
+      OccDet[$1]  = $4
+      OccCoord[$1] = $5
+    }
+  }
+
   
 }
 
@@ -112,18 +131,84 @@ function fail(msg) {
 }
 
 function write_names(   i, out) {
-  print "@prefix : <x:> .\n"
+  if (URI)
+    print                                                               \
+      "@prefix     : <http://alaskaflora.org/sw/tmp.rdf#> .\n"            \
+      "@prefix gbif: <https://www.gbif.org/species/> .\n"                  \
+      "@prefix  gbo: <https://www.gbif.org/occurrence/> .\n"                  \
+      "@prefix ipni: <https://www.ipni.org/n/> .\n"                     \
+      "@prefix  kew: <http://www.theplantlist.org/tpl1.1/record/kew-> .\n" \
+      "@prefix trop: <http://legacy.tropicos.org/Name/> .\n"            \
+      "@prefix  paf: <http://panarcticflora.org/#paf-> .\n"             \
+      "@prefix  ala: <http://alaskaflora.org/sw/ala.rdf#> .\n"            \
+      "@prefix accs: <https://floraofalaska.org/provisional-checklist/#> .\n" \
+      "@prefix  fna: <https://beta.floranorthamerica.org/#> .\n"        \
+      "@prefix hulten: <https://alaskaflora.org/hulten/hulten.xml#> .\n" 
+  else
+    print "@prefix : <x:> .\n"
   for (i in Name) {
-    out = ":" i "\n"                                             \
+    out = prefix(i) "\n"                                                \
       "  :name \"" Name[i] "\" ;"                                       \
       ((Canon[i]) ? "\n  :canon 1 ;" : "")                              \
       ((Syn[i])   ? "\n  :syn [ :accto :"                               \
-       toupper(gensub(/-.*$/,"","G",i)) " ; :of :" Syn[i] " ] ;" : "")  \
+       toupper(gensub(/-.*$/,"","G",i)) " ; :of " prefix(Syn[i]) " ] ;" : "") \
       ((Accepted[i]) ? "\n  :accepted [ :accto :"                       \
        toupper(gensub(/-.*$/,"","G",i)) " ] ;" : "")                    \
-      ((Ortho[i]) ? "\n  :ortho :" Ortho[i] " ;" : "")                  \
+      ((Ortho[i]) ? "\n  :ortho " prefix(Ortho[i]) " ;" : "")          \
       ((Inak[i]) ? "\n  :inak [ :accto :"                               \
        toupper(gensub(/-.*$/,"","G",i)) " ] ;" : "")                   
+    gsub(/;$/,".\n",out)
+    print out
+  }
+}
+
+function prefix (id) {
+  if (URI) {
+    return gensub(/^([^-]+)-(.+)$/,"\\1:\\2","G",id)
+  }
+  else
+    return (":" id)
+}
+
+function write_names_cypher(   i, out, lab, src, node, syn, ortho) {
+  out = "CREATE\n"
+  for (i in Name) {
+    lab = gensub(/-/,"","G",i)
+    src = toupper(gensub(/-.*$/,"","G",i))
+    node[i] = "(" lab ":Name "                                         \
+      "{name: '" gensub(/'/,"","G",Name[i]) "', "                       \
+      "label: '" i "' "                                                 \
+      ((Canon[i]) ? ", canon: 'yes'" : "")                              \
+      ((Accepted[i]) ?                                                  \
+       ", acceptedby: ['" src "']" : "")                                \
+      ((Inak[i]) ?                                                      \
+       ", inakby: ['" src "']" : "")                                    \
+      "})"
+    if (Syn[i])
+      syn[i] =                                                          \
+        "((" lab ") -[:SYN {accordingto: ['" src "']}]-> "              \
+        "(" gensub(/-/,"","G",Syn[i]) "))"
+    if (Ortho[i])                                                       \
+      ortho[i] = "((" lab ") -[:ORTHO {accordingto: ['" src "']}]-> "   \
+        "(" gensub(/-/,"","G", Ortho[i]) "))"
+  }
+  for (i in node)
+    out = out node[i] ",\n"
+  for (i in syn)
+    out = out syn[i] ",\n"
+  for (i in ortho)
+    out = out ortho[i] ",\n"
+  gsub(/,\n$/,";\n",out)
+  print out
+}
+
+function write_occ(   i, out) {
+  for (i in OccType) {
+    out = prefix(i) "\n"                                                \
+      "  :occtype \"" OccType[i] "\" ;"                                 \
+      "\n  :det " prefix(OccDet[i]) " ;"                                \
+      "\n  :coord \"" OccCoord[i] "\" ;"                                \
+      ((OccGUID[i]) ? "\n  :guid \"" OccGUID[i] "\" ;" : "")
     gsub(/;$/,".\n",out)
     print out
   }

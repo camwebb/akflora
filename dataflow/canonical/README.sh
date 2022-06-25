@@ -148,7 +148,9 @@ then
 
     gawk 'BEGIN{FS="|"; PROCINFO["sorted_in"] = "@ind_str_asc"} {code[$11 "|" $12 "|" $13 "|" $14 "|" $15 "|" $16 "|" $17]=$2} END{for (i in code) print code[i] "|" i}' all2wcsp_all > wcsp_base
     rm -f all2wcsp_all
-
+    # small fix
+    sed -i 's/tro-50108303/trop-50108303/g' wcsp_base
+    
     echo "Size of WCSP base list = " `wc wcsp_base | gawk '{print $1}'`
 
 elif [ $1 = ipni2ipni ]

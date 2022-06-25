@@ -208,40 +208,19 @@ gawk 'BEGIN{
             print $1,1
         }}' > infiles/hulten_ak 
        
-exit
-
 # ---------------------------------------------------------------
 
-echo
 echo "** 8. Loading GBIF **"
 
-cp ../GBIF/yt_names names
+cp ../GBIF/names.2 infiles/gbif_names
+cp ../GBIF/rel infiles/gbif_rel
+gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) \
+     {print $1, $2, $3} else {print $1, $1, "self"}}' \
+     ../GBIF/gbif2canon_match > infiles/gbif_ortho
+gawk 'BEGIN{FS=OFS="|"}{print $1, ""}' ../GBIF/names.2 > infiles/gbif_ak
+cp ../GBIF/occ infiles/gbif_occ
 
-# dummy file
-gawk 'BEGIN{FS=OFS="|"}{print $1 , $1, "accepted", "GBIF" }' names > rel
-
-gawk 'BEGIN{FS=OFS="|"}{
-        if ($3 ~ /^(no_match|auto_irank|manual\?\?)$/)
-          print $1, $1, "self"
-        else print $1, $2, $3
-      }' ../canonical/yt2canon_match > ortho
-
-gawk 'BEGIN{FS=OFS="|"}{print $1 , 1}' names > ak
-
-sqlnulls ak
-sqlnulls names
-sqlnulls rel
-sqlnulls ortho
-checklines
-
-mysql -Ns --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-     -e "set @in_src='G'; source 2_load_other.sql;" akflora
-
-# the rel was dummy, delete
-mysql -N --show-warnings -u $AKFLORA_DBUSER -p$AKFLORA_DBPASSWORD \
-      -e "DELETE FROM rel WHERE source = 'GBIF';" akflora
-
-rm -rf names rel ortho ak
+exit
 
 # ---------------------------------------------------------------
 
