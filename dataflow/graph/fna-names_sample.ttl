@@ -1,0 +1,71 @@
+@prefix     : <http://alaskaflora.org/sw/fna-names.rdf#>    .
+@prefix   dc: <http://purl.org/dc/elements/1.1/>            .
+@prefix  dct: <http://purl.org/dc/terms/>                   .
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>       .
+@prefix  owl: <http://www.w3.org/2002/07/owl#>              .
+@prefix  fna: <http://floranorthamerica.org/>               .          
+@prefix   tn: <http://rs.tdwg.org/ontology/voc/TaxonName#>  .
+
+<http://alaskaflora.org/sw/fna-names.rdf>
+  dc:creator "Campbell Webb" ;
+  dc:description """A list of FNA (see below) taxonomic names used in
+     the Alaska Flora informatics project (alaskaflora.org;
+     2008-2022), providing mappings to the current FNA website page,
+     and information about the name's status as synonym or basionym.
+     One new object property is introduced to simplify the modeling of
+     synonyms (cf. the TDWG TCS taxon concept approach). FNA = Flora
+     of North America Editorial Committee, eds. 1993+. Flora of North
+     America North of Mexico. 19+ vols.  New York and Oxford.""" ;
+  dc:title "Flora of North America names" ;
+  dct:issued "2022-06-28" .
+  # dct:modified "2015-07-01" ;
+
+:fnasyn
+  a owl:ObjectProperty ;
+  rdfs:label "is synonym for" ;
+  rdfs:comment """The current name is considered by the FNA treatment
+    author to be a synonym of the target, accepted name.  The
+    relationship may be nomenclatural or a taxon concept relationship
+    (see http://rs.tdwg.org/ontology/voc/TaxonConcept#IsSynonymFor).""" ;
+  rdfs:domain tn:TaxonName ;
+  rdfs:range tn:TaxonName ;
+  rdfs:isDefinedBy <http://alaskaflora.org/sw/fna-names.rdf#> .
+
+:fna-12-1060
+  a tn:TaxonName ;
+  dc:title "Arceuthobium campylopodum subsp. tsugense (Rosendahl) Nickrent" ;
+  owl:sameAs fna:Arceuthobium_campylopodum_subsp._tsugense .
+
+:fna-12-1060-b1
+  dc:title "Razoumofskya tsugensis Rosendahl" ;
+  tn:basionymFor :fna-12-1060 .
+
+:fna-12-1060-s1
+  dc:title "Arceuthobium tsugense (Rosendahl) G. N. Jones" ;
+  :fnasyn :fna-12-1060 .  
+
+# []
+#   # a tc:TaxonConcept ;
+#   tc:accordingTo :FNA ;
+#   tc:hasName :fna-12-1060-s1 ;
+#   tc:hasRelationship [
+#     # a tc:Relationship
+#     tc:relationshipCategory tc:IsSynonymFor ;
+#     tc:toTaxon [
+#       # a tc:TaxonConcept ;
+#       tc:accordingTo :FNA ;
+#       tc:hasName :fna-12-1060
+#       ]
+#     ] .
+#
+# @prefix : <http://rs.tdwg.org/ontology/voc/TaxonConcept#> .
+#
+# :FNA
+#   a <https://schema.org/CreativeWork> ;
+#   dc:title """Flora of North America Editorial Committee, eds. 1993+.
+#      Flora of North America North of Mexico. 19+ vols.
+#      New York and Oxford.""".
+
+
+# rapper -i turtle -o rdfxml-abbrev fna-names.ttl > fna-names.rdf

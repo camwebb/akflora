@@ -12,9 +12,10 @@ BEGIN{
   read_data("hulten")
   read_data("gbif")
 
-  write_names()
+  # write_names()
+  write_psv()
   # write_names_cypher()
-  write_occ()
+  # write_occ()
   # query()
 }
 
@@ -168,6 +169,20 @@ function prefix (id) {
   }
   else
     return (":" id)
+}
+
+function write_psv(   i, out) {
+  OFS="|"
+  for (i in Name) {
+    print i,
+      toupper(gensub(/-.*$/,"","G",i)),
+      Name[i],
+      Canon[i],
+      Ortho[i],
+      Accepted[i],
+      Syn[i],
+      Inak[i]
+  }
 }
 
 function write_names_cypher(   i, out, lab, src, node, syn, ortho) {
