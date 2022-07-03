@@ -69,6 +69,8 @@ BEGIN{
               so = so toupper(gensub(/-.*$/,"","G", s2[x])) " ← {"    \
                 id2url(s2[x]) "}, "
             gsub(/, $/,"",so)
+            if (sg)
+              so = so " <a href=\"do?method=occ&id=" sg "&taxon=" urlencode(Name[z]) "&occtype=target\">🗺</a>"
             so = so "</div>"
           }
         delete s
@@ -79,7 +81,7 @@ BEGIN{
             "<div style=\"padding-left:20px;text-indent:-20px;\">"      \
             "<b>" Name[i] "</b> {" id2url(i) "}"                        \
             ((o) ? (" ← " o ) : "")                                     \
-            ((ag) ? (" <a href=\"do?method=occ&id=" ag "&taxon=" urlencode(Name[i]) "&occtype=acc\">🗺</a>") : "") \
+            ((ag) ? (" <a href=\"do?method=occ&id=" ag "&taxon=" urlencode(Name[i]) "&occtype=source\">🗺</a>") : "") \
             "</div>"                                                    \
             ((a) ? ("<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by " a "</div>") : "") \
             so                                                          \
@@ -91,7 +93,7 @@ BEGIN{
     print "<p><i>Key to layout of each entry:</i><br/>"
     print "<div style=\"padding-left:40px;text-indent:-40px;\"><b>Name (as matched to a canonical name)</b> { canonical identifier } ← { matching name identifier }, ... 🗺 (= link to occurences determined directly to this name)</div>"
     print "<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by SOURCE1, SOURCE2... </div>" 
-    print "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>Name</b> { canonical identifier } according to SOURCE1 { identifier of matching accepted name }, ... 🗺 (= link to all occurences determined to this accepted name)</div>" 
+    print "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>Name</b> { canonical identifier } according to SOURCE1 { identifier of matching accepted name }, ... 🗺 (= link to occurences determined to this accepted name and to names that are synonyms of this accepted name)</div>" 
     
     footer()
   
@@ -107,7 +109,30 @@ BEGIN{
     #                         toupper(gensub(/-.*$/,"","G", i))) : "" ) \
     #       "\n" 
   }
+
+  if ((f["method"] == "occ") && (f["id"])) {
+
+    header("Map")
+    print "<h1>Map of " f["taxon"] "</h1>"
+    print "<pre>"
     
+    FS = "|"
+    OFS = " : "
+    if (f["occtype"] == "source") {
+      while ((getline < "occ") > 0)
+        if ($4 == f["id"])
+          print $1, $2, $3, $5
+    }
+    # here... tricky... what are we exactly looking up? GBIF synonyms or AKF syns?
+    # else if (f["occtype"] == "target") {
+    #   while ((getline < "data") > 0)
+    #     if ($4 == f["id"])
+    #       print $1, $2, $3, $5
+    # }
+      
+    print "</pre>"
+    footer()
+  }
 }
 
 function id2url(id  , i) {
