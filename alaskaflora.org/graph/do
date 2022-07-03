@@ -1,0 +1,252 @@
+#!/usr/bin/gawk -f
+
+BEGIN{
+
+  init()
+  
+  # READ QUERY STRING
+  split(ENVIRON["QUERY_STRING"], qs, "&")
+  for (q in qs) {
+    split(qs[q], qp, "=")
+    f[qp[1]] = substr(urldecode(qp[2]),1,100)
+  }
+
+  # SEARCH
+  if ((f["method"] == "namesearch") && (f["q"])) {
+
+    header("Name search")
+    print "<h1>Name search</h1>"
+    print "<p>Query = <i>" f["q"] "</i>;&#160;&#160;&#160; See layout <a href=\"#key\">key</a></p>"
+
+    FS = "|"
+  
+    while ((getline < "data") > 0) {
+      Name[$1] = $3
+      Canon[$1] = $4
+      Ortho[$1] = $5
+      Ortho_r[$5][++n_Ortho_r[$5]] = $1
+      Accepted[$1]  = $6
+      Syn[$1]  = $7
+      Syn_r[$7][++n_Syn_r[$7]] = $1
+      Inak[$1] = $8
+    }
+
+    # print "<pre>"
+    PROCINFO["sorted_in"] = "@val_str_asc"
+    for (i in Name)
+      if ((Name[i] ~ f["q"]) && Canon[i]) {
+        o = a = so = ag = sg = ""
+
+        # <subset> to those ortho-to names
+        if (isarray(Ortho_r[i]))
+          for (j in Ortho_r[i]) {
+            
+            if (i != Ortho_r[i][j]) {
+              o = o "{" id2url(Ortho_r[i][j]) "}, "
+              if (Ortho_r[i][j] ~ /^gbif/)
+                ag = Ortho_r[i][j]
+            }
+            if (Accepted[Ortho_r[i][j]])
+              a = a toupper(gensub(/-.*$/,"","G",Ortho_r[i][j])) ", "
+
+            if (Canon[Ortho[Syn[Ortho_r[i][j]]]]) {
+              s[Ortho[Syn[Ortho_r[i][j]]]] = \
+                s[Ortho[Syn[Ortho_r[i][j]]]] "|" Syn[Ortho_r[i][j]]
+              if (Syn[Ortho_r[i][j]] ~ /^gbif/)
+                sg = Syn[Ortho_r[i][j]]
+            }
+          }
+        
+        gsub(/, $/,"",o)
+        gsub(/, $/,"",a)
+
+        if(isarray(s))
+          for (z in s) {
+            so = so "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>" Name[z] "</b> {" id2url(z) "} according to "
+            gsub(/^\|/,"",s[z])
+            split(s[z], s2, "|")
+            for (x in s2)
+              so = so toupper(gensub(/-.*$/,"","G", s2[x])) " ← {"    \
+                id2url(s2[x]) "}, "
+            gsub(/, $/,"",so)
+            so = so "</div>"
+          }
+        delete s
+        
+        if (o || a)
+          print                                                         \
+            "<p>"                                                       \
+            "<div style=\"padding-left:20px;text-indent:-20px;\">"      \
+            "<b>" Name[i] "</b> {" id2url(i) "}"                        \
+            ((o) ? (" ← " o ) : "")                                     \
+            ((ag) ? (" <a href=\"do?method=occ&id=" ag "&taxon=" urlencode(Name[i]) "&occtype=acc\">🗺</a>") : "") \
+            "</div>"                                                    \
+            ((a) ? ("<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by " a "</div>") : "") \
+            so                                                          \
+            "</p>"
+      }
+    #print "</pre>"
+
+    print "<hr/>"
+    print "<p><i>Key to layout of each entry:</i><br/>"
+    print "<div style=\"padding-left:40px;text-indent:-40px;\"><b>Name (as matched to a canonical name)</b> { canonical identifier } ← { matching name identifier }, ... 🗺 (= link to occurences determined directly to this name)</div>"
+    print "<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by SOURCE1, SOURCE2... </div>" 
+    print "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>Name</b> { canonical identifier } according to SOURCE1 { identifier of matching accepted name }, ... 🗺 (= link to all occurences determined to this accepted name)</div>" 
+    
+    footer()
+  
+    # PROCINFO["sorted_in"] = "@val_str_asc"
+    # for (i in Name)
+    #   if ((Name[i] ~ ARGV[1]) && (Syn[i] || Accepted[i]))
+    #     print                                 \
+    #       ((Canon[i]) ? "* " : "  ")                                  \
+    #       Name[i] " [" i "]"                                          \
+    #       ((Ortho[i] && !Canon[i]) ? ("\n    → " Name[Ortho[i]] " [" Ortho[i] "]") : "") \
+    #       ((Syn[i]) ? ("\n    syn of " Name[Syn[i]] " [" Syn[i] "]") : "") \
+    #       ((Accepted[i]) ? ("\n    ACCEPTED by "                      \
+    #                         toupper(gensub(/-.*$/,"","G", i))) : "" ) \
+    #       "\n" 
+  }
+    
+}
+
+function id2url(id  , i) {
+  for (i in Url)
+    # special rule for hulten, temporary
+    if ((id ~ ("^" i)) && (id !~ /^hulten[0-9-]+[sb]/))
+      id = "<a target=\"_blank\" href=\"" gensub(("^" i "-"), Url[i], "G", id) "\">" \
+        id "</a>"
+  return id
+}
+
+
+function header(title) {
+  # version history: [chars app] -> [tcm app] -> [hulten] -> [qm] -> here
+  
+  print "Content-type: text/html\n\n"                                   \
+    "<!DOCTYPE html>"                                                   \
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\" "                     \
+    "      prefix=\"og: https://ogp.me/ns#\">"                          \
+    "<head><title>" title "</title>"                                    \
+    "<meta http-equiv=\"Content-Type\" content=\"text/html;"            \
+    "charset=utf-8\" />"                                                \
+    "<link rel=\"icon\" type=\"image/png\" href=\"../img/favicon.png\"/>"
+  print "<style type=\"text/css\">"                                     \
+    "body { font-size: 14px; font-family: 'Montserrat', "               \
+    "Verdana, Arial, Helvetica, sans-serif; }"                          \
+    ".main {width: 1000px; padding-top: 10px; margin-left: auto;"       \
+    "  margin-right: auto; }"                                           \
+    "h1 { padding-top:20px; }"                                          \
+    "select , option { font-size: 14px }"                               \
+    "table { border-collapse: collapse }"                               \
+    "td, th { border: 1px solid black; padding: 5px }"                  \
+    "a { color:#15358d; text-decoration:none; border-bottom-style:none }" \
+    "a:visited { color:#9f1dbc }"                                       \
+    "a:hover {color:#15358d; border-bottom-style:solid; "               \
+    "border-bottom-width:thin }"                                        \
+    "</style>"                                                        
+  
+  # print "<link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.css\" integrity=\"sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==\" crossorigin=\"\"/>"
+  # print "<script src=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.js\" integrity=\"sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==\" crossorigin=\"\"></script>"
+
+  print "</head>\n<body>"
+  print "<div class=\"main\">"
+
+}
+
+function footer() {
+   
+  print "</div>"
+  print "</body>\n</html>";
+}
+
+function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
+# decode urlencoded string
+# urldecode function from Heiner Steven
+#   http://www.shelldorado.com/scripts/cmds/urldecode
+# version 1
+	
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  for (i=0; i<16; i++) hextab[hex[i+1]] = i
+  
+  decoded = ""
+  i = 1
+  len = length(text)
+  
+  while ( i <= len ) {
+    c = substr (text, i, 1)
+    if ( c == "%" ) {
+      if ( i+2 <= len ) {
+        c1 = tolower(substr(text, i+1, 1))
+        c2 = tolower(substr(text, i+2, 1))
+        if ( hextab [c1] != "" || hextab [c2] != "" ) {
+          # print "Read: %" c1 c2;
+          # Allow: 
+          # 20 begins main chars, but dissallow 7F (wrong in orig code!)
+          #   tab, newline, formfeed, carriage return
+          if ( ( (c1 >= 2) && ((c1 c2) != "7f") )   \
+               || (c1 == 0 && c2 ~ "[9acd]") )
+            {
+              code = 0 + hextab [c1] * 16 + hextab [c2] + 0
+              # print "Code: " code
+              c = sprintf ("%c", code)
+            } else {
+            # for dissallowed chars
+            c = " "
+          }
+          i = i + 2
+        }
+      }
+    } else if ( c == "+" ) 	# special handling: "+" means " "
+      c = " "
+    decoded = decoded c
+    ++i
+  }
+  
+  # change linebreaks to \n
+  gsub(/\r\n/, "\n", decoded);
+  # remove last linebreak
+  gsub(/[\n\r]*$/,"",decoded);
+  return decoded
+}
+
+function init(   i, url1, url2, url3) {
+  url1 = \
+    "ipni^https://www.ipni.org/n/|"                                     \
+    "gbif^https://www.gbif.org/species/|"                               \
+    "trop^http://legacy.tropicos.org/Name/|"                            \
+    "kew^http://www.theplantlist.org/tpl1.1/record/kew-|"               \
+    "paf^http://panarcticflora.org/#paf-|"                              \
+    "hulten^https://alaskaflora.org/hulten/do?method=detail\\&id="    
+  split(url1, url2, "|")
+  for (i in url2) {
+    split(url2[i], url3,"^")
+    Url[url3[1]] = url3[2]
+  }
+}
+
+function urlencode(str,     hextab, i, ord, encoded, c, lo, hi ) {
+  # Title      :  urlencode - encode URL data
+  # Author     :  Heiner Steven (heiner.steven@odn.de)
+  # Date       :  2000-03-15
+
+  split ("1 2 3 4 5 6 7 8 9 A B C D E F", hextab, " ")
+  hextab [0] = 0
+  for ( i=1; i<=255; ++i ) ord [ sprintf ("%c", i) "" ] = i + 0
+
+  encoded = ""
+  for ( i=1; i<=length (str); ++i ) {
+    c = substr (str, i, 1)
+    if ( c ~ /[a-zA-Z0-9.-]/ ) {
+      encoded = encoded c		# safe character
+    } else if ( c == " " ) {
+      encoded = encoded "+"	# special handling
+    } else {
+      # unsafe character, encode it as a two-digit hex-number
+      lo = ord [c] % 16
+      hi = int (ord [c] / 16);
+      encoded = encoded "%" hextab [hi] hextab [lo]
+    }
+  }
+  return encoded
+}
