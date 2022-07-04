@@ -163,22 +163,38 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
   # for (i in cano)
   #   print Name[cano[i]] " {" cano[i] "} ← {" i "}, a synonym according to " \
   #     srce[i]
-  cano[tid] = F["id"]
   
   # Search occurences
   FS = "|"
+  cano[tid] = F["id"]
   while ((getline < "occ") > 0)
     if (cano[$4]) {
-      # print $1, $2, $3, $5, cano[$4]
-      outxy = outxy "  L.circle([" gensub(/.*,/,"","G",$5) ", " \
-        gensub(/,.*/,"","G",$5) "], " $2 ").bindPopup('" gensub(/-/,"","G",$4)\
+      outxy = outxy    \
+        "  L.circle(["                                                  \
+        gensub(/.*,/,"","G",$5) ", " gensub(/,.*/,"","G",$5)            \
+        "], " $2 ").bindPopup('"                                        \
+        (($2 == "iNat") ?                                               \
+         ("iNat observation: <a href=\"https://www.inaturalist.org/"    \
+          "observations/" $3 "\" target=\"_blank\">"                    \
+          $3 "</a> det: " Name[cano[$4]]) : "")                         \
+        (($2 == "UAM") ?                                                \
+         ("U Alaska (ALA) collection: "\
+          "<a href=\"https://arctos.database.museum/"                   \
+          "guid/" $3 "\" target=\"_blank\">"                            \
+          $3 "</a> det: " Name[cano[$4]]) : "")                         \
+        (($2 == "Other") ?                                              \
+         ("GBIF occurence: <a href=\"https://www.gbif.org/occurrence/"  \
+          gensub(/^gbo-/,"","G", $1) "\" target=\"_blank\">"            \
+          gensub(/^gbo-/,"","G", $1) "</a> det: " Name[cano[$4]]) : "") \
         "').addTo(" gensub(/-/,"","G",$4) ") ;\n"
       haspoints[$4] = 1
     }
+  delete cano[tid]
   
   # make map
-  print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
-
+  print "<div id=\"map\" style=\"height: 500px; width: 500px;\"></div>"
+  print "<p>[ <a href=\"do\">Home</a> ]</p>"
+  
   # Javascript
   print "<script type=\"text/javascript\">"
   # points, in layers, attributes first
@@ -186,7 +202,14 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
   print "  var UAM   = { color: 'blue', radius: 5000 };"
   print "  var Other = { color: 'yellow', radius: 5000 };"
 
-  startLayers = "base"
+  startLayers = "base, "
+  # deal with the main name first
+  if (haspoints[tid]) {
+    startLayers = startLayers gensub(/-/,"","G",tid)
+    makeOverlays = "\"" Name[Ortho[tid]] "\": " gensub(/-/,"","G",tid)
+    print "  var " gensub(/-/,"","G",tid) " = L.layerGroup();"
+  }
+  # now the others
   for (i in cano)
     if (haspoints[i]) {
       startLayers = startLayers ", " gensub(/-/,"","G",i)
@@ -197,7 +220,7 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
     }
   gsub(/^, /,"",makeOverlays)
   print outxy
-
+  
   # base layer
   print "  var base = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/" \
     "{x}/{y}.png', "                                                    \
@@ -207,7 +230,7 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
 
   # make the map, with three overlay layers
   print "  var map = L.map('map', "                                  \
-    "{ zoomControl: false, center: [63, -150], zoom: 3, layers: ["   \
+    "{ zoomControl: false, center: [63, -150], zoom: 4, layers: ["   \
     startLayers "] }) ;"
   print "  var baseLayer = { \"Base Layer\": base };"
   print "  var overlays = {" makeOverlays "};"
@@ -220,9 +243,10 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
 function default_page() {
   header("Alaska plant names")
   print "<h1>Alaska plant names</h1>"
+  print "<p style=\"width:400px;\">Search for names and their synonyms in key taxonomic resources for Alaskan plants, and view occurrences both by original determination and by accepted name according to different resources.</p>"
   print "<form action=\"do\">"
   print "<table>"
-  print "<tr> <td>Search scientific name:</td> <td></td> </tr>" 
+  print "<tr> <td>Scientific name:</td> <td></td> </tr>" 
   print "<tr> <td><input type=\"hidden\" name=\"method\" value=\"search\"/>" \
     "<input type=\"text\" name=\"q\"/></td>"                            \
     "<td><input type=\"submit\" value=\"Submit\"/></td></tr></table>"
