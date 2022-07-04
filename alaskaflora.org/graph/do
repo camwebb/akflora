@@ -157,23 +157,63 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
     gsub(/, $/,"",srce[i])
     
   header("Map")
-  print "<h1>Map of " tname "</h1>"
-  print "<p>" tname " {" F["id"] "} ← {" tid "}</p>"
-  print "<pre>"
+  # print "<h1>Map</h1>"
+  print "<p><b>" tname "</b> {" id2url(F["id"]) "} ← {" id2url(tid) "}</p>"
 
-  for (i in cano)
-    print Name[cano[i]] " {" cano[i] "} ← {" i "}, a synonym according to " \
-      srce[i]
+  # for (i in cano)
+  #   print Name[cano[i]] " {" cano[i] "} ← {" i "}, a synonym according to " \
+  #     srce[i]
   cano[tid] = F["id"]
-    
+  
+  # Search occurences
   FS = "|"
-  OFS = " : "
   while ((getline < "occ") > 0)
-    if (cano[$4])
-      print $1, $2, $3, $5, cano[$4]
-  # test with salix bebbiana Sarg.
+    if (cano[$4]) {
+      # print $1, $2, $3, $5, cano[$4]
+      outxy = outxy "  L.circle([" gensub(/.*,/,"","G",$5) ", " \
+        gensub(/,.*/,"","G",$5) "], " $2 ").bindPopup('" gensub(/-/,"","G",$4)\
+        "').addTo(" gensub(/-/,"","G",$4) ") ;\n"
+      haspoints[$4] = 1
+    }
+  
+  # make map
+  print "<div id=\"map\" style=\"height: 400px; width: 400px;\"></div>"
 
-  print "</pre>"
+  # Javascript
+  print "<script type=\"text/javascript\">"
+  # points, in layers, attributes first
+  print "  var iNat  = { color: 'red', radius: 5000 };"
+  print "  var UAM   = { color: 'blue', radius: 5000 };"
+  print "  var Other = { color: 'yellow', radius: 5000 };"
+
+  startLayers = "base"
+  for (i in cano)
+    if (haspoints[i]) {
+      startLayers = startLayers ", " gensub(/-/,"","G",i)
+      makeOverlays = makeOverlays ", \"" Name[cano[i]] \
+        ((srce[i]) ? (" (syn: " srce[i] ")") : "")     \
+        "\": " gensub(/-/,"","G",i)
+      print "  var " gensub(/-/,"","G",i) " = L.layerGroup();"
+    }
+  gsub(/^, /,"",makeOverlays)
+  print outxy
+
+  # base layer
+  print "  var base = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/" \
+    "{x}/{y}.png', "                                                    \
+    "{ attribution: '<a href=\"https://www.openstreetmap.org/copyright\">" \
+    "OSM</a>, <a href=\"http://viewfinderpanoramas.org\">SRTM</a>, "    \
+    "<a href=\"https://opentopomap.org\">OTM</a>' });"
+
+  # make the map, with three overlay layers
+  print "  var map = L.map('map', "                                  \
+    "{ zoomControl: false, center: [63, -150], zoom: 3, layers: ["   \
+    startLayers "] }) ;"
+  print "  var baseLayer = { \"Base Layer\": base };"
+  print "  var overlays = {" makeOverlays "};"
+  print "  L.control.layers(baseLayer, overlays, { hideSingleBase : true}).addTo(map);"
+  print "</script>"
+
   footer()
 }
 
@@ -243,9 +283,17 @@ function header(title) {
     "a:hover {color:#15358d; border-bottom-style:solid; "               \
     "border-bottom-width:thin }"                                        \
     "</style>"                                                        
-  
-  # print "<link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.css\" integrity=\"sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==\" crossorigin=\"\"/>"
-  # print "<script src=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.js\" integrity=\"sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==\" crossorigin=\"\"></script>"
+
+  if (F["method"] == "occ")
+    print                                                               \
+      "<link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.7.1/"\
+      "dist/leaflet.css\" integrity=\"sha512-xodZBNTC5n17Xt2atTPuE1HxjV"\
+      "MSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==\""\
+      " crossorigin=\"\"/>\n"                                           \
+      "<script src=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.js\" "\
+      "integrity=\"sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWn"\
+      "UrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==\" crossorigin=\"\">"\
+      "</script>"
 
   print "</head>\n<body>"
   print "<div class=\"main\">"
