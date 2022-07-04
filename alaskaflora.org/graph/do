@@ -13,14 +13,15 @@ BEGIN{
 
   # SEARCH
   if ((f["method"] == "namesearch") && (f["q"])) {
-
+    
     header("Name search")
     print "<h1>Name search</h1>"
-    print "<p>Query = <i>" f["q"] "</i>;&#160;&#160;&#160; See layout <a href=\"#key\">key</a></p>"
-
+    print "<p>Query = <i>" f["q"] "</i>;&#160;&#160;&#160; "    \
+      "See layout <a href=\"#key\">key</a></p>"
+    
+    # Read names
     FS = "|"
-  
-    while ((getline < "data") > 0) {
+    while ((getline < "names") > 0) {
       Name[$1] = $3
       Canon[$1] = $4
       Ortho[$1] = $5
@@ -31,49 +32,63 @@ BEGIN{
       Inak[$1] = $8
     }
 
-    # print "<pre>"
     PROCINFO["sorted_in"] = "@val_str_asc"
+    # consider each name
     for (i in Name)
+      # if the name matches and is a canonical name
       if ((Name[i] ~ f["q"]) && Canon[i]) {
-        o = a = so = ag = sg = ""
+        o = a = so = ag = ""
 
-        # <subset> to those ortho-to names
+        # consider the name that match the canon name
         if (isarray(Ortho_r[i]))
           for (j in Ortho_r[i]) {
-            
-            if (i != Ortho_r[i][j]) {
+
+            # cases other than self-matches...
+            if (i != Ortho_r[i][j])
+              # create an list of matches
               o = o "{" id2url(Ortho_r[i][j]) "}, "
-              if (Ortho_r[i][j] ~ /^gbif/)
-                ag = Ortho_r[i][j]
-            }
+
+            # is one of the matches a gbif name?
+            if (Ortho_r[i][j] ~ /^gbif/)
+              ag = 1
+
+            # is the match an accepted name? Add source to list
             if (Accepted[Ortho_r[i][j]])
               a = a toupper(gensub(/-.*$/,"","G",Ortho_r[i][j])) ", "
 
+            # Now look at synonyms
             if (Canon[Ortho[Syn[Ortho_r[i][j]]]]) {
-              s[Ortho[Syn[Ortho_r[i][j]]]] = \
+              # create a list of non-canonical synonyms
+              s[Ortho[Syn[Ortho_r[i][j]]]] =                        \
                 s[Ortho[Syn[Ortho_r[i][j]]]] "|" Syn[Ortho_r[i][j]]
+
+              # does the accepted name have a gbif match?
               if (Syn[Ortho_r[i][j]] ~ /^gbif/)
-                sg = Syn[Ortho_r[i][j]]
+                sg[Ortho[Syn[Ortho_r[i][j]]]] = 1
             }
           }
         
         gsub(/, $/,"",o)
         gsub(/, $/,"",a)
 
+        # process synonyms
         if(isarray(s))
           for (z in s) {
-            so = so "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>" Name[z] "</b> {" id2url(z) "} according to "
+            so = so "<div style=\"padding-left:40px;text-indent:-20px;\">"\
+              "<i>SYNONYM</i> of <b>" Name[z] "</b> {" id2url(z) \
+              "} according to "
             gsub(/^\|/,"",s[z])
             split(s[z], s2, "|")
             for (x in s2)
-              so = so toupper(gensub(/-.*$/,"","G", s2[x])) " ← {"    \
+              so = so toupper(gensub(/-.*$/,"","G", s2[x])) " ← {"  \
                 id2url(s2[x]) "}, "
             gsub(/, $/,"",so)
-            if (sg)
-              so = so " <a href=\"do?method=occ&id=" z "&taxon=" urlencode(Name[z]) "&occtype=target\">🗺</a>"
+            if (sg[z])
+              so = so " <a href=\"do?method=occ&id=" z "\">🗺</a>"
             so = so "</div>"
           }
         delete s
+        delete sg
         
         if (o || a)
           print                                                         \
@@ -81,7 +96,7 @@ BEGIN{
             "<div style=\"padding-left:20px;text-indent:-20px;\">"      \
             "<b>" Name[i] "</b> {" id2url(i) "}"                        \
             ((o) ? (" ← " o ) : "")                                     \
-            ((ag) ? (" <a href=\"do?method=occ&id=" i "&taxon=" urlencode(Name[i]) "&occtype=source\">🗺</a>") : "") \
+            ((ag) ? (" <a href=\"do?method=occ&id=" i "\">🗺</a>") : "") \
             "</div>"                                                    \
             ((a) ? ("<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by " a "</div>") : "") \
             so                                                          \
@@ -91,29 +106,19 @@ BEGIN{
 
     print "<hr/>"
     print "<p><i>Key to layout of each entry:</i><br/>"
-    print "<div style=\"padding-left:40px;text-indent:-40px;\"><b>Name (as matched to a canonical name)</b> { canonical identifier } ← { matching name identifier }, ... 🗺 (= link to occurences determined directly to this name)</div>"
+    print "<div style=\"padding-left:40px;text-indent:-40px;\"><b>Name (as matched to a canonical name)</b> { canonical identifier } ← { matching name identifier }, ... 🗺 (= link to occurences of this name and synonyms)</div>"
     print "<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by SOURCE1, SOURCE2... </div>" 
-    print "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>Name</b> { canonical identifier } according to SOURCE1 { identifier of matching accepted name }, ... 🗺 (= link to occurences determined to this accepted name and to names that are synonyms of this accepted name)</div>" 
+    prxint "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>Name</b> { canonical identifier } according to SOURCE1 { identifier of matching accepted name }, ... 🗺 (= link to occurences of this name and synonyms)</div>" 
     
     footer()
   
-    # PROCINFO["sorted_in"] = "@val_str_asc"
-    # for (i in Name)
-    #   if ((Name[i] ~ ARGV[1]) && (Syn[i] || Accepted[i]))
-    #     print                                 \
-    #       ((Canon[i]) ? "* " : "  ")                                  \
-    #       Name[i] " [" i "]"                                          \
-    #       ((Ortho[i] && !Canon[i]) ? ("\n    → " Name[Ortho[i]] " [" Ortho[i] "]") : "") \
-    #       ((Syn[i]) ? ("\n    syn of " Name[Syn[i]] " [" Syn[i] "]") : "") \
-    #       ((Accepted[i]) ? ("\n    ACCEPTED by "                      \
-    #                         toupper(gensub(/-.*$/,"","G", i))) : "" ) \
-    #       "\n" 
   }
 
   if ((f["method"] == "occ") && (f["id"])) {
-    
+
+    # Read taxonomy file
     FS = "|"
-    while ((getline < "data") > 0) {
+    while ((getline < "names") > 0) {
       Name[$1] = $3
       Ortho[$1] = $5
       Ortho_r[$5][++n_Ortho_r[$5]] = $1
@@ -161,14 +166,14 @@ BEGIN{
     for (i in cano)
       print Name[cano[i]] " {" cano[i] "} ← {" i "}, a synonym according to " \
         srce[i]
+    cano[tid] = f["id"]
     
-    # FS = "|"
-    # OFS = " : "
-    # if (f["occtype"] == "source") {
-    #   while ((getline < "occ") > 0)
-    #     if ($4 == f["id"])
-    #       print $1, $2, $3, $5
-    # }
+    FS = "|"
+    OFS = " : "
+    while ((getline < "occ") > 0)
+      if (cano[$4])
+        print $1, $2, $3, $5, cano[$4]
+    # test with salix bebbiana Sarg.
 
     # here... tricky... what are we exactly looking up? GBIF synonyms or AKF syns?
     # else if (f["occtype"] == "target") {
