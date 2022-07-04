@@ -6,7 +6,7 @@ BEGIN{
   
   read_query()
 
-  if ((F["method"] == "namesearch") && (F["q"]))
+  if ((F["method"] == "search") && (F["q"]))
     namesearch()
   else if ((F["method"] == "occ") && (F["id"]))
     map()
@@ -102,7 +102,7 @@ function namesearch(     i, j, z, o, a, so, ag, sg, s, s2) {
           "</p>"
     }
 
-  print "<hr/>"
+  print "<hr style=\"margin-top:50px;\"/>"
   print "<p><i>Key to layout of each entry:</i><br/>"
   print "<div style=\"padding-left:40px;text-indent:-40px;\">"          \
     "<b>Name (as matched to a canonical name)</b> { canonical identifier } " \
@@ -112,7 +112,7 @@ function namesearch(     i, j, z, o, a, so, ag, sg, s, s2) {
     "SOURCE1, SOURCE2... </div>" 
   print "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i>" \
     " of <b>Name</b> { canonical identifier } according to SOURCE1 "    \
-    "{ identifier of matching accepted name }, ... 🗺 (= link to "       \
+    "← { identifier of matching accepted name }, ... 🗺 (= link to "       \
     "occurences of this name and synonyms)</div>" 
   
   footer()
@@ -124,29 +124,32 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
 
   for (i in Name)
     if (i == F["id"])
+      # find the ortho matches
       if (isarray(Ortho_r[i]))
         for (j in Ortho_r[i]) {
+          # store the gbif ortho match
           if (Ortho_r[i][j] ~ /^gbif/) {
             tid = Ortho_r[i][j]
             tname = Name[i]
           }
-          # print i, j, Ortho_r[i][j], Name[Ortho_r[i][j]]
+          # are there synonyms for this name?
           if (isarray(Syn_r[Ortho_r[i][j]]))
             for (k in Syn_r[Ortho_r[i][j]]) {
-              ssyn[i,j,k] = toupper(gensub(/-.*$/,"","G", Syn_r[Ortho_r[i][j]][k]))
-              # print i, j, k, Syn_r[Ortho_r[i][j]][k], Name[Syn_r[Ortho_r[i][j]][k]]
-                
+              # create marker for the source of the synonym
+              ssyn[i,j,k] = \
+                toupper(gensub(/-.*$/,"","G", Syn_r[Ortho_r[i][j]][k]))
+              # for the synonym, is there a match to canonical?
               if (isarray(Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]]))
-                for (l in Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]]) {
-                  # print i, j, k, l, Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l], Name[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]]
+                for (l in Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]])
+                  # are any of those matches to a gbif name?
                   if (Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l] ~ /^gbif/) {
                     cano[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] =  \
                       Ortho[Syn_r[Ortho_r[i][j]][k]]
+                    # transfer the synonym source
                     srce[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] =  \
                       srce[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]]  \
                       ssyn[i,j,k] ", "
                   }
-                }
             }
         }
 
@@ -174,6 +177,19 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
   footer()
 }
 
+function default_page() {
+  header("Alaska plant names")
+  print "<h1>Alaska plant names</h1>"
+  print "<form action=\"do\">"
+  print "<table>"
+  print "<tr> <td>Search scientific name:</td> <td></td> </tr>" 
+  print "<tr> <td><input type=\"hidden\" name=\"method\" value=\"search\"/>" \
+    "<input type=\"text\" name=\"q\"/></td>"                            \
+    "<td><input type=\"submit\" value=\"Submit\"/></td></tr></table>"
+  print "</form>"
+  footer()
+}
+
 # ---------- I/O functions -------------------------------------------------
 
 function read_query(   qs, q, qp) {
@@ -185,7 +201,7 @@ function read_query(   qs, q, qp) {
   }
 }
 
-function read_names() {
+function read_names(   n_Ortho_r, n_Syn_r) {
 
   FS = "|"
   while ((getline < "names") > 0) {
@@ -246,9 +262,11 @@ function id2url(id  , i) {
   for (i in Url)
     # special rule for hulten, temporary
     if ((id ~ ("^" i)) && (id !~ /^hulten[0-9-]+[sb]/))
-      id = "<a target=\"_blank\" href=\"" gensub(("^" i "-"), Url[i], "G", id) "\">" \
-        id "</a>"
-  return id
+      return "<a target=\"_blank\" href=\""     \
+        gensub(("^" i "-"), Url[i], "G", id)    \
+        "\">" gensub(/-.*$/,"","G",id) "</a>"
+  
+  return gensub(/-.*$/,"","G",id)
 }
 
 # ---------- Helper functions ----------------------------------------------
