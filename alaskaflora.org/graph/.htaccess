@@ -6,7 +6,11 @@ Options +ExecCGI -Indexes
 
 DirectoryIndex do
 
-<FilesMatch "^data$">
+<FilesMatch "^names$">
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "^occ$">
   Deny from all
 </FilesMatch>
 
