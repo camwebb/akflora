@@ -4,198 +4,203 @@ BEGIN{
 
   init()
   
-  # READ QUERY STRING
+  read_query()
+
+  if ((F["method"] == "namesearch") && (F["q"]))
+    namesearch()
+  else if ((F["method"] == "occ") && (F["id"]))
+    map()
+  else
+    default_page()
+}
+
+# ---------- Methods functions ---------------------------------------------
+
+function namesearch(     i, j, z, o, a, so, ag, sg, s, s2) {
+
+  read_names()
+  
+  header("Name search")
+  print "<h1>Name search</h1>"
+  print "<p>Query = <i>" F["q"] "</i>;&#160;&#160;&#160; "  \
+    "See layout <a href=\"#key\">key</a></p>"
+  
+
+  PROCINFO["sorted_in"] = "@val_str_asc"
+  # consider each name
+  for (i in Name)
+    # if the name matches and is a canonical name
+    if ((Name[i] ~ F["q"]) && Canon[i]) {
+      o = a = so = ag = ""
+      
+      # consider the name that match the canon name
+      if (isarray(Ortho_r[i]))
+        for (j in Ortho_r[i]) {
+
+          # cases other than self-matches...
+          if (i != Ortho_r[i][j])
+            # create an list of matches
+            o = o "{" id2url(Ortho_r[i][j]) "}, "
+
+          # is one of the matches a gbif name?
+          if (Ortho_r[i][j] ~ /^gbif/)
+            ag = 1
+
+          # is the match an accepted name? Add source to list
+          if (Accepted[Ortho_r[i][j]])
+            a = a toupper(gensub(/-.*$/,"","G",Ortho_r[i][j])) ", "
+
+          # Now look at synonyms
+          if (Canon[Ortho[Syn[Ortho_r[i][j]]]]) {
+            # create a list of non-canonical synonyms
+            s[Ortho[Syn[Ortho_r[i][j]]]] =                          \
+              s[Ortho[Syn[Ortho_r[i][j]]]] "|" Syn[Ortho_r[i][j]]
+            
+            # does the accepted name have a gbif match?
+            if (Syn[Ortho_r[i][j]] ~ /^gbif/)
+              sg[Ortho[Syn[Ortho_r[i][j]]]] = 1
+          }
+        }
+        
+      gsub(/, $/,"",o)
+      gsub(/, $/,"",a)
+
+      # process synonyms
+      if(isarray(s))
+        for (z in s) {
+          # create first part of synonym output string
+          so = so "<div style=\"padding-left:40px;text-indent:-20px;\">" \
+            "<i>SYNONYM</i> of <b>" Name[z] "</b> {" id2url(z)          \
+            "} according to "
+          gsub(/^\|/,"",s[z])
+          split(s[z], s2, "|")
+          # add the sources that agree with this synonym
+          for (x in s2)
+            so = so toupper(gensub(/-.*$/,"","G", s2[x])) " ← {"    \
+              id2url(s2[x]) "}, "
+          gsub(/, $/,"",so)
+          # and a map if there is a gbif match
+          if (sg[z])
+            so = so " <a href=\"do?method=occ&id=" z "\">🗺</a>"
+          so = so "</div>"
+        }
+      delete s
+      delete sg
+
+      # if there is either a match to something else, or the name is accepted
+      if (o || a)
+        print                                                           \
+          "<p>"                                                         \
+          "<div style=\"padding-left:20px;text-indent:-20px;\">"        \
+          "<b>" Name[i] "</b> {" id2url(i) "}"                          \
+          ((o) ? (" ← " o ) : "")                                       \
+          ((ag) ? (" <a href=\"do?method=occ&id=" i "\">🗺</a>") : "")   \
+          "</div>"                                                      \
+          ((a) ? ("<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by " \
+                  a "</div>") : "")                                     \
+          so                                                            \
+          "</p>"
+    }
+
+  print "<hr/>"
+  print "<p><i>Key to layout of each entry:</i><br/>"
+  print "<div style=\"padding-left:40px;text-indent:-40px;\">"          \
+    "<b>Name (as matched to a canonical name)</b> { canonical identifier } " \
+    "← { matching name identifier }, ... 🗺 (= link to occurences of "   \
+    "this name and synonyms)</div>"
+  print "<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by " \
+    "SOURCE1, SOURCE2... </div>" 
+  print "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i>" \
+    " of <b>Name</b> { canonical identifier } according to SOURCE1 "    \
+    "{ identifier of matching accepted name }, ... 🗺 (= link to "       \
+    "occurences of this name and synonyms)</div>" 
+  
+  footer()
+}
+
+function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
+
+  read_names()
+
+  for (i in Name)
+    if (i == F["id"])
+      if (isarray(Ortho_r[i]))
+        for (j in Ortho_r[i]) {
+          if (Ortho_r[i][j] ~ /^gbif/) {
+            tid = Ortho_r[i][j]
+            tname = Name[i]
+          }
+          # print i, j, Ortho_r[i][j], Name[Ortho_r[i][j]]
+          if (isarray(Syn_r[Ortho_r[i][j]]))
+            for (k in Syn_r[Ortho_r[i][j]]) {
+              ssyn[i,j,k] = toupper(gensub(/-.*$/,"","G", Syn_r[Ortho_r[i][j]][k]))
+              # print i, j, k, Syn_r[Ortho_r[i][j]][k], Name[Syn_r[Ortho_r[i][j]][k]]
+                
+              if (isarray(Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]]))
+                for (l in Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]]) {
+                  # print i, j, k, l, Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l], Name[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]]
+                  if (Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l] ~ /^gbif/) {
+                    cano[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] =  \
+                      Ortho[Syn_r[Ortho_r[i][j]][k]]
+                    srce[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] =  \
+                      srce[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]]  \
+                      ssyn[i,j,k] ", "
+                  }
+                }
+            }
+        }
+
+  for (i in srce)
+    gsub(/, $/,"",srce[i])
+    
+  header("Map")
+  print "<h1>Map of " tname "</h1>"
+  print "<p>" tname " {" F["id"] "} ← {" tid "}</p>"
+  print "<pre>"
+
+  for (i in cano)
+    print Name[cano[i]] " {" cano[i] "} ← {" i "}, a synonym according to " \
+      srce[i]
+  cano[tid] = F["id"]
+    
+  FS = "|"
+  OFS = " : "
+  while ((getline < "occ") > 0)
+    if (cano[$4])
+      print $1, $2, $3, $5, cano[$4]
+  # test with salix bebbiana Sarg.
+
+  print "</pre>"
+  footer()
+}
+
+# ---------- I/O functions -------------------------------------------------
+
+function read_query(   qs, q, qp) {
+
   split(ENVIRON["QUERY_STRING"], qs, "&")
   for (q in qs) {
     split(qs[q], qp, "=")
-    f[qp[1]] = substr(urldecode(qp[2]),1,100)
-  }
-
-  # SEARCH
-  if ((f["method"] == "namesearch") && (f["q"])) {
-    
-    header("Name search")
-    print "<h1>Name search</h1>"
-    print "<p>Query = <i>" f["q"] "</i>;&#160;&#160;&#160; "    \
-      "See layout <a href=\"#key\">key</a></p>"
-    
-    # Read names
-    FS = "|"
-    while ((getline < "names") > 0) {
-      Name[$1] = $3
-      Canon[$1] = $4
-      Ortho[$1] = $5
-      Ortho_r[$5][++n_Ortho_r[$5]] = $1
-      Accepted[$1]  = $6
-      Syn[$1]  = $7
-      Syn_r[$7][++n_Syn_r[$7]] = $1
-      Inak[$1] = $8
-    }
-
-    PROCINFO["sorted_in"] = "@val_str_asc"
-    # consider each name
-    for (i in Name)
-      # if the name matches and is a canonical name
-      if ((Name[i] ~ f["q"]) && Canon[i]) {
-        o = a = so = ag = ""
-
-        # consider the name that match the canon name
-        if (isarray(Ortho_r[i]))
-          for (j in Ortho_r[i]) {
-
-            # cases other than self-matches...
-            if (i != Ortho_r[i][j])
-              # create an list of matches
-              o = o "{" id2url(Ortho_r[i][j]) "}, "
-
-            # is one of the matches a gbif name?
-            if (Ortho_r[i][j] ~ /^gbif/)
-              ag = 1
-
-            # is the match an accepted name? Add source to list
-            if (Accepted[Ortho_r[i][j]])
-              a = a toupper(gensub(/-.*$/,"","G",Ortho_r[i][j])) ", "
-
-            # Now look at synonyms
-            if (Canon[Ortho[Syn[Ortho_r[i][j]]]]) {
-              # create a list of non-canonical synonyms
-              s[Ortho[Syn[Ortho_r[i][j]]]] =                        \
-                s[Ortho[Syn[Ortho_r[i][j]]]] "|" Syn[Ortho_r[i][j]]
-
-              # does the accepted name have a gbif match?
-              if (Syn[Ortho_r[i][j]] ~ /^gbif/)
-                sg[Ortho[Syn[Ortho_r[i][j]]]] = 1
-            }
-          }
-        
-        gsub(/, $/,"",o)
-        gsub(/, $/,"",a)
-
-        # process synonyms
-        if(isarray(s))
-          for (z in s) {
-            so = so "<div style=\"padding-left:40px;text-indent:-20px;\">"\
-              "<i>SYNONYM</i> of <b>" Name[z] "</b> {" id2url(z) \
-              "} according to "
-            gsub(/^\|/,"",s[z])
-            split(s[z], s2, "|")
-            for (x in s2)
-              so = so toupper(gensub(/-.*$/,"","G", s2[x])) " ← {"  \
-                id2url(s2[x]) "}, "
-            gsub(/, $/,"",so)
-            if (sg[z])
-              so = so " <a href=\"do?method=occ&id=" z "\">🗺</a>"
-            so = so "</div>"
-          }
-        delete s
-        delete sg
-        
-        if (o || a)
-          print                                                         \
-            "<p>"                                                       \
-            "<div style=\"padding-left:20px;text-indent:-20px;\">"      \
-            "<b>" Name[i] "</b> {" id2url(i) "}"                        \
-            ((o) ? (" ← " o ) : "")                                     \
-            ((ag) ? (" <a href=\"do?method=occ&id=" i "\">🗺</a>") : "") \
-            "</div>"                                                    \
-            ((a) ? ("<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by " a "</div>") : "") \
-            so                                                          \
-            "</p>"
-      }
-    #print "</pre>"
-
-    print "<hr/>"
-    print "<p><i>Key to layout of each entry:</i><br/>"
-    print "<div style=\"padding-left:40px;text-indent:-40px;\"><b>Name (as matched to a canonical name)</b> { canonical identifier } ← { matching name identifier }, ... 🗺 (= link to occurences of this name and synonyms)</div>"
-    print "<div style=\"padding-left:20px;\"><i>ACCEPTED</i> by SOURCE1, SOURCE2... </div>" 
-    prxint "<div style=\"padding-left:40px;text-indent:-20px;\"><i>SYNONYM</i> of <b>Name</b> { canonical identifier } according to SOURCE1 { identifier of matching accepted name }, ... 🗺 (= link to occurences of this name and synonyms)</div>" 
-    
-    footer()
-  
-  }
-
-  if ((f["method"] == "occ") && (f["id"])) {
-
-    # Read taxonomy file
-    FS = "|"
-    while ((getline < "names") > 0) {
-      Name[$1] = $3
-      Ortho[$1] = $5
-      Ortho_r[$5][++n_Ortho_r[$5]] = $1
-      Syn[$1]  = $7
-      Syn_r[$7][++n_Syn_r[$7]] = $1
-    }
-    
-
-    for (i in Name)
-      if (i == f["id"])
-        if (isarray(Ortho_r[i]))
-          for (j in Ortho_r[i]) {
-            if (Ortho_r[i][j] ~ /^gbif/) {
-              tid = Ortho_r[i][j]
-              tname = Name[i]
-            }
-            # print i, j, Ortho_r[i][j], Name[Ortho_r[i][j]]
-            if (isarray(Syn_r[Ortho_r[i][j]]))
-              for (k in Syn_r[Ortho_r[i][j]]) {
-                ssyn[i,j,k] = toupper(gensub(/-.*$/,"","G", Syn_r[Ortho_r[i][j]][k]))
-                # print i, j, k, Syn_r[Ortho_r[i][j]][k], Name[Syn_r[Ortho_r[i][j]][k]]
-                
-                if (isarray(Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]]))
-                  for (l in Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]]) {
-                    # print i, j, k, l, Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l], Name[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]]
-                    if (Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l] ~ /^gbif/) {
-                      cano[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] = \
-                        Ortho[Syn_r[Ortho_r[i][j]][k]]
-                      srce[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] = \
-                        srce[Ortho_r[Ortho[Syn_r[Ortho_r[i][j]][k]]][l]] \
-                        ssyn[i,j,k] ", "
-                    }
-                  }
-              }
-          }
-
-    for (i in srce)
-      gsub(/, $/,"",srce[i])
-    
-    header("Map")
-    print "<h1>Map of " tname "</h1>"
-    print "<p>" tname " {" f["id"] "} ← {" tid "}</p>"
-    print "<pre>"
-
-    for (i in cano)
-      print Name[cano[i]] " {" cano[i] "} ← {" i "}, a synonym according to " \
-        srce[i]
-    cano[tid] = f["id"]
-    
-    FS = "|"
-    OFS = " : "
-    while ((getline < "occ") > 0)
-      if (cano[$4])
-        print $1, $2, $3, $5, cano[$4]
-    # test with salix bebbiana Sarg.
-
-    # here... tricky... what are we exactly looking up? GBIF synonyms or AKF syns?
-    # else if (f["occtype"] == "target") {
-    #   while ((getline < "data") > 0)
-    #     if ($4 == f["id"])
-    #       print $1, $2, $3, $5
-    # }
-      
-    print "</pre>"
-    footer()
+    F[qp[1]] = substr(urldecode(qp[2]),1,100)
   }
 }
 
-function id2url(id  , i) {
-  for (i in Url)
-    # special rule for hulten, temporary
-    if ((id ~ ("^" i)) && (id !~ /^hulten[0-9-]+[sb]/))
-      id = "<a target=\"_blank\" href=\"" gensub(("^" i "-"), Url[i], "G", id) "\">" \
-        id "</a>"
-  return id
+function read_names() {
+
+  FS = "|"
+  while ((getline < "names") > 0) {
+    Name[$1] = $3
+    Canon[$1] = $4
+    Ortho[$1] = $5
+    Ortho_r[$5][++n_Ortho_r[$5]] = $1
+    Accepted[$1]  = $6
+    Syn[$1]  = $7
+    Syn_r[$7][++n_Syn_r[$7]] = $1
+    Inak[$1] = $8
+  }
 }
 
+# ---------- HTML functions ------------------------------------------------
 
 function header(title) {
   # version history: [chars app] -> [tcm app] -> [hulten] -> [qm] -> here
@@ -237,13 +242,24 @@ function footer() {
   print "</body>\n</html>";
 }
 
+function id2url(id  , i) {
+  for (i in Url)
+    # special rule for hulten, temporary
+    if ((id ~ ("^" i)) && (id !~ /^hulten[0-9-]+[sb]/))
+      id = "<a target=\"_blank\" href=\"" gensub(("^" i "-"), Url[i], "G", id) "\">" \
+        id "</a>"
+  return id
+}
+
+# ---------- Helper functions ----------------------------------------------
+
 function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
 # decode urlencoded string
 # urldecode function from Heiner Steven
 #   http://www.shelldorado.com/scripts/cmds/urldecode
 # version 1
 	
-  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e F", hex, " ")
   for (i=0; i<16; i++) hextab[hex[i+1]] = i
   
   decoded = ""
@@ -300,30 +316,4 @@ function init(   i, url1, url2, url3) {
     split(url2[i], url3,"^")
     Url[url3[1]] = url3[2]
   }
-}
-
-function urlencode(str,     hextab, i, ord, encoded, c, lo, hi ) {
-  # Title      :  urlencode - encode URL data
-  # Author     :  Heiner Steven (heiner.steven@odn.de)
-  # Date       :  2000-03-15
-
-  split ("1 2 3 4 5 6 7 8 9 A B C D E F", hextab, " ")
-  hextab [0] = 0
-  for ( i=1; i<=255; ++i ) ord [ sprintf ("%c", i) "" ] = i + 0
-
-  encoded = ""
-  for ( i=1; i<=length (str); ++i ) {
-    c = substr (str, i, 1)
-    if ( c ~ /[a-zA-Z0-9.-]/ ) {
-      encoded = encoded c		# safe character
-    } else if ( c == " " ) {
-      encoded = encoded "+"	# special handling
-    } else {
-      # unsafe character, encode it as a two-digit hex-number
-      lo = ord [c] % 16
-      hi = int (ord [c] / 16);
-      encoded = encoded "%" hextab [hi] hextab [lo]
-    }
-  }
-  return encoded
 }
