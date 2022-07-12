@@ -103,7 +103,7 @@ function namesearch(     i, j, z, o, a, so, ag, sg, s, s2) {
     }
 
   print "<hr style=\"margin-top:50px;\"/>"
-  print "<p><i>Key to layout of each entry:</i><br/>"
+  print "<p><i>Key to layout of each entry:</i><br/><a name=\"key\"></a>"
   print "<div style=\"padding-left:40px;text-indent:-40px;\">"          \
     "<b>Name (as matched to a canonical name)</b> { canonical identifier } " \
     "← { matching name identifier }, ... 🗺 (= link to occurences of "   \
