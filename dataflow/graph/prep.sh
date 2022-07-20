@@ -11,6 +11,9 @@ echo "** 1. Loading Canonical list **"
 cp ../canonical/canon infiles/canon_names
 # cp ../G2F/g2f .
 
+# fix!
+sed -i 's/tro-50108303/trop-50108303/g' infiles/canon_names
+
 # 2. ALA ----------------------------------------------------------------
 
 echo "** 2. Loading ALA **"
@@ -219,6 +222,28 @@ gawk 'BEGIN{FS=OFS="|"} { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/) \
      ../GBIF/gbif2canon_match > infiles/gbif_ortho
 gawk 'BEGIN{FS=OFS="|"}{print $1, ""}' ../GBIF/names.2 > infiles/gbif_ak
 cp ../GBIF/occ infiles/gbif_occ
+
+# ---------------------------------------------------------------
+
+echo "** 8. Loading TCM **"
+
+gawk 'BEGIN{FS=OFS="|"} NR > 1 {gsub(/NULL/,"",$0); print "tcm-n" $1, "", $4, "", $5, gensub(/ssp/,"subsp","G",$13), $7, $8}' \
+     ../tcm/name > infiles/tcm_names
+
+gawk 'BEGIN{FS=OFS="|"} NR > 1 { if ($3 !~ /^(no_match|auto_irank|manual\?\?)$/)      {print $1, $2, $3} else {print $1, $1, "self"}}' \
+     ../tcm/tcm2canon_match | sed 's/tcm-/tcm-n/g' > infiles/tcm_ortho
+
+gawk 'BEGIN{FS=OFS="|"} NR > 1 {
+  gsub(/NULL/,"",$0)
+  print "tcm-p" $1, $4 " (" $5 ") " $6 ". " (($7) ? ($7 ".") : "") (($8) ? (" Vol. " $8 ".") : "") (($9) ? (" Pp. " $9 ".") : "") (($10) ? (" Pub. " $10 ".") : "") (($12) ? (" DOI:" $12 ".") : "") (($13) ? (" URL: " $13 ".") : "")}' \
+   ../tcm/pub > infiles/tcm_pub
+
+gawk 'BEGIN{FS=OFS="|"} NR > 1 {gsub(/NULL/,"",$0); print "tcm-tc" $1, "tcm-n" $3, "tcm-p" $4}' \
+     ../tcm/tc > infiles/tcm_tc
+
+gawk 'BEGIN{FS=OFS="|"} NR > 1 {gsub(/NULL/,"",$0); print "tcm-tcm" $1, "tcm-tc" $2, $12, "tcm-tc" $6, "tcm-p" $7, $9}' \
+     ../tcm/tcm > infiles/tcm_tcm
+
 
 exit
 

@@ -1,0 +1,21 @@
+# find all congruent TCs
+
+# PREFIX : <x:>
+PREFIX :  <http://alaskaflora.org/sw/tmp.rdf#> 
+
+SELECT ?name1 ?name2
+
+WHERE {
+
+  ?tcm :rel "is congruent with" .
+  ?tcm :from ?tc1 .
+  ?tcm :to ?tc2 .
+  ?tc1 :hasName ?n1 .
+  ?n1 :ortho ?no1 .
+  ?no1 :name ?name1 .
+  ?tc2 :hasName ?n2 .
+  ?n2 :ortho ?no2 .
+  ?no2 :name ?name2 .
+}
+ORDER BY ?name1
+

@@ -84,7 +84,9 @@ digraph structure {
     WP [label="World Plants\n(Hassler 2018)",color=invis];
 
     PL -> WFO;
+    PL -> POWO;
     WFO [label="World Flora Online"];
+    POWO [label="Plants of the World Online"];
     
     COL [label="Catalogue of Life"];
     ITIS -> COL;
