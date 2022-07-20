@@ -93,6 +93,7 @@ function read_data(what, files,
         delete Name[$2]
         fail("ortho id '" $2 "' in " what " ortho does not exist")
       }
+      OrthType[$1] = $3
     }
     if (ln != lo)
       fail("lines (" lo ") not equal to names lines (" ln ")")
@@ -188,7 +189,9 @@ function write_names(   i, out) {
   if (URI)
     print                                                               \
       "@prefix     : <http://alaskaflora.org/sw/tmp.rdf#> .\n"            \
+      "@prefix    t: <http://alaskaflora.org/sw/terms.rdf#> .\n"            \
       "@prefix   dc: <http://purl.org/dc/elements/1.1/> .\n" \
+      "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n" \
       "@prefix gbif: <https://www.gbif.org/species/> .\n"               \
       "@prefix  gbo: <https://www.gbif.org/occurrence/> .\n"                  \
       "@prefix ipni: <https://www.ipni.org/n/> .\n"                     \
@@ -204,14 +207,14 @@ function write_names(   i, out) {
     print "@prefix : <x:> .\n"
   for (i in Name) {
     out = prefix(i) "\n"                                                \
-      "  :name \"" Name[i] "\" ;"                                       \
-      ((Canon[i]) ? "\n  :canon 1 ;" : "")                              \
-      ((Syn[i])   ? "\n  :syn [ :accto :"                               \
-       toupper(gensub(/-.*$/,"","G",i)) " ; :of " prefix(Syn[i]) " ] ;" : "") \
-      ((Accepted[i]) ? "\n  :accepted [ :accto :"                       \
+      "  dc:title \"" Name[i] "\" ;"                                       \
+      ((Canon[i]) ? "\n  t:canon 1 ;" : "")                              \
+      ((Syn[i])   ? "\n  t:syn [ t:accto :"                               \
+       toupper(gensub(/-.*$/,"","G",i)) " ; t:synof " prefix(Syn[i]) " ] ;" : "") \
+      ((Accepted[i]) ? "\n  t:accepted [ t:accto :"                       \
        toupper(gensub(/-.*$/,"","G",i)) " ] ;" : "")                    \
-      ((Ortho[i]) ? "\n  :ortho " prefix(Ortho[i]) " ;" : "")          \
-      ((Inak[i]) ? "\n  :inak [ :accto :"                               \
+      ((Ortho[i]) ? "\n  t:match [ t:matchto " prefix(Ortho[i]) " ; t:matchtype \"" OrthType[i] "\" ] ;": "") \
+      ((Inak[i]) ? "\n  t:inak [ t:accto :"                               \
        toupper(gensub(/-.*$/,"","G",i)) " ] ;" : "")                   
     gsub(/;$/,".\n",out)
     print out
@@ -275,10 +278,10 @@ function write_names_cypher(   i, out, lab, src, node, syn, ortho) {
 function write_occ(   i, out) {
   for (i in OccType) {
     out = prefix(i) "\n"                                                \
-      "  :occtype \"" OccType[i] "\" ;"                                 \
-      "\n  :det " prefix(OccDet[i]) " ;"                                \
-      "\n  :coord \"" OccCoord[i] "\" ;"                                \
-      ((OccGUID[i]) ? "\n  :guid \"" OccGUID[i] "\" ;" : "")
+      "  t:occtype \"" OccType[i] "\" ;"                                 \
+      "\n  t:det " prefix(OccDet[i]) " ;"                                \
+      "\n  t:coord \"" OccCoord[i] "\" ;"                                \
+      ((OccGUID[i]) ? "\n  t:guid \"" OccGUID[i] "\" ;" : "")
     gsub(/;$/,".\n",out)
     print out
   }
@@ -290,16 +293,16 @@ function write_tcm(   i, out) {
 
   for (i in TcName)
     print prefix(i) "\n"                     \
-      "  :hasName " prefix(TcName[i]) " ;\n"       \
-      "  :accordingTo " prefix(TcPub[i]) " .\n" \
+      "  t:name " prefix(TcName[i]) " ;\n"       \
+      "  t:accto " prefix(TcPub[i]) " .\n" \
 
   for (i in TcmTc1) {
     out = prefix(i) "\n"                        \
-      "  :from " prefix(TcmTc1[i]) " ;\n"       \
-      "  :to   " prefix(TcmTc2[i]) " ;\n"       \
-      "  :rel  \"" prefix(TcmRel[i]) "\" ;\n"       \
-      "  :accordingTo " prefix(TcmPub[i]) " ;" \
-      ((TcmNote[i]) ? ("\n  :note \"\"\"" gensub(/"/,"'","G",TcmNote[i]) "\"\"\" ;") : "")
+      "  t:tcfrom " prefix(TcmTc1[i]) " ;\n"       \
+      "  t:tcto   " prefix(TcmTc2[i]) " ;\n"       \
+      "  t:tcrel  \"" prefix(TcmRel[i]) "\" ;\n"       \
+      "  t:accto " prefix(TcmPub[i]) " ;" \
+      ((TcmNote[i]) ? ("\n  rdfs:comment \"\"\"" gensub(/"/,"'","G",TcmNote[i]) "\"\"\" ;") : "")
     gsub(/;$/,".\n",out)
     print out
   }
