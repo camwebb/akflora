@@ -241,9 +241,9 @@ function map(     i, j, k, l, tid, tname, ssyn, cano, srce               ) {
 }
 
 function default_page() {
-  header("Alaska plant names")
-  print "<h1>Alaska plant names</h1>"
-  print "<p style=\"width:400px;\">Search for names and their synonyms in key taxonomic resources for Alaskan plants, and view occurrences both by original determination and by accepted name according to different resources.</p>"
+  header("Alaska plant names graph")
+  print "<h1>Alaska plant names graph</h1>"
+  print "<p style=\"width:400px;\">Search for names and their synonyms in key taxonomic resources for Alaskan plants, and view occurrences both by original determination and by accepted name according to different resources. See <a href=\"https://camwebb.info/files/webb2022_bsa.pdf\">this presentation</a> for more information.</p>"
   print "<form action=\"do\">"
   print "<table>"
   print "<tr> <td>Scientific name:</td> <td></td> </tr>" 
@@ -251,6 +251,7 @@ function default_page() {
     "<input type=\"text\" name=\"q\"/></td>"                            \
     "<td><input type=\"submit\" value=\"Submit\"/></td></tr></table>"
   print "</form>"
+  print "<p>[ <a href=\"../\">HOME</a> ]</p>"
   footer()
 }
 
