@@ -141,9 +141,10 @@ BEGIN{
   
   else {
 
-    header("Arctos quick map")
+    header("Alaska flora quick map")
     
-    print "<h1>Arctos quick maps</h1>"
+    print "<h1>Alaska flora quick maps</h1>"
+    print "<p style=\"width:400px;\">Search and compare occurrences of Alaska plant taxa: ALA collections in Arctos, specimen maps in Hultén’s 1968 flora, and iNaturalist observations. Arctos and iNat data last updated 2021-11-06.</p>"
     print "<form action=\"do\">"
     print "<table>"
     print "<tr><td>Search scientific name, family:</td><td></td></tr>" 
@@ -151,7 +152,7 @@ BEGIN{
       "<input type=\"text\" name=\"q\"/></td>"                          \
       "<td><input type=\"submit\" value=\"Submit\"/></td></tr></table>"
     print "</form>"
-    
+    print "<p>[ <a href=\"../\">HOME</a> ]</p>"
     footer()
     
   }
