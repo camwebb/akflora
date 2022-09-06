@@ -1,7 +1,7 @@
 BEGIN{
   FS=","
 }
-{
+NR > 1 {
   i++
   if ($1 ~ /UAMb/)
     coll[i] = "c"
@@ -14,6 +14,8 @@ BEGIN{
     img[i] = "1"
   else
     img[i] ="0"
+  if ($4 ~ /^V?[0-9]+$/)
+    alaac[i] = $4
 }
 END{
   printf "var bc = ["
@@ -35,4 +37,9 @@ END{
   for (j = 1; j < i; j++)
     printf  img[j] ","
   printf img[i] "];\n"
+
+  printf "var alaac = ["
+  for (j = 1; j < i; j++)
+    printf "\"" alaac[j] "\","
+  printf "\"" alaac[i] "\"];\n"
 }

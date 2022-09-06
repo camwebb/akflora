@@ -17,7 +17,7 @@
    Checklist for the Flora of Alaska).
  * Hultén’s Flora of Alaska [digitized](../hulten/)
  * [Alaska flora quick maps](../qm/) web app
- * An [Arctos Webinar](arctos_webinar.html) (2021)
+ * An [Arctos Webinar](https://www.youtube.com/watch?v=1zMgQYwWArI) ([notes](arctos_webinar.html)) (2021)
  * A [presentation](AKDatUM_notes.html) for
    [AKDatUM collaborative](https://akdatum.community.uaf.edu)
  * [Alaska plant names graph](../graph/) web app

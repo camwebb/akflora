@@ -1,10 +1,11 @@
 
 // SELECT guid,
-//   (partdetail::json->>0)::json->>'bc' AS bc ,
-//   REGEXP_REPLACE(imageurl,'.+','1') AS img
-//   FROM flat 
+//    (partdetail::json->>0)::json->>'bc' AS bc ,
+//    REGEXP_REPLACE(imageurl,'.+','1') AS img ,
+//    REGEXP_REPLACE(REGEXP_REPLACE(othercatalognumbers,'^.*ALAAC=',''), ',.*$','')
+//    FROM flat 
 //   WHERE (partdetail::json->>0)::json->>'bc' IS NOT NULL AND
-//   (guid_prefix = 'UAM:Herb' OR guid_prefix = 'UAMb:Herb');
+//    (guid_prefix = 'UAM:Herb' OR guid_prefix = 'UAMb:Herb')
 
 // sounds from mixkit.co
 var audio_noguid = new Audio('fail.wav');
@@ -14,6 +15,7 @@ var audio_img    = new Audio('double.wav');
 function clickPress(event) {
     var found = -1;
     var imagetext = "<br/> NO IMAGE 😐";
+    var alaactext ;
     var c = "";
     if (event.keyCode == 13) {
         for (i = 0 ; i < bc.length; i++) {
@@ -26,12 +28,16 @@ function clickPress(event) {
             if (img[found] == 1) {
                 imagetext = "<br/> IMAGED 🙂";
             }
+            if (alaac[found] != "") {
+                alaactext =  "<br/> ALAAC = " + alaac[found] ;
+            }
             document.getElementById("out").innerHTML = 
                 document.getElementById("box").value + " → " +
                 "<a target=\"_blank\" " +
                 "href=\"https://arctos.database.museum/guid/UAM" +
                 c + ":Herb:" + guid[found] + "\">" +
-                "UAM" + c + ":Herb:" + guid[found] + "</a>" + 
+                "UAM" + c + ":Herb:" + guid[found] + "</a>" +
+                alaactext +
                 imagetext;
             if (img[found] == 1) {
                 audio_img.play();
