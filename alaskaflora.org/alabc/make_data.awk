@@ -14,8 +14,10 @@ NR > 1 {
     img[i] = "1"
   else
     img[i] ="0"
-  if ($4 ~ /^V?[0-9]+$/)
+  if ($4 ~ /^[VLB]?[0-9]+$/)
     alaac[i] = $4
+  else
+    alaac[i] = "N/A"
 }
 END{
   printf "var bc = ["
