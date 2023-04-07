@@ -2,8 +2,11 @@
 // SELECT guid,
 //    (partdetail::json->>0)::json->>'bc' AS bc ,
 //    REGEXP_REPLACE(imageurl,'.+','1') AS img ,
-//    REGEXP_REPLACE(REGEXP_REPLACE(othercatalognumbers,'^.*ALAAC=',''), ',.*$','')
-//    FROM flat 
+//    CASE WHEN othercatalognumbers ~ 'ALAAC'
+//      THEN REGEXP_REPLACE(othercatalognumbers,
+//        '^.*ALAAC=([ABLV]?[0-9]+).*$', '\1')
+//    ELSE NULL END
+// FROM flat 
 //   WHERE (partdetail::json->>0)::json->>'bc' IS NOT NULL AND
 //    (guid_prefix = 'UAM:Herb' OR guid_prefix = 'UAMb:Herb')
 
