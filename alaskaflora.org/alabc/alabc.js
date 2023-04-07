@@ -50,15 +50,14 @@ function clickPress(event) {
             }                
         }
         else {
-            document.getElementById("out").innerHTML = "GUID not found 😦" +
-                "<br/>" + 
-                "<form action=\"https://arctos.database.museum/" +
-                "SpecimenResults.cfm\" method=\"post\" target=\"_blank\">" +
-                "<input type=\"hidden\" name=\"OIDType\" value=\"ALAAC\"/>" +
-                "<input type=\"hidden\" name=\"oidOper\" value=\"IS\"/>" +
-                "<span style=\"font-size: 15px;\">Search by ALAAC: " +
-                "<input type=\"text\" name=\"OIDNum\" size=\"10\"/> " +
-                "<input type=\"submit\" value=\"Search\"/></span></form>" ;
+            document.getElementById("out").innerHTML = "GUID not found 😦" ;
+                //+ "<br/>" + "<form action=\"https://arctos.database.museum/" +
+                //"SpecimenResults.cfm\" method=\"post\" target=\"_blank\">" +
+                //"<input type=\"hidden\" name=\"OIDType\" value=\"ALAAC\"/>" +
+                //"<input type=\"hidden\" name=\"oidOper\" value=\"IS\"/>" +
+                //"<span style=\"font-size: 15px;\">Search by ALAAC: " +
+                //"<input type=\"text\" name=\"OIDNum\" size=\"10\"/> " +
+                //"<input type=\"submit\" value=\"Search\"/></span></form>" ;
             audio_noguid.play();
         }
         document.getElementById("box").value = "";
