@@ -45,9 +45,30 @@ BEGIN{
   print "<p style=\"border: thin silver solid; padding:20px; "    \
     "font-family:monospace;width:500px;\">"                       \
     data["google"]["text"] "</p>"
+
+  # add translation if Russian
+  if (f["lang"] != "en") {
+    "curl -s -X POST "                                                  \
+      "-H 'Authorization: Bearer " APITOKEN "' "                        \
+      "-H 'Content-Type: application/json' "                            \
+      "-d '{\"providers\": \"google\",\"source_language\": \"" f["lang"] \
+      "\", \"target_language\":\"en\", \"text\": \""                    \
+      data["google"]["text"] "\"}' "                                    \
+      "https://api.edenai.run/v2/translation/automatic_translation"     \
+      | getline json
+    
+    if (!json::from_json(json, data))
+      error("ERROR: API Query or JSON import failed.")
+    
+    print "<p><b>Translation</b></p>"
+    print "<p style=\"border: thin silver solid; padding:20px; "  \
+      "font-family:monospace;width:500px;\">"                     \
+      data["google"]["text"] "</p>"
+  }
+  
   print "<br/><a target=\"_blank\" href=\"" url[f["guid"]]      \
     "\"><img src=\"" url[f["guid"]] "\" width=\"200\"/></a>" 
-
+  
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
 }
