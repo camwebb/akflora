@@ -5,41 +5,53 @@
 
 BEGIN{
   
-  pw()
-  guid2url()
   header("ALA herbarium sheet OCR")
   
-  if (!ENVIRON["QUERY_STRING"])
-    defaulttext()
-  else if (ENVIRON["QUERY_STRING"] !~ /^guid=UAMb?%3A(Herb|Alg)%3A[0-9]+$/)
-    print "Error: GUID of wrong form (must be: \"^UAMb?:(Herb|Alg):[0-9]+$\")"
-  else if (url2 = url[gensub(/%3A/,":","G", \
-                             substr(ENVIRON["QUERY_STRING"],6))]) {
-    "curl -s -X POST "                                                  \
-      "-H 'Authorization: Bearer " APITOKEN "' "                        \
-      "-H 'Content-Type: application/json' "                            \
-      "-d '{\"providers\": \"google\",\"language\": \"en\", "\
-      "\"file_url\": \"" url2 "\"}' https://api.edenai.run/v2/ocr/ocr" \
-      | getline json
-    
-    if (! json::from_json(json, data))
-      print "ERROR: API Query or JSON import failed."
-    else {
-      print "<p><b>" gensub(/%3A/,":","G",                        \
-        substr(ENVIRON["QUERY_STRING"],6)) "</b></p>"
-      print "<p style=\"border: thin silver solid; padding:20px; "  \
-        "font-family:monospace;width:500px;\">"                   \
-        data["google"]["text"] "</p>"
-      print "<br/><a target=\"_blank\" href=\"" url2 \
-        "\"><img src=\"" url2 "\" width=\"200\"/></a>" 
-    }
+  split(ENVIRON["QUERY_STRING"], qs, "&")
+  for (i in qs) {
+    split(qs[i], qp, "=")
+    f[qp[1]] = substr(urldecode(qp[2]),1,100)
   }
-  else
-    print "No JPEG image for that GUID"
-      
+
+  # check for default page
+  if (!f["guid"])
+    defaulttext()
+  
+  # check for misformed GUID
+  if (f["guid"] !~ /^UAMb?:(Herb|Alg):[0-9]+$/)
+    error("GUID of wrong form. Must be: \"^UAMb?:(Herb|Alg):[0-9]+$\"")
+
+  guid2url()
+  # check for no media
+  if (!url[f["guid"]])
+    error("No JPEG image for that GUID")
+  # check for language ; NOTE: specifying language does not seem to help
+  if (!f["lang"])
+    error("No Language specified")
+
+  pw()
+  "curl -s -X POST "                                                    \
+    "-H 'Authorization: Bearer " APITOKEN "' "                          \
+    "-H 'Content-Type: application/json' "                              \
+    "-d '{\"providers\": \"google\",\"language\": \"" f["lang"] "\", "  \
+    "\"file_url\": \"" url[f["guid"]] \
+    "\"}' https://api.edenai.run/v2/ocr/ocr"    \
+    | getline json
+    
+  if (!json::from_json(json, data))
+    error("ERROR: API Query or JSON import failed.")
+  
+  print "<p><b>" f["guid"] "</b></p>"
+  print "<p style=\"border: thin silver solid; padding:20px; "    \
+    "font-family:monospace;width:500px;\">"                       \
+    data["google"]["text"] "</p>"
+  print "<br/><a target=\"_blank\" href=\"" url[f["guid"]]      \
+    "\"><img src=\"" url[f["guid"]] "\" width=\"200\"/></a>" 
+
+  print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
 }
-
+  
 function guid2url() {
   while (getline < "guid2url")
     url[$1] = $2
@@ -48,10 +60,23 @@ function guid2url() {
 
 function defaulttext() {
   print "<h1>ALA herbarium sheet OCR</h1>"
-  print "<form action=\"do\">"\
+  print "<form action=\"do\">"                                          \
     "<p>GUID: <input type=\"text\" name=\"guid\" style=\"width:150px;\"/>" \
+    "&#160;&#160;Label language: <select name=\"lang\"> "                     \
+    "<option value=\"en\" selected=\"1\">English</option> "             \
+    "<option value=\"ru\">Russian</option>"                             \
+    "</select>"                                                         \
     "&#160;&#160;&#160;<input type=\"submit\" value=\"Submit\"/>"       \
     "</p></form>"
+  footer()
+  exit 0
+}
+
+function error(text) {
+  print "<p><b>" text "</b></p>"
+  print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
+  footer()
+  exit 1
 }
 
 function header(title) {
@@ -67,8 +92,6 @@ function header(title) {
            rel=\"stylesheet\"/>"
   print "<link href=\"../img/akflora.png\" rel=\"shortcut icon\" \
            type=\"image/x-icon\"/>"
-
-  # CSS
   print "<style>"
   print "body { font-size: 14px; font-family: 'Montserrat', "    \
     "Verdana, Arial, Helvetica, sans-serif; padding: 20px; "     \
@@ -79,9 +102,36 @@ function header(title) {
 }
 
 
-function footer()
-{
-  print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
+function footer() {
   print "</body>\n</html>";
 }
 
+function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
+  # based on Heiner Steven's http://www.shelldorado.com/scripts/cmds/urldecode
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  for (i=0; i<16; i++)
+    hextab[hex[i+1]] = i
+  decoded = "" ; i = 1 ; len = length(text)
+  while ( i <= len ) {
+    c = substr (text, i, 1)
+    if ( c == "%" ) 
+      if ( i+2 <= len ) {
+        c1 = tolower(substr(text, i+1, 1)); c2 = tolower(substr(text, i+2, 1))
+        if ( hextab [c1] != "" || hextab [c2] != "" ) {
+          if ( ( (c1 >= 2) && ((c1 c2) != "7f") )   \
+               || (c1 == 0 && c2 ~ "[9acd]") )
+            c = sprintf("%c", 0 + hextab [c1] * 16 + hextab [c2] + 0)
+          else
+            c = " "
+          i = i + 2
+        }
+      }
+    else if ( c == "+" )
+      c = " "
+    decoded = decoded c
+    ++i
+  }
+  gsub(/\r\n/, "\n", decoded);
+  gsub(/\n*$/,"",decoded);
+  return decoded
+}
