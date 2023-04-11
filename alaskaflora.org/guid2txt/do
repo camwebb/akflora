@@ -1,0 +1,87 @@
+#!/bin/gawk -E
+
+@load "json"
+@include "pw.awk"
+
+BEGIN{
+  
+  pw()
+  guid2url()
+  header("ALA herbarium sheet OCR")
+  
+  if (!ENVIRON["QUERY_STRING"])
+    defaulttext()
+  else if (ENVIRON["QUERY_STRING"] !~ /^guid=UAMb?%3A(Herb|Alg)%3A[0-9]+$/)
+    print "Error: GUID of wrong form (must be: \"^UAMb?:(Herb|Alg):[0-9]+$\")"
+  else if (url2 = url[gensub(/%3A/,":","G", \
+                             substr(ENVIRON["QUERY_STRING"],6))]) {
+    "curl -s -X POST "                                                  \
+      "-H 'Authorization: Bearer " APITOKEN "' "                        \
+      "-H 'Content-Type: application/json' "                            \
+      "-d '{\"providers\": \"google\",\"language\": \"en\", "\
+      "\"file_url\": \"" url2 "\"}' https://api.edenai.run/v2/ocr/ocr" \
+      | getline json
+    
+    if (! json::from_json(json, data))
+      print "ERROR: API Query or JSON import failed."
+    else {
+      print "<p><b>" gensub(/%3A/,":","G",                        \
+        substr(ENVIRON["QUERY_STRING"],6)) "</b></p>"
+      print "<p style=\"border: thin silver solid; padding:20px; "  \
+        "font-family:monospace;width:500px;\">"                   \
+        data["google"]["text"] "</p>"
+      print "<br/><a target=\"_blank\" href=\"" url2 \
+        "\"><img src=\"" url2 "\" width=\"200\"/></a>" 
+    }
+  }
+  else
+    print "No JPEG image for that GUID"
+      
+  footer()
+}
+
+function guid2url() {
+  while (getline < "guid2url")
+    url[$1] = $2
+  # will overwrite if there are several media for each GUID. OK.
+}
+
+function defaulttext() {
+  print "<h1>ALA herbarium sheet OCR</h1>"
+  print "<form action=\"do\">"\
+    "<p>GUID: <input type=\"text\" name=\"guid\" style=\"width:150px;\"/>" \
+    "&#160;&#160;&#160;<input type=\"submit\" value=\"Submit\"/>"       \
+    "</p></form>"
+}
+
+function header(title) {
+  
+  # Use html5
+  print "Content-type: text/html\n"
+  print "<!DOCTYPE html>"
+  print "<html xmlns=\"http://www.w3.org/1999/xhtml\">"
+  print "<head><title>" title "</title>"
+  print "<meta http-equiv=\"Content-Type\" content=\"text/html; \
+           charset=utf-8\" />"
+  print "<link href=\"https://fonts.googleapis.com/css?family=Montserrat\" \
+           rel=\"stylesheet\"/>"
+  print "<link href=\"../img/akflora.png\" rel=\"shortcut icon\" \
+           type=\"image/x-icon\"/>"
+
+  # CSS
+  print "<style>"
+  print "body { font-size: 14px; font-family: 'Montserrat', "    \
+    "Verdana, Arial, Helvetica, sans-serif; padding: 20px; "     \
+    "position: absolute }"
+  print "</style>"
+
+  print "</head>\n<body>"
+}
+
+
+function footer()
+{
+  print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
+  print "</body>\n</html>";
+}
+
