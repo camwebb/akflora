@@ -54,6 +54,8 @@ BEGIN{
   
   if (!json::from_json(json, data))
     fail("ERROR: API Query or JSON import failed.")
+  if (data["google"]["status"] == "fail")
+    fail(data["google"]["error"]["message"])
   
   print "<p><b>" (f["method"]=="guid" ? f["guid"] : "Your file") "</b></p>"
   print "<p style=\"border: thin silver solid; padding:20px; "    \
@@ -73,6 +75,8 @@ BEGIN{
     
     if (!json::from_json(json, data))
       fail("ERROR: API Query or JSON import failed.")
+    if (data["google"]["status"] == "fail")
+      fail(data["google"]["error"]["message"])
     
     print "<p><b>Translation</b></p>"
     print "<p style=\"border: thin silver solid; padding:20px; "  \
@@ -87,7 +91,7 @@ BEGIN{
   footer()
 }
 
-function read_file(   ct, total) {
+function read_file(   field, resp) {
 
   RS="\r\n"
   while(getline < "/dev/stdin") {
