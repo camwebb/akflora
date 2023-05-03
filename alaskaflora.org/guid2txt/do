@@ -107,7 +107,7 @@ function read_file(   field, resp) {
         getline < "/dev/stdin"
       }
       gsub(/^\r\n/,"",f[field])
-      f[field] = $0
+      # f[field] = $0
     }
   }
 
