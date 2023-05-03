@@ -52,8 +52,6 @@ BEGIN{
     "\"}' https://api.edenai.run/v2/ocr/ocr"                            \
     | getline json
 
-  fail(json)
-  
   if (!json::from_json(json, data))
     fail("ERROR: API Query or JSON import failed.")
   if (data["google"]["status"] == "fail")
@@ -101,13 +99,12 @@ function read_file(   field, resp) {
       field = gensub(/.* name="([^"]+)".*/, "\\1","G",$0)
     else if ($0 == "") {
       getline < "/dev/stdin"
-      # if there were newlines in an image:
+      # if there are newlines in an image:
       while ($0 !~ /^----+/) {
         f[field] = f[field] RS $0
         getline < "/dev/stdin"
       }
       gsub(/^\r\n/,"",f[field])
-      # f[field] = $0
     }
   }
 
