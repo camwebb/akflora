@@ -41,6 +41,8 @@ BEGIN{
   if (!f["lang"])
     fail("No Language specified")
 
+  fail("Lang: " f["lang"] " Image: " Imgurl)
+  
   pw()
   "curl -s -X POST "                                                    \
     "-H 'Authorization: Bearer " APITOKEN "' "                          \
