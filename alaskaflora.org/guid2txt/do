@@ -48,7 +48,7 @@ BEGIN{
     "-H 'Authorization: Bearer " APITOKEN "' "                          \
     "-H 'Content-Type: application/json' "                              \
     "-d '{\"providers\": \"google\",\"language\": \"" f["lang"] "\", "  \
-    "\"file_url\": \"" imgurl                                           \
+    "\"file_url\": \"" Imgurl                                           \
     "\"}' https://api.edenai.run/v2/ocr/ocr"                            \
     | getline json
     
