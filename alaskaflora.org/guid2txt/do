@@ -78,8 +78,8 @@ BEGIN{
       data["google"]["text"] "</p>"
   }
   
-  print "<br/><a target=\"_blank\" href=\"" url[f["guid"]]      \
-    "\"><img src=\"" url[f["guid"]] "\" width=\"200\"/></a>" 
+  print "<br/><a target=\"_blank\" href=\"" Imgurl              \
+    "\"><img src=\"" Imgurl "\" width=\"200\"/></a>" 
   
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
