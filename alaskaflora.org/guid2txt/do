@@ -51,6 +51,8 @@ BEGIN{
     "\"file_url\": \"" Imgurl                                           \
     "\"}' https://api.edenai.run/v2/ocr/ocr"                            \
     | getline json
+
+  fail(json)
   
   if (!json::from_json(json, data))
     fail("ERROR: API Query or JSON import failed.")
