@@ -37,8 +37,6 @@ BEGIN{
       defaulttext()
   }
 
-  exit
-  
   # check for language ; NOTE: specifying language does not seem to help
   if (!f["lang"])
     fail("No Language specified")
