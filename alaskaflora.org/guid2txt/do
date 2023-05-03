@@ -112,6 +112,7 @@ function read_file(   field, resp) {
   }
 
   print f["image"] > "../img/_ocr.jpg"
+  fflush("../img/_ocr.jpg")
   delete f["image"]
 
   # test that the file is a jpeg
@@ -119,7 +120,7 @@ function read_file(   field, resp) {
   if (resp !~ /JPEG image/)
     fail("file submitted is not a JPEG image file")
   
-  Imgurl = "https://alaskaflora.org/img/_ocr.jpg"
+  Imgurl = "http://alaskaflora.org/img/_ocr.jpg"
 }
 
 function guid2url() {
