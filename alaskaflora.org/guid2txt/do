@@ -101,12 +101,12 @@ function read_file(   field, resp) {
       field = gensub(/.* name="([^"]+)".*/, "\\1","G",$0)
     else if ($0 == "") {
       getline < "/dev/stdin"
-      ## if there were newlines in an image:
-      # while ($0 !~ /^----+/) {
-      #   f[field] = f[field] RS $0
-      #   getline < "/dev/stdin"
-      # }
-      # gsub(/^\r\n/,"",f[field])
+      # if there were newlines in an image:
+      while ($0 !~ /^----+/) {
+        f[field] = f[field] RS $0
+        getline < "/dev/stdin"
+      }
+      gsub(/^\r\n/,"",f[field])
       f[field] = $0
     }
   }
