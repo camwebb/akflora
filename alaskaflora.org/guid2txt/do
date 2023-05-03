@@ -41,16 +41,16 @@ BEGIN{
   if (!f["lang"])
     fail("No Language specified")
 
-  fail("Lang: " f["lang"] " Image: " Imgurl)
+  # fail("Lang: " f["lang"] " Image: " Imgurl)
   
   pw()
-  "curl -s -X POST "                                                    \
+  fail("curl -s -X POST "                                               \
     "-H 'Authorization: Bearer " APITOKEN "' "                          \
     "-H 'Content-Type: application/json' "                              \
     "-d '{\"providers\": \"google\",\"language\": \"" f["lang"] "\", "  \
     "\"file_url\": \"" Imgurl                                           \
-    "\"}' https://api.edenai.run/v2/ocr/ocr"                            \
-    | getline json
+       "\"}' https://api.edenai.run/v2/ocr/ocr"                            )
+  #    | getline json
     
   if (!json::from_json(json, data))
     fail("ERROR: API Query or JSON import failed.")
