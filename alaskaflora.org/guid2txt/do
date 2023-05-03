@@ -5,43 +5,57 @@
 
 BEGIN{
   
-  header("ALA herbarium sheet OCR")
+  header("Herbarium sheet OCR")
+
+  if (ENVIRON["CONTENT_LENGTH"] > 10000000)
+    fail("Image too large")
   
-  split(ENVIRON["QUERY_STRING"], qs, "&")
-  for (i in qs) {
-    split(qs[i], qp, "=")
-    f[qp[1]] = substr(urldecode(qp[2]),1,100)
+  # POST
+  if (ENVIRON["CONTENT_TYPE"] ~ /form-data/)
+    read_file()
+
+  # GET
+  else {
+    split(ENVIRON["QUERY_STRING"], qs, "&")
+    for (i in qs) {
+      split(qs[i], qp, "=")
+      f[qp[1]] = substr(urldecode(qp[2]),1,100)
+    }
+  
+    if (f["method"] == "guid") {
+      # check for misformed GUID
+      if (f["guid"] !~ /^UAMb?:(Herb|Alg):[0-9]+$/)
+        fail("GUID of wrong form. Must be: \"^UAMb?:(Herb|Alg):[0-9]+$\"")
+      guid2url()
+      # check for no media
+      if (!url[f["guid"]])
+        fail("No JPEG image for that GUID")
+      Imgurl = url[f["guid"]]
+    }
+    
+    else
+      defaulttext()
   }
 
-  # check for default page
-  if (!f["guid"])
-    defaulttext()
+  exit
   
-  # check for misformed GUID
-  if (f["guid"] !~ /^UAMb?:(Herb|Alg):[0-9]+$/)
-    error("GUID of wrong form. Must be: \"^UAMb?:(Herb|Alg):[0-9]+$\"")
-
-  guid2url()
-  # check for no media
-  if (!url[f["guid"]])
-    error("No JPEG image for that GUID")
   # check for language ; NOTE: specifying language does not seem to help
   if (!f["lang"])
-    error("No Language specified")
+    fail("No Language specified")
 
   pw()
   "curl -s -X POST "                                                    \
     "-H 'Authorization: Bearer " APITOKEN "' "                          \
     "-H 'Content-Type: application/json' "                              \
     "-d '{\"providers\": \"google\",\"language\": \"" f["lang"] "\", "  \
-    "\"file_url\": \"" url[f["guid"]] \
-    "\"}' https://api.edenai.run/v2/ocr/ocr"    \
+    "\"file_url\": \"" imgurl                                           \
+    "\"}' https://api.edenai.run/v2/ocr/ocr"                            \
     | getline json
     
   if (!json::from_json(json, data))
-    error("ERROR: API Query or JSON import failed.")
+    fail("ERROR: API Query or JSON import failed.")
   
-  print "<p><b>" f["guid"] "</b></p>"
+  print "<p><b>" (f["method"]=="guid" ? f["guid"] : "Your file") "</b></p>"
   print "<p style=\"border: thin silver solid; padding:20px; "    \
     "font-family:monospace;width:500px;\">"                       \
     data["google"]["text"] "</p>"
@@ -58,7 +72,7 @@ BEGIN{
       | getline json
     
     if (!json::from_json(json, data))
-      error("ERROR: API Query or JSON import failed.")
+      fail("ERROR: API Query or JSON import failed.")
     
     print "<p><b>Translation</b></p>"
     print "<p style=\"border: thin silver solid; padding:20px; "  \
@@ -72,7 +86,36 @@ BEGIN{
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
 }
+
+function read_file(   ct, total) {
+
+  RS="\r\n"
+  while(getline < "/dev/stdin") {
+    if ($0 ~ /^[Cc]ontent-[Dd]isposition/)
+      field = gensub(/.* name="([^"]+)".*/, "\\1","G",$0)
+    else if ($0 == "") {
+      getline < "/dev/stdin"
+      ## if there were newlines in an image:
+      # while ($0 !~ /^----+/) {
+      #   f[field] = f[field] RS $0
+      #   getline < "/dev/stdin"
+      # }
+      # gsub(/^\r\n/,"",f[field])
+      f[field] = $0
+    }
+  }
+
+  print f["image"] > "../img/_ocr.jpg"
+  delete f["image"]
+
+  # test that the file is a jpeg
+  "file ../img/_ocr.jpg" | getline resp
+  if (resp !~ /JPEG image/)
+    fail("file submitted is not a JPEG image file")
   
+  Imgurl = "http://alaskaflora.org/img/_ocr.jpg"
+}
+
 function guid2url() {
   while (getline < "guid2url")
     url[$1] = $2
@@ -80,10 +123,21 @@ function guid2url() {
 }
 
 function defaulttext() {
-  print "<h1>ALA herbarium sheet OCR</h1>"
+  print "<h1>Herbarium sheet OCR</h1>"
   print "<form action=\"do\">"                                          \
-    "<p>GUID: <input type=\"text\" name=\"guid\" style=\"width:150px;\"/>" \
+    "<input type=\"hidden\" name=\"method\" value=\"guid\"/>"           \
+    "<p>Arctos ALA GUID: <input type=\"text\" name=\"guid\" style=\"width:150px;\"/>" \
     "&#160;&#160;Label language: <select name=\"lang\"> "                     \
+    "<option value=\"en\" selected=\"1\">English</option> "             \
+    "<option value=\"ru\">Russian</option>"                             \
+    "</select>"                                                         \
+    "&#160;&#160;&#160;<input type=\"submit\" value=\"Submit\"/>"       \
+    "</p></form>"
+  print "<p><i>or...</i></p>"
+  print "<form action=\"do\" enctype=\"multipart/form-data\" method=\"post\">" \
+    "<input type=\"hidden\" name=\"method\" value=\"file\"/>"           \
+    "<p>Send file: <input type=\"file\" name=\"image\" />"              \
+    "&#160;&#160;Label language: <select name=\"lang\"> "               \
     "<option value=\"en\" selected=\"1\">English</option> "             \
     "<option value=\"ru\">Russian</option>"                             \
     "</select>"                                                         \
@@ -93,7 +147,7 @@ function defaulttext() {
   exit 0
 }
 
-function error(text) {
+function fail(text) {
   print "<p><b>" text "</b></p>"
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
