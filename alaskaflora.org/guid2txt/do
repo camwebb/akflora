@@ -119,7 +119,7 @@ function read_file(   field, resp) {
   if (resp !~ /JPEG image/)
     fail("file submitted is not a JPEG image file")
   
-  Imgurl = "http://alaskaflora.org/img/_ocr.jpg"
+  Imgurl = "https://alaskaflora.org/img/_ocr.jpg"
 }
 
 function guid2url() {
