@@ -224,7 +224,7 @@ function header(title) {
   print "<style>"
   print "body { font-size: 14px; font-family: 'Montserrat', "    \
     "Verdana, Arial, Helvetica, sans-serif; padding: 20px; padding-top:0px;" \
-    "position: absolute }"
+    "position: absolute ; minimum-width:1900px}"
   print "</style>\n<script type=\"application/javascript\">"
   print "function showocr() {var ocr = document.getElementById('ocr');         \
       if (ocr.style.display == 'none') { ocr.style.display = 'block'; } \
