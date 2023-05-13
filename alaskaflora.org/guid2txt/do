@@ -58,7 +58,7 @@ BEGIN{
     fail(data["google"]["error"]["message"])
 
   print "<p style=\"float: right;\"><a target=\"_blank\" href=\"" Imgurl \
-    "\"><img src=\"" Imgurl "\" height=\"500\"/></a>"                    \
+    "\"><img style=\"max-height:500px;max-width:300px;\" src=\"" Imgurl "\" /></a>"                    \
     "<br/>(Click on image to open in new tab)</p>" 
   
   print "<p><button onclick=\"showocr()\">Show OCR text</button></p>"
