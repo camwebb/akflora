@@ -119,6 +119,8 @@ BEGIN{
     for (j = 1; j <= length(FieldAI[i]); j++)
       if (data[FieldAI[i][j]] && !d[Field[i]])
         d[Field[i]] = data[FieldAI[i][j]]
+  if (f["method"] == "guid")
+    d["arctos_guid"] = f["guid"]
 
   print "<table style=\"border: thin silver solid; padding:20px; "  \
     "font-family:monospace;width:500px;\">"
@@ -286,6 +288,7 @@ function init(       fields,i,j,n2,n4) {
   Posttxt = " ] and output mapped to Darwin Core terms, in JSON format, with all dates in ISO 2014 format, and all coordinates in decimal degrees, and all elevations in meters."
 
   fields = " \
+    arctos_guid     : arctos_guid                                   |  \
     barcode         : barcode                                       |  \
     alaac           : catalogNumber, collectionNumber, identifier   |  \
     scientific_name : scientificName                                |  \
