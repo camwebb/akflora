@@ -222,9 +222,9 @@ function header(title) {
   print "<link href=\"../img/akflora.png\" rel=\"shortcut icon\" \
            type=\"image/x-icon\"/>"
   print "<style>"
-  print "body { font-size: 14px; font-family: 'Montserrat', "    \
+  print "div.main { font-size: 14px; font-family: 'Montserrat', "    \
     "Verdana, Arial, Helvetica, sans-serif; padding: 20px; padding-top:0px;" \
-    "position: absolute ; minimum-width:1900px}"
+    "position: absolute ; min-width:1900px}"
   print "</style>\n<script type=\"application/javascript\">"
   print "function showocr() {var ocr = document.getElementById('ocr');         \
       if (ocr.style.display == 'none') { ocr.style.display = 'block'; } \
@@ -233,7 +233,7 @@ function header(title) {
       if (ai.style.display == 'none') { ai.style.display = 'block'; } \
       else { ai.style.display = 'none'; } }"
   print "</script>"
-  print "</head>\n<body>"
+  print "</head>\n<body><div class=\"main\">"
 }
 
 
@@ -251,7 +251,7 @@ function footer() {
     }
     print "</script>"
   }
-  print "</body>\n</html>";
+  print "</div></body>\n</html>";
 }
 
 function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
