@@ -246,7 +246,8 @@ function footer() {
         "i_" Field[i] ".addEventListener('input', function(event) { "   \
         "o_" Field[i] ".innerText = event.target.value; });"
       print "function clear_" Field[i] "() { document.getElementById('i_" \
-        Field[i] "').value = '' ; }"
+        Field[i] "').value = '' ; document.getElementById('o_" \
+        Field[i] "').innerHTML = '' ; }"
     }
     print "</script>"
   }
