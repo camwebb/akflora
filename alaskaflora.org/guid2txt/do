@@ -91,14 +91,12 @@ BEGIN{
   # generative AI
   gsub(/ONE DECIMETER ONE CUBIC DECIMETER OF WATER WEIGHTS ONE KILOGRAM AND MEASURES ONE LITER. MADE IN GERMANY mm [0-9 ]+/,"",data["google"]["text"])
   gsub(/["']/," ", data["google"]["text"])
-  pretxt = "In this text find: instituion code, barcode, scientific name, locality, state, country, coordinates, elevation, habitat, collectors, collectors code, collection date, identifier, identification date [ "
-  posttxt = " ] and output mapped to Darwin Core terms, in JSON format, with all dates in ISO 2014 format, and all coordinates in decimal degrees."
   "curl -s -X POST "                                                    \
     "-H 'Authorization: Bearer " APITOKEN "' "                          \
     "-H 'Content-Type: application/json' "                              \
     "-d '{\"providers\": \"openai\",\"max_tokens\": 500,\"temperature\":0," \
     "\"model\": {\"openai\":\"text-davinci-003\"}, \"text\": \""        \
-    pretxt data["google"]["text"] posttxt "\"}' "                      \
+    Pretxt data["google"]["text"] Posttxt "\"}' "                      \
     "https://api.edenai.run/v2/text/generation" | getline json
   
   if (!json::from_json(json, data))
@@ -127,8 +125,9 @@ BEGIN{
   
   for (i = 1; i <= length(Field); i++)
     print "<tr><td>" Field[i] "</td><td><input type=\"text\" id=\"i_"   \
-      Field[i] "\" style=\"width:400px;\" value=\"" d[Field[i]]         \
-      "\"/></td></tr>"
+      Field[i] "\" style=\"width:500px;\" value=\"" d[Field[i]]         \
+      "\"/></td><td><button onclick=\"clear_" Field[i] \
+      "()\">x</button></td></tr>"
   print "</table>"
 
   print "<p><b>"
@@ -239,11 +238,14 @@ function header(title) {
 function footer() {
   if (f["method"]) {
     print "<script type=\"text/javascript\">"
-    for (i = 1; i <= length(Field); i++) 
+    for (i = 1; i <= length(Field); i++) {
       print "var i_" Field[i] " = document.getElementById('i_"Field[i] "'); " \
         "var o_" Field[i]" = document.getElementById('o_" Field[i] "'); " \
         "i_" Field[i] ".addEventListener('input', function(event) { "   \
         "o_" Field[i] ".innerText = event.target.value; });"
+      print "function clear_" Field[i] "() { document.getElementById('i_" \
+        Field[i] "').value = '' ; }"
+    }
     print "</script>"
   }
   print "</body>\n</html>";
@@ -280,21 +282,28 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
 }
 
 function init(       fields,i,j,n2,n4) {
+  Pretxt = "In this text find: instituion code, identifier = regex [VBL][0-9]+, barcode = regex H[0-9]+, scientific name, locality, state, country, coordinates, elevation, habitat, first collector, collector code, associated collectors, collection date, identified by person, identification date [ "
+  Posttxt = " ] and output mapped to Darwin Core terms, in JSON format, with all dates in ISO 2014 format, and all coordinates in decimal degrees, and all elevations in meters."
+
   fields = " \
-    barcode         :  barcode                                      |  \
-    alaac           :  catalogNumber, collectionNumber, identifier  |  \
-    scientific_name :  scientificName                               |  \
-    locality        : locality                                     |  \
-    state           : stateProvince                                |  \
-    country         : country                                      |  \
-    latitude        : decimalLatitude, latitude                    |  \
-    longitude       : decimalLongitude, longitude                  |  \
-    elevation       : minimumElevationInMeters, elevation          |  \
-    habitat         : habitat                                      |  \
-    collector       : recordedBy, collector, collectors            |  \
-    record_number   : recordNumber, collectorsCode                 |  \
-    coll_date       : eventDate, collectionDate                    |  \
-    identified_by   : identifiedBy, identifier                     |  \
+    barcode         : barcode                                       |  \
+    alaac           : catalogNumber, collectionNumber, identifier   |  \
+    scientific_name : scientificName                                |  \
+    locality        : locality                                      |  \
+    state           : stateProvince                                 |  \
+    country         : country                                       |  \
+    latitude        : decimalLatitude, latitude                     |  \
+    longitude       : decimalLongitude, longitude                   |  \
+    elevation       : minimumElevationInMeters, elevation,             \
+                      verbatimElevationInMeters, verbatimElevation,    \
+                      elevationInMeters                             |  \
+    habitat         : habitat                                       |  \
+    collector       : recordedBy, collector                         |  \
+    collector2      : associatedCollectors,  collectors             |  \
+    collector3      : associatedCollectors,  collectors             |  \
+    coll_number     : recordNumber, collectorsCode                  |  \
+    coll_date       : eventDate, collectionDate                     |  \
+    identified_by   : identifiedBy, identifier                      |  \
     identified_date : dateIdentified, identificationDate"
   gsub(/[\n ]/,"",fields)
   n2 = split(fields, fields2, "|")
