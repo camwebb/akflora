@@ -57,12 +57,13 @@ BEGIN{
   if (data["google"]["status"] == "fail")
     fail(data["google"]["error"]["message"])
 
-  print "<br/><a target=\"_blank\" href=\"" Imgurl      \
-    "\"><img src=\"" Imgurl "\" width=\"200\"/></a>" 
+  print "<p style=\"float: right;\"><a target=\"_blank\" href=\"" Imgurl \
+    "\"><img src=\"" Imgurl "\" height=\"500\"/></a>"                    \
+    "<br/>(Click on image to open in new tab)</p>" 
   
-  print "<p><b>" (f["method"]=="guid" ? f["guid"] : "Your file") "</b></p>"
-  print "<p style=\"border: thin silver solid; padding:20px; "    \
-    "font-family:monospace;width:500px;\">"                       \
+  print "<p><button onclick=\"showocr()\">Show OCR text</button></p>"
+  print "<p id=\"ocr\" style=\"border: thin silver solid; padding:20px; "    \
+    "font-family:monospace;width:500px;display:none\">"                       \
     data["google"]["text"] "</p>"
   
   # add translation if Russian
@@ -105,9 +106,9 @@ BEGIN{
   if (data["openai"]["status"] == "fail")
     fail(data["openai"]["error"]["message"])
 
-  print "<p><b>Parsed as DWC</b></p>"
-  print "<p style=\"border: thin silver solid; padding:20px; "    \
-    "font-family:monospace;width:500px;\">"                       \
+  print "<p><button onclick=\"showai()\">Show AI output</button></p>"
+  print "<p id=\"ai\" style=\"border: thin silver solid; padding:20px; "    \
+    "font-family:monospace;width:500px;display:none;\">"                       \
     data["openai"]["generated_text"] "</p>"
 
   # make table
@@ -116,46 +117,24 @@ BEGIN{
 
   # mapping
   gsub(/dwc:/,"",data["openai"]["generated_text"])
+  for (i = 1; i <= length(Field); i++)
+    for (j = 1; j <= length(FieldAI[i]); j++)
+      if (data[FieldAI[i][j]] && !d[Field[i]])
+        d[Field[i]] = data[FieldAI[i][j]]
 
-  f["barcode"] = data["barcode"]
-  f["alaac"]  =                                                         \
-    data["catalogNumber"] ? data["catalogNumber"] : data["identifier"]
-  f["scientific_name"] = data["scientificName"]
-  f["locality"] = data["locality"]
-  f["state"] = data["stateProvince"]
-  f["country"] = data["country"]
-  f["latitude"] =                                                       \
-    data["decimalLatitude"] ? data["decimalLatitude"] : data["latitude"]
-  f["longitude"] =                                                      \
-    data["decimalLongitude"] ? data["decimalLongitude"] : data["longitude"]
-  f["elevation"] = data["minimumElevationInMeters"] ?       \
-    data["minimumElevationInMeters"] : data["elevation"]
-  f["habitat"] = data["habitat"]
-  f["collector"] =                                                  \
-    data["recordedBy"] ? data["recordedBy"] :                       \
-    (data["collector"] ? data["collector"] : data["collectors"])
-  f["record_number"] = data["recordNumber"] ?
-    data["recordNumber"] : data["collectorsCode"]
-  f["identified_by"] = data["identifiedBy"] ? \
-    data["identifiedBy"] : data["identifier"]
-  f["identified_date"] = data["dateIdentified"] ? \
-    data["dateIdentified"] : data["identificationDate"]
-  f["coll_date"] = data["eventDate"] ? \
-    data["eventDate"] : data["collectionDate"]
-  
   print "<table style=\"border: thin silver solid; padding:20px; "  \
     "font-family:monospace;width:500px;\">"
   
-  for (i = 1; i <= Nfield; i++)
+  for (i = 1; i <= length(Field); i++)
     print "<tr><td>" Field[i] "</td><td><input type=\"text\" id=\"i_"   \
-      Field[i] "\" style=\"width:400px;\" value=\"" f[Field[i]]         \
+      Field[i] "\" style=\"width:400px;\" value=\"" d[Field[i]]         \
       "\"/></td></tr>"
   print "</table>"
 
   print "<p><b>"
-  for (i = 1; i <= Nfield; i++)
-    print "<span id=\"o_" Field[i] "\">" f[Field[i]] "</span>\t"
-  print "<b></p>"
+  for (i = 1; i <= length(Field); i++)
+    print "<span id=\"o_" Field[i] "\">" d[Field[i]] "</span>\t"
+  print "</b></p>"
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
 }
@@ -243,22 +222,30 @@ function header(title) {
            type=\"image/x-icon\"/>"
   print "<style>"
   print "body { font-size: 14px; font-family: 'Montserrat', "    \
-    "Verdana, Arial, Helvetica, sans-serif; padding: 20px; "     \
+    "Verdana, Arial, Helvetica, sans-serif; padding: 20px; padding-top:0px;" \
     "position: absolute }"
-  print "</style>"
+  print "</style>\n<script type=\"application/javascript\">"
+  print "function showocr() {var ocr = document.getElementById('ocr');         \
+      if (ocr.style.display == 'none') { ocr.style.display = 'block'; } \
+      else { ocr.style.display = 'none'; } }"
+  print "function showai() {var ai = document.getElementById('ai');         \
+      if (ai.style.display == 'none') { ai.style.display = 'block'; } \
+      else { ai.style.display = 'none'; } }"
+  print "</script>"
   print "</head>\n<body>"
 }
 
 
 function footer() {
-  print "<script type=\"text/javascript\">"
-  for (i = 1; i <= Nfield; i++) 
-    print "var i_" Field[i] " = document.getElementById('i_"Field[i] "'); " \
-      "var o_" Field[i]" = document.getElementById('o_" Field[i] "'); " \
-      "i_" Field[i] ".addEventListener('input', function(event) { "     \
-      "o_" Field[i] ".innerText = event.target.value; });"
-  print "</script>"
-  
+  if (f["method"]) {
+    print "<script type=\"text/javascript\">"
+    for (i = 1; i <= length(Field); i++) 
+      print "var i_" Field[i] " = document.getElementById('i_"Field[i] "'); " \
+        "var o_" Field[i]" = document.getElementById('o_" Field[i] "'); " \
+        "i_" Field[i] ".addEventListener('input', function(event) { "   \
+        "o_" Field[i] ".innerText = event.target.value; });"
+    print "</script>"
+  }
   print "</body>\n</html>";
 }
 
@@ -292,6 +279,30 @@ function urldecode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
   return decoded
 }
 
-function init() {
-  Nfield = split("barcode|alaac|scientific_name|locality|state|country|latitude|longitude|elevation|habitat|collector|record_number|coll_date|identified_by|identified_date", Field, "|")
+function init(       fields,i,j,n2,n4) {
+  fields = " \
+    barcode         :  barcode                                      |  \
+    alaac           :  catalogNumber, collectionNumber, identifier  |  \
+    scientific_name :  scientificName                               |  \
+    locality        : locality                                     |  \
+    state           : stateProvince                                |  \
+    country         : country                                      |  \
+    latitude        : decimalLatitude, latitude                    |  \
+    longitude       : decimalLongitude, longitude                  |  \
+    elevation       : minimumElevationInMeters, elevation          |  \
+    habitat         : habitat                                      |  \
+    collector       : recordedBy, collector, collectors            |  \
+    record_number   : recordNumber, collectorsCode                 |  \
+    coll_date       : eventDate, collectionDate                    |  \
+    identified_by   : identifiedBy, identifier                     |  \
+    identified_date : dateIdentified, identificationDate"
+  gsub(/[\n ]/,"",fields)
+  n2 = split(fields, fields2, "|")
+  for (i = 1; i <= n2; i++) {
+    split(fields2[i], fields3, ":")
+    Field[i] = fields3[1]
+    n4 = split(fields3[2], fields4, ",")
+    for (j = 1; j <= n4; j++)
+      FieldAI[i][j] = fields4[j]
+  }
 }
