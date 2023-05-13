@@ -122,6 +122,11 @@ BEGIN{
   if (f["method"] == "guid")
     d["arctos_guid"] = f["guid"]
 
+  # clean dates
+  for (i = 1; i <= length(Field); i++)
+    if (Field[i] ~ /date/)
+      d[Field[i]] = substr(d[Field[i]],1,10)
+  
   print "<table style=\"border: thin silver solid; padding:20px; "  \
     "font-family:monospace;width:500px;\">"
   
@@ -190,7 +195,7 @@ function defaulttext() {
   print "<p><i>or...</i></p>"
   print "<form action=\"do\" enctype=\"multipart/form-data\" method=\"post\">" \
     "<input type=\"hidden\" name=\"method\" value=\"file\"/>"           \
-    "<p>Send file: <input type=\"file\" name=\"image\" />"              \
+    "<p>Send file: <input onchange=\"validateSize(this)\" type=\"file\" name=\"image\" />"              \
     "&#160;&#160;Label language: <select name=\"lang\"> "               \
     "<option value=\"en\" selected=\"1\">English</option> "             \
     "<option value=\"ru\">Russian</option>"                             \
@@ -232,6 +237,9 @@ function header(title) {
   print "function showai() {var ai = document.getElementById('ai');         \
       if (ai.style.display == 'none') { ai.style.display = 'block'; } \
       else { ai.style.display = 'none'; } }"
+  print "function validateSize(input) { \
+      if ((input.files[0].size / (1024 * 1024)) > 2) \
+      {alert('File size exceeds 2 MiB; please downsize image first'); }}"
   print "</script>"
   print "</head>\n<body><div class=\"main\">"
 }
