@@ -63,7 +63,7 @@ BEGIN{
   
   print "<p><button onclick=\"showocr()\">Show OCR text</button></p>"
   print "<p id=\"ocr\" style=\"border: thin silver solid; padding:20px; "    \
-    "font-family:monospace;width:500px;display:none\">"                       \
+    "font-family:monospace;width:500px;display:none;\">"                       \
     data["google"]["text"] "</p>"
   
   # add translation if Russian
@@ -81,10 +81,10 @@ BEGIN{
       fail("ERROR: API Query or JSON import failed.")
     if (data["google"]["status"] == "fail")
       fail(data["google"]["error"]["message"])
-    
-    print "<p><b>Translation</b></p>"
-    print "<p style=\"border: thin silver solid; padding:20px; "  \
-      "font-family:monospace;width:500px;\">"                     \
+
+    print "<p><button onclick=\"showtrans()\">Show Translation</button></p>"
+    print "<p id=\"trans\" style=\"border: thin silver solid; padding:20px; " \
+      "font-family:monospace;width:500px;display:none;\">"                     \
       data["google"]["text"] "</p>"
   }
 
@@ -237,6 +237,9 @@ function header(title) {
   print "function showai() {var ai = document.getElementById('ai');         \
       if (ai.style.display == 'none') { ai.style.display = 'block'; } \
       else { ai.style.display = 'none'; } }"
+  print "function showtrans() {var trans = document.getElementById('trans'); \
+      if (trans.style.display == 'none') { trans.style.display = 'block'; } \
+      else { trans.style.display = 'none'; } }"
   print "function validateSize(input) { \
       if ((input.files[0].size / (1024 * 1024)) > 2) \
       {alert('File size exceeds 2 MiB; please downsize image first'); }}"
