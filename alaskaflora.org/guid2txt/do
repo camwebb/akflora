@@ -128,12 +128,12 @@ BEGIN{
       Field[i] "\" style=\"width:500px;\" value=\"" d[Field[i]]         \
       "\"/></td><td><button onclick=\"clear_" Field[i] \
       "()\">x</button></td></tr>"
-  print "</table>"
+  print "</table><br/>"
 
-  print "<p><b>"
+  # print "<pre>"
   for (i = 1; i <= length(Field); i++)
     print "<span id=\"o_" Field[i] "\">" d[Field[i]] "</span>\t"
-  print "</b></p>"
+  # print "</pre>"
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
 }
