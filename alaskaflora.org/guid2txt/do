@@ -128,19 +128,22 @@ BEGIN{
       d[Field[i]] = substr(d[Field[i]],1,10)
   
   print "<table style=\"border: thin silver solid; padding:20px; "  \
-    "font-family:monospace;width:500px;\">"
+    "font-family:monospace;min-width:650px;\">"
   
   for (i = 1; i <= length(Field); i++)
     print "<tr><td>" Field[i] "</td><td><input type=\"text\" id=\"i_"   \
-      Field[i] "\" style=\"width:500px;\" value=\"" d[Field[i]]         \
+      Field[i] "\" style=\"width:450px;\" value=\"" d[Field[i]]         \
       "\"/></td><td><button onclick=\"clear_" Field[i] \
-      "()\">x</button></td></tr>"
+      "()\">x</button>" \
+      ((Field[i]=="elevation") ?                                \
+       " <button onclick=\"ft2m()\">f2m</button>" : "")   \
+      "</td></tr>"
   print "</table><br/>"
 
-  # print "<pre>"
+  printf "<pre style=\"font-size:8px;\">"
   for (i = 1; i <= length(Field); i++)
-    print "<span id=\"o_" Field[i] "\">" d[Field[i]] "</span>\t"
-  # print "</pre>"
+    printf "<span id=\"o_%s\">%s</span>&#9;",Field[i], d[Field[i]]
+  print "</pre>"
   print "<br/><br/><p>[ <a href=\"do\">BACK</a> ]</p>"
   footer()
 }
@@ -229,7 +232,7 @@ function header(title) {
   print "<style>"
   print "div.main { font-size: 14px; font-family: 'Montserrat', "    \
     "Verdana, Arial, Helvetica, sans-serif; padding: 20px; padding-top:0px;" \
-    "position: absolute ; min-width:1200px}"
+    "position: absolute ; min-width:1200px; max-width:1200px}"
   print "</style>\n<script type=\"application/javascript\">"
   print "function showocr() {var ocr = document.getElementById('ocr');         \
       if (ocr.style.display == 'none') { ocr.style.display = 'block'; } \
@@ -243,6 +246,10 @@ function header(title) {
   print "function validateSize(input) { \
       if ((input.files[0].size / (1024 * 1024)) > 2) \
       {alert('File size exceeds 2 MiB; please downsize image first'); }}"
+  print "function ft2m() \
+      {var before = document.getElementById('i_elevation').value;         \
+        document.getElementById('i_elevation').value = before / 3.28084 ; \
+        document.getElementById('o_elevation').value = before / 3.28084 ; }"
   print "</script>"
   print "</head>\n<body><div class=\"main\">"
 }
