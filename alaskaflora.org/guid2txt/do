@@ -26,8 +26,9 @@ BEGIN{
     
     if (f["method"] == "guid") {
       # check for misformed GUID
-      if (f["guid"] !~ /^UAMb?:(Herb|Alg):[0-9]+$/)
-        fail("GUID of wrong form. Must be: \"^UAMb?:(Herb|Alg):[0-9]+$\"")
+      # 2023-06-29 : switching this off to allow barcodes
+      # if (f["guid"] !~ /^UAMb?:(Herb|Alg):[0-9]+$/)
+      #  fail("GUID of wrong form. Must be: \"^UAMb?:(Herb|Alg):[0-9]+$\"")
       guid2url()
       # check for no media
       if (!url[f["guid"]])
