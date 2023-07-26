@@ -1,14 +1,16 @@
 
 // SELECT guid,
-//    (partdetail::json->>0)::json->>'bc' AS bc ,
-//    REGEXP_REPLACE(imageurl,'.+','1') AS img ,
-//    CASE WHEN othercatalognumbers ~ 'ALAAC'
-//      THEN REGEXP_REPLACE(othercatalognumbers,
-//        '^.*ALAAC=([ABLV]?[0-9]+).*$', '\1')
-//    ELSE NULL END
-// FROM flat 
-//   WHERE (partdetail::json->>0)::json->>'bc' IS NOT NULL AND
-//    (guid_prefix = 'UAM:Herb' OR guid_prefix = 'UAMb:Herb')
+//     (partdetail::json->>0)::json->>'bc' AS bc ,
+//     REGEXP_REPLACE(imageurl,'.+','1') AS img ,
+//     CASE 
+//       WHEN othercatalognumbers ~ 'ALAAC'
+//       THEN REGEXP_REPLACE(othercatalognumbers,'^.*ALAAC ([ABLV]?[0-9]+).*$', '\1')
+//     ELSE NULL 
+//     END
+//  AS alaac
+//  FROM flat 
+//    WHERE (partdetail::json->>0)::json->>'bc' IS NOT NULL AND
+// guid ~ 'UAMb?:(Herb|Alg)' ;
 
 // sounds from mixkit.co
 var audio_noguid = new Audio('fail.wav');
