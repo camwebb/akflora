@@ -1,5 +1,5 @@
 
-// For SQL see: dir 2023-11-16_upgrade_alabc
+// For SQL see: https://github.com/ALA-herbarium/arctos-tools/blob/main/sql/sql/44.sql
 
 // sounds from mixkit.co
 var audio_noguid = new Audio('fail.wav');
